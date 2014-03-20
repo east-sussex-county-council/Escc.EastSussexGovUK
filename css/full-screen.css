@@ -1,0 +1,39 @@
+/* Full-screen layout with header based on CSS from http://stackoverflow.com/questions/1192783/css-how-to-set-div-height-100-minus-npx 
+   Works in IE8 and up, but some applications require help from JQuery in IE6 and IE7. Example code:
+
+   <!--[if (lte IE 7)]>
+    <script> 
+    function adjustMapIE() { $(".body #full-screen-div").height($(window).height() - $(".header").height()); }
+    $(window).resize(adjustMapIE);
+    adjustMapIE();
+    </script>
+    <![endif]-->
+*/ 
+
+/* Create a container which expands to fill the screen. Don't use body element for this as it creates scrollbars. */
+.full-screen { width: 100%; height: 100%; }
+
+/* Reserve 78px for the full-screen master page header.
+   Note that this is overriden is alert.css is also loaded. */
+.header { position: absolute; left: 0; top: 0; right: 0; height: 6em; }
+.body { position: absolute; left: 0; top: 6em; right: 0; bottom: 0; }
+
+/* Replace the menu bar with a heading that includes a link back to the relevant section. 
+   Style based on .text h1 style from the main template. 
+
+   44px for logo and background above .full-screen-bar
+   2px top margin reveals background, creating top border
+   28px height of .full-screen-bar
+   4px bottom border same colour as .text h1
+   ----
+   78px total
+
+   <div class="full-screen-bar">
+       <h1>Page heading</h1>
+       <p><a href="/link/to/section.htm">Back to section</a></p>
+   </div>
+*/
+.full-screen-bar { margin-top: .153846em; height: 2.153846em; border-bottom: .307692em solid #BED600; background: #fff; }
+.full-screen-bar h1 { font-size: 1.076923em; float: left; line-height: 1.73em; padding: .153846em 32px 0 8px; color: #272727; font-weight: bold; background: url(/img/body/item-type.gif) no-repeat right -589px; margin-right: -18px; }
+.full-screen-bar p { float: left; line-height: 2.153846em; padding: 0 8px; color: #272727; }
+.full-screen-bar .accessible { float: right; }

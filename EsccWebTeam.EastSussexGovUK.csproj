@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1426FEF0-23DC-4C23-AE15-67F2527BD741}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EsccWebTeam.EastSussexGovUK</RootNamespace>
+    <AssemblyName>EsccWebTeam.EastSussexGovUK</AssemblyName>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AssemblyOriginatorKeyFile>s:\_strong names\esccdev.snk</AssemblyOriginatorKeyFile>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>S:\_Standards\VS.net Code Analysis\EsccWebTeam.CodeAnalysis.WebApp.Strict.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\EsccWebTeam.EastSussexGovUK.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>S:\_Reference DLLs\Microsoft Data Access Application Block 2.0\Release strong-named .NET 2.0\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.ExceptionManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>S:\_Reference DLLs\Microsoft Exception Management Application Block\Release strong-named .NET 2\Microsoft.ApplicationBlocks.ExceptionManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ContentManagement.Publishing, Version=5.0.1200.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>S:\_Reference DLLs\Microsoft Content Management Server 2002\Microsoft.ContentManagement.Publishing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ContentManagement.WebControls, Version=5.0.1200.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>S:\_Reference DLLs\Microsoft Content Management Server 2002\Microsoft.ContentManagement.WebControls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="apple-touch-icon-114x114.png" />
+    <Content Include="apple-touch-icon-57x57.png" />
+    <Content Include="apple-touch-icon-72x72.png" />
+    <Content Include="apple-touch-icon.png" />
+    <Content Include="apple-touch-icon-precomposed-114x114.png" />
+    <Content Include="apple-touch-icon-precomposed-57x57.png" />
+    <Content Include="apple-touch-icon-precomposed-72x72.png" />
+    <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="css\1space.css" />
+    <Content Include="css\alert.css" />
+    <Content Include="css\forms-large.css" />
+    <Content Include="css\forms-medium.css" />
+    <Content Include="css\forms-small.css" />
+    <Content Include="css\full-screen.css" />
+    <Content Include="css\large-ie6.css" />
+    <Content Include="css\images\ui-anim_basic_16x16.gif" />
+    <Content Include="css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="css\images\ui-bg_flat_0_eeeeee_40x100.png" />
+    <Content Include="css\images\ui-bg_flat_55_ffffff_40x100.png" />
+    <Content Include="css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="css\images\ui-bg_highlight-soft_100_f6f6f6_1x100.png" />
+    <Content Include="css\images\ui-bg_highlight-soft_25_0073ea_1x100.png" />
+    <Content Include="css\images\ui-bg_highlight-soft_50_dddddd_1x100.png" />
+    <Content Include="css\images\ui-icons_0073ea_256x240.png" />
+    <Content Include="css\images\ui-icons_454545_256x240.png" />
+    <Content Include="css\images\ui-icons_666666_256x240.png" />
+    <Content Include="css\images\ui-icons_ff0084_256x240.png" />
+    <Content Include="css\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="css\libs\jquery-ui-1.8.2.custom.css" />
+    <Content Include="css\maps.css" />
+    <Content Include="css\medium.css" />
+    <Content Include="css\mobile-controls.css" />
+    <Content Include="css\poll-large.css" />
+    <Content Include="css\poll-small.css" />
+    <Content Include="css\rss-xslt.css" />
+    <Content Include="css\rss.css" />
+    <Content Include="css\service-closures.css" />
+    <Content Include="css\small.css" />
+    <Content Include="css\print.css" />
+    <Content Include="css\social-media-large.css" />
+    <Content Include="css\social-media-small.css" />
+    <Content Include="default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="img\body\flood-alert.png" />
+    <Content Include="img\body\flood-severe.png" />
+    <Content Include="img\body\flood-warning.png" />
+    <Content Include="img\body\map-placemarker.png" />
+    <Content Include="img\body\navigation.gif" />
+    <Content Include="img\body\gradient.jpg" />
+    <Content Include="img\body\quote-close.gif" />
+    <Content Include="img\body\quote-open.gif" />
+    <Content Include="img\body\rss-27px.gif" />
+    <Content Include="img\body\worldpay.gif" />
+    <Content Include="img\header\buttercups.jpg" />
+    <Content Include="img\header\desktop.png" />
+    <Content Include="img\header\logo-small.gif" />
+    <Content Include="img\header\mask.gif" />
+    <Content Include="img\header\menu-item.gif" />
+    <Content Include="img\body\item-type.gif" />
+    <Content Include="img\header\logo-large.gif" />
+    <Content Include="img\header\mobile.jpg" />
+    <Content Include="img\header\robin.jpg" />
+    <Content Include="img\header\squirrel.jpg" />
+    <Content Include="img\header\xmas-lights.jpg" />
+    <Content Include="js\1space.js" />
+    <Content Include="js\analytics.js" />
+    <Content Include="js\cross-origin-ie.js" />
+    <Content Include="js\google-maps.js" />
+    <Content Include="js\googleautosuggest.js" />
+    <Content Include="js\libs\jquery-1.6.4.min.js" />
+    <Content Include="js\libs\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="js\libs\markerclusterer.min.js" />
+    <Content Include="js\libs\markerwithlabel_packed.js" />
+    <Content Include="js\media-queries.js" />
+    <Content Include="js\libs\modernizr.custom.08906.js" />
+    <Content Include="js\public-libraries.js" />
+    <Content Include="js\forms.js" />
+    <Content Include="js\social-media.js" />
+    <Content Include="js\switch-view.js" />
+    <Content Include="MasterPages\adverts.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="MasterPages\Controls\1Space.ascx" />
+    <Content Include="MasterPages\Controls\AboveHeaderMobile.ascx" />
+    <Content Include="MasterPages\Controls\Adverts.ascx" />
+    <Content Include="css\large.css" />
+    <Content Include="MasterPages\Controls\Alert.ascx" />
+    <Content Include="MasterPages\Controls\AlertFullScreen.ascx" />
+    <Content Include="MasterPages\Controls\Error400.ascx" />
+    <Content Include="MasterPages\Controls\Error310.ascx" />
+    <Content Include="MasterPages\Controls\Error404.ascx" />
+    <Content Include="MasterPages\Controls\SocialMediaMobile.ascx" />
+    <Content Include="MasterPages\Controls\FacebookLike.ascx" />
+    <Content Include="MasterPages\Controls\SocialMediaDesktop.ascx" />
+    <Content Include="MasterPages\Controls\ScriptsFullScreen.ascx" />
+    <Content Include="MasterPages\Controls\HeaderFullScreen.ascx" />
+    <Content Include="MasterPages\Controls\MetadataFullScreen.ascx" />
+    <Content Include="MasterPages\Controls\FooterDesktop.ascx" />
+    <Content Include="MasterPages\Controls\AboveHeaderDesktop.ascx" />
+    <Content Include="MasterPages\Controls\FooterMobile.ascx" />
+    <Content Include="MasterPages\Controls\HeaderDesktop.ascx" />
+    <Content Include="MasterPages\Controls\HeaderMobile.ascx" />
+    <Content Include="MasterPages\Controls\HtmlTag.ascx" />
+    <Content Include="MasterPages\Controls\Languages.ascx" />
+    <Content Include="MasterPages\Controls\MetadataDesktop.ascx" />
+    <Content Include="MasterPages\Controls\MetadataMobile.ascx" />
+    <Content Include="MasterPages\Controls\Petitions.ascx" />
+    <Content Include="MasterPages\Controls\Related.ascx" />
+    <Content Include="MasterPages\Controls\ReportApplyPay.ascx" />
+    <Content Include="MasterPages\Controls\ScriptsDesktop.ascx" />
+    <Content Include="MasterPages\Controls\ScriptsMobile.ascx" />
+    <Content Include="MasterPages\Controls\share.ascx" />
+    <Content Include="MasterPages\Controls\SupportingContentDesktop.ascx" />
+    <Content Include="MasterPages\Controls\TwitterSearch.ascx" />
+    <Content Include="MasterPages\Data\calendar.aspx" />
+    <Content Include="MasterPages\Data\datetime.xsl" />
+    <Content Include="MasterPages\Data\hCalendar.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="MasterPages\Data\mf-templates.xsl" />
+    <Content Include="MasterPages\Data\uri.xsl" />
+    <Content Include="MasterPages\Data\xhtml2vcal.xsl">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="MasterPages\Remote\Control.aspx" />
+    <Content Include="MasterPages\Remote\Example\default.aspx" />
+    <Content Include="MasterPages\RSS\config.example.xslt" />
+    <Content Include="MasterPages\RSS\config.xslt" />
+    <Content Include="MasterPages\RSS\dates.xslt" />
+    <Content Include="MasterPages\RSS\display-as-html.xslt" />
+    <Content Include="MasterPages\RSS\escc-logo.gif" />
+    <Content Include="MasterPages\RSS\rss-utilities.xslt" />
+    <Content Include="sandcastle.shfbproj" />
+    <Content Include="MasterPages\Remote\Web.config" />
+    <Content Include="MasterPages\Data\hCalendar.ashx" />
+    <Content Include="MasterPages\FullScreen.Master" />
+    <Content Include="LICENSE.md" />
+    <Content Include="js\config.js" />
+    <Content Include="js\config.example.js" />
+    <None Include="js\Web.example.config" />
+    <None Include="MasterPages\Remote\Example\web.example.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="README.md" />
+    <Content Include="Web.example.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web References\DeviceDetection\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\DeviceDetection\Service.disco" />
+    <None Include="Web References\GoogleAnalytics\Service.disco" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="windows-tile.png" />
+    <Content Include="yuicompressor-2.4.6.jar" />
+    <None Include="Web References\DeviceDetection\Service.wsdl" />
+    <None Include="Web References\GoogleAnalytics\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\GoogleAnalytics\Service.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ContextContainer.cs" />
+    <Compile Include="EastSussexGovUKContext.cs" />
+    <Compile Include="MasterPages\AutoSuggestGoogleAnalytics.ashx.cs">
+      <DependentUpon>AutoSuggestGoogleAnalytics.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\BaseMasterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\AboveHeaderMobile.ascx.cs">
+      <DependentUpon>AboveHeaderMobile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\AboveHeaderMobile.ascx.designer.cs">
+      <DependentUpon>AboveHeaderMobile.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Adverts.ascx.cs">
+      <DependentUpon>Adverts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Adverts.ascx.designer.cs">
+      <DependentUpon>Adverts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\BreadcrumbTrail.cs" />
+    <Compile Include="MasterPages\Controls\AboveHeaderDesktop.ascx.cs">
+      <DependentUpon>AboveHeaderDesktop.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\AboveHeaderDesktop.ascx.designer.cs">
+      <DependentUpon>AboveHeaderDesktop.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Alert.ascx.cs">
+      <DependentUpon>Alert.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Alert.ascx.designer.cs">
+      <DependentUpon>Alert.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\AlertFullScreen.ascx.cs">
+      <DependentUpon>AlertFullScreen.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\AlertFullScreen.ascx.designer.cs">
+      <DependentUpon>AlertFullScreen.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\BreadcrumbTrailFactory.cs" />
+    <Compile Include="MasterPages\Controls\BreadcrumbTrailMobile.cs" />
+    <Compile Include="MasterPages\Controls\ConfigurationBreadcrumbProvider.cs" />
+    <Compile Include="MasterPages\Controls\Error400.ascx.cs">
+      <DependentUpon>Error400.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Error400.ascx.designer.cs">
+      <DependentUpon>Error400.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Error310.ascx.cs">
+      <DependentUpon>Error310.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Error310.ascx.designer.cs">
+      <DependentUpon>Error310.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Error404.ascx.cs">
+      <DependentUpon>Error404.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Error404.ascx.designer.cs">
+      <DependentUpon>Error404.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\IBreadcrumbProvider.cs" />
+    <Compile Include="MasterPages\Controls\MicrosoftCmsBreadcrumbProvider.cs" />
+    <Compile Include="MasterPages\Controls\SocialMediaMobile.ascx.cs">
+      <DependentUpon>SocialMediaMobile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\SocialMediaMobile.ascx.designer.cs">
+      <DependentUpon>SocialMediaMobile.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\FacebookLike.ascx.cs">
+      <DependentUpon>FacebookLike.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\FacebookLike.ascx.designer.cs">
+      <DependentUpon>FacebookLike.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\SocialMediaDesktop.ascx.cs">
+      <DependentUpon>SocialMediaDesktop.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\SocialMediaDesktop.ascx.designer.cs">
+      <DependentUpon>SocialMediaDesktop.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\ScriptsFullScreen.ascx.cs">
+      <DependentUpon>ScriptsFullScreen.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\ScriptsFullScreen.ascx.designer.cs">
+      <DependentUpon>ScriptsFullScreen.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\HeaderFullScreen.ascx.cs">
+      <DependentUpon>HeaderFullScreen.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\HeaderFullScreen.ascx.designer.cs">
+      <DependentUpon>HeaderFullScreen.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\MetadataFullScreen.ascx.cs">
+      <DependentUpon>MetadataFullScreen.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\MetadataFullScreen.ascx.designer.cs">
+      <DependentUpon>MetadataFullScreen.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\FooterMobile.ascx.cs">
+      <DependentUpon>FooterMobile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\FooterMobile.ascx.designer.cs">
+      <DependentUpon>FooterMobile.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\HeaderMobile.ascx.cs">
+      <DependentUpon>HeaderMobile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\HeaderMobile.ascx.designer.cs">
+      <DependentUpon>HeaderMobile.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\HtmlTag.ascx.cs">
+      <DependentUpon>HtmlTag.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\HtmlTag.ascx.designer.cs">
+      <DependentUpon>HtmlTag.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\MasterPageControl.cs" />
+    <Compile Include="MasterPages\Controls\FooterDesktop.ascx.cs">
+      <DependentUpon>FooterDesktop.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\FooterDesktop.ascx.designer.cs">
+      <DependentUpon>FooterDesktop.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\HeaderDesktop.ascx.cs">
+      <DependentUpon>HeaderDesktop.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\HeaderDesktop.ascx.designer.cs">
+      <DependentUpon>HeaderDesktop.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Languages.ascx.cs">
+      <DependentUpon>Languages.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Languages.ascx.designer.cs">
+      <DependentUpon>Languages.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\MetadataDesktop.ascx.cs">
+      <DependentUpon>MetadataDesktop.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\MetadataDesktop.ascx.designer.cs">
+      <DependentUpon>MetadataDesktop.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\MetadataMobile.ascx.cs">
+      <DependentUpon>MetadataMobile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\MetadataMobile.ascx.designer.cs">
+      <DependentUpon>MetadataMobile.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Petitions.ascx.cs">
+      <DependentUpon>Petitions.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Petitions.ascx.designer.cs">
+      <DependentUpon>Petitions.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Related.ascx.cs">
+      <DependentUpon>Related.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\Related.ascx.designer.cs">
+      <DependentUpon>Related.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\ReportApplyPay.ascx.cs">
+      <DependentUpon>ReportApplyPay.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\ReportApplyPay.ascx.designer.cs">
+      <DependentUpon>ReportApplyPay.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\ScriptsDesktop.ascx.cs">
+      <DependentUpon>ScriptsDesktop.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\ScriptsDesktop.ascx.designer.cs">
+      <DependentUpon>ScriptsDesktop.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\ScriptsMobile.ascx.cs">
+      <DependentUpon>ScriptsMobile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\ScriptsMobile.ascx.designer.cs">
+      <DependentUpon>ScriptsMobile.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\share.ascx.cs">
+      <DependentUpon>share.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\share.ascx.designer.cs">
+      <DependentUpon>share.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\SupportingContentDesktop.ascx.cs">
+      <DependentUpon>SupportingContentDesktop.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\SupportingContentDesktop.ascx.designer.cs">
+      <DependentUpon>SupportingContentDesktop.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Controls\TwitterSearch.ascx.cs">
+      <DependentUpon>TwitterSearch.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\TwitterSearch.ascx.designer.cs">
+      <DependentUpon>TwitterSearch.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Remote\RemoteMasterPageCacheProviderBase.cs" />
+    <Compile Include="MasterPages\Remote\RemoteMasterPageFileCacheProvider.cs" />
+    <Compile Include="MasterPages\Remote\RemoteMasterPageMemoryCacheProvider.cs" />
+    <Compile Include="MasterPages\FullScreen.Master.cs">
+      <DependentUpon>FullScreen.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\FullScreen.Master.designer.cs">
+      <DependentUpon>FullScreen.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Data\calendar.aspx.cs">
+      <DependentUpon>calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Data\calendar.aspx.designer.cs">
+      <DependentUpon>calendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Data\hCalendar.ashx.cs">
+      <DependentUpon>hCalendar.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Data\RewriteByExtensionModule.cs" />
+    <Compile Include="MasterPages\MasterPageModule.cs" />
+    <Compile Include="MasterPages\choose.ashx.cs">
+      <DependentUpon>choose.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Desktop.Master.cs">
+      <DependentUpon>Desktop.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Desktop.Master.designer.cs">
+      <DependentUpon>Desktop.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Mobile.Master.cs">
+      <DependentUpon>Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Mobile.Master.designer.cs">
+      <DependentUpon>Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Plain.Master.cs">
+      <DependentUpon>Plain.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Plain.Master.designer.cs">
+      <DependentUpon>Plain.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\PreferredView.cs" />
+    <Compile Include="MasterPages\Remote\Control.aspx.cs">
+      <DependentUpon>Control.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Remote\Control.aspx.designer.cs">
+      <DependentUpon>Control.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\ViewSelector.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\DeviceDetection\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\GoogleAnalytics\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPages\EastSussexGovUK.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="robots.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\Web.config" />
+    <None Include="eastsussexcountycouncil.rdf">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="MasterPages\Desktop.Master" />
+    <Content Include="MasterPages\Mobile.Master" />
+    <Content Include="MasterPages\choose.ashx" />
+    <None Include="img\body\navigation.psd" />
+    <None Include="img\body\item-type.psd" />
+    <None Include="img\header\header original.psd" />
+    <None Include="img\header\header resized, tiled, with channel for mask.psd" />
+    <None Include="img\header\mask.psd" />
+    <Content Include="js\Web.config" />
+    <None Include="img\header\mobile.psd" />
+    <Content Include="MasterPages\AutoSuggestGoogleAnalytics.ashx" />
+    <Content Include="MasterPages\Plain.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\min\" />
+    <Folder Include="js\min\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\VS Projects\eastsussex.gov.uk projects\EsccWebTeam.Cms\EsccWebTeam.Cms.csproj">
+      <Project>{6710e9ee-deab-4569-ace6-f10159d6d447}</Project>
+      <Name>EsccWebTeam.Cms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj">
+      <Project>{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}</Project>
+      <Name>EsccWebTeam.Data.ActiveDirectory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Data.Web\EsccWebTeam.Data.Web.csproj">
+      <Project>{9C56D3DD-4952-4A1B-9AD6-907A1142872F}</Project>
+      <Name>EsccWebTeam.Data.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Data.Xml\EsccWebTeam.Data.Xml.csproj">
+      <Project>{86B2725C-9C37-44A4-93C7-F5122AFA0809}</Project>
+      <Name>EsccWebTeam.Data.Xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Feeds\EsccWebTeam.Feeds.csproj">
+      <Project>{08008B80-1B37-41B9-935B-FDDDDB4DAE84}</Project>
+      <Name>EsccWebTeam.Feeds</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.HouseStyle\EsccWebTeam.HouseStyle.csproj">
+      <Project>{1C429378-DBF2-4AF7-88AC-C059AA163682}</Project>
+      <Name>EsccWebTeam.HouseStyle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.ServiceClosures\EsccWebTeam.ServiceClosures.csproj">
+      <Project>{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}</Project>
+      <Name>EsccWebTeam.ServiceClosures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.NavigationControls\EsccWebTeam.NavigationControls.csproj">
+      <Project>{0323F668-1723-44A1-8C94-F91DC59EF315}</Project>
+      <Name>EsccWebTeam.NavigationControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VS Projects\_Standards\E-Government Metadata Standard %28E-GMS%29\EsccWebTeam.Egms\EsccWebTeam.Egms.csproj">
+      <Project>{78083DCB-B12F-4950-86C5-3A844D8604F3}</Project>
+      <Name>EsccWebTeam.Egms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://esweb01s/Escc.DeviceDetection.WebService/Service.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\DeviceDetection\</RelPath>
+      <UpdateFromURL>http://esweb01s/Escc.DeviceDetection.WebService/Service.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>EsccWebTeam_EastSussexGovUK_DeviceDetection_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/Escc.GoogleAnalytics/Service.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\GoogleAnalytics\</RelPath>
+      <UpdateFromURL>http://localhost/Escc.GoogleAnalytics/Service.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>EsccWebTeam_EastSussexGovUK_GoogleAnalytics_GoogleAnalytics</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1849</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Release" del "$(ProjectDir)css\min\*.*" /Q
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/small.css" &gt; "$(ProjectDir)css/min/small.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/medium.css" &gt; "$(ProjectDir)css/min/medium.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/large.css" &gt; "$(ProjectDir)css/min/large.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/print.css" &gt; "$(ProjectDir)css/min/print.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/full-screen.css" &gt; "$(ProjectDir)css/min/full-screen.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/maps.css" &gt; "$(ProjectDir)css/min/maps.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/maps.css" &gt; "$(ProjectDir)css/min/maps.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/forms-small.css" &gt; "$(ProjectDir)css/min/forms-small.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/forms-medium.css" &gt; "$(ProjectDir)css/min/forms-medium.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/forms-large.css" &gt; "$(ProjectDir)css/min/forms-large.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/rss.css" &gt; "$(ProjectDir)css/min/rss.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/rss-xslt.css" &gt; "$(ProjectDir)css/min/rss-xslt.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/poll-small.css" &gt; "$(ProjectDir)css/min/poll-small.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/poll-large.css" &gt; "$(ProjectDir)css/min/poll-large.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/service-closures.css" &gt; "$(ProjectDir)css/min/service-closures.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/social-media-small.css" &gt; "$(ProjectDir)css/min/social-media-small.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/social-media-large.css" &gt; "$(ProjectDir)css/min/social-media-large.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/alert.css" &gt; "$(ProjectDir)css/min/alert.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/mobile-controls.css" &gt; "$(ProjectDir)css/min/mobile-controls.css"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/1space.css" &gt; "$(ProjectDir)css/min/1space.css"
+
+if "$(ConfigurationName)" == "Release" del "$(ProjectDir)js\min\*.*" /Q
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/analytics.js" &gt; "$(ProjectDir)js/min/analytics.js"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/media-queries.js" &gt; "$(ProjectDir)js/min/media-queries.js"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/public-libraries.js" &gt; "$(ProjectDir)js/min/public-libraries.js"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/forms.js" &gt; "$(ProjectDir)js/min/forms.js"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/social-media.js" &gt; "$(ProjectDir)js/min/social-media.js"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/googleautosuggest.js" &gt; "$(ProjectDir)js/min/googleautosuggest.js"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/google-maps.js" &gt; "$(ProjectDir)js/min/google-maps.js"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/1space.js" &gt; "$(ProjectDir)js/min/1space.js"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/cross-origin-ie.js" &gt; "$(ProjectDir)js/min/cross-origin-ie.js"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/switch-view.js" &gt; "$(ProjectDir)js/min/switch-view.js"
+if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/config.js" &gt; "$(ProjectDir)js/min/config.js"
+
+if "$(ConfigurationName)" == "Release" ( if exist "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" &gt; "$(ProjectDir)js\min\Escc.DocumentsInNewWindow.js")
+if "$(ConfigurationName)" == "Release" ( if exist "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" &gt; "$(ProjectDir)js\min\Escc.DocumentsInNewWindow.js")
+
+if "$(ConfigurationName)" == "Release" ( if exist "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" &gt; "$(ProjectDir)js\min\Escc.Statistics.js")
+if "$(ConfigurationName)" == "Release" ( if exist "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" &gt; "$(ProjectDir)js\min\Escc.Statistics.js")
+
+if "$(ConfigurationName)"=="Release" ( if exist "C:\Program Files\EsccWebTeam.SandcastleBuilder\EsccWebTeam.SandcastleBuilder.exe" "C:\Program Files\EsccWebTeam.SandcastleBuilder\EsccWebTeam.SandcastleBuilder.exe" "$(ProjectName)" "$(ProjectDir)Sandcastle.shfbproj" )
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

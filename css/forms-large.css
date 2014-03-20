@@ -1,0 +1,35 @@
+﻿/********************************************
+ ********************************************
+                 PLEASE
+             D O C U M E N T
+           E V E R Y T H I N G !
+
+ All comments are stripped from this file  
+ for the live site, so don't be shy:
+
+ - say what app it's for
+ - say what you were trying to achieve
+ - give an example of the HTML
+ - note any browser differences/bugs
+ - add your name and the date
+
+*********************************************
+*********************************************
+
+--------------------------------------------
+ QUICK REFERENCE - Handy generic styles
+--------------------------------------------
+ .ie6, .ie7, 
+ .ie67, .ie8        target IE versions
+ .js, .no-js        JavaScript on or off
+ .aural             screenreaders only
+ .print             print only
+ .screen            don't print it
+ a.screenUrl        don't print href of this link
+---------------------------------------------
+
+
+/*:: SHORT FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+/* .short-form shouldn't be within .text, but it may end up there so cope with it */
+.text .short-form { margin-left: -2.9%; margin-right: -3%; }

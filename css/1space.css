@@ -1,0 +1,93 @@
+﻿#marketplace-search-widget {
+	font-family: Effra, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	border-color: #00b4ad;
+	border-width: 3px;
+	border-style: solid;
+	padding: 5px;
+    background: #fff;
+}
+			
+#marketplace-search-widget #logo {
+	text-align: center;
+	margin: 0 5px;
+}
+						
+#marketplace-search-widget  #bottom-region {
+	background-color: #e2e400;
+	padding: 7px;
+}
+			
+#marketplace-search-widget form {
+	margin: 0;
+	*overflow: hidden; /*IE6+7*/
+	width: 100%;
+}
+		
+#marketplace-search-widget #text-area-1 {
+	margin: 3px 7px 7px 7px;
+}		
+	
+#marketplace-search-widget #text-area-2 {
+	margin: 1px 0 7px 0;
+}		
+						
+#marketplace-search-widget input {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0 5px;
+	margin-bottom: 10px;
+	border: 1px solid #999999;
+	width: 100%;
+	height: 32px;
+	font-size: 15px;
+	line-height: 29px;
+	color: #555555;
+}
+				
+#marketplace-search-widget .button {
+	background-color: #00a69c;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #00a69c), color-stop(1, #0d7d75));
+	background-image: -webkit-linear-gradient(top, #00a69c 0%, #0d7d75 100%);
+	background-image: -ms-linear-gradient(top, #00a69c 0%, #0d7d75 100%);
+	background-image: -moz-linear-gradient(top, #00a69c 0%, #0d7d75 100%);
+	background-image: linear-gradient(top, #00a69c 0%, #0d7d75 100%);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 18px;
+	padding: 6px 8px 6px 10px;
+	*padding: 3px 8px 4px 10px; /*IE6+7*/
+	margin: 0;
+	border: none;
+	line-height: 1;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: left;
+	width: 80px;
+}
+#marketplace-search-widget .button:hover,
+#marketplace-search-widget .button:focus {
+	color: white;
+	text-decoration: none;
+	background-color: #00746d;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #00746d), color-stop(1, #0d5b56));
+	background-image: -webkit-linear-gradient(top, #00746d 0%, #0d5b56 100%);
+	background-image: -ms-linear-gradient(top, #00746d 0%, #0d5b56 100%);
+	background-image: -moz-linear-gradient(top, #00746d 0%, #0d5b56 100%);
+	background-image: linear-gradient(top, #00746d 0%, #0d5b56 100%);
+}
+#marketplace-search-widget .button:visited {
+	color: white;
+}
+#marketplace-search-widget .button span {
+	background-image: url("https://www.eastsussex1space.co.uk/Skins/EastSussex/Images/ButtonIcons/search.png");
+	padding: 0 22px 1px 0;
+	background-repeat: no-repeat;
+	background-position: right center;
+	display: block;
+}

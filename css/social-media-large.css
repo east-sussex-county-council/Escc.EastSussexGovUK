@@ -1,0 +1,27 @@
+﻿/*  Twitter search widget: Override its custom styles to bring it into line with our site. 
+    Unfortunately Twitter has misused !important for almost everything, so we have to too. 
+    Haven't tried to align this to baseline grid because there are so many styles to unpick.
+    Start by removing their custom font.
+*/
+div.twtr-widget { font-size: inherit!important; font-family: inherit!important; } 
+
+/*  Use the "title" rather than "caption" of the widget because it's h3 not h4 (though we really want h2).
+    Default title is really small, so match our h3 size. */
+div.twtr-widget h3 { font-size: 1.153846em!important; }
+
+/*  Put underline back on links because contrast with ordinary text isn't enough to make them obvious. */
+div.twtr-doc a:link { text-decoration: underline!important; }
+
+/*  Reset line-height to our default so that text is easier to read even with underlined links. */
+div.twtr-widget h3, div.twtr-widget h4, div.twtr-widget p { line-height: inherit!important; }
+
+/*  Increase size of the really tiny text to 11px so that people has a chance of reading it. */
+div.twtr-widget em { font-size: .846154em; }
+
+/* Display Facebook Like box at this level and, since it's fixed width, centre it */
+div.fb-like-box { display: block; text-align: center; }
+.fb-like-box iframe { background: #fff; }
+
+/* Reset margin on mobile social media because, although it's hidden at this level, its negative margin 
+   still has an effect, which is to apply a negative bottom margin to the breadcrumb trail. Odd, but this fixes it. */
+.social-mobile { margin: 0; }

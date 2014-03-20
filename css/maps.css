@@ -1,0 +1,48 @@
+﻿/*********************************
+ * ESRI-GIS MAPPING APPLICATIONS *
+ *********************************/
+ 
+ /* Old style map with directional arrows around. Usually inside .text. Used by:
+    - no cold calling zones
+    - planning
+    - roadworks
+ */
+.gisMap { position: relative; margin: 1.384615em 0; height: 350px; }
+.gisMap .map { border: 1px solid #000; position: absolute; top: 25px; left: 29px; }
+.gisMap .panNW { position: absolute; left: 3px; top: 0; }
+.gisMap .panN { position: absolute; left: 219px; top: 0; }
+.gisMap .panNE { position: absolute; left: 438px; top: 0; }
+.gisMap .panW { position: absolute; left: 3px; top: 170px; }
+.gisMap .panE { position: absolute; left: 438px; top: 170px; }
+.gisMap .panSW { position: absolute; left: 3px; top: 335px; }
+.gisMap .panS { position: absolute; left: 219px; top: 335px; }
+.gisMap .panSE { position: absolute; left: 438px; top: 335px; }
+
+/* DEPRECATED. USE p.button-nav INSTEAD.
+
+   Zoom in and out buttons for a .gisMap.  
+
+   <div class="zoom">
+        <input type="submit" value="Zoom in" class="button" />
+        <input type="submit" value="Zoom out" class="button" />
+   </div>
+*/
+.zoom { display: block; margin: .692308em 0; }
+
+/* New style map using JavaScript. Do not put inside .text. Used by:
+   - gritting
+   - adopted roads
+ */
+.jsMap { position: relative; margin: 1.384615em 18px; }
+
+/* Key to map. Used by:
+   - planning 
+   - gritting
+   - schools
+*/
+ul.key { margin: .692308em 0; }
+ul.key li { display: inline; margin-right: 2em; white-space: nowrap; }
+ul.key img { vertical-align: middle; }
+
+/* IE6/7 doesn't wrap key, so present list vertically to avoid problem */
+.ie67 ul.key li { display: list-item; list-style: none; }

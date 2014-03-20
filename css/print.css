@@ -1,0 +1,55 @@
+﻿/**********************************************************************************************
+ * PRINT ONLY (load with media="all" so that .print style hides print-only content on screen) *
+ *********************************************************************************************/
+
+/* For all media except print, hide anything marked as print-only */
+.print { display: none; }
+
+@media print {
+
+/* Show anything marked as print-only (overrides earlier style), and hide anything marked as screen only 
+   The !important is just to persuade IE6 to play along. */
+.print { display: block; }
+.screen { display: none!important; }
+  
+  /* RESET:
+     - Set page margin
+     - Most browsers don't print background, so make sure then we can work with that.
+     - Black prints faster: sanbeiji.com/archives/953 
+     - Reset anything else that looks pretty on screen and awful on paper
+     */
+@page { margin: 0.5cm; }
+* { background: transparent !important; color: #000 !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } 
+
+/* LINKS and ABBR: 
+   Print the attribute content after the link, since the user can't get that information on hover any more.
+
+   Exceptions:
+   - Internal links to #anchors
+   - JavaScript links
+   - links in tables, where the layout would be wrecked by long non-wrapping link
+   - Any link marked as screen-only using .screenUrl 
+         (could be a complex link, or useless because session-dependent, and just gets in the way when printed)
+          Example: <a class="screenUrl" href="http://www.dont-print-this-link.com">Print this link text</a>
+   */
+a, a:visited { color: #444; text-decoration: underline; }
+a[href]:after { content: " (" attr(href) ")"; font: normal 9pt "Arial Narrow", Arial, Helvetica, sans-serif; color: #666; padding-left: .5em; }
+abbr[title]:after { content: " (" attr(title) ")"; }
+a[href^="javascript:"]:after, a[href^="#"]:after, table a[href]:after, a.screenUrl:after { content: ""; }  
+
+/* PAGE BREAKS */
+thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
+tr, img, blockquote { page-break-inside: avoid; }
+p, h2, h3 { orphans: 3; widows: 3; }
+h2, h3, dt { page-break-after: avoid; }
+
+/* LISTS 
+   list-style-image is usually not printed anyway, so ensure there's a bullet. Restore default spacing so it's in the right place.
+   .body is only there for the weight 
+*/
+.body ul { margin-left: 1.153846em; }
+.body ul li { padding-left: 0; background-image: none; list-style-image: none; list-style-type: disc; } 
+  
+.ie6 .container { width: 17cm!important; }
+  
+} /* End "@media print" section */

@@ -1,0 +1,51 @@
+﻿/********************************************
+ ********************************************
+                 PLEASE
+             D O C U M E N T
+           E V E R Y T H I N G !
+
+ All comments are stripped from this file  
+ for the live site, so don't be shy:
+
+ - say what app it's for
+ - say what you were trying to achieve
+ - give an example of the HTML
+ - note any browser differences/bugs
+ - add your name and the date
+
+*********************************************
+*********************************************
+
+--------------------------------------------
+ QUICK REFERENCE - Handy generic styles
+--------------------------------------------
+ .ie6, .ie7, 
+ .ie67, .ie8        target IE versions
+ .js, .no-js        JavaScript on or off
+ .aural             screenreaders only
+ .print             print only
+ .screen            don't print it
+ a.screenUrl        don't print href of this link
+---------------------------------------------
+*/
+
+/*:: SIMPLE FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+  See forms-small.css for the definition of a .simple-form.
+
+  At this level we expect all the controls to appear on one line, so change the label to be display: inline with a margin on
+  the right rather than below. Doing this at medium level is the best compromise, even though when the label is a bit longer 
+  (eg "Postcode or councillor's name") the button wraps first, which isn't ideal.
+*/
+.simple-form label { display: inline; line-height: 1.285714em; margin: 4px .5em 4px 0; }
+
+/* The simple form can be a textbox or dropdown list supported by a checkbox. See forms-small.css for documentation.
+   At this level move the button up to the right of the fields. */
+.simple-form .fields-with-checkbox .fields { float: left; }
+.simple-form .fields-with-checkbox .checkbox { margin-bottom: 0; }
+
+
+/*:: SHORT FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+/* .short-form shouldn't be within .text, but it may end up there so cope with it */
+.text .short-form { margin-left: -2.4%; margin-right: -2.4%; }

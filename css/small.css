@@ -1,0 +1,704 @@
+/********************************************
+ ********************************************
+                 PLEASE
+             D O C U M E N T
+           E V E R Y T H I N G !
+
+ All comments are stripped from this file  
+ for the live site, so don't be shy:
+
+ - say what app it's for
+ - say what you were trying to achieve
+ - give an example of the HTML
+ - note any browser differences/bugs
+ - add your name and the date
+
+*********************************************
+*********************************************
+
+ --------------------------------------------
+ QUICK REFERENCE - Handy generic styles
+ --------------------------------------------
+ .ie6, .ie7, 
+ .ie67, .ie8        target IE versions
+ .js, .no-js        JavaScript on or off
+ .cms-edit          CMS editing mode
+ .cms-preview       CMS preview mode
+ .cms-unpublished   CMS unpublished mode
+
+ .aural             screenreaders only
+ .print             print only
+ .screen            don't print it
+ a.screenUrl        don't print href of this link
+ ---------------------------------------------
+ 
+--------------------------------------------------------------------------------------------------------------------
+ S T I C K   T O   T H E   G R I D !
+--------------------------------------------------------------------------------------------------------------------
+
+The site layout is based on a LIQUID COLUMN GRID. This is composed of 64px columns separated by 18px gutters. 
+
+This stylesheet starts by defining a 6 column grid, 474px wide in total.
+Any wider, and the next stylesheet defines a 10 column grid, 802px in total.
+The final stylesheet defines a 12 column grid, 966px in total.
+At sizes below and inbetween those totals the columns resize in proportion to the grid.
+
+All major layout containers should be based on this grid, unless you have a good reason to break out of it. 
+Within the containers you are free lay out elements as appropriate, but if in doubt stick to the grid.
+
+All widths on the grid must be specified in % values, including horizontal padding, borders and margins. 
+The value can be obtained using the formula:
+
+    % value = (px width of columns you want / px width of columns you have now) x 100
+
+Common values are in a spreadsheet at /css/grids.xlsx, but if you are using horizontal padding, borders or 
+margins you need to subtract those from the "px width of columns you want" value before calculating, and you
+have to specify the padding, border or margin width in % using the same formula.
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+/****************************************************************** 
+ * RESETS FOR ALL MEDIA: html5doctor.com/html-5-reset-stylesheet/ *
+ ******************************************************************/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, kbd,
+abbr, address, cite, em, img, small, strong, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video 
+{ margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; text-align: left; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+
+/*
+Important for body to have a background colour, because otherwise it gets the operating system's default colour which may not be what we want. 
+However, in this case the background is the colour needed to extend the footer to the bottom of the browser window even on short pages. The body
+of the page (between the header and footer) has to override this later.
+*/
+body { margin: 0 auto; background: #aee1f4; color: #131313; }
+
+/* .body is the content area of the page; everything between .header and .footer. Use float and width: 100% to contain any floats rather than
+   overflow: hidden, because overflow cuts off the absolutely positioned dialog from the Facebook Like button, which needs to overlap the footer. */
+.body { background: #fff; float: left; width: 100%; }
+.body .container { padding: .692308em 0; } /* 9px padding top and bottom, but on the container so it can be overriden when required */
+
+/* Set default font to 13px on a baseline grid of 18px */
+body, select, input, textarea { font: 13px/1.384615em Arial, "Helvetica Neue", Helvetica, sans-serif; }
+.ie6 body, .ie6 select, .ie6 input, .ie6 textarea { font-size: small; } /* Allow IE6 to resize text */
+.ie67 kbd { font-family: Arial, sans-serif; }
+
+/* Support cookie to change text size. 2px increase each time because that's needed for a clear difference. 
+   All other text sizes and vertical spacing including the line-height should be based on ems relative to this measurement. 
+   Specified in pixels for consistency, IE6 gets an override to use a keyword so that its users can resize text. */
+body.size2, .size2 select, .size2 input, .size2 textarea { font-size: 15px; }
+.ie6 body.size2, .ie6 .size2 select, .ie6 .size2 input, .ie6 .size2 textarea { font-size: medium; }
+body.size3, .size3 select, .size3 input, .size3 textarea { font-size: 17px; }
+.ie6 body.size3, .ie6 .size3 select, .ie6 .size3 input, .ie6 .size3 textarea { font-size: large; }
+
+/* Align hr to baseline grid, 1px thick with 8px above and 9px below */
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: .615384em 0 .692308em; padding: 0; }
+
+strong { font-weight: bold; }
+
+blockquote { quotes: none; }
+blockquote:before, blockquote:after { content: ''; content: none; }
+
+abbr[title] { border-bottom: 1px dotted; cursor: help; }
+
+/* Align small print to baseline grid, 11px on 18px */
+small { font-size: .846154em; line-height: 1.636364em; }
+
+
+/********************************
+ * LINKS - APPLIES TO ALL MEDIA *
+ ********************************
+ Colours chosen to meet contrast guidelines from WCAG. All checked against #fff (text), #dae1e5 (nav) and #F6F4E8 (form) backgrounds. 
+*/
+
+a:link { color: #003c69; }
+a:visited { color: #609; }
+a:hover, a:focus, a:active { color: #B80000; }
+
+
+/******************************** 
+ * LISTS - APPLIES TO ALL MEDIA *
+ ********************************/
+ 
+/* Reset list margins, with no margin for navigation lists.
+   Define multiple levels of nested numbers for complex documents such as the constitution */
+ul { margin-left: 1.153846em; }
+ol { margin-left: 2em; list-style-type: decimal; }
+ol ol {	list-style-type: lower-roman;}
+ol ol ol { list-style-type: upper-roman;}
+ol ol ol ol { list-style-type: lower-alpha;}
+ol ol ol ol ol { list-style-type: upper-alpha;}
+nav ul, nav li { margin: 0; list-style:none; list-style-image: none; }
+
+/* For right-to-left scripts, move bullets to right, and always use browser bullets rather than background images */
+html .rtl ul { margin-left: 0; margin-right: 1.153846em; }
+html .rtl ol { margin-left: 0; margin-right: 2em; }
+html .rtl li { background: none; list-style: disc; }
+
+/********************************* 
+ * TABLES - APPLIES TO ALL MEDIA *
+ *********************************/
+ 
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+
+/*********************************************************************** 
+ * FORMS - APPLIES TO ALL MEDIA                                        *    
+ * Most form styles are in a dedicated forms stylesheet, but a minimal *
+ * set is included here because they are used on the master page.      *
+ ***********************************************************************/
+
+select, input, textarea { margin: 0; } /* Webkit adds a 2px margin outside the chrome of form elements */
+input, select { vertical-align: middle; }
+
+/* Allow search fields to be styled in Chrome http://code.google.com/p/chromium/issues/detail?id=45835 */
+input[type="search"] { -webkit-appearance: textfield; }
+
+/* Align checkboxes, radios, text inputs with their label by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: text-bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+
+/* This is more-or-less the default border applied by browsers, but need to specify it explicitly because when you 
+   apply a background-image to an input, even if you subsequently remove it, IE8 will reset the border to the old 
+   inset style. This happens in our case with the .email class. IE8 also does it to password fields. */
+input[type=text], input[type=password] { border: 1px solid #9c9c9c; }
+
+/* Placeholder text should meet WCAG contrast guidelines */
+::-webkit-input-placeholder, ::-moz-placeholder { color: #777; }
+
+/* Hand cursor on clickable input elements */
+label, input[type="submit"], input[type="image"] { cursor: pointer; }
+
+/* The default behaviour for all buttons will be blue with white text and a pointer cursor on hover. 
+   .button needed by IE6 which doesn't support attribute selectors, but can also be applied to buttons used for navigation outside of a .form
+   With CSS3 the buttons will take on curved corners */
+.ie6 .button { font-size: 1.076923em; line-height: 1em; padding: 7px; font-weight: bold; color: #fff; border: 0; background: #1e5b83; cursor:pointer; }
+
+.button, .form input[type=submit] { font-size: 1.076923em; line-height: 1em; padding: 7px; font-weight: bold; color: #fff; border: 0; background: #1e5b83; cursor:pointer; border-radius: 4px;  background: -moz-linear-gradient(top, #1e5b83 0%, #0b4164 100%); /* FF3.6+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE6-9 */
+  background: linear-gradient(top, #1e5b83 0%,#0b4164 100%); /* W3C */
+                             }
+/* CSS3: The buttons will take on curved corners and apply a change of the background color to lighter blue on hover */                             
+.button:hover, .form input[type=submit]:hover { border-radius: 4px;  /* 14px font */  
+background: #00a1de; /* Old browsers */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE6-9 */
+background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
+}
+
+/* 
+    Style navigation as buttons within applications
+
+    .button-nav styles either links or buttons as a secondary button. Apply it to a container element around the links.
+    Links themselves have one 18px line of vertical space, split between margin and padding. They may be wrapped in list
+    items (li elements) but that is not required.
+
+    Add .application-nav to turn that into a toolbar, to be placed above the page title. Adds another line of vertical space as padding.
+
+    <nav>
+        <p class="button-nav application-nav">
+           <a href="#">link</a> 
+           <a href="#">link</a> 
+           <input type="submit" />
+        </p>
+    </nav>
+
+ */
+.button-nav { overflow: hidden; }
+.ie67 .button-nav { display: inline-block; }
+.button-nav li { float: left; list-style: none; }
+.button-nav a:link, .button-nav a:visited, .button-nav em, .button-nav input { float: left; display: block; margin: 5px 2px 5px 0; padding: 4px 10px; background: #44697d; color: #fff; font-weight: bold; text-decoration: none; white-space: nowrap; border-radius: 3px; border: none; }
+.button-nav .selected a:link, .button-nav .selected a:visited, .button-nav a:hover, .button-nav a:focus, .button-nav a:active, .button-nav em, .button-nav input:hover { background-color: #00a1de; color: #fff; font-style: normal; }
+@media print { .button-nav { display: none; } }
+
+.application-nav { margin: 0; padding: 9px 18px; background: #dae1e5; }
+
+/* Grey-out a button when it's disabled. .buttonDisabled class provides support for browsers that don't support :disabled pseudo-class. */
+.buttonDisabled, .button-nav .buttonDisabled, .button:disabled, .form input[type=submit]:disabled { background: #777; color: #fff; }
+
+
+/* A huge unmissable button, for when we really want users to take a particular action on a page.
+   In IE6/7 this spans the width of the page, but in newer browsers it displays at the correct width.
+   Font-size and padding together add up to three line spaces (54px).
+
+   <p class="major-action"><a href="#">link</a></p>
+ */
+.major-action {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	font: 1.84615em/100% Arial, "Helvetica Neue", Helvetica, sans-serif;
+	padding: .625em 1em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	border-radius: 6px;
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	color: #e8f0de;
+    background: #1e5b83; /* Old browsers */
+    background: -moz-linear-gradient(top,  #1e5b83 0%, #0b4164 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5b83), color-stop(100%,#0b4164)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #1e5b83 0%,#0b4164 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #1e5b83 0%,#0b4164 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #1e5b83 0%,#0b4164 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #1e5b83 0%,#0b4164 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE6-9 */
+}
+.major-action:hover, .major-action:focus, .major-action:active {
+    background: #00a1de; /* Old browsers */
+    background: -moz-linear-gradient(top,  #00a1de 0%, #47cbed 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00a1de), color-stop(100%,#47cbed)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #00a1de 0%,#47cbed 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #00a1de 0%,#47cbed 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #00a1de 0%,#47cbed 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #00a1de 0%,#47cbed 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE6-9 */
+}
+.major-action:active { position: relative; top: 1px; }
+
+.major-action a:link, .major-action a:visited { text-decoration: none; font-weight: bold; color: #fff; } 
+
+
+/**********************
+ * LIQUID COLUMN GRID *
+ *********************/
+ 
+/* A .container surrounds an instance of the column grid. Contain floats and margins, but do it using the pseudo-class method
+   rather than the usual overflow: hidden, because it allows box-shadow to display outside the .container. margin: auto is 
+   for screen only because in print we just want to fit automatically to the page. No maximum width yet - if content is too wide 
+   we want the background to expand with it. */
+@media screen { .container { margin: 0 auto; } }
+.container:before, .container:after { content: "."; display: block; height: 0; overflow: hidden; }
+.container:after { clear: both; }
+.ie67 .container { display: inline-block; }
+
+/* A context establishes a CSS positioning context */
+.context { position: relative; }
+
+/* Reusable styles to control when elements appear and disappear */
+.medium, .large { display: none; }
+.small { display: block; }
+
+/**********
+ * HEADER *
+ **********/
+ 
+/* Accessibility links which only show up when they have keyboard focus.
+   These aren't scoped to .header because occasionally there are skip links outside the header (eg A-Z) */
+a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip: auto; padding: 4px; z-index: 999; background: #fff; opacity: .8; font-weight: bold; }
+ 
+/* Start with a container for the header, with the mobile site background. Show the mobile logo, and hide the big logo for use later. 
+   In both cases the height of the header is controlled by the height and padding of the logo. 
+   Inside .logo-small "East Sussex County Council" is HTML text, so use 15px/18px font to display it. :link and :visited pseudo selectors are needed for IE6 to apply colour. 
+   Background colour on .header shows up when text size increased and small screen size used. Background colour extends below menu so much match bottom of menu. 
+*/
+.header { background: #004B7B url(/img/header/mobile.jpg) repeat-x; overflow: hidden; border-bottom: 3px solid #fff; }
+.header .logo-small, .header .logo-small:link, .header .logo-small:visited { font-size: 1.153846em; line-height: 1.2em; padding: 4px 0; text-decoration: none; font-weight: bold; color: #003c69; width: 180px; display: block; }
+.size2 .header .logo-small, .size2 .header .logo-small:link, .size2 .header .logo-small:visited { font-size: 1em; } /* keep at 15px */
+.size3 .header .logo-small, .size3 .header .logo-small:link, .size3 .header .logo-small:visited { font-size: .882353em; } /* keep at 15px */
+.header .logo-small img { float: left; padding: 3px 8px 0; }
+@media print { .header .logo-small img { padding-left: 0; } }
+
+/* Hide the text size control at this size - need to keep the interface simple. 
+   The effect would be applied though, if the user has selected it using the larger template. */
+.header .size { display: none; }
+
+/* Display 'contact us' at the top-right above the search. Users should be likely to notice it there. */
+.header .contact { position: absolute; right: 0; top: 0; padding: 4px; font-weight: bold; } 
+
+/* Hide the A-Z on small screens */
+.header .alphabet { display: none; }
+
+/* Use negative margin technique from http://www.alistapart.com/articles/negativemargins/ to lay out the menu bar. 
+   The idea is to achieve a layout where the menu and "go" button are a fixed size, and the search box expands to
+   fill the rest of the space. 
+
+   The search form comes first in the source code as we'll need it there for the desktop layout. It floats right, 
+   leaving 120px margin/padding for the menu to slot into and taking the rest of the space for itself.
+
+   Within the search form .term-outer and .term-inner do the same trick in reverse: floating the search box left, 
+   leaving 56px space for the 'go' button, and taking up the rest of the space for itself.
+
+   The menu itself is a list of items displayed inline using floats, with most of them hidden, ready to appear when 
+   the browser window is big enough.
+*/
+#search { float: right; width: 100%; margin-left: -120px; }
+.size2 #search { margin-left: -140px; }
+.size3 #search { margin-left: -160px; }
+#search .search-inner { padding-left: 120px; }
+.size2 #search .search-inner { padding-left: 140px; }
+.size3 #search .search-inner { padding-left: 160px; }
+
+#search .term-outer { float: left; margin-right: -56px; width: 100%; }
+#search .term-inner { padding-right: 56px; }
+
+#search .search { border: 0 solid #fff; border-radius: 3px; height: 19px; margin: 6px 0; width: 100%; min-width: 80px; }
+#search .submit input { border: 0 solid #00a1de; border-radius: 3px; margin: 4px 0 7px 8px; padding: 2px 8px; color: #fff; font-weight: bold; background: #00a1de; }
+
+.ie7 #search .search { margin: 4px 0 0; }
+.ie7 #search .submit input { margin-bottom: 0; }
+
+/* The breadcrumb trail overlaps the autocomplete suggestions for search, so bring them forward */
+.ui-autocomplete { z-index: 100!important; }
+
+#menu { clear: left; float: left; max-width: 120px; }
+.size2 #menu { max-width: 140px; }
+.size3 #menu { max-width: 160px; }
+#menu li { float: left; }
+#menu ul, #menu li { list-style: none; margin: 0; } /* repeat style from nav ul, nav li for browsers which don't style nav element, eg Firefox 2 */
+#menu a:link, #menu a:visited { display: block; padding: 8px 10px 6px; text-decoration: none; text-align: center; font-weight: bold; color: #fff; background: url(/img/header/menu-item.gif) no-repeat right top; }
+#menu .socialcare, #menu .business, #menu .community, #menu .education, #menu .environment, #menu .families, #menu .jobs, #menu .leisure, #menu .libraries, #menu .transport, #menu .council { display: none; }
+
+/* Use a simpler layout for IE6. Search and menu on two separate lines. IE6 not used on mobile, so this is an unusual scenario anyway. 
+   Search bar does occasionally disappear when resizing, but it's unlikely to be an important issue in practice. */
+.ie6 .header { height: 120px; background-color: #165F92; }
+
+.ie6 #search { float: none; clear: both; margin: 0; }
+.ie6 #search .search-inner { padding-left: 0; }
+.ie6 #search .term-outer { float: none; margin-right: 0; width: auto; }
+.ie6 #search .term-inner { padding-right: 0; }
+.ie6 #search .search { float: left; width: auto; margin-left: 6px; }
+
+.ie6 #menu { background: #165F92; }
+
+/* hasLayout stops menu items disappearing just before mobile view switches to desktop view */
+.ie6 #menu li.mobile { display: inline-block; }
+
+/**********
+ * FOOTER *
+ **********/
+
+/* 2 lines of space at the top. padding-top: 33px + 3px border-top = 36px on baseline grid.
+   Design needs to work with or without .languages present, so padding is on .container rather than .footer
+   Background colour for footer comes from the body element, so that it extends to bottom of browser 
+
+    <div class="footer">
+        <div class="languages" /> (optional)
+        <div class="footer-content" />
+    </div>
+*/
+.footer { clear: both; border-top: .230769em solid #00a1de; } 
+.footer .footer-content { padding-top: 1.153846em; }
+
+/* Put language links on a single line with space between them, and remove underline to improve legibility.
+   Padding+border = 1 line space. Use float: left rather than display: inline on the li elements because it works for IE6/7. */
+.footer .languages { border-bottom: .230769em solid #00a1de; padding: .615385em 0 .538462em;}
+.footer .languages ul { margin: 0 18px; }
+.footer .languages li { float: left; margin: 0 1em 0 0; list-style: none; }
+.footer .languages .nonLatin { margin: 0 1.3em 0 0; }
+.footer .languages a:link, .footer .languages a:visited { text-decoration: none; }
+.footer .languages a:hover, .footer .languages a:focus, .footer .languages a:active { text-decoration: underline; }
+
+/* List of links to ESCC online */
+.footer .social { float: left; margin-right: 1em; }
+.footer .social span { display: inline-block; }
+.footer .social .find { text-decoration: underline; cursor: pointer; }
+.footer .online { margin: 0 0 1.384615em 18px; }
+.footer h2 { display: none; }
+.footer .online li { display: inline; }
+.footer .online li a { white-space: nowrap; margin-right: 1em; }
+
+/* Hide the newsletter sign-up and petitions at this size */
+.footer .newsletter, .footer .petitions { display: none; }
+
+
+/*********************
+ * MAIN CONTENT AREA *
+ *********************/
+
+/* Breadcrumb link for mobile template. 
+   Negative top margin counterbalances border-bottom: 3px on .header and padding-top: 9px on .container when this control is visible.
+   Colour is sampled from header image.
+   */
+.breadcrumb-mobile { margin: -.923077em 0 .692308em; padding: .384615em .692308em 0;  background: #DBF3FF; box-shadow: 0 .384615em .384615em #DBF3FF; }
+
+/* Latest box can appear at the top of the content. Horizontal padding matches the padding of .text. 
+   Visually, a <p> defines a new latest item using a border. <ul> moves up to cover the border of the <p> above, effectively making the <ul> part of the same item. 
+   This ought to be a list really if there are multiple items, but it was never designed to take 
+   multiple items - it's just been used that way.
+
+   Note: base font size for .latestBox is 15px
+
+   <div class="latestBox">
+   <section>
+        <h2 class="latest">Latest</h2>
+        <p>Item one</p>
+        <ul><li>Still item one</li></ul>
+        <p>Item two</p>
+        <div class="item"><p>Item 3</p></div>
+   </section>
+   </div>
+*/
+.latestBox { background: #fff; position: relative; font-size: 1.153846em; line-height: 1.2em; }
+.latestBox .latest { position: relative; border: .133em solid #ffb500; border-radius: 5px; padding: .266em 5px; float: left; margin: 1.2em 18px .4em; }
+.latestBox h2 { font-weight: bold; }
+.latestBox h2, .latestBox p, .latestBox ul, .latestBox .item  { background: #fff; color: #272727; padding: .6em 18px; border-bottom: 1px dotted #dae1e5; clear: both; }
+.latestBox ul { margin: 0; padding-left: 2.769231em; }
+.latestBox .item p { padding: 0; border: none; margin: .6em 0 0; }
+
+/* For lists that follow an h2 or p, pull them up to hide the border between and make one item. Doesn't work in IE6 but text stays readable. */
+.latestBox h2 + ul, .latestBox p + ul { margin-top: -.6em; }
+.latestBox h2.latest + ul { margin-top: 0; }
+
+/* Latest is not supposed to appear within .text, but cope if it does */
+.text .latestBox .latest { margin: 0; font-size: inherit; }
+
+/* Section nav appears above latest items and page content. Padding around list is 14px on 13px text size, 7px between items.
+   Can be one or two columns of links. A single column can optionally be accompanied by an image.
+
+    <div class="section-nav">
+        <img />
+        <ul />
+    </div>   
+
+    <div class="section-nav">
+        <ul />
+        <ul />
+    </div>
+ */
+.section-nav { clear: both; background: #dae1e5; padding: 1.076953em; }
+.section-nav img { display: none; }
+.section-nav ul { margin: 0; }
+.section-nav li { list-style: none; background: url(/img/body/item-type.gif) no-repeat left -596px; padding: 0 0 .692308em 1.076953em; }
+
+.ie6 .section-nav { display: inline-block; } /* hasLayout to contain floats */
+
+@media print { .section-nav { padding-left: 0; padding-right: 0; } }
+
+/* Put the image on the left in edit mode */
+.cms-edit .section-nav span { float: left; }
+
+/* A quick answer emphasises the one thing most users want from the current page. Use strong tags to indicate importance.
+   27px/36px font for the intro, and 36px/54px font for the datum. 27px padding top and bottom (54px or three lines total). 
+   Background is 35% tint of brand colour #056B0B.
+
+   <p class="quick-answer"><strong>The answer is <strong class="quick-answer-datum">this</strong></strong></p> 
+*/
+.quick-answer { font-size: 2.076923em; line-height: 1.33em; clear: both; padding: 1em; text-align: center; background: #A7CBA9; color: #000; }
+.quick-answer strong { font-weight: normal; }
+strong.quick-answer-datum { font-size: 1.33em; line-height: 1.5em; font-weight: bold; display: block; text-align: center; }
+
+/* Box to pull content away from the edges of its containing box. 
+   In Firefox 3.6 there's a gap when .text follows .latestBox and padding-top is 0, but padding-top .1px rounds down to 0 and closes the gap. 
+   IE6/7 can't parse that though, so they get a reset to 0px. */
+@media screen 
+{
+    .text { padding: .1px 3.797468% 0; background: #fff; } 
+    .ie67 .text { padding: 0 3.797468%; }
+}
+
+/* Fix disappearing text in IE6/7 */
+.ie67 .text p, .ie67 .text h2 { position: relative; }
+
+/* Standard elements within a .text area. 
+   h1 margin matches padding of .text to make the line below span the box. 
+   [headinglevel].text and p.text can be used independently because they often appear on their own, and it saves adding an extra element
+*/
+.text h1, h1.text { font-weight: bold; font-size: 1.846153em; line-height: 1.5em; border-bottom: .208333em solid #bed600; padding: .375em 3.797468% .2083em; background: #fff; color: #272727; } /* 24px/36px */
+.text h1 { margin: 0 -3.797468%; }
+@media print { .text h1, h1.text { padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0; } }
+.text h2, h2.text { font-weight: bold; font-size: 1.230769em; line-height: 1.125em; margin: .875em 0 .25em; color: #272727; } /* 16px/18px */
+.text h3, h3.text { font-weight: bold; font-size: 1.076923em; line-height: 1.285714em; margin: 1.285714em 0 0; color: #272727; } /* 14px/18px */
+.text h4, h4.text, .text h5, h5.text { font-weight: bold; font-size: 1em; line-height: 1.384615em; margin: 1em 0 .285714em; color: #272727; } /* 13px/18px */
+.text h5, h5.text { font-style: italic; }
+.text p, p.text { margin: .692308em 0; }
+
+.text ul { margin: .692308em 0 .692308em 1.153846em; }
+.text ol { margin: .692308em 0 .692308em 2em; }
+.text dl { margin: 1.384615em 0; }
+.text dt { margin: .692308em 0 0; font-weight: bold; }
+.text dd { margin: 0 0 .692308em; }
+
+/* Standard data tables */
+.text table { margin: .692308em 0; width: 100%; } /* 1/2 line space above and below */
+.text caption { font-size: 1.076923em; line-height: 1.285714em; font-weight: bold; padding: 9px 0; } /* 14px/18px */
+.text tbody { border-top: 2px solid #ECECEC; } /* top border for table when there's no thead */
+.text tr, .ie67 .text td, .ie67 .text th { background: #ececec; border-bottom: 2px solid #fff; } /* standard grey background with white borders */
+.text tr:nth-child(odd), .text tr:nth-child(even) { border-bottom: none; border-left: 2px solid #ececec; border-right: 2px solid #ececec; } /* Change borders only when nth-child is supported */
+.text tr:nth-child(odd) { background: #fff; } /* Use alternate row colours instead when nth-child supported */
+.text table:nth-child(odd), .text table:nth-child(even) { border-bottom: 2px solid #ececec; } /* And ensure table has bottom border in that case. Have to apply to odd and even rather than last-child because, if rowspan is used, some cells at the bottom of the table may not actually be in the last-child row */
+.text thead tr:nth-child(odd), .text thead tr:nth-child(even) { border-left: 2px solid #c7dbe4; border-right: 2px solid #c7dbe4; border-bottom: 2px solid #fff; } /* Change borders only when nth-child is supported */
+.text thead th, .ie67 .text thead th { background-color: #c7dbe4; font-weight: bold; } /* Using background-colour rather than background to support old tables with .pdf applied to th */
+.text td, .text th { padding: .307692em; }
+
+@media print 
+{
+.text tbody, .text tr, .text td, .text th { border: 1px solid #dae1e5; }
+.text thead tr:nth-child(odd), .text thead tr:nth-child(even), .text tr:nth-child(odd), .text tr:nth-child(even) { border: 1px solid #dae1e5; }
+}
+
+/* .numeric on any td or th aligns content to right. 
+   table.complexData has extra borders to make complex structures clearer. */
+.text table .numeric { text-align: right; }
+.text .complexData th { border-right: 2px solid #fff; }
+.text table .totalsRow { font-weight: bold; background: #777; color: #fff; border-bottom: none; border-color: #bbb; }
+.ie67 .text .totalsRow td { background: #777; color: #fff; }
+.text table .subHeading { font-weight: bold; }
+
+/* Secondary actions inside a table row */
+.text table .button-nav { text-align: center; }
+.text table .button-nav input { float: none; display: inline; margin: 0; }
+
+/* Ensure images are resized to fit small screens, but undo for IE8 in tables because it interprets 100% as meaning 
+   "100% of however thin the td gets when you completely ignore the image size"
+*/
+.text img { max-width: 100%; }
+.ie8 .text table img { max-width: none; }
+
+/* Information about download format and size */
+.text .downloadDetail { font-size: .846154em; line-height: 1.636364em; } 
+
+/* Warn the user of something. For error messages use .errorSummary defined in forms.css */
+.warning { color: #b21313; }
+
+/* Paging */
+.infoBar { clear: both; margin: .692308em 0; background: #cceefa; padding: .692308em 18px; overflow: hidden; }
+.infoBar .pagingResultsInContext { float: right; }
+.ie6 .infoBar { display: inline-block; }
+
+/* Search results where each result is a definition list of fields and values. This is its own section, not within .text. 
+   If there's just one result, can apply .onlyItem as well as .itemDetail to remove dividers. */
+dl.itemDetail { border-bottom: 1px solid #ccc; padding: 1.384615em 0 .846153em; } /* One 18px line space above and below (below is added to bottom margin of dd) */
+dl.itemDetail dt { margin: 0 18px; font-weight: bold; }
+dl.itemDetail dd { margin: 0 18px; padding: 0 0 .538462em 0; } /* 7px/13px between items */
+
+dl.onlyItem { border: none; padding: .692308em 0 .153846em; }
+
+/* Semantic web - display links to calendars, RSS feeds etc, optionally within a list
+   Example: <a class="rss subscribe" href="/path/to/rssfeed.rss">RSS feed</a> */
+a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space split above and below */
+@media screen 
+{ 
+    ul.subscribe { list-style: none; margin: .692308em 0; }
+    a.subscribe { padding: 0 0 0 23px; } 
+} /* No padding in print because it's there to accomodate a background image */
+
+/* Semantic web - microformats */
+.vevent .uid { display: none; }
+.vcard .email { background: none; padding-left: 0; }
+
+/* Related information appears below page content. Padding around list is 14px on 13px text size, 7px between items. 
+ 
+   1. Related section with pages and/or websites
+
+   <div class="related">
+        <h2 />
+        <div class="section">
+            <h3 />
+            <ul />
+        </div>
+        <div class="section">
+            <h3 />
+            <ul />
+        </div>
+   </div>
+
+    2. Related section with one list of links
+   
+    <div class="related related-list">
+        <h2 />
+        <ul />
+    </div>
+*/
+.related { background: #dae1e5; padding: .692308em 3.797468%; overflow: hidden; clear: both; margin: 1.384615em 0 0; }
+
+/* Heading is 14px/18px with 9px vertical margins */
+/* Add border with 9px vertical padding, horizontal margin and padding takes line to edge of box */
+.related h2 { font-size: 1.076923em; line-height: 1.285714em; font-weight: bold; margin: .642857em -1em; padding: 0 1em 0; } 
+.related ul { margin: .538462em 0 0; }
+.related li { list-style: none; background: url(/img/body/item-type.gif) no-repeat left -1196px; padding: 0 0 .538462em 1.076953em; }
+
+.ie6 .related { display: inline-block; } /* hasLayout to contain floats */
+
+@media print 
+{
+    .related, .related h2 { padding-left: 0; padding-right: 0; }
+    .related h2 { margin-left: 0; margin-right: 0; }           
+}
+
+/* Share box is on the baseline grid, 10px below .fb-like + 4px padding top and bottom of .comment = 18px 
+   .share needs to contain floats because, when there's no last modified date, all elements are floated. 
+   But it can't use overflow: hidden because that cuts off the pop-up Facebook dialog, so float it with 
+   100% width instead. But that means no padding, so apply left margins to the elements inside .share instead. */
+.share { clear: both; float: left; width: 100%; padding: .692308em 0; margin: 1.384615em 0 0; background: #dae1e5; }
+.share .aside { padding: 0 18px; }
+.share .fb-like { margin: .615385em 0; }
+.share .fb-dnt { float: left; font-size: .846154em; line-height: 1.272727em; margin: .461538em 1em .9090914em 0; padding: .454545em 5px .454545em 23px; border: 1px solid #CAD4E7; border-radius: 3px; color: #3B5998; background-color: #ECEEF5; background-position: 4px -1346px; }
+.share .twitter-share-button { float: left; margin: .615385em 0; width: 100px !important; }
+.share .button-nav a:link, .share .button-nav a:visited { padding: 4px 10px 4px 27px; background-image: url(/img/body/item-type.gif); background-repeat: no-repeat; }
+.share .send a:link, .share .send a:visited { background-position: 8px -93px; }
+.share .comment a:link, .share .comment a:visited { background-position: 5px -546px; }
+.share .send { clear: left; }
+
+.ie7 .share .fb-like { margin-top: 1.384615em; } /* 18px margin to achieve 6px margin effect */
+.ie6 .share { display: inline-block; } /* hasLayout to contain floats */
+
+/* Supporting content sits under an .article.
+   .supporting offers just the placement
+   .supporting-text offers placement with some standard formatting. 
+*/
+.supporting { clear: both; }
+
+/* Header for a .supporting-text. Bottom padding+border+margin = 1 line space. Horizontal padding/margin is 18px, but adjusted so that is actually reaches the edges. 
+   Change list bullets to blue. */
+.supporting-text { clear: both; margin: 1.384615em 0; border-top: 1px solid #dae1e5; padding: 1.307692em 18px 0; }
+.supporting-text h2 { font-size: 1.230769em; line-height: 1.125em; font-weight: bold; }
+.supporting-text h2 a { font-weight: normal; padding-right: 32px; background: url(/img/body/item-type.gif) no-repeat right -595px; }  
+.supporting-text ul { margin: 9px 0; }
+.supporting-text li { list-style: none; background: url(/img/body/item-type.gif) no-repeat 0 -995px; padding-left: 16px; }
+.ie67 .supporting-text ul { margin-left: 9px; }
+
+@media print { .supporting-text { padding-left: 0; padding-right: 0; } }
+
+/* Don't show adverts in mobile view */
+.advert { display: none; }
+
+/**********************
+* LINKS - SCREEN ONLY *
+***********************/
+
+/* Some link types have an icon to show what they lead to. This is in a screen-only section
+   as background images don't usually print, so we don't want the empty space from the padding.
+   Use separate background properties as it avoids changing the background colour, should the element have one. */
+@media screen
+{
+.hcal, .rss, .email, .rss-email, .xml, .pdf, .doc, .rtf, .xls, .wma, .mp3, .ppt, .jpg, .html, .file, .new-window, .facebook, .twitter, .youtube, .flickr
+{ background-image: url(/img/body/item-type.gif); background-repeat: no-repeat; padding-left: 23px; }
+
+.hcal { background-position: 0 2px; }
+.rss { background-position: 0 -48px; }
+.email { background-position: 0 -97px; padding-left: 19px; }
+.rss-email  { background-position: 0 -150px; }
+.xml { background-position: 0 -200px; padding-left: 30px;  }
+.pdf { background-position: 0 -248px; }
+.doc, .rtf { background-position: 0 -298px; padding-left: 20px;  }
+.xls { background-position: 0 -350px; padding-left: 18px;  }
+.wma { background-position: 0 -400px;  }
+.mp3 { background-position: 0 -450px; padding-left: 20px;  }
+.ppt { background-position: left -1748px; padding-left: 20px; }
+.jpg { background-position: left -2148px; }
+.html, .file { background-position: left -700px; }
+.new-window { background-position: 100% -500px; padding-left: 0; padding-right: 16px; }
+.twitter { background-position: 0 -1300px; padding-left: 20px; }
+.facebook { background-position: 0 -1350px; padding-left: 20px; }
+.youtube { background-position: 0 -1400px; padding-left: 20px; }
+.flickr { background-position: 0 -1450px; padding-left: 20px; }
+
+/* If a list item contains only a link to a download, replace the bullet with the file type icon. Margin offsets the standard indent for lists. */
+li.download { list-style: none; margin: .692308em 0 .692308em -1.153846em; padding-left: 23px; text-indent: -23px; }
+    
+} /* End "@media screen" section */
+
+
+/*********************************************** 
+ * SCREENREADERS ONLY: j.mp/visuallyhidden *
+ ***********************************************/
+.aural { position: absolute;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px); }

@@ -1,0 +1,13 @@
+﻿/* Common controls to use on layouts for mobiles */
+
+/* Toggle to show/hide a menu at the top of a page:
+
+   <nav class="menu-toggle small medium"><a href="#">Show menu &#9660;</a></nav> 
+   which becomes:
+   <nav class="menu-toggle small medium"><a href="#">Hide menu &#9650;</a></nav>
+
+   May be used on another element inside nav rather than directly on nav. For that case
+   the body selector is included to allow it to override eg ".text p" styles.
+*/
+body .menu-toggle { margin: 0; padding: .692308em 1.898734%; background: #ddd; color: #000; }
+body .menu-toggle a { display: block; text-decoration: none; font-weight: bold; color: #000; }

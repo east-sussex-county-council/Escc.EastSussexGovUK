@@ -1,0 +1,10 @@
+/*  Twitter/Facebook bar which appears in mobile template. Bring bottom margin up by one line because
+    it should always be above the .share box, and we want to cancel out .share's top margin and rely 
+    on the paragraph margins instead.
+    
+    <div class="social text small medium">
+         <p class="twitter | facebook" />
+    </div>
+    <div class="share" />
+ */
+.social-mobile { margin: 0 0 -1.384615em; }
