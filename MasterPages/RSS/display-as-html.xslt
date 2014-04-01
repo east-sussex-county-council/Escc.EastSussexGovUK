@@ -34,10 +34,6 @@
             <xsl:value-of select="rss/channel/item[1]/source/@url"/>
             <xsl:text disable-output-escaping="yes">&quot;&gt;BlogTrottr&lt;/a&gt;.</xsl:text>
           </p>
-          <p>
-            To find out more about RSS and feed readers, please see our page about
-            <a href="http://www.eastsussex.gov.uk/yourcouncil/pressoffice/rss/">RSS &#8211; how to receive updates about this website</a>.
-          </p>
 
           <dl>
             <xsl:for-each select="rss/channel/item">
