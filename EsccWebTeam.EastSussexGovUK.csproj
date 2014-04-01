@@ -158,6 +158,7 @@
     <Content Include="img\header\robin.jpg" />
     <Content Include="img\header\squirrel.jpg" />
     <Content Include="img\header\xmas-lights.jpg" />
+    <Content Include="img\logo-for-facebook.png" />
     <Content Include="js\1space.js" />
     <Content Include="js\analytics.js" />
     <Content Include="js\cross-origin-ie.js" />
@@ -596,7 +597,7 @@
       <Project>{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}</Project>
       <Name>EsccWebTeam.Data.ActiveDirectory</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Data.Web\EsccWebTeam.Data.Web.csproj">
+    <ProjectReference Include="..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
       <Project>{9C56D3DD-4952-4A1B-9AD6-907A1142872F}</Project>
       <Name>EsccWebTeam.Data.Web</Name>
     </ProjectReference>
