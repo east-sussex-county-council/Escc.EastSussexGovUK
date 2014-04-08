@@ -589,7 +589,7 @@
     <Folder Include="js\min\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\VS Projects\eastsussex.gov.uk projects\EsccWebTeam.Cms\EsccWebTeam.Cms.csproj">
+    <ProjectReference Include="..\Escc.Cms\EsccWebTeam.Cms.csproj">
       <Project>{6710e9ee-deab-4569-ace6-f10159d6d447}</Project>
       <Name>EsccWebTeam.Cms</Name>
     </ProjectReference>
@@ -601,11 +601,11 @@
       <Project>{9C56D3DD-4952-4A1B-9AD6-907A1142872F}</Project>
       <Name>EsccWebTeam.Data.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Data.Xml\EsccWebTeam.Data.Xml.csproj">
+    <ProjectReference Include="..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj">
       <Project>{86B2725C-9C37-44A4-93C7-F5122AFA0809}</Project>
       <Name>EsccWebTeam.Data.Xml</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Feeds\EsccWebTeam.Feeds.csproj">
+    <ProjectReference Include="..\Escc.Feeds\EsccWebTeam.Feeds.csproj">
       <Project>{08008B80-1B37-41B9-935B-FDDDDB4DAE84}</Project>
       <Name>EsccWebTeam.Feeds</Name>
     </ProjectReference>
@@ -613,11 +613,11 @@
       <Project>{1C429378-DBF2-4AF7-88AC-C059AA163682}</Project>
       <Name>EsccWebTeam.HouseStyle</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.ServiceClosures\EsccWebTeam.ServiceClosures.csproj">
+    <ProjectReference Include="..\Escc.ServiceClosures\EsccWebTeam.ServiceClosures.csproj">
       <Project>{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}</Project>
       <Name>EsccWebTeam.ServiceClosures</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.NavigationControls\EsccWebTeam.NavigationControls.csproj">
+    <ProjectReference Include="..\Escc.NavigationControls\EsccWebTeam.NavigationControls.csproj">
       <Project>{0323F668-1723-44A1-8C94-F91DC59EF315}</Project>
       <Name>EsccWebTeam.NavigationControls</Name>
     </ProjectReference>
