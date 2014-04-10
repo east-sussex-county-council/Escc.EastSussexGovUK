@@ -593,7 +593,7 @@
       <Project>{6710e9ee-deab-4569-ace6-f10159d6d447}</Project>
       <Name>EsccWebTeam.Cms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj">
+    <ProjectReference Include="..\Escc.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj">
       <Project>{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}</Project>
       <Name>EsccWebTeam.Data.ActiveDirectory</Name>
     </ProjectReference>
@@ -621,7 +621,7 @@
       <Project>{0323F668-1723-44A1-8C94-F91DC59EF315}</Project>
       <Name>EsccWebTeam.NavigationControls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\VS Projects\_Standards\E-Government Metadata Standard %28E-GMS%29\EsccWebTeam.Egms\EsccWebTeam.Egms.csproj">
+    <ProjectReference Include="..\Escc.Egms\EsccWebTeam.Egms.csproj">
       <Project>{78083DCB-B12F-4950-86C5-3A844D8604F3}</Project>
       <Name>EsccWebTeam.Egms</Name>
     </ProjectReference>
