@@ -228,7 +228,6 @@
     <Content Include="MasterPages\RSS\display-as-html.xslt" />
     <Content Include="MasterPages\RSS\escc-logo.gif" />
     <Content Include="MasterPages\RSS\rss-utilities.xslt" />
-    <Content Include="sandcastle.shfbproj" />
     <Content Include="MasterPages\Remote\Web.config" />
     <Content Include="MasterPages\Data\hCalendar.ashx" />
     <Content Include="MasterPages\FullScreen.Master" />
@@ -726,9 +725,6 @@ if "$(ConfigurationName)" == "Release" ( if exist "C:\VS Projects\_Libraries for
 if "$(ConfigurationName)" == "Release" ( if exist "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" &gt; "$(ProjectDir)js\min\Escc.DocumentsInNewWindow.js")
 
 if "$(ConfigurationName)" == "Release" ( if exist "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" &gt; "$(ProjectDir)js\min\Escc.Statistics.js")
-if "$(ConfigurationName)" == "Release" ( if exist "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" &gt; "$(ProjectDir)js\min\Escc.Statistics.js")
-
-if "$(ConfigurationName)"=="Release" ( if exist "C:\Program Files\EsccWebTeam.SandcastleBuilder\EsccWebTeam.SandcastleBuilder.exe" "C:\Program Files\EsccWebTeam.SandcastleBuilder\EsccWebTeam.SandcastleBuilder.exe" "$(ProjectName)" "$(ProjectDir)Sandcastle.shfbproj" )
-</PostBuildEvent>
+if "$(ConfigurationName)" == "Release" ( if exist "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" &gt; "$(ProjectDir)js\min\Escc.Statistics.js")</PostBuildEvent>
   </PropertyGroup>
 </Project>
