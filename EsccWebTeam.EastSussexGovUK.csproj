@@ -136,6 +136,7 @@
     <Content Include="css\social-media-large.css" />
     <Content Include="css\social-media-small.css" />
     <Content Include="default.aspx" />
+    <Content Include="EsccWebTeam.EastSussexGovUK.csproj.xslt" />
     <Content Include="favicon.ico" />
     <Content Include="img\body\flood-alert.png" />
     <Content Include="img\body\flood-severe.png" />
@@ -609,7 +610,7 @@
       <Project>{08008B80-1B37-41B9-935B-FDDDDB4DAE84}</Project>
       <Name>EsccWebTeam.Feeds</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\VS Projects\_Libraries for re-use\EsccWebTeam.HouseStyle\EsccWebTeam.HouseStyle.csproj">
+    <ProjectReference Include="..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
       <Project>{1C429378-DBF2-4AF7-88AC-C059AA163682}</Project>
       <Name>EsccWebTeam.HouseStyle</Name>
     </ProjectReference>
