@@ -686,40 +686,40 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>if "$(ConfigurationName)" == "Release" del "$(ProjectDir)css\min\*.*" /Q
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/small.css" &gt; "$(ProjectDir)css/min/small.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/medium.css" &gt; "$(ProjectDir)css/min/medium.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/large.css" &gt; "$(ProjectDir)css/min/large.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/print.css" &gt; "$(ProjectDir)css/min/print.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/full-screen.css" &gt; "$(ProjectDir)css/min/full-screen.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/maps.css" &gt; "$(ProjectDir)css/min/maps.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/maps.css" &gt; "$(ProjectDir)css/min/maps.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/forms-small.css" &gt; "$(ProjectDir)css/min/forms-small.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/forms-medium.css" &gt; "$(ProjectDir)css/min/forms-medium.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/forms-large.css" &gt; "$(ProjectDir)css/min/forms-large.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/rss.css" &gt; "$(ProjectDir)css/min/rss.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/rss-xslt.css" &gt; "$(ProjectDir)css/min/rss-xslt.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/poll-small.css" &gt; "$(ProjectDir)css/min/poll-small.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/poll-large.css" &gt; "$(ProjectDir)css/min/poll-large.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/service-closures.css" &gt; "$(ProjectDir)css/min/service-closures.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/social-media-small.css" &gt; "$(ProjectDir)css/min/social-media-small.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/social-media-large.css" &gt; "$(ProjectDir)css/min/social-media-large.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/alert.css" &gt; "$(ProjectDir)css/min/alert.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/mobile-controls.css" &gt; "$(ProjectDir)css/min/mobile-controls.css"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/1space.css" &gt; "$(ProjectDir)css/min/1space.css"
+    <PostBuildEvent>if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"=="" del "$(ProjectDir)css\min\*.*" /Q )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/small.css" &gt; "$(ProjectDir)css/min/small.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/medium.css" &gt; "$(ProjectDir)css/min/medium.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/large.css" &gt; "$(ProjectDir)css/min/large.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/print.css" &gt; "$(ProjectDir)css/min/print.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/full-screen.css" &gt; "$(ProjectDir)css/min/full-screen.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/maps.css" &gt; "$(ProjectDir)css/min/maps.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/maps.css" &gt; "$(ProjectDir)css/min/maps.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/forms-small.css" &gt; "$(ProjectDir)css/min/forms-small.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/forms-medium.css" &gt; "$(ProjectDir)css/min/forms-medium.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/forms-large.css" &gt; "$(ProjectDir)css/min/forms-large.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/rss.css" &gt; "$(ProjectDir)css/min/rss.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/rss-xslt.css" &gt; "$(ProjectDir)css/min/rss-xslt.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/poll-small.css" &gt; "$(ProjectDir)css/min/poll-small.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/poll-large.css" &gt; "$(ProjectDir)css/min/poll-large.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/service-closures.css" &gt; "$(ProjectDir)css/min/service-closures.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/social-media-small.css" &gt; "$(ProjectDir)css/min/social-media-small.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/social-media-large.css" &gt; "$(ProjectDir)css/min/social-media-large.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/alert.css" &gt; "$(ProjectDir)css/min/alert.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/mobile-controls.css" &gt; "$(ProjectDir)css/min/mobile-controls.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/1space.css" &gt; "$(ProjectDir)css/min/1space.css" )
 
-if "$(ConfigurationName)" == "Release" del "$(ProjectDir)js\min\*.*" /Q
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/analytics.js" &gt; "$(ProjectDir)js/min/analytics.js"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/media-queries.js" &gt; "$(ProjectDir)js/min/media-queries.js"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/public-libraries.js" &gt; "$(ProjectDir)js/min/public-libraries.js"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/forms.js" &gt; "$(ProjectDir)js/min/forms.js"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/social-media.js" &gt; "$(ProjectDir)js/min/social-media.js"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/googleautosuggest.js" &gt; "$(ProjectDir)js/min/googleautosuggest.js"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/google-maps.js" &gt; "$(ProjectDir)js/min/google-maps.js"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/1space.js" &gt; "$(ProjectDir)js/min/1space.js"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/cross-origin-ie.js" &gt; "$(ProjectDir)js/min/cross-origin-ie.js"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/switch-view.js" &gt; "$(ProjectDir)js/min/switch-view.js"
-if "$(ConfigurationName)" == "Release" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/config.js" &gt; "$(ProjectDir)js/min/config.js"
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  del "$(ProjectDir)js\min\*.*" /Q )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/analytics.js" &gt; "$(ProjectDir)js/min/analytics.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/media-queries.js" &gt; "$(ProjectDir)js/min/media-queries.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/public-libraries.js" &gt; "$(ProjectDir)js/min/public-libraries.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/forms.js" &gt; "$(ProjectDir)js/min/forms.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/social-media.js" &gt; "$(ProjectDir)js/min/social-media.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/googleautosuggest.js" &gt; "$(ProjectDir)js/min/googleautosuggest.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/google-maps.js" &gt; "$(ProjectDir)js/min/google-maps.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/1space.js" &gt; "$(ProjectDir)js/min/1space.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/cross-origin-ie.js" &gt; "$(ProjectDir)js/min/cross-origin-ie.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/switch-view.js" &gt; "$(ProjectDir)js/min/switch-view.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/config.js" &gt; "$(ProjectDir)js/min/config.js" )
 
 if "$(ConfigurationName)" == "Release" ( if exist "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" &gt; "$(ProjectDir)js\min\Escc.DocumentsInNewWindow.js")
 if "$(ConfigurationName)" == "Release" ( if exist "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" &gt; "$(ProjectDir)js\min\Escc.DocumentsInNewWindow.js")
