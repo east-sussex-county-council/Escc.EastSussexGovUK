@@ -11,10 +11,10 @@
 
   <xsl:template match="msbuild:Project/msbuild:ItemGroup/msbuild:Reference/msbuild:HintPath">
     <xsl:call-template name="UpdateHintPath">
-      <xsl:with-param name="ref_2" select="'Microsoft.ApplicationBlocks.Data.dll'" />
-      <xsl:with-param name="ref_3" select="'Microsoft.ApplicationBlocks.ExceptionManagement.dll'" />
-      <xsl:with-param name="ref_5" select="'Microsoft.ContentManagement.Publishing.dll'" />
-      <xsl:with-param name="ref_9" select="'Microsoft.ContentManagement.WebControls.dll'" />
+      <xsl:with-param name="ref_1" select="'Microsoft.ApplicationBlocks.Data.dll'" />
+      <xsl:with-param name="ref_2" select="'Microsoft.ApplicationBlocks.ExceptionManagement.dll'" />
+      <xsl:with-param name="ref_3" select="'Microsoft.ContentManagement.Publishing.dll'" />
+      <xsl:with-param name="ref_4" select="'Microsoft.ContentManagement.WebControls.dll'" />
     </xsl:call-template>
 
   </xsl:template>
