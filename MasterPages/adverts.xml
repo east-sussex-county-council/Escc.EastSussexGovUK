@@ -1,31 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <adverts>
-    <add url="/childrenandfamilies" imageUrl="/wres/banners/mentor.jpg" description="Become a mentor" navigateUrl="/childrenandfamilies/youngpeople/mentoring/default.htm" />
+  <add url="/childrenandfamilies" imageUrl="/wres/banners/mentor.jpg" description="Become a mentor" navigateUrl="/childrenandfamilies/youngpeople/mentoring/default.htm" />
+  <add url="/childrenandfamilies/childrenincare/adoption" imageUrl="/img/adverts/adoption-facebook.jpg" description="Facebook - East Sussex County Council Adoption Recruitment Service" navigateUrl="https://www.facebook.com/EastSussexAdoption" />
 
-    <add url="/community" imageUrl="/wres/banners/esif.gif" description="East Sussex in Figures" navigateUrl="http://www.eastsussexinfigures.org.uk" />
-    <add url="/community/benefits" imageUrl="/wres/banners/benefits-helpline.jpg" description="Benefits helpline" navigateUrl="/community/benefits/benefitshelpline/default.htm" />
-    <add url="/community/benefits" imageUrl="/wres/banners/welfare_reform_video.jpg" description="Welfare Reform Video" navigateUrl="/community/benefits/video/default.htm" />
-    <add url="/community/benefits/desss" imageUrl="/wres/banners/benefits-helpline-dess.jpg" description="Benefits helpline" navigateUrl="/community/benefits/desss/default.htm" />
-    <add url="/community/benefits/desss" imageUrl="/wres/banners/welfare_reform_video.jpg" description="Welfare Reform Video" navigateUrl="/community/benefits/video/default.htm" />
+  <add url="/community" imageUrl="/wres/banners/esif.gif" description="East Sussex in Figures" navigateUrl="http://www.eastsussexinfigures.org.uk" />
+  <add url="/community/benefits" imageUrl="/wres/banners/benefits-helpline.jpg" description="Benefits helpline" navigateUrl="/community/benefits/benefitshelpline/default.htm" />
+  <add url="/community/benefits" imageUrl="/wres/banners/welfare_reform_video.jpg" description="Welfare Reform Video" navigateUrl="/community/benefits/video/default.htm" />
+  <add url="/community/benefits/desss" imageUrl="/wres/banners/benefits-helpline-dess.jpg" description="Benefits helpline" navigateUrl="/community/benefits/desss/default.htm" />
+  <add url="/community/benefits/desss" imageUrl="/wres/banners/welfare_reform_video.jpg" description="Welfare Reform Video" navigateUrl="/community/benefits/video/default.htm" />
 
-    <add url="/community/eventsinyourlife/studying" imageUrl="/wres/banners/student-finance.gif" description="Directgov: Your guide to student finance" navigateUrl="http://www.direct.gov.uk/studentfinance/" />
-    <add url="/community/youngpeople" imageUrl="/wres/banners/student-finance.gif" description="Directgov: Your guide to student finance" navigateUrl="http://www.direct.gov.uk/studentfinance/" />
-    <add url="/community/townsvillages" imageUrl="/wres/banners/villagehalls.gif" description="Village halls: Come and join us..." navigateUrl="http://www.escis.org.uk/" />
+  <add url="/community/local/townsvillages" imageUrl="/wres/banners/villagehalls.gif" description="Village halls: Come and join us..." navigateUrl="http://www.escis.org.uk/" />
 
-    <add url="/educationandlearning" imageUrl="/wres/banners/school.gif" description="Find a school in your area" navigateUrl="/educationandlearning/schools/schoolsearch/" />
+  <add url="/educationandlearning" imageUrl="/wres/banners/school.gif" description="Find a school in your area" navigateUrl="/educationandlearning/schools/schoolsearch/" />
 
-    <add url="/environment" imageUrl="/wres/banners/esif.gif" description="East Sussex in Figures" navigateUrl="http://www.eastsussexinfigures.org.uk" />
+  <add url="/environment" imageUrl="/wres/banners/esif.gif" description="East Sussex in Figures" navigateUrl="http://www.eastsussexinfigures.org.uk" />
 
-    <add url="/libraries" imageUrl="/wres/banners/elibrary.jpg" description="Search for and renew your library books" navigateUrl="https://e-library.eastsussex.gov.uk" />
-    <add url="/libraries" imageUrl="/wres/banners/ebooks.gif" description="Ebooks and audiobooks" navigateUrl="http://eastsussexlibrary.lib.overdrive.com/" />
-    <add url="/libraries" imageUrl="/wres/banners/familytree02.gif" description="How to research your family tree" navigateUrl="/leisureandtourism/localandfamilyhistory/" />
+  <add url="/libraries" imageUrl="/wres/banners/elibrary.jpg" description="Search for and renew your library books" navigateUrl="https://e-library.eastsussex.gov.uk" />
+  <add url="/libraries" imageUrl="/wres/banners/ebooks.gif" description="Ebooks and audiobooks" navigateUrl="http://eastsussexlibrary.lib.overdrive.com/" />
+  <add url="/libraries" imageUrl="/wres/banners/familytree02.gif" description="How to research your family tree" navigateUrl="/leisureandtourism/localandfamilyhistory/" />
 
-    <add url="/roadsandtransport" imageUrl="/wres/banners/roadworks_banner.gif" description="Roadworks in East Sussex" navigateUrl="http://frs.accesseastsussex.org/roadsandtransport/roads/roadworks/" />
-    <add url="/roadsandtransport" imageUrl="/wres/banners/reportafault.gif" description="Report a fault: potholes, graffiti, fly-tipping etc..." navigateUrl="/contactus/reportaproblem/" />
+  <add url="/roadsandtransport" imageUrl="/wres/banners/roadworks_banner.gif" description="Roadworks in East Sussex" navigateUrl="/roadsandtransport/roads/roadworks/map.aspx" />
+  <add url="/roadsandtransport" imageUrl="/wres/banners/reportafault.gif" description="Report a fault: potholes, graffiti, fly-tipping etc..." navigateUrl="/contactus/reportaproblem/" />
 
-    <add url="/socialcare" imageUrl="/wres/banners/learning-disabilities.png" description="Visit our pages for people with a learning disabilities" navigateUrl="/socialcare/disability/learning/default.htm" />
-    <add url="/socialcare/providers/resources/healthpromotion" />
+  <add url="/socialcare" imageUrl="/wres/banners/learning-disabilities.png" description="Visit our pages for people with a learning disabilities" navigateUrl="/socialcare/disability/learning/default.htm" />
+  <add url="/socialcare/providers/resources/healthpromotion" />
 
-    <add url="/yourcouncil" imageUrl="/wres/banners/councillor.gif" description="Find your councillor" navigateUrl="/yourcouncil/about/people/councillors/find/default.aspx" />
+  <add url="/yourcouncil" imageUrl="/wres/banners/councillor.gif" description="Find your councillor" navigateUrl="/yourcouncil/about/people/councillors/find/default.aspx" />
 
 </adverts>
