@@ -1,9 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ScriptsDesktop.ascx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Controls.ScriptsDesktop" %>
 <%-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local JQuery if necessary --%>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script>//<![CDATA[
-    if (!window.jQuery) document.write('<script src="//www.eastsussex.gov.uk/js/libs/jquery-1.6.4.min.js">\x3C/script>')//]]></script>
-<Egms:Script runat="server" Files="Config;Analytics;Statistics;Media;Documents;jQueryUI;AutoSuggest;CrossOriginIE;SwitchView" EnableViewState="false" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<Egms:Script runat="server" Files="JQueryLoad;Config;Analytics;Statistics;Media;Documents;jQueryUI;AutoSuggest;CrossOriginIE;SwitchView" EnableViewState="false" />
 <eastsussexgovuk:contextcontainer runat="server" librarycatalogue="true" enableviewstate="false">
 <Egms:Script Files="PublicLibraries" runat="server" EnableViewState="false" />
 </eastsussexgovuk:contextcontainer>

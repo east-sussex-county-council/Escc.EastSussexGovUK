@@ -118,7 +118,7 @@
     <Content Include="css\images\ui-icons_666666_256x240.png" />
     <Content Include="css\images\ui-icons_ff0084_256x240.png" />
     <Content Include="css\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="css\libs\jquery-ui-1.8.2.custom.css" />
+    <Content Include="css\libs\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="css\maps.css" />
     <Content Include="css\medium.css" />
     <Content Include="css\mobile-controls.css" />
@@ -134,6 +134,7 @@
     <Content Include="default.aspx" />
     <Content Include="EsccWebTeam.EastSussexGovUK.csproj.xslt" />
     <Content Include="favicon.ico" />
+    <Content Include="img\adverts\adoption-facebook.jpg" />
     <Content Include="img\body\flood-alert.png" />
     <Content Include="img\body\flood-severe.png" />
     <Content Include="img\body\flood-warning.png" />
@@ -161,8 +162,9 @@
     <Content Include="js\cross-origin-ie.js" />
     <Content Include="js\google-maps.js" />
     <Content Include="js\googleautosuggest.js" />
-    <Content Include="js\libs\jquery-1.6.4.min.js" />
-    <Content Include="js\libs\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="js\jquery-load.js" />
+    <Content Include="js\libs\jquery-1.8.3.min.js" />
+    <Content Include="js\libs\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="js\libs\markerclusterer.min.js" />
     <Content Include="js\libs\markerwithlabel_packed.js" />
     <Content Include="js\media-queries.js" />
