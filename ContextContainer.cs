@@ -213,7 +213,7 @@ namespace EsccWebTeam.EastSussexGovUK
             }
 
             // Hide based on location
-            if (!String.IsNullOrEmpty(this.UrlMatch) && !Regex.IsMatch(context.RequestUrl.ToString(), this.UrlMatch))
+            if (!String.IsNullOrEmpty(this.UrlMatch) && !Regex.IsMatch(context.RequestUrl.ToString(), this.UrlMatch, RegexOptions.IgnoreCase))
             {
                 HideContents();
                 return;
