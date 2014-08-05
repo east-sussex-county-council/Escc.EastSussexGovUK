@@ -100,6 +100,7 @@
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="css\1space.css" />
     <Content Include="css\alert.css" />
+    <Content Include="css\content.css" />
     <Content Include="css\forms-large.css" />
     <Content Include="css\forms-medium.css" />
     <Content Include="css\forms-small.css" />
@@ -233,6 +234,7 @@
     <Content Include="LICENSE.md" />
     <Content Include="js\config.js" />
     <Content Include="js\config.example.js" />
+    <None Include="css\Web.example.config" />
     <None Include="js\Web.example.config" />
     <None Include="MasterPages\Remote\Example\web.example.config" />
     <None Include="Properties\Settings.settings">
