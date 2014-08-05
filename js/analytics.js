@@ -1,6 +1,6 @@
 ﻿// Faster Google Analytics code: mathiasbynens.be/notes/async-analytics-snippet
 // but restrict it only to external URLs
-if (location.host.indexOf('.') > -1 && location.host.indexOf('escc.gov') == -1 && location.host.indexOf('spydus.co.uk') == -1 && typeof esccConfig !== 'undefined') {
+if (location.host.indexOf('.') > -1 && location.host.indexOf('escc.gov') == -1 && location.host.indexOf('spydus.co.uk') == -1 && location.host.indexOf('azurewebsites.net') == -1 && typeof esccConfig !== 'undefined') {
     var _gaq = [['_setAccount', esccConfig.GoogleAnalyticsPublicWebsite], ['_trackPageview'], ['_setDomainName', '.eastsussex.gov.uk'], ['_trackPageLoadTime']];
     (function (d, t) {
         var g = d.createElement(t), s = d.getElementsByTagName(t)[0]; g.async = 1;
