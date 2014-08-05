@@ -100,7 +100,9 @@
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="css\1space.css" />
     <Content Include="css\alert.css" />
-    <Content Include="css\content.css" />
+    <Content Include="css\content-large.css" />
+    <Content Include="css\content-medium.css" />
+    <Content Include="css\content-small.css" />
     <Content Include="css\forms-large.css" />
     <Content Include="css\forms-medium.css" />
     <Content Include="css\forms-small.css" />
@@ -693,6 +695,9 @@ if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  ja
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/large.css" &gt; "$(ProjectDir)css/min/large.css" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/print.css" &gt; "$(ProjectDir)css/min/print.css" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/full-screen.css" &gt; "$(ProjectDir)css/min/full-screen.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/content-small.css" &gt; "$(ProjectDir)css/min/content-small.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/content-medium.css" &gt; "$(ProjectDir)css/min/content-medium.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/content-large.css" &gt; "$(ProjectDir)css/min/content-large.css" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/maps.css" &gt; "$(ProjectDir)css/min/maps.css" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/maps.css" &gt; "$(ProjectDir)css/min/maps.css" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/forms-small.css" &gt; "$(ProjectDir)css/min/forms-small.css" )

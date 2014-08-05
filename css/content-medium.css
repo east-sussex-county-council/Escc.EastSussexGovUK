@@ -1,0 +1,6 @@
+﻿/* Adjust .content to the 10 column context */
+@media screen {
+    .content {
+        padding: 0 2.244389%;
+    }
+}
