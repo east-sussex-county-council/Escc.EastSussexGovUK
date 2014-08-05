@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Web;
+using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Xsl;
 using EsccWebTeam.Data.Web;
@@ -76,10 +77,11 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 // This is a request for a local web page so we never need a proxy (and in fact it causes problems).
                 // However using XmlHttpRequest.Create uses the proxy credentials for the request itself, and that is
                 // necessary to work on staging servers.
-                uriToProcess = new Uri(Iri.PrepareUrlForNewQueryStringParameter(uriToProcess) + "template=plain", UriKind.RelativeOrAbsolute);
+                uriToProcess = new Uri(Iri.PrepareUrlForNewQueryStringParameter(uriToProcess) + "template=plain",
+                    UriKind.RelativeOrAbsolute);
                 var request = XmlHttpRequest.Create(uriToProcess);
                 request.Proxy = null;
-                var responseXml = XmlHttpRequest.RequestXPath(request,2);
+                var responseXml = XmlHttpRequest.RequestXPath(request, 2);
 
                 // First update HTML to a format the hCalendar XSLT can handle
                 var transform = new XslCompiledTransform(false);
@@ -95,9 +97,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
 
                 // Get the text and add the source URL it was downloaded from
                 var responseText = modifiedXml.ToString();
-                var sourceUrl = Iri.MakeAbsolute(new Uri(Path.ChangeExtension(requestedUri.AbsolutePath, ".ics"), UriKind.Relative)).ToString();
+                var sourceUrl =
+                    Iri.MakeAbsolute(new Uri(Path.ChangeExtension(requestedUri.AbsolutePath, ".ics"), UriKind.Relative))
+                        .ToString();
                 if (requestedUri.Query.Length > 1) sourceUrl += requestedUri.Query;
-                responseText = responseText.Replace("(Best Practice: should be URL that this was ripped from)", sourceUrl);
+                responseText = responseText.Replace("(Best Practice: should be URL that this was ripped from)",
+                    sourceUrl);
 
                 // Replace Unicode n-dash with hyphen because iCalendar format is ASCII
                 responseText = responseText.Replace("–", "-");
@@ -110,8 +115,10 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 // For all-day events to show as all-day events you need to specify a "floating time", eg 4 July.
                 // In Google Calendar you can get away with giving a timezone using TZID=UK, but for Outlook to 
                 // recognise all-day events you have to omit the timezone and have a genuine "floating time".
-                responseText = Regex.Replace(responseText, "DTSTART;VALUE=DATE-TIME(.*?)[^Z]" + Environment.NewLine, "DTSTART;TZID=UK;VALUE=DATE-TIME$1" + Environment.NewLine);
-                responseText = Regex.Replace(responseText, "DTEND;VALUE=DATE-TIME(.*?)[^Z]" + Environment.NewLine, "DTEND;TZID=UK;VALUE=DATE-TIME$1" + Environment.NewLine);
+                responseText = Regex.Replace(responseText, "DTSTART;VALUE=DATE-TIME(.*?)[^Z]" + Environment.NewLine,
+                    "DTSTART;TZID=UK;VALUE=DATE-TIME$1" + Environment.NewLine);
+                responseText = Regex.Replace(responseText, "DTEND;VALUE=DATE-TIME(.*?)[^Z]" + Environment.NewLine,
+                    "DTEND;TZID=UK;VALUE=DATE-TIME$1" + Environment.NewLine);
 
                 var ukTimeZone = new StringBuilder("METHOD:PUBLISH").Append(Environment.NewLine)
                     .Append("BEGIN:VTIMEZONE").Append(Environment.NewLine)
@@ -139,17 +146,27 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 // The value MUST be specified in the UTC time format." Since we're creating the iCalendar object now, remove any
                 // existing DTSTAMP and add a correct DTSTAMP property here. DTSTAMP needs to be present for Outlook 2003 to work.
                 responseText = Regex.Replace(responseText, "DTSTAMP:.*?" + Environment.NewLine, String.Empty);
-                responseText = responseText.Replace("END:VEVENT", "DTSTAMP:" + DateTime.UtcNow.ToString("yyyyMMddTHHmmssZ", CultureInfo.InvariantCulture) + Environment.NewLine + "END:VEVENT");
+                responseText = responseText.Replace("END:VEVENT",
+                    "DTSTAMP:" + DateTime.UtcNow.ToString("yyyyMMddTHHmmssZ", CultureInfo.InvariantCulture) +
+                    Environment.NewLine + "END:VEVENT");
 
                 // Specify that the event should be marked as free time, not busy
-                responseText = responseText.Replace("END:VEVENT", "X-MICROSOFT-CDO-INTENDEDSTATUS:FREE" + Environment.NewLine + "END:VEVENT"); // Outlook
-                responseText = responseText.Replace("END:VEVENT", "X-MICROSOFT-CDO-BUSYSTATUS:FREE" + Environment.NewLine + "END:VEVENT"); // Outlook
-                responseText = responseText.Replace("END:VEVENT", "TRANSP:TRANSPARENT" + Environment.NewLine + "END:VEVENT"); // Google Calendar
+                responseText = responseText.Replace("END:VEVENT",
+                    "X-MICROSOFT-CDO-INTENDEDSTATUS:FREE" + Environment.NewLine + "END:VEVENT"); // Outlook
+                responseText = responseText.Replace("END:VEVENT",
+                    "X-MICROSOFT-CDO-BUSYSTATUS:FREE" + Environment.NewLine + "END:VEVENT"); // Outlook
+                responseText = responseText.Replace("END:VEVENT",
+                    "TRANSP:TRANSPARENT" + Environment.NewLine + "END:VEVENT"); // Google Calendar
 
                 // Return the string as an iCalendar download
                 context.Response.ContentType = "text/calendar";
                 context.Response.AddHeader("Content-Disposition", "attachment; filename=calendar.ics");
                 context.Response.Write(responseText);
+            }
+            catch (XmlException ex)
+            {
+                ex.Data.Add("URL to process", uriToProcess);
+                throw;
             }
             catch (WebException ex)
             {
@@ -169,6 +186,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 }
                 else
                 {
+                    ex.Data.Add("URL to process", uriToProcess);
                     throw;
                 }
             }
