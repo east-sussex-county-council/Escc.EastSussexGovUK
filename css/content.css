@@ -1,13 +1,15 @@
 ﻿/* Remove default gradient background. Replace with white, else the blue background on body will show through. */
-.body { background: #fff; }
-.article { box-shadow: none;padding-bottom: 18px; }
+body .body { background: #fff; }
+body .full-page, body .article { box-shadow: none;padding-bottom: 18px; }
 
-.breadcrumb, .breadcrumb .level1, .breadcrumb .level2 { font-family: 'Source Sans Pro', sans-serif;font-size: 16px;line-height: 18px; background: none; border: none;color: #000; }
-.breadcrumb li { margin-left: 0; }
-.breadcrumb li, .breadcrumb .level1 { padding: 0 5px 0 0; }
-.breadcrumb li:after { content: ' >'; }
-.breadcrumb li.current:after {content: ''; }
-.breadcrumb a { margin-right: 5px; }
+body .breadcrumb, body .breadcrumb .level1, body .breadcrumb .level2 { font-family: 'Source Sans Pro', sans-serif;font-size: 16px;line-height: 18px; background: none; border: none;color: #000; }
+body .breadcrumb li { margin-left: 0; }
+body .breadcrumb li, body .breadcrumb .level1 { padding: 0 5px 0 0; }
+body .breadcrumb li:after { content: ' >'; }
+body .breadcrumb li.current:after {content: ''; }
+body .breadcrumb a { margin-right: 5px; }
+body .breadcrumb a:visited { color: #609; }
+
 
 .content { font-family: 'Source Sans Pro', sans-serif; font-size: 19px; line-height: 27px;}
 .content h1 { font-size: 48px;line-height: 54px;font-weight: bold;letter-spacing: -0.03em; margin:0 0 18px;}
