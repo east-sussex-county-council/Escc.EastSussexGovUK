@@ -1,6 +1,25 @@
-﻿/* Adjust .text to the 12 column context */
+﻿/* Remove gradient background from the default skin. Replace with white, else the blue background on body will show through. */
+body .body { background: #fff; }
+
+/* Remove box-shadow from default skin, and add some padding to separate from the footer now that the box is not a visible separator. */
+body .full-page, body .article { box-shadow: none; padding-bottom: 1.384615em; }
+
+/* Adjust .content to the 12 column context */
 @media screen {
     .content {
         padding: 0 1.863354%;
     }
 }
+
+/* Align .breadcrumb with .content and change text size to 16px/18px */
+body .breadcrumb { padding: 0 1.863354%; font-size: 1.230769em; line-height: 1.125em; font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; }
+
+/* Remove breadcrumb styling and use plain links, with a generated content separator */
+body .breadcrumb, body .breadcrumb .level1, body .breadcrumb .level2 { background: none; border: none; color: #000; }
+body .breadcrumb li { margin-left: 0; }
+body .breadcrumb li, body .breadcrumb .level1 { padding: 0 5px 0 0; }
+body .breadcrumb li:after { content: ' >'; }
+body .breadcrumb li.current:after {content: ''; }
+body .breadcrumb a:link { margin-right: 5px; }
+body .breadcrumb a:visited { color: #609; }
+body .breadcrumb a:hover, a:focus, a:active { text-decoration: underline; }

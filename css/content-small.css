@@ -1,30 +1,66 @@
-﻿/* Remove default gradient background. Replace with white, else the blue background on body will show through. */
-body .body { background: #fff; }
-body .full-page, body .article { box-shadow: none;padding-bottom: 18px; }
-
-body .breadcrumb, body .breadcrumb .level1, body .breadcrumb .level2 { font-family: 'Source Sans Pro', sans-serif;font-size: 16px;line-height: 18px; background: none; border: none;color: #000; }
-body .breadcrumb li { margin-left: 0; }
-body .breadcrumb li, body .breadcrumb .level1 { padding: 0 5px 0 0; }
-body .breadcrumb li:after { content: ' >'; }
-body .breadcrumb li.current:after {content: ''; }
-body .breadcrumb a { margin-right: 5px; }
-body .breadcrumb a:visited { color: #609; }
-
-/* Box to pull content away from the edges of its containing box by one gutter width. */
+﻿/* Box to pull content away from the edges of its containing box by one gutter width. */
 @media screen {
     .content {
         padding: 0 3.797468%;
     }
 }
 
-.text-content { font-family: 'Source Sans Pro', sans-serif; font-size: 19px; line-height: 27px;}
-.text-content h1 { font-size: 48px;line-height: 54px;font-weight: bold;letter-spacing: -0.03em; margin:0 0 18px;}
-.text-content h2 { font-size: 36px;line-height: 36px;margin: 27px 0 9px;letter-spacing: -0.04em;word-spacing: .1em;}
+/* Container for text content. Equivalent of .text in the default skin, but increasing the base font size to 19px/27px. */
+.text-content { font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 1.461538em; line-height: 1.421052em;}
 
-.text-content .lead { font-size: 24px;line-height: 27px; }
-.text-content p { margin: 9px 0;}
-.text-content ul { margin-top: 9px;margin-bottom: 9px;}
+/***********************************************
+ NOTE: BASE FONT SIZE IN .text-content IS 19px *
+ ***********************************************/
 
+/* h1 = 48/54px, 0 & 18px margins
+   h2 = 36/36px, 27px & 9px margins 
+   h3 = 28/36px, 27px & 9px margins
+   h4 = 23/27px, 27px & 9px margins
+   h5 = 19/27px (unaltered), 27px & 9px margins
+   h6 = 19/27px (unaltered), 18px & 0 margins */
+.text-content h1 { font-size: 2.526316em;line-height: 1.125em;margin:0 0 .375em;font-weight: bold;letter-spacing: -0.03em; }
+.text-content h2 { font-size: 1.894737em;line-height: 1em; margin: .75em 0 .25em;letter-spacing: -0.04em;word-spacing: .1em;}
+.text-content h3 { font-size: 1.473684em;line-height: 1.285714em;margin: .964286em 0 .321429em; }
+.text-content h4 { font-size: 1.210526em;line-height: 27px;margin: 1.173913em 0 .391304em; }
+.text-content h5 { font-weight: bold;margin: 1.421053em 0 0; }
+.text-content h6 { margin: .947368em 0 0; font-weight: bold;font-style: italic; }
+
+/* 9px margins for standard text, 18px for definition title */
+.text-content p { margin: .473684em 0;}
+.text-content ul, .text-content ol { margin-top: .473684em; margin-bottom: .473684em;}
+.text-content dt {margin: .947368em 0 0; font-weight: bold;}
+
+/* Leading content is emphasised using larger text, 24/27px */
+.text-content .lead { font-size: 1.263158em;line-height: 1.125em; }
+
+/* Tables - 8px padding in cells, 1px border */
+.text-content table, .text-content caption { margin: .947368em 0;}
+.text-content caption, .text-content th { font-weight: bold;}
+.text-content th { background: #eee; }
+.text-content th, .text-content td { border: 1px solid #ccc;padding: .421053em;}
+
+/* Link icons - larger text size means icons need to move slightly */
+.hcal { background-position: 0 6px; }
+.rss { background-position: 0 -42px; }
+.email { background-position: 0 -91px; }
+.rss-email  { background-position: 0 -144px; }
+.xml { background-position: 0 -194px; }
+.pdf { background-position: 0 -244px; }
+.doc, .rtf { background-position: 0 -294px; }
+.xls { background-position: 0 -344px; }
+.wma { background-position: 0 -396px;  }
+.mp3 { background-position: 0 -446px; }
+.ppt { background-position: left -1744px; }
+.jpg { background-position: left -2144px; }
+.html, .file { background-position: left -2446px; }
+.new-window { background-position: 100% -496px; }
+.twitter, [href*="twitter.com"] { background-position: 0 -1296px; }
+.facebook, [href*="facebook.com"] { background-position: 0 -1346px; }
+.youtube, [href*="youtube.com"] { background-position: 0 -1396px; }
+.flickr, [href*="flickr.com"] { background-position: 0 -1446px; }
+
+
+/* TO DO - NOT IN STYLE GUIDE */
 button { background: #ED5816;color: #fff;border-style: none; border-bottom: 2px solid #993003;padding: 9px; font-family: 'Source Sans Pro', sans-serif;font-size: 19px;line-height: 18px;text-transform: lowercase;font-weight: bold;margin: 36px 0;display: block; }
 button::after { content: ' >'}
 button:hover { background: #EE4902; }

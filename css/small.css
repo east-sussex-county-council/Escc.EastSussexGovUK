@@ -683,7 +683,7 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .mp3 { background-position: 0 -450px; padding-left: 20px;  }
 .ppt { background-position: left -1748px; padding-left: 20px; }
 .jpg { background-position: left -2148px; }
-.html, .file { background-position: left -700px; }
+.html, .file { background-position: left -2450px; }
 .new-window { background-position: 100% -500px; padding-left: 0; padding-right: 16px; }
 .twitter, [href*="twitter.com"] { background-position: 0 -1300px; padding-left: 20px; }
 .facebook, [href*="facebook.com"] { background-position: 0 -1350px; padding-left: 20px; }
