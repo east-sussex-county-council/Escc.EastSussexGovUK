@@ -65,14 +65,16 @@
 /* Adjust .quick-answer to change in base font-size */
 .text-content .quick-answer { font-size: 1.6875em; }
 
+/* Latest box to highlight new content. Just a coloured background with otherwise standard styles. */
+.text-content .latest { background: #ccc; padding: 1.125em 18px; margin: 1.125em 0; }
+.text-content .latest h2 { margin: 0;}
+.text-content .latest p:last-child { margin-bottom: 0;}
+
+
 /* TO DO - NOT IN STYLE GUIDE */
 button { background: #ED5816;color: #fff;border-style: none; border-bottom: 2px solid #993003;padding: 9px; font-family: 'Source Sans Pro', sans-serif;font-size: 19px;line-height: 18px;text-transform: lowercase;font-weight: bold;margin: 36px 0;display: block; }
 button::after { content: ' >'}
 button:hover { background: #EE4902; }
-
-.latest { background: #ccc;padding: 18px;margin: 18px 0; }
-.latest h2 { margin: 0;}
-.latest p:last-child { margin-bottom: 0;}
 
 .related-links ul { border-top: 9px solid #003C69;font-family: 'Source Sans Pro', sans-serif; font-size: 16px; line-height: 18px;list-style-type: none;margin: 0;}
 .related-links li { margin: 18px 0;}

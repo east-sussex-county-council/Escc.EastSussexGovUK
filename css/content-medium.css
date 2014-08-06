@@ -59,3 +59,6 @@
 
 /* Adjust .quick-answer to change in base font-size */
 .text-content .quick-answer { font-size: 1.421053em; }
+
+/* Latest box to highlight new content - adjust spacing for new base font. */
+.text-content .latest { background: #ccc; padding: .947368em 18px; margin: .947368em 0; }
