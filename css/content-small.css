@@ -5,7 +5,11 @@
     }
 }
 
-/* Container for text content. Equivalent of .text in the default skin, but increasing the base font size to 16px/24px - NOT BASELINE GRID. */
+/* Container for text content. Equivalent of .text in the default skin, but increasing the base font size to 16px/24px.
+
+   NOTE: THIS IS NOT ON THE BASELINE GRID. 16px text just doesn't look good with 18px or 27px line-height. The baseline
+   grid is less important at small sizes anyway as elements are stacked rather than side-by-side. .text-content will be 
+   adjusted back onto the baseline grid in content-medium.css. */
 .text-content { font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 1.230769em; line-height: 24px;}
 
 /***********************************************
