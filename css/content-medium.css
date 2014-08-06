@@ -4,3 +4,55 @@
         padding: 0 2.244389%;
     }
 }
+
+/* Container for text content. Equivalent of .text in the default skin, but increasing the base font size to 19px/27px. */
+.text-content { font-size: 1.461538em; line-height: 1.421052em;}
+
+/***********************************************
+ NOTE: BASE FONT SIZE IN .text-content IS 19px *
+ ***********************************************/
+
+/* h1 = 48/54px, 0 & 18px margins
+   h2 = 36/36px, 27px & 9px margins 
+   h3 = 28/36px, 27px & 9px margins
+   h4 = 23/27px, 27px & 9px margins
+   h5 = 19/27px (unaltered), 27px & 9px margins
+   h6 = 19/27px (unaltered), 18px & 0 margins */
+.text-content h1 { font-size: 2.526316em;line-height: 1.125em;margin:0 0 .375em; }
+.text-content h2 { font-size: 1.894737em;line-height: 1em; margin: .75em 0 .25em; }
+.text-content h3 { font-size: 1.473684em;line-height: 1.285714em;margin: .964286em 0 .321429em;font-weight: normal; }
+.text-content h4 { font-size: 1.210526em;line-height: 1.173913em;margin: 1.173913em 0 .391304em;font-weight: normal; }
+.text-content h5 { margin: 1.421053em 0 0; font-weight: bold;font-style: normal; }
+.text-content h6 { margin: .947368em 0 0; font-weight: bold; }
+
+/* 9px margins for standard text, 18px for definition title */
+.text-content p { margin: .473684em 0;}
+.text-content ul, .text-content ol { margin-top: .473684em; margin-bottom: .473684em;}
+.text-content dt {margin: .947368em 0 0; font-weight: bold;}
+
+/* Leading content is emphasised using larger text, 24/36px */
+.text-content .lead { font-size: 1.263158em;line-height: 1.5em; }
+
+/* Tables - 8px padding in cells, 1px border */
+.text-content table, .text-content caption { margin: .947368em 0;}
+.text-content th, .text-content td { border: .052631em solid #ccc;padding: .421053em;}
+
+/* Link icons - larger text size means icons need to move slightly */
+.hcal { background-position: 0 6px; }
+.rss { background-position: 0 -42px; }
+.email { background-position: 0 -91px; }
+.rss-email  { background-position: 0 -144px; }
+.xml { background-position: 0 -194px; }
+.pdf { background-position: 0 -244px; }
+.doc, .rtf { background-position: 0 -294px; }
+.xls { background-position: 0 -344px; }
+.wma { background-position: 0 -396px;  }
+.mp3 { background-position: 0 -446px; }
+.ppt { background-position: left -1744px; }
+.jpg { background-position: left -2144px; }
+.html, .file { background-position: left -2446px; }
+.new-window { background-position: 100% -496px; }
+.twitter, [href*="twitter.com"] { background-position: 0 -1296px; }
+.facebook, [href*="facebook.com"] { background-position: 0 -1346px; }
+.youtube, [href*="youtube.com"] { background-position: 0 -1396px; }
+.flickr, [href*="flickr.com"] { background-position: 0 -1446px; }

@@ -5,60 +5,58 @@
     }
 }
 
-/* Container for text content. Equivalent of .text in the default skin, but increasing the base font size to 19px/27px. */
-.text-content { font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 1.461538em; line-height: 1.421052em;}
+/* Container for text content. Equivalent of .text in the default skin, but increasing the base font size to 16px/24px - NOT BASELINE GRID. */
+.text-content { font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 1.230769em; line-height: 24px;}
 
 /***********************************************
- NOTE: BASE FONT SIZE IN .text-content IS 19px *
+ NOTE: BASE FONT SIZE IN .text-content IS 16px *
  ***********************************************/
 
-/* h1 = 48/54px, 0 & 18px margins
-   h2 = 36/36px, 27px & 9px margins 
-   h3 = 28/36px, 27px & 9px margins
-   h4 = 23/27px, 27px & 9px margins
-   h5 = 19/27px (unaltered), 27px & 9px margins
-   h6 = 19/27px (unaltered), 18px & 0 margins */
-.text-content h1 { font-size: 2.526316em;line-height: 1.125em;margin:0 0 .375em;font-weight: bold;letter-spacing: -0.03em; }
-.text-content h2 { font-size: 1.894737em;line-height: 1em; margin: .75em 0 .25em;letter-spacing: -0.04em;word-spacing: .1em;}
-.text-content h3 { font-size: 1.473684em;line-height: 1.285714em;margin: .964286em 0 .321429em; }
-.text-content h4 { font-size: 1.210526em;line-height: 27px;margin: 1.173913em 0 .391304em; }
-.text-content h5 { font-weight: bold;margin: 1.421053em 0 0; }
-.text-content h6 { margin: .947368em 0 0; font-weight: bold;font-style: italic; }
+/* h1    30/36px, margins 0 and 9px
+   h2    26/27px, margins 18px and 9px
+   h3    20/27px, margins 18px and 0
+   h4-h6 16/18px (unchanged), margins 18px and 0
+    */
+.text-content h1 { font-size: 1.875em;line-height: 1.2em;margin:0 0 .3em; font-weight: bold;letter-spacing: -0.03em; }
+.text-content h2 { font-size: 1.625em;line-height: 1.038462em; margin: .692308em 0 .346154em;letter-spacing: -0.04em;word-spacing: .1em;}
+.text-content h3 { font-size: 1.25em;line-height: 1.35em;margin: .9em 0 0;font-weight: bold; letter-spacing: -0.02em;}
+.text-content h4 { margin: 1.125em 0 0;font-weight: bold; }
+.text-content h5 { margin: 1.125em 0 0; font-weight: bold;font-style: italic; }
+.text-content h6 { margin: 1.125em 0 0; font-style: italic; }
 
 /* 9px margins for standard text, 18px for definition title */
-.text-content p { margin: .473684em 0;}
-.text-content ul, .text-content ol { margin-top: .473684em; margin-bottom: .473684em;}
-.text-content dt {margin: .947368em 0 0; font-weight: bold;}
+.text-content p { margin: .5625em 0;}
+.text-content ul, .text-content ol { margin-top: .5625em; margin-bottom: .5625em;}
+.text-content dt {margin: 1.125em 0 0; font-weight: bold;}
 
-/* Leading content is emphasised using larger text, 24/27px */
-.text-content .lead { font-size: 1.263158em;line-height: 1.125em; }
+/* Leading content is emphasised using larger text, 20/27px */
+.text-content .lead { font-size: 1.25em;line-height: 1.35em; }
 
 /* Tables - 8px padding in cells, 1px border */
-.text-content table, .text-content caption { margin: .947368em 0;}
+.text-content table, .text-content caption { margin: 1.125em 0;}
 .text-content caption, .text-content th { font-weight: bold;}
 .text-content th { background: #eee; }
-.text-content th, .text-content td { border: 1px solid #ccc;padding: .421053em;}
+.text-content th, .text-content td { border: .0625em solid #ccc;padding: .5em;}
 
 /* Link icons - larger text size means icons need to move slightly */
-.hcal { background-position: 0 6px; }
-.rss { background-position: 0 -42px; }
-.email { background-position: 0 -91px; }
-.rss-email  { background-position: 0 -144px; }
-.xml { background-position: 0 -194px; }
-.pdf { background-position: 0 -244px; }
-.doc, .rtf { background-position: 0 -294px; }
-.xls { background-position: 0 -344px; }
-.wma { background-position: 0 -396px;  }
-.mp3 { background-position: 0 -446px; }
-.ppt { background-position: left -1744px; }
-.jpg { background-position: left -2144px; }
-.html, .file { background-position: left -2446px; }
-.new-window { background-position: 100% -496px; }
-.twitter, [href*="twitter.com"] { background-position: 0 -1296px; }
-.facebook, [href*="facebook.com"] { background-position: 0 -1346px; }
-.youtube, [href*="youtube.com"] { background-position: 0 -1396px; }
-.flickr, [href*="flickr.com"] { background-position: 0 -1446px; }
-
+.hcal { background-position: 0 4px; }
+.rss { background-position: 0 -44px; }
+.email { background-position: 0 -93px; }
+.rss-email  { background-position: 0 -146px; }
+.xml { background-position: 0 -196px; }
+.pdf { background-position: 0 -246px; }
+.doc, .rtf { background-position: 0 -296px; }
+.xls { background-position: 0 -346px; }
+.wma { background-position: 0 -398px;  }
+.mp3 { background-position: 0 -448px; }
+.ppt { background-position: left -1746px; }
+.jpg { background-position: left -2146px; }
+.html, .file { background-position: left -2448px; }
+.new-window { background-position: 100% -498px; }
+.twitter, [href*="twitter.com"] { background-position: 0 -1298px; }
+.facebook, [href*="facebook.com"] { background-position: 0 -1348px; }
+.youtube, [href*="youtube.com"] { background-position: 0 -1398px; }
+.flickr, [href*="flickr.com"] { background-position: 0 -1448px; }
 
 /* TO DO - NOT IN STYLE GUIDE */
 button { background: #ED5816;color: #fff;border-style: none; border-bottom: 2px solid #993003;padding: 9px; font-family: 'Source Sans Pro', sans-serif;font-size: 19px;line-height: 18px;text-transform: lowercase;font-weight: bold;margin: 36px 0;display: block; }
