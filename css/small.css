@@ -690,6 +690,13 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .youtube, [href*="youtube.com"] { background-position: 0 -1400px; padding-left: 20px; }
 .flickr, [href*="flickr.com"] { background-position: 0 -1450px; padding-left: 20px; }
 
+/* Don't add nested icons for structure used by social media mobile control:
+   <p class="twitter">Follow us: <a href="http://twitter.com/eastsussexcc">@eastsussexcc</a></p>
+*/
+.twitter [href*="twitter.com"],
+.facebook [href*="facebook.com"] { background: none; padding-left: 0; }
+
+
 /* If a list item contains only a link to a download, replace the bullet with the file type icon. Margin offsets the standard indent for lists. */
 li.download { list-style: none; margin: .692308em 0 .692308em -1.153846em; padding-left: 23px; text-indent: -23px; }
     
