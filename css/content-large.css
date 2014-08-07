@@ -1,12 +1,13 @@
 ﻿/* Remove gradient background from the default skin. Replace with white, else the blue background on body will show through. */
 body .body { background: #fff; }
 
-/* Remove box-shadow from default skin, and add some padding to separate from the footer now that the box is not a visible separator. */
-body .full-page, body .article { box-shadow: none; padding-bottom: 1.384615em; }
+/* Remove box-shadow from default skin. */
+body .full-page, body .article { box-shadow: none; }
 
 /* Adjust .content to the 12 column context */
 @media screen {
-    .content {
+    .content-medium { padding: 0; }
+    .content, .content-large {
         padding: 0 1.863354%;
     }
 }

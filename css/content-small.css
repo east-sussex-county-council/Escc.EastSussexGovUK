@@ -1,6 +1,9 @@
-﻿/* Box to pull content away from the edges of its containing box by one gutter width. */
+﻿/* Add some padding to separate from the footer now that the box from the default skin is not a visible separator */
+body .full-page, body .article { padding-bottom: 1.384615em; }
+
+/* Box to pull content away from the edges of its containing box by one gutter width. */
 @media screen {
-    .content {
+    .content, .content-small {
         padding: 0 3.797468%;
     }
 }
@@ -70,11 +73,16 @@
 .text-content .latest h2 { margin: 0;}
 .text-content .latest p:last-child { margin-bottom: 0;}
 
+/* Related links box based on a combination of classes:
+    
+    <div class="supporting content-text related-links">
+        Content here
+    </div>
+    */
+.related-links ul { border-top: .5625em solid #003C69; list-style-type: none;margin: 0;}
+.related-links li { margin: 1.125em 0;}
 
 /* TO DO - NOT IN STYLE GUIDE */
 button { background: #ED5816;color: #fff;border-style: none; border-bottom: 2px solid #993003;padding: 9px; font-family: 'Source Sans Pro', sans-serif;font-size: 19px;line-height: 18px;text-transform: lowercase;font-weight: bold;margin: 36px 0;display: block; }
 button::after { content: ' >'}
 button:hover { background: #EE4902; }
-
-.related-links ul { border-top: 9px solid #003C69;font-family: 'Source Sans Pro', sans-serif; font-size: 16px; line-height: 18px;list-style-type: none;margin: 0;}
-.related-links li { margin: 18px 0;}

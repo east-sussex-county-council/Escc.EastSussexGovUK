@@ -1,6 +1,7 @@
 ﻿/* Adjust .content to the 10 column context */
 @media screen {
-    .content {
+    .content-small { padding: 0; }
+    .content, .content-medium {
         padding: 0 2.244389%;
     }
 }
