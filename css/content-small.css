@@ -86,7 +86,11 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 ol.progressBar { overflow: auto;margin: 1.125em 0;}
 ol.progressBar li {font-size: .875em; line-height: 1.285714em;font-weight: normal;  }
 
-/* TO DO - NOT IN STYLE GUIDE */
-button { background: #ED5816;color: #fff;border-style: none; border-bottom: 2px solid #993003;padding: 9px; font-family: 'Source Sans Pro', sans-serif;font-size: 19px;line-height: 18px;text-transform: lowercase;font-weight: bold;margin: 36px 0;display: block; }
-button::after { content: ' >'}
-button:hover { background: #EE4902; }
+/* Clear button for the main action on a page. Equivalent of .major-action in default skin. 
+   19px/18px with 9px padding and vertical margins of 35px (+2px border = 36px) */
+.main-action a { font-size: 1.1875em;line-height: .947368em;display: inline-block;padding: .473684em;margin: 1.894737em 0; border-bottom: .105263em solid #993003;background: #ED5816;color: #fff; text-transform: lowercase;text-decoration: none;letter-spacing: .03em; }
+.main-action a:after { content: ' >'}
+.main-action a:hover, .main-action a:focus, .main-action a:active { background: #EE4902; }
+
+/* Reset other buttons to their default skin size */
+.button, .form input[type=submit] {font-size: .8125em; line-height: 1.384615em; }
