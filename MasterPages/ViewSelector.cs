@@ -302,7 +302,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                     returnUrl = Iri.MakeAbsolute(returnUrl);
 
                     if (returnUrl.Host.EndsWith("eastsussex.gov.uk", StringComparison.OrdinalIgnoreCase) ||
-                     !returnUrl.Host.Contains("."))
+                     returnUrl.Host.ToUpperInvariant() == request.Url.Host.ToUpperInvariant())
                     {
                         redirectUri = returnUrl;
                     }
