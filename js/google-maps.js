@@ -10,7 +10,7 @@
 
             var script = document.createElement("script");
             var sensor = ($(".header .alphabet").length > 0) ? 'false' : 'true'; // look for A-Z to see whether we're using desktop template
-            script.src = "http://maps.googleapis.com/maps/api/js?libraries=" + defaultOptions.libraries + "&key=" + esccConfig.GoogleMapsApiKey + "&sensor=" + sensor + "&callback=" + defaultOptions.callback;
+            script.src = "https://maps.googleapis.com/maps/api/js?libraries=" + defaultOptions.libraries + "&key=" + esccConfig.GoogleMapsApiKey + "&sensor=" + sensor + "&callback=" + defaultOptions.callback;
             document.body.appendChild(script);
         };
 
