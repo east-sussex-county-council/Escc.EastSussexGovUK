@@ -215,7 +215,7 @@ background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
 .ie67 .button-nav { display: inline-block; }
 .button-nav li { float: left; list-style: none; }
 .button-nav a:link, .button-nav a:visited, .button-nav em, .button-nav input { float: left; display: block; margin: 5px 2px 5px 0; padding: 4px 10px; background: #44697d; color: #fff; font-weight: bold; text-decoration: none; white-space: nowrap; border-radius: 3px; border: none; }
-.button-nav .selected a:link, .button-nav .selected a:visited, .button-nav a:hover, .button-nav a:focus, .button-nav a:active, .button-nav em, .button-nav input:hover { background-color: #00a1de; color: #fff; font-style: normal; }
+.button-nav .selected a:link, .button-nav .selected a:visited, .button-nav a:hover, .button-nav a:visited:hover, .button-nav a:focus, .button-nav a:active, .button-nav em, .button-nav input:hover { background-color: #00a1de; color: #fff; font-style: normal; }
 @media print { .button-nav { display: none; } }
 
 .application-nav { margin: 0; padding: 9px 18px; background: #dae1e5; }
