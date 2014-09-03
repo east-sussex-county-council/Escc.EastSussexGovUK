@@ -187,7 +187,7 @@ label, input[type="submit"], input[type="image"] { cursor: pointer; }
   background: linear-gradient(top, #1e5b83 0%,#0b4164 100%); /* W3C */
                              }
 /* CSS3: The buttons will take on curved corners and apply a change of the background color to lighter blue on hover */                             
-.button:hover, .form input[type=submit]:hover { border-radius: 4px;  /* 14px font */  
+.button:hover, .form input[type=submit]:hover { border-radius: 4px; border: none; /* 14px font */  
 background: #00a1de; /* Old browsers */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE6-9 */
 background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
@@ -376,7 +376,9 @@ a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip:
 
 /* 2 lines of space at the top. padding-top: 33px + 3px border-top = 36px on baseline grid.
    Design needs to work with or without .languages present, so padding is on .container rather than .footer
-   Background colour for footer comes from the body element, so that it extends to bottom of browser 
+   Background colour for footer comes from the body element, so that it extends to bottom of browser.
+
+   body qualifier on selector introduced to account for inherited styles on FixMyStreet.
 
     <div class="footer">
         <div class="languages" /> (optional)
@@ -384,7 +386,7 @@ a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip:
     </div>
 */
 .footer { clear: both; border-top: .230769em solid #00a1de; } 
-.footer .footer-content { padding-top: 1.153846em; }
+body .footer .footer-content { padding-top: 1.153846em; }
 
 /* Put language links on a single line with space between them, and remove underline to improve legibility.
    Padding+border = 1 line space. Use float: left rather than display: inline on the li elements because it works for IE6/7. */
