@@ -88,7 +88,7 @@ ol.progressBar li {font-size: .875em; line-height: 1.285714em;font-weight: norma
 
 /* Clear button for the main action on a page. Equivalent of .major-action in default skin. 
    19px/18px with 9px padding and vertical margins of 35px (+2px border = 36px) */
-.main-action a { font-size: 1.1875em;line-height: .947368em;display: inline-block;padding: .473684em;margin: 1.894737em 0; border-bottom: .105263em solid #993003;background: #ED5816;color: #fff; text-transform: lowercase;text-decoration: none;letter-spacing: .03em; }
+.main-action a { font-size: 1.1875em;line-height: .947368em;display: inline-block;padding: .473684em;margin: 1.894737em 0; border-bottom: .105263em solid #993003;background: #ED5816;color: #fff; text-decoration: none;letter-spacing: .03em; }
 .main-action a:after { content: ' >'}
 .main-action a:hover, .main-action a:focus, .main-action a:active { background: #EE4902; }
 
