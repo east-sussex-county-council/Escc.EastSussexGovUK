@@ -33,6 +33,6 @@
 
   <add url="/yourcouncil" imageUrl="/wres/banners/councillor.gif" description="Find your councillor" navigateUrl="/yourcouncil/about/people/councillors/find/default.aspx" />
 
-  <add url="/leisureandtourism/countryside/walks/default1.htm" imageUrl="/wres/banners/walks.jpg" description="Find a Circular walk" navigateUrl="/leisureandtourism/countryside/walks/circular/listofallwalks.htm" />
+  <add url="/leisureandtourism/countryside/walks/default1.htm" imageUrl="/wres/banners/walks.jpg" description="Find a Circular walk" navigateUrl="/leisureandtourism/countryside/rightsofway/rightsofwaymap/map.aspx" />
 
 </adverts>
