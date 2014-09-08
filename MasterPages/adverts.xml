@@ -30,6 +30,9 @@
   <add url="/socialcare" imageUrl="/wres/banners/learning-disabilities.png" description="Visit our pages for people with a learning disabilities" navigateUrl="/socialcare/disability/learning/default.htm" />
   <add url="/socialcare/providers/resources/healthpromotion" />
 
+
   <add url="/yourcouncil" imageUrl="/wres/banners/councillor.gif" description="Find your councillor" navigateUrl="/yourcouncil/about/people/councillors/find/default.aspx" />
+
+  <add url="/leisureandtourism/countryside/walks/default1.htm" imageUrl="/wres/banners/walks.jpg" description="Find a Circular walk" navigateUrl="/leisureandtourism/countryside/walks/circular/listofallwalks.htm" />
 
 </adverts>
