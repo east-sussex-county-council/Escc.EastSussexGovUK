@@ -537,7 +537,7 @@
     <Compile Include="MasterPages\Plain.Master.designer.cs">
       <DependentUpon>Plain.Master</DependentUpon>
     </Compile>
-    <Compile Include="MasterPages\PreferredView.cs" />
+    <Compile Include="MasterPages\EsccWebsiteView.cs" />
     <Compile Include="MasterPages\Remote\Control.aspx.cs">
       <DependentUpon>Control.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

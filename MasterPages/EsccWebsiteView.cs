@@ -2,32 +2,32 @@
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
     /// <summary>
-    /// Represents user's saved preference for view of site
+    /// Represents a layout view for the ESCC website
     /// </summary>
-    internal enum PreferredView
+    public enum EsccWebsiteView
     {
         /// <summary>
-        /// Preference not yet determined
+        /// View not yet determined
         /// </summary>
         Unknown,
 
         /// <summary>
-        /// Prefers mobile site
+        /// Mobile site
         /// </summary>
         Mobile,
 
         /// <summary>
-        /// Prefers desktop site
+        /// Desktop site
         /// </summary>
         Desktop,
 
         /// <summary>
-        /// Prefers a version with no formatting
+        /// A version with no formatting
         /// </summary>
         Plain,
 
         /// <summary>
-        /// Prefers a full-screen view
+        /// A full-screen view
         /// </summary>
         FullScreen
     }

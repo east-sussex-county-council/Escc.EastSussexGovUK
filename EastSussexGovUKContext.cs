@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Web;
 using System.Web.UI;
 using EsccWebTeam.Cms;
+using EsccWebTeam.EastSussexGovUK.MasterPages;
 using Microsoft.ContentManagement.Publishing;
 namespace EsccWebTeam.EastSussexGovUK
 {
@@ -28,7 +29,7 @@ namespace EsccWebTeam.EastSussexGovUK
     ///     &lt;/EsccWebTeam.EastSussexGovUK&gt;
     /// &lt;/configuration&gt;
     /// </example>
-    /// <para>See <seealso cref="MasterPages.MasterPageModule"/> for settings used to identify desktop and mobile master pages.</para>
+    /// <para>See <seealso cref="MasterPages.ViewSelector"/> for settings used to identify desktop and mobile master pages.</para>
     /// </remarks>
     public class EastSussexGovUKContext
     {
@@ -243,7 +244,7 @@ namespace EsccWebTeam.EastSussexGovUK
                 if (this.viewIsDesktop != null) return (bool)this.viewIsDesktop;
 
                 // Otherwise check whether the current master page is listed as a desktop master page
-                this.viewIsDesktop = IsMasterPageInGroup("Desktop");
+                this.viewIsDesktop = ViewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.Desktop);
                 if ((bool)this.viewIsDesktop)
                 {
                     this.viewIsMobile = false;
@@ -267,7 +268,7 @@ namespace EsccWebTeam.EastSussexGovUK
                 if (this.viewIsMobile != null) return (bool)this.viewIsMobile;
 
                 // Otherwise check whether the current master page is listed as a mobile master page
-                this.viewIsMobile = IsMasterPageInGroup("Mobile");
+                this.viewIsMobile = ViewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.Mobile);
                 if ((bool)this.viewIsMobile)
                 {
                     this.viewIsDesktop = false;
@@ -291,7 +292,7 @@ namespace EsccWebTeam.EastSussexGovUK
                 if (this.viewIsPlain != null) return (bool)this.viewIsPlain;
 
                 // Otherwise check whether the current master page is listed as a plain master page
-                this.viewIsPlain = IsMasterPageInGroup("Plain");
+                this.viewIsPlain = ViewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.Plain);
                 if ((bool)this.viewIsPlain)
                 {
                     this.viewIsDesktop = false;
@@ -315,7 +316,7 @@ namespace EsccWebTeam.EastSussexGovUK
                 if (this.viewIsFullScreen != null) return (bool)this.viewIsFullScreen;
 
                 // Otherwise check whether the current master page is listed as a full-screen master page
-                this.viewIsFullScreen = IsMasterPageInGroup("FullScreen");
+                this.viewIsFullScreen = ViewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.FullScreen);
                 if ((bool)this.viewIsFullScreen)
                 {
                     this.viewIsDesktop = false;
@@ -377,48 +378,6 @@ namespace EsccWebTeam.EastSussexGovUK
         {
             var posting = CmsUtilities.Posting;
             return (posting != null && posting.Template.Guid == "{AE1E8507-8136-481F-8EBF-73CB244CFEA4}");
-        }
-
-        /// <summary>
-        /// Determines whether the current master page is in the group identified by the specified key.
-        /// </summary>
-        /// <param name="masterPageKey">The key part of a configuration section name or setting listing master pages.</param>
-        /// <returns>
-        /// 	<c>true</c> if the master page is from the specified configuration group; otherwise, <c>false</c>.
-        /// </returns>
-        private bool IsMasterPageInGroup(string masterPageKey)
-        {
-            if (Page == null) return false;
-            if (String.IsNullOrEmpty(Page.MasterPageFile)) return false;
-
-            var currentMasterPage = Page.MasterPageFile.Substring(HttpRuntime.AppDomainAppVirtualPath.Length);
-            if (!currentMasterPage.StartsWith("/", StringComparison.Ordinal)) currentMasterPage = "/" + currentMasterPage;
-            currentMasterPage = "~" + currentMasterPage.ToUpperInvariant();
-
-            // Check if there's a single setting for the master page
-            if (this.Settings != null && !String.IsNullOrEmpty(this.Settings[masterPageKey + "MasterPage"]))
-            {
-                if (this.Settings[masterPageKey + "MasterPage"].ToUpperInvariant() == currentMasterPage)
-                {
-                    return true;
-                }
-            }
-
-            // If not, check if there's a group of settings
-            var masterPageSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/" + masterPageKey + "MasterPages") as NameValueCollection;
-            if (masterPageSettings != null)
-            {
-                foreach (string key in masterPageSettings.Keys)
-                {
-                    if (masterPageSettings[key].ToUpperInvariant() == currentMasterPage)
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            // Otherwise it's not a match
-            return false;
         }
 
         #endregion // Information about current master page

@@ -85,13 +85,13 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         {
             // Grab settings from config and set up some defaults
             var generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
-            var configSettings = new Dictionary<PreferredView, NameValueCollection>();
-            configSettings[PreferredView.Mobile] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/MobileMasterPages") as NameValueCollection;
-            configSettings[PreferredView.Desktop] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/DesktopMasterPages") as NameValueCollection;
-            configSettings[PreferredView.Plain] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/PlainMasterPages") as NameValueCollection;
+            var configSettings = new Dictionary<EsccWebsiteView, NameValueCollection>();
+            configSettings[EsccWebsiteView.Mobile] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/MobileMasterPages") as NameValueCollection;
+            configSettings[EsccWebsiteView.Desktop] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/DesktopMasterPages") as NameValueCollection;
+            configSettings[EsccWebsiteView.Plain] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/PlainMasterPages") as NameValueCollection;
 
             string preferredMasterPage = String.Empty;
-            var preferredView = PreferredView.Unknown;
+            var preferredView = EsccWebsiteView.Unknown;
 
             // Are we set up to accept user requests for a master page?
             var acceptUserRequest = (generalSettings != null && !String.IsNullOrEmpty(generalSettings["MasterPageParameterName"]));
@@ -115,20 +115,20 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             // the default. The idea of putting it in session is that it's only tested on the first request, allowing a user to be directed
             // on that first request to the right site, but then move to the other version if they want to. Trouble is, our website has many
             // separate sessions and the setting may not be in sync, so for us this can't be the best option.
-            if (preferredView == PreferredView.Unknown)
+            if (preferredView == EsccWebsiteView.Unknown)
             {
-                if (session != null && session["EastSussexGovUK.PreferredView"] != null) preferredView = (PreferredView)session["EastSussexGovUK.PreferredView"];
+                if (session != null && session["EastSussexGovUK.PreferredView"] != null) preferredView = (EsccWebsiteView)session["EastSussexGovUK.PreferredView"];
             }
 
             // As a last resort, depend on the device. This guarantees we will end up with a decision of some kind.
             // Code has been structured to make this the last option to avoid unnecessary calls to the web service.
             // Important for the device detection to be in a web service though, so one copy of the detection code can be cached in one application domain
             // rather than in every calling application.
-            if (preferredView == PreferredView.Unknown)
+            if (preferredView == EsccWebsiteView.Unknown)
             {
                 if (String.IsNullOrEmpty(userAgent))
                 {
-                    preferredView = PreferredView.Desktop;
+                    preferredView = EsccWebsiteView.Desktop;
                 }
                 else
                 {
@@ -138,12 +138,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                         {
                             deviceDetection.UseDefaultCredentials = true;
                             deviceDetection.Proxy = XmlHttpRequest.CreateProxy();
-                            preferredView = (deviceDetection.IsMobile(userAgent)) ? PreferredView.Mobile : PreferredView.Desktop;
+                            preferredView = (deviceDetection.IsMobile(userAgent)) ? EsccWebsiteView.Mobile : EsccWebsiteView.Desktop;
                         }
                         catch (WebException)
                         {
                             // If there's a problem reaching the web service, default to the desktop design which works on all devices
-                            preferredView = PreferredView.Desktop;
+                            preferredView = EsccWebsiteView.Desktop;
                         }
                     }
                 }
@@ -184,27 +184,27 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// </summary>
         /// <param name="generalSettings">The general settings.</param>
         /// <param name="configSettings">The config settings for specific master pages.</param>
-        /// <param name="preferredView">The preferred view before this test.</param>
+        /// <param name="esccWebsiteView">The preferred view before this test.</param>
         /// <param name="requestedKey">The key supplied by the user to request the master page.</param>
         /// <returns></returns>
-        private static PreferredView AssignMasterPageFromUserRequest(NameValueCollection generalSettings, Dictionary<PreferredView, NameValueCollection> configSettings, PreferredView preferredView, string requestedKey)
+        private static EsccWebsiteView AssignMasterPageFromUserRequest(NameValueCollection generalSettings, Dictionary<EsccWebsiteView, NameValueCollection> configSettings, EsccWebsiteView esccWebsiteView, string requestedKey)
         {
             try
             {
                 // Get the view requested by the user, and check that we have a master page registered to match it
-                var requestedView = (PreferredView)Enum.Parse(typeof(PreferredView), requestedKey, true);
+                var requestedView = (EsccWebsiteView)Enum.Parse(typeof(EsccWebsiteView), requestedKey, true);
 
                 if ((configSettings.ContainsKey(requestedView) && configSettings[requestedView] != null) ||
                     !String.IsNullOrEmpty(generalSettings[requestedView.ToString() + "MasterPage"]))
                 {
-                    preferredView = requestedView;
+                    esccWebsiteView = requestedView;
                 }
             }
             catch (ArgumentException)
             {
                 // Requested key was invalid, ignore it
             }
-            return preferredView;
+            return esccWebsiteView;
         }
 
 
@@ -287,11 +287,11 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                 // because this user control is run within the "masterpages" virtual directory.
                 if (cookieValue == "mobile")
                 {
-                    session["EastSussexGovUK.PreferredView"] = PreferredView.Mobile;
+                    session["EastSussexGovUK.PreferredView"] = EsccWebsiteView.Mobile;
                 }
                 else if (cookieValue == "desktop")
                 {
-                    session["EastSussexGovUK.PreferredView"] = PreferredView.Desktop;
+                    session["EastSussexGovUK.PreferredView"] = EsccWebsiteView.Desktop;
                 }
 
                 // Redirect to the best available page - either the referrer or the root of the current host
@@ -325,6 +325,75 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             {
                 ExceptionManager.Publish(ex);
             }
+        }
+
+        /// <summary>
+        /// Gets the current master page or MVC layout type based on its path
+        /// </summary>
+        /// <param name="currentView">Path of current master page or MVC layout.</param>
+        /// <returns></returns>
+        public static EsccWebsiteView CurrentViewIs(string currentView)
+        {
+            if (CurrentViewIs(currentView, EsccWebsiteView.Desktop)) return EsccWebsiteView.Desktop;
+            if (CurrentViewIs(currentView, EsccWebsiteView.Mobile)) return EsccWebsiteView.Mobile;
+            if (CurrentViewIs(currentView, EsccWebsiteView.FullScreen)) return EsccWebsiteView.FullScreen;
+            if (CurrentViewIs(currentView, EsccWebsiteView.Plain)) return EsccWebsiteView.Plain;
+            return EsccWebsiteView.Unknown;
+        }
+
+        /// <summary>
+        /// Determines whether the currently selected master page or MVC layout is an instance of the given view.
+        /// </summary>
+        /// <param name="currentView">Path of current master page or MVC layout.</param>
+        /// <param name="view">Check whether this view is currently selected.</param>
+        /// <returns></returns>
+        public static bool CurrentViewIs(string currentView, EsccWebsiteView view)
+        {
+            var generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+            return IsMasterPageInGroup(currentView, view.ToString(), generalSettings);
+        }
+
+        /// <summary>
+        /// Determines whether the current master page is in the group identified by the specified key.
+        /// </summary>
+        /// <param name="currentMasterPage">The current master page.</param>
+        /// <param name="groupName">The key part of a configuration section name or setting listing master pages.</param>
+        /// <param name="generalSettings">The general settings section from web.config.</param>
+        /// <returns>
+        ///   <c>true</c> if the master page is from the specified configuration group; otherwise, <c>false</c>.
+        /// </returns>
+        private static bool IsMasterPageInGroup(string currentMasterPage, string groupName, NameValueCollection generalSettings)
+        {
+            if (String.IsNullOrEmpty(currentMasterPage)) return false;
+
+            currentMasterPage = currentMasterPage.Substring(HttpRuntime.AppDomainAppVirtualPath.Length);
+            if (!currentMasterPage.StartsWith("/", StringComparison.Ordinal)) currentMasterPage = "/" + currentMasterPage;
+            currentMasterPage = "~" + currentMasterPage.ToUpperInvariant();
+
+            // Check if there's a single setting for the master page
+            if (generalSettings != null && !String.IsNullOrEmpty(generalSettings[groupName + "MasterPage"]))
+            {
+                if (generalSettings[groupName + "MasterPage"].ToUpperInvariant() == currentMasterPage)
+                {
+                    return true;
+                }
+            }
+
+            // If not, check if there's a group of settings
+            var masterPageSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/" + groupName + "MasterPages") as NameValueCollection;
+            if (masterPageSettings != null)
+            {
+                foreach (string key in masterPageSettings.Keys)
+                {
+                    if (masterPageSettings[key].ToUpperInvariant() == currentMasterPage)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            // Otherwise it's not a match
+            return false;
         }
     }
 }
