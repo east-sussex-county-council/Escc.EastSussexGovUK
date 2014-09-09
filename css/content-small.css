@@ -99,3 +99,6 @@ ol.progressBar li {font-size: .875em; line-height: 1.285714em;font-weight: norma
    18px margin above and 16px text at all screen sizes. */
 .text-content .share-page { margin: 1.125em 0 0; }
 .text-content .share-page a { margin-right: 1em; }
+
+/* Non-JS alternative to Twitter widget has a link which is better wrapped onto a new line */
+.twitter-account > a { white-space: nowrap; }

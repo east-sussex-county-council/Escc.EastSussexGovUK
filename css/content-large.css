@@ -24,3 +24,6 @@ body .breadcrumb li.current:after {content: ''; }
 body .breadcrumb a:link { margin-right: 5px; }
 body .breadcrumb a:visited { color: #609; }
 body .breadcrumb a:hover, a:focus, a:active { text-decoration: underline; }
+
+/* Keep bottom margin of .supporting sections at 18px */
+.supporting { margin-bottom: .947368em; }
