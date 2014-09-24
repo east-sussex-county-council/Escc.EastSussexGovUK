@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Configuration;
 using System.Globalization;
 using System.Web;
 using EsccWebTeam.Data.Web;
+using EsccWebTeam.EastSussexGovUK.MasterPages.Remote;
 
 namespace EsccWebTeam.EastSussexGovUK
 {
@@ -34,12 +32,7 @@ namespace EsccWebTeam.EastSussexGovUK
 
         private void ProcessCorsHeaders(HttpContext context)
         {
-            var config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
-            if (config != null && !String.IsNullOrEmpty(config["CorsAllowedOrigins"]))
-            {
-                var allowedOrigins = new List<string>(config["CorsAllowedOrigins"].Split(new[] {";"}, StringSplitOptions.RemoveEmptyEntries));
-                Cors.AllowCrossOriginRequest(context.Request, context.Response, allowedOrigins);
-            }
+            Cors.AllowCrossOriginRequest(context.Request, context.Response, new RemoteMasterPageXmlConfigurationProvider().CorsAllowedOrigins());
         }
 
         /// <summary>
