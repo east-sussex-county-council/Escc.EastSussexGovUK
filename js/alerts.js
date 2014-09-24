@@ -16,6 +16,7 @@
         $("head").append('<link rel="stylesheet" href="' + esccConfig.CssHandlerPath.replace('{0}', 'alert') + '" />');
 
         var container = $("#main > .container");
+        var fullScreenContainer = $(".topbar");
         var breadcrumb = $(".breadcrumb, .breadcrumb-mobile", container);
 
         var alertHtml = '';
@@ -27,8 +28,10 @@
 
         if (breadcrumb.length) {
             alertNode.insertAfter(breadcrumb[breadcrumb.length - 1]);
-        } else {
+        } else if (container.length) {
             alertNode.prependTo(container);
+        } else if (fullScreenContainer.length) {
+            alertNode.insertAfter(fullScreenContainer);
         }
     }
 

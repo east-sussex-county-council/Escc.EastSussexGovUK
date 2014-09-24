@@ -13,6 +13,6 @@
 .full-screen .body { top: 8.769231em; }
 
 /* Also need to make sure the alert only takes up those two lines and never wraps */
-.full-screen .alert { margin: .153846em 0 0; border: none; border-radius: 0; padding: .615385em 18px .615385em 44px; white-space: nowrap; overflow: hidden; font-weight: bold; }
+.full-screen .alert { margin: .153846em 0 0; border: none; border-radius: 0; padding: .615385em 18px .615385em 44px; white-space: nowrap; overflow: auto; font-weight: bold; }
 .full-screen .alert .icon { top: -6px; left: -6px; }
 .full-screen .alert p { margin: 0; }
