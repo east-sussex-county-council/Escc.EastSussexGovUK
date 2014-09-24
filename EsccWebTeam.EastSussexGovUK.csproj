@@ -171,6 +171,7 @@
     <Content Include="js\jquery-load.js" />
     <Content Include="js\libs\jquery-1.8.3.min.js" />
     <Content Include="js\libs\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="js\libs\jquery.ajax-retry.min.js" />
     <Content Include="js\libs\markerclusterer.min.js" />
     <Content Include="js\libs\markerwithlabel_packed.js" />
     <Content Include="js\media-queries.js" />
