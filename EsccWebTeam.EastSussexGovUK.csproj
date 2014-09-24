@@ -163,6 +163,7 @@
     <Content Include="img\logo-for-facebook.png" />
     <Content Include="js\1space.js" />
     <Content Include="js\analytics.js" />
+    <Content Include="js\config-public.js" />
     <Content Include="js\cross-origin-ie.js" />
     <Content Include="js\google-maps.js" />
     <Content Include="js\googleautosuggest.js" />
@@ -726,7 +727,7 @@ if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  ja
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/1space.js" &gt; "$(ProjectDir)js/min/1space.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/cross-origin-ie.js" &gt; "$(ProjectDir)js/min/cross-origin-ie.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/switch-view.js" &gt; "$(ProjectDir)js/min/switch-view.js" )
-if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/config.js" &gt; "$(ProjectDir)js/min/config.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/config-public.js" &gt; "$(ProjectDir)js/min/config.js" )
 
 if "$(ConfigurationName)" == "Release" ( if exist "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" &gt; "$(ProjectDir)js\min\Escc.DocumentsInNewWindow.js")
 if "$(ConfigurationName)" == "Release" ( if exist "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" &gt; "$(ProjectDir)js\min\Escc.DocumentsInNewWindow.js")
