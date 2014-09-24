@@ -1,10 +1,18 @@
 ﻿if (typeof (jQuery) != 'undefined' && typeof (esccConfig) != 'undefined') {
     $.getJSON(esccConfig.AlertsUrl, function(data) {
 
+        // Note: Must filter inheritance before cascade. If an ancestor of the current page blocks inheritance it needs to be
+        // considered when deciding how far up the tree to inherit, before it potentially gets removed if it blocks cascade as well.
+        // 
+        // eg
+        // --- [has cascading alert]
+        //     --- [has alert with no cascade, no inherit]
+        //         --- [allows inherit, but should not inherit top-level alert]
+        // 
         var alerts = data;
         alerts = filterByUrl(alerts);
-        alerts = filterByCascade(alerts);
         alerts = filterByInherit(alerts);
+        alerts = filterByCascade(alerts);
 
         if (alerts.length) {
             displayAlerts(alerts);           
