@@ -2,8 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="msxsl"
     xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
-    xmlns:msbuild="http://schemas.microsoft.com/developer/msbuild/2003"
->
+    xmlns:msbuild="http://schemas.microsoft.com/developer/msbuild/2003">
   <xsl:output method="xml" indent="yes"/>
 
   <!-- TransformProjectFile.xslt is from Escc.AzureDeployment and will be copied into this folder at deploy time  -->
