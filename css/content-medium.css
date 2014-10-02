@@ -78,7 +78,7 @@ ol.progressBar li { font-size: .736842em; }
 /* Reset other buttons to their default skin size */
 .button, .form input[type=submit] {font-size: .684211em; }
 
-/* Share links for the bottom of a page, defined in the _Share.cshtml partial view from Escc.Umbraco.CustomerFocusTemplates. 
+/* Share links for the bottom of a page, defined in the _Share.cshtml partial view from Escc.CustomerFocusTemplates.Website. 
    Retain 16px text and 18px margin above, to look unchanged from mobile view. */
 .text-content .share-page { font-size: .842105em; }
 .text-content .share-page .email { background-position: 0 -94px; }
