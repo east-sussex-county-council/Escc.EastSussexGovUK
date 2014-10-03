@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web.UI.HtmlControls;
+using EsccWebTeam.Data.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -92,6 +93,14 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 if (this.logoSmallLink.Visible) this.logoSmallLink.Text = urlPrefix + this.logoSmallLink.Text;
                 if (this.logoLargeLink.Visible) this.logoLargeLink.Text = urlPrefix + this.logoLargeLink.Text;
             }
+
+            // Ensure search is always an HTTPS URL to avoid a redirect
+            this.searchUrl.Text = Iri.MakeAbsolute(new Uri(this.searchUrl.Text, UriKind.RelativeOrAbsolute)).ToString();
+            if (this.searchUrl.Text.StartsWith("http://"))
+            {
+                this.searchUrl.Text = "https://" + this.searchUrl.Text.Substring(7);
+            }
+
         }
 
         private void Menu()

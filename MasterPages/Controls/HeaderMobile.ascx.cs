@@ -1,4 +1,5 @@
 ﻿using System;
+using EsccWebTeam.Data.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -42,6 +43,14 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 this.logoSmall.Text = urlPrefix + this.logoSmall.Text;
                 if (this.logoSmallLink.Visible) this.logoSmallLink.Text = urlPrefix + this.logoSmallLink.Text;
 
+            }
+
+
+            // Ensure search is always an HTTPS URL to avoid a redirect
+            this.searchUrl.Text = Iri.MakeAbsolute(new Uri(this.searchUrl.Text, UriKind.RelativeOrAbsolute)).ToString();
+            if (this.searchUrl.Text.StartsWith("http://"))
+            {
+                this.searchUrl.Text = "https://" + this.searchUrl.Text.Substring(7);
             }
         }
     }
