@@ -347,6 +347,11 @@ dl.itemDetail dd { margin: 0 2.821317% .538462em 25%; } /* 7px/13px between item
 .related { padding: 1.384615em 2.821317%; }
 .related .section { width: 45.768025%; margin: 0 2.821317% 0 0;  }
 
+/* Display web chat at this level, but it has a built-in bottom margin so the .supporting one isn't needed.
+   Also the .supporting margin is still displayed when the web chat is not active.
+*/
+#webchat { margin: 0;}
+
 /* Display adverts at this level. They should also have .supporting applied to place them in the right column. 
 
    <a href="http://www.example.com" class="supporting advert"><img /></a>
