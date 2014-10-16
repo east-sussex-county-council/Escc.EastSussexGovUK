@@ -4,7 +4,7 @@
 <div class="supporting">
     <div id="marketplace-search-widget">
 	<div id="logo">
-		<img src="http://www.eastsussex1space.co.uk/skins/eastsussex/Images/widgetLogo.png" alt="East Sussex 1Space logo" />
+		<img src="https://www.eastsussex1space.co.uk/skins/eastsussex/Images/widgetLogo.png" alt="East Sussex 1Space logo" />
 	</div>
 	<p id="text-area-1">
 		Find the help you need
@@ -13,7 +13,7 @@
 		<p id="text-area-2">
 			A directory of services, groups and organisations
 		</p>
-		<form method="POST" action="http://www.eastsussex1space.co.uk/Search">
+		<form method="POST" action="https://www.eastsussex1space.co.uk/Search">
 			<input type="text" name="keywords" value="What are you looking for?" />
 			<button type="submit" name="Go" class="button">
 				<div>
