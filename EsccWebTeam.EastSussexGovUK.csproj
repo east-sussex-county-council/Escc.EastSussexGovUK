@@ -270,7 +270,6 @@
     <None Include="Web References\GoogleAnalytics\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseViewModel.cs" />
     <Compile Include="ContextContainer.cs" />
     <Compile Include="EastSussexGovUKContext.cs" />
     <Compile Include="MasterPages\AutoSuggestGoogleAnalytics.ashx.cs">
