@@ -21,31 +21,18 @@
         '/socialcare/aboutus/contact.htm',
         '/socialcare/aboutus/complaints/default.htm',
         '/socialcare/gettinghelp/default.htm',
-        '/socialcare/gettinghelp/apply/default.htm',
-        '/socialcare/gettinghelp/eligibility/default.htm',
-        '/socialcare/servicerequestforms/introduction.aspx',
+        '/socialcare/gettinghelp/apply/',
+        '/socialcare/gettinghelp/eligibility/',
         '/socialcare/disability/learning/contacts/socialcaredirect.htm',
         '/socialcare/athome/approvedproviders/'
     ];
 
     var chatExclude = [
-        '/roadsandtransport/roads/licences/',
-        '/roadsandtransport/roads/largevehicles/',
-        '/roadsandtransport/roads/roadschemes/cycleway.htm',
-        '/roadsandtransport/roads/roadschemes/rail/',
-        '/roadsandtransport/roads/roadschemes/a259corridor/',
-        '/roadsandtransport/public/',
-        '/roadsandtransport/parking/',
-        '/educationandlearning/schools/transport/',
-        '/roadsandtransport/planning/',
         '/contactus/apply/default.htm',
         '/contactus/pay/default.htm',
         '/contactus/pay/about.htm',
         '/contactus/languages.htm',
-        '/contactus/interpreting.htm',
-        '/socialcare/gettinghelp/advocacy.htm',
-        '/socialcare/gettinghelp/money/',
-        '/socialcare/worried/report/default.htm'
+        '/contactus/interpreting.htm'
     ];
 
     var found = function(paths) {
