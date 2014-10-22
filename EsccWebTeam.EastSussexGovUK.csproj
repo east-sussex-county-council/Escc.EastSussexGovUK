@@ -271,6 +271,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextContainer.cs" />
+    <Compile Include="MasterPages\CustomerFocusSkin.cs" />
     <Compile Include="EastSussexGovUKContext.cs" />
     <Compile Include="MasterPages\AutoSuggestGoogleAnalytics.ashx.cs">
       <DependentUpon>AutoSuggestGoogleAnalytics.ashx</DependentUpon>
@@ -495,6 +496,8 @@
     <Compile Include="MasterPages\Controls\TwitterSearch.ascx.designer.cs">
       <DependentUpon>TwitterSearch.ascx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\DefaultSkin.cs" />
+    <Compile Include="MasterPages\IEsccWebsiteSkin.cs" />
     <Compile Include="MasterPages\Remote\IRemoteMasterPageConfigurationProvider.cs" />
     <Compile Include="MasterPages\Remote\RemoteMasterPageCacheProviderBase.cs" />
     <Compile Include="MasterPages\Remote\RemoteMasterPageFileCacheProvider.cs" />
