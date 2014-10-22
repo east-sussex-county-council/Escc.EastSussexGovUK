@@ -1,27 +1,31 @@
 ﻿if (typeof (jQuery) != 'undefined' && typeof (esccConfig) != 'undefined') {
 
-    // Use code from https://github.com/johnkpaul/jquery-ajax-retry to mitigate against network errors, which are the main
-    // cause of no JavaScript according to gov.uk research https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/
-    // 
-    $.ajax({ dataType: "json", url: esccConfig.AlertsUrl }).retry({ times: 3 }).then(function (data) {
-  
-        // Note: Must filter inheritance before cascade. If an ancestor of the current page blocks inheritance it needs to be
-        // considered when deciding how far up the tree to inherit, before it potentially gets removed if it blocks cascade as well.
-        // 
-        // eg
-        // --- [has cascading alert]
-        //     --- [has alert with no cascade, no inherit]
-        //         --- [allows inherit, but should not inherit top-level alert]
-        // 
-        var alerts = data;
-        alerts = filterByUrl(alerts);
-        alerts = filterByInherit(alerts);
-        alerts = filterByCascade(alerts);
+    // If the old alert is still active, don't add another.
+    if (!$(".alert").length) {
 
-        if (alerts.length) {
-            displayAlerts(alerts);           
-        }
-    });
+        // Use code from https://github.com/johnkpaul/jquery-ajax-retry to mitigate against network errors, which are the main
+        // cause of no JavaScript according to gov.uk research https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/
+        // 
+        $.ajax({ dataType: "json", url: esccConfig.AlertsUrl }).retry({ times: 3 }).then(function(data) {
+
+            // Note: Must filter inheritance before cascade. If an ancestor of the current page blocks inheritance it needs to be
+            // considered when deciding how far up the tree to inherit, before it potentially gets removed if it blocks cascade as well.
+            // 
+            // eg
+            // --- [has cascading alert]
+            //     --- [has alert with no cascade, no inherit]
+            //         --- [allows inherit, but should not inherit top-level alert]
+            // 
+            var alerts = data;
+            alerts = filterByUrl(alerts);
+            alerts = filterByInherit(alerts);
+            alerts = filterByCascade(alerts);
+
+            if (alerts.length) {
+                displayAlerts(alerts);
+            }
+        });
+    }
 
     function displayAlerts(alertData) {
         /// <summary>Display an alert on the page</summary>
