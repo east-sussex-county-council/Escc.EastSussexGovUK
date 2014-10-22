@@ -641,6 +641,10 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .ie7 .share .fb-like { margin-top: 1.384615em; } /* 18px margin to achieve 6px margin effect */
 .ie6 .share { display: inline-block; } /* hasLayout to contain floats */
 
+/* .share-page is a simpler replacement for .share */
+.text .share-page { margin: 1.384615em 0; }
+.text .share-page a { margin-right: 1em; }
+
 /* Supporting content sits under an .article.
    .supporting offers just the placement
    .supporting-text offers placement with some standard formatting. 
