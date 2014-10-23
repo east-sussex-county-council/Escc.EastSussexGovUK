@@ -11,7 +11,6 @@
         '/roadsandtransport/roads/contactus/',
         '/roadsandtransport/roads/roadadoption/',
         '/roadsandtransport/roads/roadsafety/',
-        '/roadsandtransport/roads/maintenance/fixtures/',
         '/roadsandtransport/bexhillhastingslinkroad/',
         '/roadsandtransport/roads/roadschemes/uckfieldtransport/',
         '/community/emergencyplanningandcommunitysafety/emergencyplanning/advice/flooding/',
@@ -23,8 +22,7 @@
         '/socialcare/gettinghelp/default.htm',
         '/socialcare/gettinghelp/apply/',
         '/socialcare/gettinghelp/eligibility/',
-        '/socialcare/disability/learning/contacts/socialcaredirect.htm',
-        '/socialcare/athome/approvedproviders/'
+        '/socialcare/disability/learning/contacts/socialcaredirect.htm'
     ];
 
     var chatExclude = [
