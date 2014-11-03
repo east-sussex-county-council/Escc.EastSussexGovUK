@@ -677,7 +677,7 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .hcal, [href$=".calendar"], .rss, .email, .rss-email, .xml, .pdf, .doc, .rtf, .xls, .wma, .mp3, .ppt, .jpg, .html, .file, .new-window, .facebook, [href*="facebook.com"], .twitter, [href*="twitter.com"], .youtube, [href*="youtube.com"], .flickr, [href*="flickr.com"]
 { background-image: url(/img/body/item-type.gif); background-repeat: no-repeat; padding-left: 23px; }
 
-.hcal, [href$=".calendar"] { background-position: 0 2px; }
+.hcal, [href$=".calendar"] { background-position: 0 0; }
 .rss { background-position: 0 -48px; }
 .email { background-position: 0 -97px; padding-left: 19px; }
 .rss-email  { background-position: 0 -150px; }

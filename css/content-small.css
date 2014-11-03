@@ -46,7 +46,7 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 .text-content th, .text-content td { border: .0625em solid #ccc;padding: .5em;}
 
 /* Link icons - larger text size means icons need to move slightly */
-.text-content .hcal { background-position: 0 4px; }
+.text-content .hcal, .text-content [href$=".calendar"] { background-position: 0 4px; }
 .text-content .rss { background-position: 0 -44px; }
 .text-content .email { background-position: 0 -94px; }
 .text-content .rss-email  { background-position: 0 -146px; }

@@ -39,7 +39,7 @@
 .text-content th, .text-content td { border: .052631em solid #ccc;padding: .421053em;}
 
 /* Link icons - larger text size means icons need to move slightly */
-.text-content .hcal { background-position: 0 6px; }
+.text-content .hcal, .text-content [href$=".calendar"] { background-position: 0 6px; }
 .text-content .rss { background-position: 0 -42px; }
 .text-content .email { background-position: 0 -92px; }
 .text-content .rss-email  { background-position: 0 -144px; }
