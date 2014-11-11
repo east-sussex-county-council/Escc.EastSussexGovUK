@@ -79,7 +79,7 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
         Content here
     </div>
     */
-.related-links ul { border-top: .5625em solid #003C69; list-style-type: none;margin: 0;}
+.related-links ul { list-style-type: none;margin: 0;}
 .related-links li { margin: 1.125em 0;}
 
 /* Progress bar from forms stylesheet - in context of 16px base font, adjust to 14px/18px using new font */
