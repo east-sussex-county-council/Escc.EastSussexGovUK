@@ -65,6 +65,7 @@
 .text-content .latest { background: #ccc; padding: .947368em 18px; margin: .947368em 0; }
 
 /* Related links box - adjust for change in base font size */
+.related-links ul { border-top-width: .473684em; }
 .related-links li { margin: .947369em 0; }
 
 /* Progress bar from forms stylesheet - in context of 19px base font, adjust to 14px/18px using new font */
