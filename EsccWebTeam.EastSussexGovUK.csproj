@@ -142,6 +142,7 @@
     <Content Include="img\body\flood-alert.png" />
     <Content Include="img\body\flood-severe.png" />
     <Content Include="img\body\flood-warning.png" />
+    <Content Include="img\body\item-type.png" />
     <Content Include="img\body\map-placemarker.png" />
     <Content Include="img\body\navigation.gif" />
     <Content Include="img\body\gradient.jpg" />
@@ -154,7 +155,6 @@
     <Content Include="img\header\logo-small.gif" />
     <Content Include="img\header\mask.gif" />
     <Content Include="img\header\menu-item.gif" />
-    <Content Include="img\body\item-type.gif" />
     <Content Include="img\header\logo-large.gif" />
     <Content Include="img\header\mobile.jpg" />
     <Content Include="img\header\robin.jpg" />

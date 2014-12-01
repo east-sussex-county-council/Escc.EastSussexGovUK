@@ -96,8 +96,8 @@ html { overflow-y: scroll; }
 */
 .header .size { display: block; position: absolute; right: 6em; }
 .header .size a { padding: 7px 10px 7px 20px; float: left; color: #777; }
-.header .size .zoom-in { background: url(/img/body/item-type.gif) no-repeat 0 -1491px; }
-.header .size .zoom-out { background: url(/img/body/item-type.gif) no-repeat 0 -1538px; }
+.header .size .zoom-in { background: url(/img/body/item-type.png) no-repeat 0 -1491px; }
+.header .size .zoom-out { background: url(/img/body/item-type.png) no-repeat 0 -1538px; }
 
 /* Set the space above 'contact us' to align the ascender height with the top of the ESCC logo */
 .header .contact { padding: 7px 0; }
@@ -214,7 +214,7 @@ html { overflow-y: scroll; }
 .footer .newsletter .email { font-size: 1.076923em; line-height: 1em; padding: 6px; width: 19.5em; background: #fff; border: 2px solid #9c9c9c; border-radius: 5px; } /* 14px font */
 
 .footer .petitions { display: block; float: left; width: 23.498965%; border-left: 1px dotted #779aa7; padding-left: 1.759834%; }
-.footer .petitions h2 span { background: url(/img/body/item-type.gif) no-repeat right -1850px; padding-right: 35px; }
+.footer .petitions h2 span { background: url(/img/body/item-type.png) no-repeat right -1850px; padding-right: 35px; }
 .footer .petitions ul { margin: .692308em 0 .692308em 1.153846em; }
 
 /* Equal heights ensures the dividing borders go to the bottom */

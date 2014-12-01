@@ -57,6 +57,7 @@
 .text-content .facebook, .text-content [href*="facebook.com"] { background-position: 0 -1346px; }
 .text-content .youtube, .text-content [href*="youtube.com"] { background-position: 0 -1396px; }
 .text-content .flickr, .text-content [href*="flickr.com"] { background-position: 0 -1446px; }
+.text-content [href$="/print"] { background-position: 0 -694px; }
 
 /* Adjust .quick-answer to change in base font-size */
 .text-content .quick-answer { font-size: 1.421053em; }

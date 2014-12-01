@@ -10,6 +10,8 @@ CSS, JavaScript and image files used by two or more applications belong in this 
 
 Our CSS and JavaScript files are minified using [YUI Compressor](https://github.com/yui/yuicompressor) and concatenated on-the-fly using our own EsccWebTeam.Egms project. 
 
+The printer icon used in our CSS was made by [Yannick](http://yanlu.de). It's from [flaticon.com](http://www.flaticon.com) and licensed under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).
+
 Master pages
 ------------
 

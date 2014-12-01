@@ -64,6 +64,7 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 .text-content .facebook, .text-content [href*="facebook.com"] { background-position: 0 -1348px; }
 .text-content .youtube, .text-content [href*="youtube.com"] { background-position: 0 -1398px; }
 .text-content .flickr, .text-content [href*="flickr.com"] { background-position: 0 -1448px; }
+.text-content [href$="/print"] { background-position: 0 -696px; }
 
 /* Adjust .quick-answer to change in base font-size */
 .text-content .quick-answer { font-size: 1.6875em; }
