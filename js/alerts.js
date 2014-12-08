@@ -22,6 +22,7 @@
             alerts = filterByUrl(alerts);
             alerts = filterByInherit(alerts);
             alerts = filterByCascade(alerts);
+            alerts = filterBlankAlerts(alerts);
 
             if (alerts.length) {
                 displayAlerts(alerts);
@@ -51,6 +52,19 @@
         } else if (fullScreenContainer.length) {
             alertNode.insertAfter(fullScreenContainer);
         }
+    }
+
+    function filterBlankAlerts(alertsData) {
+        /// <summary>Filters alerts based on whether they have any text</summary>
+        var alerts = [];
+
+        $.each(alertsData, function (key, singleAlert) {
+            if ($.trim(singleAlert.alert)) {
+                alerts.push(singleAlert);
+            }
+        });
+
+        return alerts;
     }
 
     function filterByInherit(alertsData) {
