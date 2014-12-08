@@ -109,6 +109,11 @@ abbr[title] { border-bottom: 1px dotted; cursor: help; }
 /* Align small print to baseline grid, 11px on 18px */
 small { font-size: .846154em; line-height: 1.636364em; }
 
+/* Ensure images are resized to fit small screens, but undo for IE8 in tables because it interprets 100% as meaning 
+   "100% of however thin the td gets when you completely ignore the image size"
+*/
+img { max-width: 100%; }
+.ie8 table img { max-width: none; }
 
 /********************************
  * LINKS - APPLIES TO ALL MEDIA *
@@ -546,12 +551,6 @@ strong.quick-answer-datum { font-size: 1.33em; line-height: 1.5em; font-weight: 
 /* Secondary actions inside a table row */
 .text table .button-nav { text-align: center; }
 .text table .button-nav input { float: none; display: inline; margin: 0; }
-
-/* Ensure images are resized to fit small screens, but undo for IE8 in tables because it interprets 100% as meaning 
-   "100% of however thin the td gets when you completely ignore the image size"
-*/
-.text img { max-width: 100%; }
-.ie8 .text table img { max-width: none; }
 
 /* Information about download format and size */
 .text .downloadDetail { font-size: .846154em; line-height: 1.636364em; } 
