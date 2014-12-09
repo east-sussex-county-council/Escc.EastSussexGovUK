@@ -20,8 +20,16 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             {
                 var urlPrefix = context.BaseUrl.ToString().TrimEnd('/');
                 this.homeSmall.HRef = urlPrefix + this.homeSmall.HRef;
-                this.logoSmall.Text = urlPrefix + this.logoSmall.Text;
                 this.contact.HRef = urlPrefix + this.contact.HRef;
+
+                // Because these are resources loaded by the page, rather than linking off to another page, 
+                // ensure the URL is protocol relative
+                var colon = urlPrefix.IndexOf(":", StringComparison.OrdinalIgnoreCase);
+                if (colon > -1)
+                {
+                    urlPrefix = urlPrefix.Substring(colon + 1);
+                }
+                this.logoSmall.Text = urlPrefix + this.logoSmall.Text;
             }
         }
     }

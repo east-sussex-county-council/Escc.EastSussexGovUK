@@ -60,7 +60,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 
                 // Because these are resources loaded by the page, rather than linking off to another page, 
                 // ensure the URL is protocol relative
-                var colon = urlPrefix.IndexOf(":");
+                var colon = urlPrefix.IndexOf(":", StringComparison.OrdinalIgnoreCase);
                 if (colon > -1)
                 {
                     urlPrefix = urlPrefix.Substring(colon + 1);

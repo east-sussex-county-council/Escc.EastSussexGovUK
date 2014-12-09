@@ -21,11 +21,19 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             {
                 var urlPrefix = siteContext.BaseUrl.ToString().TrimEnd('/');
                 this.logoSmallLink.Text = urlPrefix + this.logoSmallLink.Text;
-                this.logoSmall.Text = urlPrefix + this.logoSmall.Text;
                 this.contact.HRef = urlPrefix + this.contact.HRef;
                 this.searchUrl.Text = urlPrefix + this.searchUrl.Text;
                 this.mobileHome.HRef = urlPrefix + this.mobileHome.HRef;
                 this.mobileMenu.HRef = urlPrefix + this.mobileMenu.HRef;
+
+                // Because these are resources loaded by the page, rather than linking off to another page, 
+                // ensure the URL is protocol relative
+                var colon = urlPrefix.IndexOf(":", StringComparison.OrdinalIgnoreCase);
+                if (colon > -1)
+                {
+                    urlPrefix = urlPrefix.Substring(colon + 1);
+                }
+                this.logoSmall.Text = urlPrefix + this.logoSmall.Text;
             }
             else
             {
