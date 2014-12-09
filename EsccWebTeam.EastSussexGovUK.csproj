@@ -188,8 +188,6 @@
     <Content Include="MasterPages\Controls\AboveHeaderMobile.ascx" />
     <Content Include="MasterPages\Controls\Adverts.ascx" />
     <Content Include="css\large.css" />
-    <Content Include="MasterPages\Controls\Alert.ascx" />
-    <Content Include="MasterPages\Controls\AlertFullScreen.ascx" />
     <Content Include="MasterPages\Controls\Error400.ascx" />
     <Content Include="MasterPages\Controls\Error310.ascx" />
     <Content Include="MasterPages\Controls\Error404.ascx" />
@@ -300,20 +298,6 @@
     </Compile>
     <Compile Include="MasterPages\Controls\AboveHeaderDesktop.ascx.designer.cs">
       <DependentUpon>AboveHeaderDesktop.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Controls\Alert.ascx.cs">
-      <DependentUpon>Alert.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\Alert.ascx.designer.cs">
-      <DependentUpon>Alert.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Controls\AlertFullScreen.ascx.cs">
-      <DependentUpon>AlertFullScreen.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\AlertFullScreen.ascx.designer.cs">
-      <DependentUpon>AlertFullScreen.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Controls\BreadcrumbTrailFactory.cs" />
     <Compile Include="MasterPages\Controls\BreadcrumbTrailMobile.cs" />
@@ -624,10 +608,6 @@
     <ProjectReference Include="..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
       <Project>{1C429378-DBF2-4AF7-88AC-C059AA163682}</Project>
       <Name>EsccWebTeam.HouseStyle</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Escc.ServiceClosures\EsccWebTeam.ServiceClosures.csproj">
-      <Project>{CC1C7E3E-DA3D-40F2-8184-DEA36C277CAD}</Project>
-      <Name>EsccWebTeam.ServiceClosures</Name>
     </ProjectReference>
     <ProjectReference Include="..\Escc.NavigationControls\EsccWebTeam.NavigationControls.csproj">
       <Project>{0323F668-1723-44A1-8C94-F91DC59EF315}</Project>

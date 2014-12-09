@@ -11,7 +11,6 @@
     <title></title>
 </head>
 <body>
-    <EastSussexGovUK:MasterPageControl runat="server" Control="Alert" EnableViewState="false" />
     <form id="form1" runat="server">
         <asp:ContentPlaceHolder ID="content" runat="server" />
         <asp:ContentPlaceHolder ID="supporting" runat="server" />

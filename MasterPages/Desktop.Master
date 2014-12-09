@@ -19,7 +19,6 @@
     <div id="main" role="main" class="body">
         <div class="container">
             <asp:ContentPlaceholder id="breadcrumb" runat="server"><EastSussexGovUK:BreadcrumbTrail runat="server" ID="breadcrumbTrail" EnableViewState="false" /><EastSussexGovUK:BreadcrumbTrailMobile runat="server" ID="breadcrumbTrailMobile" EnableViewState="false" /></asp:ContentPlaceholder>
-            <EastSussexGovUK:MasterPageControl runat="server" Control="Alert" EnableViewState="false" />
             <form id="form1" runat="server">
                 <asp:ContentPlaceHolder ID="content" runat="server" />
                 <asp:ContentPlaceholder id="supporting" runat="server">

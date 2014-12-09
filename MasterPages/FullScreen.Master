@@ -17,7 +17,6 @@
         <header>
             <div class="header context">
                 <EastSussexGovUK:MasterPageControl runat="server" Control="HeaderFullScreen" EnableViewState="false" />
-                <EastSussexGovUK:MasterPageControl runat="server" Control="AlertFullScreen" EnableViewState="false" />
 
                 <div class="full-screen-bar">
                        <h1><asp:contentplaceholder runat="server" id="fullScreenHeading">Page heading</asp:contentplaceholder></h1>
