@@ -232,7 +232,7 @@
     <Content Include="MasterPages\RSS\display-as-html.xslt" />
     <Content Include="MasterPages\RSS\escc-logo.gif" />
     <Content Include="MasterPages\RSS\rss-utilities.xslt" />
-    <Content Include="MasterPages\Remote\Web.config" />
+    <None Include="MasterPages\Remote\Web.config" />
     <Content Include="MasterPages\Data\hCalendar.ashx" />
     <Content Include="MasterPages\FullScreen.Master" />
     <Content Include="LICENSE.md" />
@@ -246,18 +246,18 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="README.md" />
-    <Content Include="Web.example.config">
+    <None Include="Web.example.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <None Include="Web References\DeviceDetection\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\DeviceDetection\Service.disco" />
     <None Include="Web References\GoogleAnalytics\Service.disco" />
-    <Content Include="Web.config">
+    <None Include="Web.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <Content Include="windows-tile.png" />
     <Content Include="yuicompressor-2.4.6.jar" />
     <None Include="Web References\DeviceDetection\Service.wsdl" />
@@ -563,7 +563,7 @@
     <Content Include="robots.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\Web.config" />
+    <None Include="css\Web.config" />
     <None Include="eastsussexcountycouncil.rdf">
       <SubType>Designer</SubType>
     </None>
@@ -575,7 +575,7 @@
     <None Include="img\header\header original.psd" />
     <None Include="img\header\header resized, tiled, with channel for mask.psd" />
     <None Include="img\header\mask.psd" />
-    <Content Include="js\Web.config" />
+    <None Include="js\Web.config" />
     <None Include="img\header\mobile.psd" />
     <Content Include="MasterPages\AutoSuggestGoogleAnalytics.ashx" />
     <Content Include="MasterPages\Plain.Master" />
