@@ -15,6 +15,11 @@
         '/roadsandtransport/roads/roadschemes/uckfieldtransport/',
         '/community/emergencyplanningandcommunitysafety/emergencyplanning/advice/flooding/',
         '/leisureandtourism/countryside/rightsofway/',
+        '/leisureandtourism/localandfamilyhistory/',
+        '/libraries/activities-and-events/library-volunteers/',
+        '/libraries/elibrary/howtouse/',
+        '/libraries/find/',
+        '/libraries/reference/',
         '/environment/rubbishandrecycling/recyclingsites/',
         '/environment/woodlands/dutchelms/',
         '/socialcare/aboutus/contact.htm',
@@ -30,7 +35,10 @@
         '/contactus/pay/default.htm',
         '/contactus/pay/about.htm',
         '/contactus/languages.htm',
-        '/contactus/interpreting.htm'
+        '/contactus/interpreting.htm',
+        '/libraries/find/northiam/default.htm',
+        '/libraries/find/rotherfield/default.htm',
+        '/libraries/find/sedlescombe/default.htm'
     ];
 
     var found = function(paths) {
