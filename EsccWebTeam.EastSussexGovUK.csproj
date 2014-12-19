@@ -135,6 +135,7 @@
     <Content Include="css\print.css" />
     <Content Include="css\social-media-large.css" />
     <Content Include="css\social-media-small.css" />
+    <Content Include="css\umbraco-preview.css" />
     <Content Include="default.aspx" />
     <Content Include="EsccWebTeam.EastSussexGovUK.csproj.xslt" />
     <Content Include="favicon.ico" />
@@ -702,6 +703,7 @@ if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  ja
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/alert.css" &gt; "$(ProjectDir)css/min/alert.css" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/mobile-controls.css" &gt; "$(ProjectDir)css/min/mobile-controls.css" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/1space.css" &gt; "$(ProjectDir)css/min/1space.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/umbraco-preview.css" &gt; "$(ProjectDir)css/min/umbraco-preview.css" )
 
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  del "$(ProjectDir)js\min\*.*" /Q )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/analytics.js" &gt; "$(ProjectDir)js/min/analytics.js" )
