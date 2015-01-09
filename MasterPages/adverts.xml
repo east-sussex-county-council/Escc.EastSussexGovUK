@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <adverts>
-  <add url="/childrenandfamilies" imageUrl="/wres/banners/mentor.jpg" description="Become a mentor" navigateUrl="/childrenandfamilies/youngpeople/mentoring/default.htm" />
   <add url="/childrenandfamilies/childrenincare/adoption" imageUrl="/wres/banners/escc_website_our_adoption_story.jpg" description="Our adoption story - Watch on YouTube" navigateUrl="http://youtu.be/CLx0DDgrQEk" />
   <add url="/childrenandfamilies/childrenincare/adoption" imageUrl="/img/adverts/adoption-facebook.jpg" description="Facebook - East Sussex County Council Adoption Recruitment Service" navigateUrl="https://www.facebook.com/EastSussexAdoption" />
   <add url="/childrenandfamilies/childrenincare/adoption/process" imageUrl="/wres/banners/escc_website_adoption_bp.jpg" description="Barry and Paul's story - Watch on YouTube" navigateUrl="http://www.youtube.com/watch?v=rGVX6revos4&amp;list=UUtbaBmGtLDFpgB650LGtH6Q&amp;feature=share&amp;index=1" />
