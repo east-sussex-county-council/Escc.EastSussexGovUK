@@ -165,7 +165,6 @@
     <Content Include="js\1space.js" />
     <Content Include="js\alerts.js" />
     <Content Include="js\analytics.js" />
-    <None Include="js\config-public.js" />
     <Content Include="js\cross-origin-ie.js" />
     <Content Include="js\google-maps.js" />
     <Content Include="js\googleautosuggest.js" />
@@ -228,6 +227,7 @@
     <Content Include="MasterPages\Remote\Control.aspx" />
     <Content Include="MasterPages\Remote\Example\default.aspx" />
     <Content Include="MasterPages\RSS\config.example.xslt" />
+    <Content Include="MasterPages\Remote\Web.example.config" />
     <None Include="MasterPages\RSS\config.xslt" />
     <Content Include="MasterPages\RSS\dates.xslt" />
     <Content Include="MasterPages\RSS\display-as-html.xslt" />
@@ -711,7 +711,6 @@ if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  ja
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/1space.js" &gt; "$(ProjectDir)js/min/1space.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/cross-origin-ie.js" &gt; "$(ProjectDir)js/min/cross-origin-ie.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/switch-view.js" &gt; "$(ProjectDir)js/min/switch-view.js" )
-if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/config-public.js" &gt; "$(ProjectDir)js/min/config.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/alerts.js" &gt; "$(ProjectDir)js/min/alerts.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/chat.js" &gt; "$(ProjectDir)js/min/chat.js" )
 

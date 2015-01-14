@@ -35,3 +35,10 @@ RDF data home page
 ------------------
 
 Based on an idea suggested in a blog post, `eastsussexcountycouncil.rdf` provides a starting point for exploring the RDF data published by East Sussex County Council, much like the home page does for HTML content.
+
+## Development setup steps
+
+1. From an Administrator command prompt, run `app-setup-dev.cmd` to set up a site in IIS
+2. Replace sample values in `web.config` with ones appropriate to your setup
+3. Replace sample values in `js\config.js` with ones appropriate to your setup
+4. Build the solution

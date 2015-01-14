@@ -86,6 +86,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 // Ensure large logo is an absolute URL as it's part of schema.org metadata
                 // Ensure small logo is an absolute URL because WorldPay loads and redisplays a confirmation page
                 var urlPrefix = Request.Url.Scheme + "://" + Request.Url.Host;
+                if (!Request.Url.IsDefaultPort) urlPrefix += ":" + Request.Url.Port;
 
                 this.logoSmall.Text = urlPrefix + this.logoSmall.Text;
                 this.logoLarge.Text = urlPrefix + this.logoLarge.Text;
