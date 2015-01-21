@@ -168,7 +168,7 @@
     <Content Include="js\cross-origin-ie.js" />
     <Content Include="js\google-maps.js" />
     <Content Include="js\googleautosuggest.js" />
-    <Content Include="js\embed-googlemap.js" />
+    <Content Include="js\embed-googlemaps.js" />
     <Content Include="js\jquery-load.js" />
     <Content Include="js\libs\jquery-1.8.3.min.js" />
     <Content Include="js\libs\jquery-ui-1.10.4.custom.min.js" />
