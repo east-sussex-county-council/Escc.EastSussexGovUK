@@ -5,7 +5,7 @@
 }
 
 function esccEmbedLinkedGoogleMap() {
-    $("a")
+    $("a.embed")
     .filter(function () { return /maps\.google\.co\.uk\/maps\/ms\?msid=[0-9a-f.]+&msa=0/.test(this.href); })
     .each(function () {
         // Note: frameborder attribute is deprecated, but still needed by IE8
