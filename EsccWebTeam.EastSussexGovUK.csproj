@@ -165,6 +165,8 @@
     <Content Include="js\1space.js" />
     <Content Include="js\alerts.js" />
     <Content Include="js\analytics.js" />
+    <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
+    <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\webchat.js" />
     <Content Include="js\cross-origin-ie.js" />
     <Content Include="js\google-maps.js" />
@@ -246,6 +248,7 @@
     <None Include="js\Web.example.config" />
     <None Include="MasterPages\Remote\Example\web.example.config" />
     <Content Include="js\ServiceAlertsProxy.ashx" />
+    <Content Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -715,12 +718,6 @@ if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  ja
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/cross-origin-ie.js" &gt; "$(ProjectDir)js/min/cross-origin-ie.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/switch-view.js" &gt; "$(ProjectDir)js/min/switch-view.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/alerts.js" &gt; "$(ProjectDir)js/min/alerts.js" )
-if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/chat.js" &gt; "$(ProjectDir)js/min/chat.js" )
-
-if "$(ConfigurationName)" == "Release" ( if exist "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" &gt; "$(ProjectDir)js\min\Escc.DocumentsInNewWindow.js")
-if "$(ConfigurationName)" == "Release" ( if exist "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.DocumentsInNewWindow.js" &gt; "$(ProjectDir)js\min\Escc.DocumentsInNewWindow.js")
-
-if "$(ConfigurationName)" == "Release" ( if exist "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "C:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" &gt; "$(ProjectDir)js\min\Escc.Statistics.js")
-if "$(ConfigurationName)" == "Release" ( if exist "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "D:\VS Projects\_Libraries for re-use\EsccWebTeam (JavaScript)\Escc.Statistics.js" &gt; "$(ProjectDir)js\min\Escc.Statistics.js")</PostBuildEvent>
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/chat.js" &gt; "$(ProjectDir)js/min/chat.js" )</PostBuildEvent>
   </PropertyGroup>
 </Project>
