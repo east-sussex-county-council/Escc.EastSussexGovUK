@@ -2,6 +2,8 @@
 
 // Use a self-executing function, but run it now. If we wait for an event like DOM ready the document will be closed,
 // and any attempt to use document.write will wipe out all the content. LogoNet code uses document.write so we're forced to.
+
+// This version of the script is used on www.eastsussex.gov.uk, and will ultimately be replaced by webchat.js
 (function () {
     var chatInclude = [
         '/contactus/',

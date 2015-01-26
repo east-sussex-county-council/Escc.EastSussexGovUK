@@ -165,6 +165,7 @@
     <Content Include="js\1space.js" />
     <Content Include="js\alerts.js" />
     <Content Include="js\analytics.js" />
+    <Content Include="js\webchat.js" />
     <Content Include="js\cross-origin-ie.js" />
     <Content Include="js\google-maps.js" />
     <Content Include="js\googleautosuggest.js" />
