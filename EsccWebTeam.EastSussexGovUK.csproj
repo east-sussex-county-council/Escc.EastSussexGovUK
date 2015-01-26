@@ -242,7 +242,7 @@
     <Content Include="MasterPages\Data\hCalendar.ashx" />
     <Content Include="MasterPages\FullScreen.Master" />
     <Content Include="LICENSE.md" />
-    <None Include="js\config.js" />
+    <Content Include="js\config.js" />
     <Content Include="js\config.example.js" />
     <None Include="css\Web.example.config" />
     <None Include="js\Web.example.config" />
