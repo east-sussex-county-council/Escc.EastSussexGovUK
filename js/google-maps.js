@@ -1,4 +1,4 @@
-﻿if (jQuery != 'undefined') {
+﻿if (typeof jQuery != 'undefined') {
     var esccGoogleMaps = (function () {
         /// <summary>Utility library for ESCC applications using the Google Maps API v3</summary>
         if (typeof esccConfig === 'undefined') return null;
