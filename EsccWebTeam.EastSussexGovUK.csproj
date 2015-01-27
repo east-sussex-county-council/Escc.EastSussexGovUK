@@ -35,7 +35,7 @@
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\Escc.EastSussexGovUK.Umbraco\</SolutionDir>
-    <NuGetPackageImportStamp>84ab9ff6</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>8e2e3e7f</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -721,13 +721,13 @@ if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  ja
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/alerts.js" &gt; "$(ProjectDir)js/min/alerts.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/chat.js" &gt; "$(ProjectDir)js/min/chat.js" )</PostBuildEvent>
   </PropertyGroup>
-  <Import Project="packages\Escc.DocumentsInNewWindow.js.1.0.1\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('packages\Escc.DocumentsInNewWindow.js.1.0.1\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Escc.DocumentsInNewWindow.js.1.0.1\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.DocumentsInNewWindow.js.1.0.1\build\Escc.DocumentsInNewWindow.js.targets'))" />
-    <Error Condition="!Exists('packages\Escc.Statistics.js.1.0.1\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Statistics.js.1.0.1\build\Escc.Statistics.js.targets'))" />
+    <Error Condition="!Exists('packages\Escc.DocumentsInNewWindow.js.1.0.2\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.DocumentsInNewWindow.js.1.0.2\build\Escc.DocumentsInNewWindow.js.targets'))" />
+    <Error Condition="!Exists('packages\Escc.Statistics.js.1.0.2\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Statistics.js.1.0.2\build\Escc.Statistics.js.targets'))" />
   </Target>
-  <Import Project="packages\Escc.Statistics.js.1.0.1\build\Escc.Statistics.js.targets" Condition="Exists('packages\Escc.Statistics.js.1.0.1\build\Escc.Statistics.js.targets')" />
+  <Import Project="packages\Escc.DocumentsInNewWindow.js.1.0.2\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('packages\Escc.DocumentsInNewWindow.js.1.0.2\build\Escc.DocumentsInNewWindow.js.targets')" />
+  <Import Project="packages\Escc.Statistics.js.1.0.2\build\Escc.Statistics.js.targets" Condition="Exists('packages\Escc.Statistics.js.1.0.2\build\Escc.Statistics.js.targets')" />
 </Project>
