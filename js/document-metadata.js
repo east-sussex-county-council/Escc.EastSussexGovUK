@@ -33,7 +33,7 @@
         }
 
         // Get all the document links on the page, unless specifically excluded
-        var mediaLinks = $("a:not([class='no-meta'])").filter(function() {
+        var mediaLinks = $("a:not([class~='no-meta'])").filter(function() {
             return new RegExp("(" + Object.keys(types).join("|\\.") + ")$", "i").test($(this).attr('href'));
         });        
 
