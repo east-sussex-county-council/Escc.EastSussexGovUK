@@ -166,6 +166,7 @@
     <Content Include="js\1space.js" />
     <Content Include="js\alerts.js" />
     <Content Include="js\analytics.js" />
+    <Content Include="js\document-metadata.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\webchat.js" />
