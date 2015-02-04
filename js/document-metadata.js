@@ -55,8 +55,8 @@
                     // Append format and size to link. 
                     // Sanitise text to defend against XSS because append() accepts HTML.
                     .each(function () {
-                        var textToAppend = " (" + types[result.type] + ", " + result.size + ")";
-                        textToAppend = textToAppend.replace(/[^A-Za-z0-9, ()]/gi, '');
+                        var textToAppend = " (" + types[result.type] + ", " + result.size + ")".replace(/[^A-Za-z0-9, ()]/gi, '');
+                        textToAppend = '<small class=\"downloadDetail\">' + textToAppend + "</small>";
 
                         $(this).append(textToAppend);
                     });
