@@ -39,3 +39,5 @@ js/config.js
 js/config-public.js
 masterpages/RSS/config.xslt
 packages
+*.GhostDoc.xml
+web-chat-data.js

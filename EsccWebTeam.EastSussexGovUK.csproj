@@ -235,6 +235,7 @@
     <Content Include="MasterPages\Remote\Example\default.aspx" />
     <Content Include="MasterPages\RSS\config.example.xslt" />
     <Content Include="MasterPages\Remote\Web.example.config" />
+    <Content Include="js\WebChatProxy.ashx" />
     <None Include="MasterPages\RSS\config.xslt" />
     <Content Include="MasterPages\RSS\dates.xslt" />
     <Content Include="MasterPages\RSS\display-as-html.xslt" />
@@ -279,6 +280,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextContainer.cs" />
+    <Compile Include="js\WebChatProxy.ashx.cs">
+      <DependentUpon>WebChatProxy.ashx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPages\CustomerFocusSkin.cs" />
     <Compile Include="EastSussexGovUKContext.cs" />
     <Compile Include="MasterPages\AutoSuggestGoogleAnalytics.ashx.cs">
