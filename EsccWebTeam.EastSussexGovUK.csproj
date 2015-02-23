@@ -108,6 +108,8 @@
     <Content Include="css\forms-medium.css" />
     <Content Include="css\forms-small.css" />
     <Content Include="css\full-screen.css" />
+    <Content Include="css\govdelivery-button.css" />
+    <Content Include="css\govdelivery.css" />
     <Content Include="css\large-ie6.css" />
     <Content Include="css\images\ui-anim_basic_16x16.gif" />
     <Content Include="css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -167,6 +169,7 @@
     <Content Include="js\alerts.js" />
     <Content Include="js\analytics.js" />
     <Content Include="js\document-metadata.js" />
+    <Content Include="js\govdelivery.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\webchat.js" />
@@ -198,6 +201,7 @@
     <Content Include="MasterPages\Controls\Error400.ascx" />
     <Content Include="MasterPages\Controls\Error310.ascx" />
     <Content Include="MasterPages\Controls\Error404.ascx" />
+    <Content Include="MasterPages\Controls\GovDelivery.html" />
     <Content Include="MasterPages\Controls\SocialMediaMobile.ascx" />
     <Content Include="MasterPages\Controls\FacebookLike.ascx" />
     <Content Include="MasterPages\Controls\SocialMediaDesktop.ascx" />
