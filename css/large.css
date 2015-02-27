@@ -240,11 +240,11 @@ html { overflow-y: scroll; }
  .breadcrumb li { color: #fff; line-height: 1.692308em; float: left; margin: .153846em 0 .153846em -10px; position: relative; padding: 0 18px 0 16px; white-space: nowrap; }
  .breadcrumb a:link, .breadcrumb a:visited { color: #fff; text-decoration: none; float: left; }
  .breadcrumb a:hover, .breadcrumb a:focus, .breadcrumb a:active { text-decoration: underline; }
- .breadcrumb .current { background: url(/img/body/navigation.gif) no-repeat right -150px; }
- .breadcrumb .up { background: url(/img/body/navigation.gif) no-repeat right -100px; }
- .breadcrumb .level1 { background: url(/img/body/navigation.gif) no-repeat right top; color: #194c7e; margin: .153846em 0; z-index: 9; padding: 0 18px 0 6px; }
+ .breadcrumb .current { background: url(/img/body/navigation.png) no-repeat right -150px; }
+ .breadcrumb .up { background: url(/img/body/navigation.png) no-repeat right -100px; }
+ .breadcrumb .level1 { background: url(/img/body/navigation.png) no-repeat right top; color: #194c7e; margin: .153846em 0; z-index: 9; padding: 0 18px 0 6px; }
  .breadcrumb .level1 a:link, .breadcrumb .level1 a:visited { color: #194c7e; }
- .breadcrumb .level2 { background: url(/img/body/navigation.gif) no-repeat right -50px; z-index: 8; } /* overrides .up */
+ .breadcrumb .level2 { background: url(/img/body/navigation.png) no-repeat right -50px; z-index: 8; } /* overrides .up */
  .breadcrumb .level3 { z-index: 7; }
  .breadcrumb .level4 { z-index: 6; }
  .breadcrumb .level5 { z-index: 5; }

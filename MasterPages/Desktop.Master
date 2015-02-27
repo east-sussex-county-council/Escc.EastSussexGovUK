@@ -8,7 +8,6 @@
     <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataDesktop" EnableViewState="false" />
     <asp:ContentPlaceHolder id="metadata" runat="server" /> 
     <asp:ContentPlaceHolder runat="server" ID="css" enableviewstate="false" />
-    <link rel="stylesheet" href="/css/govdelivery-button.css" />
     <title></title>
 </head>
 <asp:Placeholder id="body" runat="server"><body id="eastsussex-gov-uk"></asp:Placeholder>
@@ -44,7 +43,6 @@
 
      <EastSussexGovUK:MasterPageControl runat="server" Control="ScriptsDesktop" EnableViewState="false" />
      <asp:ContentPlaceHolder ID="javascript" runat="server" />
-<script src="/js/govdelivery.js"></script>
   </body>
 </html>
 

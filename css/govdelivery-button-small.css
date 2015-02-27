@@ -1,0 +1,28 @@
+﻿/* At small sizes, show a tab dropping down from the top of the screen. 
+    
+   At really tiny sizes there's only room for an icon, so use image replacement technique http://www.sitepoint.com/new-css-image-replacement-technique/, but add text as soon as we can.
+
+   The 'right' position is expressed in ems so that it moves left as the 'Contact us' link grows when text size is increased. 
+   The 'width' is also expressed in ems so that the background grows with the text of the button.
+   This is done by eye rather than as grid columns because the width of a grid column varies as the browser is resized, but the size of an em doesn't respond to that.
+*/
+.govdelivery:link, .govdelivery:visited { position: absolute; display: inline-block; top: 0; right: 6em; padding: 3px 0 0; width: 32px;height: 22px;
+                                          color: #fff; background: #B21313 url(/img/body/navigation.png) no-repeat -474px -373px; border-radius: 0 0 5px 5px; box-shadow: #999 2px 2px 5px 0; text-decoration: none; 
+                                          text-indent: 100%; white-space: nowrap; overflow: hidden;
+                                          }
+
+@media only screen and (min-width: 340px) {
+.govdelivery:link, .govdelivery:visited { text-indent: 0;white-space: normal; width: 4.5em;padding-left: 30px; height: 3em;} 
+}
+
+/*   
+   The top padding, plus height, plus shadow height add up to 36px/two grid lines. However the top padding is in px to anchor it to the top of the window, in line with
+   the 'Contact us' link, whilst the height is specified in ems to allow the background to grow along with the text.
+*/
+@media only screen and (min-width: 400px) {
+.govdelivery:link, .govdelivery:visited { width: 8.2em; height: 1.846154em;padding-top: 7px; right: 7em;background-position: -474px -369px; }
+                                          
+}
+
+/* Repeat styles for IE8 but with only the final variation. These only work in real IE8, not with F12 tools in IE10. */
+.ie8 .govdelivery:link, .ie8 .govdelivery:visited { text-indent: 0;white-space: normal; padding: 7px 0 0 30px; width: 8.2em; height: 1.846154em; right: 7em; background-position: -474px -369px; }

@@ -108,7 +108,8 @@
     <Content Include="css\forms-medium.css" />
     <Content Include="css\forms-small.css" />
     <Content Include="css\full-screen.css" />
-    <Content Include="css\govdelivery-button.css" />
+    <Content Include="css\govdelivery-button-large.css" />
+    <Content Include="css\govdelivery-button-small.css" />
     <Content Include="css\govdelivery.css" />
     <Content Include="css\large-ie6.css" />
     <Content Include="css\images\ui-anim_basic_16x16.gif" />
@@ -148,8 +149,8 @@
     <Content Include="img\body\flood-warning.png" />
     <Content Include="img\body\item-type.png" />
     <Content Include="img\body\map-placemarker.png" />
-    <Content Include="img\body\navigation.gif" />
     <Content Include="img\body\gradient.jpg" />
+    <Content Include="img\body\navigation.png" />
     <Content Include="img\body\quote-close.gif" />
     <Content Include="img\body\quote-open.gif" />
     <Content Include="img\body\rss-27px.gif" />
@@ -715,6 +716,9 @@ if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  ja
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/mobile-controls.css" &gt; "$(ProjectDir)css/min/mobile-controls.css" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/1space.css" &gt; "$(ProjectDir)css/min/1space.css" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/umbraco-preview.css" &gt; "$(ProjectDir)css/min/umbraco-preview.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/govdelivery.css" &gt; "$(ProjectDir)css/min/govdelivery.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/govdelivery-button-large.css" &gt; "$(ProjectDir)css/min/govdelivery-button-large.css" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)css/govdelivery-button-small.css" &gt; "$(ProjectDir)css/min/govdelivery-button-small.css" )
 
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  del "$(ProjectDir)js\min\*.*" /Q )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/analytics.js" &gt; "$(ProjectDir)js/min/analytics.js" )
@@ -728,7 +732,8 @@ if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  ja
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/cross-origin-ie.js" &gt; "$(ProjectDir)js/min/cross-origin-ie.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/switch-view.js" &gt; "$(ProjectDir)js/min/switch-view.js" )
 if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/alerts.js" &gt; "$(ProjectDir)js/min/alerts.js" )
-if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/chat.js" &gt; "$(ProjectDir)js/min/chat.js" )</PostBuildEvent>
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/chat.js" &gt; "$(ProjectDir)js/min/chat.js" )
+if "$(ConfigurationName)" == "Release" (if "%25DEPLOYMENT_TRANSFORMS%25"==""  java -jar "$(ProjectDir)yuicompressor-2.4.6.jar" "$(ProjectDir)js/govdelivery.js" &gt; "$(ProjectDir)js/min/govdelivery.js" )</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
