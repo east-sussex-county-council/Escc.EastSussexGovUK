@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This is for www.eastsussex.gov.uk, and is replaced by display-as-html-v2.xslt on new.eastsussex.gov.uk -->
+<!-- This replaces display-as-html.xslt on new.eastsussex.gov.uk -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.0">
   <xsl:output method="xml" omit-xml-declaration="yes" />
   <xsl:include href="config.xslt"/>
@@ -10,7 +10,7 @@
         <title>
           <xsl:value-of select="rss/channel/title"/>
         </title>
-        <link rel="stylesheet" type="text/css" href="/css/rssfeedxslt.cssx" />
+        <link rel="stylesheet" type="text/css" href="/escc.eastsussexgovuk/css/rss-xslt-v2.css" />
       </head>
       <body xmlns="http://www.w3.org/1999/xhtml">
 
@@ -18,7 +18,7 @@
 
           <div class="header" role="banner">
             <a href="/default.htm">
-              <img alt="Go to the East Sussex County Council home page" src="/img/header/logo-large.gif" width="118" height="85" class="logo-large" />
+              <img alt="Go to the East Sussex County Council home page" src="/escc.eastsussexgovuk/img/header/logo-large.gif" width="118" height="85" class="logo-large" />
             </a>
           </div>
 

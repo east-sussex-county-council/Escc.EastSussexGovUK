@@ -1,7 +1,7 @@
 /* This stylesheet is applied to an RSS feed when an XSLT processing instruction is included in the feed, the browser
    supports XSLT, and doesn't have its own rendering of RSS feeds (as Firefox 2+ and IE7+ do). 
 
-   This is for www.eastsussex.gov.uk, and is replaced by rss-xslt-v2.css on new.eastsussex.gov.uk
+   This replaces rss-xslt.css on new.eastsussex.gov.uk
 */
 
 /****************************************************************** 
@@ -21,7 +21,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* Set default font to 13px on a baseline grid of 18px, but use small keyword to do it so that IE6 can resize text */
 body { margin: 0 auto; background: #fff; color: #131313; font: small/1.3846153846153846153846153846154em Arial, "Helvetica Neue", Helvetica, sans-serif; }
 
-.header { background: #01A1DF url(/img/header/desktop.png) repeat-x center top; overflow: hidden; }
+.header { background: #01A1DF url(/escc.eastsussexgovuk/img/header/desktop.png) repeat-x center top; overflow: hidden; }
 .header img { display: block; margin: 11px 18px 15px; }
 
 .body { padding: 7px 18px 14px; }
