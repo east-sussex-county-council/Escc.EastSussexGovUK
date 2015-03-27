@@ -11,32 +11,5 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls {
     
     
     public partial class share {
-        
-        /// <summary>
-        /// facebook control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor facebook;
-        
-        /// <summary>
-        /// email control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor email;
-        
-        /// <summary>
-        /// comment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor comment;
     }
 }

@@ -1,21 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="share.ascx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Controls.share" %>
 <EastSussexGovUK:ContextContainer runat="server" Plain="false" CmsEdit="false">
-<div class="share screen">
+<div class="text">
     <aside>
-    <div class="aside">
-    <a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="EastSussexCC">Tweet</a>
-    <EastSussexGovUK:ContextContainer runat="server" DoNotTrack="false">
-        <div class="fb-like" data-layout="button_count" data-send="false" data-width="80" data-show-faces="false" data-font="arial"></div>
-    </EastSussexGovUK:ContextContainer>
-    <EastSussexGovUK:ContextContainer runat="server" DoNotTrack="true">
-        <a href="http://www.facebook.com/sharer.php?u={0}" id="facebook" runat="server" class="facebook fb-dnt" target="_blank">Share<span class="aural"> this page on Facebook</span></a>
-    </EastSussexGovUK:ContextContainer>
-    <div>
-    <p class="send button-nav"><a href="https://www.eastsussex.gov.uk/contactus/emailus/friend.aspx?url={0}" runat="server" id="email">Email this page</a></p>
-    <p class="comment button-nav"><a href="https://www.eastsussex.gov.uk/contactus/emailus/feedback.aspx?option=web&amp;amp;url={0}&amp;amp;title={1}" runat="server" id="comment" accesskey="9">Comment on this page</a></p>
-    </div>
-    </div>
+        <p class="screen share-page">
+            <a href="https://www.facebook.com/sharer.php?u=<%= EncodedPageUrl %>" target="_blank">Share<span class="aural"> this page on Facebook</span></a>
+            <a href="https://twitter.com/intent/tweet?text=<%= EncodedTitle %>+<%= EncodedPageUrl %>+via+&#64;eastsussexcc" target="_blank">Tweet<span class="aural"> this page</span></a>
+            <a href="https://www.eastsussex.gov.uk/contactus/emailus/friend.aspx?url=<%= EncodedPageUrl %>" class="email">Email this page</a>
+            <a href="https://www.eastsussex.gov.uk/contactus/emailus/feedback.aspx?option=web&amp;url=<%= EncodedPageUrl %>&amp;title<%= EncodedTitle %>" class="email" accesskey="9">Comment on this page</a>
+        </p>
     </aside>
 </div>
-<Egms:Script runat="server" Files="SocialMedia" />
 </EastSussexGovUK:ContextContainer>
