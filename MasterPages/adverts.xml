@@ -10,7 +10,6 @@
   <add url="/community" imageUrl="/wres/banners/esif.gif" description="East Sussex in Figures" navigateUrl="http://www.eastsussexinfigures.org.uk" />
   <add url="/community/benefits" imageUrl="/wres/banners/benefits-helpline.jpg" description="Benefits helpline" navigateUrl="/community/benefits/benefitshelpline/default.htm" />
   <add url="/community/benefits" imageUrl="/wres/banners/welfare_reform_video.jpg" description="Welfare Reform Video" navigateUrl="/community/benefits/video/default.htm" />
-  <add url="/community/benefits/desss" imageUrl="/wres/banners/benefits-helpline-dess.jpg" description="Benefits helpline" navigateUrl="/community/benefits/desss/default.htm" />
   <add url="/community/benefits/desss" imageUrl="/wres/banners/welfare_reform_video.jpg" description="Welfare Reform Video" navigateUrl="/community/benefits/video/default.htm" />
 
   <add url="/community/local/townsvillages" imageUrl="/wres/banners/villagehalls.gif" description="Village halls: Come and join us..." navigateUrl="http://www.escis.org.uk/" />
