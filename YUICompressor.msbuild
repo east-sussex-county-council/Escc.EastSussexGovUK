@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/MsBuild/2003">
+
+  <UsingTask TaskName="CssCompressorTask" AssemblyFile="$(MSBuildProjectDirectory)\bin\Yahoo.Yui.Compressor.Build.MsBuild.dll" />
+  <UsingTask TaskName="JavaScriptCompressorTask" AssemblyFile="$(MSBuildProjectDirectory)\bin\Yahoo.Yui.Compressor.Build.MsBuild.dll" />
+
+  <Target Name="Minimize" Condition="'$(ConfigurationName)' == 'Release'">
+    <CssCompressorTask SourceFiles="css/small.css" OutputFile="css/min/small.css" />
+    <CssCompressorTask SourceFiles="css/medium.css" OutputFile="css/min/medium.css" />
+    <CssCompressorTask SourceFiles="css/large.css" OutputFile="css/min/large.css" />
+    <CssCompressorTask SourceFiles="css/print.css" OutputFile="css/min/print.css" />
+    <CssCompressorTask SourceFiles="css/full-screen.css" OutputFile="css/min/full-screen.css" />
+    <CssCompressorTask SourceFiles="css/content-small.css" OutputFile="css/min/content-small.css" />
+    <CssCompressorTask SourceFiles="css/content-medium.css" OutputFile="css/min/content-medium.css" />
+    <CssCompressorTask SourceFiles="css/content-large.css" OutputFile="css/min/content-large.css" />
+    <CssCompressorTask SourceFiles="css/maps.css" OutputFile="css/min/maps.css" />
+    <CssCompressorTask SourceFiles="css/maps.css" OutputFile="css/min/maps.css" />
+    <CssCompressorTask SourceFiles="css/forms-small.css" OutputFile="css/min/forms-small.css" />
+    <CssCompressorTask SourceFiles="css/forms-medium.css" OutputFile="css/min/forms-medium.css" />
+    <CssCompressorTask SourceFiles="css/forms-large.css" OutputFile="css/min/forms-large.css" />
+    <CssCompressorTask SourceFiles="css/rss.css" OutputFile="css/min/rss.css" />
+    <CssCompressorTask SourceFiles="css/rss-xslt.css" OutputFile="css/min/rss-xslt.css" />
+    <CssCompressorTask SourceFiles="css/poll-small.css" OutputFile="css/min/poll-small.css" />
+    <CssCompressorTask SourceFiles="css/poll-large.css" OutputFile="css/min/poll-large.css" />
+    <CssCompressorTask SourceFiles="css/service-closures.css" OutputFile="css/min/service-closures.css" />
+    <CssCompressorTask SourceFiles="css/social-media-small.css" OutputFile="css/min/social-media-small.css" />
+    <CssCompressorTask SourceFiles="css/social-media-large.css" OutputFile="css/min/social-media-large.css" />
+    <CssCompressorTask SourceFiles="css/alert.css" OutputFile="css/min/alert.css" />
+    <CssCompressorTask SourceFiles="css/mobile-controls.css" OutputFile="css/min/mobile-controls.css" />
+    <CssCompressorTask SourceFiles="css/1space.css" OutputFile="css/min/1space.css" />
+    <CssCompressorTask SourceFiles="css/umbraco-preview.css" OutputFile="css/min/umbraco-preview.css" />
+    <CssCompressorTask SourceFiles="css/govdelivery.css" OutputFile="css/min/govdelivery.css" />
+    <CssCompressorTask SourceFiles="css/govdelivery-button-large.css" OutputFile="css/min/govdelivery-button-large.css" />
+    <CssCompressorTask SourceFiles="css/govdelivery-button-small.css" OutputFile="css/min/govdelivery-button-small.css" />
+
+    <JavaScriptCompressorTask SourceFiles="js/analytics.js" OutputFile="js/min/analytics.js" />
+    <JavaScriptCompressorTask SourceFiles="js/media-queries.js" OutputFile="js/min/media-queries.js" />
+    <JavaScriptCompressorTask SourceFiles="js/public-libraries.js" OutputFile="js/min/public-libraries.js" />
+    <JavaScriptCompressorTask SourceFiles="js/forms.js" OutputFile="js/min/forms.js" />
+    <JavaScriptCompressorTask SourceFiles="js/googleautosuggest.js" OutputFile="js/min/googleautosuggest.js" />
+    <JavaScriptCompressorTask SourceFiles="js/google-maps.js" OutputFile="js/min/google-maps.js" />
+    <JavaScriptCompressorTask SourceFiles="js/1space.js" OutputFile="js/min/1space.js" />
+    <JavaScriptCompressorTask SourceFiles="js/cross-origin-ie.js" OutputFile="js/min/cross-origin-ie.js" />
+    <JavaScriptCompressorTask SourceFiles="js/switch-view.js" OutputFile="js/min/switch-view.js" />
+    <JavaScriptCompressorTask SourceFiles="js/alerts.js" OutputFile="js/min/alerts.js" />
+    <JavaScriptCompressorTask SourceFiles="js/chat.js" OutputFile="js/min/chat.js" />
+    <JavaScriptCompressorTask SourceFiles="js/govdelivery.js" OutputFile="js/min/govdelivery.js" />
+  </Target>
+</Project>
