@@ -615,10 +615,7 @@
     <Content Include="MasterPages\AutoSuggestGoogleAnalytics.ashx" />
     <Content Include="MasterPages\Plain.Master" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="css\min\" />
-    <Folder Include="js\min\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Escc.Cms\EsccWebTeam.Cms.csproj">
       <Project>{6710e9ee-deab-4569-ace6-f10159d6d447}</Project>
@@ -704,7 +701,9 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>if "$(ConfigurationName)" == "Release" del "$(ProjectDir)css\min\*.*" /Q 
+    <PostBuildEvent>if "$(ConfigurationName)" == "Release" (if not exist "$(ProjectDir)css\min" md "$(ProjectDir)css\min")
+if "$(ConfigurationName)" == "Release" del "$(ProjectDir)css\min\*.*" /Q 
+if "$(ConfigurationName)" == "Release" (if not exist "$(ProjectDir)js\min" md "$(ProjectDir)js\min")
 if "$(ConfigurationName)" == "Release" del "$(ProjectDir)js\min\*.*" /Q 
 "$(MSBuildBinPath)\msbuild.exe" "$(ProjectDir)YUICompressor.msbuild" /p:ConfigurationName=$(ConfigurationName)</PostBuildEvent>
   </PropertyGroup>
