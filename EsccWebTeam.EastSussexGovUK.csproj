@@ -743,7 +743,7 @@
 if "$(ConfigurationName)" == "Release" del "$(ProjectDir)css\min\*.*" /Q 
 if "$(ConfigurationName)" == "Release" (if not exist "$(ProjectDir)js\min" md "$(ProjectDir)js\min")
 if "$(ConfigurationName)" == "Release" del "$(ProjectDir)js\min\*.*" /Q 
-"$(MSBuildBinPath)\msbuild.exe" "$(ProjectDir)YUICompressor.msbuild" /p:ConfigurationName=$(ConfigurationName)</PostBuildEvent>
+if not "$(ESCC_MINIFY)"=="false" "$(MSBuildBinPath)\msbuild.exe" "$(ProjectDir)YUICompressor.msbuild" /p:ConfigurationName=$(ConfigurationName)</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
