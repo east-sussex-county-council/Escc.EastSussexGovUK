@@ -288,10 +288,10 @@
     </Content>
     <Content Include="MasterPages\Remote\Control.aspx" />
     <Content Include="MasterPages\Remote\Example\default.aspx" />
-    <Content Include="MasterPages\RSS\config.example.xslt" />
+    <None Include="MasterPages\RSS\config.example.xslt" />
     <Content Include="MasterPages\Remote\Web.example.config" />
     <Content Include="js\WebChatProxy.ashx" />
-    <None Include="MasterPages\RSS\config.xslt" />
+    <Content Include="MasterPages\RSS\config.xslt" />
     <Content Include="MasterPages\RSS\dates.xslt" />
     <Content Include="MasterPages\RSS\display-as-html-v2.xslt" />
     <Content Include="MasterPages\RSS\display-as-html.xslt" />
