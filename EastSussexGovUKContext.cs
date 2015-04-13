@@ -504,7 +504,13 @@ namespace EsccWebTeam.EastSussexGovUK
             }
 
             // Display the error message and return its status code
-            displayControl.Controls.Add(displayControl.Page.LoadControl("~/masterpages/controls/error" + statusCode + ".ascx"));
+            var errorControlUrl = "~/masterpages/controls/error{0}.ascx";
+            var settings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+            if (settings!= null && !String.IsNullOrEmpty(settings["ErrorControlUrl"]))
+            {
+                errorControlUrl = settings["ErrorControlUrl"];
+            }
+            displayControl.Controls.Add(displayControl.Page.LoadControl(String.Format(errorControlUrl, statusCode)));
         }
 
         #endregion // Shortcut methods to load common content
