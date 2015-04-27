@@ -64,6 +64,26 @@
     <Reference Include="EcmaScript.NET">
       <HintPath>packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
     </Reference>
+    <Reference Include="Escc.AddressAndPersonalDetails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Escc.AddressAndPersonalDetails.1.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
+    </Reference>
+    <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Escc.Web.Metadata.1.0.0\lib\Escc.Web.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="EsccWebTeam.Egms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>S:\_Reference DLLs\EsccWebTeam pre-NuGet\EsccWebTeam.Egms - release\EsccWebTeam.Egms.dll</HintPath>
+    </Reference>
+    <Reference Include="Exceptionless, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Exceptionless.1.5.2121\lib\net40\Exceptionless.dll</HintPath>
+    </Reference>
+    <Reference Include="Exceptionless.Models, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Exceptionless.1.5.2121\lib\net40\Exceptionless.Models.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>packages\YUICompressor.NET.2.0.0.0\lib\NET20\Iesi.Collections.dll</HintPath>
     </Reference>
@@ -682,10 +702,6 @@
     <ProjectReference Include="..\Escc.NavigationControls\EsccWebTeam.NavigationControls.csproj">
       <Project>{0323F668-1723-44A1-8C94-F91DC59EF315}</Project>
       <Name>EsccWebTeam.NavigationControls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Escc.Egms\EsccWebTeam.Egms.csproj">
-      <Project>{78083DCB-B12F-4950-86C5-3A844D8604F3}</Project>
-      <Name>EsccWebTeam.Egms</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
