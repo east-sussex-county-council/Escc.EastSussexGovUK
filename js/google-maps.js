@@ -79,6 +79,52 @@
             return document.createElement('a').appendChild(document.createTextNode(html)).parentNode.innerHTML;
         };
 
+        this.displaySingleMarkerOnAMap = function () {
+            /// <summary>Displays a Google Map centred on a single marker. Expects to find a <div id="map" data-lat="value" data-long="value" /> element.</summary>
+            //
+            // Example usage:
+            //
+            //  if (typeof (jQuery) != 'undefined') {
+            //      $(function() {
+            //          if (esccGoogleMaps != 'undefined') esccGoogleMaps.loadGoogleMapsApi({ callback: "esccGoogleMaps.displaySingleMarkerOnAMap" });
+            //      });
+            //  }
+
+                var element = $("#map");
+                if (!element.length) return;
+
+                var lat = element.data("lat");
+                var lon = element.data("lon");
+                if ($.trim(lat) === '' || $.trim(lon) === '') return;
+
+                var coords = new google.maps.LatLng(lat, lon);
+
+                var mapOptions = {
+                    center: coords,
+                    zoom: 15
+                };
+                var map = new google.maps.Map(element[0],
+                    mapOptions);
+
+                var marker = new google.maps.Marker({
+                    position: coords,
+                    map: map,
+                    title: $("h1").text()
+                });
+
+    
+                // Centre the map on resize, as the changing aspect ratio makes the marker wander off-centre, and sometimes out of view
+                var mapResizeTimeout;
+                $(window).resize(function () {
+                    clearTimeout(mapResizeTimeout);
+                    mapResizeTimeout = setTimeout(centreMap, 50);
+                });
+
+                function centreMap() {
+                    map.setCenter(coords);
+                }
+            }
+
         return this;
     })();
 }
