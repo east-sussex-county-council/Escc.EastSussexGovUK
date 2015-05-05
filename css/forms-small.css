@@ -223,6 +223,10 @@ Use the EsccWebTeam.FormControls.Validators.EsccValidationSummaryControl to prod
    Not within .form because it may also be used outside to form to explain that the asterisk means required. */
 .requiredField { font-family: Verdana, Arial, "Helvetica Neue", Helvetica, sans-serif; color: #B21313; font-weight: bold; padding-left: .2em; }
 
+/* When a .NET WebForm contains only a single text input, the Click event doesn't fire in IE. 
+   Adding an extra textbox works around that, and giving the extra field this class hides it from the user. */
+.ieBugFix { display: none; }
+
 
 /*:: ALL FORMS - QUESTION TYPES :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
