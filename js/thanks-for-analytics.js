@@ -6,6 +6,7 @@
 // The workaround is, when we display the 'thank you' controls, to load this JavaScript which redirects on the client-side to `?thankyou`. 
 // Google Analytics can track that change of URL, and a server-side check for that querystring can redisplay the 'thank you' controls instead of the form.
 
-if (!document.location.search || !document.location.search.match(/\?thankyou/)) {
-    document.location.href = document.location.href + "?thankyou";
+if (!document.location.search || !document.location.search.match(/(\?|&)thankyou/)) {
+    var append = (document.location.search) ? "&thankyou" : "?thankyou";
+    document.location.href = document.location.href + append;
 }
