@@ -244,6 +244,7 @@
     <Content Include="js\min\media-queries.js" />
     <Content Include="js\min\public-libraries.js" />
     <Content Include="js\min\switch-view.js" />
+    <Content Include="js\thanks-for-analytics.js" />
     <Content Include="js\webchat.js" />
     <Content Include="js\cross-origin-ie.js" />
     <Content Include="js\google-maps.js" />
@@ -308,6 +309,8 @@
     </Content>
     <Content Include="MasterPages\Remote\Control.aspx" />
     <Content Include="MasterPages\Remote\Example\default.aspx" />
+    <Content Include="app-setup-dev.cmd" />
+    <Content Include="app-setup-dev.ps1" />
     <None Include="MasterPages\RSS\config.example.xslt" />
     <Content Include="MasterPages\Remote\Web.example.config" />
     <Content Include="js\WebChatProxy.ashx" />

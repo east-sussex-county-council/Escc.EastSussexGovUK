@@ -45,5 +45,6 @@
     <JavaScriptCompressorTask SourceFiles="js/alerts.js" OutputFile="js/min/alerts.js" />
     <JavaScriptCompressorTask SourceFiles="js/chat.js" OutputFile="js/min/chat.js" />
     <JavaScriptCompressorTask SourceFiles="js/govdelivery.js" OutputFile="js/min/govdelivery.js" />
+    <JavaScriptCompressorTask SourceFiles="js/thanks-for-analytics.js" OutputFile="js/min/thanks-for-analytics.js" />
   </Target>
 </Project>
