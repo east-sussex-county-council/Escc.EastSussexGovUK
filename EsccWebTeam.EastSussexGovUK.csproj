@@ -244,6 +244,7 @@
     <Content Include="js\min\media-queries.js" />
     <Content Include="js\min\public-libraries.js" />
     <Content Include="js\min\switch-view.js" />
+    <Content Include="js\min\thanks-for-analytics.js" />
     <Content Include="js\thanks-for-analytics.js" />
     <Content Include="js\webchat.js" />
     <Content Include="js\cross-origin-ie.js" />
