@@ -7,16 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
-{
-
-
-    /// <summary>
-    /// Translation links in the footer
-    /// </summary>
-    public partial class Languages
-    {
-
+namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls {
+    
+    
+    public partial class Languages {
+        
         /// <summary>
         /// chinese control.
         /// </summary>
@@ -25,7 +20,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor chinese;
-
+        
         /// <summary>
         /// arabic control.
         /// </summary>
@@ -34,7 +29,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor arabic;
-
+        
         /// <summary>
         /// urdu control.
         /// </summary>
@@ -43,7 +38,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor urdu;
-
+        
         /// <summary>
         /// kurdish control.
         /// </summary>
@@ -52,7 +47,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor kurdish;
-
+        
         /// <summary>
         /// portugese control.
         /// </summary>
@@ -61,7 +56,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor portugese;
-
+        
         /// <summary>
         /// polish control.
         /// </summary>
@@ -70,7 +65,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor polish;
-
+        
         /// <summary>
         /// slovakian control.
         /// </summary>
@@ -79,7 +74,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor slovakian;
-
+        
         /// <summary>
         /// turkish control.
         /// </summary>
