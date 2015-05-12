@@ -210,6 +210,14 @@
     <Content Include="img\body\map-placemarker.png" />
     <Content Include="img\body\gradient.jpg" />
     <Content Include="img\body\navigation.png" />
+    <Content Include="img\body\pan-e.gif" />
+    <Content Include="img\body\pan-n.gif" />
+    <Content Include="img\body\pan-ne.gif" />
+    <Content Include="img\body\pan-nw.gif" />
+    <Content Include="img\body\pan-s.gif" />
+    <Content Include="img\body\pan-se.gif" />
+    <Content Include="img\body\pan-sw.gif" />
+    <Content Include="img\body\pan-w.gif" />
     <Content Include="img\body\quote-close.gif" />
     <Content Include="img\body\quote-open.gif" />
     <Content Include="img\body\rss-27px.gif" />
