@@ -166,8 +166,8 @@ h2
 
 /* Progress bar */
 .progressBar, .progressBar li { list-style: none; margin: 0; padding: 0; }
-.progressBar li { font-size: 0.9em; float: left; background: url(/img/body/navigation.png) no-repeat -200px -200px; padding: 3px 7px 0 0; width: 85px; height: 22px; color: #fff; font-weight: bold; border-width: 1px; text-align: center; }
-.progressBar li.current { background: url(/img/body/navigation.png) no-repeat -100px -200px; color: #fff;}
+.progressBar li { font-size: 0.9em; float: left; background: url(../img/body/navigation.png) no-repeat -200px -200px; padding: 3px 7px 0 0; width: 85px; height: 22px; color: #fff; font-weight: bold; border-width: 1px; text-align: center; }
+.progressBar li.current { background: url(../img/body/navigation.png) no-repeat -100px -200px; color: #fff;}
 body .text ol.progressBar { padding-left: 2px; margin: 1em 0; max-width:none; overflow: auto; width: 99%; }
 .progressBar em { font-style: normal; }
 
@@ -203,7 +203,7 @@ Use the EsccWebTeam.FormControls.Validators.EsccValidationSummaryControl to prod
 
 /* .errorSummary is the container for all error message prompts on the form. The container has a red cornered border and wanring icon. 
     All content within the box by default is bolded and red. Margin + border is one line space, and top+bottom padding is another. */
-.errorSummary { clear: both; margin: 1.230769em 0; border: solid .153846em #B21313; border-radius: 4px; padding: .692308em; background: #FBE2E2 url(/img/body/item-type.png) no-repeat 14px -1640px; color: #b21313; font-weight: bold; }
+.errorSummary { clear: both; margin: 1.230769em 0; border: solid .153846em #B21313; border-radius: 4px; padding: .692308em; background: #FBE2E2 url(../img/body/item-type.png) no-repeat 14px -1640px; color: #b21313; font-weight: bold; }
 /* Error summary introduction text is changed back to black from red. */
 .errorSummary p { position:relative; padding-left: 3.3em; color: #131313; margin: .692308em 0 0; }
 /* Removed the bullet points to the left of each error message */
@@ -546,7 +546,7 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
         <p class="note useList"><span class="or">or</span> <a href="list.aspx">view all [somethings]</a></p>
 */
 .simple-form .useList .or { font-weight: bold; }
-.simple-form .useList a { padding: 0 30px 0 0; background: url(/img/body/item-type.png) no-repeat right -595px; }
+.simple-form .useList a { padding: 0 30px 0 0; background: url(../img/body/item-type.png) no-repeat right -595px; }
 
 
 
