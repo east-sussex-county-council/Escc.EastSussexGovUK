@@ -68,6 +68,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Escc.AddressAndPersonalDetails.1.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
+    <Reference Include="Escc.ClientDependencyFramework.WebForms">
+      <HintPath>..\Escc.EastSussexGovUK.Umbraco\packages\Escc.ClientDependencyFramework.WebForms.1.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Escc.Web.Metadata.1.0.0\lib\Escc.Web.Metadata.dll</HintPath>
