@@ -671,7 +671,7 @@
     <Content Include="robots.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="css\Web.config" />
+    <Content Include="css\Web.config" />
     <None Include="eastsussexcountycouncil.rdf">
       <SubType>Designer</SubType>
     </None>
@@ -683,7 +683,7 @@
     <None Include="img\header\header original.psd" />
     <None Include="img\header\header resized, tiled, with channel for mask.psd" />
     <None Include="img\header\mask.psd" />
-    <None Include="js\Web.config" />
+    <Content Include="js\Web.config" />
     <None Include="img\header\mobile.psd" />
     <Content Include="MasterPages\AutoSuggestGoogleAnalytics.ashx" />
     <Content Include="MasterPages\Plain.Master" />
