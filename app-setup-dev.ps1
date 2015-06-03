@@ -39,20 +39,16 @@ $projectName = "Escc.EastSussexGovUK"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.NavigationControls"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Web"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Xml"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Egms"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.HouseStyle"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Feeds"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.ActiveDirectory"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Cms"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Elibrary"
-NuGetRestoreForProject $parentFolderOfThisScript "Escc.Egms"
 NuGetRestoreForProject $parentFolderOfThisScript "Escc.Cms"
 
 EnableDotNet40InIIS
 CreateApplicationPool $projectName true
-CreateSSLCertificate $projectName
 CreateWebsite $projectName $pathOfThisScript
-CreateHTTPSBinding $projectName
+CreateHTTPSBinding $projectName "localhost"
 RemoveHTTPBindings $projectName
 CopyConfig "Web.example.config" "web.config"
 CopyConfig "css\Web.example.config" "css\web.config"

@@ -191,35 +191,6 @@ html { overflow-y: scroll; }
 .ie6 #menu .long a:link, .ie6 #menu .long a:visited { height: 45px; }
 
 
-
-
-/**********
- * FOOTER *
- **********/
-
-/* Float sections to turn them into columns, each covering 3 grid columns. Height taller than longest column ensures 
-   that the border extends downwards to an even length. width = (3 col - 1 px border) in 12 col */
-.footer .online { float: left; width: 21.635611%; border-right: 1px dotted #779aa7; text-align: left; } 
-
-.footer h2 { display: block; margin-right: .5em; font-size: 1.153846em; line-height: 1.2em; font-weight: bold; color: #444; }
-
-/* 1.5 line-spacing on list of links to ESCC online */
-.footer .social { float: none; padding-bottom: 1.384615em; border-bottom: .076923em dotted #779aa7; margin: 1.384615em 0 .615385em; }
-.footer .online ul { line-height: 2.076923em; margin: .692308em 0; }
-.footer .online li { display: list-item; margin: 0; }
-
-/* Sign up to a newsletter from the footer */
-.footer .newsletter { display: block; float: left; padding: 0 0 0 1.863354%; width: 40.57971%; }
-.footer .newsletter label { display: block; margin: .923077em 0 .461538em; }
-.footer .newsletter .email { font-size: 1.076923em; line-height: 1em; padding: 6px; width: 19.5em; background: #fff; border: 2px solid #9c9c9c; border-radius: 5px; } /* 14px font */
-
-.footer .petitions { display: block; float: left; width: 23.498965%; border-left: 1px dotted #779aa7; padding-left: 1.759834%; }
-.footer .petitions h2 span { background: url(/img/body/item-type.png) no-repeat right -1850px; padding-right: 35px; }
-.footer .petitions ul { margin: .692308em 0 .692308em 1.153846em; }
-
-/* Equal heights ensures the dividing borders go to the bottom */
-.footer .online, .footer .petitions { min-height: 18em; }
-
 /*********************
  * MAIN CONTENT AREA *
  *********************/
