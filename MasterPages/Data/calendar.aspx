@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="calendar.aspx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Data.calendar" MasterPageFile="~/masterpages/mobile.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="calendar.aspx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Data.calendar" MasterPageFile="~/masterpages/mobile.master" EnableSessionState="true" %>
 <asp:Content runat="server" ContentPlaceHolderID="metadata">
-    <Egms:MetadataControl runat="server"
+    <Metadata:MetadataControl runat="server"
         id="headcontent" 
         Title="Subscribe to calendar: {0}"
         Description="Subscribe to calendar: {0}"

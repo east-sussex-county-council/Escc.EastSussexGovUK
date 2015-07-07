@@ -19,7 +19,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::EsccWebTeam.Egms.MetadataControl headcontent;
+        protected global::Escc.Web.Metadata.MetadataControl headcontent;
         
         /// <summary>
         /// article control.

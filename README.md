@@ -8,7 +8,7 @@ CSS, JavaScript and images
 
 CSS, JavaScript and image files used by two or more applications belong in this project. This includes the CSS for our responsive design. Documentation is included within the CSS files, and in our [website style guide](https://github.com/east-sussex-county-council/Escc.WebsiteStyleGuide).
 
-Our CSS and JavaScript files are minified using [YUI Compressor](https://github.com/yui/yuicompressor) and concatenated on-the-fly using our own EsccWebTeam.Egms project. 
+Our CSS and JavaScript files are minified using [YUI Compressor](https://www.nuget.org/packages/YUICompressor.NET.MSBuild) and concatenated on-the-fly using our own [Escc.ClientDependency.WebForms](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework/tree/master/Escc.ClientDependencyFramework.WebForms) project. 
 
 The printer icon used in our CSS was made by [Yannick](http://yanlu.de). It's from [flaticon.com](http://www.flaticon.com) and licensed under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).
 
@@ -24,7 +24,44 @@ The master pages themselves are deliberately minimal, with most of the work done
 iCalendar data
 --------------
 
-We encode events on our pages using the hCalendar microformat, and files in the `masterpages\data` folder enable that data to be read and served as iCalendar downloads.
+We encode events on our pages using the hCalendar microformat. Where enabled, you can change the extension of any page to `.calendar` (for example, change `somepage.aspx` to `somepage.calendar`) to get a download page for the calendar data. Change the extension again to `.ics` (for example, change `somepage.calendar` to `somepage.ics`) and you get the calendar data itself, which is parsed directly from the data embedded in `somepage.aspx`.
+
+This works by setting the `.calendar` and `.ics` extensions to be parsed by ASP.NET in `web.config`:
+
+	  <system.webServer>
+	    <handlers>
+	      <add name="iCalendar pre-download page" path="*.calendar" verb="*" modules="IsapiModule" scriptProcessor="C:\Windows\Microsoft.NET\Framework\v4.0.30319\aspnet_isapi.dll" resourceType="Unspecified" preCondition="integratedMode,runtimeVersionv4.0,bitness32" />
+	      <add name="iCalendar download" path="*.ics" verb="*" modules="IsapiModule" scriptProcessor="C:\Windows\Microsoft.NET\Framework\v4.0.30319\aspnet_isapi.dll" resourceType="Unspecified" preCondition="integratedMode,runtimeVersionv4.0,bitness32" />
+	    </handlers>
+	  </system.webServer>
+
+This enables an HTTP module to run for those requests, looking for the custom extensions:
+
+	  <system.web>
+	    <httpModules>
+			<add name="RewriteByExtensionModule" type="EsccWebTeam.EastSussexGovUK.MasterPages.Data.RewriteByExtensionModule, EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" />
+	    </httpModules>
+	  </system.web>
+
+The HTTP module looks to `web.config` to see which extensions it should look for, and the ASP.NET page which should handle the request. These are in the `masterpages\data` folder, and use open-source XSLT files by Brian Suda (and another one customising that result) to handle the request, which are also specified in `web.config`:
+
+	  <configSections>
+	    <sectionGroup name="EsccWebTeam.EastSussexGovUK">
+	      <section name="Data" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+	    </sectionGroup>
+	  </configSections>
+
+      <EsccWebTeam.EastSussexGovUK>
+		<Data>
+	      <add key=".calendar" value="~/masterpages/data/calendar.aspx?url={0}" />
+	      <add key=".ics" value="~/masterpages/data/hcalendar.ashx?url={0}" />
+
+	      <add key="HCalendarPrepareXslt" value="~/masterpages/data/hcalendar.xslt" />
+	      <add key="HCalendarXslt" value="~/masterpages/data/xhtml2vcal.xsl" />
+	    </Data>
+	  </EsccWebTeam.EastSussexGovUK>
+
+When testing calendar downloads on a local copy of IIS you'll need to use HTTP rather than HTTPS because, when making a web request for the page containing the calendar data to parse, a development machine usually has an SSL certificate which is not sufficiently trusted.
 
 RSS feed styles
 ---------------
