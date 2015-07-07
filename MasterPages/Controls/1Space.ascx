@@ -13,7 +13,7 @@
 		<p id="text-area-2">
 			A directory of services, groups and organisations
 		</p>
-		<form method="POST" action="https://www.eastsussex1space.co.uk/Search">
+		<form method="GET" action="https://www.eastsussex1space.co.uk/Search">
 			<input type="text" name="keywords" value="What are you looking for?" />
 			<button type="submit" name="Go" class="button">
 				<div>
