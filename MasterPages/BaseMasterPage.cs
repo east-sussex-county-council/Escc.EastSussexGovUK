@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using EsccWebTeam.Cms;
-using EsccWebTeam.Egms;
+using Escc.Web.Metadata;
 using Microsoft.ContentManagement.Publishing;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages

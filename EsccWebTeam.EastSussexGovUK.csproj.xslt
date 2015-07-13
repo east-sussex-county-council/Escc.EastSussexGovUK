@@ -14,7 +14,6 @@
       <xsl:with-param name="ref_2" select="'Microsoft.ApplicationBlocks.ExceptionManagement.dll'" />
       <xsl:with-param name="ref_3" select="'Microsoft.ContentManagement.Publishing.dll'" />
       <xsl:with-param name="ref_4" select="'Microsoft.ContentManagement.WebControls.dll'" />
-      <xsl:with-param name="ref_5" select="'EsccWebTeam.Egms.dll'" />
     </xsl:call-template>
 
   </xsl:template>
