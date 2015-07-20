@@ -33,18 +33,25 @@
     <CssCompressorTask SourceFiles="css/govdelivery-button-large.css" OutputFile="css/min/govdelivery-button-large.css" />
     <CssCompressorTask SourceFiles="css/govdelivery-button-small.css" OutputFile="css/min/govdelivery-button-small.css" />
 
+    <JavaScriptCompressorTask SourceFiles="js/1space.js" OutputFile="js/min/1space.js" />
+    <JavaScriptCompressorTask SourceFiles="js/alerts.js" OutputFile="js/min/alerts.js" />
     <JavaScriptCompressorTask SourceFiles="js/analytics.js" OutputFile="js/min/analytics.js" />
-    <JavaScriptCompressorTask SourceFiles="js/media-queries.js" OutputFile="js/min/media-queries.js" />
-    <JavaScriptCompressorTask SourceFiles="js/public-libraries.js" OutputFile="js/min/public-libraries.js" />
+    <JavaScriptCompressorTask SourceFiles="js/chat.js" OutputFile="js/min/chat.js" />
+    <JavaScriptCompressorTask SourceFiles="js/config.js" OutputFile="js/min/config.js" />
+    <JavaScriptCompressorTask SourceFiles="js/cross-origin-ie.js" OutputFile="js/min/cross-origin-ie.js" />
+    <JavaScriptCompressorTask SourceFiles="js/document-metadata.js" OutputFile="js/min/document-metadata.js" />
+    <JavaScriptCompressorTask SourceFiles="js/embed-googlemaps.js" OutputFile="js/min/embed-googlemaps.js" />
+    <JavaScriptCompressorTask SourceFiles="js/embed-youtube.js" OutputFile="js/min/embed-youtube.js" />
     <JavaScriptCompressorTask SourceFiles="js/forms.js" OutputFile="js/min/forms.js" />
     <JavaScriptCompressorTask SourceFiles="js/googleautosuggest.js" OutputFile="js/min/googleautosuggest.js" />
     <JavaScriptCompressorTask SourceFiles="js/google-maps.js" OutputFile="js/min/google-maps.js" />
-    <JavaScriptCompressorTask SourceFiles="js/1space.js" OutputFile="js/min/1space.js" />
-    <JavaScriptCompressorTask SourceFiles="js/cross-origin-ie.js" OutputFile="js/min/cross-origin-ie.js" />
-    <JavaScriptCompressorTask SourceFiles="js/switch-view.js" OutputFile="js/min/switch-view.js" />
-    <JavaScriptCompressorTask SourceFiles="js/alerts.js" OutputFile="js/min/alerts.js" />
-    <JavaScriptCompressorTask SourceFiles="js/chat.js" OutputFile="js/min/chat.js" />
     <JavaScriptCompressorTask SourceFiles="js/govdelivery.js" OutputFile="js/min/govdelivery.js" />
+    <JavaScriptCompressorTask SourceFiles="js/jquery-load.js" OutputFile="js/min/jquery-load.js" />
+    <JavaScriptCompressorTask SourceFiles="js/media-queries.js" OutputFile="js/min/media-queries.js" />
+    <JavaScriptCompressorTask SourceFiles="js/public-libraries.js" OutputFile="js/min/public-libraries.js" />
+    <JavaScriptCompressorTask SourceFiles="js/social-media.js" OutputFile="js/min/social-media.js" />
+    <JavaScriptCompressorTask SourceFiles="js/switch-view.js" OutputFile="js/min/switch-view.js" />
     <JavaScriptCompressorTask SourceFiles="js/thanks-for-analytics.js" OutputFile="js/min/thanks-for-analytics.js" />
+    <JavaScriptCompressorTask SourceFiles="js/webchat.js" OutputFile="js/min/webchat.js" />
   </Target>
 </Project>
