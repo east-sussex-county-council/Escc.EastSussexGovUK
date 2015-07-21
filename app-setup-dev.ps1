@@ -46,7 +46,7 @@ DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Elibrary"
 NuGetRestoreForProject $parentFolderOfThisScript "Escc.Cms"
 
 EnableDotNet40InIIS
-CreateApplicationPool $projectName true
+CreateApplicationPool $projectName
 CreateWebsite $projectName $pathOfThisScript
 CreateHTTPSBinding $projectName "localhost"
 RemoveHTTPBindings $projectName
