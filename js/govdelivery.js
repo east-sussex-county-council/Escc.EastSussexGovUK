@@ -1,7 +1,7 @@
 ﻿if (typeof (jQuery) != 'undefined' && typeof (esccConfig) != 'undefined') {
     $(function() {
         // Enable on internal hostnames, *.azurewebsites.net, or specific subdomains of .eastsussex.gov.uk
-        if (!(/^([a-z0-9]+|[a-z0-9]+\.azurewebsites\.net|(www)\.eastsussex\.gov\.uk)$/.test(document.location.hostname))) return;
+        if (!(/^([a-z0-9]+|[a-z0-9-]+\.azurewebsites\.net|(www|new)\.eastsussex\.gov\.uk)$/.test(document.location.hostname))) return;
 
         // Add a 'keep me posted' link to the header, which loads HTML and styles when clicked
         $("<a href=\"#\" class=\"govdelivery\">Keep me posted</a>").appendTo(".header .container").click(function(e) {
