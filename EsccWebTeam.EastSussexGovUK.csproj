@@ -326,6 +326,8 @@
     <Content Include="MasterPages\Remote\Example\default.aspx" />
     <Content Include="app-setup-dev.cmd" />
     <Content Include="app-setup-dev.ps1" />
+    <Content Include="MasterPages\Controls\Web.config" />
+    <Content Include="MasterPages\Controls\Web.example.config" />
     <None Include="MasterPages\RSS\config.example.xslt" />
     <Content Include="MasterPages\Remote\Web.example.config" />
     <Content Include="js\WebChatProxy.ashx" />
@@ -376,6 +378,7 @@
     <Compile Include="js\WebChatProxy.ashx.cs">
       <DependentUpon>WebChatProxy.ashx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\Controls\CorsForStaticFilesHandler.cs" />
     <Compile Include="MasterPages\CustomerFocusSkin.cs" />
     <Compile Include="EastSussexGovUKContext.cs" />
     <Compile Include="MasterPages\AutoSuggestGoogleAnalytics.ashx.cs">
