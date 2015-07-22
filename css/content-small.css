@@ -95,8 +95,8 @@ ol.progressBar li {font-size: .875em; line-height: 1.285714em;font-weight: norma
 .main-action a:after { content: ' >'}
 .main-action a:hover, .main-action a:focus, .main-action a:active { background: #EE4902; }
 
-/* Reset other buttons to their default skin size */
-.button, .form input[type=submit] {font-size: .8125em; line-height: 1.384615em; }
+/* Reset other buttons to their default skin size, but leave the header and footer unaffected */
+.body .button, .body .form input[type=submit] {font-size: .8125em; line-height: 1.384615em; }
 
 /* Share links for the bottom of a page, defined in the _Share.cshtml partial view from Escc.CustomerFocusTemplates.Website. 
    18px margin above and 16px text at all screen sizes. */

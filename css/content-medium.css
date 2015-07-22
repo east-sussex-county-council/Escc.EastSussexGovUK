@@ -76,8 +76,8 @@ ol.progressBar li { font-size: .736842em; }
 /* Clear button for the main action on a page. Maintain font-size at 19px despite base font increase. */ 
 .main-action a { font-size: 1em; }
 
-/* Reset other buttons to their default skin size */
-.button, .form input[type=submit] {font-size: .684211em; }
+/* Reset other buttons to their default skin size, but leave the header and footer unaffected */
+.body .button, .body .form input[type=submit] {font-size: .684211em; }
 
 /* Share links for the bottom of a page, defined in the _Share.cshtml partial view from Escc.CustomerFocusTemplates.Website. 
    Retain 16px text and 18px margin above, to look unchanged from mobile view. */
