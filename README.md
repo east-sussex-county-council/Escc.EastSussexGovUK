@@ -77,13 +77,19 @@ The solution to this is to re-register the session state module:
 	    </modules>
 	</system.webServer>
 
-RSS feed styles
----------------
+## 'Keep me posted' button
+The 'keep me posted' button reveals a slide-down panel which allows visitors to enter their email address to subscribe to emails using the GovDelivery service. The following process determines how it appears:
+
+1. The page template loads `govdelivery.js`. For example, on WebForms pages `desktop.master` loads `scriptsdesktop.ascx`, which specifies the `Email` script, which resolves to `govdelivery.js` in `web.config`. It loads the `govdelivery-button-*.css` files by a similar method.
+2. `govdelivery.js` checks that it is on the https protocol on one of its approved domains. If so, it inserts the 'Keep me posted' button in the header. This picks up the CSS already loaded.
+3. When the 'Keep me posted' button is clicked, it makes a request for `govdelivery.html`, inserts it into the page, and slides down the panel to reveal it. However, this request is intercepted by `CorsForStaticFilesHandler` which is registered in `web.config` to handle `*.html` requests in the `controls` folder. `CorsForStaticFilesHandler` checks the origin of the request against a list of approved domains in `web.config` and, if there is a match, inserts the appropriate CORS header. This allows the request to succeed across different domains and subdomains.
+4. `govdelivery.html` has a form which posts to the GovDelivery site, at which point that service takes over.
+
+## RSS feed styles
 
 Different browsers display RSS feeds in different ways. Some (Internet Explorer and Firefox) and have built in template, but we provide styles for others (such as Chrome) which would otherwise show plain XML.
 
-RDF data home page
-------------------
+## RDF data home page
 
 Based on an idea suggested in a blog post, `eastsussexcountycouncil.rdf` provides a starting point for exploring the RDF data published by East Sussex County Council, much like the home page does for HTML content.
 
