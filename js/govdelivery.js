@@ -1,5 +1,8 @@
 ﻿if (typeof (jQuery) != 'undefined' && typeof (esccConfig) != 'undefined') {
-    $(function() {
+    $(function () {
+        // Enable on https only as requesting the user's email address
+        if (!document.location.protocol == "https:") return;
+
         // Enable on internal hostnames, *.azurewebsites.net, or specific subdomains of .eastsussex.gov.uk
         if (!(/^([a-z0-9]+|[a-z0-9-]+\.azurewebsites\.net|(www|new)\.eastsussex\.gov\.uk)$/.test(document.location.hostname))) return;
 
