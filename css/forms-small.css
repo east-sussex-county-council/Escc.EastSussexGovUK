@@ -277,6 +277,7 @@ Use the EsccWebTeam.FormControls.Validators.EsccValidationSummaryControl to prod
 .ie67 .form .dependentFields fieldset { position: relative; }
 
 /* Consistent layout for fieldset legends */
+legend { display: table; white-space: normal; } /* Make them wrap in IE<=11 */
 .ie67 legend { margin-left: -7px; } 
 
 
@@ -700,8 +701,10 @@ FormPart are the container for the question and answer controls
 .service-form .checkbox { font-weight: bold; }
 
 /* Labels are displayed as block to force the following control to wrap under the label and stack the controls. 
-   Set the font back to normal from bold for block elements within the label */
-.service-form .formPart label, .service-form legend { display: block; font-weight :bold; cursor: pointer; margin: 0 0 2px; }
+   Set the font back to normal from bold for block elements within the label. 
+   Don't reset display property for legend as IE<=11 needs it to be display: table or the element doesn't wrap. '*/
+.service-form .formPart label { display: block; }
+.service-form .formPart label, .service-form legend { font-weight :bold; cursor: pointer; margin: 0 0 2px; }
 .ie67 .service-form legend { margin-left: -7px; }
 .service-form .formPart label ul li, .service-form .formPart label p { font-weight: normal; }
 
