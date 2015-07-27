@@ -39,7 +39,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 // For example, if the request contains an invalid referring URL such as http://google.com', when you access the 
                 // Request.UrlReferrer property .NET creates a Uri instance which throws this exception.
             }
-            var script = "<script>$(function(){ " + String.Format(CultureInfo.InvariantCulture, "if (typeof (_gaq) != 'undefined') _gaq.push(['_trackEvent', '404', '/{0}', '{1}']);", Regex.Replace(NormaliseRequestedPath(), @"[^A-Za-z0/\-_\.\?=#+%]", String.Empty), Regex.Replace(normalisedReferrer, @"[^A-Za-z0/\-_\.\?=#+%]", String.Empty)) + "})</script>";
+            var script = "<script>$(function(){ " + String.Format(CultureInfo.InvariantCulture, "if (typeof(ga) !== 'undefined') ga('send', 'event', '404', '/{0}', '{1}');", Regex.Replace(NormaliseRequestedPath(), @"[^A-Za-z0/\-_\.\?=#+%]", String.Empty), Regex.Replace(normalisedReferrer, @"[^A-Za-z0/\-_\.\?=#+%]", String.Empty)) + "})</script>";
 
             // Put the tracking script in the javascript placeholder
             MasterPage rootMaster = Page.Master;
