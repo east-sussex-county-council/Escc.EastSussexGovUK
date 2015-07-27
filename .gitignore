@@ -32,11 +32,11 @@ _ReSharper*/
 !packages.config
 *.scc
 [Ss]cripts*/
-css/min
-js/min
-js/libs/escc.*
-js/config.js
-js/config-public.js
+*/css/min
+*/js/min
+*/js/libs/escc.*
+*/js/config.js
+*/js/config-public.js
 masterpages/RSS/config.xslt
 packages
 *.GhostDoc.xml

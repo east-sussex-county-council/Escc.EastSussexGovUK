@@ -62,29 +62,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EcmaScript.NET">
-      <HintPath>packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
+      <HintPath>..\packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
     </Reference>
     <Reference Include="Escc.AddressAndPersonalDetails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.AddressAndPersonalDetails.2.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.2.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework.WebForms">
-      <HintPath>..\Escc.EastSussexGovUK.Umbraco\packages\Escc.ClientDependencyFramework.WebForms.1.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
+      <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.1.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Escc.Web.Metadata.1.0.0\lib\Escc.Web.Metadata.dll</HintPath>
+      <HintPath>..\packages\Escc.Web.Metadata.1.0.0\lib\Escc.Web.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Exceptionless.1.5.2121\lib\net40\Exceptionless.dll</HintPath>
+      <HintPath>..\packages\Exceptionless.1.5.2121\lib\net40\Exceptionless.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless.Models, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Exceptionless.1.5.2121\lib\net40\Exceptionless.Models.dll</HintPath>
+      <HintPath>..\packages\Exceptionless.1.5.2121\lib\net40\Exceptionless.Models.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections">
-      <HintPath>packages\YUICompressor.NET.2.0.0.0\lib\NET20\Iesi.Collections.dll</HintPath>
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.ExceptionManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -114,14 +114,13 @@
     <Reference Include="System.Web.Mobile" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Yahoo.Yui.Compressor">
-      <HintPath>packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+      <HintPath>..\packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor.Build.MsBuild">
-      <HintPath>packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
+      <HintPath>..\packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
     <Content Include="apple-touch-icon-114x114.png" />
     <Content Include="apple-touch-icon-57x57.png" />
     <Content Include="apple-touch-icon-72x72.png" />
@@ -324,8 +323,6 @@
     </Content>
     <Content Include="MasterPages\Remote\Control.aspx" />
     <Content Include="MasterPages\Remote\Example\default.aspx" />
-    <Content Include="app-setup-dev.cmd" />
-    <Content Include="app-setup-dev.ps1" />
     <Content Include="MasterPages\Controls\Web.config" />
     <Content Include="MasterPages\Controls\Web.example.config" />
     <None Include="MasterPages\RSS\config.example.xslt" />
@@ -340,7 +337,6 @@
     <None Include="MasterPages\Remote\Web.config" />
     <Content Include="MasterPages\Data\hCalendar.ashx" />
     <Content Include="MasterPages\FullScreen.Master" />
-    <Content Include="LICENSE.md" />
     <None Include="js\config.js" />
     <Content Include="js\config.example.js" />
     <None Include="css\Web.example.config" />
@@ -352,7 +348,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="README.md" />
     <None Include="Web.example.config">
       <SubType>Designer</SubType>
     </None>
@@ -689,27 +684,27 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Escc.Cms\EsccWebTeam.Cms.csproj">
+    <ProjectReference Include="..\..\Escc.Cms\EsccWebTeam.Cms.csproj">
       <Project>{6710e9ee-deab-4569-ace6-f10159d6d447}</Project>
       <Name>EsccWebTeam.Cms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Escc.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj">
+    <ProjectReference Include="..\..\Escc.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj">
       <Project>{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}</Project>
       <Name>EsccWebTeam.Data.ActiveDirectory</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
+    <ProjectReference Include="..\..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
       <Project>{9C56D3DD-4952-4A1B-9AD6-907A1142872F}</Project>
       <Name>EsccWebTeam.Data.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj">
+    <ProjectReference Include="..\..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj">
       <Project>{86B2725C-9C37-44A4-93C7-F5122AFA0809}</Project>
       <Name>EsccWebTeam.Data.Xml</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
+    <ProjectReference Include="..\..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
       <Project>{1C429378-DBF2-4AF7-88AC-C059AA163682}</Project>
       <Name>EsccWebTeam.HouseStyle</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Escc.NavigationControls\EsccWebTeam.NavigationControls.csproj">
+    <ProjectReference Include="..\..\Escc.NavigationControls\EsccWebTeam.NavigationControls.csproj">
       <Project>{0323F668-1723-44A1-8C94-F91DC59EF315}</Project>
       <Name>EsccWebTeam.NavigationControls</Name>
     </ProjectReference>
@@ -718,10 +713,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://esweb01s/Escc.DeviceDetection.WebService/Service.asmx">
+    <WebReferenceUrl Include="http://localhost/Escc.DeviceDetection.WebService/Service.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\DeviceDetection\</RelPath>
-      <UpdateFromURL>http://esweb01s/Escc.DeviceDetection.WebService/Service.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost/Escc.DeviceDetection.WebService/Service.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -775,9 +770,9 @@ if not "$(ESCC_MINIFY)"=="false" "$(MSBuildBinPath)\msbuild.exe" "$(ProjectDir)Y
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets'))" />
-    <Error Condition="!Exists('packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets'))" />
   </Target>
-  <Import Project="packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets" Condition="Exists('packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" />
-  <Import Project="packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
+  <Import Project="..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.0\build\Escc.Statistics.js.targets')" />
+  <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
 </Project>
