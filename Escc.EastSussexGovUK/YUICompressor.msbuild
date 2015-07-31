@@ -43,6 +43,7 @@
     <JavaScriptCompressorTask SourceFiles="js/embed-googlemaps.js" OutputFile="js/min/embed-googlemaps.js" />
     <JavaScriptCompressorTask SourceFiles="js/embed-youtube.js" OutputFile="js/min/embed-youtube.js" />
     <JavaScriptCompressorTask SourceFiles="js/forms.js" OutputFile="js/min/forms.js" />
+    <JavaScriptCompressorTask SourceFiles="js/heatmap-analytics.js" OutputFile="js/min/heatmap-analytics.js" />
     <JavaScriptCompressorTask SourceFiles="js/googleautosuggest.js" OutputFile="js/min/googleautosuggest.js" />
     <JavaScriptCompressorTask SourceFiles="js/google-maps.js" OutputFile="js/min/google-maps.js" />
     <JavaScriptCompressorTask SourceFiles="js/govdelivery.js" OutputFile="js/min/govdelivery.js" />
