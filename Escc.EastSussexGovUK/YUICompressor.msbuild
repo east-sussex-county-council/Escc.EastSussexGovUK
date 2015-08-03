@@ -54,5 +54,6 @@
     <JavaScriptCompressorTask SourceFiles="js/switch-view.js" OutputFile="js/min/switch-view.js" />
     <JavaScriptCompressorTask SourceFiles="js/thanks-for-analytics.js" OutputFile="js/min/thanks-for-analytics.js" />
     <JavaScriptCompressorTask SourceFiles="js/webchat.js" OutputFile="js/min/webchat.js" />
+    <JavaScriptCompressorTask SourceFiles="js/umbraco-preview.js" OutputFile="js/min/umbraco-preview.js" />
   </Target>
 </Project>
