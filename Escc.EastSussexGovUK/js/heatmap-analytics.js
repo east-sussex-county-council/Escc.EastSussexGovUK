@@ -46,8 +46,14 @@
 
         var enableAnalytics = isUrlMatch(data.HeatmapAnalyticsUrls, document.location.pathname, document.location.search);
         if (enableAnalytics) {
-            /** insert snippet here **/
-            if (console && console.log) console.log("Enable heatmap analytics");
+            /* Crazy Egg code snippet. */
+            setTimeout(function () {
+                var a = document.createElement("script");
+                var b = document.getElementsByTagName("script")[0];
+                a.src = document.location.protocol + "//script.crazyegg.com/pages/scripts/0035/1997.js?" + Math.floor(new Date().getTime() / 3600000);
+                a.async = true; a.type = "text/javascript";
+                b.parentNode.insertBefore(a, b);
+            }, 1);
         };
     });
 }
