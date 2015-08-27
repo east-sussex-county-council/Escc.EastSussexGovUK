@@ -226,6 +226,7 @@
     <Content Include="img\header\mask.gif" />
     <Content Include="img\header\menu-item.gif" />
     <Content Include="img\header\logo-large.gif" />
+    <Content Include="img\header\menu-item.png" />
     <Content Include="img\header\mobile.jpg" />
     <Content Include="img\header\robin.jpg" />
     <Content Include="img\header\squirrel.jpg" />

@@ -172,7 +172,7 @@ html { overflow-y: scroll; }
 #menu .transport { width: 9%; display: block; }
 #menu .council { width: 8%; display: block; }
 #menu .business a { background-image: none; }
-#menu .business a:hover, #menu .business a:focus, #menu .business a:active, #menu .business a.selected:link, #menu .business a.selected:visited { background: url(/img/header/menu-item.gif) no-repeat left -61px; }
+#menu .business a:hover, #menu .business a:focus, #menu .business a:active, #menu .business a.selected:link, #menu .business a.selected:visited { background: url(/img/header/menu-item.png) no-repeat left -61px; }
 
 /* For IE6, undo the small-screen layout. Add position: relative to #menu to prevent peekaboo bug at around 800px wide. */
 .ie6 #menu { width: 100%; background: none; position: relative; }

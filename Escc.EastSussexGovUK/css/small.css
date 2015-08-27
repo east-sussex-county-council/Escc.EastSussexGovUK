@@ -357,7 +357,9 @@ a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip:
 .size3 #menu { max-width: 160px; }
 #menu li { float: left; }
 #menu ul, #menu li { list-style: none; margin: 0; } /* repeat style from nav ul, nav li for browsers which don't style nav element, eg Firefox 2 */
-#menu a:link, #menu a:visited { display: block; padding: 8px 10px 6px; text-decoration: none; text-align: center; font-weight: bold; color: #fff; background: url(/img/header/menu-item.gif) no-repeat right top; }
+
+/* Note: menu-item.gif retained in project only for people with cached stylesheets that reference it. It can be deleted from Oct 2015 onwards. */
+#menu a:link, #menu a:visited { display: block; padding: 8px 10px 6px; text-decoration: none; text-align: center; font-weight: bold; color: #fff; background: url(/img/header/menu-item.png) no-repeat right top; }
 #menu .socialcare, #menu .business, #menu .community, #menu .education, #menu .environment, #menu .families, #menu .jobs, #menu .leisure, #menu .libraries, #menu .transport, #menu .council { display: none; }
 
 /* Use a simpler layout for IE6. Search and menu on two separate lines. IE6 not used on mobile, so this is an unusual scenario anyway. 
