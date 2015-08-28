@@ -98,6 +98,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>S:\_Reference DLLs\Microsoft Content Management Server 2002\Microsoft.ContentManagement.WebControls.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\Escc.EastSussexGovUK.UmbracoViews\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -378,6 +382,8 @@
     <Compile Include="js\WebChatProxy.ashx.cs">
       <DependentUpon>WebChatProxy.ashx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\TypekitFontDependency.cs" />
+    <Compile Include="MasterPages\GoogleFontDependency.cs" />
     <Compile Include="MasterPages\Controls\CorsForStaticFilesHandler.cs" />
     <Compile Include="MasterPages\CustomerFocusSkin.cs" />
     <Compile Include="EastSussexGovUKContext.cs" />
@@ -584,6 +590,23 @@
       <DependentUpon>TwitterSearch.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\DefaultSkin.cs" />
+    <Compile Include="MasterPages\ContentSecurityPolicyDependency.cs" />
+    <Compile Include="MasterPages\CssFileDependency.cs" />
+    <Compile Include="MasterPages\Features\EastSussex1SpaceSearch.cs" />
+    <Compile Include="MasterPages\Features\EmbeddedGoogleMaps.cs" />
+    <Compile Include="MasterPages\Features\EmbeddedYouTubeVideos.cs" />
+    <Compile Include="MasterPages\Features\FacebookLikeBox.cs" />
+    <Compile Include="MasterPages\Features\IEastSussex1SpaceService.cs" />
+    <Compile Include="MasterPages\Features\ILatestService.cs" />
+    <Compile Include="MasterPages\Features\ISocialMediaService.cs" />
+    <Compile Include="MasterPages\Features\IWebChatSettingsService.cs" />
+    <Compile Include="MasterPages\Features\LatestSettings.cs" />
+    <Compile Include="MasterPages\IClientDependencySet.cs" />
+    <Compile Include="MasterPages\JsFileDependency.cs" />
+    <Compile Include="MasterPages\Features\SocialMediaSettings.cs" />
+    <Compile Include="MasterPages\Features\TwitterWidget.cs" />
+    <Compile Include="MasterPages\Features\WebChat.cs" />
+    <Compile Include="MasterPages\Features\WebChatSettings.cs" />
     <Compile Include="MasterPages\IEsccWebsiteSkin.cs" />
     <Compile Include="MasterPages\Remote\IRemoteMasterPageConfigurationProvider.cs" />
     <Compile Include="MasterPages\Remote\RemoteMasterPageCacheProviderBase.cs" />

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.EastSussexGovUK", "Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj", "{1426FEF0-23DC-4C23-AE15-67F2527BD741}"
 EndProject
@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Tests", "Escc.EastSussexGovUK.Tests\Escc.EastSussexGovUK.Tests.csproj", "{C7C8165C-927A-4448-B84A-6D91FA17C74C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,12 @@ Global
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{3D2240E0-D165-4C52-A97B-730542975D3A}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{C7C8165C-927A-4448-B84A-6D91FA17C74C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7C8165C-927A-4448-B84A-6D91FA17C74C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7C8165C-927A-4448-B84A-6D91FA17C74C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C8165C-927A-4448-B84A-6D91FA17C74C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7C8165C-927A-4448-B84A-6D91FA17C74C}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C8165C-927A-4448-B84A-6D91FA17C74C}.UAT|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
