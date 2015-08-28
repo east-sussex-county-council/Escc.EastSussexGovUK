@@ -9,6 +9,17 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
     /// </summary>
     public class CustomerFocusSkin : IEsccWebsiteSkin
     {
+        private readonly EsccWebsiteView _currentView;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomerFocusSkin"/> class.
+        /// </summary>
+        /// <param name="currentView">The current view.</param>
+        public CustomerFocusSkin(EsccWebsiteView currentView)
+        {
+            _currentView = currentView;
+        }
+
         /// <summary>
         /// Class or classes applied to supporting content with standard text formatting
         /// </summary>
@@ -45,11 +56,22 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// </returns>
         public IEnumerable<CssFileDependency> RequiresCss()
         {
-            return new CssFileDependency[] {
-                new CssFileDependency() { CssFileAlias = "ContentSmall", Priority = 10 },
-                new CssFileDependency() { CssFileAlias = "ContentMedium", MediaQueryAlias = "Medium", Priority = 10 },
-                new CssFileDependency() { CssFileAlias = "ContentLarge", MediaQueryAlias = "Large", Priority = 10 }
-            };
+            if (_currentView == EsccWebsiteView.Mobile)
+            {
+                return new CssFileDependency[]
+                {
+                    new CssFileDependency() {CssFileAlias = "ContentSmall", Priority = 10}
+                };
+            }
+            else
+            {
+                return new CssFileDependency[]
+                {
+                    new CssFileDependency() {CssFileAlias = "ContentSmall", Priority = 10},
+                    new CssFileDependency() {CssFileAlias = "ContentMedium", MediaQueryAlias = "Medium", Priority = 10},
+                    new CssFileDependency() {CssFileAlias = "ContentLarge", MediaQueryAlias = "Large", Priority = 10}
+                };
+            }
         }
 
         /// <summary>
