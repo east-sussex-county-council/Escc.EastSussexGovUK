@@ -86,7 +86,19 @@ namespace Escc.EastSussexGovUK.MasterPages
         {
             return new List<TypekitFontDependency>(base.RequiresTypekitFonts())
             {
-                new TypekitFontDependency() { TypekitUrl = new Uri("https://use.typekit.net/whh8ntg.js")}
+                new TypekitFontDependency() { TypekitUrl = new Uri("https://use.typekit.net/djq4xlq.js")}
+            };
+        }
+
+        /// <summary>
+        /// Require the content security policy for typekit
+        /// </summary>
+        /// <returns></returns>
+        public override IEnumerable<ContentSecurityPolicyDependency> RequiresContentSecurityPolicy()
+        {
+            return new List<ContentSecurityPolicyDependency>(base.RequiresContentSecurityPolicy())
+            {
+                new ContentSecurityPolicyDependency() {Alias = "Typekit"}
             };
         }
     }
