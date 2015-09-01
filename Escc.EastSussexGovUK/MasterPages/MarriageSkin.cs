@@ -86,7 +86,7 @@ namespace Escc.EastSussexGovUK.MasterPages
         {
             return new List<TypekitFontDependency>(base.RequiresTypekitFonts())
             {
-                new TypekitFontDependency() { TypekitUrl = new Uri("//use.typekit.net/whh8ntg.js")}
+                new TypekitFontDependency() { TypekitUrl = new Uri("https://use.typekit.net/whh8ntg.js")}
             };
         }
     }
