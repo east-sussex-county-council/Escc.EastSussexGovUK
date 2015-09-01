@@ -382,6 +382,8 @@
     <Compile Include="js\WebChatProxy.ashx.cs">
       <DependentUpon>WebChatProxy.ashx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\MarriageSkin.cs" />
+    <Compile Include="MasterPages\SkinSelector.cs" />
     <Compile Include="MasterPages\TypekitFontDependency.cs" />
     <Compile Include="MasterPages\GoogleFontDependency.cs" />
     <Compile Include="MasterPages\Controls\CorsForStaticFilesHandler.cs" />

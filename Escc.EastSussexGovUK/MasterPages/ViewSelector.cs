@@ -6,9 +6,9 @@ using System.Net;
 using System.Threading;
 using System.Web;
 using System.Web.SessionState;
+using EsccWebTeam.EastSussexGovUK.DeviceDetection;
 using EsccWebTeam.Data.Web;
 using EsccWebTeam.Data.Xml;
-using EsccWebTeam.EastSussexGovUK.DeviceDetection;
 using Microsoft.ApplicationBlocks.ExceptionManagement;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages

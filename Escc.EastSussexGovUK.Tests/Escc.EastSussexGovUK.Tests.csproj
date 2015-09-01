@@ -58,6 +58,7 @@
     <Compile Include="EmbeddedGoogleMapsTests.cs" />
     <Compile Include="EmbeddedYouTubeVideosTests.cs" />
     <Compile Include="FacebookLikeBoxTests.cs" />
+    <Compile Include="MarriageSkinTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterWidgetTests.cs" />
     <Compile Include="WebChatTests.cs" />

@@ -23,7 +23,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// <summary>
         /// Class or classes applied to supporting content with standard text formatting
         /// </summary>
-        public string SupportingTextContentClass
+        public virtual string SupportingTextContentClass
         {
             get { return "text-content content-small content-medium"; }
         }
@@ -34,7 +34,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// <returns>
         ///   <c>true</c> if the skin should be applied; <c>false</c> otherwise
         /// </returns>
-        public bool IsRequired()
+        public virtual bool IsRequired()
         {
             return true;
         }
@@ -43,7 +43,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// The content security policy aliases required for the skin. These are registered in web.config using <see cref="EsccWebTeam.Data.Web.ContentSecurityPolicy" />.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<ContentSecurityPolicyDependency> RequiresContentSecurityPolicy()
+        public virtual IEnumerable<ContentSecurityPolicyDependency> RequiresContentSecurityPolicy()
         {
             return new ContentSecurityPolicyDependency[0];
         }
@@ -54,7 +54,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// <returns>
         /// A set of CSS file aliases, optionally qualified by media query aliases
         /// </returns>
-        public IEnumerable<CssFileDependency> RequiresCss()
+        public virtual IEnumerable<CssFileDependency> RequiresCss()
         {
             if (_currentView == EsccWebsiteView.Mobile)
             {
@@ -80,7 +80,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// <returns>
         /// A set of Google Font URLs
         /// </returns>
-        public IEnumerable<GoogleFontDependency> RequiresGoogleFonts()
+        public virtual IEnumerable<GoogleFontDependency> RequiresGoogleFonts()
         {
             return new GoogleFontDependency[]
             {
@@ -94,7 +94,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// <returns>
         /// A set of Typekit font URLs
         /// </returns>
-        public IEnumerable<TypekitFontDependency> RequiresTypekitFonts()
+        public virtual IEnumerable<TypekitFontDependency> RequiresTypekitFonts()
         {
             return new TypekitFontDependency[0];
         }
@@ -105,7 +105,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// <returns>
         /// A set of JS file aliases, qualified by a priority value which defaults to 100
         /// </returns>
-        public IEnumerable<JsFileDependency> RequiresJavaScript()
+        public virtual IEnumerable<JsFileDependency> RequiresJavaScript()
         {
             return new JsFileDependency[0];
         }
