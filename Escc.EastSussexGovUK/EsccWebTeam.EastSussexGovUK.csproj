@@ -241,7 +241,7 @@
     <None Include="js\analytics.js" />
     <None Include="js\document-metadata.js" />
     <None Include="js\govdelivery.js" />
-    <Content Include="js\heatmap-analytics.js" />
+    <None Include="js\heatmap-analytics.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\min\1space.js" />
@@ -257,7 +257,7 @@
     <Content Include="js\min\google-maps.js" />
     <Content Include="js\min\googleautosuggest.js" />
     <Content Include="js\min\govdelivery.js" />
-    <None Include="js\min\heatmap-analytics.js" />
+    <Content Include="js\min\heatmap-analytics.js" />
     <Content Include="js\min\jquery-load.js" />
     <Content Include="js\min\media-queries.js" />
     <Content Include="js\min\public-libraries.js" />
