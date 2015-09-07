@@ -24,10 +24,10 @@
     
     <h2>How to subscribe</h2>
     <ul>
-    <li><a href="http://www.apple.com/findouthow/mac/#subscribeical">Apple iCal: Subscribe to an iCal Calendar</a></li>
+    <li><a href="https://support.apple.com/kb/PH11523?locale=en_GB">Apple Calendar: Subscribe to calendars</a></li>
     <li><a href="http://office.microsoft.com/en-us/outlook-help/view-and-subscribe-to-internet-calendars-HA010167325.aspx#BM2">Microsoft Outlook: Add an Internet calendar subscription</a></li>
+    <li><a href="http://windows.microsoft.com/en-GB/hotmail/calendar-subscribe-calendar-ui">Outlook.com: Import or subscribe to a calendar</a></li>
     <li><a href="http://support.google.com/calendar/bin/answer.py?hl=en&amp;answer=37100">Google Calendar: Subscribe to calendars</a></li>
-    <li><a href="http://windows.microsoft.com/en-GB/hotmail/calendar-subscribe-calendar-ui">Hotmail Calendar: Import or subscribe to a calendar</a></li>
     </ul>
 
                 </div>

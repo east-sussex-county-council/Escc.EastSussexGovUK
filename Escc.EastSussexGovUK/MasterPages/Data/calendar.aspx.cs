@@ -51,7 +51,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 if (requestedUri.Query.Length > 1) urlToParse += requestedUri.Query;
 
                 this.download.HRef = HttpUtility.HtmlAttributeEncode(urlToParse);
-                this.subscribe.HRef = HttpUtility.HtmlAttributeEncode("webcal://" + Request.Url.Authority + urlToParse);
+                this.subscribe.HRef = HttpUtility.HtmlAttributeEncode("webcals://" + Request.Url.Authority + urlToParse);
             }
             catch (Exception ex)
             {
