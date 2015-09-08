@@ -48,6 +48,7 @@
     <JavaScriptCompressorTask SourceFiles="js/google-maps.js" OutputFile="js/min/google-maps.js" />
     <JavaScriptCompressorTask SourceFiles="js/govdelivery.js" OutputFile="js/min/govdelivery.js" />
     <JavaScriptCompressorTask SourceFiles="js/jquery-load.js" OutputFile="js/min/jquery-load.js" />
+    <JavaScriptCompressorTask SourceFiles="js/languages.js" OutputFile="js/min/languages.js" />
     <JavaScriptCompressorTask SourceFiles="js/media-queries.js" OutputFile="js/min/media-queries.js" />
     <JavaScriptCompressorTask SourceFiles="js/public-libraries.js" OutputFile="js/min/public-libraries.js" />
     <JavaScriptCompressorTask SourceFiles="js/social-media.js" OutputFile="js/min/social-media.js" />

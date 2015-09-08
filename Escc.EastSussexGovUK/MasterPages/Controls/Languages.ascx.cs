@@ -30,18 +30,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 this.slovakian.HRef = urlPrefix + this.slovakian.HRef;
                 this.turkish.HRef = urlPrefix + this.turkish.HRef;
             }*/
-
-            // Append the URL of the page to be translated
-            var encodedUrl = "&amp;url=" + HttpUtility.UrlEncode(siteContext.RequestUrl.ToString());
-
-            this.chinese.HRef += encodedUrl;
-            this.arabic.HRef += encodedUrl;
-            this.urdu.HRef += encodedUrl;
-            this.kurdish.HRef += encodedUrl;
-            this.portugese.HRef += encodedUrl;
-            this.polish.HRef += encodedUrl;
-            this.slovakian.HRef += encodedUrl;
-            this.turkish.HRef += encodedUrl;
         }
     }
 }

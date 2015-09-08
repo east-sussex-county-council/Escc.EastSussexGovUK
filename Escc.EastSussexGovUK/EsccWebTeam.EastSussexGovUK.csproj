@@ -259,6 +259,7 @@
     <Content Include="js\min\govdelivery.js" />
     <Content Include="js\min\heatmap-analytics.js" />
     <Content Include="js\min\jquery-load.js" />
+    <Content Include="js\min\languages.js" />
     <Content Include="js\min\media-queries.js" />
     <Content Include="js\min\public-libraries.js" />
     <Content Include="js\min\social-media.js" />
@@ -289,6 +290,7 @@
     <None Include="js\embed-youtube.js" />
     <None Include="js\umbraco-preview.js" />
     <None Include="js\typekit.js" />
+    <None Include="js\languages.js" />
     <Content Include="MasterPages\adverts.xml">
       <SubType>Designer</SubType>
     </Content>
