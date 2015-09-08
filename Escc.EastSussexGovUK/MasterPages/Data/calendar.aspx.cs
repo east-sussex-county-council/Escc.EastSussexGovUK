@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Xml;
 using System.Xml.XPath;
+using eastsussexgovuk.webservices.TextXhtml.HouseStyle;
 using EsccWebTeam.Data.Web;
 using EsccWebTeam.Data.Xml;
 using Microsoft.ApplicationBlocks.ExceptionManagement;
@@ -52,6 +53,8 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
 
                 this.download.HRef = HttpUtility.HtmlAttributeEncode(urlToParse);
                 this.subscribe.HRef = HttpUtility.HtmlAttributeEncode("webcals://" + Request.Url.Authority + urlToParse);
+
+                Http.CacheDaily(DateTimeFormatter.UkNow().Hour, DateTimeFormatter.UkNow().Minute);
             }
             catch (Exception ex)
             {

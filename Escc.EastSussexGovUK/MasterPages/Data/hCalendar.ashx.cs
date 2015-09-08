@@ -44,6 +44,9 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
 
                 // Run code relevant to the requested microformat
                 ParseHCalendar(context, config, uriToProcess, requestedUri);
+
+                // Cache, but not for long because this could be updates to existing events at short notice, eg cancellations and closures
+                Http.CacheFor(0,5);
             }
             catch (ThreadAbortException)
             {
