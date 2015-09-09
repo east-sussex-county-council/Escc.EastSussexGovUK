@@ -244,6 +244,7 @@
     <None Include="js\heatmap-analytics.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
+    <Content Include="js\libs\modernizr.custom.15280.js" />
     <Content Include="js\min\1space.js" />
     <Content Include="js\min\alerts.js" />
     <Content Include="js\min\analytics.js" />
@@ -282,7 +283,6 @@
     <Content Include="js\libs\markerclusterer.min.js" />
     <Content Include="js\libs\markerwithlabel_packed.js" />
     <None Include="js\media-queries.js" />
-    <Content Include="js\libs\modernizr.custom.08906.js" />
     <None Include="js\public-libraries.js" />
     <None Include="js\forms.js" />
     <None Include="js\switch-view.js" />
