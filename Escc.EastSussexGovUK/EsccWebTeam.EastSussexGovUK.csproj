@@ -713,7 +713,9 @@
     <None Include="img\header\header original.psd" />
     <None Include="img\header\header resized, tiled, with channel for mask.psd" />
     <None Include="img\header\mask.psd" />
-    <Content Include="js\Web.config" />
+    <Content Include="js\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="img\header\mobile.psd" />
     <Content Include="MasterPages\AutoSuggestGoogleAnalytics.ashx" />
     <Content Include="MasterPages\Plain.Master" />
