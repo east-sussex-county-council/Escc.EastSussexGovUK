@@ -29,6 +29,29 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             Menu();
 
             TextSize();
+
+            Season();
+        }
+
+        private void Season()
+        {
+            var month = DateTime.UtcNow.Month;
+            if (month == 12 || month == 1 || month == 2)
+            {
+                this.season.Attributes["class"] += " winter";
+            }
+            if (month == 3 || month == 4 || month == 5)
+            {
+                this.season.Attributes["class"] += " spring";
+            }
+            if (month == 6 || month == 7 || month == 8)
+            {
+                this.season.Attributes["class"] += " summer";
+            }
+            if (month == 9 || month == 10 || month == 11)
+            {
+                this.season.Attributes["class"] += " autumn";
+            }
         }
 
 

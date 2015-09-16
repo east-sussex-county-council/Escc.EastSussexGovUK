@@ -13,6 +13,15 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls {
     public partial class HeaderDesktop {
         
         /// <summary>
+        /// season control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl season;
+        
+        /// <summary>
         /// logoSmallDivOpen control.
         /// </summary>
         /// <remarks>
