@@ -202,7 +202,7 @@
     <Content Include="css\social-media-small.css" />
     <Content Include="css\umbraco-preview.css" />
     <Content Include="default.aspx" />
-    <Content Include="EsccWebTeam.EastSussexGovUK.csproj.xslt" />
+    <None Include="EsccWebTeam.EastSussexGovUK.csproj.xslt" />
     <Content Include="favicon.ico" />
     <Content Include="img\adverts\adoption-facebook.jpg" />
     <Content Include="img\body\flood-alert.png" />
@@ -242,6 +242,7 @@
     <None Include="js\document-metadata.js" />
     <None Include="js\govdelivery.js" />
     <None Include="js\heatmap-analytics.js" />
+    <None Include="js\escis.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\libs\modernizr.custom.15280.js" />
@@ -254,6 +255,7 @@
     <Content Include="js\min\document-metadata.js" />
     <Content Include="js\min\embed-googlemaps.js" />
     <Content Include="js\min\embed-youtube.js" />
+    <Content Include="js\min\escis.js" />
     <Content Include="js\min\forms.js" />
     <Content Include="js\min\google-maps.js" />
     <Content Include="js\min\googleautosuggest.js" />
@@ -335,11 +337,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="MasterPages\Remote\Control.aspx" />
-    <Content Include="MasterPages\Remote\Example\default.aspx" />
+    <None Include="MasterPages\Remote\Example\default.aspx" />
     <Content Include="MasterPages\Controls\Web.config" />
-    <Content Include="MasterPages\Controls\Web.example.config" />
+    <None Include="MasterPages\Controls\Web.example.config" />
     <None Include="MasterPages\RSS\config.example.xslt" />
-    <Content Include="MasterPages\Remote\Web.example.config" />
+    <None Include="MasterPages\Remote\Web.example.config" />
     <Content Include="js\WebChatProxy.ashx" />
     <Content Include="MasterPages\RSS\config.xslt" />
     <Content Include="MasterPages\RSS\dates.xslt" />
@@ -386,6 +388,8 @@
     <Compile Include="js\WebChatProxy.ashx.cs">
       <DependentUpon>WebChatProxy.ashx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\Features\EscisSearch.cs" />
+    <Compile Include="MasterPages\Features\IEastSussex1SpaceService.cs" />
     <Compile Include="MasterPages\MarriageSkin.cs" />
     <Compile Include="MasterPages\SkinSelector.cs" />
     <Compile Include="MasterPages\TypekitFontDependency.cs" />
@@ -602,7 +606,7 @@
     <Compile Include="MasterPages\Features\EmbeddedGoogleMaps.cs" />
     <Compile Include="MasterPages\Features\EmbeddedYouTubeVideos.cs" />
     <Compile Include="MasterPages\Features\FacebookLikeBox.cs" />
-    <Compile Include="MasterPages\Features\IEastSussex1SpaceService.cs" />
+    <Compile Include="MasterPages\Features\IEscisService.cs" />
     <Compile Include="MasterPages\Features\ILatestService.cs" />
     <Compile Include="MasterPages\Features\ISocialMediaService.cs" />
     <Compile Include="MasterPages\Features\IWebChatSettingsService.cs" />
