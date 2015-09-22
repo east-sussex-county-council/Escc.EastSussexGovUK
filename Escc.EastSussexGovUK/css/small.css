@@ -358,7 +358,6 @@ a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip:
 #menu li { float: left; }
 #menu ul, #menu li { list-style: none; margin: 0; } /* repeat style from nav ul, nav li for browsers which don't style nav element, eg Firefox 2 */
 
-/* Note: menu-item.gif retained in project only for people with cached stylesheets that reference it. It can be deleted from Oct 2015 onwards. */
 #menu a:link, #menu a:visited { display: block; padding: 8px 10px 6px; text-decoration: none; text-align: center; font-weight: bold; color: #fff; background: url(/img/header/menu-item.png) no-repeat right top; }
 #menu .socialcare, #menu .business, #menu .community, #menu .education, #menu .environment, #menu .families, #menu .jobs, #menu .leisure, #menu .libraries, #menu .transport, #menu .council { display: none; }
 

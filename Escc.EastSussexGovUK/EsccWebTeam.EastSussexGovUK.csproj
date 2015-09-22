@@ -228,7 +228,6 @@
     <Content Include="img\header\desktop.png" />
     <Content Include="img\header\logo-small.gif" />
     <Content Include="img\header\mask.gif" />
-    <Content Include="img\header\menu-item.gif" />
     <Content Include="img\header\logo-large.gif" />
     <Content Include="img\header\menu-item.png" />
     <Content Include="img\header\mobile.jpg" />
