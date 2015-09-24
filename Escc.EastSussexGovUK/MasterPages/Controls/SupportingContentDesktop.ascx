@@ -1,5 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SupportingContentDesktop.ascx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Controls.SupportingContentDesktop" %>
-<%@ Register TagPrefix="EastSussexGovUK" TagName="Adverts" Src="adverts.ascx" %>
-<%@ Register TagPrefix="EastSussexGovUK" TagName="ReportApplyPay" Src="reportapplypay.ascx" %>
-<EastSussexGovUK:ReportApplyPay runat="server" EnableViewState="false" />
-<EastSussexGovUK:Adverts runat="server" EnableViewState="false" />
+﻿<%@ Register TagPrefix="EastSussexGovUK" TagName="Banners" Src="Banners.ascx" %>
+<%-- This exists for backwards compatibility. It used to be on desktop.master and load banners and report, apply, pay. 
+    It can be deleted when we're confident no copies of desktop.master still reference it. --%>
+<EastSussexGovUK:Banners runat="server" />
+

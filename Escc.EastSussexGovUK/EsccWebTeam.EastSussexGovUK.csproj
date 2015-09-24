@@ -304,8 +304,8 @@
     </Content>
     <Content Include="MasterPages\Controls\1Space.ascx" />
     <Content Include="MasterPages\Controls\AboveHeaderMobile.ascx" />
-    <Content Include="MasterPages\Controls\Adverts.ascx" />
     <Content Include="css\large.css" />
+    <Content Include="MasterPages\Controls\Banners.ascx" />
     <Content Include="MasterPages\Controls\Error400.ascx" />
     <Content Include="MasterPages\Controls\Error310.ascx" />
     <Content Include="MasterPages\Controls\Error404.ascx" />
@@ -326,7 +326,6 @@
     <Content Include="MasterPages\Controls\MetadataDesktop.ascx" />
     <Content Include="MasterPages\Controls\MetadataMobile.ascx" />
     <Content Include="MasterPages\Controls\Related.ascx" />
-    <Content Include="MasterPages\Controls\ReportApplyPay.ascx" />
     <Content Include="MasterPages\Controls\ScriptsDesktop.ascx" />
     <Content Include="MasterPages\Controls\ScriptsMobile.ascx" />
     <Content Include="MasterPages\Controls\share.ascx" />
@@ -415,13 +414,6 @@
     </Compile>
     <Compile Include="MasterPages\Controls\AboveHeaderMobile.ascx.designer.cs">
       <DependentUpon>AboveHeaderMobile.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Controls\Adverts.ascx.cs">
-      <DependentUpon>Adverts.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\Adverts.ascx.designer.cs">
-      <DependentUpon>Adverts.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Controls\BreadcrumbTrail.cs" />
     <Compile Include="MasterPages\Controls\AboveHeaderDesktop.ascx.cs">
@@ -563,13 +555,6 @@
     <Compile Include="MasterPages\Controls\Related.ascx.designer.cs">
       <DependentUpon>Related.ascx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPages\Controls\ReportApplyPay.ascx.cs">
-      <DependentUpon>ReportApplyPay.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\ReportApplyPay.ascx.designer.cs">
-      <DependentUpon>ReportApplyPay.ascx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Controls\ScriptsDesktop.ascx.cs">
       <DependentUpon>ScriptsDesktop.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -590,13 +575,6 @@
     </Compile>
     <Compile Include="MasterPages\Controls\share.ascx.designer.cs">
       <DependentUpon>share.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Controls\SupportingContentDesktop.ascx.cs">
-      <DependentUpon>SupportingContentDesktop.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\SupportingContentDesktop.ascx.designer.cs">
-      <DependentUpon>SupportingContentDesktop.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Controls\TwitterSearch.ascx.cs">
       <DependentUpon>TwitterSearch.ascx</DependentUpon>

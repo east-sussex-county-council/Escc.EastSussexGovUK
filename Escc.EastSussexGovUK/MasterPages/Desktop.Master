@@ -21,9 +21,7 @@
             <asp:ContentPlaceholder id="breadcrumb" runat="server"><EastSussexGovUK:BreadcrumbTrail runat="server" ID="breadcrumbTrail" EnableViewState="false" /><EastSussexGovUK:BreadcrumbTrailMobile runat="server" ID="breadcrumbTrailMobile" EnableViewState="false" /></asp:ContentPlaceholder>
             <form id="form1" runat="server">
                 <asp:ContentPlaceHolder ID="content" runat="server" />
-                <asp:ContentPlaceholder id="supporting" runat="server">
-                    <EastSussexGovUK:MasterPageControl runat="server" Control="SupportingContentDesktop" EnableViewState="false" />
-                </asp:ContentPlaceholder>
+                <asp:ContentPlaceholder id="supporting" runat="server" />
             </form>
             <asp:ContentPlaceholder id="afterForm" runat="server">
                 <EastSussexGovUK:ContextContainer runat="server" UrlMatch="/socialcare">
