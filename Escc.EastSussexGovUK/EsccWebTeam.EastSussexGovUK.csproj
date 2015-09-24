@@ -238,10 +238,17 @@
     <None Include="js\1space.js" />
     <None Include="js\alerts.js" />
     <None Include="js\analytics.js" />
+    <Content Include="js\min\banners.js" />
+    <Content Include="js\min\cascading-content.js" />
+    <Content Include="js\tests\chutzpah.json" />
     <None Include="js\document-metadata.js" />
     <None Include="js\govdelivery.js" />
     <None Include="js\heatmap-analytics.js" />
     <None Include="js\escis.js" />
+    <None Include="js\banners.js" />
+    <None Include="js\cascading-content.js" />
+    <Content Include="js\libs\chai.js" />
+    <Content Include="js\tests\cascading-content.tests.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\libs\modernizr.custom.15280.js" />
@@ -723,7 +730,9 @@
     <Content Include="MasterPages\AutoSuggestGoogleAnalytics.ashx" />
     <Content Include="MasterPages\Plain.Master" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Escc.Cms\EsccWebTeam.Cms.csproj">
       <Project>{6710e9ee-deab-4569-ace6-f10159d6d447}</Project>

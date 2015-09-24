@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EsccWebTeam.EastSussexGovUK.MasterPages;
 using NUnit.Framework;
+using Escc.EastSussexGovUK.MasterPages;
 
 namespace Escc.EastSussexGovUK.Tests
 {
