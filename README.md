@@ -118,6 +118,16 @@ The 'keep me posted' button reveals a slide-down panel which allows visitors to 
 3. When the 'Keep me posted' button is clicked, it makes a request for `govdelivery.html`, inserts it into the page, and slides down the panel to reveal it. However, this request is intercepted by `CorsForStaticFilesHandler` which is registered in `web.config` to handle `*.html` requests in the `controls` folder. `CorsForStaticFilesHandler` checks the origin of the request against a list of approved domains in `web.config` and, if there is a match, inserts the appropriate CORS header. This allows the request to succeed across different domains and subdomains.
 4. `govdelivery.html` has a form which posts to the GovDelivery site, at which point that service takes over.
 
+## Promotional banners
+
+Promotional banners are configured in Umbraco using templates from the `Escc.Umbraco.Banners` project. They normally appear on the right-hand side in the desktop layout, but not on mobile. Banners are not part of the template by default, so any page that wants to support banners needs to opt-in with the following steps: 
+
+* Load `banners.js`. This is dependent on other scripts (JQuery, JQuery Retry and `cascading-content.js`) but these are loaded by default.
+* Have a `<span class="escc-banners"></span>` element where the banners should be added on the page. The `Banners.ascx` control can be used to add this in a consistent, future-proofed way.
+* Ensure `config.js` includes an `esccConfig.BannersUrl` property which points to JSON data published by the `Escc.Umbraco.Banners` project.
+* Have a content security policy with a `connect-src` which allows the domain specified in `esccConfig.BannersUrl`, and a `img-src` that allows the banner images to display.
+* Have its domain registered with the site hosting `Escc.Umbraco.Banners` as an allowed domain for CORS requests. 
+
 ## RSS feed styles
 
 Different browsers display RSS feeds in different ways. Some (Internet Explorer and Firefox) and have built in template, but we provide styles for others (such as Chrome) which would otherwise show plain XML.
