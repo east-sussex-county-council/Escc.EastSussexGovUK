@@ -17,7 +17,7 @@
         <header>
 
           <div class="header" role="banner">
-            <a href="/default.htm">
+            <a href="https://www.eastsussex.gov.uk">
               <img alt="Go to the East Sussex County Council home page" src="/escc.eastsussexgovuk/img/header/logo-large.gif" width="118" height="85" class="logo-large" />
             </a>
           </div>
