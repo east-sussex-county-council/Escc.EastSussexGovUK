@@ -27,7 +27,7 @@
                 <EastSussexGovUK:ContextContainer runat="server" UrlMatch="/socialcare">
                 <EastSussexGovUK:ContextContainer runat="server" UrlMatch="^((?!\/socialcare\/disability\/learning).)*$">
                 <EastSussexGovUK:ContextContainer runat="server" UrlMatch="^((?!\/socialcare\/providers\/resources\/healthpromotion).)*$">
-                    <EastSussexGovUK:MasterPageControl runat="server" Control="1Space" EnableViewState="false" />
+                    <EastSussexGovUK:MasterPageControl runat="server" Control="1Space" EnableViewState="false" ID="oneSpaceSearch" />
                 </EastSussexGovUK:ContextContainer>
                 </EastSussexGovUK:ContextContainer>
                 </EastSussexGovUK:ContextContainer>

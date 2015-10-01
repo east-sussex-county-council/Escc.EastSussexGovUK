@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
+using System.Web;
 using System.Web.UI;
+using EsccWebTeam.Data.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
@@ -24,6 +26,15 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                 // Add a space if there are other classes, then add to body tag
                 this.bodyclass.Controls.Add(new LiteralControl(" size" + baseTextSize.ToString(CultureInfo.InvariantCulture)));
 
+            }
+
+            // Allow 1 space widget if it loads
+            if (oneSpaceSearch.Visible)
+            {
+                var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
+                policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
+                policy.AppendFromConfig("EastSussex1Space");
+                policy.UpdateHeader(HttpContext.Current.Response);
             }
 
             // Run the base method as well
