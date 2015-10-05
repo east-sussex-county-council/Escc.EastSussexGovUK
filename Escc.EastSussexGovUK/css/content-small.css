@@ -1,11 +1,14 @@
 ﻿/* Add some padding to separate from the footer now that the box from the default skin is not a visible separator */
 body .full-page, body .article { padding-bottom: 1.384615em; }
 
-/* Box to pull content away from the edges of its containing box by one gutter width. */
+/* Box to pull content away from the edges of its containing box by one gutter width. 
+   Undo the effect of .text, the old approach, when present (it shouldn't be).
+*/
 @media screen {
     .content, .content-small {
         padding: 0 3.797468%;
     }
+    .content .text { padding: 0; }
 }
 
 /* Container for text content. Equivalent of .text in the default skin, but increasing the base font size to 16px/24px.
