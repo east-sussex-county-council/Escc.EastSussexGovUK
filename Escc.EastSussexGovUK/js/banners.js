@@ -51,6 +51,11 @@ if (typeof (jQuery) !== 'undefined' && typeof (esccConfig) !== 'undefined' && ty
         function displayBanners(banners, container) {
             /// <summary>Display banners on the page</summary>
             if (banners.length) {
+
+                // If page had no right column, add one.
+                $(".full-page").removeClass(".full-page").addClass("article");
+
+                // Build and insert HTML for banners.
                 var html = '';
                 $.each(banners, function(key, banner) {
                     var img = '<img src="' + htmlEncode(banner.BannerImage.ImageUrl) + '" alt="' + htmlEncode(banner.BannerImage.AlternativeText) + '" width="' + htmlEncode(banner.BannerImage.Width) + '" height="' + htmlEncode(banner.BannerImage.Height) + '" />';

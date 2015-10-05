@@ -204,7 +204,6 @@
     <Content Include="default.aspx" />
     <None Include="EsccWebTeam.EastSussexGovUK.csproj.xslt" />
     <Content Include="favicon.ico" />
-    <Content Include="img\adverts\adoption-facebook.jpg" />
     <Content Include="img\body\flood-alert.png" />
     <Content Include="img\body\flood-severe.png" />
     <Content Include="img\body\flood-warning.png" />
@@ -299,9 +298,6 @@
     <None Include="js\umbraco-preview.js" />
     <None Include="js\typekit.js" />
     <None Include="js\languages.js" />
-    <Content Include="MasterPages\adverts.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="MasterPages\Controls\1Space.ascx" />
     <Content Include="MasterPages\Controls\AboveHeaderMobile.ascx" />
     <Content Include="css\large.css" />

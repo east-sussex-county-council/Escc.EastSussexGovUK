@@ -324,8 +324,10 @@ dl.itemDetail dd { margin: 0 2.821317% .538462em 25%; } /* 7px/13px between item
 .escis { background: #fff; }
 
 /* Display adverts at this level. They should also have .supporting applied to place them in the right column. 
+   Reset background image of .advert a to avoid logos for Facebook etc designed for inline links.
 
    <a href="http://www.example.com" class="supporting advert"><img /></a>
 */
 .advert { display: block; background: #fff; padding: .692308em 0; }
+.advert a { background: none; padding: 0; }
 .advert img { display: block; margin: auto; }
