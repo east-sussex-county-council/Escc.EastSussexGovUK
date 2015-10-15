@@ -5,8 +5,8 @@ using System.Net;
 using System.Web;
 using System.Web.Caching;
 using EsccWebTeam.Data.Web;
-using EsccWebTeam.Data.Xml;
 using EsccWebTeam.EastSussexGovUK.MasterPages.Remote;
+using Escc.Net;
 
 namespace EsccWebTeam.EastSussexGovUK.js
 {
@@ -30,7 +30,8 @@ namespace EsccWebTeam.EastSussexGovUK.js
             if (String.IsNullOrEmpty(alerts))
             {
                 // Request service alert data
-                var request = XmlHttpRequest.Create(new Uri(ConfigurationManager.AppSettings["ServiceAlertsUrl"]));
+                var client = new HttpRequestClient(new ConfigurationProxyProvider());
+                var request = client.CreateRequest(new Uri(ConfigurationManager.AppSettings["ServiceAlertsUrl"]));
                 var expiryDate = DateTime.UtcNow.AddMinutes(5);
 
                 using (var response = (HttpWebResponse)request.GetResponse())

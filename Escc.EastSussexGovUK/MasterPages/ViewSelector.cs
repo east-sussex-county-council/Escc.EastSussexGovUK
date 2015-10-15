@@ -8,8 +8,8 @@ using System.Web;
 using System.Web.SessionState;
 using EsccWebTeam.EastSussexGovUK.DeviceDetection;
 using EsccWebTeam.Data.Web;
-using EsccWebTeam.Data.Xml;
 using Microsoft.ApplicationBlocks.ExceptionManagement;
+using Escc.Net;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
@@ -137,7 +137,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                         try
                         {
                             deviceDetection.UseDefaultCredentials = true;
-                            deviceDetection.Proxy = XmlHttpRequest.CreateProxy();
+                            deviceDetection.Proxy = new ConfigurationProxyProvider().CreateProxy();
                             preferredView = (deviceDetection.IsMobile(userAgent)) ? EsccWebsiteView.Mobile : EsccWebsiteView.Desktop;
                         }
                         catch (WebException)

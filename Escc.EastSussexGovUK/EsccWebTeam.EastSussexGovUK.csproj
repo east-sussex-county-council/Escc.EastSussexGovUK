@@ -71,6 +71,10 @@
     <Reference Include="Escc.ClientDependencyFramework.WebForms">
       <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.1.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
     </Reference>
+    <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Net.1.0.0\lib\Escc.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Escc.Web.Metadata.1.0.0\lib\Escc.Web.Metadata.dll</HintPath>
@@ -719,10 +723,6 @@
     <ProjectReference Include="..\..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
       <Project>{9C56D3DD-4952-4A1B-9AD6-907A1142872F}</Project>
       <Name>EsccWebTeam.Data.Web</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj">
-      <Project>{86B2725C-9C37-44A4-93C7-F5122AFA0809}</Project>
-      <Name>EsccWebTeam.Data.Xml</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
       <Project>{1C429378-DBF2-4AF7-88AC-C059AA163682}</Project>

@@ -9,9 +9,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using EsccWebTeam.Data.Web;
-using EsccWebTeam.Data.Xml;
 using EsccWebTeam.EastSussexGovUK.MasterPages.Remote;
 using Microsoft.ApplicationBlocks.ExceptionManagement;
+using Escc.Net;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -152,7 +152,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 var webRequest = (HttpWebRequest)WebRequest.Create(urlToRequest);
                 webRequest.UseDefaultCredentials = true;
                 webRequest.UserAgent = Page.Request.UserAgent;
-                webRequest.Proxy = XmlHttpRequest.CreateProxy();
+                webRequest.Proxy = new ConfigurationProxyProvider().CreateProxy();
 
                 // Prepare the information we'll need when the response comes back
                 var state = new RequestState();

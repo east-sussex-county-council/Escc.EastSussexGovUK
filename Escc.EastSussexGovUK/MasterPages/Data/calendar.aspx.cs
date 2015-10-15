@@ -10,8 +10,8 @@ using System.Xml;
 using System.Xml.XPath;
 using eastsussexgovuk.webservices.TextXhtml.HouseStyle;
 using EsccWebTeam.Data.Web;
-using EsccWebTeam.Data.Xml;
 using Microsoft.ApplicationBlocks.ExceptionManagement;
+using Escc.Net;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
 {
@@ -100,12 +100,13 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
             try
             {
                 // This is a request for a local web page so we never need a proxy (and in fact it causes problems).
-                // However using XmlHttpRequest.Create uses the proxy credentials for the request itself, and that is
+                // However using HttpRequestClient.CreateRequest uses the proxy credentials for the request itself, and that is
                 // necessary to work on staging servers.
                 uriToProcess = new Uri(Iri.PrepareUrlForNewQueryStringParameter(uriToProcess) + "template=plain", UriKind.RelativeOrAbsolute);
-                var request = XmlHttpRequest.Create(uriToProcess);
+                var client = new HttpRequestClient(new ConfigurationProxyProvider());
+                var request = client.CreateRequest(uriToProcess);
                 request.Proxy = null;
-                var responseXml = XmlHttpRequest.RequestXPath(request,2);
+                var responseXml = client.RequestXPath(request,2);
 
                 var nav = responseXml.CreateNavigator();
                 var namespaceManager = new XmlNamespaceManager(nav.NameTable);

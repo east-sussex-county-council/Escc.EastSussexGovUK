@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Escc.Net;
+using System;
 using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Web;
-using EsccWebTeam.Data.Xml;
-
 namespace EsccWebTeam.EastSussexGovUK.js
 {
     /// <summary>
@@ -18,9 +17,10 @@ namespace EsccWebTeam.EastSussexGovUK.js
         public void ProcessRequest(HttpContext context)
         {
             string json;
-            
+
             // Request data
-            var request = XmlHttpRequest.Create(new Uri(ConfigurationManager.AppSettings["WebChatUrl"]));
+            var client = new HttpRequestClient(new ConfigurationProxyProvider());
+            var request = client.CreateRequest(new Uri(ConfigurationManager.AppSettings["WebChatUrl"]));
 
             using (var response = (HttpWebResponse)request.GetResponse())
             {

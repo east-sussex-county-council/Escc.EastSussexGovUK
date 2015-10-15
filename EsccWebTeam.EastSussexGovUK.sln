@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.EastSussexGovUK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Cms", "..\Escc.Cms\EsccWebTeam.Cms.csproj", "{6710E9EE-DEAB-4569-ACE6-F10159D6D447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.Xml", "..\Escc.Data.Xml\EsccWebTeam.Data.Xml.csproj", "{86B2725C-9C37-44A4-93C7-F5122AFA0809}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.Web", "..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj", "{9C56D3DD-4952-4A1B-9AD6-907A1142872F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.Data.ActiveDirectory", "..\Escc.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj", "{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}"
@@ -49,12 +47,6 @@ Global
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{6710E9EE-DEAB-4569-ACE6-F10159D6D447}.UAT|Any CPU.Build.0 = Release|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
-		{86B2725C-9C37-44A4-93C7-F5122AFA0809}.UAT|Any CPU.Build.0 = UAT|Any CPU
 		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C56D3DD-4952-4A1B-9AD6-907A1142872F}.Release|Any CPU.ActiveCfg = Release|Any CPU
