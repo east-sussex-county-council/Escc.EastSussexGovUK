@@ -602,7 +602,6 @@
     <Compile Include="MasterPages\Features\WebChat.cs" />
     <Compile Include="MasterPages\Features\WebChatSettings.cs" />
     <Compile Include="MasterPages\IEsccWebsiteSkin.cs" />
-    <Compile Include="MasterPages\Remote\IRemoteMasterPageConfigurationProvider.cs" />
     <Compile Include="MasterPages\Remote\RemoteMasterPageCacheProviderBase.cs" />
     <Compile Include="MasterPages\Remote\RemoteMasterPageFileCacheProvider.cs" />
     <Compile Include="MasterPages\Remote\RemoteMasterPageMemoryCacheProvider.cs" />
