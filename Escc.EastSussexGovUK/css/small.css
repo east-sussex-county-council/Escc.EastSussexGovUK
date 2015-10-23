@@ -674,21 +674,24 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
    Use separate background properties as it avoids changing the background colour, should the element have one. */
 @media screen
 {
-.hcal, [href$=".calendar"], .rss, .email, .rss-email, .xml, .pdf, .doc, .rtf, .xls, .wma, .mp3, .ppt, .jpg, .html, .file, .new-window, .facebook, [href*="facebook.com"], .twitter, [href*="twitter.com"], .youtube, [href*="youtube.com"], [href*="youtu.be"], .flickr, [href*="flickr.com"], [href$="/print"]
+.hcal, [href$=".calendar"], .rss, .email, .rss-email, .xml,  [href$=".xml"], .pdf, [href$=".pdf"], .wma,  [href$=".wma"], .mp3,  [href$=".mp3"],
+.doc, [href$=".doc"],  [href$=".docx"],  [href$=".dot"],  [href$=".dotx"], .rtf, [href$=".rtf"], .xls, [href$=".xls"],  [href$=".xlsx"],  [href$=".xlt"],  [href$=".xltx"],  [href$=".csv"], 
+.ppt,  [href$=".ppt"],  [href$=".pptx"],  [href$=".pps"],  [href$=".ppsx"],  [href$=".pot"],  [href$=".potx"], .jpg,  [href$=".jpg"],  [href$=".jpeg"], .html, .file, 
+.new-window, .facebook, [href*="facebook.com"], .twitter, [href*="twitter.com"], .youtube, [href*="youtube.com"], [href*="youtu.be"], .flickr, [href*="flickr.com"], [href$="/print"]
 { background-image: url(/img/body/item-type.png); background-repeat: no-repeat; padding-left: 23px; }
 
 .hcal, [href$=".calendar"] { background-position: 0 0; }
 .rss { background-position: 0 -48px; }
 .email { background-position: 0 -97px; padding-left: 19px; }
 .rss-email  { background-position: 0 -150px; }
-.xml { background-position: 0 -200px; padding-left: 30px;  }
-.pdf { background-position: 0 -248px; }
-.doc, .rtf { background-position: 0 -298px; padding-left: 20px;  }
-.xls { background-position: 0 -350px; padding-left: 18px;  }
-.wma { background-position: 0 -400px;  }
-.mp3 { background-position: 0 -450px; padding-left: 20px;  }
-.ppt { background-position: left -1748px; padding-left: 20px; }
-.jpg { background-position: left -2148px; }
+.xml,  [href$=".xml"] { background-position: 0 -200px; padding-left: 30px;  }
+.pdf,  [href$=".pdf"] { background-position: 0 -248px; }
+.doc, .rtf,  [href$=".doc"],  [href$=".docx"],  [href$=".dot"],  [href$=".dotx"],  [href$=".rtf"] { background-position: 0 -298px; padding-left: 20px;  }
+.xls,  [href$=".xls"],  [href$=".xlsx"],  [href$=".xlt"],  [href$=".xltx"],  [href$=".csv"] { background-position: 0 -350px; padding-left: 18px;  }
+.wma,  [href$=".wma"] { background-position: 0 -400px;  }
+.mp3,  [href$=".mp3"] { background-position: 0 -450px; padding-left: 20px;  }
+.ppt,  [href$=".ppt"],  [href$=".pptx"],  [href$=".pps"],  [href$=".ppsx"],  [href$=".pot"],  [href$=".potx"] { background-position: left -1748px; padding-left: 20px; }
+.jpg,  [href$=".jpg"],  [href$=".jpeg"] { background-position: left -2148px; }
 .html, .file { background-position: left -2450px; }
 .new-window { background-position: 100% -500px; padding-left: 0; padding-right: 16px; }
 .twitter, [href*="twitter.com"] { background-position: 0 -1300px; padding-left: 20px; }
