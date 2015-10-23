@@ -140,7 +140,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                             deviceDetection.Proxy = new ConfigurationProxyProvider().CreateProxy();
                             preferredView = (deviceDetection.IsMobile(userAgent)) ? EsccWebsiteView.Mobile : EsccWebsiteView.Desktop;
                         }
-                        catch (WebException)
+                        catch (WebException ex)
                         {
                             // If there's a problem reaching the web service, default to the desktop design which works on all devices
                             preferredView = EsccWebsiteView.Desktop;

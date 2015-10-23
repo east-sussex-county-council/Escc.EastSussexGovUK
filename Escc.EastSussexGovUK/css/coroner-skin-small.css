@@ -1,0 +1,6 @@
+﻿/* Vertical padding totals 18px (14px + 4px) on 30px font-size, and is used to centre text relative to image. 
+   Left padding is pixel value to accommodate image size. */
+.coroner h1 {position: relative; padding: .466em 0 .133em 75px; min-height: 40px; }
+
+/* Padding (9px + 4px) + image height (50px) takes total size to 63px, on baseline grid. */
+.coroner h1 img { position: absolute;left: 0;top: 0;padding: .3em 0 .133em;}

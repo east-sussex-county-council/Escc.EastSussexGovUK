@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.EastSussexGovUK", "Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj", "{1426FEF0-23DC-4C23-AE15-67F2527BD741}"
 EndProject
@@ -20,10 +20,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E92E60AC-202D-4BB5-B736-F6EAF6B9F558}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		Analytics.md = Analytics.md
 		app-setup-dev.cmd = app-setup-dev.cmd
 		app-setup-dev.ps1 = app-setup-dev.ps1
+		Banners.md = Banners.md
+		Design.md = Design.md
+		GovDelivery.md = GovDelivery.md
+		iCalendar.md = iCalendar.md
 		LICENSE.md = LICENSE.md
+		LinkedData.md = LinkedData.md
 		README.md = README.md
+		RSS.md = RSS.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Tests", "Escc.EastSussexGovUK.Tests\Escc.EastSussexGovUK.Tests.csproj", "{C7C8165C-927A-4448-B84A-6D91FA17C74C}"
