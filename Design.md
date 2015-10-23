@@ -44,7 +44,28 @@ You can make dramatic changes to the layout of the site by applying a different 
 
 The `ViewSelector` class controls which master page is used, and is called either from the `MasterPageModule` or a specific request to `choose.ashx`. It selects the master page based on a number of criteria, including the `web.config` settings mentioned above.
 
-The master pages themselves are deliberately minimal, with most of the work done by usercontrols on the page. This enables a remote master page feature, where a minimal master page on a subdomain can request a copy of the latest template elements from www.eastsussex.gov.uk. This allows us to keep multiple copies of the template in sync automatically, and is documented in the `MasterPageControl` class.
+## Remote master page
+The master pages themselves are deliberately minimal, with most of the work done by usercontrols on the page. This enables you to choose configure the source location for the controls.
+
+You can load the master page usercontrols from a local directory. This is typically a `~/masterpages` virtual directory within your application which points at the `MasterPages` folder in this project. However you can configure this path in `web.config`.
+
+	<configuration>
+	  <configSections>
+	    <sectionGroup name="EsccWebTeam.EastSussexGovUK">
+	      <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+        </sectionGroup>
+	  </configSections>
+	
+      <EsccWebTeam.EastSussexGovUK>
+	    <GeneralSettings>
+	      <add key="MasterPageControlUrl" value="~/example-folder/{0}.ascx" />
+	    </GeneralSettings>
+      </EsccWebTeam.EastSussexGovUK>
+	</configuration>
+
+ You can also use the remote master page feature, where a minimal master page on a subdomain can request a copy of the latest template elements from www.eastsussex.gov.uk. This allows us to keep multiple copies of the template in sync automatically, and is documented in the `MasterPageControl` class.
+
+
 
 ## Skins
 

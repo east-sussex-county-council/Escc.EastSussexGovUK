@@ -96,7 +96,17 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         /// <exception cref="System.Web.HttpException">Thrown if usercontrol does not exist</exception>
         private void LoadLocalControl()
         {
-            this.Controls.Add(Page.LoadControl("~/masterpages/controls/" + this.Control + ".ascx"));
+            // Default to the path that used to be hard-coded
+            var localControlUrl = "~/masterpages/controls/{0}.ascx";
+
+            // Allow override to load controls from anywhere
+            this.config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+            if (this.config != null && !String.IsNullOrEmpty(this.config["MasterPageControlUrl"]))
+            {
+                localControlUrl = this.config["MasterPageControlUrl"];
+            }
+
+            this.Controls.Add(Page.LoadControl(String.Format(CultureInfo.InvariantCulture, localControlUrl, this.Control)));
         }
 
         /// <summary>
