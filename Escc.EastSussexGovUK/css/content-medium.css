@@ -43,14 +43,14 @@
 .text-content .rss { background-position: 0 -42px; }
 .text-content .email { background-position: 0 -92px; }
 .text-content .rss-email  { background-position: 0 -144px; }
-.text-content .xml { background-position: 0 -194px; }
-.text-content .pdf { background-position: 0 -244px; }
-.text-content .doc, .text-content .rtf { background-position: 0 -294px; }
-.text-content .xls { background-position: 0 -344px; }
-.text-content .wma { background-position: 0 -396px;  }
-.text-content .mp3 { background-position: 0 -446px; }
-.text-content .ppt { background-position: left -1744px; }
-.text-content .jpg { background-position: left -2144px; }
+.text-content .xml, .text-content [href$=".xml"] { background-position: 0 -194px; }
+.text-content .pdf, .text-content [href$=".pdf"] { background-position: 0 -244px; }
+.text-content .doc, .text-content .rtf, .text-content [href$=".doc"], .text-content [href$=".docx"], .text-content [href$=".dot"], .text-content [href$=".dotx"], .text-content [href$=".rtf"] { background-position: 0 -294px; }
+.text-content .xls, .text-content [href$=".xls"], .text-content [href$=".xlsx"], .text-content [href$=".xlt"], .text-content [href$=".xltx"], .text-content [href$=".csv"] { background-position: 0 -344px; }
+.text-content .wma, .text-content [href$=".wma"] { background-position: 0 -396px;  }
+.text-content .mp3, .text-content [href$=".mp3"] { background-position: 0 -446px; }
+.text-content .ppt, .text-content [href$=".ppt"], .text-content [href$=".pptx"], .text-content [href$=".pps"], .text-content [href$=".ppsx"], .text-content [href$=".pot"], .text-content [href$=".potx"] { background-position: left -1744px; }
+.text-content .jpg, .text-content [href$=".jpg"], .text-content [href$=".jpeg"] { background-position: left -2144px; }
 .text-content .html, .text-content .file { background-position: left -2446px; }
 .text-content .new-window { background-position: 100% -496px; }
 .text-content .twitter, .text-content [href*="twitter.com"] { background-position: 0 -1296px; }
