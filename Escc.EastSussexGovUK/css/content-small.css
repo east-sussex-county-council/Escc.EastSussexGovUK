@@ -53,14 +53,14 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 .text-content .rss { background-position: 0 -44px; }
 .text-content .email { background-position: 0 -94px; }
 .text-content .rss-email  { background-position: 0 -146px; }
-.text-content .xml { background-position: 0 -196px; }
-.text-content .pdf { background-position: 0 -246px; }
-.text-content .doc, .text-content .rtf { background-position: 0 -296px; }
-.text-content .xls { background-position: 0 -346px; }
-.text-content .wma { background-position: 0 -398px;  }
-.text-content .mp3 { background-position: 0 -448px; }
-.text-content .ppt { background-position: left -1746px; }
-.text-content .jpg { background-position: left -2146px; }
+.text-content .xml, .text-content [href$=".xml"] { background-position: 0 -196px; }
+.text-content .pdf, .text-content [href$=".pdf"] { background-position: 0 -246px; }
+.text-content .doc, .text-content .rtf, .text-content [href$=".doc"], .text-content [href$=".docx"], .text-content [href$=".dot"], .text-content [href$=".dotx"], .text-content [href$=".rtf"] { background-position: 0 -296px; }
+.text-content .xls, .text-content [href$=".xls"], .text-content [href$=".xlsx"], .text-content [href$=".xlt"], .text-content [href$=".xltx"], .text-content [href$=".csv"] { background-position: 0 -346px; }
+.text-content .wma, .text-content [href$=".wma"] { background-position: 0 -398px;  }
+.text-content .mp3, .text-content [href$=".mp3"] { background-position: 0 -448px; }
+.text-content .ppt, .text-content [href$=".ppt"], .text-content [href$=".pptx"], .text-content [href$=".pps"], .text-content [href$=".ppsx"], .text-content [href$=".pot"], .text-content [href$=".potx"] { background-position: left -1746px; }
+.text-content .jpg, .text-content [href$=".jpg"], .text-content [href$=".jpeg"] { background-position: left -2146px; }
 .text-content .html, .text-content .file { background-position: left -2448px; }
 .text-content .new-window { background-position: 100% -498px; }
 .text-content .twitter, .text-content [href*="twitter.com"] { background-position: 0 -1298px; }
