@@ -8,9 +8,11 @@
 @media print {
 
 /* Show anything marked as print-only (overrides earlier style), and hide anything marked as screen only 
-   The !important is just to persuade IE6 to play along. */
+   The !important is just to persuade IE6 to play along.
+   #divC4AWButton is to hide web chat, which we can't add the .screen class to.
+*/
 .print { display: block; }
-.screen { display: none!important; }
+.screen, #divC4AWButton { display: none!important; }
   
   /* RESET:
      - Set page margin
