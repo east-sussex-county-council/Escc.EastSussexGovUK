@@ -7,7 +7,7 @@
         if (!(/^([a-z0-9]+|[a-z0-9-]+\.azurewebsites\.net|[a-z0-9-]+\.spydus\.co\.uk|(www|new|payments|asc|e-library)\.eastsussex\.gov\.uk)$/.test(document.location.hostname))) return;
 
         // Add a 'keep me posted' link to the header, which loads HTML and styles when clicked
-        $("<a href=\"#\" class=\"govdelivery\">Keep me posted</a>").appendTo(".header .container").click(function(e) {
+        $("<a href=\"#\" class=\"govdelivery screen\">Keep me posted</a>").appendTo(".header .container").click(function(e) {
             e.preventDefault();
 
             if (!document.getElementById('govdelivery')) {
