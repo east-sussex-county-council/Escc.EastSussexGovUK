@@ -5,5 +5,6 @@
     BannersUrl: 'https://hostname/path/to/banners.json',
     CssHandlerPath: 'https://hostname/path/to/css/{0}.cssx',
     HeatmapAnalyticsUrl: 'https://hostname/umbraco/api/HeatmapAnalytics/GetHeatmapAnalyticsUrls',
-    MasterPagesBaseUrl: 'https://hostname/masterpages'
+    MasterPagesBaseUrl: 'https://hostname/masterpages',
+    SearchAutoCompleteUrl: 'https://hostname/autocomplete.ashx'
 }

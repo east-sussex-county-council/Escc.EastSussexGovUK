@@ -392,17 +392,11 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\DeviceDetection\Service.disco" />
-    <None Include="Web References\GoogleAnalytics\Service.disco" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
     <Content Include="windows-tile.png" />
     <None Include="Web References\DeviceDetection\Service.wsdl" />
-    <None Include="Web References\GoogleAnalytics\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\GoogleAnalytics\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextContainer.cs" />
@@ -419,9 +413,6 @@
     <Compile Include="MasterPages\Controls\CorsForStaticFilesHandler.cs" />
     <Compile Include="MasterPages\CustomerFocusSkin.cs" />
     <Compile Include="EastSussexGovUKContext.cs" />
-    <Compile Include="MasterPages\AutoSuggestGoogleAnalytics.ashx.cs">
-      <DependentUpon>AutoSuggestGoogleAnalytics.ashx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\BaseMasterPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -689,11 +680,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\GoogleAnalytics\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <None Include="YUICompressor.msbuild">
       <SubType>Designer</SubType>
     </None>
@@ -721,7 +707,6 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="img\header\mobile.psd" />
-    <Content Include="MasterPages\AutoSuggestGoogleAnalytics.ashx" />
     <Content Include="MasterPages\Plain.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -763,17 +748,6 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>EsccWebTeam_EastSussexGovUK_DeviceDetection_Service</CachedSettingsPropName>
-    </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost/Escc.GoogleAnalytics/Service.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\GoogleAnalytics\</RelPath>
-      <UpdateFromURL>http://localhost/Escc.GoogleAnalytics/Service.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>EsccWebTeam_EastSussexGovUK_GoogleAnalytics_GoogleAnalytics</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>

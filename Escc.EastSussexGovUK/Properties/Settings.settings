@@ -5,8 +5,5 @@
     <Setting Name="EsccWebTeam_EastSussexGovUK_DeviceDetection_Service" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost/EsccWebTeam.DeviceDetection/Service.asmx</Value>
     </Setting>
-    <Setting Name="EsccWebTeam_EastSussexGovUK_GoogleAnalytics_GoogleAnalytics" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost/Escc.GoogleAnalytics/Service.asmx</Value>
-    </Setting>
   </Settings>
 </SettingsFile>
