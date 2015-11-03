@@ -5,5 +5,5 @@
     <asp:PlaceHolder runat="server" ID="fbContainer" EnableViewState="false" Visible="false"><p class="facebook">Find us on Facebook: <a id="fb" runat="server" enableviewstate="false"></a></p></asp:PlaceHolder>
     <asp:PlaceHolder runat="server" ID="twContainer" EnableViewState="false" Visible="false"><p class="twitter">Read updates on Twitter: <a id="tw"  runat="server" href="http://twitter.com/search/{0}">Search for '{0}' on Twitter</a></p></asp:PlaceHolder>
 </div>
-<Egms:Css runat="server" Files="SocialMediaSmall" />
+<ClientDependency:Css runat="server" Files="SocialMediaSmall" />
 </EastSussexGovUK:ContextContainer>

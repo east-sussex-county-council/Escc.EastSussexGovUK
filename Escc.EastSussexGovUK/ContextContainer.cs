@@ -298,7 +298,7 @@ namespace EsccWebTeam.EastSussexGovUK
                 // If calling code cares whether this control is visible, it actually cares whether
                 // this control will hide its children, so return that answer.
                 //
-                // This code introduced because EsccWebTeam.Egms.CombineStaticFilesControl would combine
+                // This code introduced because Escc.Web.Metadata.CombineStaticFilesControl would combine
                 // a visible CSS or JavaScript file with one inside a ContextContainer that was destined to
                 // become invisible later in the life cycle. 
                 //

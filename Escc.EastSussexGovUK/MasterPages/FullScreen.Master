@@ -4,7 +4,7 @@
 <EastSussexGovUK:MasterPageControl runat="server" Control="HtmlTag" EnableViewState="false" />
 <head runat="server">
     <EastSussexGovUK:ContextContainer runat="server" Public="true"><asp:ContentPlaceHolder id="contentExperiment" runat="server" /></EastSussexGovUK:ContextContainer>
-    <%-- Standard metadata comes first so it's early in life-cycle, because it contains Egms:Css control we want others to find and merge with --%>
+    <%-- Standard metadata comes first so it's early in life-cycle, because it contains ClientDependency:Css control we want others to find and merge with --%>
     <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataFullScreen" EnableViewState="false" />
     <asp:ContentPlaceHolder id="metadata" runat="server" />
     <asp:ContentPlaceHolder runat="server" ID="css" enableviewstate="false" />

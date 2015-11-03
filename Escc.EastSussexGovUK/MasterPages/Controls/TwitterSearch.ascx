@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TwitterSearch.ascx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Controls.TwitterSearch" %>
-<Egms:Css runat="server" Files="SocialMediaSmall" />
-<Egms:Css runat="server" Files="SocialMediaLarge" MediaConfiguration="Large" />
+<ClientDependency:Css runat="server" Files="SocialMediaSmall" />
+<ClientDependency:Css runat="server" Files="SocialMediaLarge" MediaConfiguration="Large" />
 <div class="supporting">
 <script src="//widgets.twimg.com/j/2/widget.js"></script>
 <script>

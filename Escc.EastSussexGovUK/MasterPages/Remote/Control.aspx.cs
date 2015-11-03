@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Specialized;
+using System.Configuration;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web;
 using EsccWebTeam.Data.Web;
@@ -27,10 +30,19 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Remote
                     string controlName = Regex.Replace(Request.QueryString["control"].ToUpperInvariant(), "[^0-9A-Z]", String.Empty);
 
                     // Load control, or fail with 400 if it doesn't exist
-                    var usercontrol = LoadControl("~/masterpages/controls/" + controlName + ".ascx");
+                    var localControlUrl = "~/masterpages/controls/{0}.ascx";
+
+                    // Allow override to load controls from anywhere
+                    var config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+                    if (config != null && !String.IsNullOrEmpty(config["MasterPageControlUrl"]))
+                    {
+                        localControlUrl = config["MasterPageControlUrl"];
+                    }
+
+                    var usercontrol = LoadControl(String.Format(CultureInfo.InvariantCulture, localControlUrl, controlName));
                     this.placeholder.Controls.Add(usercontrol);
                 }
-                catch (HttpException)
+                catch (HttpException ex)
                 {
                     // Usercontrol doesn't exist
                     Http.Status400BadRequest();

@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="textsize.aspx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.TextSize" EnableViewState="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="textsize.aspx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.TextSize" EnableViewState="false" MasterPageFile="Desktop.Master" %>
 
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="metadata">
-	<Egms:MetadataControl runat="server" 
+	<Metadata:MetadataControl runat="server" 
 		Title="Text size changed"
 		IsInSearch="False"
 		IpsvPreferredTerms="Visual impairment support"
