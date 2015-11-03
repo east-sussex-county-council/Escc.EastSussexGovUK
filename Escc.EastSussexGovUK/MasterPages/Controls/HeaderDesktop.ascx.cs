@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web.UI.HtmlControls;
@@ -12,8 +14,8 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
     /// </summary>
     public partial class HeaderDesktop : System.Web.UI.UserControl
     {
-        EastSussexGovUKContext siteContext = new EastSussexGovUKContext();
-        private string textSizeUrl = "/help/accessibility/textsize.aspx";
+        readonly EastSussexGovUKContext _siteContext = new EastSussexGovUKContext();
+        private string _textSizeUrl;
 
         /// <summary>
         /// Handles the Load event of the Page control.
@@ -57,10 +59,18 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 
         private void BaseUrl()
         {
-            // Preprend the base URL if specified (which it should be if this is a subdomain of eastsussex.gov.uk)
-            if (siteContext.BaseUrl != null)
+            // Text size should have a default URL, but also support changing that URL in config
+            _textSizeUrl = "/masterpages/textsize.aspx";
+            var generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+            if (generalSettings != null && !String.IsNullOrEmpty(generalSettings["TextSizeUrl"]))
             {
-                var urlPrefix = siteContext.BaseUrl.ToString().TrimEnd('/');
+                _textSizeUrl = ResolveUrl(generalSettings["TextSizeUrl"]);
+            }
+
+            // Preprend the base URL if specified (which it should be if this is a subdomain of eastsussex.gov.uk)
+            if (_siteContext.BaseUrl != null)
+            {
+                var urlPrefix = _siteContext.BaseUrl.ToString().TrimEnd('/');
                 this.logoSmallLink.Text = urlPrefix + this.logoSmallLink.Text;
                 this.logoLargeLink.Text = urlPrefix + this.logoLargeLink.Text;
                 this.contact.HRef = urlPrefix + this.contact.HRef;
@@ -79,7 +89,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 this.libraries.HRef = urlPrefix + this.libraries.HRef;
                 this.transport.HRef = urlPrefix + this.transport.HRef;
                 this.council.HRef = urlPrefix + this.council.HRef;
-                this.textSizeUrl = urlPrefix + this.textSizeUrl;
+                this._textSizeUrl = urlPrefix + this._textSizeUrl;
 
                 // Because these are resources loaded by the page, rather than linking off to another page, 
                 // ensure the URL is protocol relative
@@ -94,7 +104,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             else
             {
                 // If no base URL we're on the main server. Are we on the home page, and therefore need to de-link the logo?
-                var isHomePage = (siteContext.RequestUrl.AbsolutePath.StartsWith("/DEFAULT.", StringComparison.OrdinalIgnoreCase));
+                var isHomePage = (_siteContext.RequestUrl.AbsolutePath.StartsWith("/DEFAULT.", StringComparison.OrdinalIgnoreCase));
                 this.logoSmallLinkOpen.Visible = !isHomePage;
                 this.logoSmallLinkClose.Visible = !isHomePage;
                 this.logoSmallLink.Visible = !isHomePage;
@@ -163,7 +173,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         private void AtoZ()
         {
             // Support filters for the A-Z
-            if (this.siteContext.RequestUrl.AbsolutePath.StartsWith("/atoz/default"))
+            if (this._siteContext.RequestUrl.AbsolutePath.StartsWith("/atoz/default"))
             {
                 if (!String.IsNullOrEmpty(Request.QueryString["autoPostback"])) this.az.AddQueryStringParameter("autoPostback", Request.QueryString["autoPostback"]);
                 else if (String.IsNullOrEmpty(Request.QueryString["azq"])) this.az.AddQueryStringParameter("autoPostback", "on"); // default to on if form not submitted (ie: not a postback) 
@@ -202,13 +212,13 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 return;
             }
 
-            int baseTextSize = siteContext.TextSize;
+            int baseTextSize = _siteContext.TextSize;
 
             if (baseTextSize > 1)
             {
                 // Add the link to make it smaller again
                 var smallerText = new HtmlAnchor();
-                smallerText.HRef = this.textSizeUrl + "?textsize=" + (baseTextSize - 1).ToString(CultureInfo.InvariantCulture);
+                smallerText.HRef = this._textSizeUrl + "?textsize=" + (baseTextSize - 1).ToString(CultureInfo.InvariantCulture);
                 smallerText.Attributes["class"] = "zoom-out screen";
                 smallerText.Attributes["rel"] = "nofollow";
                 smallerText.InnerText = "Make text smaller";
@@ -219,7 +229,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             if (baseTextSize < 3)
             {
                 var biggerText = new HtmlAnchor();
-                biggerText.HRef = this.textSizeUrl + "?textsize=" + (baseTextSize + 1).ToString(CultureInfo.InvariantCulture);
+                biggerText.HRef = this._textSizeUrl + "?textsize=" + (baseTextSize + 1).ToString(CultureInfo.InvariantCulture);
                 biggerText.Attributes["class"] = "zoom-in screen";
                 biggerText.Attributes["rel"] = "nofollow";
                 biggerText.InnerText = "Make text bigger";

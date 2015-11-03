@@ -85,6 +85,23 @@ The fetched HTML is saved in a local cache so that it is not requested remotely 
 
 Requesting any page with the querystring `?ForceCacheRefresh=1` will cause the cached template to be updated even if it has not expired.
 
+### Serving the remote master page
+The site serving the remote master page should configure a `BaseUrl` in `web.config` inside the folder where `control.aspx` is hosted. The `BaseUrl` should be the domain where sitewide features like images and text size control are hosted (typically www.eastsussex.gov.uk). This `BaseUrl` is prepended to all relative links and resources in the template, to create absolute links back to the central site. This means that the consuming application doesn't need to host its own copy of these files. 
+
+
+	<configuration>
+	  <configSections>
+	    <sectionGroup name="EsccWebTeam.EastSussexGovUK">
+	      <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+        </sectionGroup>
+	  </configSections>
+
+      <EsccWebTeam.EastSussexGovUK>
+        <GeneralSettings>
+          <add key="BaseUrl" value="http://www.eastsussex.gov.uk" />
+        </GeneralSettings>
+      <EsccWebTeam.EastSussexGovUK>
+	</configuration>
 
 ## Skins
 

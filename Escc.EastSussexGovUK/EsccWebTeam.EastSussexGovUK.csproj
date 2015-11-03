@@ -376,6 +376,7 @@
     <None Include="js\Web.example.config" />
     <None Include="MasterPages\Remote\Example\web.example.config" />
     <Content Include="js\ServiceAlertsProxy.ashx" />
+    <Content Include="MasterPages\textsize.aspx" />
     <Content Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -408,6 +409,13 @@
     <Compile Include="MasterPages\CoronerSkin.cs" />
     <Compile Include="MasterPages\MarriageSkin.cs" />
     <Compile Include="MasterPages\SkinSelector.cs" />
+    <Compile Include="MasterPages\textsize.aspx.cs">
+      <DependentUpon>textsize.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\textsize.aspx.designer.cs">
+      <DependentUpon>textsize.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPages\TypekitFontDependency.cs" />
     <Compile Include="MasterPages\GoogleFontDependency.cs" />
     <Compile Include="MasterPages\Controls\CorsForStaticFilesHandler.cs" />

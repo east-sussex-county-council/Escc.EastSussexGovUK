@@ -79,16 +79,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             // https://developers.google.com/webmasters/smartphone-sites/details
             // Response.AddHeader("Vary", "User-Agent");
 
-            // Delete old cookies that are no longer needed
-            DeleteCookie("nmstat", ".www.eastsussex.gov.uk"); // SiteAnalyse web analytics trial
-            DeleteCookie("textsize", "www.eastsussex.gov.uk"); // original version for sub-domain, not TLD
-
-            // These were used in test phase of web refresh. Particularly important to get rid for IE6, 
-            // because it was incorrectly detected as a mobile.
-            DeleteCookie("template", ".eastsussex.gov.uk");
-            DeleteCookie("template", String.Empty);
-
-
             if (CmsUtilities.IsCmsEnabled())
             {
                 AddCmsClasses();

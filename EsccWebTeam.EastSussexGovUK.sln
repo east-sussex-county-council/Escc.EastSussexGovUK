@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LinkedData.md = LinkedData.md
 		README.md = README.md
 		RSS.md = RSS.md
+		TextSize.md = TextSize.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Tests", "Escc.EastSussexGovUK.Tests\Escc.EastSussexGovUK.Tests.csproj", "{C7C8165C-927A-4448-B84A-6D91FA17C74C}"
