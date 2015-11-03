@@ -18,38 +18,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
     /// <summary>
     /// Loads a section of the master page, either from a local usercontrol or remotely from the public website.
     /// </summary>
-    /// <remarks>
-    /// <para>Behaviour is controlled by the <c>EsccWebTeam.EastSussexGovUK/RemoteMasterPage</c> section in web.config.</para>
-    /// <para>
-    /// To load a control using this class, set the <see cref="Control"/> property to a string identifying the control you want to load.
-    /// If <c>MasterPageControlUrl</c> is set in the <c>EsccWebTeam.EastSussexGovUK/RemoteMasterPage</c> section of web.config, this class
-    /// will try to fetch HTML from that URL, passing your string instead of <c>{0}</c>. If the key is not present, the string is used as 
-    /// the filename of a usercontrol in the ~/masterpages/Controls folder.
-    /// </para>
-    /// <para>In the following example, <c>ExampleControl</c> would be loaded from <c>http://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control=ExampleControl</c>, 
-    /// but if these <c>web.config</c> entries were not present it would be loaded from <c>~/masterpages/Controls/ExampleControl.ascx</c>.</para>
-    /// <example><code>
-    /// &lt;configuration&gt;
-    ///   &lt;configSections&gt;
-    ///     &lt;sectionGroup name=&quot;EsccWebTeam.EastSussexGovUK&quot;&gt;
-    ///       &lt;section name=&quot;RemoteMasterPage&quot; type=&quot;System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; /&gt;
-    ///     &lt;/sectionGroup&gt;
-    ///   &lt;/configSections&gt;
-    ///
-    ///   &lt;EsccWebTeam.EastSussexGovUK&gt;
-    ///     &lt;RemoteMasterPage&gt;
-    ///       &lt;add key=&quot;CacheMinutes&quot; value=&quot;60&quot; /&gt;
-    ///       &lt;add key=&quot;MasterPageControlUrl&quot; value=&quot;http://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control={0}&quot; /&gt;
-    ///     &lt;/RemoteMasterPage&gt;
-    ///   &lt;/EsccWebTeam.EastSussexGovUK&gt;
-    /// &lt;/configuration&gt;
-    /// </code></example>
-    /// <para>The remote control is loaded from an ASPX page, which is just a host for the same usercontrol which would otherwise be loaded locally.
-    /// The fetched HTML is saved in a local cache so that it is not requested remotely every time. The cache expires using the <c>CacheMinutes</c>
-    /// setting in <c>web.config</c>.
-    /// </para>
-    /// <para>Requesting any page with the querystring <c>?ForceCacheRefresh=1</c> will cause the cached template to be updated even if it has not expired.</para>
-    /// </remarks>
     public class MasterPageControl : PlaceHolder
     {
         /// <summary>
