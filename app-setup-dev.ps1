@@ -46,9 +46,9 @@ NuGetRestoreForProject $parentFolderOfThisScript "Escc.Cms"
 
 EnableDotNet40InIIS
 CreateApplicationPool $projectName
-CreateWebsite $projectName $pathOfThisScript
+CreateWebsite $projectName "$pathOfThisScript\$projectName"
 CreateHTTPSBinding $projectName "localhost"
-RemoveHTTPBindings $projectName
+RemoveHTTPBinding $projectName 80
 CopyConfig "Web.example.config" "web.config"
 CopyConfig "css\Web.example.config" "css\web.config"
 CopyConfig "js\Web.example.config" "js\web.config"

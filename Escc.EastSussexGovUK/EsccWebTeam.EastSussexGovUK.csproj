@@ -315,6 +315,10 @@
     <None Include="js\umbraco-preview.js" />
     <None Include="js\typekit.js" />
     <None Include="js\languages.js" />
+    <Content Include="MasterPages\Status404.aspx" />
+    <Content Include="MasterPages\Status500.aspx">
+      <SubType>Form</SubType>
+    </Content>
     <Content Include="MasterPages\Controls\1Space.ascx" />
     <Content Include="MasterPages\Controls\AboveHeaderMobile.ascx" />
     <Content Include="css\large.css" />
@@ -403,6 +407,20 @@
     <Compile Include="ContextContainer.cs" />
     <Compile Include="js\WebChatProxy.ashx.cs">
       <DependentUpon>WebChatProxy.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Status404.aspx.cs">
+      <DependentUpon>Status404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Status404.aspx.designer.cs">
+      <DependentUpon>Status404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Status500.aspx.cs">
+      <DependentUpon>Status500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Status500.aspx.designer.cs">
+      <DependentUpon>Status500.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Features\EscisSearch.cs" />
     <Compile Include="MasterPages\Features\IEastSussex1SpaceService.cs" />
