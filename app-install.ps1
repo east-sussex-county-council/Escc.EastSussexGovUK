@@ -61,7 +61,7 @@ $transformsFolder = NormaliseFolderPath $transformsFolder
 
 BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
     
-robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.png *.master share.ascx choose.ashx default.aspx /XD aspnet_client css img js obj Properties "Web References"
+robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.png *.master share.ascx related.ascx choose.ashx default.aspx /XD aspnet_client css img js obj Properties "Web References"
 TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.config" "$transformsFolder\web.release.config"
 
 Write-Host
