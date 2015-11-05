@@ -11,6 +11,9 @@ Param(
   [Parameter(Mandatory=$True,HelpMessage="Where are the XDT transforms for the *.example.config files? (required)")]
   [string]$transformsFolder,
 
+  [Parameter(Mandatory=$True,HelpMessage="What is the name of the IIS site where the application is being set up? (required)")]
+  [string]$websiteName,
+
   [Parameter(Mandatory=$True,HelpMessage="Why is this change being made? (required)")]
   [string]$comment
 )
@@ -64,5 +67,9 @@ BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
 robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.png *.master share.ascx related.ascx choose.ashx default.aspx error*.ascx /XD aspnet_client css img js obj Properties "Web References"
 TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.config" "$transformsFolder\web.release.config"
 
+CheckSiteExistsBeforeAddingApplication $websiteName
+Write-Host "Setting IIS site root folder to $destinationFolder\$projectName" 
+Set-ItemProperty "IIS:\Sites\$websiteName" -Name PhysicalPath -Value "$destinationFolder\$projectName"
+ 
 Write-Host
 Write-Host "Done." -ForegroundColor "Green"
