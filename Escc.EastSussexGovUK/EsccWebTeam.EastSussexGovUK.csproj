@@ -317,6 +317,9 @@
     <None Include="js\typekit.js" />
     <None Include="js\languages.js" />
     <Content Include="MasterPages\Status404.aspx" />
+    <Content Include="MasterPages\Status400.aspx">
+      <SubType>Form</SubType>
+    </Content>
     <Content Include="MasterPages\Status500.aspx">
       <SubType>Form</SubType>
     </Content>
@@ -360,7 +363,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="MasterPages\Remote\Control.aspx" />
-    <None Include="MasterPages\Remote\Example\default.aspx" />
+    <None Include="MasterPages\Remote\Example\example.aspx" />
     <Content Include="MasterPages\Controls\Web.config" />
     <None Include="MasterPages\Controls\Web.example.config" />
     <None Include="MasterPages\RSS\config.example.xslt" />
@@ -415,6 +418,13 @@
     </Compile>
     <Compile Include="MasterPages\Status404.aspx.designer.cs">
       <DependentUpon>Status404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Status400.aspx.cs">
+      <DependentUpon>Status400.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Status400.aspx.designer.cs">
+      <DependentUpon>Status400.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Status500.aspx.cs">
       <DependentUpon>Status500.aspx</DependentUpon>
