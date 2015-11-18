@@ -64,8 +64,10 @@ $transformsFolder = NormaliseFolderPath $transformsFolder
 
 BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
     
-robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.png *.master share.ascx related.ascx choose.ashx default.aspx error*.ascx /XD aspnet_client css img js obj Properties "Web References"
-TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.config" "$transformsFolder\web.release.config"
+robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png pan-*.gif *.master share.ascx related.ascx choose.ashx default.aspx error*.ascx escc-logo.gif logo-large.gif display-as-html.xslt config.xslt calendar.aspx hCalendar.ashx hCalendar.xslt datetime.xsl mf-templates.xsl uri.xsl xhtml2vcal.xsl /XD aspnet_client obj Properties "Web References"
+TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.config" "$transformsFolder\$projectName\web.release.config"
+TransformConfig "$sourceFolder\css\web.example.config" "$destinationFolder\$projectName\css\web.config" "$transformsFolder\$projectName\css\web.release.config"
+TransformConfig "$sourceFolder\js\web.example.config" "$destinationFolder\$projectName\js\web.config" "$transformsFolder\$projectName\js\web.release.config"
 
 CheckSiteExistsBeforeAddingApplication $websiteName
 Write-Host "Setting IIS site root folder to $destinationFolder\$projectName" 
