@@ -255,6 +255,7 @@
     <None Include="js\alerts.js" />
     <None Include="js\analytics.js" />
     <Content Include="js\coroner-skin.js" />
+    <Content Include="js\google-tag-manager.js" />
     <Content Include="js\min\banners.js" />
     <Content Include="js\min\cascading-content.js" />
     <Content Include="js\tests\chutzpah.json" />
@@ -409,6 +410,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextContainer.cs" />
+    <Compile Include="GoogleTagManagerContainerIdSelector.cs" />
     <Compile Include="js\WebChatProxy.ashx.cs">
       <DependentUpon>WebChatProxy.ashx</DependentUpon>
     </Compile>

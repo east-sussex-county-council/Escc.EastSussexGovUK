@@ -23,6 +23,17 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 this.about.HRef = urlPrefix + this.about.HRef;
                 this.privacy.HRef = urlPrefix + this.privacy.HRef;
             }
+
+            GoogleTagManagerContainerId = context.GoogleTagManagerContainerId;
         }
+
+
+        /// <summary>
+        /// Gets or sets the Google Tag Manager container id.
+        /// </summary>
+        /// <value>
+        /// The Google Tag Manager container id.
+        /// </value>
+        protected string GoogleTagManagerContainerId { get; set; }
     }
 }

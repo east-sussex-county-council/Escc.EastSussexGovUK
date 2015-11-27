@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LinkedData.md = LinkedData.md
 		README.md = README.md
 		RSS.md = RSS.md
+		TagManager.md = TagManager.md
 		TextSize.md = TextSize.md
 	EndProjectSection
 EndProject

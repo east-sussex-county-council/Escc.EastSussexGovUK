@@ -6,6 +6,7 @@ This project provides the template and some sitewide features for www.eastsussex
 * [Newsletter signup in the sitewide header](GovDelivery.md)
 * [Text size control in the sitewide header](TextSize.md)
 * [Google Analytics support](Analytics.md)
+* [Google Tag Manager support](TagManager.md)
 * [Promotional banners](Banners.md)
 * [iCalendar data](iCalendar.md)
 * [RSS feed styles](RSS.md)
