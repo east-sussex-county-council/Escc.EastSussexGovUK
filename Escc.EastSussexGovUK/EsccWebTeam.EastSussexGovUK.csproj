@@ -248,7 +248,9 @@
     <Content Include="img\header\menu-item.png" />
     <Content Include="img\header\mobile.jpg" />
     <Content Include="img\header\robin.jpg" />
+    <Content Include="img\header\sheep.jpg" />
     <Content Include="img\header\squirrel.jpg" />
+    <Content Include="img\header\winter-walk.jpg" />
     <Content Include="img\header\xmas-lights.jpg" />
     <Content Include="img\logo-for-facebook.png" />
     <None Include="js\1space.js" />
@@ -368,7 +370,9 @@
     <Content Include="MasterPages\Controls\Web.config" />
     <None Include="MasterPages\Controls\Web.example.config" />
     <None Include="MasterPages\RSS\config.example.xslt" />
-    <None Include="MasterPages\Remote\Web.example.config" />
+    <None Include="MasterPages\Remote\Web.example.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="js\WebChatProxy.ashx" />
     <Content Include="MasterPages\RSS\config.xslt" />
     <Content Include="MasterPages\RSS\dates.xslt" />

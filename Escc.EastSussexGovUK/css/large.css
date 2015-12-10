@@ -82,9 +82,12 @@ html { overflow-y: scroll; }
 .header { background: #01A1DF url(/img/header/desktop.png) repeat-x center top; padding: 0 6px; border: 0; margin: 0 0 -4px; }
 .ie6 .header { height: auto; }
 
-.header .container { background: url(/img/header/xmas-lights.jpg) no-repeat center top; overflow: hidden; }
-.header .spring, .header .summer { background-image: url(/img/header/buttercups.jpg); }
-.header .autumn { background-image: url(/img/header/squirrel.jpg); }
+.header .container { background: url(/img/header/buttercups.jpg) no-repeat center top; overflow: hidden; }
+.header .jan { background-image: url(/img/header/sheep.jpg); }
+.header .feb { background-image: url(/img/header/robin.jpg); }
+.header .sep, .header .oct { background-image: url(/img/header/squirrel.jpg); }
+.header .nov { background-image: url(/img/header/xmas-lights.jpg); }
+.header .dec { background-image: url(/img/header/winter-walk.jpg); }
 .header .mask { background: url(/img/header/desktop.png) no-repeat center -162px; overflow: hidden; }
 .ie6 .header .mask { background: url(/img/header/mask.gif) no-repeat center top; height: 162px; }
 
