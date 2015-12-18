@@ -1,0 +1,11 @@
+﻿/* Font-size increases to 19px/27px, to keep in line with standard base font */
+.landing-section h2 { line-height: 1.421052em; border-radius: 5px;}
+
+/* Instead of stacking links, display in rows of 2 boxes. Adjust width to context.
+   
+   Context is 10 columns minus 2 x 18px margins from .content = 766px.
+   Width of one .landing-section is 5 cols minus 18px = 374px.
+   Gutter is 18px.
+   */
+.landing-section { display: inline-block;vertical-align: top; width: 48.825065%; }
+.landing-section.odd { margin-right: 2.349870% }

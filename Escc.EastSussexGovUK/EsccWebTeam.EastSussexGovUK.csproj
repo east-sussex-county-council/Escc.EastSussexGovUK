@@ -161,6 +161,9 @@
     <Content Include="css\govdelivery-button-small.css" />
     <Content Include="css\govdelivery.css" />
     <Content Include="css\images\ui-bg_flat_25_0073ea_40x100.png" />
+    <Content Include="css\landing-large.css" />
+    <Content Include="css\landing-medium.css" />
+    <Content Include="css\landing-small.css" />
     <Content Include="css\large-ie6.css" />
     <Content Include="css\images\ui-anim_basic_16x16.gif" />
     <Content Include="css\images\ui-bg_flat_0_aaaaaa_40x100.png" />

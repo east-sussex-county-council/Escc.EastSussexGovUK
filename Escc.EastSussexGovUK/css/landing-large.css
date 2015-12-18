@@ -1,0 +1,26 @@
+﻿/* Rows of boxes must now respect editor's choice of 2 or 3 columns. 
+   This can occur in either an 8 column .article context or 12 column .full-page context.
+
+   Scenario 1: 2 template columns in 12 grid columns (12 grid columns - 2 x 18px = 930px context)
+               Each template column is 6 grid columns - 18px = 456px
+
+   Scenario 2: 3 template columns in 12 grid columns. Same context.
+               From context, subtract 2 x 18px gutters (894px) then divide by 3 for column width (298px)
+
+   Scenario 3: 2 template columns in 8 grid columns (8 grid columns - 2 x 18px = 602px context)
+               Each template column is 4 grid columns - 18px = 292px
+
+   Scenario 4: 3 template columns in 8 grid columns. Same context.
+               From context, subtract 2 x 18px gutters (566px) then divide by 3 for column width (188.66px)
+*/
+.full-page .two-col { width: 49.032258%; }
+.full-page .two-col.odd { margin-right: 1.935484%; }
+
+.full-page .three-col { width: 32.043011%; margin-right: 0; }
+.full-page .three-col.group1, .full-page .three-col.group2 { margin-right: 1.935484%;} 
+
+.article .two-col { width: 48.504983%; }
+.article .two-col.odd { margin-right: 2.990033%; }
+
+.article .three-col { width: 31.339978%; margin-right: 0;}
+.article .three-col.group1, .article .three-col.group2 { margin-right: 2.990033%;} 
