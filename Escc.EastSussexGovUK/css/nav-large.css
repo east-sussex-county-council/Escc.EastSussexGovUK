@@ -1,4 +1,9 @@
-﻿/* Rows of boxes must now respect editor's choice of 2 or 3 columns. 
+﻿/* See guide-step-medium.css for documentation on .guide-nav. Adjust values here for 8 column context. */
+.guide-nav .first-half { width: 42.589342%;padding-right: 1.410658%;}
+.guide-nav .second-half { padding-left: 7.410658%; }
+.guide-nav .second-half .step-number { left: 2.821317%; }
+
+/* Rows of boxes must now respect editor's choice of 2 or 3 columns. 
    This can occur in either an 8 column .article context or 12 column .full-page context.
 
    Scenario 1: 2 template columns in 12 grid columns (12 grid columns - 2 x 18px = 930px context)

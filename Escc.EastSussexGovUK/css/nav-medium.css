@@ -1,0 +1,34 @@
+﻿/*
+    .guide-nav is one list, split into two columns by floating the items in the first half.
+
+    1.122195% represents 9px within a 10 column context, and this is used at the right of column one and left of 
+    column two to create an 18px gutter on the grid. The .step-number has to have this specified separately because 
+    it's absolutely positioned and, because it's already within the context of half the space, its % movement is doubled.
+
+    .first-half width and padding adds up to 50% when you include the padding inherited from guide-step-small.css
+
+    Below the list is padding, border and a margin adding up to 2 x 18px.
+
+    JavaScript hides .guide-nav, which means it gets an inline style. At medium and above .guide-nav should always be 
+    visible, so !important overrides that inline style. We need to hide .menu-toggle too because it uses the .small class.
+    That works fine with the desktop template but if you get the mobile template on a bigger screen there's no medium CSS 
+    loaded to hide .small.
+*/
+.menu-toggle { display: none;}
+
+.guide-nav { overflow: hidden;padding-bottom: .894737em;border-bottom: 1px solid #ccc;margin-bottom: .947368em; display: block!important; }
+.guide-nav .first-half { float: left;clear: left;width: 42.877805%;padding-right: 1.122195%;}
+.guide-nav .second-half { margin-left: 50%;padding-left: 7.122195%; }
+.guide-nav .second-half .step-number { left: 2.24439%; }
+
+/* Font-size increases to 19px/27px, to keep in line with standard base font */
+.landing-section h2 { line-height: 1.421052em; border-radius: 5px;}
+
+/* Instead of stacking links, display in rows of 2 boxes. Adjust width to context.
+   
+   Context is 10 columns minus 2 x 18px margins from .content = 766px.
+   Width of one .landing-section is 5 cols minus 18px = 374px.
+   Gutter is 18px.
+   */
+.landing-section { display: inline-block;vertical-align: top; width: 48.825065%; }
+.landing-section.odd { margin-right: 2.349870% }

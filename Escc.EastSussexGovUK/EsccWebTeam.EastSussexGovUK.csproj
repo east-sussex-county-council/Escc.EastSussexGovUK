@@ -161,9 +161,9 @@
     <Content Include="css\govdelivery-button-small.css" />
     <Content Include="css\govdelivery.css" />
     <Content Include="css\images\ui-bg_flat_25_0073ea_40x100.png" />
-    <Content Include="css\landing-large.css" />
-    <Content Include="css\landing-medium.css" />
-    <Content Include="css\landing-small.css" />
+    <Content Include="css\nav-large.css" />
+    <Content Include="css\nav-medium.css" />
+    <Content Include="css\nav-small.css" />
     <Content Include="css\large-ie6.css" />
     <Content Include="css\images\ui-anim_basic_16x16.gif" />
     <Content Include="css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -261,6 +261,7 @@
     <None Include="js\analytics.js" />
     <Content Include="js\coroner-skin.js" />
     <Content Include="js\google-tag-manager.js" />
+    <Content Include="js\nav.js" />
     <Content Include="js\min\banners.js" />
     <Content Include="js\min\cascading-content.js" />
     <Content Include="js\tests\chutzpah.json" />

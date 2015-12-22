@@ -1,5 +1,0 @@
-﻿/* Set headings to be full width with standard 16px/24px text, 9px padding. Add an arrow following the link. 
-   Extra weight from body selector ensures this beats standard h2 in IE8.
-*/
-body .landing-section h2 {font-size: 1em;line-height: 1.5em; font-weight: bold;background: #aee1f4;padding: .5625em;}
-.landing-section h2 a { padding: 0 30px 0 0;background: url(https://www.eastsussex.gov.uk/img/body/item-type.gif) no-repeat right -592px;}

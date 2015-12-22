@@ -1,0 +1,12 @@
+﻿/* Hide the default numbering and position a number absolutely within the positioning context of the list item.
+   Left padding allows numbers up to two digits to fit with consistent spacing.
+*/
+.guide-nav { list-style: none;margin-left: 0;  }
+.guide-nav li { position: relative;padding-left: 6%;}
+.guide-nav .step-number {position: absolute;left: 0; top: 0 }
+
+/* Set headings to be full width with standard 16px/24px text, 9px padding. Add an arrow following the link. 
+   Extra weight from body selector ensures this beats standard h2 in IE8.
+*/
+body .landing-section h2 {font-size: 1em;line-height: 1.5em; font-weight: bold;background: #aee1f4;padding: .5625em;}
+.landing-section h2 a { padding: 0 30px 0 0;background: url(https://www.eastsussex.gov.uk/img/body/item-type.png) no-repeat right -592px;}
