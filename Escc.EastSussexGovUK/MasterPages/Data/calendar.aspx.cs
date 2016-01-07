@@ -36,14 +36,14 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
             NameValueCollection config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Data") as NameValueCollection;
             if (config == null) throw new ConfigurationErrorsException("Configuration section not found: <EsccWebTeam.EastSussexGovUK><Data /></EsccWebTeam.EastSussexGovUK>");
 
+            Uri requestedUri = new Uri(Request.QueryString["url"], UriKind.RelativeOrAbsolute);
+            requestedUri = Iri.MakeAbsolute(requestedUri);
+            Uri uriToProcess = requestedUri;
+
+            uriToProcess = TransformHost(config, uriToProcess);
+
             try
             {
-                Uri requestedUri = new Uri(Request.QueryString["url"], UriKind.RelativeOrAbsolute);
-                requestedUri = Iri.MakeAbsolute(requestedUri);
-                Uri uriToProcess = requestedUri;
-
-                uriToProcess = TransformHost(config, uriToProcess);
-
                 // Get data from the page to be parsed, to build this page
                 ParsePageForMetadata(uriToProcess, requestedUri);
 
@@ -58,6 +58,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
             }
             catch (Exception ex)
             {
+                ex.Data.Add("URL requested", uriToProcess);
                 ExceptionManager.Publish(ex);
                 EastSussexGovUKContext.HttpStatus404NotFound(this.article);
             }
