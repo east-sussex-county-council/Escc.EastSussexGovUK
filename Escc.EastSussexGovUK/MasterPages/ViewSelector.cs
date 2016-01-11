@@ -138,7 +138,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                         {
                             deviceDetection.UseDefaultCredentials = true;
                             deviceDetection.Proxy = new ConfigurationProxyProvider().CreateProxy();
-                            preferredView = (deviceDetection.IsMobile(userAgent)) ? EsccWebsiteView.Mobile : EsccWebsiteView.Desktop;
+                       //     preferredView = (deviceDetection.IsMobile(userAgent)) ? EsccWebsiteView.Mobile : EsccWebsiteView.Desktop;
                         }
                         catch (WebException ex)
                         {
@@ -147,6 +147,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                         }
                     }
                 }
+            }
+
+            // Support for device detection web service disabled so, for now, use Desktop as a last resort if no decision made
+            if (preferredView == EsccWebsiteView.Unknown)
+            {
+                preferredView = EsccWebsiteView.Desktop;
             }
 
             // We've made a decision, save it in session to help us maintain it consistently
