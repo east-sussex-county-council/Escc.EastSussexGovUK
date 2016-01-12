@@ -49,10 +49,10 @@ CreateApplicationPool $projectName
 CreateWebsite $projectName "$pathOfThisScript\$projectName"
 CreateHTTPSBinding $projectName "localhost"
 RemoveHTTPBinding $projectName 80
-CopyConfig "Web.example.config" "web.config"
-CopyConfig "css\Web.example.config" "css\web.config"
-CopyConfig "js\Web.example.config" "js\web.config"
-CopyConfig "masterpages\remote\Web.example.config" "masterpages\remote\web.config"
+CopyConfig "$projectName\Web.example.config" "$projectName\web.config"
+CopyConfig "$projectName\css\Web.example.config" "$projectName\css\web.config"
+CopyConfig "$projectName\js\Web.example.config" "$projectName\js\web.config"
+CopyConfig "$projectName\masterpages\remote\Web.example.config" "$projectName\masterpages\remote\web.config"
 
 Write-Host
 Write-Host "Done." -ForegroundColor "Green"
