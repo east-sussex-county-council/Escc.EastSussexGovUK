@@ -5,9 +5,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
-using EsccWebTeam.Cms;
 using Escc.Web.Metadata;
-using Microsoft.ContentManagement.Publishing;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
@@ -78,11 +76,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             // ...but it doesn't work as ASP.NET ignores it. Also gzip uses Vary: Accept-encoding.
             // https://developers.google.com/webmasters/smartphone-sites/details
             // Response.AddHeader("Vary", "User-Agent");
-
-            if (CmsUtilities.IsCmsEnabled())
-            {
-                AddCmsClasses();
-            }
         }
 
         /// <summary>
@@ -98,21 +91,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                 cookie.Expires = DateTime.Now.AddDays(-1d);
                 if (!String.IsNullOrEmpty(domain)) cookie.Domain = domain;
                 Response.Cookies.Add(cookie);
-            }
-        }
-
-        /// <summary>
-        /// Adds classes representing CMS edit modes an enclosing tag, similar to the way Modernizr does for browser features.
-        /// </summary>
-        /// <remarks>Not using HTML tag because Modernizr overwrites the classes you put there</remarks>
-        private void AddCmsClasses()
-        {
-            var place = this.FindControl("bodyclass");
-            if (place != null)
-            {
-                if (CmsUtilities.IsEditing) place.Controls.Add(new LiteralControl(" cms-edit"));
-                else if (CmsUtilities.IsPreviewing) place.Controls.Add(new LiteralControl(" cms-preview"));
-                else if (CmsHttpContext.Current.Mode == PublishingMode.Unpublished) place.Controls.Add(new LiteralControl(" cms-unpublished"));
             }
         }
 

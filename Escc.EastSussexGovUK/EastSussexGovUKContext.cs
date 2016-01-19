@@ -6,9 +6,7 @@ using System.Configuration;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
-using EsccWebTeam.Cms;
 using EsccWebTeam.EastSussexGovUK.MasterPages;
-using Microsoft.ContentManagement.Publishing;
 namespace EsccWebTeam.EastSussexGovUK
 {
     /// <summary>
@@ -89,27 +87,11 @@ namespace EsccWebTeam.EastSussexGovUK
                 // Re-use the result rather than working it out every time
                 if (this.requestUrl != null) return this.requestUrl;
 
-                // Default works unless you're in CMS
+                // Use default
                 this.requestUrl = HttpContext.Current.Request.Url;
-
-                if (CmsUtilities.IsCmsEnabled())
-                {
-                    // hide API calls in a method to support machines without CMS installed
-                    this.requestUrl = GetCmsRequestUrl();
-                }
 
                 return this.requestUrl;
             }
-        }
-
-        /// <summary>
-        /// Gets the URL of the current request, automatically hiding CMS template URLs in published mode
-        /// </summary>
-        /// <returns></returns>
-        private Uri GetCmsRequestUrl()
-        {
-            if (CmsHttpContext.Current.Posting == null) return this.requestUrl;
-            return new Uri(this.requestUrl.Scheme + "://" + this.requestUrl.Host + CmsUtilities.CorrectUnpublishedUrl(CmsUtilities.CorrectPublishedUrl(CmsHttpContext.Current.Posting.UrlModePublished)));
         }
 
         /// <summary>
@@ -380,13 +362,7 @@ namespace EsccWebTeam.EastSussexGovUK
                 if (Page == null) return false;
                 if (String.IsNullOrEmpty(Page.MasterPageFile))
                 {
-                    // The old home page is also part of the legacy view
-                    if (CmsUtilities.IsCmsEnabled())
-                    {
-                        this.viewIsLegacy = IsLegacyHomePage();
-                        return (bool)this.viewIsLegacy;
-                    }
-                    else return false;
+                    return false;
                 }
 
                 // Get the legacy master page from web.config. If it's not there, the legacy view has been retired.
@@ -405,16 +381,6 @@ namespace EsccWebTeam.EastSussexGovUK
                 }
                 return (bool)this.viewIsLegacy;
             }
-        }
-
-        /// <summary>
-        /// Determines whether the current page is the pre-refresh home page.
-        /// </summary>
-        /// <returns></returns>
-        private bool? IsLegacyHomePage()
-        {
-            var posting = CmsUtilities.Posting;
-            return (posting != null && posting.Template.Guid == "{AE1E8507-8136-481F-8EBF-73CB244CFEA4}");
         }
 
         #endregion // Information about current master page

@@ -22,9 +22,6 @@
  .ie6, .ie7, 
  .ie67, .ie8        target IE versions
  .js, .no-js        JavaScript on or off
- .cms-edit          CMS editing mode
- .cms-preview       CMS preview mode
- .cms-unpublished   CMS unpublished mode
 
  .aural             screenreaders only
  .print             print only
@@ -77,10 +74,6 @@ The container is now 10 columns or 802px wide.
 /* Latest is not supposed to appear within .text, but cope if it does */
 .text .latestBox .latest { left: 0; }
 .ie67 .text .latestBox .latest { float: left; z-index: 100; top: 14px; }
-
-/* Stop "Latest" label overlapping in edit mode */
-.cms-edit .latestBox .latest { position: relative; }
-.cms-edit .latestBox .mceEditor { clear: both; display: block; padding: 18px 18px 0; }
 
 /* Adjust .text to the 10 column context */
 @media screen 

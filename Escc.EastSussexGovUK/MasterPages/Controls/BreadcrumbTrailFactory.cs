@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
-using EsccWebTeam.Cms;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -17,15 +16,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         /// <returns></returns>
         public static IBreadcrumbProvider CreateTrailProvider()
         {
-            // Use CMS if installed, otherwise web.config
-            if (CmsUtilities.IsCmsEnabled())
-            {
-                return new MicrosoftCmsBreadcrumbProvider();
-            }
-            else
-            {
-                return new ConfigurationBreadcrumbProvider();
-            }
+            return new ConfigurationBreadcrumbProvider();
         }
     }
 }

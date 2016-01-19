@@ -32,20 +32,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// 		<code>
         /// &lt;configuration&gt;
         ///     &lt;configSections&gt;
-        ///            &lt;sectionGroup name="EsccWebTeam.Cms"&gt;
-        ///                &lt;section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
-        ///            &lt;/sectionGroup&gt;
         ///            &lt;sectionGroup name="EsccWebTeam.EastSussexGovUK"&gt;
         ///                &lt;section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
         ///                &lt;section name="DesktopMasterPages" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
         ///                &lt;section name="MobileMasterPages" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
         ///            &lt;/sectionGroup&gt;
         ///        &lt;/configSections&gt;
-        ///        &lt;EsccWebTeam.Cms&gt;
-        ///            &lt;GeneralSettings&gt;
-        ///                &lt;add key="CmsEnabled" value="machinename;machinename;" /&gt;
-        ///            &lt;/GeneralSettings&gt;
-        ///        &lt;/EsccWebTeam.Cms&gt;
         ///        &lt;EsccWebTeam.EastSussexGovUK&gt;
         ///            &lt;GeneralSettings&gt;
         ///                &lt;add key="MasterPageParameterName" value="template" /&gt;
@@ -169,7 +161,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             // Get master page from config based on folder if available, otherwise based on a single setting.
             if (configSettings.ContainsKey(preferredView) && configSettings[preferredView] != null)
             {
-                // Microsoft CMS changes the URL requested by the user to that of the template, so use the corrected URL provided by EastSussexGovUKContext 
+                // A CMS may change the URL requested by the user to that of the template, so use the corrected URL provided by EastSussexGovUKContext 
                 var siteContext = new EastSussexGovUKContext();
                 preferredMasterPage = AssignMasterPageByFolder(siteContext.RequestUrl, configSettings[preferredView], preferredMasterPage);
             }

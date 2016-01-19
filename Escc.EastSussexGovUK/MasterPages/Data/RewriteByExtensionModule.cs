@@ -55,21 +55,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                     ChangeExtensionAndParsePage(context.Request.Url, ".aspx", config[key]);
                 }
             }
-
-            // Check whether a Microsoft CMS page is being requested with a custom extension
-            if (!String.IsNullOrEmpty(HttpContext.Current.Request.QueryString["NRORIGINALURL"]))
-            {
-                var postingUrl = Iri.MakeAbsolute(new Uri(HttpContext.Current.Request.QueryString["NRORIGINALURL"], UriKind.Relative));
-                urlExtension = Path.GetExtension(postingUrl.AbsolutePath.ToUpperInvariant());
-
-                foreach (string key in config)
-                {
-                    if (key.StartsWith(".", StringComparison.Ordinal) && key.ToUpperInvariant() == urlExtension)
-                    {
-                        ChangeExtensionAndParsePage(postingUrl, ".htm", config[key]);
-                    }
-                }
-            }
         }
 
         private static void ChangeExtensionAndParsePage(Uri requestedUrl, string realExtension, string parserUrl)

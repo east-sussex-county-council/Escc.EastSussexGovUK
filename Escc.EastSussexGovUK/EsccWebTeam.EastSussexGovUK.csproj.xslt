@@ -12,8 +12,6 @@
     <xsl:call-template name="UpdateHintPath">
       <xsl:with-param name="ref_1" select="'Microsoft.ApplicationBlocks.Data.dll'" />
       <xsl:with-param name="ref_2" select="'Microsoft.ApplicationBlocks.ExceptionManagement.dll'" />
-      <xsl:with-param name="ref_3" select="'Microsoft.ContentManagement.Publishing.dll'" />
-      <xsl:with-param name="ref_4" select="'Microsoft.ContentManagement.WebControls.dll'" />
     </xsl:call-template>
 
   </xsl:template>

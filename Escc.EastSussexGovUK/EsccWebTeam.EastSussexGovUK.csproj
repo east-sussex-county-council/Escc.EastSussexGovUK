@@ -102,14 +102,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>S:\_Reference DLLs\Microsoft Exception Management Application Block\Release strong-named .NET 2\Microsoft.ApplicationBlocks.ExceptionManagement.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ContentManagement.Publishing, Version=5.0.1200.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>S:\_Reference DLLs\Microsoft Content Management Server 2002\Microsoft.ContentManagement.Publishing.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ContentManagement.WebControls, Version=5.0.1200.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>S:\_Reference DLLs\Microsoft Content Management Server 2002\Microsoft.ContentManagement.WebControls.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -338,9 +330,7 @@
     <Content Include="MasterPages\Controls\Error310.ascx" />
     <Content Include="MasterPages\Controls\Error404.ascx" />
     <Content Include="MasterPages\Controls\GovDelivery.html" />
-    <Content Include="MasterPages\Controls\SocialMediaMobile.ascx" />
     <Content Include="MasterPages\Controls\FacebookLike.ascx" />
-    <Content Include="MasterPages\Controls\SocialMediaDesktop.ascx" />
     <Content Include="MasterPages\Controls\ScriptsFullScreen.ascx" />
     <Content Include="MasterPages\Controls\HeaderFullScreen.ascx" />
     <Content Include="MasterPages\Controls\MetadataFullScreen.ascx" />
@@ -503,27 +493,12 @@
       <DependentUpon>Error404.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Controls\IBreadcrumbProvider.cs" />
-    <Compile Include="MasterPages\Controls\MicrosoftCmsBreadcrumbProvider.cs" />
-    <Compile Include="MasterPages\Controls\SocialMediaMobile.ascx.cs">
-      <DependentUpon>SocialMediaMobile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\SocialMediaMobile.ascx.designer.cs">
-      <DependentUpon>SocialMediaMobile.ascx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Controls\FacebookLike.ascx.cs">
       <DependentUpon>FacebookLike.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPages\Controls\FacebookLike.ascx.designer.cs">
       <DependentUpon>FacebookLike.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Controls\SocialMediaDesktop.ascx.cs">
-      <DependentUpon>SocialMediaDesktop.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\SocialMediaDesktop.ascx.designer.cs">
-      <DependentUpon>SocialMediaDesktop.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Controls\ScriptsFullScreen.ascx.cs">
       <DependentUpon>ScriptsFullScreen.ascx</DependentUpon>
@@ -760,10 +735,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Escc.Cms\EsccWebTeam.Cms.csproj">
-      <Project>{6710e9ee-deab-4569-ace6-f10159d6d447}</Project>
-      <Name>EsccWebTeam.Cms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Escc.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj">
       <Project>{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}</Project>
       <Name>EsccWebTeam.Data.ActiveDirectory</Name>

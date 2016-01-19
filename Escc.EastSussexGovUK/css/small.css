@@ -22,9 +22,6 @@
  .ie6, .ie7, 
  .ie67, .ie8        target IE versions
  .js, .no-js        JavaScript on or off
- .cms-edit          CMS editing mode
- .cms-preview       CMS preview mode
- .cms-unpublished   CMS unpublished mode
 
  .aural             screenreaders only
  .print             print only
@@ -478,9 +475,6 @@ body .footer .footer-content { padding-top: 1.153846em; }
 .ie6 .section-nav { display: inline-block; } /* hasLayout to contain floats */
 
 @media print { .section-nav { padding-left: 0; padding-right: 0; } }
-
-/* Put the image on the left in edit mode */
-.cms-edit .section-nav span { float: left; }
 
 /* A quick answer emphasises the one thing most users want from the current page. Use strong tags to indicate importance.
    27px/36px font for the intro, and 36px/54px font for the datum. 27px padding top and bottom (54px or three lines total). 

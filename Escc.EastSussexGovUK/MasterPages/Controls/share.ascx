@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="share.ascx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Controls.share" %>
-<EastSussexGovUK:ContextContainer runat="server" Plain="false" CmsEdit="false">
+<EastSussexGovUK:ContextContainer runat="server" Plain="false">
 <div class="text">
     <aside>
         <p class="screen share-page">

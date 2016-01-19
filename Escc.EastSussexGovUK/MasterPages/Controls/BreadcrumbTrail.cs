@@ -4,8 +4,6 @@ using System.Globalization;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using EsccWebTeam.Cms;
-using Microsoft.ContentManagement.Publishing;
 
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
@@ -13,7 +11,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
     /// <summary>
     /// Navigation indicating position within information architecture, which appears on every page on the East Sussex County Council website.
     /// </summary>
-    /// <remarks>If Microsoft CMS is installed, the list is based on the current CMS channel. Otherwise it is read from web.config.</remarks>
+    /// <remarks>By default the list is read from web.config.</remarks>
     /// <example>
     /// <code>
     /// &lt;configuration&gt;
@@ -72,11 +70,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                     link.InnerText = key;
                     link.HRef = breadcrumbTrail[key];
                     listItem.Controls.Add(link);
-
-                    if (CmsUtilities.IsCmsEnabled())
-                    {
-                        PreventCmsWarning(link);
-                    }
                 }
                 listItems.Add(listItem);
             }
@@ -117,21 +110,8 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             // Otherwise it's an easy thing for the developer to miss.
             else if (!siteContext.IsPublicUrl)
             {
-                var method = CmsUtilities.IsCmsEnabled() ? "Create a CMS channel matching this folder." : "See EsccWebTeam.EastSussexGovUK web.example.config for an example.";
+                var method = "See EsccWebTeam.EastSussexGovUK web.example.config for an example.";
                 this.Controls.Add(new LiteralControl("<p><strong>You need to add a breadcrumb trail. " + method + "</strong></p>"));
-            }
-        }
-
-        /// <summary>
-        /// For people that can edit the site, changing the link triggers the warning that there's an "unpublished" link on the page,
-        /// from Console.js in EsccWebTEam.Cms.WebAuthor project, so include an attribute which JavaScript can look for to know that the link is OK.
-        /// </summary>
-        /// <param name="link"></param>
-        private static void PreventCmsWarning(HtmlAnchor link)
-        {
-            if (CmsHttpContext.Current.UserCanModifySite)
-            {
-                link.Attributes["data-unpublished"] = "false";
             }
         }
     }

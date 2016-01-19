@@ -2,9 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using EsccWebTeam.Cms;
 using EsccWebTeam.Data.ActiveDirectory;
-using Microsoft.ContentManagement.Publishing;
 
 namespace EsccWebTeam.EastSussexGovUK
 {
@@ -115,12 +113,14 @@ namespace EsccWebTeam.EastSussexGovUK
         /// </summary>
         /// <value><c>true</c> to show content, <c>false</c> otherwise.</value>
         /// <remarks>CMS has its own controls to enable this, but they can only be used in a context where CMS is definitely available, eg on a CMS template, not the site header or footer</remarks>
+        [Obsolete("Relates to Microsoft CMS 2002")]
         public bool? CmsEdit { get; set; }
 
         /// <summary>
         /// Gets or sets whether to show contents to people who can edit the site 
         /// </summary>
         /// <value><c>true</c> if user can edit site; otherwise <c>false</c></value>
+        [Obsolete("Relates to Microsoft CMS 2002")]
         public bool? CmsPermission { get; set; }
 
         #endregion
@@ -195,23 +195,6 @@ namespace EsccWebTeam.EastSussexGovUK
                 return;
             }
 
-            // Hide based on CMS context
-            if (CmsPermission != null)
-            {
-                if (CmsUtilities.IsCmsEnabled())
-                {
-                    if (HideBasedOnCmsPermissions()) return;
-                }
-            }
-
-            if (CmsEdit != null)
-            {
-                if (CmsUtilities.IsCmsEnabled())
-                {
-                    if (HideBasedOnCmsEditMode()) return;
-                }
-            }
-
             // Hide based on location
             if (!String.IsNullOrEmpty(this.UrlMatch) && !Regex.IsMatch(context.RequestUrl.ToString(), this.UrlMatch, RegexOptions.IgnoreCase))
             {
@@ -237,36 +220,6 @@ namespace EsccWebTeam.EastSussexGovUK
                 HideContents();
                 return;
             }
-        }
-
-        /// <summary>
-        /// Hides the control based on whether the current request is in CMS edit mode.
-        /// </summary>
-        /// <returns><c>true</c> if hidden; otherwise <c>false</c></returns>
-        /// <remarks>Encapsulated into a separate method to support non-CMS machines</remarks>
-        private bool HideBasedOnCmsEditMode()
-        {
-            if (CmsEdit.Value != CmsUtilities.IsEditing)
-            {
-                HideContents();
-                return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Hides the control if the user's CMS permissions do not match the requirements of the control.
-        /// </summary>
-        /// <returns><c>true</c> if hidden; otherwise <c>false</c></returns>
-        /// <remarks>Encapsulated into a separate method to support non-CMS machines</remarks>
-        private bool HideBasedOnCmsPermissions()
-        {
-            if (CmsPermission.Value != CmsHttpContext.Current.UserCanModifySite)
-            {
-                HideContents();
-                return true;
-            }
-            return false;
         }
 
         /// <summary>
