@@ -10,7 +10,6 @@
 
   <xsl:template match="msbuild:Project/msbuild:ItemGroup/msbuild:Reference/msbuild:HintPath">
     <xsl:call-template name="UpdateHintPath">
-      <xsl:with-param name="ref_1" select="'Microsoft.ApplicationBlocks.Data.dll'" />
       <xsl:with-param name="ref_2" select="'Microsoft.ApplicationBlocks.ExceptionManagement.dll'" />
     </xsl:call-template>
 
