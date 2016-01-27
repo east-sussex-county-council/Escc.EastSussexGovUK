@@ -1,4 +1,8 @@
-﻿/* See guide-step-medium.css for documentation on .guide-nav. Adjust values here for 8 column context. */
+﻿/* .menu-nav is the generic version of .guide-nav, which only toggles the menu without assuming styling */
+.menu-toggle-medium { display: none;}
+.menu-nav, .menu-nav-medium { display: block!important; }
+
+/* See guide-step-medium.css for documentation on .guide-nav. Adjust values here for 8 column context. */
 .guide-nav .first-half { width: 42.589342%;padding-right: 1.410658%;}
 .guide-nav .second-half { padding-left: 7.410658%; }
 .guide-nav .second-half .step-number { left: 2.821317%; }

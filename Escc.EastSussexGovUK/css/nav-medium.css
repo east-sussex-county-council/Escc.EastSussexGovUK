@@ -15,6 +15,7 @@
     loaded to hide .small.
 */
 .menu-toggle { display: none;}
+.menu-toggle-medium { display: block;}
 
 .guide-nav { overflow: hidden;padding-bottom: .894737em;border-bottom: 1px solid #ccc;margin-bottom: .947368em; display: block!important; }
 .guide-nav .first-half { float: left;clear: left;width: 42.877805%;padding-right: 1.122195%;}
