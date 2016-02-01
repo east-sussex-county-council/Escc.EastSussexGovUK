@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Threading;
 using System.Web;
 using System.Web.SessionState;
-using Microsoft.ApplicationBlocks.ExceptionManagement;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {

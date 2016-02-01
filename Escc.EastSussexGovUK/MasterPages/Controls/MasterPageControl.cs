@@ -10,8 +10,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using EsccWebTeam.Data.Web;
 using EsccWebTeam.EastSussexGovUK.MasterPages.Remote;
-using Microsoft.ApplicationBlocks.ExceptionManagement;
 using Escc.Net;
+using Exceptionless;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -170,7 +170,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             {
                 // Publish exception, otherwise it just disappears as async method has no calling code to throw to.
                 ex.Data.Add("URL which failed", ex.Response.ResponseUri);
-                ExceptionManager.Publish(ex);
+                ex.ToExceptionless().Submit();
             }
         }
 
@@ -218,7 +218,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             {
                 // Publish exception, otherwise it just disappears as async method has no calling code to throw to.
                 ex.Data.Add("URL which failed", ex.Response.ResponseUri);
-                ExceptionManager.Publish(ex);
+                ex.ToExceptionless().Submit();
             }
         }
 

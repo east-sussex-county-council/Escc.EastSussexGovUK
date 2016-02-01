@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Threading;
-using Microsoft.ApplicationBlocks.ExceptionManagement;
+using Exceptionless;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Remote
 {
@@ -108,13 +108,13 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Remote
                     File.Delete(tempFile);
 
                     // Publish exception, otherwise it just disappears as async method has no calling code to throw to.
-                    ExceptionManager.Publish(ex);
+                    ex.ToExceptionless().Submit();
                 }
             }
             catch (UnauthorizedAccessException ex)
             {
                 // Publish exception, otherwise it just disappears as async method has no calling code to throw to.
-                ExceptionManager.Publish(ex);
+                ex.ToExceptionless().Submit();
             }
         }
 

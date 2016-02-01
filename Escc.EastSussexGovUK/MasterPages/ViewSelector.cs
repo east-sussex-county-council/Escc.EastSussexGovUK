@@ -8,8 +8,8 @@ using System.Web;
 using System.Web.SessionState;
 using EsccWebTeam.EastSussexGovUK.DeviceDetection;
 using EsccWebTeam.Data.Web;
-using Microsoft.ApplicationBlocks.ExceptionManagement;
 using Escc.Net;
+using Exceptionless;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
@@ -321,7 +321,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             }
             catch (Exception ex)
             {
-                ExceptionManager.Publish(ex);
+                ex.ToExceptionless().Submit();
             }
         }
 

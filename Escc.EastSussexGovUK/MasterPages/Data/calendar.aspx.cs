@@ -10,8 +10,8 @@ using System.Xml;
 using System.Xml.XPath;
 using eastsussexgovuk.webservices.TextXhtml.HouseStyle;
 using EsccWebTeam.Data.Web;
-using Microsoft.ApplicationBlocks.ExceptionManagement;
 using Escc.Net;
+using Exceptionless;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
 {
@@ -59,7 +59,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
             catch (Exception ex)
             {
                 ex.Data.Add("URL requested", uriToProcess);
-                ExceptionManager.Publish(ex);
+                ex.ToExceptionless().Submit();
                 EastSussexGovUKContext.HttpStatus404NotFound(this.article);
             }
         }

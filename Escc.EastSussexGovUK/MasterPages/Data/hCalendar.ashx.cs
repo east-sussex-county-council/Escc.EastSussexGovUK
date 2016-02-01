@@ -12,8 +12,8 @@ using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Xsl;
 using EsccWebTeam.Data.Web;
-using Microsoft.ApplicationBlocks.ExceptionManagement;
 using Escc.Net;
+using Exceptionless;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
 {
@@ -55,7 +55,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
             }
             catch (Exception ex)
             {
-                ExceptionManager.Publish(ex);
+                ex.ToExceptionless().Submit();
                 NothingToDo(context);
             }
         }
