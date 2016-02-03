@@ -26,7 +26,8 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 
             // Link to comments form with a reference to this page
             // Do this on PreRender as hopefully Page.Title has been set by then
-            EncodedTitle = Server.UrlEncode(Server.HtmlDecode(Page.Title));
+            // strip double-quotes because when this link is picked up by a link checker and exported to CSV, the quotes are misinterpreted as a CSV delimiter
+            EncodedTitle = Server.UrlEncode(Server.HtmlDecode(Page.Title.Replace("\"", String.Empty)));
         }
     }
 }
