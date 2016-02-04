@@ -32,7 +32,7 @@ if(navigator.userAgent.indexOf("ESCC Libraries") > -1)
 	function ResetTimeOut()
 	{
 		window.clearTimeout(timeOut);
-		timeOut = window.setTimeout('SignOut()', 300000);
+		timeOut = window.setTimeout(SignOut, 300000);
 	}
 	document.onmousemove = ResetTimeOut;
 	document.onkeypress = ResetTimeOut;
