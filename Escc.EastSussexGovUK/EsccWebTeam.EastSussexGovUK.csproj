@@ -314,6 +314,9 @@
     <Content Include="MasterPages\Status400.aspx">
       <SubType>Form</SubType>
     </Content>
+    <Content Include="MasterPages\Status403.aspx">
+      <SubType>Form</SubType>
+    </Content>
     <Content Include="MasterPages\Status500.aspx">
       <SubType>Form</SubType>
     </Content>
@@ -379,7 +382,7 @@
     <None Include="MasterPages\Remote\Example\web.example.config" />
     <Content Include="js\ServiceAlertsProxy.ashx" />
     <Content Include="MasterPages\textsize.aspx" />
-    <Content Include="packages.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -395,9 +398,9 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\DeviceDetection\Service.disco" />
-    <None Include="Web.config">
+    <Content Include="Web.config">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
     <Content Include="windows-tile.png" />
     <None Include="Web References\DeviceDetection\Service.wsdl" />
   </ItemGroup>
@@ -420,6 +423,13 @@
     </Compile>
     <Compile Include="MasterPages\Status400.aspx.designer.cs">
       <DependentUpon>Status400.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Status403.aspx.cs">
+      <DependentUpon>Status403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Status403.aspx.designer.cs">
+      <DependentUpon>Status403.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Status500.aspx.cs">
       <DependentUpon>Status500.aspx</DependentUpon>
