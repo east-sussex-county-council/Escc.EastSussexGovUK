@@ -45,7 +45,7 @@ if(navigator.userAgent.indexOf("ESCC Libraries") > -1)
 		if (document.getElementsByTagName)
 		{
 			// If the link ends with one of these file extensions, it needs a viewer
-			var viewerExts = new Array(".pdf", ".rtf", ".doc", ".xls", ".wma", ".mp3");
+		    var viewerExts = [".pdf", ".rtf", ".doc", ".docx ", ".dot", ".dotx ", ".xls", ".xlsx ", ".xlt", ".xltx ", ".csv", ".ppt", ".pptx ", ".pps", ".ppsx ", ".pot", ".potx ", ".mp3", ".mov", ".wmv", ".wma", ".exe", ".zip", ".gif", ".jpg", ".jpeg ", ".png"];
 			
 			var redirectTo = 'http://www.eastsussex.gov.uk/libraries/elibrary/howtouse/librarycomputers.htm';
 			
