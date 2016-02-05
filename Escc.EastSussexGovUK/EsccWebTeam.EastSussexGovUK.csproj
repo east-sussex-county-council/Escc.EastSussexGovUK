@@ -314,6 +314,9 @@
     <Content Include="MasterPages\Status400.aspx">
       <SubType>Form</SubType>
     </Content>
+    <Content Include="MasterPages\Status403.aspx">
+      <SubType>Form</SubType>
+    </Content>
     <Content Include="MasterPages\Status500.aspx">
       <SubType>Form</SubType>
     </Content>
@@ -420,6 +423,13 @@
     </Compile>
     <Compile Include="MasterPages\Status400.aspx.designer.cs">
       <DependentUpon>Status400.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Status403.aspx.cs">
+      <DependentUpon>Status403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Status403.aspx.designer.cs">
+      <DependentUpon>Status403.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Status500.aspx.cs">
       <DependentUpon>Status500.aspx</DependentUpon>
