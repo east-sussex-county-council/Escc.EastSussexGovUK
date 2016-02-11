@@ -10,11 +10,11 @@
     <!-- Only use an absolute URL when on the public site, because it doesn't work otherwise (proxy?) -->
     <xsl:choose>
       <xsl:when test="contains($CurrentUrl, 'eastsussex.gov.uk')">
-        <xsl:text disable-output-escaping="yes">&lt;?xml-stylesheet  type="text/xsl" href="http://www.eastsussex.gov.uk/masterpages/rss/display-as-html.xslt" ?&gt;
-          &lt;?xml-stylesheet  type="text/css" href="http://www.eastsussex.gov.uk/css/rssfeed.cssx" ?&gt;</xsl:text>
+        <xsl:text disable-output-escaping="yes">&lt;?xml-stylesheet  type="text/xsl" href="https://new.eastsussex.gov.uk/masterpages/rss/display-as-html-v2.xslt" ?&gt;
+          &lt;?xml-stylesheet  type="text/css" href="https://new.eastsussex.gov.uk/escc.eastsussexgovuk/css/rssfeed.cssx" ?&gt;</xsl:text>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:text disable-output-escaping="yes">&lt;?xml-stylesheet  type="text/xsl" href="/masterpages/rss/display-as-html.xslt" ?&gt;
+        <xsl:text disable-output-escaping="yes">&lt;?xml-stylesheet  type="text/xsl" href="/masterpages/rss/display-as-html-v2.xslt" ?&gt;
           &lt;?xml-stylesheet  type="text/css" href="/masterpages/rss.css" ?&gt;</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
@@ -51,7 +51,7 @@
     <generator>East Sussex County Council at www.eastsussex.gov.uk</generator>
     <image>
       <title>East Sussex County Council logo</title>
-      <url>http://www.eastsussex.gov.uk/masterpages/rss/escc-logo.gif</url>
+      <url>https://new.eastsussex.gov.uk/masterpages/rss/escc-logo.gif</url>
       <width>90</width>
       <height>65</height>
       <link>
