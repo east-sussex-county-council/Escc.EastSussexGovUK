@@ -30,6 +30,7 @@ _ReSharper*/
 *.config
 !*.example.config
 !packages.config
+!*.transform.config
 *.scc
 [Ss]cripts*/
 */css/min
