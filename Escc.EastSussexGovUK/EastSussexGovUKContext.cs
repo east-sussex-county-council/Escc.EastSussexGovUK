@@ -410,38 +410,13 @@ namespace EsccWebTeam.EastSussexGovUK
         }
 
         /// <summary>
-        /// Determines whether the current user agent is a robot such as a search engine, based on a list of search engines in web.config
+        /// Determines whether the current user agent is a robot such as a search engine
         /// </summary>
         /// <returns><c>true</c> if recognised as a search engine, otherwise <c>false</c></returns>
-        /// <remarks>I wasn't sure whether all the IndexOf commands would be too slow with a long list of user agents, 
-        /// but I timed several requests and it usually comes in at under a millisecond - RM</remarks>
+        [Obsolete]
         public bool UserIsRobot
         {
-            get
-            {
-                // Use session rather than a field to stash this value, because it shouldn't change for the duration of a session
-                var userAgent = HttpContext.Current.Request.UserAgent;
-                if (userAgent == null || userAgent.Length == 0)
-                {
-                    return false;
-                }
-                else
-                {
-                    var sess = HttpContext.Current.Session;
-                    if (sess != null && sess["IsRobot"] != null)
-                    {
-                        return (bool)sess["IsRobot"];
-                    }
-
-                    using (var deviceDetection = new DeviceDetection.Service())
-                    {
-                        deviceDetection.UseDefaultCredentials = true;
-                        bool isRobot = deviceDetection.IsRobot(userAgent);
-                        if (sess != null) sess["IsRobot"] = isRobot;
-                        return isRobot;
-                    }
-                }
-            }
+            get { return false; }
         }
 
         #endregion

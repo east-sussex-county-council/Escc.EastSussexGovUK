@@ -393,16 +393,10 @@
     <None Include="Web.MicrosoftCms.example.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\DeviceDetection\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\DeviceDetection\Service.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="windows-tile.png" />
-    <None Include="Web References\DeviceDetection\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextContainer.cs" />
@@ -702,11 +696,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\DeviceDetection\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <None Include="YUICompressor.msbuild">
       <SubType>Designer</SubType>
     </None>
@@ -756,22 +745,6 @@
       <Project>{0323F668-1723-44A1-8C94-F91DC59EF315}</Project>
       <Name>EsccWebTeam.NavigationControls</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost/Escc.DeviceDetection.WebService/Service.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\DeviceDetection\</RelPath>
-      <UpdateFromURL>http://localhost/Escc.DeviceDetection.WebService/Service.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>EsccWebTeam_EastSussexGovUK_DeviceDetection_Service</CachedSettingsPropName>
-    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

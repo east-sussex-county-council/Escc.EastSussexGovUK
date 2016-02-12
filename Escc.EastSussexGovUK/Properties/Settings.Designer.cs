@@ -22,15 +22,5 @@ namespace EsccWebTeam.EastSussexGovUK.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/EsccWebTeam.DeviceDetection/Service.asmx")]
-        public string EsccWebTeam_EastSussexGovUK_DeviceDetection_Service {
-            get {
-                return ((string)(this["EsccWebTeam_EastSussexGovUK_DeviceDetection_Service"]));
-            }
-        }
     }
 }

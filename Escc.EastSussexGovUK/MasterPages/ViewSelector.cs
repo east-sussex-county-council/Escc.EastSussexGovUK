@@ -6,7 +6,6 @@ using System.Net;
 using System.Threading;
 using System.Web;
 using System.Web.SessionState;
-using EsccWebTeam.EastSussexGovUK.DeviceDetection;
 using EsccWebTeam.Data.Web;
 using Escc.Net;
 using Exceptionless;
@@ -112,36 +111,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                 if (session != null && session["EastSussexGovUK.PreferredView"] != null) preferredView = (EsccWebsiteView)session["EastSussexGovUK.PreferredView"];
             }
 
-            // As a last resort, depend on the device. This guarantees we will end up with a decision of some kind.
-            // Code has been structured to make this the last option to avoid unnecessary calls to the web service.
-            // Important for the device detection to be in a web service though, so one copy of the detection code can be cached in one application domain
-            // rather than in every calling application.
-            if (preferredView == EsccWebsiteView.Unknown)
-            {
-                if (String.IsNullOrEmpty(userAgent))
-                {
-                    preferredView = EsccWebsiteView.Desktop;
-                }
-                else
-                {
-                    using (var deviceDetection = new Service())
-                    {
-                        try
-                        {
-                            deviceDetection.UseDefaultCredentials = true;
-                            deviceDetection.Proxy = new ConfigurationProxyProvider().CreateProxy();
-                       //     preferredView = (deviceDetection.IsMobile(userAgent)) ? EsccWebsiteView.Mobile : EsccWebsiteView.Desktop;
-                        }
-                        catch (WebException ex)
-                        {
-                            // If there's a problem reaching the web service, default to the desktop design which works on all devices
-                            preferredView = EsccWebsiteView.Desktop;
-                        }
-                    }
-                }
-            }
-
-            // Support for device detection web service disabled so, for now, use Desktop as a last resort if no decision made
+            // As a last resort, assume the desktop template if no other decision made
             if (preferredView == EsccWebsiteView.Unknown)
             {
                 preferredView = EsccWebsiteView.Desktop;
