@@ -243,7 +243,7 @@
     <Content Include="img\header\winter-walk.jpg" />
     <Content Include="img\header\xmas-lights.jpg" />
     <Content Include="img\logo-for-facebook.png" />
-    <Content Include="ContentSecurityPolicy.transform.config" />
+    <Content Include="transforms\ContentSecurityPolicy.transform.config" />
     <None Include="js\1space.js" />
     <None Include="js\alerts.js" />
     <None Include="js\analytics.js" />
