@@ -10,3 +10,23 @@
 */
 body .landing-section h2 {font-size: 1em;line-height: 1.5em; font-weight: bold;background: #aee1f4;padding: .5625em;}
 .landing-section h2 a { padding: 0 30px 0 0;background: url(https://www.eastsussex.gov.uk/img/body/item-type.png) no-repeat right -592px;}
+
+/* Previous and next navigation in a series of pages. Designed to work inside .text-content. 
+   Layout is consistent at all sizes, with floated blocks and contained using overflow: hidden. 
+   .prev-next a is 2.5 grid columns wide within a 6 column context.
+   1.5 lines of space (27px)  above and below.
+*/
+.prev-next { overflow: hidden;margin: 1.6875em 0; }
+.prev-next a { width: 41.350211%; text-decoration: none;position: relative;}
+.prev-next [rel=prev] {float: left;padding-left: 8.649789%;}
+.prev-next [rel=next] { float: right;padding-right: 8.649789%;}
+
+/* Text is 26px/18px for the 'Previous' and 'Next' labels, and base font size for the link. */
+.prev-next a em { display: block;font-size: 1.625em;line-height: 1.125em;white-space: nowrap; color: #003c69;} 
+.prev-next [rel=next], .prev-next [rel=next] em { text-align: right;}
+.prev-next span { text-decoration: underline;}
+
+/* Add arrows */
+.prev-next a:after {font-size: 100px;line-height: 0;position: absolute;top: 10px;font-family: 'Open Sans', script;color: #aee1f4;}
+.prev-next [rel=prev]:after {content: '\2039';left: -4px;}
+.prev-next [rel=next]:after {content: '\203A';right: -3px;}

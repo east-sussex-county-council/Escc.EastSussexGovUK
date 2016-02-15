@@ -33,3 +33,13 @@
    */
 .landing-section { display: inline-block;vertical-align: top; width: 48.825065%; }
 .landing-section.odd { margin-right: 2.349870% }
+
+/* Previous and next navigation in a series of pages. Designed to work inside .text-content. 
+   Adjust for change in base font size: keep same absolute size of 26px/18px.
+   Adjust for 10 column context: now the link is 4 columns, with 1 column for the arrow. */
+.prev-next { margin: 1.421053em 0;}
+.prev-next a { width: 38.65337%; }
+.prev-next [rel=prev] {padding-left: 7.98005%;}
+.prev-next [rel=next] {padding-right: 7.98005%;}
+
+.prev-next a em { font-size: 1.368421em;line-height: 0.947368em;} 

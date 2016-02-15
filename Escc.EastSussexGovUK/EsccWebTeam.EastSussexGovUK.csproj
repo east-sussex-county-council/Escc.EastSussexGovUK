@@ -149,9 +149,12 @@
     <Content Include="css\govdelivery-button-small.css" />
     <Content Include="css\govdelivery.css" />
     <Content Include="css\images\ui-bg_flat_25_0073ea_40x100.png" />
-    <Content Include="css\nav-large.css" />
-    <Content Include="css\nav-medium.css" />
-    <Content Include="css\nav-small.css" />
+    <Content Include="css\min\nav-large.css" />
+    <Content Include="css\min\nav-medium.css" />
+    <Content Include="css\min\nav-small.css" />
+    <None Include="css\nav-large.css" />
+    <None Include="css\nav-medium.css" />
+    <None Include="css\nav-small.css" />
     <Content Include="css\large-ie6.css" />
     <Content Include="css\images\ui-anim_basic_16x16.gif" />
     <Content Include="css\images\ui-bg_flat_0_aaaaaa_40x100.png" />

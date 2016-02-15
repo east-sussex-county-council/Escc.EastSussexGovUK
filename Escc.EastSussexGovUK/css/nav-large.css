@@ -33,3 +33,9 @@
 
 .article .three-col { width: 31.339978%; margin-right: 0;}
 .article .three-col.group1, .article .three-col.group2 { margin-right: 2.990033%;} 
+
+/* Previous and next navigation in a series of pages. Designed to work inside .text-content. 
+   Adjust for 8 column context: now the link is 3.5 columns, with .5 column for the arrow. */
+.prev-next a { width: 43.573668%; }
+.prev-next [rel=prev] {padding-left: 6.426332%;}
+.prev-next [rel=next] {padding-right: 6.426332%;}
