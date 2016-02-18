@@ -59,7 +59,9 @@ Example: C:\>set GIT_ORIGIN_URL=https://example-git-server.com/{0}"
 $projectName = "Escc.EastSussexGovUK" 
 $sourceFolder = NormaliseFolderPath $sourceFolder "$PSScriptRoot\$projectName"
 $destinationFolder = NormaliseFolderPath $destinationFolder
+$destinationFolder = "$destinationFolder\$websiteName"
 $backupFolder = NormaliseFolderPath $backupFolder
+$backupFolder = "$backupFolder\$websiteName"
 $transformsFolder = NormaliseFolderPath $transformsFolder
 
 BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
