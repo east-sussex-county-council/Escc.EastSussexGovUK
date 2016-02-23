@@ -170,6 +170,7 @@ h2
 .progressBar li.current { background: url(../img/body/navigation.png) no-repeat -100px -200px; color: #fff;}
 body .text ol.progressBar { padding-left: 2px; margin: 1em 0; max-width:none; overflow: auto; width: 99%; }
 .progressBar em { font-style: normal; }
+.progressBar a:link, .progressBar a:visited { color: #fff;text-decoration: none; }
 
 
 /**************** ERROR REPORTING - VALIDATION SUMMARY CONTROL *********************************************************************************************************************
