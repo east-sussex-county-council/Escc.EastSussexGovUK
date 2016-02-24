@@ -100,7 +100,12 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 
 /* To support both plain <li /> elements or links inside <li />, duplicate the <li /> background on <a href="" /> and use negative margins to cancel out padding on <li /> and move it to <a href="" /> */
 .text-content .progressBar em, .text-content .progressBar a { margin: -.357143em -14px -.285714em -9px; padding: .357143em 14px .285714em 9px;}
-.text-content .progressBar a:link, ol.progressBar a:visited, .text-content .progressBar em { display: block; color: #fff; background: #003C69 url(../img/body/navigation.png) no-repeat center right; text-decoration: none; text-align: center; }
+.text-content .progressBar a:link, .text-content .progressBar em { display: block; color: #fff; background: #003C69 url(../img/body/navigation.png) no-repeat center right; text-decoration: none; text-align: center; }
+
+/* Even though :visited styles are the same as :link, specify them separately otherwise IE11 refuses to apply them citing 
+   "SEC7115 :visited and :link styles can only differ by color. Some styles were not applied to :visited."
+ */
+.text-content .progressBar a:visited { color: #fff; background: #003C69 url(../img/body/navigation.png) no-repeat center right; }
 
 /* Current or active stage is a different colour */
 .text-content .progressBar .current { background: #00A1DE url(../img/body/navigation.png) no-repeat center right; }
