@@ -391,6 +391,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="transforms\EnforceTLS.transform.config" />
     <None Include="web.example.config">
       <SubType>Designer</SubType>
     </None>
