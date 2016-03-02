@@ -26,6 +26,10 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             get { return true; }
         }
 
+        /// <summary>
+        /// Processes the request.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public void ProcessRequest(HttpContext context)
         {
             ProcessCorsHeaders(context);
@@ -51,7 +55,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 
         private static void ProcessCorsHeaders(HttpContext context)
         {
-            Cors.AllowCrossOriginRequest(context.Request, context.Response, new RemoteMasterPageXmlConfigurationProvider().CorsAllowedOrigins());
+            Cors.AllowCrossOriginRequest(context.Request, context.Response, new ConfigurationCorsAllowedOriginsProvider().CorsAllowedOrigins());
         }
 
         #endregion
