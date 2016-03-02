@@ -76,17 +76,17 @@ html { overflow-y: scroll; }
    .header matches the top of the body gradient, and shows under the menu on a page where none of the main sections are current, 
    such as /contactus/default.htm
 */
-.header { background: #01A1DF url(/img/header/desktop.png) repeat-x center top; padding: 0 6px; border: 0; margin: 0 0 -4px; }
+.header { background: #01A1DF url(../img/header/desktop.png) repeat-x center top; padding: 0 6px; border: 0; margin: 0 0 -4px; }
 .ie6 .header { height: auto; }
 
-.header .container { background: url(/img/header/buttercups.jpg) no-repeat center top; overflow: hidden; }
-.header .jan { background-image: url(/img/header/sheep.jpg); }
-.header .feb { background-image: url(/img/header/robin.jpg); }
-.header .sep, .header .oct { background-image: url(/img/header/squirrel.jpg); }
-.header .nov { background-image: url(/img/header/xmas-lights.jpg); }
-.header .dec { background-image: url(/img/header/winter-walk.jpg); }
-.header .mask { background: url(/img/header/desktop.png) no-repeat center -162px; overflow: hidden; }
-.ie6 .header .mask { background: url(/img/header/mask.gif) no-repeat center top; height: 162px; }
+.header .container { background: url(../img/header/buttercups.jpg) no-repeat center top; overflow: hidden; }
+.header .jan { background-image: url(../img/header/sheep.jpg); }
+.header .feb { background-image: url(../img/header/robin.jpg); }
+.header .sep, .header .oct { background-image: url(../img/header/squirrel.jpg); }
+.header .nov { background-image: url(../img/header/xmas-lights.jpg); }
+.header .dec { background-image: url(../img/header/winter-walk.jpg); }
+.header .mask { background: url(../img/header/desktop.png) no-repeat center -162px; overflow: hidden; }
+.ie6 .header .mask { background: url(../img/header/mask.gif) no-repeat center top; height: 162px; }
 
 
 /* This template has more room, so swop in the bigger logo. The logo and its margin still controls the height of the header. */
@@ -98,8 +98,8 @@ html { overflow-y: scroll; }
 */
 .header .size { display: block; position: absolute; right: 6em; }
 .header .size a { padding: 7px 10px 7px 20px; float: left; color: #777; }
-.header .size .zoom-in { background: url(/img/body/item-type.png) no-repeat 0 -1491px; }
-.header .size .zoom-out { background: url(/img/body/item-type.png) no-repeat 0 -1538px; }
+.header .size .zoom-in { background: url(../img/body/item-type.png) no-repeat 0 -1491px; }
+.header .size .zoom-out { background: url(../img/body/item-type.png) no-repeat 0 -1538px; }
 
 /* Set the space above 'contact us' to align the ascender height with the top of the ESCC logo */
 .header .contact { padding: 7px 0; }
@@ -174,7 +174,7 @@ html { overflow-y: scroll; }
 #menu .transport { width: 9%; display: block; }
 #menu .council { width: 8%; display: block; }
 #menu .business a { background-image: none; }
-#menu .business a:hover, #menu .business a:focus, #menu .business a:active, #menu .business a.selected:link, #menu .business a.selected:visited { background: url(/img/header/menu-item.png) no-repeat left -61px; }
+#menu .business a:hover, #menu .business a:focus, #menu .business a:active, #menu .business a.selected:link, #menu .business a.selected:visited { background: url(../img/header/menu-item.png) no-repeat left -61px; }
 
 /* For IE6, undo the small-screen layout. Add position: relative to #menu to prevent peekaboo bug at around 800px wide. */
 .ie6 #menu { width: 100%; background: none; position: relative; }
@@ -198,7 +198,7 @@ html { overflow-y: scroll; }
  *********************/
  
  /* .body is a container for everything between the header and the footer */
- .body { background: url(/img/body/gradient.jpg) repeat-x left top #fff; }
+ .body { background: url(../img/body/gradient.jpg) repeat-x left top #fff; }
  
  /* Breadcrumb trail is 36px on baseline grid when on one line. The <ol> contains its floated children. Each list item has 
     one text line 18px high, line-height adding 4px vertical padding, then 2px top and bottom margin for when it wraps. 
@@ -213,11 +213,11 @@ html { overflow-y: scroll; }
  .breadcrumb li { color: #fff; line-height: 1.692308em; float: left; margin: .153846em 0 .153846em -10px; position: relative; padding: 0 18px 0 16px; white-space: nowrap; }
  .breadcrumb a:link, .breadcrumb a:visited { color: #fff; text-decoration: none; float: left; }
  .breadcrumb a:hover, .breadcrumb a:focus, .breadcrumb a:active { text-decoration: underline; }
- .breadcrumb .current { background: url(/img/body/navigation.png) no-repeat right -150px; }
- .breadcrumb .up { background: url(/img/body/navigation.png) no-repeat right -100px; }
- .breadcrumb .level1 { background: url(/img/body/navigation.png) no-repeat right top; color: #194c7e; margin: .153846em 0; z-index: 9; padding: 0 18px 0 6px; }
+ .breadcrumb .current { background: url(../img/body/navigation.png) no-repeat right -150px; }
+ .breadcrumb .up { background: url(../img/body/navigation.png) no-repeat right -100px; }
+ .breadcrumb .level1 { background: url(../img/body/navigation.png) no-repeat right top; color: #194c7e; margin: .153846em 0; z-index: 9; padding: 0 18px 0 6px; }
  .breadcrumb .level1 a:link, .breadcrumb .level1 a:visited { color: #194c7e; }
- .breadcrumb .level2 { background: url(/img/body/navigation.png) no-repeat right -50px; z-index: 8; } /* overrides .up */
+ .breadcrumb .level2 { background: url(../img/body/navigation.png) no-repeat right -50px; z-index: 8; } /* overrides .up */
  .breadcrumb .level3 { z-index: 7; }
  .breadcrumb .level4 { z-index: 6; }
  .breadcrumb .level5 { z-index: 5; }

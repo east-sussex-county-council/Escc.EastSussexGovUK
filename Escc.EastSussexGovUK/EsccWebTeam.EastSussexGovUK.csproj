@@ -393,6 +393,9 @@
     </None>
     <Content Include="transforms\EnforceTLS.transform.config" />
     <Content Include="transforms\Metadata.transform.config" />
+    <Content Include="transforms\CSS.transform.config" />
+    <Content Include="transforms\JS.transform.config" />
+    <Content Include="transforms\MediaQueries.transform.config" />
     <None Include="web.example.config">
       <SubType>Designer</SubType>
     </None>

@@ -3,7 +3,7 @@
 channel link, channel language, channel copyright, channel managingEditor, channel webMaster, 
 channel lastBuildDate, channel rating, channel image, channel generator, 
 channel item guid, channel pubDate, channel description { display:none; }
-rss { padding: 114px 18px 14px; background: #fff; color: #131313; font: normal small/1.3846153846153846153846153846154em Arial, "Helvetica Neue", Helvetica, sans-serif; color: #000; background: #fff url(/img/header/logo-large.gif) no-repeat 14px 14px; }
+rss { padding: 114px 18px 14px; background: #fff; color: #131313; font: normal small/1.3846153846153846153846153846154em Arial, "Helvetica Neue", Helvetica, sans-serif; color: #000; background: #fff url(../img/header/logo-large.gif) no-repeat 14px 14px; }
 channel title { display: block; font-weight: bold; font-size: 1.846154em; line-height: 1.5em; border-bottom: 5px solid #bed600; padding: 5px 18px 4px; background: #fff; color: #272727; margin: 0 -14px; }
 channel docs { display: block; margin: 1em 0; max-width: 50em; }
 channel item { display: block; margin-top: 1em; max-width: 50em; }
