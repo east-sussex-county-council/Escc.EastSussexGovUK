@@ -17,7 +17,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             // Preprend the base URL if specified (which it should be if this is a subdomain of eastsussex.gov.uk)
             if (siteContext.BaseUrl != null)
             {
-                var urlPrefix = siteContext.BaseUrl.ToString().TrimEnd('/');
+                /*var urlPrefix = siteContext.BaseUrl.ToString().TrimEnd('/');
                 this.chinese.HRef = urlPrefix + this.chinese.HRef;
                 this.arabic.HRef = urlPrefix + this.arabic.HRef;
                 this.urdu.HRef = urlPrefix + this.urdu.HRef;
@@ -25,7 +25,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 this.portugese.HRef = urlPrefix + this.portugese.HRef;
                 this.polish.HRef = urlPrefix + this.polish.HRef;
                 this.slovakian.HRef = urlPrefix + this.slovakian.HRef;
-                this.turkish.HRef = urlPrefix + this.turkish.HRef;
+                this.turkish.HRef = urlPrefix + this.turkish.HRef;*/
             }
         }
     }
