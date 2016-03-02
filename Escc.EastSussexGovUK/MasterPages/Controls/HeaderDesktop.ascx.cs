@@ -191,7 +191,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             // copies of the main site, so check for hostnames without a ., which must be internal servers.
             var host = Request.Url.Host;
             if (!String.IsNullOrEmpty(Request.QueryString["host"])) host = Request.QueryString["host"];
-            if (host.Contains(".") && !host.Contains(".eastsussex.gov.uk"))
+            if (host.Contains(".") && !host.Contains(".eastsussex.gov.uk") && !host.Contains(".azurewebsites.net"))
             {
                 this.textSize.Visible = false;
                 return;
