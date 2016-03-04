@@ -274,7 +274,6 @@
     <Content Include="js\min\1space.js" />
     <Content Include="js\min\alerts.js" />
     <Content Include="js\min\analytics.js" />
-    <Content Include="js\min\chat.js" />
     <Content Include="js\min\config.js" />
     <Content Include="js\min\cross-origin-ie.js" />
     <Content Include="js\min\document-metadata.js" />
@@ -313,7 +312,6 @@
     <None Include="js\public-libraries.js" />
     <None Include="js\forms.js" />
     <None Include="js\switch-view.js" />
-    <None Include="js\chat.js" />
     <None Include="js\embed-youtube.js" />
     <None Include="js\umbraco-preview.js" />
     <None Include="js\typekit.js" />
@@ -373,7 +371,6 @@
     <None Include="MasterPages\Remote\Web.example.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="js\WebChatProxy.ashx" />
     <Content Include="MasterPages\RSS\config.xslt" />
     <Content Include="MasterPages\RSS\dates.xslt" />
     <Content Include="MasterPages\RSS\display-as-html-v2.xslt" />
@@ -414,9 +411,6 @@
   <ItemGroup>
     <Compile Include="ContextContainer.cs" />
     <Compile Include="GoogleTagManagerContainerIdSelector.cs" />
-    <Compile Include="js\WebChatProxy.ashx.cs">
-      <DependentUpon>WebChatProxy.ashx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Status404.aspx.cs">
       <DependentUpon>Status404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

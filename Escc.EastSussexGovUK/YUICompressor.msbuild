@@ -41,7 +41,6 @@
     <JavaScriptCompressorTask SourceFiles="js/analytics.js" OutputFile="js/min/analytics.js" />
     <JavaScriptCompressorTask SourceFiles="js/banners.js" OutputFile="js/min/banners.js" />
     <JavaScriptCompressorTask SourceFiles="js/cascading-content.js" OutputFile="js/min/cascading-content.js" />
-    <JavaScriptCompressorTask SourceFiles="js/chat.js" OutputFile="js/min/chat.js" />
     <JavaScriptCompressorTask SourceFiles="js/config.js" OutputFile="js/min/config.js" />
     <JavaScriptCompressorTask SourceFiles="js/cross-origin-ie.js" OutputFile="js/min/cross-origin-ie.js" />
     <JavaScriptCompressorTask SourceFiles="js/document-metadata.js" OutputFile="js/min/document-metadata.js" />
