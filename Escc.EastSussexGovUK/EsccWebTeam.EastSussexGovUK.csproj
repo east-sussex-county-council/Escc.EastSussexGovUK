@@ -68,6 +68,10 @@
     <Reference Include="EcmaScript.NET">
       <HintPath>..\packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
     </Reference>
+    <Reference Include="Escc.ActiveDirectory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.ActiveDirectory.1.0.0\lib\Escc.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.AddressAndPersonalDetails, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.2.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
@@ -738,10 +742,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Escc.Data.ActiveDirectory\EsccWebTeam.Data.ActiveDirectory.csproj">
-      <Project>{5F1BBB42-C1C6-4110-A3E4-720420A3C27D}</Project>
-      <Name>EsccWebTeam.Data.ActiveDirectory</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
       <Project>{9C56D3DD-4952-4A1B-9AD6-907A1142872F}</Project>
       <Name>EsccWebTeam.Data.Web</Name>

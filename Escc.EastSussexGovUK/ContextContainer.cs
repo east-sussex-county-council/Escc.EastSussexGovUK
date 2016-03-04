@@ -2,7 +2,8 @@
 using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using EsccWebTeam.Data.ActiveDirectory;
+using Escc.ActiveDirectory;
+using Exceptionless.Extensions;
 
 namespace EsccWebTeam.EastSussexGovUK
 {
@@ -180,10 +181,15 @@ namespace EsccWebTeam.EastSussexGovUK
                 return;
             }
 
-            if (!String.IsNullOrEmpty(Groups) && !WebUserPermissions.UserIsInGroup(Groups))
+            if (!String.IsNullOrEmpty(Groups))
             {
-                HideContents();
-                return;
+                var settings = new ActiveDirectorySettingsFromConfiguration();
+                var permissions = new LogonIdentityGroupMembershipChecker(settings.DefaultDomain, new SessionPermissionsResultCache());
+                if ( !permissions.UserIsInGroup(Groups.SplitAndTrim(';')))
+                {
+                    HideContents();
+                    return;
+                }
             }
 
             // Test for Do Not Track is slightly different because if ContextContainer.DoNotTrack is false it must 
