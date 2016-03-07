@@ -70,7 +70,7 @@ namespace EsccWebTeam.EastSussexGovUK
             // Build up URL
             StringBuilder url = new StringBuilder(Uri.UriSchemeHttps)
                 .Append("://")
-                .Append(baseUrl.Host)
+                .Append(baseUrl.Authority)
                 .Append("/contactus/emailus/email.aspx?n=")
                 .Append(HttpUtility.UrlEncode(recipientName.Replace(" & ", " and ")))
                 .Append("&e=")
