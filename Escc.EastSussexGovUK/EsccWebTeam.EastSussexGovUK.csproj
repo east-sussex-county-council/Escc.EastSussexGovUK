@@ -258,7 +258,7 @@
     <Content Include="img\header\winter-walk.jpg" />
     <Content Include="img\header\xmas-lights.jpg" />
     <Content Include="img\logo-for-facebook.png" />
-    <Content Include="transforms\ContentSecurityPolicy.transform.config" />
+    <None Include="transforms\ContentSecurityPolicy.transform.config" />
     <None Include="js\1space.js" />
     <None Include="js\alerts.js" />
     <None Include="js\analytics.js" />
@@ -400,11 +400,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="transforms\EnforceTLS.transform.config" />
-    <Content Include="transforms\Metadata.transform.config" />
-    <Content Include="transforms\CSS.transform.config" />
-    <Content Include="transforms\JS.transform.config" />
-    <Content Include="transforms\MediaQueries.transform.config" />
+    <None Include="transforms\EnforceTLS.transform.config" />
+    <None Include="transforms\Metadata.transform.config" />
+    <None Include="transforms\CSS.transform.config" />
+    <None Include="transforms\JS.transform.config" />
+    <None Include="transforms\MediaQueries.transform.config" />
     <None Include="web.example.config">
       <SubType>Designer</SubType>
     </None>
