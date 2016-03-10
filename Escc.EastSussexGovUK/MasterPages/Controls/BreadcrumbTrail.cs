@@ -110,8 +110,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             // Otherwise it's an easy thing for the developer to miss.
             else if (!siteContext.IsPublicUrl)
             {
-                var method = "See EsccWebTeam.EastSussexGovUK web.example.config for an example.";
-                this.Controls.Add(new LiteralControl("<p><strong>You need to add a breadcrumb trail. " + method + "</strong></p>"));
+                this.Controls.Add(new LiteralControl("<p><strong>You need to add a breadcrumb trail. See the documentation for " + this.BreadcrumbProvider.GetType().FullName + ".</strong></p>"));
             }
         }
     }
