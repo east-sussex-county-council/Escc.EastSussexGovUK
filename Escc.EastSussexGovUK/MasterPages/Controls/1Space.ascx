@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.UI.UserControl" %>
-<ClientDependency:Css runat="server" Files="1Space" />
-<ClientDependency:Script runat="server" Files="1Space" />
+<ClientDependency:Css runat="server" Files="EastSussex1Space" />
+<ClientDependency:Script runat="server" Files="EastSussex1Space" />
 <div class="supporting">
     <div id="marketplace-search-widget">
 	<div id="logo">

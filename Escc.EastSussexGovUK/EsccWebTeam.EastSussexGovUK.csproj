@@ -267,7 +267,7 @@
     <Content Include="js\nav.js" />
     <Content Include="js\min\banners.js" />
     <Content Include="js\min\cascading-content.js" />
-    <Content Include="js\tests\chutzpah.json" />
+    <None Include="js\tests\chutzpah.json" />
     <None Include="js\document-metadata.js" />
     <None Include="js\govdelivery.js" />
     <None Include="js\heatmap-analytics.js" />
@@ -275,7 +275,7 @@
     <None Include="js\banners.js" />
     <None Include="js\cascading-content.js" />
     <Content Include="js\libs\chai.js" />
-    <Content Include="js\tests\cascading-content.tests.js" />
+    <None Include="js\tests\cascading-content.tests.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\libs\modernizr.custom.15280.js" />
@@ -393,7 +393,7 @@
     <None Include="css\Web.example.config" />
     <None Include="js\Web.example.config" />
     <None Include="MasterPages\Remote\Example\web.example.config" />
-    <Content Include="js\ServiceAlertsProxy.ashx" />
+    <None Include="js\ServiceAlertsProxy.ashx" />
     <Content Include="MasterPages\textsize.aspx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
