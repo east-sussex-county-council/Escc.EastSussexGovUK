@@ -83,6 +83,10 @@
     <Reference Include="Escc.ClientDependencyFramework.WebForms">
       <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.1.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
     </Reference>
+    <Reference Include="Escc.Dates, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Dates.1.0.0\lib\Escc.Dates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.Html, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Html.1.1.0\lib\Escc.Html.dll</HintPath>
       <Private>True</Private>
@@ -748,10 +752,6 @@
     <ProjectReference Include="..\..\Escc.Data.Web\EsccWebTeam.Data.Web.csproj">
       <Project>{9C56D3DD-4952-4A1B-9AD6-907A1142872F}</Project>
       <Name>EsccWebTeam.Data.Web</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Escc.HouseStyle\EsccWebTeam.HouseStyle.csproj">
-      <Project>{1C429378-DBF2-4AF7-88AC-C059AA163682}</Project>
-      <Name>EsccWebTeam.HouseStyle</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Escc.NavigationControls\EsccWebTeam.NavigationControls.csproj">
       <Project>{0323F668-1723-44A1-8C94-F91DC59EF315}</Project>
