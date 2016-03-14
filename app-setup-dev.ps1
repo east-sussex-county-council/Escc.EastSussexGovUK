@@ -38,7 +38,6 @@ $projectName = "Escc.EastSussexGovUK"
 
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.NavigationControls"
 DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Web"
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.HouseStyle"
 
 EnableDotNet40InIIS
 CreateApplicationPool $projectName

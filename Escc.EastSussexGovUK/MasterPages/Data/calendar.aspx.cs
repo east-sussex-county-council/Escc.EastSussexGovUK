@@ -8,7 +8,8 @@ using System.Net;
 using System.Web;
 using System.Xml;
 using System.Xml.XPath;
-using eastsussexgovuk.webservices.TextXhtml.HouseStyle;
+using Escc.Dates;
+using Escc.Html;
 using EsccWebTeam.Data.Web;
 using Escc.Net;
 using Exceptionless;
@@ -54,7 +55,8 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 this.download.HRef = HttpUtility.HtmlAttributeEncode(urlToParse);
                 this.subscribe.HRef = HttpUtility.HtmlAttributeEncode("webcals://" + Request.Url.Authority + urlToParse);
 
-                Http.CacheDaily(DateTimeFormatter.UkNow().Hour, DateTimeFormatter.UkNow().Minute);
+                var ukNow = DateTime.Now.ToUkDateTime();
+                Http.CacheDaily(ukNow.Hour, ukNow.Minute);
             }
             catch (Exception ex)
             {
@@ -118,7 +120,8 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 var property = GetMetadataField("/xhtml:html/xhtml:body//xhtml:h1", nav, namespaceManager);
                 if (!String.IsNullOrEmpty(property))
                 {
-                    property = Html.StripTags(property);
+                    var html = new HtmlTagSantiser();
+                    property = html.StripTags(property);
                     this.headcontent.Title = String.Format(CultureInfo.CurrentCulture, this.headcontent.Title, property);
                     this.heading.InnerHtml = String.Format(CultureInfo.CurrentCulture, this.heading.InnerHtml, property);
                     this.download.InnerHtml = String.Format(CultureInfo.CurrentCulture, this.download.InnerHtml, property);
