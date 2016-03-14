@@ -1,0 +1,89 @@
+﻿@using System.Globalization
+@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
+@using EsccWebTeam.EastSussexGovUK
+@using EsccWebTeam.EastSussexGovUK.MasterPages
+@model BaseViewModel
+@{
+    Layout = null;
+    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    if (Model.EsccWebsiteSkin is DefaultSkin)
+    {
+        Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
+    }
+    Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
+    Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider});
+}
+<head>
+    @RenderSection("ContentExperiment", required: false)
+    @{
+        Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "MetadataDesktop", BreadcrumbProvider = Model.BreadcrumbProvider});
+        Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata);
+        Html.RenderPartial("~/Views/EastSussexGovUK/_Fonts.cshtml", Model.EsccWebsiteSkin);
+    }
+    @Html.RenderCssHere()
+    @RenderSection("Metadata", required: false)
+</head>
+@{
+    var bodyClass = String.Empty;
+    if (IsSectionDefined("BodyClass"))
+    {
+        using (var writer = new StringWriter())
+        {
+            RenderSection("BodyClass", required: false).WriteTo(writer);
+            bodyClass = writer.ToString();
+        }
+    }
+    
+    var siteContext = new EastSussexGovUKContext();
+    if (siteContext.TextSize > 1)
+    {
+        bodyClass += " size" + siteContext.TextSize.ToString(CultureInfo.InvariantCulture);
+    }
+
+    if (!String.IsNullOrEmpty(bodyClass))
+    {
+        @:<body class="@bodyClass.Trim()">
+    }
+    else
+    {
+        @:<body>
+    }
+    Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "AboveHeaderDesktop", BreadcrumbProvider = Model.BreadcrumbProvider});
+}
+@if (IsSectionDefined("Header"))
+{
+    @RenderSection("Header")
+}
+else
+{
+    Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "HeaderDesktop", BreadcrumbProvider = Model.BreadcrumbProvider});
+}
+<div id="main" role="main" class="body">
+    <div class="container">
+        @if (IsSectionDefined("Breadcrumb"))
+        {
+            @RenderSection("Breadcrumb")
+        }
+        else
+        {
+            Html.RenderPartial("~/Views/EastSussexGovUK/BreadcrumbTrail.ascx", Model.BreadcrumbProvider);
+            Html.RenderPartial("~/Views/EastSussexGovUK/BreadcrumbTrailMobile.ascx", Model.BreadcrumbProvider);
+        }
+        @RenderBody()
+    </div>
+</div>
+@if (IsSectionDefined("Footer"))
+{
+    @RenderSection("Footer")
+}
+else
+{
+    Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "FooterDesktop", BreadcrumbProvider = Model.BreadcrumbProvider});
+}
+@{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "ScriptsDesktop", BreadcrumbProvider = Model.BreadcrumbProvider}); }
+@Html.RenderJsHere()
+@RenderSection("JavaScript", required: false)
+</body>
+</html>

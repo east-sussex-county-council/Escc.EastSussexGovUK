@@ -1,0 +1,61 @@
+﻿@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
+@model BaseViewModel
+@{
+    Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
+    Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider });
+}
+<head>
+    @RenderSection("ContentExperiment", required: false)
+    @{
+        Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "MetadataFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider });
+        Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata);
+        Html.RenderPartial("~/Views/EastSussexGovUK/_Fonts.cshtml", Model.EsccWebsiteSkin);
+    }
+    @Html.RenderCssHere()
+    @RenderSection("Metadata", required: false)
+</head>
+@if (IsSectionDefined("BodyClass"))
+{
+    @:<body class="@RenderSection("BodyClass")">
+}
+else
+{
+    @:<body>
+}
+<div class="full-screen">
+    @if (IsSectionDefined("Header"))
+    {
+        @RenderSection("Header")
+    }
+    else
+    {
+        @:
+        <header>
+            <div class="header context">
+                @{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "HeaderFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider}); }
+                <div class="full-screen-bar">
+                    <h1>@RenderSection("FullScreenHeading", required: false)</h1>
+                    @RenderSection("FullScreenLinks", required: false)
+                </div>
+            </div>
+        </header>
+    }
+    <div id="main" role="main" class="body">
+        @RenderBody()
+    </div>
+    @if (IsSectionDefined("Footer"))
+    {
+        @RenderSection("Footer");
+    }
+    @{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "ScriptsFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider}); }
+    @Html.RenderJsHere()
+    @RenderSection("JavaScript", required: false)
+</div>
+</body>
+</html>
+
+@{  // Do not render these sections for this layout
+    if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb").WriteTo(TextWriter.Null); }
+}

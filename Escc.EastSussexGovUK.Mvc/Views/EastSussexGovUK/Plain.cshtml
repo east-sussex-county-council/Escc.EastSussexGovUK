@@ -1,0 +1,22 @@
+﻿@model BaseViewModel
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml schema: http://schema.org/">
+<head>
+    @RenderSection("ContentExperiment", required: false)
+    <meta charset="UTF-8" />
+    @{ Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata); }
+    @RenderSection("Metadata", required: false)
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>
+
+@{  // Do not render these sections for this layout
+    if (IsSectionDefined("BodyClass")) { RenderSection("BodyClass", required: false).WriteTo(TextWriter.Null); }
+    if (IsSectionDefined("Header")) { RenderSection("Header", required: false).WriteTo(TextWriter.Null); }
+    if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb", required: false).WriteTo(TextWriter.Null); }
+    if (IsSectionDefined("Footer")) { RenderSection("Footer", required: false).WriteTo(TextWriter.Null); }
+    if (IsSectionDefined("JavaScript")) { RenderSection("JavaScript", required: false).WriteTo(TextWriter.Null); }
+}
