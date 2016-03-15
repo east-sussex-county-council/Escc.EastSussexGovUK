@@ -223,7 +223,7 @@ MVC pages can load partial views to add the following features:
 * `_EastSussex1Space.cshtml`, for an EastSussex1Space search widget
 * `_Escis.cshtml`, for an ESCIS search widget
 * `_Facebook.cshtml`, for a Facebook feed known as a 'Like' box
-* `_Latest`, to show a latest update on a page
+* `_Latest.cshtml`, to show a latest update on a page
 * `_Share.cshtml`, for social media sharing and comment on this page links
 * `_Twitter.cshtml`, for a Twitter feed
 * `_SupportingContentDesktop.cshtml` to load the most common right-column features in one go
