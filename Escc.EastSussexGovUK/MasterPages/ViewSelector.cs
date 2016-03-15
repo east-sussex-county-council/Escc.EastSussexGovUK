@@ -145,6 +145,11 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                     preferredMasterPage = generalSettings[configKey];
                 }
             }
+
+            if (viewEngine == ViewEngine.Mvc && String.IsNullOrEmpty(preferredMasterPage))
+            {
+                throw new ConfigurationErrorsException("The path to the selected MVC layout was not specified. Set the path in the EsccWebTeam.EastSussexGovUK/GeneralSettings/add[@key='" + preferredView + configSettingsGroup + "'] element in web.config.");
+            }
             return preferredMasterPage;
         }
 

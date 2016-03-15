@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <EsccWebTeam.EastSussexGovUK>
+    <GeneralSettings>
+      <add key="DesktopMvcLayout" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="PlainMvcLayout" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="FullScreenMvcLayout" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MasterPageParameterName" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </GeneralSettings>
+    <RemoteMasterPage>
+      <add key="CacheMinutes" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MasterPageControlUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </RemoteMasterPage>
+  </EsccWebTeam.EastSussexGovUK>
+  <EsccWebTeam.EastSussexGovUK>
+    <GeneralSettings xdt:Transform="Remove" xdt:Locator="Condition(count(add) = 0)" />
+    <RemoteMasterPage xdt:Transform="Remove" xdt:Locator="Condition(count(add) = 0)" />
+  </EsccWebTeam.EastSussexGovUK>
+  <EsccWebTeam.EastSussexGovUK xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+
+  <configSections>
+    <sectionGroup name="EsccWebTeam.EastSussexGovUK" xdt:Locator="Match(name)">
+      <section xdt:Transform="Remove" xdt:Locator="Condition(@name='GeneralSettings' and not(/configuration/EsccWebTeam.EastSussexGovUK/GeneralSettings))" />
+      <section xdt:Transform="Remove" xdt:Locator="Condition(@name='RemoteMasterPage' and not(/configuration/EsccWebTeam.EastSussexGovUK/RemoteMasterPage))" />
+    </sectionGroup>
+    <sectionGroup xdt:Transform="Remove" xdt:Locator="Condition(@name='EsccWebTeam.EastSussexGovUK' and count(/configuration/EsccWebTeam.EastSussexGovUK/*) = 0)" />
+  </configSections>
+  <configSections xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+
+  <Escc.ClientDependencyFramework>
+    <CssFiles>
+      <add key="ContentSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="ContentMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="ContentLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </CssFiles>
+    <MediaQueries>
+      <add key="Medium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </MediaQueries>
+  </Escc.ClientDependencyFramework>
+
+  <Escc.Web.Metadata>
+    <!-- Use starts-with rather than the exact value to remove the creator attribute, because NuGet still uses old code with a bug which stops it matching commas in strings. 
+         https://connect.microsoft.com/VisualStudio/feedback/details/618550/web-config-xpath-and-condition-locators-do-not-allow-commas-in-xpath-expression -->
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(creator)" xdt:Locator="Condition(starts-with(@creator, 'Web Team'))" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(lgilType)" xdt:Locator="Condition(@lgilType='Providing information')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(openGraphType)" xdt:Locator="Condition(@openGraphType='article')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(copyrightUrl)" xdt:Locator="Condition(@copyrightUrl='https://new.eastsussex.gov.uk/about-this-site/copyright/')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(facebookAppId)" xdt:Locator="Condition(@facebookAppId='169406409819518')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(hasTouchIcon)" xdt:Locator="Condition(@hasTouchIcon='true')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(openSearchUrl)" xdt:Locator="Condition(@openSearchUrl='https://new.eastsussex.gov.uk/search/opensearch.xml')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(openSearchTitle)" xdt:Locator="Condition(@openSearchTitle='East Sussex County Council')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(siteName)" xdt:Locator="Condition(@siteName='East Sussex County Council')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(siteImageUrl)" xdt:Locator="Condition(@siteImageUrl = 'https://new.eastsussex.gov.uk/img/logo-for-facebook.png')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(titlePattern)" xdt:Locator="Condition(@titlePattern='{0} &amp;#8211; East Sussex County Council')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(twitterAccount)" xdt:Locator="Condition(@twitterAccount='@eastsussexcc')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(windowsTileIconUrl)" xdt:Locator="Condition(@windowsTileIconUrl = 'https://new.eastsussex.gov.uk/windows-tile.png')" />
+    <EgmsWebMetadata xdt:Transform="RemoveAttributes(windowsTileColour)" xdt:Locator="Condition(@windowsTileColour='#ffffff')" />
+  </Escc.Web.Metadata>
+</configuration>

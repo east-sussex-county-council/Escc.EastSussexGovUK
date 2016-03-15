@@ -1,5 +1,5 @@
 ﻿@using EsccWebTeam.EastSussexGovUK.MasterPages
-@model BaseViewModel
+@model Escc.EastSussexGovUK.Mvc.BaseViewModel
 @{
     var showWidget = Model.SocialMedia.TwitterWidgetScript != null && Model.EsccWebsiteView == EsccWebsiteView.Desktop;
     if (!String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount) && (Model.EsccWebsiteView == EsccWebsiteView.Desktop || Model.EsccWebsiteView == EsccWebsiteView.Mobile))

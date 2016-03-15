@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>54058100-22fe-48bf-bbb7-e6effdf182c1</ProjectGuid>
+    <OutputPath>Bin\</OutputPath>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <NuBuildVersionSource>Manual</NuBuildVersionSource>
+    <NuBuildVersionFileName>True</NuBuildVersionFileName>
+    <NuBuildAddBinariesToSubfolder>False</NuBuildAddBinariesToSubfolder>
+    <NuBuildIncludePdbs>False</NuBuildIncludePdbs>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Escc.EastSussexGovUK.Mvc.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Escc.EastSussexGovUK.Mvc\Escc.EastSussexGovUK.Mvc.csproj">
+      <Name>Escc.EastSussexGovUK.Mvc</Name>
+      <Project>{d5f8a611-62ba-42b7-a290-2520b505e022}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EastSussexGovUK_Mvc.cs.pp">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="web.config.install.xdt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="web.config.uninstall.xdt">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\NuBuild\v1\NuBuild.targets" />
+</Project>

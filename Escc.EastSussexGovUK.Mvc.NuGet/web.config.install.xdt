@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <configSections xdt:Transform="InsertIfMissing" />
+  <configSections>
+    <sectionGroup name="EsccWebTeam.EastSussexGovUK" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" />
+    <sectionGroup name="EsccWebTeam.EastSussexGovUK" xdt:Locator="Match(name)">
+      <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" />
+      <section name="RemoteMasterPage" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" />
+    </sectionGroup>
+  </configSections>
+  <EsccWebTeam.EastSussexGovUK xdt:Transform="InsertIfMissing" />
+  <EsccWebTeam.EastSussexGovUK>
+    <GeneralSettings xdt:Transform="InsertIfMissing" />
+    <GeneralSettings>
+      <add key="DesktopMvcLayout" value="~/views/eastsussexgovuk/desktop.cshtml" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+      <add key="PlainMvcLayout" value="~/views/eastsussexgovuk/plain.cshtml" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+      <add key="FullScreenMvcLayout" value="~/views/eastsussexgovuk/fullscreen.cshtml" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+      <add key="MasterPageParameterName" value="template" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+    </GeneralSettings>
+    <RemoteMasterPage xdt:Transform="InsertIfMissing" />
+    <RemoteMasterPage>
+      <add key="CacheMinutes" value="60" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+      <add key="MasterPageControlUrl" value="https://new.eastsussex.gov.uk/masterpages/remote/control.aspx?control={0}" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+    </RemoteMasterPage>
+  </EsccWebTeam.EastSussexGovUK>
+
+  <Escc.ClientDependencyFramework>
+    <CssFiles>
+      <add key="ContentSmall" value="/escc.eastsussexgovuk/css/content-small.css" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+      <add key="ContentMedium" value="/escc.eastsussexgovuk/css/content-medium.css" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+      <add key="ContentLarge" value="/escc.eastsussexgovuk/css/content-large.css" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+    </CssFiles>
+    <MediaQueries>
+      <add key="Medium" value="only screen and (min-width: 474px)" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+      <add key="Large" value="only screen and (min-width: 802px)" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+    </MediaQueries>
+  </Escc.ClientDependencyFramework>
+
+  <Escc.Web.Metadata>
+    <EgmsWebMetadata creator="Web Team, East Sussex County Council, County Hall, Lewes, BN7 1UE. https://new.eastsussex.gov.uk/contact-us/" xdt:Transform="SetAttributes(creator)" xdt:Locator="Condition(count(@creator) = 0)" />
+    <EgmsWebMetadata lgilType="Providing information" xdt:Transform="SetAttributes(lgilType)" xdt:Locator="Condition(count(@lgilType) = 0)" />
+    <EgmsWebMetadata openGraphType="article" xdt:Transform="SetAttributes(openGraphType)" xdt:Locator="Condition(count(@openGraphType) = 0)" />
+    <EgmsWebMetadata copyrightUrl="https://new.eastsussex.gov.uk/about-this-site/copyright/" xdt:Transform="SetAttributes(copyrightUrl)" xdt:Locator="Condition(count(@copyrightUrl) = 0)" />
+    <EgmsWebMetadata facebookAppId="169406409819518" xdt:Transform="SetAttributes(facebookAppId)" xdt:Locator="Condition(count(@facebookAppId) = 0)" />
+    <EgmsWebMetadata hasTouchIcon="true" xdt:Transform="SetAttributes(hasTouchIcon)" xdt:Locator="Condition(count(@hasTouchIcon) = 0)" />
+    <EgmsWebMetadata openSearchUrl="https://new.eastsussex.gov.uk/search/opensearch.xml" xdt:Transform="SetAttributes(openSearchUrl)" xdt:Locator="Condition(count(@openSearchUrl) = 0)" />
+    <EgmsWebMetadata openSearchTitle="East Sussex County Council" xdt:Transform="SetAttributes(openSearchTitle)" xdt:Locator="Condition(count(@openSearchTitle) = 0)" />
+    <EgmsWebMetadata siteName="East Sussex County Council" xdt:Transform="SetAttributes(siteName)" xdt:Locator="Condition(count(@siteName) = 0)" />
+    <EgmsWebMetadata siteImageUrl="https://new.eastsussex.gov.uk/img/logo-for-facebook.png" xdt:Transform="SetAttributes(siteImageUrl)" xdt:Locator="Condition(count(@siteImageUrl) = 0)" />
+    <EgmsWebMetadata titlePattern="{0} &amp;#8211; East Sussex County Council" xdt:Transform="SetAttributes(titlePattern)" xdt:Locator="Condition(count(@titlePattern) = 0)" />
+    <EgmsWebMetadata twitterAccount="@eastsussexcc" xdt:Transform="SetAttributes(twitterAccount)" xdt:Locator="Condition(count(@twitterAccount) = 0)" />
+    <EgmsWebMetadata windowsTileIconUrl="https://new.eastsussex.gov.uk/windows-tile.png" xdt:Transform="SetAttributes(windowsTileIconUrl)" xdt:Locator="Condition(count(@windowsTileIconUrl) = 0)" />
+    <EgmsWebMetadata windowsTileColour="#ffffff" xdt:Transform="SetAttributes(windowsTileColour)" xdt:Locator="Condition(count(@windowsTileColour) = 0)" />
+  </Escc.Web.Metadata>
+</configuration>

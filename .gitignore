@@ -42,3 +42,4 @@ masterpages/RSS/config.xslt
 packages
 *.GhostDoc.xml
 web-chat-data.js
+Microsoft.CodeDom.*

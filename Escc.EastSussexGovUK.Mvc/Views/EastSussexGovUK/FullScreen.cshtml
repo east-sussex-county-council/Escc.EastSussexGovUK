@@ -1,7 +1,7 @@
 ﻿@using System.Web.Mvc.Html
 @using ClientDependency.Core.Mvc
 @using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
-@model BaseViewModel
+@model Escc.EastSussexGovUK.Mvc.BaseViewModel
 @{
     Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
     Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider });
