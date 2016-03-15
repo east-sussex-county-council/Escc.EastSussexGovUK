@@ -9,7 +9,7 @@ For an ASP.NET MVC5 project, you can install our design using the following step
 1. In Visual Studio create a new ASP.NET Web Application using the "Empty" project template. Tick the box to add folders and core references for MVC.
 2. Install `Escc.EastSussexGovUK.Mvc` from our private NuGet feed.
 3. Add the `EsccWebTeam.EastSussexGovUK`, `EsccWebTeam.Data.Web` and `EsccWebTeam.NavigationControls` projects to your solution. Add project references for the first two from your MVC project. If these projects don't build you may need to run `nuget restore` from the command line inside each of these project folders to restore their dependencies. (This step won't be needed once these projects have been converted to NuGet.)
-4. Add a controller and a view and run the project. 
+4. Create a view model which inherits from `Escc.EastSussexGovUK.Mvc.BaseViewModel`, add a controller and a view and run the project. 
 
 For WebForms projects there is not yet a NuGet package, so you will need to read the documentation below to see how to configure your application. 
 
@@ -19,6 +19,7 @@ It is possible to load the main elements of the master page as local usercontrol
 
 * If the consuming application can be adapted to use our WebForms master pages, then copies of `*.master` are hosted on the consuming site. 
 * If the consuming application uses MVC5 it can use our `Escc.EastSussexGovUK.Mvc` NuGet package to install and configure the MVC layouts.
+* Third-party applications can download and use a complete template as explained in the 'Alternative approach' section below
 * If you have an ASP.NET application but can't adapt it to our master pages, you can copy the instances of `MasterPageControl` from our `*.master` pages onto your own WebForms site template where they will still work. In an MVC application you can wrap `MasterPageControl` in a Razor-compatible ASCX partial view: see [MasterPageControl.ascx](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/Escc.EastSussexGovUK.Mvc/Views/EastSussexGovUK/MasterPageControl.ascx) for an example.
 * If you use a different server-side technology such as PHP you can still load our template this way, but you'll need to port `MasterPageControl` into your language.
 
@@ -148,6 +149,19 @@ It is then up to individual templates and pages to name the skins that they supp
 		new CustomerFocusSkin(Model.EsccWebsiteView)
 	);
 
+## An alternative approach for third-party applications
+
+The approach described above is designed primarily with ASP.NET in mind, and does involve installing minimal master pages or MVC layouts on the consuming site. 
+
+An alternative and often better approach for third-parties which need to use our design is for us to set up a page on our website using the remote master page, with tokens to indicate where the metadata, content and other elements should go, and then a third-party can download a copy of the page on a regular schedule (or on every request) and use it as a template in their application. The tokens, breadcrumb trail, CSS and other elements can be changed to suit the needs to the consuming application.
+
+This has two main advantages: 
+
+* it can fit in more easily with other technologies
+* all of the template elements are controlled by us, which makes them easier (and cheaper) to keep up-to-date.
+
+An example of this approach in use is the [modern.gov template](https://new.eastsussex.gov.uk/moderngov/template.aspx) used by our [democracy pages](https://democracy.eastsussex.gov.uk/).
+
 
 ## CSS, JavaScript and images
 
@@ -156,3 +170,68 @@ CSS, JavaScript and image files used by two or more applications belong in this 
 Our sitewide CSS and JavaScript files as part of the remote master page are minified using [YUI Compressor](https://www.nuget.org/packages/YUICompressor.NET.MSBuild) and concatenated on-the-fly using our own [Escc.ClientDependencyFramework.WebForms](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework/tree/master/Escc.ClientDependencyFramework.WebForms) project. MVC pages use the newer [Escc.ClientDependencyFramework](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework) for their local CSS and JavaScript.
 
 The printer icon used in our CSS was made by [Yannick](http://yanlu.de). It's from [flaticon.com](http://www.flaticon.com) and licensed under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).
+
+## Common features which can be added to pages
+
+A number of features used frequently throughout the site are installed with the remote master pages and layouts.
+
+### WebForms
+WebForms applications can add instances of `MasterPageControl` on their pages with the `Control` property set to:
+
+* `1Space`, for an EastSussex1Space search widget
+* `Banners`, to support sitewide banners [configured using Umbraco](https://github.com/east-sussex-county-council/Escc.Umbraco.Banners)
+* `FacebookLike`, for a Facebook feed known as a 'Like' box
+* `TwitterSearch`, for a Twitter feed
+
+They can also use `~/masterpages/controls/related.ascx` and `~/masterpages/controls/share.ascx` as local usercontrols to present related links and social media links respectively. 
+
+web.config:
+
+	<configuration>
+	 	<system.web>
+		    <pages>
+		      <controls>
+		        <add tagPrefix="EastSussexGovUK" tagName="Related" src="~/masterpages/controls/related.ascx" />
+		        <add tagPrefix="EastSussexGovUK" tagName="Share" src="~/masterpages/controls/share.ascx" />
+		      </controls>
+		    </pages>
+		</system.web>
+	</configuration>
+
+ASPX file:
+
+	<EastSussexGovUK:Share runat="server" />
+
+	<EastSussexGovUK:Related runat="server">
+        <PagesTemplate>
+	        <ul>
+	        <li><a href="/somepage/somewhere/">Example page on our site</a></li>
+	        </ul>
+        </PagesTemplate>
+         <WebsitesTemplate>
+	        <ul>
+	        <li><a href="http://example.org">Example website</a></li>
+	        </ul>
+        </WebsitesTemplate>
+    </EastSussexGovUK:Related>
+
+### MVC5
+
+MVC pages can load partial views to add the following features:
+
+* `_Banners.cshtml`, to support sitewide banners [configured using Umbraco](https://github.com/east-sussex-county-council/Escc.Umbraco.Banners)
+* `_EastSussex1Space.cshtml`, for an EastSussex1Space search widget
+* `_Escis.cshtml`, for an ESCIS search widget
+* `_Facebook.cshtml`, for a Facebook feed known as a 'Like' box
+* `_Latest`, to show a latest update on a page
+* `_Share.cshtml`, for social media sharing and comment on this page links
+* `_Twitter.cshtml`, for a Twitter feed
+* `_SupportingContentDesktop.cshtml` to load the most common right-column features in one go
+
+For example, to add an ESCIS search widget to your page:
+
+	// Controller
+	Model.ShowEscisWidget  = true;
+	
+	// View
+	@{ Html.RenderPartial("~/Views/EastSussexGovUK/Features/_Escis.cshtml", Model); }
