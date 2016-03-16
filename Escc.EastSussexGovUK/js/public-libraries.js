@@ -24,7 +24,7 @@ if(navigator.userAgent.indexOf("ESCC Libraries") > -1)
 	        }	        
 	    }
 		
-		document.location.href = "http://www.eastsussex.gov.uk/libraries/elibrary/timeout.aspx";
+		document.location.href = "http://elibraryredirects.eastsussex.gov.uk/libraries/elibrary/timeout.aspx";
 	}
 	
 	// Set up a 5-minute timeout for redirect, which resets when the mouse or keyboard is used
@@ -47,7 +47,7 @@ if(navigator.userAgent.indexOf("ESCC Libraries") > -1)
 			// If the link ends with one of these file extensions, it needs a viewer
 		    var viewerExts = [".pdf", ".rtf", ".doc", ".docx ", ".dot", ".dotx ", ".xls", ".xlsx ", ".xlt", ".xltx ", ".csv", ".ppt", ".pptx ", ".pps", ".ppsx ", ".pot", ".potx ", ".mp3", ".mov", ".wmv", ".wma", ".exe", ".zip", ".gif", ".jpg", ".jpeg ", ".png"];
 			
-			var redirectTo = 'http://www.eastsussex.gov.uk/libraries/elibrary/howtouse/librarycomputers.htm';
+		    var redirectTo = 'https://new.eastsussex.gov.uk/libraries/librarycomputers/';
 			
 			var links = document.getElementsByTagName("a");
 			if (links)
