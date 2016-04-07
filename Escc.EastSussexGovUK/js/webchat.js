@@ -1,6 +1,4 @@
-﻿// This version of the script is used on new.eastsussex.gov.uk, and will ultimately replace chat.js
-
-// This function needs to be in the global namespace because its a callback used by the basic Click4Assistance window.
+﻿// This function needs to be in the global namespace because its a callback used by the basic Click4Assistance window.
 function C4AWJSLoaded() {
     oC4AW_Widget = new oC4AW_Widget();
     oC4AW_Widget.setAccGUID("0f062fe2-f1c1-4727-9009-678f13d3a9e8");

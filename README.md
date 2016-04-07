@@ -8,6 +8,7 @@ This project provides the template and some sitewide features for www.eastsussex
 * [Google Analytics support](Analytics.md)
 * [Google Tag Manager support](TagManager.md)
 * [Promotional banners](Banners.md)
+* [Web chat](WebChat.md)
 * [iCalendar data](iCalendar.md)
 * [RSS feed styles](RSS.md)
 * [A linked data home page](LinkedData.md)
