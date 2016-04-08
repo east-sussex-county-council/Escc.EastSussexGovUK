@@ -106,10 +106,11 @@ abbr[title] { border-bottom: 1px dotted; cursor: help; }
 /* Align small print to baseline grid, 11px on 18px */
 small { font-size: .846154em; line-height: 1.636364em; }
 
-/* Ensure images are resized to fit small screens, but undo for IE8 in tables because it interprets 100% as meaning 
-   "100% of however thin the td gets when you completely ignore the image size"
+/* Ensure images are resized to fit small screens, but undo for image maps that need to stay at the size the areas are mapped to, 
+   and undo for IE8 in tables because it interprets 100% as meaning "100% of however thin the td gets when you completely ignore the image size"
 */
 img { max-width: 100%; }
+img[usemap] { max-width: none; }
 .ie8 table img { max-width: none; }
 
 /********************************
