@@ -67,9 +67,11 @@ $transformsFolder = NormaliseFolderPath $transformsFolder
 BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
     
 robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png desktop.png pan-*.gif item-type.png *.master share.ascx related.ascx choose.ashx default.aspx error*.ascx escc-logo.gif logo-large.gif display-as-html.xslt config.xslt calendar.aspx hCalendar.ashx hCalendar.xslt datetime.xsl mf-templates.xsl uri.xsl xhtml2vcal.xsl /XD aspnet_client obj Properties "Web References"
-TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.temp.config" "$transformsFolder\$projectName\web.release.config"
-TransformConfig "$destinationFolder\$projectName\web.temp.config" "$destinationFolder\$projectName\web.config" "$sourceFolder\transforms\ContentSecurityPolicy.transform.config"
-del "$destinationFolder\$projectName\web.temp.config"
+TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.temp1.config" "$transformsFolder\$projectName\web.release.config"
+TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.temp2.config" "$sourceFolder\transforms\ContentSecurityPolicy.transform.config"
+TransformConfig "$destinationFolder\$projectName\web.temp2.config" "$destinationFolder\$projectName\web.temp3.config" "$sourceFolder\transforms\HttpStatus.transform.config"
+TransformConfig "$destinationFolder\$projectName\web.temp3.config" "$destinationFolder\$projectName\web.config" "$sourceFolder\transforms\RedirectsModule.transform.config"
+del "$destinationFolder\$projectName\web.temp*.config"
 TransformConfig "$sourceFolder\css\web.example.config" "$destinationFolder\$projectName\css\web.config" "$transformsFolder\$projectName\css\web.release.config"
 TransformConfig "$sourceFolder\js\web.example.config" "$destinationFolder\$projectName\js\web.config" "$transformsFolder\$projectName\js\web.release.config"
 

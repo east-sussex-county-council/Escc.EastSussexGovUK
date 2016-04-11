@@ -405,10 +405,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="transforms\EnforceTLS.transform.config" />
+    <Content Include="transforms\RedirectsModule.transform.config" />
     <None Include="transforms\Metadata.transform.config" />
     <None Include="transforms\CSS.transform.config" />
     <None Include="transforms\JS.transform.config" />
     <None Include="transforms\MediaQueries.transform.config" />
+    <Content Include="transforms\HttpStatus.transform.config" />
     <None Include="web.example.config">
       <SubType>Designer</SubType>
     </None>
