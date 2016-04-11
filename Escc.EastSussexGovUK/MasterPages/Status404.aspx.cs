@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web;
-using Dapper;
 using EsccWebTeam.Data.Web;
 using Exceptionless;
 
@@ -108,9 +107,16 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             {
                 using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["RedirectsReader"].ConnectionString))
                 {
-                    var parameter = new DynamicParameters();
-                    parameter.Add("@request", requestedPath);
-                    using (var reader = conn.ExecuteReader("usp_Redirect_MatchRequest", parameter, commandType: CommandType.StoredProcedure))
+                    var command = new SqlCommand("usp_Redirect_MatchRequest", conn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    command.Parameters.Add(new SqlParameter("@request", SqlDbType.VarChar)
+                    {
+                        Value = requestedPath
+                    });
+                    conn.Open();
+                    using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
