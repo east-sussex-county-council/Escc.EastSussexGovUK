@@ -262,6 +262,10 @@
     <Content Include="img\header\winter-walk.jpg" />
     <Content Include="img\header\xmas-lights.jpg" />
     <Content Include="img\logo-for-facebook.png" />
+    <Content Include="img\web.config" />
+    <None Include="img\Web.example.config" />
+    <Content Include="MasterPages\Web.config" />
+    <None Include="MasterPages\Web.example.config" />
     <None Include="transforms\ContentSecurityPolicy.transform.config" />
     <None Include="js\1space.js" />
     <None Include="js\alerts.js" />
@@ -730,7 +734,7 @@
     <Content Include="robots.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="css\Web.config" />
+    <Content Include="css\Web.config" />
     <None Include="eastsussexcountycouncil.rdf">
       <SubType>Designer</SubType>
     </None>
@@ -742,9 +746,9 @@
     <None Include="img\header\header original.psd" />
     <None Include="img\header\header resized, tiled, with channel for mask.psd" />
     <None Include="img\header\mask.psd" />
-    <None Include="js\Web.config">
+    <Content Include="js\Web.config">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
     <None Include="img\header\mobile.psd" />
     <Content Include="MasterPages\Plain.Master" />
   </ItemGroup>
