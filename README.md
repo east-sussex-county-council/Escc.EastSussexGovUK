@@ -10,6 +10,7 @@ This project provides the template and some sitewide features for www.eastsussex
 * [Promotional banners](Banners.md)
 * [Web chat](WebChat.md)
 * [iCalendar data](iCalendar.md)
+* [Redirects and custom errors](RedirectsAndCustomErrors.md)
 * [RSS feed styles](RSS.md)
 * [A linked data home page](LinkedData.md)
 
