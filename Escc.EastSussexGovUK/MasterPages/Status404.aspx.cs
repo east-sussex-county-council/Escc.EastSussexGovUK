@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web;
+using Escc.Redirects;
 using EsccWebTeam.Data.Web;
 using Exceptionless;
 
@@ -89,10 +90,18 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                     EastSussexGovUKContext.HttpStatus404NotFound(this.content);
                 }
             }
+
+            // Using Server.TransferRequest to pass a URL to this page can sometimes result in an extra request to check the URL of the 404 page itself, which we can ignore
+            if (requestedPath.StartsWith(Request.Url.AbsolutePath))
+            {
+                requestedPath = String.Empty;
+            }
+
             if (!String.IsNullOrEmpty(requestedPath))
             {
                 requestedPath = requestedPath.Replace(Environment.NewLine, String.Empty).Trim('/').ToLower(CultureInfo.CurrentCulture);
             }
+
             return requestedPath;
         }
 
@@ -103,6 +112,8 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// <param name="requestedPath">The requested path.</param>
         private void TryShortOrMovedUrl(string requestedPath)
         {
+            // Escc.Redirects does the same as this method in a better, more testable way, but the strong name on this project causes errors when using Escc.Redirects.
+            // Once the strong name has been removed from this project, this code can be replaced with classes from Escc.Redirects.
             try
             {
                 using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["RedirectsReader"].ConnectionString))
@@ -120,19 +131,31 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                     {
                         while (reader.Read())
                         {
-                            var redirectId = reader["RedirectId"].ToString();
-                            var destinationUrl = reader["Destination"].ToString();
-                            var redirectType = (RedirectType) Enum.Parse(typeof (RedirectType), reader["Type"].ToString());
-                            HttpContext.Current.Response.AppendHeader("X-ESCC-Redirect", redirectId);
-                            switch (redirectType)
+                            var redirectId = Int32.Parse(reader["RedirectId"].ToString(), CultureInfo.InvariantCulture);
+
+                            // Get the URL
+                            var destinationUrl = new Uri(reader["Destination"].ToString(), UriKind.RelativeOrAbsolute);
+
+                            // Get the HTTP status code
+                            var redirectType = (RedirectType)Enum.Parse(typeof(RedirectType), reader["Type"].ToString());
+                            var statusCode = (redirectType == RedirectType.Moved) ? 301 : 303;
+
+                            HttpContext.Current.Response.AppendHeader("X-ESCC-Redirect", redirectId.ToString(CultureInfo.InvariantCulture));
+
+                            destinationUrl = Iri.MakeAbsolute(destinationUrl, Request.Url, true);
+
+                            // If the request had a querystring, and the redirect didn't change it, keep the original one
+                            var requestedUrl = new Uri(requestedPath, UriKind.RelativeOrAbsolute);
+                            if (!requestedUrl.IsAbsoluteUri)
                             {
-                                case RedirectType.ShortUrl:
-                                    GoToUrl(destinationUrl, 303);
-                                    break;
-                                case RedirectType.Moved:
-                                    GoToUrl(destinationUrl, 301);
-                                    break;
+                                requestedUrl = new Uri(Request.Url.Scheme + "://" + Request.Url.Authority + "/" + requestedPath);
                             }
+                            if (String.IsNullOrEmpty(destinationUrl.Query) && !String.IsNullOrEmpty(requestedUrl.Query))
+                            {
+                                destinationUrl = new Uri(destinationUrl + requestedUrl.Query);
+                            }
+
+                            GoToUrl(destinationUrl.ToString(), statusCode);
                         }
                     }
                 }
