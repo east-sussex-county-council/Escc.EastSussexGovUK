@@ -46,6 +46,33 @@ The main part of www.eastsussex.gov.uk is based on Umbraco, which is configured 
 
 6. Our 404 page isn't part of Umbraco, but it is part of the same IIS application. To make this work we list the path to the 404 page in [umbracoReservedPaths](http://nestorrg-blogs.itequia.com/2009/04/adding-normal-aspx-pages-in-umbraco.html) in `web.config`.
 
+## Custom errors for other HTTP statuses
+
+For HTTP 40x and 50x statuses other than 404, the configuration follows a consistent pattern:
+
+1. ASP.NET custom errors are configured for Umbraco, and can be triggered from your controller or view by throwing an `HttpException`. `ResponseRewrite` mode ensures that the URL of the original request is preserved. 
+
+		<system.web>
+		    <customErrors mode="On" redirectMode="ResponseRewrite">
+		      <error statusCode="400" redirect="/masterpages/status400.aspx" />
+		    </customErrors>
+		</system.web>
+
+2. We configure IIS custom errors in the Umbraco application, but only to be inherited by child applications. `PassThrough` means it's not applied here by IIS.   
+
+		<system.webServer>
+	 		<httpErrors existingResponse="PassThrough" errorMode="Custom">
+	      		<remove statusCode="400" subStatusCode="-1"/>
+      			<error statusCode="400" subStatusCode="-1" path="/masterpages/status400.aspx" responseMode="ExecuteURL"/>
+    		</httpErrors>
+		</system.webServer>
+
+3. Applications with a separate IIS application scope below Umbraco go back to using the standard IIS configuration. This is inherited from the Umbraco configuration, so all we need to do is reset the `httpErrors` response mode.
+
+		<system.webServer>
+			<httpErrors existingResponse="Replace"/>
+		</system.webServer>
+
 ## Using an HTTP module for redirects
 
 Away from Umbraco we also make use of the `RedirectsModule` documented in [Escc.Redirects](https://github.com/east-sussex-county-council/Escc.Redirects) to apply the same redirects on other sub-domains. This is configured at the root of the sub-domain by applying `RedirectsModule.transform.config`.
