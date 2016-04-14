@@ -39,7 +39,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 // For example, if the request contains an invalid referring URL such as http://google.com', when you access the 
                 // Request.UrlReferrer property .NET creates a Uri instance which throws this exception.
             }
-            var script = "<script>$(function(){ " + String.Format(CultureInfo.InvariantCulture, "if (typeof(ga) !== 'undefined') ga('send', 'event', '404', '/{0}', '{1}');", Regex.Replace(NormaliseRequestedPath(), @"[^A-Za-z0/\-_\.\?=#+%]", String.Empty), Regex.Replace(normalisedReferrer, @"[^A-Za-z0/\-_\.\?=#+%]", String.Empty)) + "})</script>";
+            var script = "<script src=\"/js/404.jsx\" id=\"track-404\" data-request=\"" + Server.HtmlEncode(Regex.Replace(NormaliseRequestedPath(), @"[^A-Za-z0-9/\-_\.\?=:#+%]", String.Empty)) + "\" data-referrer=\"" + Server.HtmlEncode(Regex.Replace(normalisedReferrer, @"[^A-Za-z0-9/\-_\.\?=:#+%]", String.Empty)) + "\"></script>";
 
             // Put the tracking script in the javascript placeholder
             MasterPage rootMaster = Page.Master;
@@ -73,9 +73,10 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 try
                 {
                     string urlNotFound = Server.UrlDecode(Request.QueryString.ToString());
-                    if (urlNotFound.Length > 4)
+                    var requestedUrlPos = urlNotFound?.LastIndexOf("404;", StringComparison.OrdinalIgnoreCase);
+                    if (requestedUrlPos.HasValue && requestedUrlPos.Value > -1)
                     {
-                        requestedPath = new Uri(urlNotFound.Substring(4)).PathAndQuery;
+                        requestedPath = new Uri(urlNotFound.Substring(requestedUrlPos.Value+4)).PathAndQuery;
                     }
 
                 }
@@ -87,7 +88,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             }
             if (!String.IsNullOrEmpty(requestedPath))
             {
-                requestedPath = requestedPath.Replace(Environment.NewLine, String.Empty).Trim('/').ToLower(CultureInfo.CurrentCulture);
+                requestedPath = requestedPath.Replace(Environment.NewLine, String.Empty).TrimEnd('/').ToLower(CultureInfo.CurrentCulture);
             }
             return requestedPath;
         }

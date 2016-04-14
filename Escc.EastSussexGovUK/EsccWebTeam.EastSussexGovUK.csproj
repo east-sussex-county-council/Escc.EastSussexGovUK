@@ -264,6 +264,7 @@
     <Content Include="img\logo-for-facebook.png" />
     <Content Include="img\web.config" />
     <None Include="img\Web.example.config" />
+    <Content Include="js\404.js" />
     <Content Include="MasterPages\Web.config" />
     <None Include="MasterPages\Web.example.config" />
     <None Include="transforms\ContentSecurityPolicy.transform.config" />
