@@ -10,13 +10,13 @@ HTTP redirects (`301 Permanently Moved` and `303 See Other`) are controlled usin
 
 The main part of www.eastsussex.gov.uk is based on Umbraco, which is configured to apply redirects using an external 404 page as follows:
 
-1. ASP.NET custom errors are turned on for security, but no custom errors are configured. Configuring custom errors here results in 404 requests for ASP.NET file extensions such as `*.aspx`, when not processed by Umbraco, getting redirected. The user is taken to the URL of the 404 page with an `aspxerrorpath` query string, rather than receiving a 404 result from the URL originally requested.
+1. ASP.NET custom errors are turned on for security, but no custom errors are configured. Configuring custom errors here results in 404 requests for ASP.NET file extensions such as `*.aspx`, when not processed by Umbraco, getting redirected. The user is taken to the URL of the 404 page with an `aspxerrorpath` query string, rather than receiving a 404 result from the URL originally requested. (The configuration is different for other HTTP status codes though, as explained below.)
 
 		<system.web>
 			<customErrors mode="On" />
 		</system.web>
 
-2. IIS custom errors have the existing response set to `PassThrough`, which allows Umbraco to handle 404 errors. We configure our 404 page here, but only to be read by custom code and inherited by child applications. `PassThrough` means it's not applied here by IIS.   
+2. IIS custom errors have the existing response set to `PassThrough`, which allows Umbraco to handle 404 errors. We configure our 404 page here, but only to be read by custom code and inherited by child applications in the same application pool. `PassThrough` means it's not applied here by IIS.   
 
 		<system.webServer>
 	 		<httpErrors existingResponse="PassThrough" errorMode="Custom">
@@ -35,7 +35,7 @@ The main part of www.eastsussex.gov.uk is based on Umbraco, which is configured 
     		</modules>
 		</system.webServer>
 
-5. Applications with a separate IIS application scope below Umbraco go back to using the standard IIS configuration. This is inherited from the Umbraco configuration, so all we need to do is reset the `httpErrors` response mode and remove the HTTP module.
+5. Applications with a separate IIS application scope below Umbraco go back to using the standard IIS configuration. This is inherited from the Umbraco configuration, so if the child application uses the same application pool as Umbraco all we need to do is reset the `httpErrors` response mode and remove the HTTP module. 
 
 		<system.webServer>
 			<httpErrors existingResponse="Replace"/>
@@ -44,9 +44,11 @@ The main part of www.eastsussex.gov.uk is based on Umbraco, which is configured 
     		</modules>
 		</system.webServer>
 
+	If the child application uses a different application pool, the configuration needs to be repeated with new error page paths that are in the same application pool as the child application. If the error pages are in a different application pool to the application itself, IIS will return a blank `403 Forbidden` response instead of the custom error page.
+
 6. Our 404 page isn't part of Umbraco, but it is part of the same IIS application. To make this work we list the path to the 404 page in [umbracoReservedPaths](http://nestorrg-blogs.itequia.com/2009/04/adding-normal-aspx-pages-in-umbraco.html) in `web.config`.
 
-## Custom errors for other HTTP statuses
+### Custom errors for other HTTP statuses
 
 For HTTP 40x and 50x statuses other than 404, the configuration follows a consistent pattern:
 
@@ -58,7 +60,7 @@ For HTTP 40x and 50x statuses other than 404, the configuration follows a consis
 		    </customErrors>
 		</system.web>
 
-2. We configure IIS custom errors in the Umbraco application, but only to be inherited by child applications. `PassThrough` means it's not applied here by IIS.   
+2. We configure IIS custom errors in the Umbraco application, but only to be inherited by child applications in the same application pool. `PassThrough` means it's not applied here by IIS.   
 
 		<system.webServer>
 	 		<httpErrors existingResponse="PassThrough" errorMode="Custom">
@@ -67,14 +69,26 @@ For HTTP 40x and 50x statuses other than 404, the configuration follows a consis
     		</httpErrors>
 		</system.webServer>
 
-3. Applications with a separate IIS application scope below Umbraco go back to using the standard IIS configuration. This is inherited from the Umbraco configuration, so all we need to do is reset the `httpErrors` response mode.
+3. Applications with a separate IIS application scope below Umbraco go back to using the standard IIS configuration. This is inherited from the Umbraco configuration so long as the child application uses the same application pool, so all we need to do is reset the `httpErrors` response mode.
 
 		<system.webServer>
 			<httpErrors existingResponse="Replace"/>
 		</system.webServer>
 
-## Using an HTTP module for redirects
+## When not using Umbraco
 
-Away from Umbraco we also make use of the `RedirectsModule` documented in [Escc.Redirects](https://github.com/east-sussex-county-council/Escc.Redirects) to apply the same redirects on other sub-domains. This is configured at the root of the sub-domain by applying `RedirectsModule.transform.config`.
+Away from Umbraco the configuration is a little different because we don't need to pass errors through to Umbraco's 404 handling. In this case we can turn on custom errors for both ASP.NET and IIS, but we only need to specify URLs in the IIS configuration.
 
-The `RedirectsModule` breaks the Umbraco back-office login, and also means there is a database query for every request. For these reasons the approach using the 404 page is recommended.
+		<system.web>
+			<customErrors mode="On" />
+		</system.web>
+
+		<system.webServer>
+	 		<httpErrors existingResponse="Replace" errorMode="Custom">
+	      		<remove statusCode="400" subStatusCode="-1"/>
+      			<error statusCode="400" subStatusCode="-1" path="/masterpages/status400.aspx" responseMode="ExecuteURL"/>
+				<!-- Repeat <remove /> and <error /> for each status code to be configured -->
+    		</httpErrors>
+		</system.webServer>
+
+The path to the error page must be in the same IIS application pool as the application being configured, otherwise IIS will return a blank `403 Forbidden` response instead of the custom error page. This may mean that child applications need to repeat the configuration in order to use updated paths. 

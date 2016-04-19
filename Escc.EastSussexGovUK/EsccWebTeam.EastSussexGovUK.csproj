@@ -95,10 +95,6 @@
       <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.Redirects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Redirects.1.0.1\lib\Escc.Redirects.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Escc.Web.Metadata.1.0.0\lib\Escc.Web.Metadata.dll</HintPath>
@@ -411,12 +407,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="transforms\EnforceTLS.transform.config" />
-    <Content Include="transforms\RedirectsModule.transform.config" />
+    <Content Include="transforms\HttpStatusPages.transform.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="transforms\Metadata.transform.config" />
     <None Include="transforms\CSS.transform.config" />
     <None Include="transforms\JS.transform.config" />
     <None Include="transforms\MediaQueries.transform.config" />
-    <Content Include="transforms\HttpStatus.transform.config" />
+    <Content Include="transforms\HttpStatus.transform.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="web.example.config">
       <SubType>Designer</SubType>
     </None>
