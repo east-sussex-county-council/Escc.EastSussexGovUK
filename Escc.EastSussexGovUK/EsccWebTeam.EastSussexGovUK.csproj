@@ -737,9 +737,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\Web.config" />
-    <None Include="eastsussexcountycouncil.rdf">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="MasterPages\Desktop.Master" />
     <Content Include="MasterPages\Mobile.Master" />
     <Content Include="MasterPages\choose.ashx" />
