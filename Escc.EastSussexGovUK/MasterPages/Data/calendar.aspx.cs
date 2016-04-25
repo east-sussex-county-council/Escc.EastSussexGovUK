@@ -105,6 +105,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 // This is a request for a local web page so we never need a proxy (and in fact it causes problems).
                 // However using HttpRequestClient.CreateRequest uses the proxy credentials for the request itself, and that is
                 // necessary to work on staging servers.
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 uriToProcess = new Uri(Iri.PrepareUrlForNewQueryStringParameter(uriToProcess) + "template=plain", UriKind.RelativeOrAbsolute);
                 var client = new HttpRequestClient(new ConfigurationProxyProvider());
                 var request = client.CreateRequest(uriToProcess);
