@@ -29,7 +29,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             }
 
             // Allow 1 space widget if it loads
-            if (oneSpaceSearch != null && oneSpaceSearch.Visible)
+            if (EastSussex1SpaceSearch != null && EastSussex1SpaceSearch.Visible)
             {
                 var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
                 policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);

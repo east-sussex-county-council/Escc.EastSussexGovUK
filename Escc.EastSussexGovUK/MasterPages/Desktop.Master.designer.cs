@@ -148,13 +148,13 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder afterForm;
         
         /// <summary>
-        /// oneSpaceSearch control.
+        /// EastSussex1SpaceSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl oneSpaceSearch;
+        protected global::System.Web.UI.UserControl EastSussex1SpaceSearch;
         
         /// <summary>
         /// footer control.
