@@ -1,12 +1,23 @@
 ﻿if (typeof(jQuery) !== 'undefined') {
     $(function () {
         // polyfill placeholder text
-        $("#marketplace-search-widget input").focus(function () {
-            if (this.value === 'What are you looking for?') {
+        var placeholder = 'What are you looking for?';
+        var input = $("#marketplace-search-widget input");
+        input.focus(function () {
+            if (this.value === placeholder) {
                 this.value = '';
             }
         }).blur(function () {
-            if (this.value === '') { this.value = 'What are you looking for?'; }
+            if (this.value === '') { this.value = placeholder; }
+        });
+
+        //
+        $("#marketplace-search-widget form").submit(function() {
+            var searchTerm = input.val();
+            if (!searchTerm || searchTerm === placeholder) {
+                input.val('');
+                this.action = "https://www.eastsussex1space.co.uk";
+            }
         });
 
         // track views and searches
@@ -14,7 +25,7 @@
             ga('send', 'event', '1space-widget', 'viewed', '', 0);
 
             $("#marketplace-search-widget button").click(function () {
-                ga('send', 'event', '1space-widget', 'search', $("#marketplace-search-widget input").val(), 0);
+                ga('send', 'event', '1space-widget', 'search', input.val(), 0);
             });
         }
 

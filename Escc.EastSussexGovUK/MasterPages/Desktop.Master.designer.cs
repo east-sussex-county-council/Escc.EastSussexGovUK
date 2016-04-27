@@ -154,7 +154,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::EsccWebTeam.EastSussexGovUK.MasterPages.Controls.MasterPageControl oneSpaceSearch;
+        protected global::System.Web.UI.UserControl oneSpaceSearch;
         
         /// <summary>
         /// footer control.

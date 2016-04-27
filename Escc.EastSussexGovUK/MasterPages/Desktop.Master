@@ -1,6 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Desktop.master.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Desktop" %>
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK.MasterPages.Controls" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
+<%@ Register TagPrefix="EastSussexGovUK" TagName="EastSussex1Space" src="Controls/1Space.ascx"%>
 <EastSussexGovUK:MasterPageControl runat="server" Control="HtmlTag" EnableViewState="false" />
 <head runat="server">
     <EastSussexGovUK:ContextContainer runat="server" Public="true"><asp:ContentPlaceHolder id="contentExperiment" runat="server" /></EastSussexGovUK:ContextContainer>
@@ -27,7 +28,7 @@
                 <EastSussexGovUK:ContextContainer runat="server" UrlMatch="/socialcare">
                 <EastSussexGovUK:ContextContainer runat="server" UrlMatch="^((?!\/socialcare\/disability\/learning).)*$">
                 <EastSussexGovUK:ContextContainer runat="server" UrlMatch="^((?!\/socialcare\/providers\/resources\/healthpromotion).)*$">
-                    <EastSussexGovUK:MasterPageControl runat="server" Control="1Space" EnableViewState="false" ID="oneSpaceSearch" />
+                    <EastSussexGovUK:EastSussex1Space runat="server" EnableViewState="false" ID="oneSpaceSearch" />
                 </EastSussexGovUK:ContextContainer>
                 </EastSussexGovUK:ContextContainer>
                 </EastSussexGovUK:ContextContainer>
