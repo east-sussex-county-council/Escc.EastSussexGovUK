@@ -11,7 +11,10 @@
             e.preventDefault();
 
             if (!document.getElementById('govdelivery')) {
-                $('<link>').appendTo('head').attr({ type: 'text/css', rel: 'stylesheet', 'href': esccConfig.CssHandlerPath.replace('{0}', 'emailpanel-formssmall') });
+                // Load extra CSS. Check first before loading forms-small.css because it may already be loaded. As well as saving bytes, if we load it a second time
+                // after the forms-medium.css and forms-large.css it changes the cascade and causes layout problems.
+                var formsCssLoaded = ($("link[rel=stylesheet]").filter(function() { return this.href.indexOf("formssmall") > -1 }).length > 0);
+                $('<link>').appendTo('head').attr({ type: 'text/css', rel: 'stylesheet', 'href': esccConfig.CssHandlerPath.replace('{0}', formsCssLoaded ? 'emailpanel' : 'emailpanel-formssmall') });
 
                 // Use code from https://github.com/johnkpaul/jquery-ajax-retry to mitigate against network errors, which are the main
                 // cause of no JavaScript according to gov.uk research https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/
