@@ -31,7 +31,7 @@ namespace EsccWebTeam.EastSussexGovUK
         /// <exception cref="System.ArgumentNullException"></exception>
         public string TransformEmailAddress(ContactEmail email)
         {
-            if (email == null) throw new ArgumentNullException(nameof(email));
+            if (email == null) throw new ArgumentNullException("email");
             return GetWebsiteEmailFormUri(email.EmailAddress, email.DisplayName, _baseUrl).ToString();
         }
 

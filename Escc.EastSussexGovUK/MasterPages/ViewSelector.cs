@@ -79,9 +79,9 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             var generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
             var configSettings = new Dictionary<EsccWebsiteView, NameValueCollection>();
             var configSettingsGroup = viewEngine == ViewEngine.WebForms ? "MasterPage" : "MvcLayout";
-            configSettings[EsccWebsiteView.Mobile] = ConfigurationManager.GetSection($"EsccWebTeam.EastSussexGovUK/Mobile{configSettingsGroup}s") as NameValueCollection;
-            configSettings[EsccWebsiteView.Desktop] = ConfigurationManager.GetSection($"EsccWebTeam.EastSussexGovUK/Desktop{configSettingsGroup}s") as NameValueCollection;
-            configSettings[EsccWebsiteView.Plain] = ConfigurationManager.GetSection($"EsccWebTeam.EastSussexGovUK/Plain{configSettingsGroup}s") as NameValueCollection;
+            configSettings[EsccWebsiteView.Mobile] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Mobile" + configSettingsGroup+ "s") as NameValueCollection;
+            configSettings[EsccWebsiteView.Desktop] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Desktop" + configSettingsGroup + "s") as NameValueCollection;
+            configSettings[EsccWebsiteView.Plain] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Plain" + configSettingsGroup + "s") as NameValueCollection;
 
             string preferredMasterPage = String.Empty;
             var preferredView = EsccWebsiteView.Unknown;
