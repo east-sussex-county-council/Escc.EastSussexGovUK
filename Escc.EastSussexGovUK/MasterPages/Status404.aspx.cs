@@ -56,8 +56,8 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             // If not, see if it matches a short URL with a GUID, used to confirm subscriptions to services
             string guidPattern = "[A-Fa-f0-9]{8,8}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{12,12}";
 
-            TryUriPattern(requestedPath, @"^schs\?c=(" + guidPattern + ")$", $"https://{Request.Url.Authority}/educationandlearning/schools/closurealerts/closurealertactivate.aspx?code=$1", 303);
-            TryUriPattern(requestedPath, @"^schu\?c=(" + guidPattern + ")$", $"https://{Request.Url.Authority}/educationandlearning/schools/closurealerts/closurealertdeactivate.aspx?code=$1", 303);
+            TryUriPattern(requestedPath, @"^schs\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/closurealerts/closurealertactivate.aspx?code=$1", 303);
+            TryUriPattern(requestedPath, @"^schu\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/closurealerts/closurealertdeactivate.aspx?code=$1", 303);
         }
 
 

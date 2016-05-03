@@ -73,7 +73,11 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 try
                 {
                     string urlNotFound = Server.UrlDecode(Request.QueryString.ToString());
-                    var requestedUrlPos = urlNotFound?.LastIndexOf("404;", StringComparison.OrdinalIgnoreCase);
+                    int? requestedUrlPos = null;
+                    if (urlNotFound != null)
+                    {
+                        requestedUrlPos = urlNotFound.LastIndexOf("404;", StringComparison.OrdinalIgnoreCase);
+                    }
                     if (requestedUrlPos.HasValue && requestedUrlPos.Value > -1)
                     {
                         requestedPath = new Uri(urlNotFound.Substring(requestedUrlPos.Value+4)).PathAndQuery;
