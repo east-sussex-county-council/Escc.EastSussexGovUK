@@ -79,16 +79,22 @@ For HTTP 40x and 50x statuses other than 404, the configuration follows a consis
 
 Away from Umbraco the configuration is a little different because we don't need to pass errors through to Umbraco's 404 handling. In this case we can turn on custom errors for both ASP.NET and IIS, but we only need to specify URLs in the IIS configuration.
 
-		<system.web>
-			<customErrors mode="On" />
-		</system.web>
+	<system.web>
+		<customErrors mode="On" />
+	</system.web>
 
-		<system.webServer>
-	 		<httpErrors existingResponse="Replace" errorMode="Custom">
-	      		<remove statusCode="400" subStatusCode="-1"/>
-      			<error statusCode="400" subStatusCode="-1" path="/masterpages/status400.aspx" responseMode="ExecuteURL"/>
-				<!-- Repeat <remove /> and <error /> for each status code to be configured -->
-    		</httpErrors>
-		</system.webServer>
+	<system.webServer>
+		<httpErrors existingResponse="Replace" errorMode="Custom">
+	   		<remove statusCode="400" subStatusCode="-1"/>
+    		<error statusCode="400" subStatusCode="-1" path="/masterpages/status400.aspx" responseMode="ExecuteURL"/>
+			<!-- Repeat <remove /> and <error /> for each status code to be configured -->
+    	</httpErrors>
+	</system.webServer>
 
 The path to the error page must be in the same IIS application pool as the application being configured, otherwise IIS will return a blank `403 Forbidden` response instead of the custom error page. This may mean that child applications need to repeat the configuration in order to use updated paths. 
+
+Any virtual directories in the requested path must have their feature permissions set to `Read, Script`. If `Script` is not enabled then requests with a file extension will return a 404 but extensionless URLs will return a 403. In both cases the page configured in the `<httpErrors />` section is displayed.
+
+    <system.webServer>
+        <handlers accessPolicy="Read, Script" />
+    </system.webServer>
