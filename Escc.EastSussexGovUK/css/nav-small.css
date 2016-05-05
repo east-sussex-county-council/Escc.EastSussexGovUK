@@ -1,9 +1,9 @@
 ﻿/* Hide the default numbering and position a number absolutely within the positioning context of the list item.
    Left padding allows numbers up to two digits to fit with consistent spacing.
 */
-.guide-nav { list-style: none;margin-left: 0;  }
-.guide-nav li { position: relative;padding-left: 6%;}
-.guide-nav .step-number {position: absolute;left: 0; top: 0 }
+.text-content .guide-nav { list-style: none;margin-left: 0;  }
+.text-content .guide-nav li { position: relative;padding-left: 6%;}
+.text-content .guide-nav .step-number {position: absolute;left: 0; top: 0 }
 
 /* Set headings to be full width with standard 16px/24px text, 9px padding. Add an arrow following the link. 
    Extra weight from body selector ensures this beats standard h2 in IE8.

@@ -7,20 +7,21 @@
 
     .first-half width and padding adds up to 50% when you include the padding inherited from guide-step-small.css
 
-    Below the list is padding, border and a margin adding up to 2 x 18px.
+    Below the list is padding, border and a margin adding up to 2 x 27px.
+
+    Keep the font size at 16px/18px so that it's smaller than the surrounding body text, with some added space between items.
 
     JavaScript hides .guide-nav, which means it gets an inline style. At medium and above .guide-nav should always be 
     visible, so !important overrides that inline style. We need to hide .menu-toggle too because it uses the .small class.
-    That works fine with the desktop template but if you get the mobile template on a bigger screen there's no medium CSS 
-    loaded to hide .small.
 */
 .menu-toggle { display: none;}
 .menu-toggle-medium { display: block;}
 
-.guide-nav { overflow: hidden;padding-bottom: .894737em;border-bottom: 1px solid #ccc;margin-bottom: .947368em; display: block!important; }
-.guide-nav .first-half { float: left;clear: left;width: 42.877805%;padding-right: 1.122195%;}
-.guide-nav .second-half { margin-left: 50%;padding-left: 7.122195%; }
-.guide-nav .second-half .step-number { left: 2.24439%; }
+.text-content .guide-nav { overflow: hidden;padding-bottom: 1.368421em;border-bottom: 1px solid #ccc;margin: 1.421053em 0; display: block!important; }
+.text-content .guide-nav li { font-size: .842105em;line-height: 1.125em;margin-bottom: .5625em; }
+.text-content .guide-nav .first-half { float: left;clear: left;padding-left: 4.5%; width: 44.377805%; padding-right: 1.122195%;}
+.text-content .guide-nav .second-half { margin-left: 50%;padding-left: 5.6%; }
+.text-content .guide-nav .second-half .step-number { left: 2.24439%; }
 
 /* Font-size increases to 19px/27px, to keep in line with standard base font */
 .landing-section h2 { line-height: 1.421052em; border-radius: 5px;}
@@ -37,7 +38,7 @@
 /* Previous and next navigation in a series of pages. Designed to work inside .text-content. 
    Adjust for change in base font size: keep same absolute size of 26px/18px.
    Adjust for 10 column context: now the link is 4 columns, with 1 column for the arrow. */
-.prev-next { margin: 1.421053em 0;}
+.prev-next { margin: 1.894737em 0 .947368em;}
 .prev-next a { width: 38.65337%; }
 .prev-next [rel=prev] {padding-left: 7.98005%;}
 .prev-next [rel=next] {padding-right: 7.98005%;}

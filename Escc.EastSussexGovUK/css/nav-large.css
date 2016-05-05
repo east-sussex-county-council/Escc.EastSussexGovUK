@@ -3,9 +3,8 @@
 .menu-nav, .menu-nav-medium { display: block!important; }
 
 /* See guide-step-medium.css for documentation on .guide-nav. Adjust values here for 8 column context. */
-.guide-nav .first-half { width: 42.589342%;padding-right: 1.410658%;}
-.guide-nav .second-half { padding-left: 7.410658%; }
-.guide-nav .second-half .step-number { left: 2.821317%; }
+.text-content .guide-nav .first-half { width: 42.589342%;padding-right: 1.410658%;}
+.text-content .guide-nav .second-half .step-number { left: 2.821317%; }
 
 /* Rows of boxes must now respect editor's choice of 2 or 3 columns. 
    This can occur in either an 8 column .article context or 12 column .full-page context.

@@ -671,7 +671,7 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 {
 .hcal, [href$=".calendar"], .rss, .email, .rss-email, .xml,  [href$=".xml"], .pdf, [href$=".pdf"], .wma,  [href$=".wma"], .mp3,  [href$=".mp3"],
 .doc, [href$=".doc"],  [href$=".docx"],  [href$=".dot"],  [href$=".dotx"], .rtf, [href$=".rtf"], .xls, [href$=".xls"],  [href$=".xlsx"],  [href$=".xlt"],  [href$=".xltx"],  [href$=".csv"], 
-.ppt,  [href$=".ppt"],  [href$=".pptx"],  [href$=".pps"],  [href$=".ppsx"],  [href$=".pot"],  [href$=".potx"], .jpg,  [href$=".jpg"],  [href$=".jpeg"], .html, .file, 
+.ppt,  [href$=".ppt"],  [href$=".pptx"],  [href$=".pps"],  [href$=".ppsx"],  [href$=".pot"],  [href$=".potx"], .jpg,  [href$=".jpg"],  [href$=".jpeg"], [href$=".vcf"], .html, .file, 
 .new-window, .facebook, [href*="facebook.com"], .twitter, [href*="twitter.com"], .youtube, [href*="youtube.com"], [href*="youtu.be"], .flickr, [href*="flickr.com"], [href$="/print"]
 { background-image: url(../img/body/item-type.png); background-repeat: no-repeat; padding-left: 23px; }
 
@@ -694,6 +694,7 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .youtube, [href*="youtube.com"], [href*="youtu.be"] { background-position: 0 -1400px; padding-left: 20px; }
 .flickr, [href*="flickr.com"] { background-position: 0 -1450px; padding-left: 20px; }
 [href$="/print"] { background-position: 0 -700px; }
+[href$=".vcf"] { background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABp0lEQVQ4T6WT20vCUBzHvxMbi2V37R4FkfQgQfOpIPC2QP1vpCKih1569T/oWUGxrb0XgU9p5WVgFGSIRgkGZSIVW2zLMbO3HTicG7/P+X4530PAZCNM1sM8QBCEDADGqESWZXWpjMYuSZK+/p1nCUEQ5FAopNd3Cv4DKGdGCM/z0AHbJ1UdYqWH9PnBhkW9VSk0dpIkoQOCwSB2uBrGx2i83l5A/vqAxb4Cx6ILcw8psCyLaDTaZScSiWgAnudVC7v8E9j6Mb5rl3isVFCut+DYz2O2zCEQCPQooChKA3AcJysK9oRneCzX2Jx4QR9pRTpTRG7tCFN3Cfj9fhSLRd2/YoVhGHAcByKVSqkKoldAq1DA+rSIgcFBpHPfaCxvwVXn4fP5ehTQNK0BksmkCjg8vYd9ZAYl6zAa1U9QBInJ/ipWm2fwer0QRbHrBdxutwZIJBKqhePzG4jv8/ganQFBAO23NpbkEhaaeXg8ni75yqvYbDYNEI/H5XA4rHo0ZkDx2cmC0+nsCZayoQJisVhGkiTGGBJjWP6msZPS36Bkzf8Fs7/xB0AMVy7ccVj6AAAAAElFTkSuQmCC') no-repeat left center; }
 
 /* Don't add nested icons for structure used by social media mobile control:
    <p class="twitter">Follow us: <a href="http://twitter.com/eastsussexcc">@eastsussexcc</a></p>

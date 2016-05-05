@@ -83,11 +83,9 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
         Content here
     </div>
 
-    There is a 9px blue line above the related links list
+    Add a line space beneath to separate from following content.
     */
-.related-links ul { list-style-type: none;margin: 0; border-top: .5625em solid #003C69;}
-.related-links li { margin: 1.125em 0;}
-
+.related-links { margin-bottom: 1.125em; }
 
 /* Progress bar.
 
