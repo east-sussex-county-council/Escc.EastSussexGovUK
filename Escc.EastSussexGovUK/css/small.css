@@ -666,40 +666,42 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 
 /* Some link types have an icon to show what they lead to. This is in a screen-only section
    as background images don't usually print, so we don't want the empty space from the padding.
-   Use separate background properties as it avoids changing the background colour, should the element have one. */
+   Use separate background properties as it avoids changing the background colour, should the element have one. 
+   Qualify selectors with the 'a' element to avoid styling <area /> elements in an image map.
+*/
 @media screen
 {
-.hcal, [href$=".calendar"], .rss, .email, .rss-email, .xml,  [href$=".xml"], .pdf, [href$=".pdf"], .wma,  [href$=".wma"], .mp3,  [href$=".mp3"],
-.doc, [href$=".doc"],  [href$=".docx"],  [href$=".dot"],  [href$=".dotx"], .rtf, [href$=".rtf"], .xls, [href$=".xls"],  [href$=".xlsx"],  [href$=".xlt"],  [href$=".xltx"],  [href$=".csv"], 
-.ppt,  [href$=".ppt"],  [href$=".pptx"],  [href$=".pps"],  [href$=".ppsx"],  [href$=".pot"],  [href$=".potx"], .jpg,  [href$=".jpg"],  [href$=".jpeg"], .html, .file, 
-.new-window, .facebook, [href*="facebook.com"], .twitter, [href*="twitter.com"], .youtube, [href*="youtube.com"], [href*="youtu.be"], .flickr, [href*="flickr.com"], [href$="/print"]
+.hcal, a[href$=".calendar"], .rss, .email, .rss-email, .xml, a[href$=".xml"], .pdf, a[href$=".pdf"], .wma, a[href$=".wma"], .mp3, a[href$=".mp3"],
+.doc, a[href$=".doc"], a[href$=".docx"], a[href$=".dot"], a[href$=".dotx"], .rtf, a[href$=".rtf"], .xls, a[href$=".xls"], a[href$=".xlsx"], a[href$=".xlt"], a[href$=".xltx"], a[href$=".csv"], 
+.ppt, a[href$=".ppt"], a[href$=".pptx"], a[href$=".pps"], a[href$=".ppsx"], a[href$=".pot"], a[href$=".potx"], .jpg, a[href$=".jpg"], a[href$=".jpeg"], .html, .file, 
+.new-window, .facebook, a[href*="facebook.com"], .twitter, a[href*="twitter.com"], .youtube, a[href*="youtube.com"], a[href*="youtu.be"], .flickr, a[href*="flickr.com"], a[href$="/print"]
 { background-image: url(../img/body/item-type.png); background-repeat: no-repeat; padding-left: 23px; }
 
-.hcal, [href$=".calendar"] { background-position: 0 0; }
+.hcal, a[href$=".calendar"] { background-position: 0 0; }
 .rss { background-position: 0 -48px; }
 .email { background-position: 0 -97px; padding-left: 19px; }
 .rss-email  { background-position: 0 -150px; }
-.xml,  [href$=".xml"] { background-position: 0 -200px; padding-left: 30px;  }
-.pdf,  [href$=".pdf"] { background-position: 0 -248px; }
-.doc, .rtf,  [href$=".doc"],  [href$=".docx"],  [href$=".dot"],  [href$=".dotx"],  [href$=".rtf"] { background-position: 0 -298px; padding-left: 20px;  }
-.xls,  [href$=".xls"],  [href$=".xlsx"],  [href$=".xlt"],  [href$=".xltx"],  [href$=".csv"] { background-position: 0 -350px; padding-left: 18px;  }
-.wma,  [href$=".wma"] { background-position: 0 -400px;  }
-.mp3,  [href$=".mp3"] { background-position: 0 -450px; padding-left: 20px;  }
-.ppt,  [href$=".ppt"],  [href$=".pptx"],  [href$=".pps"],  [href$=".ppsx"],  [href$=".pot"],  [href$=".potx"] { background-position: left -1748px; padding-left: 20px; }
-.jpg,  [href$=".jpg"],  [href$=".jpeg"] { background-position: left -2148px; }
+.xml, a[href$=".xml"] { background-position: 0 -200px; padding-left: 30px;  }
+.pdf, a[href$=".pdf"] { background-position: 0 -248px; }
+.doc, .rtf, a[href$=".doc"], a[href$=".docx"], a[href$=".dot"], a[href$=".dotx"], a[href$=".rtf"] { background-position: 0 -298px; padding-left: 20px;  }
+.xls, a[href$=".xls"], a[href$=".xlsx"], a[href$=".xlt"], a[href$=".xltx"], a[href$=".csv"] { background-position: 0 -350px; padding-left: 18px;  }
+.wma, a[href$=".wma"] { background-position: 0 -400px;  }
+.mp3, a[href$=".mp3"] { background-position: 0 -450px; padding-left: 20px;  }
+.ppt, a[href$=".ppt"], a[href$=".pptx"], a[href$=".pps"], a[href$=".ppsx"], a[href$=".pot"], a[href$=".potx"] { background-position: left -1748px; padding-left: 20px; }
+.jpg, a[href$=".jpg"], a[href$=".jpeg"] { background-position: left -2148px; }
 .html, .file { background-position: left -2450px; }
 .new-window { background-position: 100% -500px; padding-left: 0; padding-right: 16px; }
-.twitter, [href*="twitter.com"] { background-position: 0 -1300px; padding-left: 20px; }
-.facebook, [href*="facebook.com"] { background-position: 0 -1350px; padding-left: 20px; }
-.youtube, [href*="youtube.com"], [href*="youtu.be"] { background-position: 0 -1400px; padding-left: 20px; }
-.flickr, [href*="flickr.com"] { background-position: 0 -1450px; padding-left: 20px; }
+.twitter, a[href*="twitter.com"] { background-position: 0 -1300px; padding-left: 20px; }
+.facebook, a[href*="facebook.com"] { background-position: 0 -1350px; padding-left: 20px; }
+.youtube, a[href*="youtube.com"], a[href*="youtu.be"] { background-position: 0 -1400px; padding-left: 20px; }
+.flickr, a[href*="flickr.com"] { background-position: 0 -1450px; padding-left: 20px; }
 [href$="/print"] { background-position: 0 -700px; }
 
 /* Don't add nested icons for structure used by social media mobile control:
    <p class="twitter">Follow us: <a href="http://twitter.com/eastsussexcc">@eastsussexcc</a></p>
 */
-.twitter [href*="twitter.com"],
-.facebook [href*="facebook.com"] { background: none; padding-left: 0; }
+.twitter a[href*="twitter.com"],
+.facebook a[href*="facebook.com"] { background: none; padding-left: 0; }
 
 
 /* If a list item contains only a link to a download, replace the bullet with the file type icon. Margin offsets the standard indent for lists. */
