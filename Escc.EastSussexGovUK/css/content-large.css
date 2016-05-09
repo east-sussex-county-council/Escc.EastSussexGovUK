@@ -32,3 +32,12 @@ body .breadcrumb a:hover, body .breadcrumb a:focus, body .breadcrumb a:active { 
 
 /* Keep bottom margin of .supporting sections at 18px */
 .supporting { margin-bottom: .947368em; }
+
+/* Related links box. we expect this at the top of the right column, so adopt a different display:
+   
+   Update h2 to have 9px spacing below, none above
+   Adjust width: still 4 cols in 12, but now minus 2 x 18px gutters for padding
+   */
+.related-links h2 { margin: 0; }
+.related-links ul + h2 { margin-top: .947368em;}
+.related-links { padding: 1.863354% .947368em; width: 28.364389%; background: #CCEEFA; border-radius: 5px; }

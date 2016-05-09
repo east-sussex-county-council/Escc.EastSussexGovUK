@@ -14,15 +14,15 @@
  ***********************************************/
 
 /* h1 = 48/54px, 0 & 18px margins
-   h2 = 36/36px, 27px & 9px margins 
-   h3 = 28/36px, 27px & 9px margins
+   h2 = 30/36px, 27px & 9px margins 
+   h3 = 26/27px, 27px & 9px margins
    h4 = 23/27px, 27px & 9px margins
    h5 = 19/27px (unaltered), 27px & 9px margins
    h6 = 19/27px (unaltered), 18px & 0 margins */
-.text-content h1 { font-size: 2.526316em;line-height: 1.125em;margin:0 0 .375em; }
-.text-content h2 { font-size: 1.894737em;line-height: 1em; margin: .75em 0 .25em; }
-.text-content h3 { font-size: 1.473684em;line-height: 1.285714em;margin: .964286em 0 .321429em;font-weight: normal; }
-.text-content h4 { font-size: 1.210526em;line-height: 1.173913em;margin: 1.173913em 0 .391304em;font-weight: normal; }
+.text-content h1 { font-size: 2.526316em; line-height: 1.125em;margin:0 0 .375em; }
+.text-content h2 { font-size: 1.578947em; line-height: 1.2em; margin: .75em 0 .25em;font-weight: bold; }
+.text-content h3 { font-size: 1.368421em; line-height: 1.038462em;margin: .964286em 0 .321429em; }
+.text-content h4 { font-size: 1.210526em; line-height: 1.173913em;margin: 1.173913em 0 .391304em;font-weight: normal; }
 .text-content h5 { margin: 1.421053em 0 0; font-weight: bold;font-style: normal; }
 .text-content h6 { margin: .947368em 0 0; font-weight: bold; }
 
@@ -66,8 +66,7 @@
 .text-content .latest { background: #ccc; padding: .947368em 18px; margin: .947368em 0; }
 
 /* Related links box - adjust for change in base font size */
-.related-links ul { border-top-width: .473684em; }
-.related-links li { margin: .947369em 0; }
+.related-links { margin-bottom: 0.947368em; }
 
 /* Progress bar from forms stylesheet - in context of 19px base font, adjust to 14px/18px using new font */
 .text-content .progressBar { margin: 0 0 .947369em;}
