@@ -20,7 +20,10 @@
                 return str;
             }
 
-            urls = urls.map(function (str) { return trimSlash(str.toUpperCase()); });
+            // Note: array.map not used as it's only supported from IE9 and up
+            for (var i = 0; i < urls.length; i++) {
+                urls[i] = trimSlash(urls[i].toUpperCase());
+            }
             path = trimSlash(path.toUpperCase());
             query = query.toUpperCase();
 

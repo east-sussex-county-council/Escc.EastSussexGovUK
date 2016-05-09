@@ -16,13 +16,18 @@ if (typeof (jQuery) != 'undefined' && typeof (esccConfig) != 'undefined' && type
         $.ajax({ dataType: "json", url: esccConfig.AlertsUrl + "?vary=" + document.location.protocol + "//" + document.location.host }).retry({ times: 3 }).then(function (data) {
 
             // Adapt data format to that expected by cascading-content.js, which is a refactored version of the code originally written here.
-            var alerts = data.map(function (alert) {
+            // Note: array.map not used as it's only supported from IE9 and up
+            function adaptDataFormat(alert) {
                 if (!alert.TargetUrls) alert.TargetUrls = alert.urls;
                 if (!alert.Inherit) alert.Inherit = alert.append;
                 if (!alert.Cascade) alert.Cascade = alert.cascade;
                 return alert;
-            });
+            }
 
+            var alerts = data;
+            for (var i = 0; i < data.length; i++) {
+                alerts[i] = adaptDataFormat(alerts[i]);
+            }
 
             // Note: Must filter inheritance before cascade. If an ancestor of the current page blocks inheritance it needs to be
             // considered when deciding how far up the tree to inherit, before it potentially gets removed if it blocks cascade as well.
