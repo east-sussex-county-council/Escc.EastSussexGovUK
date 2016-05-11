@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.UI.UserControl" %>
+<%@ Register TagPrefix="ClientDependency" Namespace="Escc.ClientDependencyFramework.WebForms" assembly="Escc.ClientDependencyFramework.WebForms" %>
 <ClientDependency:Css runat="server" Files="EastSussex1Space" />
 <ClientDependency:Script runat="server" Files="EastSussex1Space" />
 <div class="supporting">
