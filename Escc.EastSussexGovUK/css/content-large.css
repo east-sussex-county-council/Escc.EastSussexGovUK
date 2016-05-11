@@ -7,12 +7,15 @@ body .header #menu a:hover, body .header #menu a:focus, body .header #menu a:act
 /* Remove box-shadow from default skin. */
 body .full-page, body .article { box-shadow: none; }
 
-/* Adjust .content to the 12 column context */
 @media screen {
+    /* Adjust .content to the 12 column context, and limit the effect of .content-medium to the medium breakpoint */
     .content-medium { padding: 0; }
-    .content, .content-large {
+    .content {
         padding: 0 1.863354%;
     }
+
+    /* Adjust .content to the 8 column context created by .article, but no space required on the right because there's a gutter before the next 4 columns */
+    .article .content { padding: 0 0 0 2.821317%; }
 }
 
 /* Align .breadcrumb with .content and change text size to 16px/18px */

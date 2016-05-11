@@ -1,4 +1,8 @@
-﻿/* Adjust .content to the 10 column context */
+﻿/* Adjust .content to the 10 column context 
+
+   Replace .content-small with .content-medium. Both exist as a way to apply .content at a single breakpoint without it having any effect at larger breakpoints.
+   This is useful when applying it to something that is full-width here, but in columns at larger sizes.
+*/
 @media screen {
     .content-small { padding: 0; }
     .content, .content-medium {

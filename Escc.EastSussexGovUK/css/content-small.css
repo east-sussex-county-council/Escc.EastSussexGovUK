@@ -3,6 +3,9 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 
 /* Box to pull content away from the edges of its containing box by one gutter width. 
    Undo the effect of .text, the old approach, when present (it shouldn't be).
+   
+   .content-small exists as a way to apply .content only at this breakpoint without it having any effect at larger breakpoints.
+   This is useful when applying it to something that is full-width here, but in columns at larger sizes.
 */
 @media screen {
     .content, .content-small {
