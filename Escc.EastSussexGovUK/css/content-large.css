@@ -44,3 +44,7 @@ body .breadcrumb a:hover, body .breadcrumb a:focus, body .breadcrumb a:active { 
 .related-links h2 { margin: 0; }
 .related-links ul + h2 { margin-top: .947368em;}
 .related-links { padding: 1.863354% .947368em; width: 28.364389%; background: #CCEEFA; border-radius: 5px; }
+
+/* _Share.cshtml should always be included at the end of the content. 
+    This ensures it appears under the main column rather than as part of the right column, regardless of which is longer. */
+.share-page { clear: left; }
