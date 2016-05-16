@@ -24,8 +24,8 @@
    h5 = 19/27px (unaltered), 27px & 9px margins
    h6 = 19/27px (unaltered), 18px & 0 margins */
 .text-content h1 { font-size: 2.526316em; line-height: 1.125em;margin:0 0 .375em; }
-.text-content h2 { font-size: 1.578947em; line-height: 1.2em; margin: .75em 0 .25em;font-weight: bold; }
-.text-content h3 { font-size: 1.368421em; line-height: 1.038462em;margin: .964286em 0 .321429em; }
+.text-content h2 { font-size: 1.578947em; line-height: 1.2em; margin: .9em 0 .3em;font-weight: bold; }
+.text-content h3 { font-size: 1.368421em; line-height: 1.038462em;margin: 1.038462em 0 .346154em; }
 .text-content h4 { font-size: 1.210526em; line-height: 1.173913em;margin: 1.173913em 0 .391304em;font-weight: normal; }
 .text-content h5 { margin: 1.421053em 0 0; font-weight: bold;font-style: normal; }
 .text-content h6 { margin: .947368em 0 0; font-weight: bold; }
