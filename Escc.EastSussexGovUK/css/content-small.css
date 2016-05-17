@@ -80,6 +80,14 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 .text-content .latest h2 { margin: 0;}
 .text-content .latest p:last-child { margin-bottom: 0;}
 
+/* Section nav is used on legacy templates. See small.css for documentation. 
+   Here we just adjust to the new base font size. 
+*/
+.text-content .section-nav { padding: 1.125em; }
+.text-content .section-nav ul { margin: 0; }
+.text-content .section-nav li { background-position: left -592px; padding: 0 0 .5625em 12px; }
+.text-content .section-nav ul:last-child li:last-child { padding-bottom: 0; }
+
 /* Related links box based on a combination of classes:
     
     <div class="supporting content-text related-links content-small content-medium">
