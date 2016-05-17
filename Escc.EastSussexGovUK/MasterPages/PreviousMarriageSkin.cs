@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using Escc.EastSussexGovUK.MasterPages;
+using System.Linq;
+using System.Web;
 using EsccWebTeam.Data.Web;
+using EsccWebTeam.EastSussexGovUK.MasterPages;
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages
+namespace Escc.EastSussexGovUK.MasterPages
 {
     /// <summary>
     /// A custom skin for marriage pages on www.eastsussex.gov.uk
     /// </summary>
-    public class MarriageSkin : CustomerFocusSkin
+    public class PreviousMarriageSkin : DefaultSkin
     {
         private readonly EsccWebsiteView _currentView;
         private Uri _requestUrl;
@@ -18,7 +20,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// </summary>
         /// <param name="currentView">The current view.</param>
         /// <param name="requestUrl">The request URL.</param>
-        public MarriageSkin(EsccWebsiteView currentView, Uri requestUrl) : base(currentView)
+        public PreviousMarriageSkin(EsccWebsiteView currentView, Uri requestUrl)
         {
             _currentView = currentView;
             _requestUrl = requestUrl;
