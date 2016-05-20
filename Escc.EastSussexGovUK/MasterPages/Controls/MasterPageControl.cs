@@ -131,6 +131,10 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 webRequest.UseDefaultCredentials = true;
                 webRequest.UserAgent = Page.Request.UserAgent;
                 webRequest.Proxy = new ConfigurationProxyProvider().CreateProxy();
+#if DEBUG
+                // Turn off SSL check in debug mode as it will always fail against a self-signed certificate used for development
+                webRequest.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+#endif
 
                 // Prepare the information we'll need when the response comes back
                 var state = new RequestState();

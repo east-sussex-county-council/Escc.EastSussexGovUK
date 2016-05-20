@@ -471,7 +471,7 @@ body .footer .footer-content { padding-top: 1.153846em; }
 .section-nav { clear: both; background: #dae1e5; padding: 1.076953em; }
 .section-nav img { display: none; }
 .section-nav ul { margin: 0; }
-.section-nav li { list-style: none; background: url(../img/body/item-type.png) no-repeat left -596px; padding: 0 0 .692308em 1.076953em; }
+.section-nav li { list-style: none; background: url(../img/body/item-type.png?v=2) no-repeat left -596px; padding: 0 0 .692308em 1.076953em; }
 
 .ie6 .section-nav { display: inline-block; } /* hasLayout to contain floats */
 
@@ -609,7 +609,7 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 /* Add border with 9px vertical padding, horizontal margin and padding takes line to edge of box */
 .related h2 { font-size: 1.076923em; line-height: 1.285714em; font-weight: bold; margin: .642857em -1em; padding: 0 1em 0; } 
 .related ul { margin: .538462em 0 0; }
-.related li { list-style: none; background: url(../img/body/item-type.png) no-repeat left -1196px; padding: 0 0 .538462em 1.076953em; }
+.related li { list-style: none; background: url(../img/body/item-type.png?v=2) no-repeat left -1196px; padding: 0 0 .538462em 1.076953em; }
 
 .ie6 .related { display: inline-block; } /* hasLayout to contain floats */
 
@@ -628,7 +628,7 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .share .fb-like { margin: .615385em 0; }
 .share .fb-dnt { float: left; font-size: .846154em; line-height: 1.272727em; margin: .461538em 1em .9090914em 0; padding: .454545em 5px .454545em 23px; border: 1px solid #CAD4E7; border-radius: 3px; color: #3B5998; background-color: #ECEEF5; background-position: 4px -1346px; }
 .share .twitter-share-button { float: left; margin: .615385em 0; width: 100px !important; }
-.share .button-nav a:link, .share .button-nav a:visited { padding: 4px 10px 4px 27px; background-image: url(../img/body/item-type.png); background-repeat: no-repeat; }
+.share .button-nav a:link, .share .button-nav a:visited { padding: 4px 10px 4px 27px; background-image: url(../img/body/item-type.png?v=2); background-repeat: no-repeat; }
 .share .send a:link, .share .send a:visited { background-position: 8px -93px; }
 .share .comment a:link, .share .comment a:visited { background-position: 5px -546px; }
 .share .send { clear: left; }
@@ -651,9 +651,9 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
    Change list bullets to blue. */
 .supporting-text { clear: both; margin: 1.384615em 0; border-top: 1px solid #dae1e5; padding: 1.307692em 18px 0; }
 .supporting-text h2 { font-size: 1.230769em; line-height: 1.125em; font-weight: bold; }
-.supporting-text h2 a { font-weight: normal; padding-right: 32px; background: url(../img/body/item-type.png) no-repeat right -595px; }  
+.supporting-text h2 a { font-weight: normal; padding-right: 32px; background: url(../img/body/item-type.png?v=2) no-repeat right -595px; }  
 .supporting-text ul { margin: 9px 0; }
-.supporting-text li { list-style: none; background: url(../img/body/item-type.png) no-repeat 0 -995px; padding-left: 16px; }
+.supporting-text li { list-style: none; background: url(../img/body/item-type.png?v=2) no-repeat 0 -995px; padding-left: 16px; }
 .ie67 .supporting-text ul { margin-left: 9px; }
 
 @media print { .supporting-text { padding-left: 0; padding-right: 0; } }
@@ -676,7 +676,7 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .doc, a[href$=".doc"], a[href$=".docx"], a[href$=".dot"], a[href$=".dotx"], .rtf, a[href$=".rtf"], .xls, a[href$=".xls"], a[href$=".xlsx"], a[href$=".xlt"], a[href$=".xltx"], a[href$=".csv"], 
 .ppt, a[href$=".ppt"], a[href$=".pptx"], a[href$=".pps"], a[href$=".ppsx"], a[href$=".pot"], a[href$=".potx"], .jpg, a[href$=".jpg"], a[href$=".jpeg"], .html, .file, 
 .new-window, .facebook, a[href*="facebook.com"], .twitter, a[href*="twitter.com"], .youtube, a[href*="youtube.com"], a[href*="youtu.be"], .flickr, a[href*="flickr.com"], a[href$="/print"]
-{ background-image: url(../img/body/item-type.png); background-repeat: no-repeat; padding-left: 23px; }
+{ background-image: url(../img/body/item-type.png?v=2); background-repeat: no-repeat; padding-left: 23px; }
 
 .hcal, a[href$=".calendar"] { background-position: 0 0; }
 .rss { background-position: 0 -48px; }
