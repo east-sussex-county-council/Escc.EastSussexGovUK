@@ -129,9 +129,6 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 
 @media print { .main-action a { border: 1mm solid #ED5816;}}
 
-/* Reset other buttons to their default skin size, but leave the header and footer unaffected */
-.body .button, .body .form input[type=submit] {font-size: .8125em; line-height: 1.384615em; }
-
 /* Share links for the bottom of a page, defined in the _Share.cshtml partial view from Escc.EastSussexGovUK.Mvc. 
    9px margin above and below, and 16px text at all screen sizes. */
 .text-content .share-page { margin: .5625em 0; }

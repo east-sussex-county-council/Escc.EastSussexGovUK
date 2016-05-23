@@ -257,6 +257,8 @@ Use the EsccWebTeam.FormControls.Validators.EsccValidationSummaryControl to prod
 .form .depends label { padding: 0; }
 .form .depends input { position: absolute; top: 0; left: 0; margin: 2px 0 0 0; } 
 
+.text-content .form .depends input { margin-top: 7px; }
+
 /* Slightly adjust position of radio buttons for IE */
 .ie8 .form .depends input { margin: 0; }
 .ie7 .form .depends input { top: -4px; }
@@ -368,9 +370,13 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
 .form .radioButtonList input { left: 0; margin-top: 2px;  position: absolute; z-index: 1; }
 .ie67 .form .radioButtonList input, .ie8 .form .radioButtonList input { margin-top: 0; }
 
+.text-content .form .radioButtonList input { margin-top: 6px; }
+.text-content fieldset.checkboxes label { margin: 4px 0;}
+
 /* Make each option occupy an entire line so they stack vertically. 
    Padding allows space for the absolutely-positioned input, and space between options to make them easier to select. */
 .form .radioButtonList label { display: block; padding: 0 0 4px 20px; margin: 0; }
+.text-content .form .radioButtonList label { margin: 0; }
 
 /* Swop layout for right-to-left scripts */
 .rtl .form .radioButtonList label { padding-left: 0; padding-right: 20px; }
@@ -431,6 +437,9 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
 .attachedFile { margin: .692308em 0; } 
 .attachedFileButton { margin: 0 0 0 10px; }
 
+/* Reset font for customer focus skin, because these elements don't pick it up from the parent */
+.text-content select, .text-content input, .text-content textarea { font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size: 1em; }
+.text-content input[type=checkbox] { vertical-align: middle;margin-right: 5px; }
 
 /*:: SIMPLE FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -454,17 +463,23 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
             <form />
         </div>
 */
-.simple-form { clear: both; margin: 9px 0; background: #cceefa; padding: 18px; overflow: hidden; font-size: 1.076923em; line-height: 1.285714em; } /* 14px/18px */
+.simple-form { clear: both; margin: .642857em 0; background: #cceefa; padding: 1.285714em; overflow: hidden; font-size: 1.076923em; line-height: 1.285714em; } /* 14px/18px */
+.text-content .simple-form { margin: .5625em 0;padding: 1.125em;font-size: 1em;line-height: 1.125em; } /* 16px/18px, like surrounding text */
 
 /* On small screens the label should be above the fields, mainly to support field zoom, but also to ensure that it's consistent which elements
    wrap even though labels will vary in length. line height + margin adds up to one line space. */
 .simple-form label { display: block; margin: .857143em 0 .428571em; }
+.text-content .simple-form label { margin: .5625em 5px .5625em 0; }
+.text-content .simple-form label:first-child { margin-top: 0; }
 
 /* Text search will be the most common option */
-.simple-form input[type=text], .simple-form input[type=search], .simple-form input[type=password], .simple-form input[type=email] { font-size: 1.076923em; line-height: 1em; padding: 6px; margin: 0 .5em 0 0; border: 2px solid #9c9c9c; border-radius: 5px; } /* 14px font */
+.simple-form input[type=text], .simple-form input[type=search], .simple-form input[type=password], .simple-form input[type=email] { font-size: 1.076923em; line-height: 1em; padding: .428571em; margin: 0 .5em 0 0; border: 2px solid #9c9c9c; border-radius: 5px; } /* 14px font */
+.text-content .simple-form input[type=text], .text-content .simple-form input[type=search], 
+.text-content .simple-form input[type=password], .text-content .simple-form input[type=email] {font-size: 1em; line-height: 1.125em; padding: .4375em; }
 
 /* File upload. Don't add a border because Chrome 13 puts it in a really odd position. Used by Single Assessement Process form upload.*/
-.simple-form input[type=file] { line-height: 1em; padding: 6px; margin: 0 .5em; } /* 14px font */
+.simple-form input[type=file] { line-height: 1em; padding: .428571em; margin: 0 .5em; } /* on 14px base font */
+.text-content .simple-form input[type=file] { padding: .4375em; } /* on 16px base font */
 
 /* Button has a top margin to separate it from the form control should it wrap below. Bottom margin is equal to top so that it's aligned if it doesn't wrap. */
 .simple-form input[type=submit], .simple-form input[type=button] { line-height: 1em; padding: 7px; margin: 4px 0 4px; font-weight: bold; color: #fff; border: 0; border-radius: 4px;  /* 14px font */
@@ -472,6 +487,8 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
                              filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE6-9 */
                              background: linear-gradient(top, #1e5b83 0%,#0b4164 100%); /* W3C */
                              }
+/* Reset font size in context of 16 px base font for .text-content */
+.text-content .simple-form input[type=submit], .text-content .simple-form input[type=button] { font-size: 1em; padding: .5625em; margin: .3125em 0 .25em 0; }
                              
 /* IE6 doesn't apply the attribute selectors above, so style its controls separately */
 .ie6 .simple-form input { margin: 0 .5em 0 0; vertical-align: middle; }
@@ -480,6 +497,9 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
    below the text in Firefox 3.6, so looks odd with too much space below and none above. Still looks unbalanced next to a big chunky button. */
 .simple-form select { margin: 0 .5em 0 0; } 
 .simple-form option { padding: 1px; } 
+
+/* Dropdown styling has improved though still only Chrome does well. Vertical padding, border and margin add up to 18px.*/
+.text-content .simple-form select { padding: .3125em; border-radius: 5px;border: .125em solid #9c9c9c;margin: .125em;  }
 
 /* If there's a .radioButtonList it'll be the only field (otherwise this should be a .short-form), so safe to remove bottom margin. 
    A .radioButtonList should also be the only reason for a fieldset. This is used by the "How much will I have to pay for social care?" questionnaire. */
@@ -526,6 +546,7 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
 
 /* A .simple-form may be introduced by a subheading or a paragraph */
 .simple-form h2 { margin: 0 0 .642857em; font-weight: bold; } 
+.text-content .simple-form h2 { margin: 0 0 .346154em; }
 
 /* Extra line of explanatory or alternative text for navigation options. 9px margins on 14px font. 
    Ideally set .intro or .note to treat text differently when it appears above or below the controls. 
@@ -542,6 +563,10 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
 .simple-form p { margin: .642857em 0; } 
 .simple-form p.intro { margin: 0 0 .642857em; } 
 .simple-form p.note { clear: both; margin: .642857em 0 0; font-size: .928571em; line-height: 1.384615em; }  /* Back to standard 13px/18px for notes */
+
+/* Customer focus skin goes back to base font size but on tighter 18px leading */
+.text-content .simple-form p {font-size: 1em;line-height: 1.125em; }
+
 
 /* If the .note is to indicate that you can .useList of all results, add an arrow to highlight the list as a secondary action.
    
@@ -562,6 +587,10 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
   below .short-form separates it from following content.
 */
 .short-form { padding: .071429em 18px 1.214286em; background: #cceefa; margin: 0 0 1.384615em; font-size: 1.076923em; line-height: 1.285714em; clear: both; }
+
+/* Reset font size for customer focus skin, because we just want to inherit it from .text-content */
+.text-content .short-form { font-size: 1em; }
+
 
 /* .short-form shouldn't be within .text, but it may end up there so cope with it */
 .text .short-form { margin-left: -3.8%; margin-right: -4%; }
@@ -605,15 +634,27 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
 */
 .short-form legend { font-weight: normal; padding: .642857em 0 0; } 
 .short-form label { font-weight: normal; display: block; margin: .428571em 0 .214286em; } 
+.text-content .short-form label { margin: 1.10526em 0 .315789em 0; }
 
-.short-form textarea { width: 50em; max-width: 100%; }
+/* In the customer focus skin, add a border and padding more like the .simple-form style */
+.text-content .short-form input[type=text], .text-content .short-form input[type=search], 
+.text-content .short-form input[type=password], .text-content .short-form input[type=email] {font-size: 1em; line-height: 1.125em; padding: .4375em 2%;margin: 0; border: 2px solid #9c9c9c; border-radius: 5px;  }
+.text-content .short-form input[type="email"] { width: 96%; }
+
+.short-form textarea { width: 100%; }
+.text-content .short-form textarea { padding: .4375em 2%; border: 2px solid #9c9c9c; border-radius: 5px;width: 95%; }
+
+/* Dropdown styling has improved though still only Chrome does well. Vertical padding, border and margin add up to 18px.*/
+.text-content .short-form select { padding: .3125em; border-radius: 5px;border: .125em solid #9c9c9c;margin: .125em;  }
 
 .short-form .or { font-weight: bold; }
 
+/* Add extra horizontal space around buttons when text is bigger in customer focus skin */
+.text-content .short-form input[type=submit] { padding: 0.4375em 12px; }
+
 
 /* Narrow down the place name intended by a user. Used by:
-   - gritting maps
-   - roadworks
+   - school search
 */
 .short-form .clarifyPlace { font-weight: bold; }
 

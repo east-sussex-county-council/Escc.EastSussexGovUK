@@ -39,6 +39,9 @@
 */
 .simple-form label { display: inline; line-height: 1.285714em; margin: 4px .5em 4px 0; }
 
+/* Reset font size in context of 19px base font for .text-content */
+.text-content .simple-form input[type=submit], .text-content .simple-form input[type=button] { padding: .421053em; margin: .315789em 0 .263158em 0; }
+
 /* The simple form can be a textbox or dropdown list supported by a checkbox. See forms-small.css for documentation.
    At this level move the button up to the right of the fields. */
 .simple-form .fields-with-checkbox .fields { float: left; }
@@ -49,3 +52,11 @@
 
 /* .short-form shouldn't be within .text, but it may end up there so cope with it */
 .text .short-form { margin-left: -2.4%; margin-right: -2.4%; }
+
+/* Dropdown styling is limited; only Chrome does well. Vertical padding, border and margin add up to 18px.*/
+.text-content .short-form select { padding: .263157em; border-radius: 5px;border: .105263em solid #9c9c9c;margin: .105263em;  }
+
+.text-content .short-form input[type=text], .text-content .short-form input[type=search], .text-content .short-form input[type=password], .text-content .short-form input[type=email] { border: 2px solid #9c9c9c; border-radius: 5px;padding: 0.315789em; }
+
+/* Add extra horizontal space around buttons when text is bigger in customer focus skin */
+.text-content .short-form input[type=submit] { padding: .368421em 12px; }
