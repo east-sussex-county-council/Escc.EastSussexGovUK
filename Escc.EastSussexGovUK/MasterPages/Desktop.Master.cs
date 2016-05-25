@@ -30,15 +30,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
 
             }
 
-            // Allow 1 space widget if it loads
-            if (EastSussex1SpaceSearch != null && EastSussex1SpaceSearch.Visible)
-            {
-                var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
-                policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
-                policy.AppendFromConfig("EastSussex1Space");
-                policy.UpdateHeader(HttpContext.Current.Response);
-            }
-
             // Support web fonts required by the current skin
             if (Skin != null)
             {

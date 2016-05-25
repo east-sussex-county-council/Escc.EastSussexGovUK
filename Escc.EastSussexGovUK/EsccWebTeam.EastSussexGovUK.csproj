@@ -266,6 +266,7 @@
     <None Include="img\Web.example.config" />
     <None Include="js\404.js" />
     <Content Include="js\min\404.js" />
+    <Content Include="MasterPages\Controls\1Space.ascx" />
     <Content Include="MasterPages\Web.config" />
     <None Include="MasterPages\Web.example.config" />
     <None Include="transforms\ContentSecurityPolicy.transform.config" />
@@ -344,7 +345,6 @@
     <Content Include="MasterPages\Status500.aspx">
       <SubType>Form</SubType>
     </Content>
-    <Content Include="MasterPages\Controls\1Space.ascx" />
     <Content Include="MasterPages\Controls\AboveHeaderMobile.ascx" />
     <Content Include="css\large.css" />
     <Content Include="MasterPages\Controls\Banners.ascx" />
@@ -434,6 +434,13 @@
   <ItemGroup>
     <Compile Include="ContextContainer.cs" />
     <Compile Include="GoogleTagManagerContainerIdSelector.cs" />
+    <Compile Include="MasterPages\Controls\1Space.ascx.cs">
+      <DependentUpon>1Space.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Controls\1Space.ascx.designer.cs">
+      <DependentUpon>1Space.ascx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPages\Status404.aspx.cs">
       <DependentUpon>Status404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
