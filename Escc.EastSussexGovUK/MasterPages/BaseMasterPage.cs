@@ -56,6 +56,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
 
             // Default behaviour
             this.OverrideRenderMethod = true;
+            this.Skin = new DefaultSkin();
         }
 
         /// <summary>
@@ -186,5 +187,13 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             }
             return null;
         }
+
+        /// <summary>
+        /// Gets or sets the skin to apply.
+        /// </summary>
+        /// <value>
+        /// The skin.
+        /// </value>
+        public IEsccWebsiteSkin Skin { get; set; }
     }
 }

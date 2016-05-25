@@ -11,6 +11,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
     {
         public string EncodedPageUrl { get; private set; }
         public string EncodedTitle { get; private set; }
+        public string CssClass { get; set; }
 
         /// <summary>
         /// Raises the <see cref="E:System.Web.UI.Control.PreRender"/> event.
@@ -28,6 +29,11 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             // Do this on PreRender as hopefully Page.Title has been set by then
             // strip double-quotes because when this link is picked up by a link checker and exported to CSV, the quotes are misinterpreted as a CSV delimiter
             EncodedTitle = Server.UrlEncode(Server.HtmlDecode(Page.Title.Replace("\"", String.Empty)));
+
+            if (!String.IsNullOrEmpty(CssClass))
+            {
+                this.text.Attributes["class"] = CssClass;
+            }
         }
     }
 }

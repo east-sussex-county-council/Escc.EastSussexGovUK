@@ -2,12 +2,14 @@
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK.MasterPages.Controls" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
 <%@ Register TagPrefix="EastSussexGovUK" TagName="EastSussex1Space" src="Controls/1Space.ascx"%>
+<%@ Register TagPrefix="ClientDependency" Namespace="Escc.ClientDependencyFramework.WebForms" assembly="Escc.ClientDependencyFramework.WebForms" %>
 <EastSussexGovUK:MasterPageControl runat="server" Control="HtmlTag" EnableViewState="false" />
 <head runat="server">
     <EastSussexGovUK:ContextContainer runat="server" Public="true"><asp:ContentPlaceHolder id="contentExperiment" runat="server" /></EastSussexGovUK:ContextContainer>
     <%-- Standard metadata comes first so it's early in life-cycle, because it contains ClientDependency:Css control we want others to find and merge with --%>
     <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataDesktop" EnableViewState="false" />
-    <asp:ContentPlaceHolder id="metadata" runat="server" /> 
+    <asp:ContentPlaceHolder id="metadata" runat="server" />
+    <asp:Literal runat="server" ID="fonts"/><ClientDependency:Script runat="server" Files="Typekit" ID="Typekit" Visible="False"/>
     <asp:ContentPlaceHolder runat="server" ID="css" enableviewstate="false" />
     <title></title>
 </head>

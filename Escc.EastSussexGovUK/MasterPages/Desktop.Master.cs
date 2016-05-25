@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using EsccWebTeam.Data.Web;
@@ -35,6 +37,26 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                 policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
                 policy.AppendFromConfig("EastSussex1Space");
                 policy.UpdateHeader(HttpContext.Current.Response);
+            }
+
+            // Support web fonts required by the current skin
+            if (Skin != null)
+            {
+                var fontsHtml = new StringBuilder();
+                foreach (var font in Skin.RequiresGoogleFonts())
+                {
+                    fontsHtml.Append("<link href=\"").Append(font.FontUrl).Append("\" rel=\"stylesheet\" type=\"text/css\" />");
+                }
+
+                if (Skin.RequiresTypekitFonts().Any())
+                {
+                    foreach (var font in Skin.RequiresTypekitFonts())
+                    {
+                        fontsHtml.Append("<script src=\"").Append(font.TypekitUrl).Append("\"></script>");
+                    }
+                    this.Typekit.Visible = true;
+                }
+                this.fonts.Text = fontsHtml.ToString();
             }
 
             // Run the base method as well

@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="share.ascx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Controls.share" %>
 <EastSussexGovUK:ContextContainer runat="server" Plain="false">
-<div class="text">
+<div class="text" id="text" runat="server">
     <aside>
         <p class="screen share-page">
             <a href="https://www.facebook.com/sharer.php?u=<%= EncodedPageUrl %>" target="_blank">Share<span class="aural"> this page on Facebook</span></a>
