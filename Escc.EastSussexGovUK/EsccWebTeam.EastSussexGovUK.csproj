@@ -258,6 +258,11 @@
     <Content Include="img\header\xmas-lights.jpg" />
     <Content Include="img\logo-for-facebook.png" />
     <Content Include="img\web.config" />
+    <None Include="favicon.psd" />
+    <None Include="favicon16.psd" />
+    <None Include="img\body\Page.psd" />
+    <None Include="img\body\Quote-close.psd" />
+    <None Include="img\body\Quote-open.psd" />
     <None Include="img\Web.example.config" />
     <None Include="js\404.js" />
     <Content Include="js\min\404.js" />
