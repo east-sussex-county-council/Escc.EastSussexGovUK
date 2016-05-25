@@ -65,16 +65,6 @@ The container is now 10 columns or 802px wide.
 .section-nav ul { float: left; width: 46.633416%; margin: 0 2.244389% 0 0; }
 .rtl .section-nav ul { float: right; }
 
-
-/* Latest box can appear at the top of the content. See small.css for definition. */
-.latestBox .latest { position: absolute; top: 6px; left: 18px; margin: 0; }
-.latestBox h2, .latestBox p, .latestBox ul, .latestBox .item  { padding: .6em 18px .6em 6em; }
-.latestBox ul, .latestBox h2 + ul, .latestBox p + ul { padding-left: 7.2em; margin-left: 0; }
-
-/* Latest is not supposed to appear within .text, but cope if it does */
-.text .latestBox .latest { left: 0; }
-.ie67 .text .latestBox .latest { float: left; z-index: 100; top: 14px; }
-
 /* Adjust .text to the 10 column context */
 @media screen 
 {

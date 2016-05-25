@@ -424,37 +424,6 @@ body .footer .footer-content { padding-top: 1.153846em; }
    */
 .breadcrumb-mobile { margin: -.923077em 0 .692308em; padding: .384615em .692308em 0;  background: #DBF3FF; box-shadow: 0 .384615em .384615em #DBF3FF; }
 
-/* Latest box can appear at the top of the content. Horizontal padding matches the padding of .text. 
-   Visually, a <p> defines a new latest item using a border. <ul> moves up to cover the border of the <p> above, effectively making the <ul> part of the same item. 
-   This ought to be a list really if there are multiple items, but it was never designed to take 
-   multiple items - it's just been used that way.
-
-   Note: base font size for .latestBox is 15px
-
-   <div class="latestBox">
-   <section>
-        <h2 class="latest">Latest</h2>
-        <p>Item one</p>
-        <ul><li>Still item one</li></ul>
-        <p>Item two</p>
-        <div class="item"><p>Item 3</p></div>
-   </section>
-   </div>
-*/
-.latestBox { background: #fff; position: relative; font-size: 1.153846em; line-height: 1.2em; }
-.latestBox .latest { position: relative; border: .133em solid #ffb500; border-radius: 5px; padding: .266em 5px; float: left; margin: 1.2em 18px .4em; }
-.latestBox h2 { font-weight: bold; }
-.latestBox h2, .latestBox p, .latestBox ul, .latestBox .item  { background: #fff; color: #272727; padding: .6em 18px; border-bottom: 1px dotted #dae1e5; clear: both; }
-.latestBox ul { margin: 0; padding-left: 2.769231em; }
-.latestBox .item p { padding: 0; border: none; margin: .6em 0 0; }
-
-/* For lists that follow an h2 or p, pull them up to hide the border between and make one item. Doesn't work in IE6 but text stays readable. */
-.latestBox h2 + ul, .latestBox p + ul { margin-top: -.6em; }
-.latestBox h2.latest + ul { margin-top: 0; }
-
-/* Latest is not supposed to appear within .text, but cope if it does */
-.text .latestBox .latest { margin: 0; font-size: inherit; }
-
 /* Section nav appears above latest items and page content. Padding around list is 14px on 13px text size, 7px between items.
    Can be one or two columns of links. A single column can optionally be accompanied by an image.
 
@@ -488,7 +457,7 @@ body .footer .footer-content { padding-top: 1.153846em; }
 strong.quick-answer-datum { font-size: 1.33em; line-height: 1.5em; font-weight: bold; display: block; text-align: center; }
 
 /* Box to pull content away from the edges of its containing box. 
-   In Firefox 3.6 there's a gap when .text follows .latestBox and padding-top is 0, but padding-top .1px rounds down to 0 and closes the gap. 
+   In Firefox 3.6 there's a gap when .text follows some elements and padding-top is 0, but padding-top .1px rounds down to 0 and closes the gap. 
    IE6/7 can't parse that though, so they get a reset to 0px. */
 @media screen 
 {
