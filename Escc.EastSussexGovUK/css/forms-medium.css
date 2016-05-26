@@ -54,7 +54,7 @@
 .text .short-form { margin-left: -2.4%; margin-right: -2.4%; }
 
 /* Reset margins to 18px/9px */
-.short-form h2 { margin: .6em 0 .3em; }
+.text-content .short-form h2 { margin: .6em 0 .3em; }
 
 /* Dropdown styling is limited; only Chrome does well. Vertical padding, border and margin add up to 18px.*/
 .text-content .short-form select { padding: .263157em; border-radius: 5px;border: .105263em solid #9c9c9c;margin: .105263em;  }
