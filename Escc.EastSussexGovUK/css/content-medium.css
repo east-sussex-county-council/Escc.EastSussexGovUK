@@ -76,6 +76,9 @@
 .text-content .progressBar { margin: 0 0 .947369em;}
 .text-content .progressBar li { font-size: .736842em; }
 
+/* Paging - adjust to new font size */
+.text-content .infoBar { margin: .473684em 0; padding: .473684em 18px;border-radius: 5px; }
+
 /* Clear button for the main action on a page. Maintain font-size at 19px despite base font increase. */ 
 .main-action a { font-size: 1em; }
 
