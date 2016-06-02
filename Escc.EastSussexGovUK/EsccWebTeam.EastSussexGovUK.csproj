@@ -224,6 +224,7 @@
     <Content Include="css\umbraco-preview.css" />
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="googledb369ad0fa294f54.html" />
     <Content Include="img\body\flood-alert.png" />
     <Content Include="img\body\flood-severe.png" />
     <Content Include="img\body\flood-warning.png" />
