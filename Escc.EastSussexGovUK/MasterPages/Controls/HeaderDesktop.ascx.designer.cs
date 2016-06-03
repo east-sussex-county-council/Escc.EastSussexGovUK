@@ -154,7 +154,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::EsccWebTeam.NavigationControls.AZNavigation az;
+        protected global::Escc.NavigationControls.WebForms.AZNavigation az;
         
         /// <summary>
         /// searchUrl control.

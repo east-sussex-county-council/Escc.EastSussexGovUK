@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="HeaderDesktop.ascx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Controls.HeaderDesktop" %>
-<%@ Register TagPrefix="NavigationControls" Namespace="EsccWebTeam.NavigationControls" Assembly="EsccWebTeam.NavigationControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
+<%@ Register TagPrefix="NavigationControls" Namespace="Escc.NavigationControls.WebForms" Assembly="Escc.NavigationControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
 <header>
 <div class="header" role="banner">
     <div class="context container" runat="server" id="season">  
