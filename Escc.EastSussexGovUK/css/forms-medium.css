@@ -29,6 +29,14 @@
 ---------------------------------------------
 */
 
+/*:: VALIDATION :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  
+  Update for larger base font size.
+*/
+.text-content .errorSummary { margin: .842105em 0;border-width: .105263em;padding: .473684em; }
+.text-content .errorSummary p, .text-content .errorSummary ul { margin: .473684em 0 0; }
+
+
 /*:: SIMPLE FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
   See forms-small.css for the definition of a .simple-form.

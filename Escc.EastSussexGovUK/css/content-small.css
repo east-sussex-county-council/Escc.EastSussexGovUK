@@ -123,6 +123,12 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 /* Paging - adjust to new font size */
 .text-content .infoBar { margin: .5625em 0; padding: .5625em 18px;border-radius: 5px; }
 
+/* Search results - adjust to new font size */
+.text-content dl.itemDetail { padding: 1.125em 0 .6875em; }
+.text-content dl.itemDetail dt { margin: 0; }
+.text-content dl.itemDetail dd { margin: 0;padding: 0 0 .4375em; }
+.text-content dl.onlyItem { padding: .5625em 0 .125em; }
+
 /* Clear button for the main action on a page. Equivalent of .major-action in default skin. 
    19px/18px with 9px padding and vertical margins of 9px and 43px (+2px border = 54px total) */
 .main-action a { font-size: 1.1875em;line-height: .947368em;display: inline-block;padding: .473684em;margin: .473684em 0 2.263158em; border-bottom: .105263em solid #993003;background: #ED5816;color: #fff; text-decoration: none;letter-spacing: .03em; }
