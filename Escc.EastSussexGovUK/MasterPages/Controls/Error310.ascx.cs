@@ -7,7 +7,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
     /// <summary>
     /// Error message to be displayed when a page has been removed.
     /// </summary>
-    public partial class Error310 : System.Web.UI.UserControl
+    public partial class Error310 : ErrorUserControl
     {
         /// <summary>
         /// Return 310 code 
@@ -21,6 +21,11 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 
             // Set the page title
             Page.Title = "Page gone";
+
+            if (Skin != null)
+            {
+                css.Attributes["class"] = Skin.TextContentClass;
+            }
         }
     }
 }

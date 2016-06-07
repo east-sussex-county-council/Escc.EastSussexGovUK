@@ -11,6 +11,11 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
     public class DefaultSkin : IEsccWebsiteSkin
     {
         /// <summary>
+        /// Class or classes applied to main content with standard text formatting
+        /// </summary>
+        public virtual string TextContentClass { get { return "text"; } }
+
+        /// <summary>
         /// Class or classes applied to supporting content with standard text formatting
         /// </summary>
         public virtual string SupportingTextContentClass { get { return "supporting-text"; } }

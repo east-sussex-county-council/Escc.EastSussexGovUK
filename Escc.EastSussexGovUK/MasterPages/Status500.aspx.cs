@@ -11,6 +11,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
     {
         protected void Page_Load(object sender, System.EventArgs e)
         {
+            var skinnable = Master as BaseMasterPage;
+            if (skinnable != null)
+            {
+                skinnable.Skin = new CustomerFocusSkin(ViewSelector.CurrentViewIs(MasterPageFile));
+            }
+
             // change status
             Response.Status = "500 Internal Server Error";
 

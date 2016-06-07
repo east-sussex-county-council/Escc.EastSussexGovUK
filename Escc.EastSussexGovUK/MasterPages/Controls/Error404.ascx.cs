@@ -9,7 +9,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
     /// <summary>
     /// Error message to be displayed when a page is not found.
     /// </summary>
-    public partial class Error404 : System.Web.UI.UserControl
+    public partial class Error404 : ErrorUserControl
     {
         /// <summary>
         /// Return 404 code and track 404 using Google Analytics
@@ -23,6 +23,11 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 
             // Set the page title
             Page.Title = "Page not found";
+
+            if (Skin != null)
+            {
+                css.Attributes["class"] = Skin.TextContentClass;
+            }
 
             // ...and track the 404 with Google Analytics
             var normalisedReferrer =  String.Empty;

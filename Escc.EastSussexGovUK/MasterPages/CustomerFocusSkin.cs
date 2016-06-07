@@ -21,6 +21,11 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         }
 
         /// <summary>
+        /// Class or classes applied to main content with standard text formatting
+        /// </summary>
+        public virtual string TextContentClass { get { return "content text-content"; } }
+        
+        /// <summary>
         /// Class or classes applied to supporting content with standard text formatting
         /// </summary>
         public virtual string SupportingTextContentClass

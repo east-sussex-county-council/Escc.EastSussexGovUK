@@ -8,6 +8,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var skinnable = Master as BaseMasterPage;
+            if (skinnable != null)
+            {
+                skinnable.Skin = new CustomerFocusSkin(ViewSelector.CurrentViewIs(MasterPageFile));
+            }
+
             if (Request.QueryString["textsize"] != null && Request.QueryString["textsize"].Length == 1)
             {
                 HttpCookie textSize = new HttpCookie("textsize", Request.QueryString["textsize"]);

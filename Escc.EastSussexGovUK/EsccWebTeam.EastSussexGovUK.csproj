@@ -446,6 +446,9 @@
     <Compile Include="MasterPages\Controls\1Space.ascx.designer.cs">
       <DependentUpon>1Space.ascx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\Controls\ErrorUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="MasterPages\Status404.aspx.cs">
       <DependentUpon>Status404.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

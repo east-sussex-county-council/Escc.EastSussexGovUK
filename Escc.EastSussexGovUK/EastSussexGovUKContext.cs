@@ -6,7 +6,10 @@ using System.Configuration;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
+using Escc.EastSussexGovUK.MasterPages;
 using EsccWebTeam.EastSussexGovUK.MasterPages;
+using EsccWebTeam.EastSussexGovUK.MasterPages.Controls;
+
 namespace EsccWebTeam.EastSussexGovUK
 {
     /// <summary>
@@ -239,7 +242,6 @@ namespace EsccWebTeam.EastSussexGovUK
                 return null;
             }
         }
-
 
         #endregion // Shortcuts to information about the current request
 
@@ -488,7 +490,17 @@ namespace EsccWebTeam.EastSussexGovUK
             {
                 errorControlUrl = settings["ErrorControlUrl"];
             }
-            displayControl.Controls.Add(displayControl.Page.LoadControl(String.Format(errorControlUrl, statusCode)));
+            var errorControl = (ErrorUserControl)displayControl.Page.LoadControl(String.Format(errorControlUrl, statusCode));
+            var page = HttpContext.Current.Handler as Page;
+            if (page != null)
+            {
+                var master = page.Master as BaseMasterPage;
+                if (master != null)
+                {
+                    errorControl.Skin = master.Skin;
+                }
+            }
+            displayControl.Controls.Add(errorControl);
         }
 
         #endregion // Shortcut methods to load common content

@@ -7,7 +7,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
     /// <summary>
     /// Error message indicating that the request should not be repeated.
     /// </summary>
-    public partial class Error400 : System.Web.UI.UserControl
+    public partial class Error400 : ErrorUserControl
     {
         /// <summary>
         /// Return 404 code and track 404 using Google Analytics
@@ -21,6 +21,11 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 
             // Set the page title
             Page.Title = "Bad request";
+
+            if (Skin != null)
+            {
+                css.Attributes["class"] = Skin.TextContentClass;
+            }
         }
     }
 }
