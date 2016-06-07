@@ -82,7 +82,7 @@
 /* Search results - adjust to new font size */
 .text-content dl.itemDetail { padding: .947368em 0 .578947em; }
 .text-content dl.itemDetail dd { margin-left: 25%; padding: 0 0 .368421em; }
-.text-content dl.onlyItem { padding: .473684em 0 .105263em; }
+.text-content dl.onlyItem {padding: 0; margin: .947368em 0; }
 
 /* Clear button for the main action on a page. Maintain font-size at 19px despite base font increase. */ 
 .main-action a { font-size: 1em; }

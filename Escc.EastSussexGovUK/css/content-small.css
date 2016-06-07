@@ -127,7 +127,9 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 .text-content dl.itemDetail { padding: 1.125em 0 .6875em; }
 .text-content dl.itemDetail dt { margin: 0; }
 .text-content dl.itemDetail dd { margin: 0;padding: 0 0 .4375em; }
-.text-content dl.onlyItem { padding: .5625em 0 .125em; }
+
+.text-content dl.onlyItem {padding: 0; margin: 1.125em 0; }
+.text-content dl.onlyItem dd { padding: 0; }
 
 /* Clear button for the main action on a page. Equivalent of .major-action in default skin. 
    19px/18px with 9px padding and vertical margins of 9px and 43px (+2px border = 54px total) */
