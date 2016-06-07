@@ -73,7 +73,9 @@ del "$destinationFolder\$projectName\web.temp*.config"
 
 TransformConfig "$sourceFolder\masterpages\web.example.config" "$destinationFolder\$projectName\masterpages\web.temp1.config" "$sourceFolder\transforms\HttpStatusPages.transform.config"
 TransformConfig "$destinationFolder\$projectName\masterpages\web.temp1.config" "$destinationFolder\$projectName\masterpages\web.temp2.config" "$sourceFolder\transforms\Metadata.transform.config"
-TransformConfig "$destinationFolder\$projectName\masterpages\web.temp2.config" "$destinationFolder\$projectName\masterpages\web.config" "$transformsFolder\$projectName\masterpages\web.release.config"
+TransformConfig "$destinationFolder\$projectName\masterpages\web.temp2.config" "$destinationFolder\$projectName\masterpages\web.temp3.config" "$sourceFolder\transforms\MediaQueries.transform.config"
+TransformConfig "$destinationFolder\$projectName\masterpages\web.temp3.config" "$destinationFolder\$projectName\masterpages\web.temp4.config" "$sourceFolder\transforms\Css.transform.config"
+TransformConfig "$destinationFolder\$projectName\masterpages\web.temp4.config" "$destinationFolder\$projectName\masterpages\web.config" "$transformsFolder\$projectName\masterpages\web.release.config"
 del "$destinationFolder\$projectName\masterpages\web.temp*.config"
 
 TransformConfig "$sourceFolder\css\web.example.config" "$destinationFolder\$projectName\css\web.config" "$transformsFolder\$projectName\css\web.release.config"
