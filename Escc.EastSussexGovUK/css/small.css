@@ -398,7 +398,7 @@ body .footer .footer-content { padding-top: 1.153846em; }
 .footer .languages ul { margin: 0 18px; }
 .footer .languages li { float: left; margin: 0 1em 0 0; list-style: none; }
 .footer .languages .nonLatin { margin: 0 1.3em 0 0; }
-.footer .languages a:link, .footer .languages a:visited { text-decoration: none; }
+.footer .languages a:link, .footer .languages a:visited {padding: 0;background: none; text-decoration: none; }
 .footer .languages a:hover, .footer .languages a:focus, .footer .languages a:active { text-decoration: underline; }
 
 /* List of links to ESCC online */

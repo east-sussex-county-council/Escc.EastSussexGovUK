@@ -28,6 +28,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            var skinnable = Master as BaseMasterPage;
+            if (skinnable != null)
+            {
+                skinnable.Skin = new CustomerFocusSkin(ViewSelector.CurrentViewIs(MasterPageFile));
+            }
+
             if (String.IsNullOrEmpty(Request.QueryString["url"]))
             {
                 EastSussexGovUKContext.HttpStatus404NotFound(this.article);

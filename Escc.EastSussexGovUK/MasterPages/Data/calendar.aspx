@@ -7,17 +7,22 @@
         DateCreated="2012-06-29"
         IpsvPreferredTerms="Internet"
     />
+    <ClientDependency:Css runat="server" Files="ContentSmall" />
+    <EastSussexGovUK:ContextContainer runat="server" Desktop="true">
+        <ClientDependency:Css runat="server" Files="ContentMedium" MediaConfiguration="Medium" />
+        <ClientDependency:Css runat="server" Files="ContentLarge" MediaConfiguration="Large" />
+    </EastSussexGovUK:ContextContainer>
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="content">
     <div class="article">
         <article id="article" runat="server">
-            <div class="text">
+            <div class="content text-content">
     <h1 runat="server" id="heading">Subscribe to calendar: {0}</h1>
 
     <p>Click 'Subscribe to calendar' to add these dates to your own calendar, and get updates automatically. 
     You can find instructions for subscribing in popular calendars below.</p>
-    <p class="major-action"><a runat="server" id="subscribe" type="text/calendar">Subscribe to calendar</a></p>
+    <p class="main-action"><a runat="server" id="subscribe" type="text/calendar">Subscribe to calendar</a></p>
     
     <p>If you don't want to subscribe to updates, <a runat="server" id="download" type="text/calendar">download the calendar</a> instead.</p>
     
@@ -33,5 +38,5 @@
                 </div>
         </article>
     </div>
-
+    <EastSussexGovUK:MasterPageControl runat="server" Control="Banners" />
 </asp:Content>
