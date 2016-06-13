@@ -336,7 +336,8 @@ body .form select.too-wide { width: 100%; }
    
        <p><label>I would like to buy <input type="number" class="within-text" /> candles</label></p>
 */
-body .form input.within-text { position: relative; top: -2px;vertical-align: top; }
+body .form input.within-text { position: relative;top: -2px; vertical-align: top; }
+.text-content .form input.within-text { margin: 0 .3em; }
 
 /* Vertical radiobutton list or checkbox list. 
    Options stack so it is unambiguous which label belongs to which input.
@@ -373,7 +374,7 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
 .form .radioButtonList input { left: 0; margin-top: 2px;  position: absolute; z-index: 1; }
 .ie67 .form .radioButtonList input, .ie8 .form .radioButtonList input { margin-top: 0; }
 
-.text-content .form .radioButtonList input { margin-top: 6px; }
+.text-content .form .radioButtonList input[type=radio], .text-content .form .radioButtonList input[type=checkbox] { margin-top: 6px; }
 .text-content fieldset.checkboxes label { margin: 4px 0;}
 
 /* Make each option occupy an entire line so they stack vertically. 
@@ -674,14 +675,13 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
 /*:: SERVICE FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     A .service-form is one where the user submits information and expects the council to do something with it. These forms 
-    can get quite long, sometimes multiple pages, so there are classes to handle that. In fact if they're short you should
-    use .short-form instead. The eforms system generates .service-forms.
+    can get quite long, sometimes multiple pages, so there are classes to handle that. The eforms system generates .service-forms.
 
-    .service-form should be applied along with .form and .text, and generally on a .full-page because we don't want the user 
+    .service-form should be applied along with .form and .text-content, and generally on a .full-page because we don't want the user 
      to be distracted from their task
 
     <div class="full-page"> 
-        <div class="text">
+        <div class="content text-content">
             <h1>Page title</h1>
             <div class="form service-form">
                 ...    
@@ -695,7 +695,7 @@ body .form input.within-text { position: relative; top: -2px;vertical-align: top
     Overflow prevents the final margin from extending outside the box
   */
 .service-form { background-color: #fff; overflow: hidden; margin: 1.384615em 0; }
-
+.text-content .service-form { margin: 1.125em 0;}
 
 /*:: SERVICE FORMS -- SECTIONS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
    
@@ -745,6 +745,9 @@ FormPart are the container for the question and answer controls
 /* Apply .checkbox and .radioButtonList to a containing element surrounding a single checkbox. See documentation for .radioButtonList above. */
 .service-form .checkbox { font-weight: bold; }
 
+/* Align radio buttons with new text size */
+.service-form input[type="radio"] { vertical-align: baseline; }
+
 /* Labels are displayed as block to force the following control to wrap under the label and stack the controls. 
    Set the font back to normal from bold for block elements within the label. 
    Don't reset display property for legend as IE<=11 needs it to be display: table or the element doesn't wrap. '*/
@@ -756,6 +759,13 @@ FormPart are the container for the question and answer controls
 /* Exeception for formLabel when used on address control NEED TO DISCUSS */
 .service-form .formPart span.formLabel{display: block; font-weight :bold; margin: 0 0 2px;}
 
+/* Use consistent borders for all field types */
+.service-form input[type=text], .service-form input[type=password], .service-form input[type=email], .service-form input[type=tel], .service-form input[type=url], .service-form input[type=number], .service-form select { border: 1px solid #9c9c9c;border-radius: 4px; } 
+
+/* Multiple selects form one control for dates. Use rounded corners only at the start and end of the group. */
+.service-form .dateControl select:first-of-type { border-radius: 4px 0 0 4px; }
+.service-form .dateControl select { border-radius: 0;}
+.service-form .dateControl select:last-of-type { border-radius: 0 4px 4px 0; }
 
 /* Force select elements to stack vertically and remain fluid. 
    Max-Width avoids the problem when resizing the width that the box pushes outside the its containing element.*/
@@ -763,8 +773,7 @@ FormPart are the container for the question and answer controls
 
 /* Make text fields fairly wide by default so that there's plenty of room to type. 
    Specific classes override this where a specific length suggests what should go into the field, eg .postcode
-   IE6 needs the same style in a separate rule, otherwise it's not applied due to the attribute selector.
-   TODO: BY NOT GOING FULL WIDTH, LABELS CAN STRETCH PAST FORMS, eg musicform.aspx. MAKE A DECISION. */
+   IE6 needs the same style in a separate rule, otherwise it's not applied due to the attribute selector. */
 .service-form textarea, .service-form input[type=text] { width: 50em; max-width: 100%; }
 .ie6 .service-form textarea { width: 50em; }
 

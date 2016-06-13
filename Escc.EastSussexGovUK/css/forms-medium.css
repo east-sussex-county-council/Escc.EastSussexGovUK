@@ -36,6 +36,9 @@
 .text-content .errorSummary { margin: .842105em 0;border-width: .105263em;padding: .473684em; }
 .text-content .errorSummary p, .text-content .errorSummary ul { margin: .473684em 0 0; }
 
+/* Align checkboxes and radio buttons to bigger text */
+.text-content .form .radioButtonList input[type=radio], .text-content .form .radioButtonList input[type=checkbox] { margin-top: 8px; }
+
 
 /*:: SIMPLE FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -71,3 +74,7 @@
 
 /* Add extra horizontal space around buttons when text is bigger in customer focus skin */
 .text-content .short-form input[type=submit] { padding: .368421em 12px; }
+
+/*:: SERVICE FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
+.text-content .service-form { margin: .947368em 0;}
