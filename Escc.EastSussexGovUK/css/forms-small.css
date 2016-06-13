@@ -322,10 +322,10 @@ body .form input.currency { width: 5em; }
 
 /*
 Define 7 field types to match the 7 fields in a BS7666 address 
-
+99% width allows for left and right borders 
 TODO .postcodeField is used by .addressControl. Need to update FormControls.
 */
-body .form input.saon, body .form input.paon, body .form input.street { width: 50em; }
+body .form input.saon, body .form input.paon, body .form input.street { width: 99%; }
 body .form input.locality, body .form input.town, body .form input.administrative-area { width: 20em; }
 body .form input.postcode, body .form input.postcodeField { width: 5em; }
 
@@ -760,22 +760,26 @@ FormPart are the container for the question and answer controls
 .service-form .formPart span.formLabel{display: block; font-weight :bold; margin: 0 0 2px;}
 
 /* Use consistent borders for all field types */
-.service-form input[type=text], .service-form input[type=password], .service-form input[type=email], .service-form input[type=tel], .service-form input[type=url], .service-form input[type=number], .service-form select { border: 1px solid #9c9c9c;border-radius: 4px; } 
+.text-content .service-form input[type=text], .text-content .service-form input[type=password], .text-content .service-form input[type=email], .text-content .service-form input[type=tel], 
+.text-content .service-form input[type=url], .text-content .service-form input[type=number], .text-content .service-form select, .text-content .service-form textarea { border: 1px solid #9c9c9c;border-radius: 4px; } 
 
 /* Multiple selects form one control for dates. Use rounded corners only at the start and end of the group. */
-.service-form .dateControl select:first-of-type { border-radius: 4px 0 0 4px; }
-.service-form .dateControl select { border-radius: 0;}
-.service-form .dateControl select:last-of-type { border-radius: 0 4px 4px 0; }
+.text-content .service-form .dateControl select:first-of-type { border-radius: 4px 0 0 4px; }
+.text-content .service-form .dateControl select { border-radius: 0;}
+.text-content .service-form .dateControl select:last-of-type { border-radius: 0 4px 4px 0; }
 
 /* Force select elements to stack vertically and remain fluid. 
    Max-Width avoids the problem when resizing the width that the box pushes outside the its containing element.*/
 .service-form .formPart select { display: block; max-width:100%; }
 
-/* Make text fields fairly wide by default so that there's plenty of room to type. 
+/* Make text fields fairly wide by default so that there's plenty of room to type. 99% rather than 100% to allow 
+   for left and right borders, particularly in Chrome. Can't use an absolute width in ems because, inside a fieldset, 
+   it beats the max-width and can overflow the containing box.
+   
    Specific classes override this where a specific length suggests what should go into the field, eg .postcode
    IE6 needs the same style in a separate rule, otherwise it's not applied due to the attribute selector. */
-.service-form textarea, .service-form input[type=text] { width: 50em; max-width: 100%; }
-.ie6 .service-form textarea { width: 50em; }
+.service-form textarea, .service-form input[type=text] { width: 99%; max-width: 100%; }
+.ie6 .service-form textarea { width: 99%; }
 
 /* Force the following control to wrap under the label and stack the controls*/
 .service-form .formPart span.formLabel, .service-form .formPart span.formControl {display:block; }
