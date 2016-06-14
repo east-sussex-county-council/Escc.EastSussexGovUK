@@ -1,7 +1,5 @@
 User-agent: *
-Disallow: /libraries/find/MapViewer.aspx
 Disallow: /search/search.aspx
-Disallow: /contactus/autotranslation.aspx
 
 User-agent: Atomic_Email_Hunter
 Disallow: /
