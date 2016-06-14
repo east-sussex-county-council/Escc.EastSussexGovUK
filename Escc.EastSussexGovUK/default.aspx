@@ -1,2 +1,2 @@
 ﻿<%@ Page Language="C#" %>
-<% EsccWebTeam.Data.Web.Http.Status301MovedPermanently("https://new.eastsussex.gov.uk"); %>
+<% EsccWebTeam.Data.Web.Http.Status301MovedPermanently("https://www.eastsussex.gov.uk"); %>

@@ -1,6 +1,6 @@
 // Allow IE8 & IE9 to make a cross-origin request. 
 // Required by JQuery autocomplete when using the remote template from a domain other than www.eastsussex.gov.uk.
-// Also required to access service alerts from domains other than new.eastsussex.gov.uk
+// Also required to access service alerts from domains other than www.eastsussex.gov.uk
 
 // Should this library not work for a future requirement, try https://github.com/MoonScript/jQuery-ajaxTransport-XDomainRequest 
 // Suggestion is it may be better http://stackoverflow.com/questions/10232017/ie9-jquery-ajax-with-cors-returns-access-is-denied
