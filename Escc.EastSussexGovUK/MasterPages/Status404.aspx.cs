@@ -43,14 +43,14 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                 // TryUriPattern(requestedPath, "^pattern-to-look-for$", "replacement-pattern", 301); 
             }
 
-            // If none found, just show the content of this page (a 404 message)
-            EastSussexGovUKContext.HttpStatus404NotFound(this.content);
-
             var skinnable = Master as BaseMasterPage;
             if (skinnable != null)
             {
                 skinnable.Skin = new CustomerFocusSkin(ViewSelector.CurrentViewIs(MasterPageFile));
             }
+
+            // If none found, just show the content of this page (a 404 message)
+            EastSussexGovUKContext.HttpStatus404NotFound(this.content);
         }
 
         /// <summary>

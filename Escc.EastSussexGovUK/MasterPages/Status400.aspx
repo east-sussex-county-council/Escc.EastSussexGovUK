@@ -1,4 +1,4 @@
-<%@ Page Language="c#" CodeBehind="Status400.aspx.cs" AutoEventWireup="true" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Status400" EnableViewState="false" MasterPageFile="Desktop.Master" %>
+<%@ Page Language="c#" CodeBehind="Status400.aspx.cs" AutoEventWireup="true" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Status400" EnableViewState="false" MasterPageFile="~/masterpages/desktop.master" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="metadata">
     <Metadata:MetadataControl ID="headContent" runat="server"

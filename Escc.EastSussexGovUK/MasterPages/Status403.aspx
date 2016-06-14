@@ -1,4 +1,4 @@
-<%@ Page Language="c#" CodeBehind="Status403.aspx.cs" AutoEventWireup="true" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.HttpStatus403" EnableViewState="false" MasterPageFile="Desktop.Master" %>
+<%@ Page Language="c#" CodeBehind="Status403.aspx.cs" AutoEventWireup="true" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.HttpStatus403" EnableViewState="false" MasterPageFile="~/masterpages/desktop.master" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="metadata">
     <Metadata:MetadataControl ID="headContent" runat="server"
@@ -16,7 +16,7 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="content">
     <div class="full-page">
-        <div class="text">
+        <div class="content text-content">
             <h1>Forbidden</h1>
             <p>Sorry, you're not allowed to view that page.</p>
         </div>
