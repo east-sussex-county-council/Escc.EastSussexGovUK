@@ -642,7 +642,7 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 @media screen
 {
 .hcal, a[href$=".calendar"], .rss, .email, .rss-email, .xml, a[href$=".xml"], .pdf, a[href$=".pdf"], .wma, a[href$=".wma"], .mp3, a[href$=".mp3"],
-.doc, a[href$=".doc"], a[href$=".docx"], a[href$=".dot"], a[href$=".dotx"], .rtf, a[href$=".rtf"], .xls, a[href$=".xls"], a[href$=".xlsx"], a[href$=".xlt"], a[href$=".xltx"], a[href$=".csv"], 
+.doc, .docx, a[href$=".doc"], a[href$=".docx"], a[href$=".dot"], a[href$=".dotx"], .rtf, a[href$=".rtf"], .xls, a[href$=".xls"], a[href$=".xlsx"], a[href$=".xlt"], a[href$=".xltx"], a[href$=".csv"], 
 .ppt, a[href$=".ppt"], a[href$=".pptx"], a[href$=".pps"], a[href$=".ppsx"], a[href$=".pot"], a[href$=".potx"], .jpg, a[href$=".jpg"], a[href$=".jpeg"], .html, .file, 
 .new-window, .facebook, a[href*="facebook.com"], .twitter, a[href*="twitter.com"], .youtube, a[href*="youtube.com"], a[href*="youtu.be"], .flickr, a[href*="flickr.com"], a[href$="/print"]
 { background-image: url(../img/body/item-type.png?v=2); background-repeat: no-repeat; padding-left: 23px; }
@@ -653,8 +653,8 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .rss-email  { background-position: 0 -150px; }
 .xml, a[href$=".xml"] { background-position: 0 -200px; padding-left: 30px;  }
 .pdf, a[href$=".pdf"] { background-position: 0 -248px; }
-.doc, .rtf, a[href$=".doc"], a[href$=".docx"], a[href$=".dot"], a[href$=".dotx"], a[href$=".rtf"] { background-position: 0 -298px; padding-left: 20px;  }
-.xls, a[href$=".xls"], a[href$=".xlsx"], a[href$=".xlt"], a[href$=".xltx"], a[href$=".csv"] { background-position: 0 -350px; padding-left: 18px;  }
+.doc, .docx, .dot, .dotx, .rtf, a[href$=".doc"], a[href$=".docx"], a[href$=".dot"], a[href$=".dotx"], a[href$=".rtf"] { background-position: 0 -298px; padding-left: 20px;  }
+.xls, .xlsx, .xlt, .xltx, .csv, a[href$=".xls"], a[href$=".xlsx"], a[href$=".xlt"], a[href$=".xltx"], a[href$=".csv"] { background-position: 0 -350px; padding-left: 18px;  }
 .wma, a[href$=".wma"] { background-position: 0 -400px;  }
 .mp3, a[href$=".mp3"] { background-position: 0 -450px; padding-left: 20px;  }
 .ppt, a[href$=".ppt"], a[href$=".pptx"], a[href$=".pps"], a[href$=".ppsx"], a[href$=".pot"], a[href$=".potx"] { background-position: left -1748px; padding-left: 20px; }
