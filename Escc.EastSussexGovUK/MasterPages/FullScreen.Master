@@ -7,6 +7,7 @@
     <%-- Standard metadata comes first so it's early in life-cycle, because it contains ClientDependency:Css control we want others to find and merge with --%>
     <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataFullScreen" EnableViewState="false" />
     <asp:ContentPlaceHolder id="metadata" runat="server" />
+    <asp:Literal runat="server" ID="fonts"/><ClientDependency:Script runat="server" Files="Typekit" ID="Typekit" Visible="False"/>
     <asp:ContentPlaceHolder runat="server" ID="css" enableviewstate="false" />
     <title></title>
 </head>

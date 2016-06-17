@@ -10,6 +10,9 @@
     <![endif]-->
 */ 
 
+/* Remove the blue background which is not needed now that there's no footer */
+body { background: #fff; }
+
 /* Create a container which expands to fill the screen. Don't use body element for this as it creates scrollbars. */
 .full-screen { width: 100%; height: 100%; }
 

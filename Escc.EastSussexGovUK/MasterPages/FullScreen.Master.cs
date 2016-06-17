@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
@@ -14,6 +16,26 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected new void Page_Load(object sender, EventArgs e)
         {
+            // Support web fonts required by the current skin
+            if (Skin != null)
+            {
+                var fontsHtml = new StringBuilder();
+                foreach (var font in Skin.RequiresGoogleFonts())
+                {
+                    fontsHtml.Append("<link href=\"").Append(font.FontUrl).Append("\" rel=\"stylesheet\" type=\"text/css\" />");
+                }
+
+                if (Skin.RequiresTypekitFonts().Any())
+                {
+                    foreach (var font in Skin.RequiresTypekitFonts())
+                    {
+                        fontsHtml.Append("<script src=\"").Append(font.TypekitUrl).Append("\"></script>");
+                    }
+                    this.Typekit.Visible = true;
+                }
+                this.fonts.Text = fontsHtml.ToString();
+            }
+
             // Run the base method as well
             base.Page_Load(sender, e);
         }
