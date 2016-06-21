@@ -56,7 +56,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
 
             // Default behaviour
             this.OverrideRenderMethod = true;
-            this.Skin = new DefaultSkin();
+            if (Skin == null) Skin = new DefaultSkin();
         }
 
         /// <summary>

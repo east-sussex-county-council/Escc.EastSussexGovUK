@@ -21,7 +21,7 @@
 
                 <div class="full-screen-bar">
                        <h1><asp:contentplaceholder runat="server" id="fullScreenHeading">Page heading</asp:contentplaceholder></h1>
-                       <asp:contentplaceholder runat="server" id="fullScreenLinks"><p><a href="/default.htm">Back to section</a></p>
+                       <asp:contentplaceholder runat="server" id="fullScreenLinks"><p><a href="/">Back to section</a></p>
                        <p class="accessible"><a href="/accessible.htm">Accessible version</a></p></asp:contentplaceholder>
                 </div>
             </div>
