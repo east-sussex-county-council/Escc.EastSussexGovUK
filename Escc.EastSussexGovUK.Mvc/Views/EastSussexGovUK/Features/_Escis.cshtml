@@ -1,5 +1,7 @@
-﻿@model Escc.EastSussexGovUK.Mvc.BaseViewModel
-@if (Model.ShowEscisWidget)
+﻿@using Escc.EastSussexGovUK.MasterPages.Features
+@model Escc.EastSussexGovUK.Mvc.BaseViewModel
+@if (Model != null && Model.ShowEscisWidget)
 {
+    @Html.Partial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", new EscisSearch() { ShowEscisSearch = Model.ShowEscisWidget})
     <div class="supporting escis large"></div>
 }

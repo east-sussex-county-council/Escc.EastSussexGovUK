@@ -2,7 +2,7 @@
 @{
     var encodedPageUrl = HttpUtility.UrlEncode(Request.Url.ToString());
     // strip double-quotes because when this link is picked up by a link checker and exported to CSV, the quotes are misinterpreted as a CSV delimiter
-    var encodedTitle = HttpUtility.UrlEncode(Model.Metadata.Title.Replace("\"", String.Empty));
+    var encodedTitle = Model != null ? HttpUtility.UrlEncode(Model.Metadata.Title.Replace("\"", String.Empty)) : String.Empty;
 }
 <aside>
     <p class="screen share-page">

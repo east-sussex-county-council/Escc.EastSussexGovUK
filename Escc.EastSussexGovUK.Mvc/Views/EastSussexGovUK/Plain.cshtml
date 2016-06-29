@@ -3,6 +3,7 @@
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#"
       xmlns:fb="https://www.facebook.com/2008/fbml" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml schema: http://schema.org/">
 <head>
+    @if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel"); }
     @RenderSection("ContentExperiment", required: false)
     <meta charset="UTF-8" />
     @{ Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata); }

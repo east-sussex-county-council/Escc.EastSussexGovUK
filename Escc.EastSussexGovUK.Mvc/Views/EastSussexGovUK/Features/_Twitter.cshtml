@@ -1,8 +1,10 @@
-﻿@using EsccWebTeam.EastSussexGovUK.MasterPages
+﻿@using Escc.EastSussexGovUK.MasterPages.Features
+@using EsccWebTeam.EastSussexGovUK.MasterPages
 @model Escc.EastSussexGovUK.Mvc.BaseViewModel
-@{
+@if (Model != null)
+{
     var showWidget = Model.SocialMedia.TwitterWidgetScript != null && Model.EsccWebsiteView == EsccWebsiteView.Desktop;
-    if (!String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount) && (Model.EsccWebsiteView == EsccWebsiteView.Desktop || Model.EsccWebsiteView == EsccWebsiteView.Mobile))
+    if (!String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount) && Model.EsccWebsiteView == EsccWebsiteView.Desktop)
     {
         var twitterUrl = "https://twitter.com/" + Model.SocialMedia.TwitterAccount;
         var twitterClass = showWidget ? "small medium text text-content content-small content-medium" : "supporting " + Model.EsccWebsiteSkin.SupportingTextContentClass;
@@ -12,6 +14,7 @@
     }
     if (showWidget)
     {
+        @Html.Partial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView })
         <div class="supporting large">@Model.SocialMedia.TwitterWidgetScript</div>
     }
 }

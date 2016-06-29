@@ -3,6 +3,7 @@
 @using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
 @model Escc.EastSussexGovUK.Mvc.BaseViewModel
 @{
+    if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel"); }
     Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
     Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider });
 }

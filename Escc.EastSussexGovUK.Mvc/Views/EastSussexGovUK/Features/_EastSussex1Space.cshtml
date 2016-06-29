@@ -1,6 +1,8 @@
-﻿@model Escc.EastSussexGovUK.Mvc.BaseViewModel
-@if (Model.ShowEastSussex1SpaceWidget)
+﻿@using Escc.EastSussexGovUK.MasterPages.Features
+@model Escc.EastSussexGovUK.Mvc.BaseViewModel
+@if (Model != null && Model.ShowEastSussex1SpaceWidget)
 {
+    @Html.Partial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget })
     <div class="supporting large">
         <div id="marketplace-search-widget">
             <div id="logo">
