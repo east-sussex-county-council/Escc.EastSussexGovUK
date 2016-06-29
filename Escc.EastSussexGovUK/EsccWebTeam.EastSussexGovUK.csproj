@@ -274,6 +274,7 @@
     <Content Include="MasterPages\Controls\1Space.ascx" />
     <Content Include="MasterPages\Web.config" />
     <None Include="MasterPages\Web.example.config" />
+    <Content Include="transforms\Security.transform.config" />
     <None Include="transforms\ContentSecurityPolicy.transform.config" />
     <None Include="js\1space.js" />
     <None Include="js\alerts.js" />

@@ -68,7 +68,8 @@ BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
     
 robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png desktop.png pan-*.gif item-type.png *.master share.ascx related.ascx 1space.ascx choose.ashx default.aspx status*.aspx error*.ascx escc-logo.gif logo-large.gif display-as-html.xslt config.xslt calendar.aspx hCalendar.ashx hCalendar.xslt datetime.xsl mf-templates.xsl uri.xsl xhtml2vcal.xsl google*.html /XD aspnet_client obj Properties "Web References"
 TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.temp1.config" "$sourceFolder\transforms\HttpStatus.transform.config"
-TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.config" "$sourceFolder\transforms\ContentSecurityPolicy.transform.config"
+TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.temp2.config" "$sourceFolder\transforms\ContentSecurityPolicy.transform.config"
+TransformConfig "$destinationFolder\$projectName\web.temp2.config" "$destinationFolder\$projectName\web.config" "$sourceFolder\transforms\Security.transform.config"
 del "$destinationFolder\$projectName\web.temp*.config"
 
 TransformConfig "$sourceFolder\masterpages\web.example.config" "$destinationFolder\$projectName\masterpages\web.temp1.config" "$sourceFolder\transforms\HttpStatusPages.transform.config"
