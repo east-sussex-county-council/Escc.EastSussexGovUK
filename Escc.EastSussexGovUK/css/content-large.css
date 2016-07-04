@@ -36,14 +36,17 @@ body .breadcrumb a:hover, body .breadcrumb a:focus, body .breadcrumb a:active { 
 /* Keep bottom margin of .supporting sections at 18px */
 .supporting { margin-bottom: .947368em; }
 
-/* Related links box. we expect this at the top of the right column, so adopt a different display:
+/* Related links box. 
    
    Update h2 to have 9px spacing below, none above
    Adjust width: still 4 cols in 12, but now minus 2 x 18px gutters for padding
+
+   When combined with .supporting, .related-links normally appears at the top of the right column
    */
 .related-links h2 { margin: 0; }
 .related-links ul + h2 { margin-top: .947368em;}
-.related-links { padding: 1.863354% .947368em; width: 28.364389%; background: #CCEEFA; border-radius: 5px; }
+.related-links { padding: 1.863354% .947368em; background: #CCEEFA; border-radius: 5px; }
+.related-links.supporting { width: 28.364389%; }
 
 /* _Share.cshtml should always be included at the end of the content. 
     This ensures it appears under the main column rather than as part of the right column, regardless of which is longer. */
