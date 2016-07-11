@@ -2,12 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
-using System.Net;
 using System.Threading;
 using System.Web;
 using System.Web.SessionState;
-using EsccWebTeam.Data.Web;
-using Escc.Net;
+using Escc.Web;
 using Exceptionless;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
@@ -159,6 +157,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// </summary>
         /// <param name="generalSettings">The general settings.</param>
         /// <param name="configSettings">The config settings for specific master pages.</param>
+        /// <param name="configSettingsGroup">The configuration settings group.</param>
         /// <param name="esccWebsiteView">The preferred view before this test.</param>
         /// <param name="requestedKey">The key supplied by the user to request the master page.</param>
         /// <returns></returns>
@@ -194,7 +193,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         {
             // Break the URL into folders. Work backwards starting from the page, its folder, its subfolder 
             // and so on back to the root until we find a setting. If we don't find a setting, stick with the existing default.
-            var folderList = Iri.ListFilesAndFoldersInPath(requestUrl);
+            var folderList = ListFilesAndFoldersInPath(requestUrl);
 
             var i = 0;
             var folders = folderList.Count;
@@ -211,6 +210,49 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                 i++;
             }
             return preferredMasterPage;
+        }
+
+
+        /// <summary>
+        /// Lists files and folders in the path of an absolute URL or a URL relative to the site root. Trailing slashes are trimmed.
+        /// </summary>
+        /// <param name="urlToParse">The URL to parse.</param>
+        /// <returns>List of paths, starting with the most specific and ending with only the root folder or filename</returns>
+        /// <exception cref="ArgumentException"></exception>
+        private static IList<string> ListFilesAndFoldersInPath(Uri urlToParse)
+        {
+            if (urlToParse == null) throw new ArgumentNullException("urlToParse");
+
+            // get path to process
+            var path = String.Empty;
+            if (urlToParse.IsAbsoluteUri)
+            {
+                path = urlToParse.AbsolutePath;
+            }
+            else if (urlToParse.ToString().StartsWith("/", StringComparison.Ordinal))
+            {
+                path = urlToParse.ToString();
+                var querystring = path.IndexOf("?", StringComparison.Ordinal);
+                if (querystring > -1) path = path.Substring(0, querystring);
+            }
+            else
+            {
+                throw new ArgumentException("urlToParse must be an absolute URL or a relative URL which begins with /", "urlToParse");
+            }
+
+            // Build up a list of paths, knocking off one segment at a time
+            var paths = new List<string>();
+
+            while (path.Length > 0)
+            {
+                paths.Add(path);
+                var slashIndex = path.LastIndexOf("/", StringComparison.Ordinal);
+                if (slashIndex == -1) break;
+                path = path.Substring(0, slashIndex);
+            }
+            paths.Add("/"); // because we knock off the trailing slash, need to hard-code adding the root which is only a trailing slash
+
+            return paths;
         }
 
         /// <summary>
@@ -271,10 +313,10 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
 
                 // Redirect to the best available page - either the referrer or the root of the current host
                 var redirectUri = new Uri(request.Url.Scheme + "://" + request.Url.Host + "/");
-                if (request.QueryString["for"] != "survey" && !String.IsNullOrEmpty(request.QueryString["return"]))
+                if (!String.IsNullOrEmpty(request.QueryString["return"]))
                 {
                     var returnUrl = new Uri(request.QueryString["return"], UriKind.RelativeOrAbsolute);
-                    returnUrl = Iri.MakeAbsolute(returnUrl);
+                    returnUrl = new Uri(request.Url, returnUrl);
 
                     if (returnUrl.Host.EndsWith("eastsussex.gov.uk", StringComparison.OrdinalIgnoreCase) ||
                      returnUrl.Host.ToUpperInvariant() == request.Url.Host.ToUpperInvariant())
@@ -286,10 +328,13 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                 if (redirectUri != request.Url)
                 {
                     // Add a cache-busting parameter to ensure the new version is loaded
-                    redirectUri = Iri.RemoveQueryStringParameter(redirectUri, "nocache");
-                    redirectUri = new Uri(Iri.PrepareUrlForNewQueryStringParameter(redirectUri) + "nocache=" + Guid.NewGuid().ToString());
+                    var query = HttpUtility.ParseQueryString(redirectUri.Query);
+                    query.Remove("nocache");
+                    query.Add("nocache", Guid.NewGuid().ToString());
 
-                    Http.Status303SeeOther(redirectUri);
+                    redirectUri = new Uri(redirectUri.Scheme + "://" + redirectUri.Authority + redirectUri.AbsolutePath + "?" + query);
+
+                    new HttpStatus().SeeOther(redirectUri);
                 }
             }
             catch (ThreadAbortException)

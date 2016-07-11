@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using EsccWebTeam.Data.Web;
+using Escc.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -14,10 +14,9 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         {
             if (Visible)
             {
-                var policy = new ContentSecurityPolicy(HttpContext.Current.Request.Url);
-                policy.ParsePolicy(HttpContext.Current.Response.Headers["Content-Security-Policy"], true);
-                policy.AppendFromConfig("EastSussex1Space");
-                policy.UpdateHeader(HttpContext.Current.Response);
+                var policy = new ContentSecurityPolicyHeaders(HttpContext.Current.Response.Headers);
+                policy.AppendPolicy(new ContentSecurityPolicyFromConfig().Policies["EastSussex1Space"]);
+                policy.UpdateHeaders();
             }
         }
     }

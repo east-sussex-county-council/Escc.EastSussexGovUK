@@ -5,7 +5,6 @@ using System.Configuration;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web.UI.HtmlControls;
-using EsccWebTeam.Data.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -114,7 +113,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             }
 
             // Ensure search is always an HTTPS URL to avoid a redirect
-            this.searchUrl.Text = Iri.MakeAbsolute(new Uri(this.searchUrl.Text, UriKind.RelativeOrAbsolute)).ToString();
+            this.searchUrl.Text = new Uri(Request.Url, new Uri(this.searchUrl.Text, UriKind.RelativeOrAbsolute)).ToString();
             if (this.searchUrl.Text.StartsWith("http://"))
             {
                 this.searchUrl.Text = "https://" + this.searchUrl.Text.Substring(7);

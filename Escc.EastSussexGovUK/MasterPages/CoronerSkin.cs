@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using EsccWebTeam.Data.Web;
 using EsccWebTeam.EastSussexGovUK.MasterPages;
 
 namespace Escc.EastSussexGovUK.MasterPages
@@ -20,8 +19,12 @@ namespace Escc.EastSussexGovUK.MasterPages
         /// </summary>
         /// <param name="currentView">The current view.</param>
         /// <param name="requestUrl">The request URL.</param>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        /// <exception cref="System.ArgumentException">requestUrl must be an absolute URL</exception>
         public CoronerSkin(EsccWebsiteView currentView, Uri requestUrl) : base(currentView)
         {
+            if (requestUrl == null) throw new ArgumentNullException(nameof(requestUrl));
+            if (!requestUrl.IsAbsoluteUri) throw new ArgumentException("requestUrl must be an absolute URL");
             _currentView = currentView;
             _requestUrl = requestUrl;
         }
@@ -36,7 +39,6 @@ namespace Escc.EastSussexGovUK.MasterPages
         {
             if (_requestUrl != null)
             {
-                _requestUrl = Iri.MakeAbsolute(_requestUrl);
                 return _requestUrl.AbsolutePath.ToLowerInvariant().Contains("/coroner");
             }
             else return true;

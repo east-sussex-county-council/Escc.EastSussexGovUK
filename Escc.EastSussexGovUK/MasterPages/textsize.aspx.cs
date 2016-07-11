@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web;
-using EsccWebTeam.Data.Web;
+using Escc.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
@@ -25,18 +25,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             // Add a cache-busting parameter so that the user isn't returned to an HTTP-cached version of the page which has the old text size
             if (Request.UrlReferrer != null && Request.UrlReferrer.AbsolutePath != Request.Url.AbsolutePath)
             {
-                var redirectTo = Iri.RemoveQueryStringParameter(Request.UrlReferrer, "nocache");
-                redirectTo = new Uri(Iri.PrepareUrlForNewQueryStringParameter(redirectTo) + "nocache=" + Guid.NewGuid().ToString());
-                Http.Status303SeeOther(redirectTo);
+                var referrerQuery = HttpUtility.ParseQueryString(Request.UrlReferrer.Query);
+                referrerQuery.Remove("nocache");
+                referrerQuery.Add("nocache", Guid.NewGuid().ToString());
+                var redirectTo = new Uri(Request.UrlReferrer.Scheme + "://" + Request.UrlReferrer.Authority + Request.UrlReferrer.AbsolutePath + "?" + referrerQuery);
+                new HttpStatus().SeeOther(redirectTo);
             }
-            
-            // Apps which run over https from another subdomain will never have a referrer, so have a general redirect ready for each.
-            else if (Request.QueryString["from"] == "elibrary")
-            {
-                Response.StatusCode = 303;
-                Response.AddHeader("Location", "/elibrary");
-            }
-
         }
     }
 }

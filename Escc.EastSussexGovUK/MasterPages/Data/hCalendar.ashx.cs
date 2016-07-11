@@ -11,8 +11,8 @@ using System.Web;
 using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Xsl;
-using EsccWebTeam.Data.Web;
 using Escc.Net;
+using Escc.Web;
 using Exceptionless;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
@@ -37,7 +37,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
             try
             {
                 Uri requestedUri = new Uri(context.Request.QueryString["url"], UriKind.RelativeOrAbsolute);
-                requestedUri = Iri.MakeAbsolute(requestedUri);
+                requestedUri = new Uri(HttpContext.Current.Request.Url, requestedUri);
                 Uri uriToProcess = requestedUri;
 
                 uriToProcess = calendar.TransformHost(config, uriToProcess);
@@ -46,7 +46,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 ParseHCalendar(context, config, uriToProcess, requestedUri);
 
                 // Cache, but not for long because this could be updates to existing events at short notice, eg cancellations and closures
-                Http.CacheFor(0,5);
+                new HttpCacheHeaders().CacheUntil(HttpContext.Current.Response.Cache, DateTime.Now.AddMinutes(5));
             }
             catch (ThreadAbortException)
             {
@@ -80,9 +80,10 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 // This is a request for a local web page so we never need a proxy (and in fact it causes problems).
                 // However using HttpRequestClient.CreateRequest uses the proxy credentials for the request itself, and that is
                 // necessary to work on staging servers.
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                uriToProcess = new Uri(Iri.PrepareUrlForNewQueryStringParameter(uriToProcess) + "template=plain",
-                    UriKind.RelativeOrAbsolute);
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                var query = HttpUtility.ParseQueryString(uriToProcess.Query);
+                query.Add("template", "plain");
+                uriToProcess = new Uri(uriToProcess.Scheme + "://" + uriToProcess.Authority + uriToProcess.AbsolutePath + "?" + query);
                 var client = new HttpRequestClient(new ConfigurationProxyProvider());
                 var request = client.CreateRequest(uriToProcess);
                 request.Proxy = null;
@@ -103,7 +104,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 // Get the text and add the source URL it was downloaded from
                 var responseText = modifiedXml.ToString();
                 var sourceUrl =
-                    Iri.MakeAbsolute(new Uri(Path.ChangeExtension(requestedUri.AbsolutePath, ".ics"), UriKind.Relative))
+                    new Uri(HttpContext.Current.Request.Url, new Uri(Path.ChangeExtension(requestedUri.AbsolutePath, ".ics"), UriKind.Relative))
                         .ToString();
                 if (requestedUri.Query.Length > 1) sourceUrl += requestedUri.Query;
                 responseText = responseText.Replace("(Best Practice: should be URL that this was ripped from)",
@@ -178,14 +179,14 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 if (ex.Message == "The remote server returned an error: (310) Gone.")
                 {
                     // If the page we're trying to parse has gone, this representation of it has gone too.
-                    Http.Status310Gone(context.Response);
+                    new HttpStatus().Gone(context.Response);
                     context.Response.ContentType = "text/plain";
                     context.Response.End();
                 }
                 else if (ex.Message == "The remote server returned an error: (404) Not Found.")
                 {
                     // If the page we're trying to parse doesn't exist, this representation of it doesn't exist either.
-                    Http.Status404NotFound(context.Response);
+                    new HttpStatus().NotFound(context.Response);
                     context.Response.ContentType = "text/plain";
                     context.Response.End();
                 }
@@ -203,7 +204,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
         /// <param name="context">The context.</param>
         private void NothingToDo(HttpContext context)
         {
-            Http.Status404NotFound(context.Response);
+            new HttpStatus().NotFound(context.Response);
             context.Response.ContentType = "text/plain";
             context.Response.End();
         }

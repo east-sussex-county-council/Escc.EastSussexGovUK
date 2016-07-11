@@ -2,8 +2,7 @@
 using System.IO;
 using System.Web;
 using System.Web.Hosting;
-using EsccWebTeam.Data.Web;
-using EsccWebTeam.EastSussexGovUK.MasterPages.Remote;
+using Escc.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -33,7 +32,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         public void ProcessRequest(HttpContext context)
         {
             ProcessCorsHeaders(context);
-            Http.CacheFor(24,0,context.Response);
+            new HttpCacheHeaders().CacheUntil(context.Response.Cache, DateTime.Now.AddDays(1));
 
             var filename = HostingEnvironment.MapPath(context.Request.Url.AbsolutePath);
             if (!String.IsNullOrEmpty(filename) && File.Exists(filename))
@@ -49,13 +48,13 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
             }
             else
             {
-                Http.Status404NotFound(context.Response);
+                new HttpStatus().NotFound(context.Response);
             }
         }
 
         private static void ProcessCorsHeaders(HttpContext context)
         {
-            Cors.AllowCrossOriginRequest(context.Request, context.Response, new ConfigurationCorsAllowedOriginsProvider().CorsAllowedOrigins());
+            new CorsHeaders(context.Request.Headers, context.Response.Headers, new CorsPolicyFromConfig().CorsPolicy).UpdateHeaders();
         }
 
         #endregion

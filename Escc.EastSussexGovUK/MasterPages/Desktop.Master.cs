@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
-using EsccWebTeam.Data.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {

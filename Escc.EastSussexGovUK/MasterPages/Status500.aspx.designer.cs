@@ -10,7 +10,7 @@
 namespace EsccWebTeam.EastSussexGovUK.MasterPages {
     
     
-    public partial class HttpStatus {
+    public partial class HttpStatus500 {
         
         /// <summary>
         /// headContent control.

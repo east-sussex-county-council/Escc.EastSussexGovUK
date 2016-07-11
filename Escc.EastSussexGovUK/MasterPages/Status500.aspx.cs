@@ -7,7 +7,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
     /// <summary>
     /// Error page for an unhandled exception
     /// </summary>
-    public partial class HttpStatus : Page
+    public partial class HttpStatus500 : Page
     {
         protected void Page_Load(object sender, System.EventArgs e)
         {

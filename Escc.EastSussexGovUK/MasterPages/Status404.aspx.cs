@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web;
-using EsccWebTeam.Data.Web;
+using Escc.Web;
 using Exceptionless;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
@@ -147,7 +147,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
 
                             HttpContext.Current.Response.AppendHeader("X-ESCC-Redirect", redirectId.ToString(CultureInfo.InvariantCulture));
 
-                            destinationUrl = Iri.MakeAbsolute(destinationUrl, Request.Url, true);
+                            destinationUrl = new Uri(Request.Url, destinationUrl);
 
                             // If the request had a querystring, and the redirect didn't change it, keep the original one
                             var requestedUrl = new Uri(requestedPath, UriKind.RelativeOrAbsolute);
@@ -217,15 +217,15 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         {
             // Generate redirect headers and end this response to ensure they're followed
             var destinationUrl = new Uri(redirectTo, UriKind.RelativeOrAbsolute);
-            if (!destinationUrl.IsAbsoluteUri) destinationUrl = Iri.MakeAbsolute(destinationUrl, Request.Url, true);
+            if (!destinationUrl.IsAbsoluteUri) destinationUrl = new Uri(Request.Url, destinationUrl);
 
             switch (httpStatus)
             {
                 case 301:
-                    Http.Status301MovedPermanently(destinationUrl);
+                    new HttpStatus().MovedPermanently(destinationUrl);
                     break;
                 case 303:
-                    Http.Status303SeeOther(destinationUrl);
+                    new HttpStatus().SeeOther(destinationUrl);
                     break;
             }
         }

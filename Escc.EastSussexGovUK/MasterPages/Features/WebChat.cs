@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Escc.Web;
 
 namespace Escc.EastSussexGovUK.MasterPages.Features
 {
@@ -73,7 +74,7 @@ namespace Escc.EastSussexGovUK.MasterPages.Features
         }
 
         /// <summary>
-        /// The content security policy aliases required for the dependent feature. These are registered in web.config using <see cref="EsccWebTeam.Data.Web.ContentSecurityPolicy" />.
+        /// The content security policy aliases required for the dependent feature. These are registered in web.config using <see cref="ContentSecurityPolicy" />.
         /// </summary>
         /// <returns></returns>
         public IEnumerable<ContentSecurityPolicyDependency> RequiresContentSecurityPolicy()

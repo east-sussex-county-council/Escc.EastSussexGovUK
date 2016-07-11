@@ -10,8 +10,8 @@ using System.Xml;
 using System.Xml.XPath;
 using Escc.Dates;
 using Escc.Html;
-using EsccWebTeam.Data.Web;
 using Escc.Net;
+using Escc.Web;
 using Exceptionless;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
@@ -44,7 +44,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
             if (config == null) throw new ConfigurationErrorsException("Configuration section not found: <EsccWebTeam.EastSussexGovUK><Data /></EsccWebTeam.EastSussexGovUK>");
 
             Uri requestedUri = new Uri(Request.QueryString["url"], UriKind.RelativeOrAbsolute);
-            requestedUri = Iri.MakeAbsolute(requestedUri);
+            requestedUri = new Uri(Request.Url, requestedUri);
             Uri uriToProcess = requestedUri;
 
             uriToProcess = TransformHost(config, uriToProcess);
@@ -62,7 +62,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 this.subscribe.HRef = HttpUtility.HtmlAttributeEncode("webcals://" + Request.Url.Authority + urlToParse);
 
                 var ukNow = DateTime.Now.ToUkDateTime();
-                Http.CacheDaily(ukNow.Hour, ukNow.Minute);
+                new HttpCacheHeaders().CacheUntil(Response.Cache, ukNow.AddDays(1));
             }
             catch (Exception ex)
             {
@@ -111,8 +111,10 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
                 // This is a request for a local web page so we never need a proxy (and in fact it causes problems).
                 // However using HttpRequestClient.CreateRequest uses the proxy credentials for the request itself, and that is
                 // necessary to work on staging servers.
-                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                uriToProcess = new Uri(Iri.PrepareUrlForNewQueryStringParameter(uriToProcess) + "template=plain", UriKind.RelativeOrAbsolute);
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                var query = HttpUtility.ParseQueryString(uriToProcess.Query);
+                query.Add("template", "plain");
+                uriToProcess = new Uri(uriToProcess.Scheme + "://" + uriToProcess.Authority + uriToProcess.AbsolutePath + "?" + query);
                 var client = new HttpRequestClient(new ConfigurationProxyProvider());
                 var request = client.CreateRequest(uriToProcess);
                 request.Proxy = null;

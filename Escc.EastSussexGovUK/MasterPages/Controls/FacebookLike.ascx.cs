@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web;
-using EsccWebTeam.Data.Web;
+using Escc.Html;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -41,7 +41,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 this.facebook.Attributes["data-stream"] = this.ShowFeed ? "true" : "false";
 
                 this.fb.HRef = HttpUtility.HtmlEncode(this.FacebookPage.ToString());
-                this.fb.InnerHtml = HttpUtility.HtmlEncode(Iri.ShortenForDisplay(new Uri(this.FacebookPage)));
+                this.fb.InnerHtml = HttpUtility.HtmlEncode(new HtmlLinkFormatter().AbbreviateUrl(new Uri(this.FacebookPage)));
 
                 this.Visible = true;
             }

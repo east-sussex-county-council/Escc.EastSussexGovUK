@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Escc.Web;
 
 namespace Escc.EastSussexGovUK.MasterPages
 {
     /// <summary>
     /// A set of client dependencies which might be required by a view, and the dependencies it relies on. Dependencies are given as aliases which can be used with
-    /// the <see cref="Escc.ClientDependencyFramework"/> and <see cref="EsccWebTeam.Data.Web.ContentSecurityPolicy"/>
+    /// the <see cref="Escc.ClientDependencyFramework"/> and <see cref="ContentSecurityPolicy"/>
     /// </summary>
     public interface IClientDependencySet
     {
@@ -27,7 +28,7 @@ namespace Escc.EastSussexGovUK.MasterPages
         IEnumerable<JsFileDependency> RequiresJavaScript();
 
         /// <summary>
-        /// The content security policy aliases required for the dependent feature. These are registered in web.config using <see cref="EsccWebTeam.Data.Web.ContentSecurityPolicy"/>.
+        /// The content security policy aliases required for the dependent feature. These are registered in web.config using <see cref="ContentSecurityPolicy"/>.
         /// </summary>
         /// <returns></returns>
         IEnumerable<ContentSecurityPolicyDependency> RequiresContentSecurityPolicy();

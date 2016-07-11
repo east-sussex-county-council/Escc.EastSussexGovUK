@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web.UI;
-using EsccWebTeam.Data.Web;
+using Escc.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -19,7 +19,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         protected void Page_Load(object sender, EventArgs e)
         {
             // Return the correct HTTP status code
-            Http.Status404NotFound();
+            new HttpStatus().NotFound();
 
             // Set the page title
             Page.Title = "Page not found";

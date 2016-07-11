@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.UI;
-using EsccWebTeam.Data.Web;
+using Escc.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
 {
@@ -17,7 +17,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
         protected void Page_Load(object sender, EventArgs e)
         {
             // Return the correct HTTP status code
-            Http.Status400BadRequest();
+            new HttpStatus().BadRequest();
 
             // Set the page title
             Page.Title = "Bad request";

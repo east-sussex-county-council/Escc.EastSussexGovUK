@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Escc.EastSussexGovUK.MasterPages;
+using Escc.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
@@ -32,7 +33,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         }
 
         /// <summary>
-        /// The content security policy aliases required for the skin. These are registered in web.config using <see cref="EsccWebTeam.Data.Web.ContentSecurityPolicy" />.
+        /// The content security policy aliases required for the skin. These are registered in web.config using <see cref="ContentSecurityPolicy" />.
         /// </summary>
         /// <returns></returns>
         public virtual IEnumerable<ContentSecurityPolicyDependency> RequiresContentSecurityPolicy()

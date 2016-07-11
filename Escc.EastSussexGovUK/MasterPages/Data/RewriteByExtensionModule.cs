@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Globalization;
 using System.IO;
 using System.Web;
-using EsccWebTeam.Data.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Data
 {

@@ -1,4 +1,4 @@
-﻿using EsccWebTeam.Data.Web;
+﻿using Escc.Web;
 
 namespace Escc.EastSussexGovUK.MasterPages
 {

@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web;
-using EsccWebTeam.Data.Web;
+using Escc.Web;
 using EsccWebTeam.EastSussexGovUK.MasterPages.Controls;
 
 
@@ -42,15 +42,15 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Remote
                     var usercontrol = LoadControl(String.Format(CultureInfo.InvariantCulture, localControlUrl, controlName));
                     this.placeholder.Controls.Add(usercontrol);
                 }
-                catch (HttpException ex)
+                catch (HttpException)
                 {
                     // Usercontrol doesn't exist
-                    Http.Status400BadRequest();
+                    new HttpStatus().BadRequest();
                 }
             }
             else
             {
-                Http.Status400BadRequest();
+                new HttpStatus().BadRequest();
             }
         }
     }

@@ -1,7 +1,6 @@
 using System.Security.Cryptography;
 using System.Threading;
 using System.Web.UI;
-using EsccWebTeam.Data.Web;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {

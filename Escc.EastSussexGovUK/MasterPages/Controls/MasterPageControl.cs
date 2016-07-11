@@ -8,7 +8,6 @@ using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using EsccWebTeam.Data.Web;
 using EsccWebTeam.EastSussexGovUK.MasterPages.Remote;
 using Escc.Net;
 using Exceptionless;
@@ -124,7 +123,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 var siteContext = new EastSussexGovUKContext();
                 Uri urlToRequest = new Uri(String.Format(CultureInfo.CurrentCulture, config["MasterPageControlUrl"], this.Control));
                 var applicationPath = HttpUtility.UrlEncode(HttpRuntime.AppDomainAppVirtualPath.ToLower(CultureInfo.CurrentCulture).TrimEnd('/'));
-                urlToRequest = new Uri(Iri.PrepareUrlForNewQueryStringParameter(urlToRequest) + "section=" + selectedSection + "&host=" + Page.Request.Url.Host + "&textsize=" + siteContext.TextSize + "&path=" + applicationPath);
+                var query = HttpUtility.ParseQueryString(urlToRequest.Query);
+                query.Add("section", selectedSection);
+                query.Add("host", Page.Request.Url.Host);
+                query.Add("textsize", siteContext.TextSize.ToString(CultureInfo.InvariantCulture));
+                query.Add("path", applicationPath);
+                urlToRequest = new Uri(urlToRequest.Scheme + "://" + urlToRequest.Authority + urlToRequest.AbsolutePath + "?" + query);
 
                 // Create the request. Pass current user-agent so that library catalogue PCs can be detected by the remote script.
                 var webRequest = (HttpWebRequest)WebRequest.Create(urlToRequest);
