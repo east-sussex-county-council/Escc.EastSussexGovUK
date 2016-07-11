@@ -8,7 +8,7 @@ For an ASP.NET MVC5 project, you can install our design using the following step
 
 1. In Visual Studio create a new ASP.NET Web Application using the "Empty" project template. Tick the box to add folders and core references for MVC.
 2. Install `Escc.EastSussexGovUK.Mvc` from our private NuGet feed.
-3. Add the `EsccWebTeam.EastSussexGovUK`, `EsccWebTeam.Data.Web` and `EsccWebTeam.NavigationControls` projects to your solution. Add project references for the first two from your MVC project. If these projects don't build you may need to run `nuget restore` from the command line inside each of these project folders to restore their dependencies. (This step won't be needed once these projects have been converted to NuGet.)
+3. Add the `EsccWebTeam.EastSussexGovUK` project to your solution. Add a project reference from your MVC project. If this project doesn't build you may need to run `nuget restore` from the command line inside the `Escc.EastSussexGovUK` project folder to restore its dependencies. (This step won't be needed once this project has been converted to NuGet.)
 4. Create a view model which inherits from `Escc.EastSussexGovUK.Mvc.BaseViewModel`, add a controller and a view and run the project. 
 
 For WebForms projects there is not yet a NuGet package, so you will need to read the documentation below to see how to configure your application. 

@@ -52,4 +52,18 @@
     <EgmsWebMetadata windowsTileIconUrl="https://new.eastsussex.gov.uk/windows-tile.png" xdt:Transform="SetAttributes(windowsTileIconUrl)" xdt:Locator="Condition(count(@windowsTileIconUrl) = 0)" />
     <EgmsWebMetadata windowsTileColour="#ffffff" xdt:Transform="SetAttributes(windowsTileColour)" xdt:Locator="Condition(count(@windowsTileColour) = 0)" />
   </Escc.Web.Metadata>
+
+  <system.web xdt:Transform="InsertIfMissing" />
+  <system.web>
+    <compilation xdt:Transform="InsertIfMissing" />
+    <compilation>
+      <assemblies xdt:Transform="InsertIfMissing" />
+    </compilation>
+    <compilation>
+      <assemblies>
+        <add assembly="System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xdt:Transform="InsertIfMissing" xdt:Locator="Match(assembly)"/>
+      </assemblies>
+    </compilation>
+  </system.web>
+
 </configuration>
