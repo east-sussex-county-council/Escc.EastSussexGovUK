@@ -42,6 +42,18 @@
 .text-content table, .text-content caption { margin: .947368em 0;}
 .text-content th, .text-content td { border: .052631em solid #ccc;padding: .421053em;}
 
+/* Two column content using negative margin technique. Each column is 49% wide, 1% gutter between and after right allows for IE6/7 rounding errors.
+   Container element .columns contains the floated columns allowing other content to appear after them. 
+
+  <div class="columns">
+    <div class="columns" />
+    <div class="columns" />
+  </div>
+*/
+.text-content .columns { overflow: hidden; width: 100%; }
+.text-content .columns > .column1 { width: 49%; float: left; margin-right: -50%; padding-right: 50%; }
+.text-content .columns > .column2 { width: 49%; float: right; }
+
 /* Link icons - larger text size means icons need to move slightly */
 .text-content .hcal, .text-content a[href$=".calendar"] { background-position: 0 6px; }
 .text-content .rss { background-position: 0 -42px; }
