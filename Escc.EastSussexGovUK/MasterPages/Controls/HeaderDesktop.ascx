@@ -40,7 +40,7 @@
                     <li class="environment long"><a href="/environment/" id="environment" runat="server" enableviewstate="false">Environment &amp;&nbsp;planning</a></li>
                     <li class="council long"><a href="/yourcouncil/" id="council" runat="server" enableviewstate="false">Your<br />Council</a></li><%-- <br /> is only for IE6, ensures it always takes two lines --%>
                     <li class="community"><a href="/community/" id="community" runat="server" enableviewstate="false">Community</a></li>
-                    <li class="families"><a href="/childrenandfamilies/" id="families" runat="server" enableviewstate="false">Families</a></li>
+                    <li class="families long"><a href="/childrenandfamilies/" id="families" runat="server" enableviewstate="false">Children &amp;&nbsp;families</a></li>
                     <li class="socialcare long"><a href="/socialcare/" id="socialcare" runat="server" enableviewstate="false">Adult social care&nbsp;&amp;&nbsp;health</a></li>
                     <li class="business"><a href="/business/" id="business" runat="server" enableviewstate="false">Business</a></li>
                 </ul>

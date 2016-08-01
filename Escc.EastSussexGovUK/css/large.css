@@ -164,10 +164,10 @@ html { overflow-y: scroll; }
 #menu .mobile { display: none; }
 #menu .socialcare { width: 13%; display: block; }
 #menu .business { width: 8%; display: block; }
-#menu .community { width: 11%; display: block; }
+#menu .community { width: 10%; display: block; }
 #menu .education { width: 10%; display: block; }
 #menu .environment { width: 12%; display: block; }
-#menu .families { width: 8%; display: block; }
+#menu .families { width: 9%; display: block; }
 #menu .jobs { width: 5%; display: block; }
 #menu .leisure { width: 7%; display: block; }
 #menu .libraries { width: 9%; display: block; }
