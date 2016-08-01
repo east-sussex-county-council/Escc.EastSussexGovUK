@@ -140,17 +140,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
                 }
             }
 
-            if (selectedSection.Length == 0) return;
-            var normalise = new Regex("[^A-Z]");
-            selectedSection = normalise.Replace(selectedSection, String.Empty);
-
-            HtmlContainerControl[] sections = { this.jobs, this.socialcare, this.business, this.community, this.education, this.environment, this.families, this.leisure, this.libraries, this.transport, this.council };
-            foreach (var section in sections)
+            HtmlContainerControl[] sections = {this.jobs, this.socialcare, this.business, this.community, this.education, this.environment, this.families, this.leisure, this.libraries, this.transport, this.council};
+            var matcher = new SelectedSectionMatcher();
+            var matchedSection = matcher.MatchSection(selectedSection, sections);
+            if (matchedSection != null)
             {
-                if (selectedSection == normalise.Replace(section.InnerText.Replace("<br />", " ").ToUpperInvariant(), String.Empty))
-                {
-                    section.Attributes["class"] = "selected";
-                }
+                matchedSection.Attributes["class"] = "selected";
             }
         }
 
