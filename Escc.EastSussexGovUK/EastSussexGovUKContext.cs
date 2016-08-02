@@ -32,7 +32,7 @@ namespace EsccWebTeam.EastSussexGovUK
     ///     &lt;/EsccWebTeam.EastSussexGovUK&gt;
     /// &lt;/configuration&gt;
     /// </example>
-    /// <para>See <seealso cref="MasterPages.ViewSelector"/> for settings used to identify desktop and mobile master pages.</para>
+    /// <para>See <seealso cref="MasterPages.ViewSelector"/> for settings used to identify desktop and plain master pages.</para>
     /// </remarks>
     public class EastSussexGovUKContext
     {
@@ -107,15 +107,12 @@ namespace EsccWebTeam.EastSussexGovUK
             {
                 if (this.baseUrl != null) return this.baseUrl;
 
-                if (!ViewIsLegacy)
-                {
-                    if (this.Settings == null) return null;
+                if (this.Settings == null) return null;
 
-                    if (!String.IsNullOrEmpty(this.Settings["BaseUrl"]))
-                    {
-                        this.baseUrl = new Uri(this.Settings["BaseUrl"]);
-                        return this.baseUrl;
-                    }
+                if (!String.IsNullOrEmpty(this.Settings["BaseUrl"]))
+                {
+                    this.baseUrl = new Uri(this.Settings["BaseUrl"]);
+                    return this.baseUrl;
                 }
 
                 return null;
@@ -248,8 +245,6 @@ namespace EsccWebTeam.EastSussexGovUK
         #region Information about current master page
 
         private bool? viewIsDesktop;
-        private bool? viewIsMobile;
-        private bool? viewIsLegacy;
         private bool? viewIsPlain;
         private bool? viewIsFullScreen;
 
@@ -268,9 +263,7 @@ namespace EsccWebTeam.EastSussexGovUK
                 this.viewIsDesktop = ViewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.Desktop);
                 if ((bool)this.viewIsDesktop)
                 {
-                    this.viewIsMobile = false;
                     this.viewIsPlain = false;
-                    this.viewIsLegacy = false;
                     this.viewIsFullScreen = false;
                 }
                 return (bool)this.viewIsDesktop;
@@ -278,27 +271,13 @@ namespace EsccWebTeam.EastSussexGovUK
         }
 
         /// <summary>
-        /// Gets a value indicating whether the current master page is designed primarily for mobiles.
+        /// Obsolete property which used to indicate whether the current master page is designed primarily for mobiles.
         /// </summary>
-        /// <value><c>true</c> if view is for mobiles; otherwise, <c>false</c>.</value>
+        /// <value>Always returns <c>false</c>.</value>
+        [Obsolete]
         public bool ViewIsMobile
         {
-            get
-            {
-                // If we've already checked, return the previous result
-                if (this.viewIsMobile != null) return (bool)this.viewIsMobile;
-
-                // Otherwise check whether the current master page is listed as a mobile master page
-                this.viewIsMobile = ViewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.Mobile);
-                if ((bool)this.viewIsMobile)
-                {
-                    this.viewIsDesktop = false;
-                    this.viewIsPlain = false;
-                    this.viewIsLegacy = false;
-                    this.viewIsFullScreen = false;
-                }
-                return (bool)this.viewIsMobile;
-            }
+            get { return false; }
         }
 
         /// <summary>
@@ -317,8 +296,6 @@ namespace EsccWebTeam.EastSussexGovUK
                 if ((bool)this.viewIsPlain)
                 {
                     this.viewIsDesktop = false;
-                    this.viewIsMobile = false;
-                    this.viewIsLegacy = false;
                     this.viewIsFullScreen = false;
                 }
                 return (bool)this.viewIsPlain;
@@ -341,47 +318,9 @@ namespace EsccWebTeam.EastSussexGovUK
                 if ((bool)this.viewIsFullScreen)
                 {
                     this.viewIsDesktop = false;
-                    this.viewIsMobile = false;
-                    this.viewIsLegacy = false;
                     this.viewIsPlain = false;
                 }
                 return (bool)this.viewIsFullScreen;
-            }
-        }
-
-        /// <summary>
-        /// Gets a value indicating whether the pre-2011-refresh master page is currently being used
-        /// </summary>
-        /// <value><c>true</c> if view is legacy; otherwise, <c>false</c>.</value>
-        public bool ViewIsLegacy
-        {
-            get
-            {
-                // If we've already checked, return the previous result
-                if (this.viewIsLegacy != null) return (bool)this.viewIsLegacy;
-
-                // Otherwise check whether the current master page is the legacy master page  
-                if (Page == null) return false;
-                if (String.IsNullOrEmpty(Page.MasterPageFile))
-                {
-                    return false;
-                }
-
-                // Get the legacy master page from web.config. If it's not there, the legacy view has been retired.
-                if (this.Settings != null && !String.IsNullOrEmpty(this.Settings["LegacyMasterPage"]))
-                {
-                    this.viewIsLegacy = (Page.MasterPageFile.TrimStart('/').ToUpperInvariant() == this.Settings["LegacyMasterPage"].Replace("~", HttpRuntime.AppDomainAppVirtualPath).TrimStart('/').ToUpperInvariant());
-                }
-                else this.viewIsLegacy = false;
-
-                if ((bool)this.viewIsLegacy)
-                {
-                    this.viewIsDesktop = false;
-                    this.viewIsMobile = false;
-                    this.viewIsPlain = false;
-                    this.viewIsFullScreen = false;
-                }
-                return (bool)this.viewIsLegacy;
             }
         }
 

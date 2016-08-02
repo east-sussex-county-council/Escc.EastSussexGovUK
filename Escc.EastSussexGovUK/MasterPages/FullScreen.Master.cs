@@ -5,7 +5,7 @@ using System.Text;
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
     /// <summary>
-    /// Master page for mobile phones (especially smart phones)
+    /// Master page for content which needs the whole screen, such as maps
     /// </summary>
     public partial class FullScreen : BaseMasterPage
     {

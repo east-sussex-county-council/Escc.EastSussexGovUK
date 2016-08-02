@@ -24,13 +24,8 @@ namespace EsccWebTeam.EastSussexGovUK
         /// Gets or sets whether to show contents on a mobile master page
         /// </summary>
         /// <value><c>true</c> to show on mobile; otherwise, <c>false</c>.</value>
+        [Obsolete]
         public bool? Mobile { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether to show contents on the legacy master page
-        /// </summary>
-        /// <value><c>true</c> to show on legacy; otherwise, <c>false</c>.</value>
-        public bool? Legacy { get; set; }
 
         /// <summary>
         /// Gets or sets whether to show contents on the plain master page.
@@ -144,19 +139,7 @@ namespace EsccWebTeam.EastSussexGovUK
                 return;
             }
 
-            if (Mobile != null && Mobile.Value != context.ViewIsMobile)
-            {
-                HideContents();
-                return;
-            }
-
             if (Plain != null && Plain.Value != context.ViewIsPlain)
-            {
-                HideContents();
-                return;
-            }
-
-            if (Legacy != null && Legacy.Value != context.ViewIsLegacy)
             {
                 HideContents();
                 return;

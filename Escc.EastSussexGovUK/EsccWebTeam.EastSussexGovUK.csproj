@@ -373,7 +373,6 @@
     <Content Include="MasterPages\Status500.aspx">
       <SubType>Form</SubType>
     </Content>
-    <Content Include="MasterPages\Controls\AboveHeaderMobile.ascx" />
     <Content Include="css\large.css" />
     <Content Include="MasterPages\Controls\Banners.ascx" />
     <Content Include="MasterPages\Controls\Error400.ascx" />
@@ -384,18 +383,14 @@
     <Content Include="MasterPages\Controls\ScriptsFullScreen.ascx" />
     <Content Include="MasterPages\Controls\HeaderFullScreen.ascx" />
     <Content Include="MasterPages\Controls\MetadataFullScreen.ascx" />
-    <Content Include="MasterPages\Controls\FooterDesktop.ascx" />
     <Content Include="MasterPages\Controls\AboveHeaderDesktop.ascx" />
-    <Content Include="MasterPages\Controls\FooterMobile.ascx" />
+    <Content Include="MasterPages\Controls\FooterDesktop.ascx" />
     <Content Include="MasterPages\Controls\HeaderDesktop.ascx" />
-    <Content Include="MasterPages\Controls\HeaderMobile.ascx" />
     <Content Include="MasterPages\Controls\HtmlTag.ascx" />
     <Content Include="MasterPages\Controls\Languages.ascx" />
     <Content Include="MasterPages\Controls\MetadataDesktop.ascx" />
-    <Content Include="MasterPages\Controls\MetadataMobile.ascx" />
     <Content Include="MasterPages\Controls\Related.ascx" />
     <Content Include="MasterPages\Controls\ScriptsDesktop.ascx" />
-    <Content Include="MasterPages\Controls\ScriptsMobile.ascx" />
     <Content Include="MasterPages\Controls\share.ascx" />
     <Content Include="MasterPages\Controls\SupportingContentDesktop.ascx" />
     <Content Include="MasterPages\Controls\TwitterSearch.ascx" />
@@ -519,13 +514,6 @@
     <Compile Include="MasterPages\BaseMasterPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterPages\Controls\AboveHeaderMobile.ascx.cs">
-      <DependentUpon>AboveHeaderMobile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\AboveHeaderMobile.ascx.designer.cs">
-      <DependentUpon>AboveHeaderMobile.ascx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Controls\BreadcrumbTrail.cs" />
     <Compile Include="MasterPages\Controls\AboveHeaderDesktop.ascx.cs">
       <DependentUpon>AboveHeaderDesktop.ascx</DependentUpon>
@@ -587,19 +575,12 @@
     <Compile Include="MasterPages\Controls\MetadataFullScreen.ascx.designer.cs">
       <DependentUpon>MetadataFullScreen.ascx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPages\Controls\FooterMobile.ascx.cs">
-      <DependentUpon>FooterMobile.ascx</DependentUpon>
+    <Compile Include="MasterPages\Controls\FooterDesktop.ascx.cs">
+      <DependentUpon>FooterDesktop.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterPages\Controls\FooterMobile.ascx.designer.cs">
-      <DependentUpon>FooterMobile.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Controls\HeaderMobile.ascx.cs">
-      <DependentUpon>HeaderMobile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\HeaderMobile.ascx.designer.cs">
-      <DependentUpon>HeaderMobile.ascx</DependentUpon>
+    <Compile Include="MasterPages\Controls\FooterDesktop.ascx.designer.cs">
+      <DependentUpon>FooterDesktop.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Controls\HtmlTag.ascx.cs">
       <DependentUpon>HtmlTag.ascx</DependentUpon>
@@ -609,13 +590,6 @@
       <DependentUpon>HtmlTag.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Controls\MasterPageControl.cs" />
-    <Compile Include="MasterPages\Controls\FooterDesktop.ascx.cs">
-      <DependentUpon>FooterDesktop.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\FooterDesktop.ascx.designer.cs">
-      <DependentUpon>FooterDesktop.ascx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Controls\HeaderDesktop.ascx.cs">
       <DependentUpon>HeaderDesktop.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -637,13 +611,6 @@
     <Compile Include="MasterPages\Controls\MetadataDesktop.ascx.designer.cs">
       <DependentUpon>MetadataDesktop.ascx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPages\Controls\MetadataMobile.ascx.cs">
-      <DependentUpon>MetadataMobile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\MetadataMobile.ascx.designer.cs">
-      <DependentUpon>MetadataMobile.ascx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Controls\Related.ascx.cs">
       <DependentUpon>Related.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -657,13 +624,6 @@
     </Compile>
     <Compile Include="MasterPages\Controls\ScriptsDesktop.ascx.designer.cs">
       <DependentUpon>ScriptsDesktop.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Controls\ScriptsMobile.ascx.cs">
-      <DependentUpon>ScriptsMobile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\ScriptsMobile.ascx.designer.cs">
-      <DependentUpon>ScriptsMobile.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Controls\share.ascx.cs">
       <DependentUpon>share.ascx</DependentUpon>
@@ -720,22 +680,12 @@
     </Compile>
     <Compile Include="MasterPages\Data\RewriteByExtensionModule.cs" />
     <Compile Include="MasterPages\MasterPageModule.cs" />
-    <Compile Include="MasterPages\choose.ashx.cs">
-      <DependentUpon>choose.ashx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Desktop.Master.cs">
       <DependentUpon>Desktop.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPages\Desktop.Master.designer.cs">
       <DependentUpon>Desktop.Master</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Mobile.Master.cs">
-      <DependentUpon>Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Mobile.Master.designer.cs">
-      <DependentUpon>Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Plain.Master.cs">
       <DependentUpon>Plain.Master</DependentUpon>
@@ -766,16 +716,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MasterPages\EastSussexGovUK.Master" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="robots.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\Web.config" />
     <Content Include="MasterPages\Desktop.Master" />
-    <Content Include="MasterPages\Mobile.Master" />
-    <Content Include="MasterPages\choose.ashx" />
     <None Include="img\body\navigation.psd" />
     <None Include="img\body\item-type.psd" />
     <None Include="img\header\header original.psd" />

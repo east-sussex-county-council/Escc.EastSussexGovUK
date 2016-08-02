@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="calendar.aspx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Data.calendar" MasterPageFile="~/masterpages/mobile.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="calendar.aspx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Data.calendar" %>
 <asp:Content runat="server" ContentPlaceHolderID="metadata">
     <Metadata:MetadataControl runat="server"
         id="headcontent" 

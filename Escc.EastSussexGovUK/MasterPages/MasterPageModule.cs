@@ -6,7 +6,7 @@ using System.Web.UI;
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
     /// <summary>
-    /// Allows master page to be switched based on device capabilities, cookie, querystring or URL path. See <see cref="ViewSelector"/>.
+    /// Allows master page to be switched based on querystring or URL path. See <see cref="ViewSelector"/>.
     /// </summary>
     public class MasterPageModule : IHttpModule
     {

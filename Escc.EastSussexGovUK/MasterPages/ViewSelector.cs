@@ -2,30 +2,32 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
-using System.Threading;
 using System.Web;
 using System.Web.SessionState;
-using Escc.Web;
-using Exceptionless;
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages
 {
     /// <summary>
-    /// Selects most appropriate master page or MVC layout based on device capabilities, cookie, querystring or URL path
+    /// Selects most appropriate master page or MVC layout based on querystring or URL path
     /// </summary>
     public static class ViewSelector
     {
+        [Obsolete("Use the alternative overload which does not require HttpSessionState")]
+        public static string SelectView(HttpCookieCollection cookies, HttpSessionState session, NameValueCollection queryString, string userAgent, ViewEngine viewEngine = ViewEngine.WebForms)
+        {
+            return SelectView(queryString, userAgent, viewEngine, cookies);
+        }
+
         /// <summary>
-        /// Selects most appropriate master page or MVC layout based on device capabilities, cookie, querystring or URL path
+        /// Selects most appropriate master page or MVC layout based on querystring or URL path
         /// </summary>
-        /// <param name="cookies">The cookies.</param>
-        /// <param name="session">The session.</param>
         /// <param name="queryString">The query string.</param>
         /// <param name="userAgent">The user agent.</param>
         /// <param name="viewEngine">The view engine to select the view for.</param>
+        /// <param name="cookies">Cookies for the current response. Optional as now used only to delete the old cookie.</param>
         /// <returns></returns>
         /// <remarks>
-        /// <para>It requires the EsccWebTeam.DeviceDetection web service, and master pages or MVC layouts to be set up in web.config similar to the following:</para>
+        /// <para>It requires master pages and/or MVC layouts to be set up in web.config similar to the following:</para>
         /// <example>
         ///   <code>
         /// &lt;configuration&gt;
@@ -33,7 +35,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// &lt;sectionGroup name="EsccWebTeam.EastSussexGovUK"&gt;
         /// &lt;section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
         /// &lt;section name="DesktopMasterPages" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
-        /// &lt;section name="MobileMasterPages" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
         /// &lt;/sectionGroup&gt;
         /// &lt;/configSections&gt;
         /// &lt;EsccWebTeam.EastSussexGovUK&gt;
@@ -45,11 +46,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// &lt;add key="/somefolder" value="~/master/CustomFolder.master" /&gt;
         /// &lt;add key="/" value="~/master/Desktop.master" /&gt;
         /// &lt;/DesktopMasterPages&gt;
-        /// &lt;MobileMasterPages&gt;
-        /// &lt;add key="/somefolder/somefolder/somepage.htm" value="~/master/CustomMobilePage.master" /&gt;
-        /// &lt;add key="/somefolder" value="~/master/CustomMobileFolder.master" /&gt;
-        /// &lt;add key="/" value="~/master/Mobile.master" /&gt;
-        /// &lt;/MobileMasterPages&gt;
         /// &lt;/EsccWebTeam.EastSussexGovUK&gt;
         /// &lt;system.web&gt;
         /// &lt;httpModules&gt;
@@ -61,67 +57,23 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// </example>
         /// <para>For MVC sites using Razor views, specify *.cshtml files wherever *.master is used above. The HTTP module is not needed for MVC.
         /// Instead add similar code to _ViewStart.cshtml.</para>
-        /// <para>WURFL decides whether a device sees the desktop or mobile template. So how does a mobile device view the desktop site?
-        /// It follows the link to choose.ashx within the /masterpages virtual directory of the current application domain (/masterpages must
-        /// have script execute permission in IIS for this to work), which sets the session value to desktop for the current application domain.
-        /// This is then used instead of the WURFL setting to keep the mobile device on the desktop site.</para>
-        /// <para>The problem is that on a site with several application domains, this setting is per-application-domain. As soon as the
-        /// user strays into a new application domain, the session value will be missing, WURFL will detect a mobile device and go back to
-        /// the mobile site.</para>
-        /// <para>This will be a problem for mobile devices which don't support cookies and want to visit the desktop site. For those
-        /// which do support cookies, they store the same setting as session but do it sitewide and are given preference over the session value.</para>
         /// </remarks>
-        public static string SelectView(HttpCookieCollection cookies, HttpSessionState session, NameValueCollection queryString, string userAgent, ViewEngine viewEngine=ViewEngine.WebForms)
+        public static string SelectView(NameValueCollection queryString, string userAgent, ViewEngine viewEngine=ViewEngine.WebForms, HttpCookieCollection cookies=null)
         {
             // Grab settings from config and set up some defaults
             var generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
             var configSettings = new Dictionary<EsccWebsiteView, NameValueCollection>();
             var configSettingsGroup = viewEngine == ViewEngine.WebForms ? "MasterPage" : "MvcLayout";
-            configSettings[EsccWebsiteView.Mobile] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Mobile" + configSettingsGroup+ "s") as NameValueCollection;
             configSettings[EsccWebsiteView.Desktop] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Desktop" + configSettingsGroup + "s") as NameValueCollection;
             configSettings[EsccWebsiteView.Plain] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Plain" + configSettingsGroup + "s") as NameValueCollection;
 
             string preferredMasterPage = String.Empty;
-            var preferredView = EsccWebsiteView.Unknown;
+            var preferredView = EsccWebsiteView.Desktop;
 
             // Are we set up to accept user requests for a master page?
             var acceptUserRequest = (generalSettings != null && !String.IsNullOrEmpty(generalSettings["MasterPageParameterName"]));
 
-            // A cookie is the best indicator because it works across the site, and is set when the user swops from one version 
-            // to the other. However we only need to set a cookie if the user isn't happy with the default, and anyway we can't 
-            // rely on cookie support on the device, so session and device detection are there as a backup plan.
-
-            // Has user expressed a valid preference, saved in a cookie?
-            // Add a "1" because the original cookie used for the preview needed to be cleared due to IE6 problems.
-            if (acceptUserRequest)
-            {
-                string cookieName = generalSettings["MasterPageParameterName"] + "1";
-                if (cookies[cookieName] != null)
-                {
-                    preferredView = AssignMasterPageFromUserRequest(generalSettings, configSettings, configSettingsGroup, preferredView, cookies[cookieName].Value);
-                }
-            }
-
-            // Next check session for a preferred view. If it's an existing session we want to stick with the expressed preference rather than
-            // the default. The idea of putting it in session is that it's only tested on the first request, allowing a user to be directed
-            // on that first request to the right site, but then move to the other version if they want to. Trouble is, our website has many
-            // separate sessions and the setting may not be in sync, so for us this can't be the best option.
-            if (preferredView == EsccWebsiteView.Unknown)
-            {
-                if (session != null && session["EastSussexGovUK.PreferredView"] != null) preferredView = (EsccWebsiteView)session["EastSussexGovUK.PreferredView"];
-            }
-
-            // As a last resort, assume the desktop template if no other decision made
-            if (preferredView == EsccWebsiteView.Unknown)
-            {
-                preferredView = EsccWebsiteView.Desktop;
-            }
-
-            // We've made a decision, save it in session to help us maintain it consistently
-            if (session != null) session["EastSussexGovUK.PreferredView"] = preferredView;
-
-            // Finally, if a master page is requested in the querystring that trumps everything *for this request only*
-            // Use the same parameter for the querystring and the cookie so that the connection is obvious
+            // If a master page is requested in the querystring that trumps everything *for this request only*
             if (acceptUserRequest && !String.IsNullOrEmpty(queryString[generalSettings["MasterPageParameterName"]]))
             {
                 preferredView = AssignMasterPageFromUserRequest(generalSettings, configSettings, configSettingsGroup, preferredView, queryString[generalSettings["MasterPageParameterName"]]);
@@ -148,7 +100,29 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             {
                 throw new ConfigurationErrorsException("The path to the selected MVC layout was not specified. Set the path in the EsccWebTeam.EastSussexGovUK/GeneralSettings/add[@key='" + preferredView + configSettingsGroup + "'] element in web.config.");
             }
+
+            // We used to use a cookie. Delete it if found. These cookies were set to last for 50 years!
+            DeleteCookie(cookies, "template1", ".eastsussex.gov.uk");
+
             return preferredMasterPage;
+        }
+
+
+        /// <summary>
+        /// Causes a browser to delete a cookie by setting it to expire yesterday
+        /// </summary>
+        /// <param name="cookies">The cookies.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="domain">The domain.</param>
+        private static void DeleteCookie(HttpCookieCollection cookies, string name, string domain)
+        {
+            if (cookies != null && cookies[name] != null)
+            {
+                HttpCookie cookie = new HttpCookie(name);
+                cookie.Expires = DateTime.Now.AddDays(-1d);
+                if (!String.IsNullOrEmpty(domain)) cookie.Domain = domain;
+                cookies.Add(cookie);
+            }
         }
 
 
@@ -256,98 +230,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         }
 
         /// <summary>
-        /// Select a particular master page or MVC layout, then redirect to a new page to apply the selection
-        /// </summary>
-        /// <param name="request">The request</param>
-        /// <param name="response">The response</param>
-        /// <param name="session">The session</param>
-        public static void SwitchView(HttpRequest request, HttpResponse response, HttpSessionState session)
-        {
-            if (request == null) throw new ArgumentNullException("request");
-            if (response == null) throw new ArgumentNullException("response");
-            if (session == null) throw new ArgumentNullException("session");
-
-            try
-            {
-                // Get master page settings from config
-                var generalSettings =
-                    ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
-
-                // Check relevant bits of config data are available
-                if (generalSettings == null || String.IsNullOrEmpty(generalSettings["MasterPageParameterName"]))
-                {
-                    throw new ConfigurationErrorsException(
-                        "<EsccWebTeam.EastSussexGovUK/GeneralSettings><add key=\"MasterPageParameterName\" value=\"???\" /></EsccWebTeam.EastSussexGovUK/GeneralSettings> setting not found in web.config");
-                }
-
-                // Note we're only using some master pages here. Other master page groups are designed to be used for a single request only.
-                var hasMobileMaster = (ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/MobileMasterPages") != null ||
-                                       !String.IsNullOrEmpty(generalSettings["MobileMasterPage"]));
-                var hasDesktopMaster = (ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/DesktopMasterPages") != null ||
-                                        !String.IsNullOrEmpty(generalSettings["DesktopMasterPage"]));
-
-                // Set cookie to mobile or desktop if specified, or clear to use default.
-                var cookieName = generalSettings["MasterPageParameterName"];
-                var cookieValue = String.Empty;
-                if (request.QueryString[cookieName] == "desktop" && hasDesktopMaster) cookieValue = "desktop";
-                if (request.QueryString[cookieName] == "mobile" && hasMobileMaster) cookieValue = "mobile";
-
-                // Add a "1" because the original cookie used for the preview needed to be cleared due to IE6 problems.
-                var cookie = new HttpCookie(cookieName + "1", cookieValue);
-                cookie.Expires = DateTime.Now.AddYears(cookieValue.Length > 0 ? 50 : -1);
-                if (request.Url.Host.IndexOf("eastsussex.gov.uk", StringComparison.InvariantCulture) > -1) cookie.Domain = ".eastsussex.gov.uk";
-                response.Cookies.Add(cookie);
-
-                // Put the value in session too. This is a backup in case permanent cookies aren't supported. Cookies are better because they apply sitewide,
-                // whereas we have quite a few separate application domains with separate sessions which may not be kept in sync. This will update
-                // the session for the current application domain only. Note that it is the current application domain rather than the root one, 
-                // because this user control is run within the "masterpages" virtual directory.
-                if (cookieValue == "mobile")
-                {
-                    session["EastSussexGovUK.PreferredView"] = EsccWebsiteView.Mobile;
-                }
-                else if (cookieValue == "desktop")
-                {
-                    session["EastSussexGovUK.PreferredView"] = EsccWebsiteView.Desktop;
-                }
-
-                // Redirect to the best available page - either the referrer or the root of the current host
-                var redirectUri = new Uri(request.Url.Scheme + "://" + request.Url.Host + "/");
-                if (!String.IsNullOrEmpty(request.QueryString["return"]))
-                {
-                    var returnUrl = new Uri(request.QueryString["return"], UriKind.RelativeOrAbsolute);
-                    returnUrl = new Uri(request.Url, returnUrl);
-
-                    if (returnUrl.Host.EndsWith("eastsussex.gov.uk", StringComparison.OrdinalIgnoreCase) ||
-                     returnUrl.Host.ToUpperInvariant() == request.Url.Host.ToUpperInvariant())
-                    {
-                        redirectUri = returnUrl;
-                    }
-                }
-
-                if (redirectUri != request.Url)
-                {
-                    // Add a cache-busting parameter to ensure the new version is loaded
-                    var query = HttpUtility.ParseQueryString(redirectUri.Query);
-                    query.Remove("nocache");
-                    query.Add("nocache", Guid.NewGuid().ToString());
-
-                    redirectUri = new Uri(redirectUri.Scheme + "://" + redirectUri.Authority + redirectUri.AbsolutePath + "?" + query);
-
-                    new HttpStatus().SeeOther(redirectUri);
-                }
-            }
-            catch (ThreadAbortException)
-            {
-                Thread.ResetAbort();
-            }
-            catch (Exception ex)
-            {
-                ex.ToExceptionless().Submit();
-            }
-        }
-
-        /// <summary>
         /// Gets the current master page or MVC layout type based on its path
         /// </summary>
         /// <param name="currentView">Path of current master page or MVC layout.</param>
@@ -355,7 +237,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         public static EsccWebsiteView CurrentViewIs(string currentView)
         {
             if (CurrentViewIs(currentView, EsccWebsiteView.Desktop)) return EsccWebsiteView.Desktop;
-            if (CurrentViewIs(currentView, EsccWebsiteView.Mobile)) return EsccWebsiteView.Mobile;
             if (CurrentViewIs(currentView, EsccWebsiteView.FullScreen)) return EsccWebsiteView.FullScreen;
             if (CurrentViewIs(currentView, EsccWebsiteView.Plain)) return EsccWebsiteView.Plain;
             return EsccWebsiteView.Unknown;

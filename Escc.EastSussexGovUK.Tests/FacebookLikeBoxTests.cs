@@ -23,14 +23,14 @@ namespace Escc.EastSussexGovUK.Tests
         }
 
         [Test]
-        public void NotShownInMobileView()
+        public void NotShownInPlainView()
         {
               var model = new SocialMediaSettings()
             {
                 FacebookPageUrl = new Uri("https://www.facebook.com/somepage")
             };
 
-            var feature = new FacebookLikeBox() {SocialMedia = model, EsccWebsiteView = EsccWebsiteView.Mobile};
+            var feature = new FacebookLikeBox() {SocialMedia = model, EsccWebsiteView = EsccWebsiteView.Plain};
 
             Assert.IsFalse(feature.IsRequired());
         }

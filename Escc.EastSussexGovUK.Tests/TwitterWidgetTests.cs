@@ -10,14 +10,14 @@ namespace Escc.EastSussexGovUK.Tests
     public class TwitterWidgetTests
     {
         [Test]
-        public void NotShownInMobileView()
+        public void NotShownInPlainView()
         {
               var model = new SocialMediaSettings()
             {
                 TwitterWidgetScript = new HtmlString("script code here")
             };
 
-            var feature = new FacebookLikeBox() {SocialMedia = model, EsccWebsiteView = EsccWebsiteView.Mobile};
+            var feature = new FacebookLikeBox() {SocialMedia = model, EsccWebsiteView = EsccWebsiteView.Plain};
 
             Assert.IsFalse(feature.IsRequired());
         }

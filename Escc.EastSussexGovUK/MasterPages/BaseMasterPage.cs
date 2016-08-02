@@ -80,22 +80,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         }
 
         /// <summary>
-        /// Causes a browser to delete a cookie by setting it to expire yesterday
-        /// </summary>
-        /// <param name="name">The name.</param>
-        /// <param name="domain">The domain.</param>
-        private void DeleteCookie(string name, string domain)
-        {
-            if (Request.Cookies[name] != null)
-            {
-                HttpCookie cookie = new HttpCookie(name);
-                cookie.Expires = DateTime.Now.AddDays(-1d);
-                if (!String.IsNullOrEmpty(domain)) cookie.Domain = domain;
-                Response.Cookies.Add(cookie);
-            }
-        }
-
-        /// <summary>
         /// Sends server control content to a provided <see cref="T:System.Web.UI.HtmlTextWriter"/> object, which writes the content to be rendered on the client.
         /// </summary>
         /// <param name="writer">The <see cref="T:System.Web.UI.HtmlTextWriter"/> object that receives the server control content.</param>

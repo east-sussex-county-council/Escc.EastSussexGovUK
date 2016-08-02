@@ -117,7 +117,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Remote
             // If user is on library catalogue PC, add that to token so that they get a separate cache
             var libraryUser = siteContext.UserIsLibraryCatalogue ? ".librarycatalogue" : String.Empty;
 
-            // Add application path to the token, because it affects the path to choose.ashx
+            // Add application path to the token, because it affects the path to /masterpages
             var sanitisedPath = "." + Regex.Replace(HttpRuntime.AppDomainAppVirtualPath.ToLower(CultureInfo.CurrentCulture), "[^a-z]", String.Empty);
 
             return _control + sanitisedSection + textSize + libraryUser + sanitisedPath;

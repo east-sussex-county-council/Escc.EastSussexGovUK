@@ -62,14 +62,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// </returns>
         public virtual IEnumerable<CssFileDependency> RequiresCss()
         {
-            if (_currentView == EsccWebsiteView.Mobile)
-            {
-                return new CssFileDependency[]
-                {
-                    new CssFileDependency() {CssFileAlias = "ContentSmall", Priority = 10}
-                };
-            }
-            else
+            if (_currentView == EsccWebsiteView.Desktop)
             {
                 return new CssFileDependency[]
                 {
@@ -78,6 +71,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                     new CssFileDependency() {CssFileAlias = "ContentLarge", MediaQueryAlias = "Large", Priority = 10}
                 };
             }
+            else return new CssFileDependency[0];
         }
 
         /// <summary>

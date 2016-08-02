@@ -12,11 +12,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         Unknown,
 
         /// <summary>
-        /// Mobile site
-        /// </summary>
-        Mobile,
-
-        /// <summary>
         /// Desktop site
         /// </summary>
         Desktop,
