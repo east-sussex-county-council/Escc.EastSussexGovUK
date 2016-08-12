@@ -8,7 +8,7 @@
 @{
     Layout = null;
     if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel"); }
-    Model.EsccWebsiteView = ViewSelector.CurrentViewIs(Layout);
+    Model.EsccWebsiteView = EsccWebsiteView.Desktop;
     if (Model.EsccWebsiteSkin is DefaultSkin)
     {
         Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
