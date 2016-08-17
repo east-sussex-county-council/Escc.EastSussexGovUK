@@ -420,7 +420,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="transforms\EnforceTLS.transform.config" />
     <Content Include="transforms\HttpStatusPages.transform.config">
       <SubType>Designer</SubType>
     </Content>
