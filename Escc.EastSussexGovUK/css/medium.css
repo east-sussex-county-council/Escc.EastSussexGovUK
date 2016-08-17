@@ -74,14 +74,6 @@ The container is now 10 columns or 802px wide.
 .text h1, h1.text { padding: .29166em 2.244389%; } 
 .text h1 { margin: 0 -2.244389%; }
 
-/* Related information appears below page content. Once we reach this size we can split it into two columns of 380px.
-   18px padding + 380px column + 18px gutter + 380px column + 18px padding = 802px/10 columns */
-.related { padding: 1.384615em 2.244389%; }
-.related .section { float: left; width: 46.633416%; margin: 0 2.244389% 0 0; }
-.rtl .related .section { float: right; }
-.related h2 { margin: 0 -1em .642857em; }
-.related ul { margin: .538462em 0 -.538462em; }
-
 /* Two column content using negative margin technique. Each column is 49% wide, 1% gutter between and after right allows for IE6/7 rounding errors.
    Optional container element .tCols contains the floated columns allowing other content to appear after them. 
 

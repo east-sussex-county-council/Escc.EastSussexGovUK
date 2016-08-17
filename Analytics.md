@@ -7,14 +7,16 @@ We use Google Universal Analytics, with multiple subdomains of `eastsussex.gov.u
 Our tracker code is in our own `analytics.js` in this project:
 
 - For WebForms pages and [Modern.gov](https://democracy.eastsussex.gov.uk) this is loaded from `~\masterpages\controls\Scripts*.ascx`, which in turn is included on our WebForms master pages in this project.
-- For Umbraco MVC pages this is loaded from `~\views\layouts\Scripts*.cshtml`, which in turn is included in our layout views, all in the `Escc.EastSussexGovUK.UmbracoViews` project.
+- For Umbraco MVC pages this is loaded from `~\views\layouts\Scripts*.cshtml`, which in turn is included in our layout views, all in the `Escc.EastSussexGovUK.Umbraco` project.
 - The [E-library](https://e-library.eastsussex.gov.uk) loads the same tracking code our main site using a separate reference in its own template. 
 
 Our tracker code is repeated in `display-as-html.xslt` and `display-as-html-v2.xslt` for RSS feeds.
 
 The following sites also log data to the same Google Analytics property, using their own copies of the tracking code:
 
+- [E-library](https://e-library.eastsussex.gov.uk)
 - [Have Your Say Hub](https://consultation.eastsussex.gov.uk/) 
+- [Contact Adult Social Care](https://adultsocialcare.eastsussex.gov.uk/)
 
 ## Tracking options
 

@@ -69,10 +69,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             // Common headers for all master pages: Force IE to use latest rendering engine or Chrome Frame
             Response.AddHeader("X-UA-Compatible", "IE=edge,chrome=1");
 
-            // It Do Not Track header is specified, spec says the response should echo it back to show compliance
-            if (siteContext.DoNotTrack == true) Response.AddHeader("DNT", "1");
-            else if (siteContext.DoNotTrack == false) Response.AddHeader("DNT", "0");
-
             // Google recommends specifying this to ensure proxy caches don't serve our mobile template to desktop users
             // ...but it doesn't work as ASP.NET ignores it. Also gzip uses Vary: Accept-encoding.
             // https://developers.google.com/webmasters/smartphone-sites/details

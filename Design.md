@@ -128,7 +128,7 @@ It is possible to mix WebForms using master pages and MVC pages using layouts in
 	  </system.webServer>
 	</configuration>
 
-The `ViewSelector` class controls which master page or layout is used. For WebForms applications it is called from the `MasterPageModule` shown in the configuration sample above. In MVC applications, `ViewSelector` is called in the `~\Views\_ViewStart.cshtml` file. It selects the master page based on a number of criteria, including the `web.config` settings mentioned above. It can also be called by a specific request to `choose.ashx` (deprecated).
+The `ViewSelector` class controls which master page or layout is used. For WebForms applications it is called from the `MasterPageModule` shown in the configuration sample above. In MVC applications, `ViewSelector` is called in the `~\Views\_ViewStart.cshtml` file. It selects the master page based on a number of criteria, including the `web.config` settings mentioned above.
 
 In an MVC application you can't see the `ViewStart.cshtml` file because it's implemented as an embedded resource.  You can create your own `ViewStart.cshtml` if you need to add additional code, but you'll need to copy [the call to ViewSelector](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/Escc.EastSussexGovUK.Mvc/Views/_ViewStart.cshtml) into your new file to continue to apply the correct layout.
 
@@ -176,14 +176,10 @@ The printer icon used in our CSS was made by [Yannick](http://yanlu.de). It's fr
 A number of features used frequently throughout the site are installed with the remote master pages and layouts.
 
 ### WebForms
-WebForms applications can add instances of `MasterPageControl` on their pages with the `Control` property set to:
+WebForms applications can use the following local usercontrols:
 
-* `1Space`, for an EastSussex1Space search widget
-* `Banners`, to support sitewide banners [configured using Umbraco](https://github.com/east-sussex-county-council/Escc.Umbraco.Banners)
-* `FacebookLike`, for a Facebook feed known as a 'Like' box
-* `TwitterSearch`, for a Twitter feed
-
-They can also use `~/masterpages/controls/related.ascx` and `~/masterpages/controls/share.ascx` as local usercontrols to present related links and social media links respectively. 
+* `~/masterpages/Controls/1Space.ascx`, for an EastSussex1Space search widget
+* `~/masterpages/controls/share.ascx` to present social media sharing links. 
 
 web.config:
 
@@ -191,7 +187,7 @@ web.config:
 	 	<system.web>
 		    <pages>
 		      <controls>
-		        <add tagPrefix="EastSussexGovUK" tagName="Related" src="~/masterpages/controls/related.ascx" />
+		        <add tagPrefix="EastSussexGovUK" tagName="EastSussex1Space" src="~/masterpages/controls/1Space.ascx" />
 		        <add tagPrefix="EastSussexGovUK" tagName="Share" src="~/masterpages/controls/share.ascx" />
 		      </controls>
 		    </pages>
@@ -200,20 +196,9 @@ web.config:
 
 ASPX file:
 
-	<EastSussexGovUK:Share runat="server" />
+	<EastSussexGovUK:EastSussex1Space runat="server"/>
 
-	<EastSussexGovUK:Related runat="server">
-        <PagesTemplate>
-	        <ul>
-	        <li><a href="/somepage/somewhere/">Example page on our site</a></li>
-	        </ul>
-        </PagesTemplate>
-         <WebsitesTemplate>
-	        <ul>
-	        <li><a href="http://example.org">Example website</a></li>
-	        </ul>
-        </WebsitesTemplate>
-    </EastSussexGovUK:Related>
+	<EastSussexGovUK:Share runat="server" />
 
 ### MVC5
 

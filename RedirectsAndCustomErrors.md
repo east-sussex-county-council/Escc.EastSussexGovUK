@@ -25,13 +25,13 @@ The main part of www.eastsussex.gov.uk is based on Umbraco, which is configured 
     		</httpErrors>
 		</system.webServer>
 
-3. To handle 404 errors in Umbraco we register an [IContentFinder](https://our.umbraco.org/documentation/reference/routing/request-pipeline/icontentfinder) as the "last chance content finder", and this content finder passes any Umbraco 404s over to the 404 page configured in `web.config`. `NotFoundContentFinder` is in the [Escc.EastSussexGovUK.UmbracoViews](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK.UmbracoViews) project.
+3. To handle 404 errors in Umbraco we register an [IContentFinder](https://our.umbraco.org/documentation/reference/routing/request-pipeline/icontentfinder) as the "last chance content finder", and this content finder passes any Umbraco 404s over to the 404 page configured in `web.config`. `NotFoundContentFinder` is in the [Escc.EastSussexGovUK.Umbraco](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK.Umbraco) project.
 
-4. Umbraco doesn't process all file extensions, so the content finder misses requests for URLs like `*.js` or `*.html`. For those we have an HTTP module that catches any responses with the status set to 404 and passes them over to the 404 page configured in `web.config`. `UmbracoCustomErrorsModule` also lives in the [Escc.EastSussexGovUK.UmbracoViews](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK.UmbracoViews) project.
+4. Umbraco doesn't process all file extensions, so the content finder misses requests for URLs like `*.js` or `*.html`. For those we have an HTTP module that catches any responses with the status set to 404 and passes them over to the 404 page configured in `web.config`. `UmbracoCustomErrorsModule` also lives in the [Escc.EastSussexGovUK.Umbraco](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK.Umbraco) project.
 	
 		<system.webServer>
 			<modules>
-		 		<add name="UmbracoCustomErrorsModule" type="Escc.EastSussexGovUK.UmbracoViews.Errors.UmbracoCustomErrorsModule, Escc.EastSussexGovUK.UmbracoViews"/>
+		 		<add name="UmbracoCustomErrorsModule" type="Escc.EastSussexGovUK.Umbraco.Errors.UmbracoCustomErrorsModule, Escc.EastSussexGovUK.Umbraco"/>
     		</modules>
 		</system.webServer>
 

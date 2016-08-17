@@ -374,12 +374,10 @@
       <SubType>Form</SubType>
     </Content>
     <Content Include="css\large.css" />
-    <Content Include="MasterPages\Controls\Banners.ascx" />
     <Content Include="MasterPages\Controls\Error400.ascx" />
     <Content Include="MasterPages\Controls\Error310.ascx" />
     <Content Include="MasterPages\Controls\Error404.ascx" />
     <Content Include="MasterPages\Controls\GovDelivery.html" />
-    <Content Include="MasterPages\Controls\FacebookLike.ascx" />
     <Content Include="MasterPages\Controls\ScriptsFullScreen.ascx" />
     <Content Include="MasterPages\Controls\HeaderFullScreen.ascx" />
     <Content Include="MasterPages\Controls\MetadataFullScreen.ascx" />
@@ -389,13 +387,9 @@
     <Content Include="MasterPages\Controls\HtmlTag.ascx" />
     <Content Include="MasterPages\Controls\Languages.ascx" />
     <Content Include="MasterPages\Controls\MetadataDesktop.ascx" />
-    <Content Include="MasterPages\Controls\Related.ascx" />
     <Content Include="MasterPages\Controls\ScriptsDesktop.ascx" />
     <Content Include="MasterPages\Controls\share.ascx" />
-    <Content Include="MasterPages\Controls\SupportingContentDesktop.ascx" />
-    <Content Include="MasterPages\Controls\TwitterSearch.ascx" />
     <Content Include="MasterPages\Remote\Control.aspx" />
-    <None Include="MasterPages\Remote\Example\example.aspx" />
     <Content Include="MasterPages\Controls\Web.config" />
     <None Include="MasterPages\Controls\Web.example.config" />
     <None Include="MasterPages\RSS\config.example.xslt" />
@@ -413,7 +407,6 @@
     <None Include="js\config.example.js" />
     <None Include="css\Web.example.config" />
     <None Include="js\Web.example.config" />
-    <None Include="MasterPages\Remote\Example\web.example.config" />
     <Content Include="MasterPages\textsize.aspx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -535,13 +528,6 @@
       <DependentUpon>Error404.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Controls\IBreadcrumbProvider.cs" />
-    <Compile Include="MasterPages\Controls\FacebookLike.ascx.cs">
-      <DependentUpon>FacebookLike.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\FacebookLike.ascx.designer.cs">
-      <DependentUpon>FacebookLike.ascx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Controls\ScriptsFullScreen.ascx.cs">
       <DependentUpon>ScriptsFullScreen.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -599,13 +585,6 @@
     <Compile Include="MasterPages\Controls\MetadataDesktop.ascx.designer.cs">
       <DependentUpon>MetadataDesktop.ascx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPages\Controls\Related.ascx.cs">
-      <DependentUpon>Related.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\Related.ascx.designer.cs">
-      <DependentUpon>Related.ascx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Controls\ScriptsDesktop.ascx.cs">
       <DependentUpon>ScriptsDesktop.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -619,13 +598,6 @@
     </Compile>
     <Compile Include="MasterPages\Controls\share.ascx.designer.cs">
       <DependentUpon>share.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Controls\TwitterSearch.ascx.cs">
-      <DependentUpon>TwitterSearch.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\TwitterSearch.ascx.designer.cs">
-      <DependentUpon>TwitterSearch.ascx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\DefaultSkin.cs" />
     <Compile Include="MasterPages\ContentSecurityPolicyDependency.cs" />
@@ -647,7 +619,6 @@
     <Compile Include="MasterPages\Features\WebChatSettings.cs" />
     <Compile Include="MasterPages\IEsccWebsiteSkin.cs" />
     <Compile Include="MasterPages\Remote\RemoteMasterPageCacheProviderBase.cs" />
-    <Compile Include="MasterPages\Remote\RemoteMasterPageFileCacheProvider.cs" />
     <Compile Include="MasterPages\Remote\RemoteMasterPageMemoryCacheProvider.cs" />
     <Compile Include="MasterPages\FullScreen.Master.cs">
       <DependentUpon>FullScreen.Master</DependentUpon>

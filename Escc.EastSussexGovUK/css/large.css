@@ -315,11 +315,6 @@ dl.itemDetail dd { margin: 0 2.821317% .538462em 25%; } /* 7px/13px between item
    18px padding + 298px column + 18px gutter + 298px column + 18px padding = 638px/8 columns */
 .section-nav ul { width: 45.768025%; margin: 0 2.821317% 0 0;  }
 
-/* Related information appears below page content inside .article. Update two columns for 8 column grid.
-   18px padding + 298px column + 18px gutter + 298px column + 18px padding = 638px/8 columns */
-.related { padding: 1.384615em 2.821317%; }
-.related .section { width: 45.768025%; margin: 0 2.821317% 0 0;  }
-
 /* Display ESCIS search widget at this level, but it has a transparent background which really needs to be white to add padding around the image header. */
 .escis { background: #fff; }
 

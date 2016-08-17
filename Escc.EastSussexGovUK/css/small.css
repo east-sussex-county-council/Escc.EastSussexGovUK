@@ -549,45 +549,6 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .vevent .uid { display: none; }
 .vcard .email { background: none; padding-left: 0; }
 
-/* Related information appears below page content. Padding around list is 14px on 13px text size, 7px between items. 
- 
-   1. Related section with pages and/or websites
-
-   <div class="related">
-        <h2 />
-        <div class="section">
-            <h3 />
-            <ul />
-        </div>
-        <div class="section">
-            <h3 />
-            <ul />
-        </div>
-   </div>
-
-    2. Related section with one list of links
-   
-    <div class="related">
-        <h2 />
-        <ul />
-    </div>
-*/
-.related { background: #dae1e5; padding: .692308em 3.797468%; overflow: hidden; clear: both; margin: 1.384615em 0 0; }
-
-/* Heading is 14px/18px with 9px vertical margins */
-/* Add border with 9px vertical padding, horizontal margin and padding takes line to edge of box */
-.related h2 { font-size: 1.076923em; line-height: 1.285714em; font-weight: bold; margin: .642857em -1em; padding: 0 1em 0; } 
-.related ul { margin: .538462em 0 0; }
-.related li { list-style: none; background: url(../img/body/item-type.png?v=2) no-repeat left -1196px; padding: 0 0 .538462em 1.076953em; }
-
-.ie6 .related { display: inline-block; } /* hasLayout to contain floats */
-
-@media print 
-{
-    .related, .related h2 { padding-left: 0; padding-right: 0; }
-    .related h2 { margin-left: 0; margin-right: 0; }           
-}
-
 /* Share box is on the baseline grid, 10px below .fb-like + 4px padding top and bottom of .comment = 18px 
    .share needs to contain floats because, when there's no last modified date, all elements are floated. 
    But it can't use overflow: hidden because that cuts off the pop-up Facebook dialog, so float it with 

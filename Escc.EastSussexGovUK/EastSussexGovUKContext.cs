@@ -223,22 +223,8 @@ namespace EsccWebTeam.EastSussexGovUK
         /// Gets whether the request includes a "do not track" header.
         /// </summary>
         /// <value><c>true</c> if "do not track" is enabled; <c>false</c> if disabled or <c>null</c> if not specified.</value>
-        public bool? DoNotTrack
-        {
-            get
-            {
-                // The spec defines 3 values: OPT-OUT, OPT-IN and NO-EXPRESSED-PREFERENCE.
-                // However the permitted actions are the same for OPT-IN and NO-EXPRESSED-PREFERENCE, 
-                // but the header should be echoed back if present so need to distinguish between the two.
-                //
-                // The setting for "DNT" should be "1", but Firefox 11 is sending things like DNT: 1, 1 and DNT: 1, 1, 1, 1
-                // so use StartsWith to support their broken implementation
-                var dntHeader = HttpContext.Current.Request.Headers.Get("DNT");
-                if (!String.IsNullOrEmpty(dntHeader) && dntHeader.StartsWith("1", StringComparison.Ordinal)) return true;
-                if (dntHeader == "0") return false;
-                return null;
-            }
-        }
+        [Obsolete("The Do Not Track standard is not recognised by the ad industry")]
+        public bool? DoNotTrack => null;
 
         #endregion // Shortcuts to information about the current request
 
@@ -369,6 +355,7 @@ namespace EsccWebTeam.EastSussexGovUK
         /// </summary>
         /// <param name="displayControl">The container control for the message</param>
         /// <param name="hideControls">Any other controls to hide when in an error state</param>
+        [Obsolete("In IIS7 and above, setting the status code to 310 is enough to trigger loading the configured 310 page")]
         public static void HttpStatus310Gone(Control displayControl, params Control[] hideControls)
         {
             HttpStatusMessage(310, displayControl, hideControls);
@@ -379,6 +366,7 @@ namespace EsccWebTeam.EastSussexGovUK
         /// </summary>
         /// <param name="displayControl">The container control for the message</param>
         /// <param name="hideControls">Any other controls to hide when in an error state</param>
+        [Obsolete("In IIS7 and above, setting the status code to 400 is enough to trigger loading the configured 400 page")]
         public static void HttpStatus400BadRequest(Control displayControl, params Control[] hideControls)
         {
             HttpStatusMessage(400, displayControl, hideControls);
@@ -389,6 +377,7 @@ namespace EsccWebTeam.EastSussexGovUK
         /// </summary>
         /// <param name="displayControl">The container control for the message</param>
         /// <param name="hideControls">Any other controls to hide when in an error state</param>
+        [Obsolete("In IIS7 and above, setting the status code to 404 is enough to trigger loading the configured 404 page")]
         public static void HttpStatus404NotFound(Control displayControl, params Control[] hideControls)
         {
             HttpStatusMessage(404, displayControl, hideControls);

@@ -31,7 +31,7 @@ namespace Escc.EastSussexGovUK.MasterPages.Features
         public bool IsRequired()
         {
             if (SocialMedia == null) return false;
-            return SocialMedia.FacebookPageUrl != null && !SocialMedia.DoNotTrack && EsccWebsiteView == EsccWebsiteView.Desktop;
+            return SocialMedia.FacebookPageUrl != null && EsccWebsiteView == EsccWebsiteView.Desktop;
         }
 
         /// <summary>

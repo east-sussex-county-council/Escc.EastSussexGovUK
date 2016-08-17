@@ -36,8 +36,6 @@ Example: C:\>set GIT_ORIGIN_URL=https://example-git-server.com/{0}"
 
 $projectName = "Escc.EastSussexGovUK"
 
-DownloadProjectIfMissing $parentFolderOfThisScript "Escc.Data.Web"
-
 EnableDotNet40InIIS
 CreateApplicationPool $projectName
 CreateWebsite $projectName "$pathOfThisScript\$projectName"

@@ -53,6 +53,7 @@ namespace EsccWebTeam.EastSussexGovUK
         /// Gets or sets whether to show contents to robots.
         /// </summary>
         /// <value><c>true</c> if robots; otherwise, <c>false</c>.</value>
+        [Obsolete]
         public bool? Robots { get; set; }
 
         /// <summary>
@@ -65,6 +66,7 @@ namespace EsccWebTeam.EastSussexGovUK
         /// Gets or sets whether to show contents if "Do Not Track" is set to OPT-OUT
         /// </summary>
         /// <value><c>true</c> to show content only to users who have opted out of tracking; <c>false</c> to show content to users who have opted in or not expressed a preference</value>
+        [Obsolete("The Do Not Track standard is not recognised by the ad industry")]
         public bool? DoNotTrack { get; set; }
 
         private bool contentsHidden = false;
@@ -173,15 +175,6 @@ namespace EsccWebTeam.EastSussexGovUK
                     HideContents();
                     return;
                 }
-            }
-
-            // Test for Do Not Track is slightly different because if ContextContainer.DoNotTrack is false it must 
-            // match a EastSussexGovUKContext.DoNotTrack set to either null or false
-            if (DoNotTrack != null && ((DoNotTrack == true && context.DoNotTrack != true)
-                                        || (DoNotTrack == false && context.DoNotTrack == true)))
-            {
-                HideContents();
-                return;
             }
 
             // Hide based on location

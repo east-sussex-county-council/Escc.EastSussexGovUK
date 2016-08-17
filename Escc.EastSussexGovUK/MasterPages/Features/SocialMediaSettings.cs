@@ -11,6 +11,7 @@ namespace Escc.EastSussexGovUK.MasterPages.Features
         public bool FacebookShowFeed { get; set; }
         public string TwitterAccount { get; set; }
         public IHtmlString TwitterWidgetScript { get; set; }
+        [Obsolete("The Do Not Track standard is not recognised by the ad industry")]
         public bool DoNotTrack { get; set; }
 
         public IEnumerable<string> SocialMediaOrder { get; set; }

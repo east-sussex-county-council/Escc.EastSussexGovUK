@@ -4,7 +4,7 @@ When there is enough screen space to show it (above 802px wide) a text size cont
 
 Our site supports raising the base text size in two increments. This setting is maintained by writing a cookie to the user's browser. The cookie is valid for any `*.eastsussex.gov.uk` domain, though it is interpreted by code on our site so unrelated subdomains should simply ignore it. If the header is displayed on a domain other than `*.eastsussex.gov.uk` or an internal server, the text size feature will not be shown.
 
-When you set the cookie to one of the larger text sizes, this is picked up by `desktop.master` (or `desktop.cshtml` in [Escc.EastSussexGovUK.UmbracoViews](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK.UmbracoViews) for MVC), which inserts an extra CSS class into the page. `small.css` looks for that class and increases the base font size.
+When you set the cookie to one of the larger text sizes, this is picked up by `desktop.master` for WebForms or `desktop.cshtml` for MVC, which inserts an extra CSS class into the page. `small.css` looks for that class and increases the base font size.
 
 By default the link in the header goes to `/masterpages/textsize.aspx` but this can be configured to any application-relative URL in `web.config`. 
 
