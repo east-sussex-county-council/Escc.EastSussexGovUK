@@ -394,16 +394,6 @@
     <Content Include="MasterPages\Controls\share.ascx" />
     <Content Include="MasterPages\Controls\SupportingContentDesktop.ascx" />
     <Content Include="MasterPages\Controls\TwitterSearch.ascx" />
-    <Content Include="MasterPages\Data\calendar.aspx" />
-    <Content Include="MasterPages\Data\datetime.xsl" />
-    <Content Include="MasterPages\Data\hCalendar.xslt">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="MasterPages\Data\mf-templates.xsl" />
-    <Content Include="MasterPages\Data\uri.xsl" />
-    <Content Include="MasterPages\Data\xhtml2vcal.xsl">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="MasterPages\Remote\Control.aspx" />
     <None Include="MasterPages\Remote\Example\example.aspx" />
     <Content Include="MasterPages\Controls\Web.config" />
@@ -418,7 +408,6 @@
     <Content Include="MasterPages\RSS\escc-logo.gif" />
     <Content Include="MasterPages\RSS\rss-utilities.xslt" />
     <Content Include="MasterPages\Remote\Web.config" />
-    <Content Include="MasterPages\Data\hCalendar.ashx" />
     <Content Include="MasterPages\FullScreen.Master" />
     <None Include="js\config.js" />
     <None Include="js\config.example.js" />
@@ -668,17 +657,6 @@
     <Compile Include="MasterPages\FullScreen.Master.designer.cs">
       <DependentUpon>FullScreen.Master</DependentUpon>
     </Compile>
-    <Compile Include="MasterPages\Data\calendar.aspx.cs">
-      <DependentUpon>calendar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Data\calendar.aspx.designer.cs">
-      <DependentUpon>calendar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Data\hCalendar.ashx.cs">
-      <DependentUpon>hCalendar.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Data\RewriteByExtensionModule.cs" />
     <Compile Include="MasterPages\MasterPageModule.cs" />
     <Compile Include="MasterPages\Desktop.Master.cs">
       <DependentUpon>Desktop.Master</DependentUpon>
