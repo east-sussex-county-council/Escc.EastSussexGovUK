@@ -1,6 +1,6 @@
 ﻿using System;
+using Escc.EastSussexGovUK.Features;
 using NUnit.Framework;
-using Escc.EastSussexGovUK.MasterPages.Features;
 
 namespace Escc.EastSussexGovUK.Tests
 {

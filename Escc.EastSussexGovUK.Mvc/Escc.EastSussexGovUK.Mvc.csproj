@@ -205,12 +205,6 @@
     <EmbeddedResource Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
-      <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
-      <Name>EsccWebTeam.EastSussexGovUK</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\EastSussexGovUK\Desktop.cshtml" />
     <EmbeddedResource Include="Views\EastSussexGovUK\FullScreen.cshtml" />
     <EmbeddedResource Include="Views\EastSussexGovUK\Plain.cshtml" />
@@ -225,6 +219,12 @@
     <EmbeddedResource Include="Views\EastSussexGovUK\Features\_Share.cshtml" />
     <EmbeddedResource Include="Views\EastSussexGovUK\Features\_SupportingContentDesktop.cshtml" />
     <EmbeddedResource Include="Views\EastSussexGovUK\Features\_Twitter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Escc.EastSussexGovUK\Escc.EastSussexGovUK.csproj">
+      <Project>{0d24d550-1007-4627-8dad-c86b07165ef7}</Project>
+      <Name>Escc.EastSussexGovUK</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

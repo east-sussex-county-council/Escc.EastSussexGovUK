@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Escc.EastSussexGovUK.Features;
 using NUnit.Framework;
-using Escc.EastSussexGovUK.MasterPages.Features;
 
 namespace Escc.EastSussexGovUK.Tests
 {

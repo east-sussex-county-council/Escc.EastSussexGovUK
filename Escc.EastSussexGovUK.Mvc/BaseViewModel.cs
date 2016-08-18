@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web;
-using Escc.EastSussexGovUK.MasterPages.Features;
+using Escc.EastSussexGovUK.Features;
+using Escc.EastSussexGovUK.Skins;
+using Escc.EastSussexGovUK.Views;
 using Escc.Web.Metadata;
-using EsccWebTeam.EastSussexGovUK.MasterPages;
-using EsccWebTeam.EastSussexGovUK.MasterPages.Controls;
 
 namespace Escc.EastSussexGovUK.Mvc
 {
@@ -15,14 +15,14 @@ namespace Escc.EastSussexGovUK.Mvc
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
         /// </summary>
-        protected BaseViewModel() : this(new ConfigurationBreadcrumbProvider())
+        protected BaseViewModel() : this(new BreadcrumbTrailFromConfig())
         {
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
         /// </summary>
-        /// <param name="breadcrumbProvider">The breadcrumb provider to replace the default <see cref="ConfigurationBreadcrumbProvider"/>.</param>
+        /// <param name="breadcrumbProvider">The breadcrumb provider to replace the default <see cref="BreadcrumbTrailFromConfig"/>.</param>
         /// <exception cref="System.ArgumentNullException"></exception>
         protected BaseViewModel(IBreadcrumbProvider breadcrumbProvider)
         {

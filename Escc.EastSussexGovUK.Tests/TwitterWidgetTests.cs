@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web;
-using EsccWebTeam.EastSussexGovUK.MasterPages;
+using Escc.EastSussexGovUK.Features;
+using Escc.EastSussexGovUK.Views;
 using NUnit.Framework;
-using Escc.EastSussexGovUK.MasterPages.Features;
 
 namespace Escc.EastSussexGovUK.Tests
 {

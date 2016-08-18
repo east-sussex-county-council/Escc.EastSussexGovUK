@@ -37,7 +37,7 @@
         }
     }
     
-    var siteContext = new EastSussexGovUKContext();
+    var siteContext = new DomainContext();
     if (siteContext.TextSize > 1)
     {
         bodyClass += " size" + siteContext.TextSize.ToString(CultureInfo.InvariantCulture);
