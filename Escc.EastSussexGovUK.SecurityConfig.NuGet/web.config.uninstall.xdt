@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <Escc.Web>
+    <ContentSecurityPolicies>
+      <add key="Default" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GoogleAnalytics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GoogleMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GoogleContentExperiments" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GoogleTagManager" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GoogleFonts" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CrazyEgg" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Facebook" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Twitter" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="YouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GisMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Typekit" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="ESCIS" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="OrdnanceSurveyMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </ContentSecurityPolicies>
+    <ContentSecurityPolicies xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+    <ContentSecurityPolicySettings>
+      <add xdt:Transform="Remove" xdt:Locator="Condition(@key = 'PoliciesToApply' and @value = 'Default;Local;GoogleAnalytics;GoogleTagManager;GoogleFonts;CrazyEgg')"/>
+      <add xdt:Transform="Remove" xdt:Locator="Condition(@key = 'UrlsToExclude' and @value = '/umbraco;/install;/DependencyHandler.axd')"/>
+    </ContentSecurityPolicySettings>
+    <ContentSecurityPolicySettings xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+  </Escc.Web>
+
+  <Escc.Web xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+
+  <system.webServer>
+    <modules>
+      <add name="ContentSecurityPolicy" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+    </modules>
+    <modules xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+  </system.webServer>
+  <system.webServer xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+
+  <configSections>
+    <sectionGroup name="Escc.Web" xdt:Locator="Match(name)">
+      <section xdt:Transform="Remove" xdt:Locator="Condition(@name='ContentSecurityPolicies' and not(/configuration/Escc.Web/ContentSecurityPolicies))" />
+      <section xdt:Transform="Remove" xdt:Locator="Condition(@name='ContentSecurityPolicySettings' and not(/configuration/Escc.Web/ContentSecurityPolicySettings))" />
+    </sectionGroup>
+    <sectionGroup xdt:Transform="Remove" xdt:Locator="Condition(@name='Escc.Web' and count(*) = 0 and not(/configuration/Escc.Web))" />
+  </configSections>
+  <configSections xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+</configuration>

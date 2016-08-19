@@ -301,7 +301,6 @@
     <Content Include="MasterPages\Web.config" />
     <None Include="MasterPages\Web.example.config" />
     <Content Include="transforms\Security.transform.config" />
-    <None Include="transforms\ContentSecurityPolicy.transform.config" />
     <None Include="js\1space.js" />
     <None Include="js\alerts.js" />
     <None Include="js\analytics.js" />
@@ -416,10 +415,6 @@
     <Content Include="transforms\HttpStatusPages.transform.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="transforms\Metadata.transform.config" />
-    <None Include="transforms\CSS.transform.config" />
-    <None Include="transforms\JS.transform.config" />
-    <None Include="transforms\MediaQueries.transform.config" />
     <Content Include="transforms\HttpStatus.transform.config">
       <SubType>Designer</SubType>
     </Content>
