@@ -20,12 +20,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
     /// <example>
     /// &lt;configuration&gt;
     ///   &lt;configSections&gt;
-    ///     &lt;sectionGroup name=&quot;EsccWebTeam.EastSussexGovUK&quot;&gt;
+    ///     &lt;sectionGroup name=&quot;Escc.EastSussexGovUK&quot;&gt;
     ///       &lt;section name=&quot;HttpReplaceOnRender&quot; type=&quot;System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; /&gt;
     ///       &lt;section name=&quot;HttpsReplaceOnRender&quot; type=&quot;System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; /&gt;
     ///     &lt;/sectionGroup&gt;
     ///   &lt;/configSections&gt;
-    ///   &lt;EsccWebTeam.EastSussexGovUK&gt;
+    ///   &lt;Escc.EastSussexGovUK&gt;
     ///     &lt;HttpReplaceOnRender&gt;
     ///       &lt;add key=&quot;example-string-replace&quot; value=&quot;example-replaced&quot; /&gt;
     ///       &lt;add key=&quot;REGEX:example-regular-expression-replace&quot; value=&quot;example-replaced&quot; /&gt;
@@ -34,7 +34,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
     ///       &lt;add key=&quot;example-string-replace&quot; value=&quot;example-replaced&quot; /&gt;
     ///       &lt;add key=&quot;REGEX:example-regular-expression-replace&quot; value=&quot;example-replaced&quot; /&gt;
     ///     &lt;/HttpsReplaceOnRender&gt;
-    ///   &lt;/EsccWebTeam.EastSussexGovUK&gt;
+    ///   &lt;/Escc.EastSussexGovUK&gt;
     /// &lt;/configuration&gt;
     /// </example>
     /// </remarks>
@@ -98,7 +98,8 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             base.Render(new HtmlTextWriter(tempWriter));
             string pageHtml = tempWriter.ToString();
 
-            var replaceSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/" + Request.Url.Scheme.Substring(0, 1).ToUpperInvariant() + Request.Url.Scheme.Substring(1) + "ReplaceOnRender") as NameValueCollection;
+            var replaceSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/" + Request.Url.Scheme.Substring(0, 1).ToUpperInvariant() + Request.Url.Scheme.Substring(1) + "ReplaceOnRender") as NameValueCollection;
+            if (replaceSettings == null) replaceSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/" + Request.Url.Scheme.Substring(0, 1).ToUpperInvariant() + Request.Url.Scheme.Substring(1) + "ReplaceOnRender") as NameValueCollection;
             if (replaceSettings != null)
             {
                 // Update the HTML based on config settings

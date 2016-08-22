@@ -1,3 +1,3 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MasterPageControl.ascx.cs" Inherits="Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK.MasterPageControl" %>
-<%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK.MasterPages.Controls" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
+<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.Views" Assembly="Escc.EastSussexGovUK" %>
 <EastSussexGovUK:MasterPageControl ID="masterPageControl" runat="server" EnableViewState="false" />

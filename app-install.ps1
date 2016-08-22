@@ -56,7 +56,7 @@ Example: C:\>set GIT_ORIGIN_URL=https://example-git-server.com/{0}"
 
 # Copy a minimal set of files needed to load the ESCC website template on a site which will request most of its components using the remote template.
 
-$projectName = "Escc.EastSussexGovUK" 
+$projectName = "EsccWebTeam.EastSussexGovUK" 
 $sourceFolder = NormaliseFolderPath $sourceFolder "$PSScriptRoot\$projectName"
 $destinationFolder = NormaliseFolderPath $destinationFolder
 $destinationFolder = "$destinationFolder\$websiteName"
@@ -66,17 +66,15 @@ $transformsFolder = NormaliseFolderPath $transformsFolder
 
 BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
     
-robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png desktop.png pan-*.gif item-type.png *.master share.ascx related.ascx 1space.ascx default.aspx status*.aspx error*.ascx escc-logo.gif logo-large.gif display-as-html.xslt config.xslt google*.html /XD aspnet_client obj Properties "Web References"
+robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png desktop.png pan-*.gif item-type.png *.master share.ascx 1space.ascx default.aspx status*.aspx escc-logo.gif logo-large.gif display-as-html.xslt config.xslt google*.html /XD aspnet_client obj Properties "Web References"
 TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.temp1.config" "$sourceFolder\transforms\HttpStatus.transform.config"
-TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.temp2.config" "$sourceFolder\transforms\ContentSecurityPolicy.transform.config"
-TransformConfig "$destinationFolder\$projectName\web.temp2.config" "$destinationFolder\$projectName\web.config" "$sourceFolder\transforms\Security.transform.config"
+TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.config" "$PSScriptRoot\Escc.EastSussexGovUK.SecurityConfig.NuGet\web.config.install.xdt"
 del "$destinationFolder\$projectName\web.temp*.config"
 
 TransformConfig "$sourceFolder\masterpages\web.example.config" "$destinationFolder\$projectName\masterpages\web.temp1.config" "$sourceFolder\transforms\HttpStatusPages.transform.config"
-TransformConfig "$destinationFolder\$projectName\masterpages\web.temp1.config" "$destinationFolder\$projectName\masterpages\web.temp2.config" "$sourceFolder\transforms\Metadata.transform.config"
-TransformConfig "$destinationFolder\$projectName\masterpages\web.temp2.config" "$destinationFolder\$projectName\masterpages\web.temp3.config" "$sourceFolder\transforms\MediaQueries.transform.config"
-TransformConfig "$destinationFolder\$projectName\masterpages\web.temp3.config" "$destinationFolder\$projectName\masterpages\web.temp4.config" "$sourceFolder\transforms\Css.transform.config"
-TransformConfig "$destinationFolder\$projectName\masterpages\web.temp4.config" "$destinationFolder\$projectName\masterpages\web.config" "$transformsFolder\$projectName\masterpages\web.release.config"
+TransformConfig "$destinationFolder\$projectName\masterpages\web.temp1.config" "$destinationFolder\$projectName\masterpages\web.temp2.config" "$PSScriptRoot\Escc.EastSussexGovUK.Metadata.NuGet\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\masterpages\web.temp2.config" "$destinationFolder\$projectName\masterpages\web.temp3.config" "$PSScriptRoot\Escc.EastSussexGovUK.ClientDependency.NuGet\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\masterpages\web.temp3.config" "$destinationFolder\$projectName\masterpages\web.config" "$transformsFolder\$projectName\masterpages\web.release.config"
 del "$destinationFolder\$projectName\masterpages\web.temp*.config"
 
 TransformConfig "$sourceFolder\css\web.example.config" "$destinationFolder\$projectName\css\web.config" "$transformsFolder\$projectName\css\web.release.config"

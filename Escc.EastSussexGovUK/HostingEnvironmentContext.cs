@@ -24,7 +24,8 @@ namespace Escc.EastSussexGovUK
             {
                 if (this._generalSettings == null)
                 {
-                    this._generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+                    this._generalSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+                    if (this._generalSettings == null) this._generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
                     if (this._generalSettings == null) this._generalSettings = new NameValueCollection();
                 }
                 return this._generalSettings;

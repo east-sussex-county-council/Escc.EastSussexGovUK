@@ -4,8 +4,8 @@ using System.Configuration;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web;
+using Escc.EastSussexGovUK.Views;
 using Escc.Web;
-using EsccWebTeam.EastSussexGovUK.MasterPages.Controls;
 
 
 namespace EsccWebTeam.EastSussexGovUK.MasterPages.Remote
@@ -33,7 +33,8 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages.Remote
                     var localControlUrl = "~/masterpages/controls/{0}.ascx";
 
                     // Allow override to load controls from anywhere
-                    var config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+                    var config = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+                    if (config == null) config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
                     if (config != null && !String.IsNullOrEmpty(config["MasterPageControlUrl"]))
                     {
                         localControlUrl = config["MasterPageControlUrl"];

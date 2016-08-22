@@ -34,7 +34,8 @@ namespace EsccWebTeam.EastSussexGovUK
                 else
                 {
                     // Compare the host name to rules to select the correct tag manager id
-                    var rules = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GoogleTagManagerIdRules") as NameValueCollection;
+                    var rules = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GoogleTagManagerIdRules") as NameValueCollection;
+                    if (rules == null) rules = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GoogleTagManagerIdRules") as NameValueCollection;
                     if (rules == null) return String.Empty;
 
                     var googleTagManagerId = new GoogleTagManagerContainerIdSelector();

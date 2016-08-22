@@ -1,9 +1,8 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Desktop.master.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Desktop" %>
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
-<%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK.MasterPages.Controls" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
+<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.Views" Assembly="Escc.EastSussexGovUK" %>
 <%@ Register TagPrefix="ClientDependency" Namespace="Escc.ClientDependencyFramework.WebForms" assembly="Escc.ClientDependencyFramework.WebForms" %>
-<%@ Register TagPrefix="EastSussexGovUK1" Namespace="Escc.EastSussexGovUK" Assembly="Escc.EastSussexGovUK" %>
-<%@ Register TagPrefix="EastSussexGovUK1" Namespace="Escc.EastSussexGovUK.Features" Assembly="Escc.EastSussexGovUK" %>
+<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.Features" Assembly="Escc.EastSussexGovUK" %>
 <EastSussexGovUK:MasterPageControl runat="server" Control="HtmlTag" EnableViewState="false" />
 <head runat="server">
     <EastSussexGovUK:ContextContainer runat="server" Public="true"><asp:ContentPlaceHolder id="contentExperiment" runat="server" /></EastSussexGovUK:ContextContainer>
@@ -22,7 +21,7 @@
     </asp:contentplaceholder>
     <div id="main" role="main" class="body">
         <div class="container">
-            <asp:ContentPlaceholder id="breadcrumb" runat="server"><EastSussexGovUK1:BreadcrumbTrail runat="server" ID="breadcrumbTrail" EnableViewState="false" /><EastSussexGovUK1:BreadcrumbTrailMobile runat="server" ID="breadcrumbTrailMobile" EnableViewState="false" /></asp:ContentPlaceholder>
+            <asp:ContentPlaceholder id="breadcrumb" runat="server"><EastSussexGovUK:BreadcrumbTrail runat="server" ID="breadcrumbTrail" EnableViewState="false" /><EastSussexGovUK:BreadcrumbTrailMobile runat="server" ID="breadcrumbTrailMobile" EnableViewState="false" /></asp:ContentPlaceholder>
             <form id="form1" runat="server">
                 <asp:ContentPlaceHolder ID="content" runat="server" />
                 <asp:ContentPlaceholder id="supporting" runat="server" />

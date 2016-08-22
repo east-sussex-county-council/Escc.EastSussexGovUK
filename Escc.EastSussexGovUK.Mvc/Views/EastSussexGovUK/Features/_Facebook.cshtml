@@ -1,11 +1,11 @@
-﻿@using Escc.EastSussexGovUK.MasterPages.Features
+﻿@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Views
 @using Escc.Html
-@using EsccWebTeam.EastSussexGovUK.MasterPages
 @model Escc.EastSussexGovUK.Mvc.BaseViewModel
 @{
     if (Model != null && Model.SocialMedia != null && Model.SocialMedia.FacebookPageUrl != null)
     {
-        var showWidget = !Model.SocialMedia.DoNotTrack && Model.EsccWebsiteView == EsccWebsiteView.Desktop;
+        var showWidget = Model.EsccWebsiteView == EsccWebsiteView.Desktop;
         var displayUrl = new HtmlLinkFormatter().AbbreviateUrl(Model.SocialMedia.FacebookPageUrl);
 
         if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)

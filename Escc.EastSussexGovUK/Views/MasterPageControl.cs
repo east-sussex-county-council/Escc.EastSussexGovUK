@@ -46,7 +46,8 @@ namespace Escc.EastSussexGovUK.Views
             if (String.IsNullOrEmpty(this.Control)) throw new ArgumentNullException("Control", "Property 'Control' must be set for class MasterPageControl");
 
             // Get the configuration settings for remote master pages. Is this control in there?
-            this.config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
+            this.config = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
+            if (this.config == null) this.config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
             if (this.config != null && !String.IsNullOrEmpty(this.config["MasterPageControlUrl"]))
             {
                 LoadRemoteControl();
@@ -67,7 +68,8 @@ namespace Escc.EastSussexGovUK.Views
             var localControlUrl = "~/masterpages/controls/{0}.ascx";
 
             // Allow override to load controls from anywhere
-            this.config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+            this.config = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+            if (this.config == null) this.config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
             if (this.config != null && !String.IsNullOrEmpty(this.config["MasterPageControlUrl"]))
             {
                 localControlUrl = this.config["MasterPageControlUrl"];

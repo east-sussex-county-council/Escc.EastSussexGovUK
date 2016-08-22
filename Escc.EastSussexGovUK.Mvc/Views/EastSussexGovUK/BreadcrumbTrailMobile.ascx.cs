@@ -5,9 +5,9 @@ using Escc.EastSussexGovUK.Features;
 namespace Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
 {
     /// <summary>
-    /// An MVC-compatible wrapper around the WebForms EsccWebTeam.EastSussexGovUK.MasterPages.Controls.BreadcrumbTrailMobile control
+    /// An MVC-compatible wrapper around the WebForms Escc.EastSussexGovUK.Features.BreadcrumbTrailMobile control
     /// </summary>
-    /// <seealso cref="System.Web.Mvc.ViewUserControl{EsccWebTeam.EastSussexGovUK.MasterPages.Controls.IBreadcrumbProvider}" />
+    /// <seealso cref="System.Web.Mvc.ViewUserControl{IBreadcrumbProvider}" />
     public partial class BreadcrumbTrailMobile : ViewUserControl<IBreadcrumbProvider>
     {
         /// <summary>

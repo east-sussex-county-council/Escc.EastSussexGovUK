@@ -15,18 +15,18 @@ namespace Escc.EastSussexGovUK.Features
     /// <code>
     /// &lt;configuration&gt;
     ///     &lt;configSections&gt;
-    ///         &lt;sectionGroup name=&quot;EsccWebTeam.EastSussexGovUK&quot;&gt;
+    ///         &lt;sectionGroup name=&quot;Escc.EastSussexGovUK&quot;&gt;
     ///             &lt;section name=&quot;GeneralSettings&quot; type=&quot;System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; /&gt;
     ///         &lt;/sectionGroup&gt;
     ///	    &lt;/configSections&gt;
     ///
-    ///     &lt;EsccWebTeam.EastSussexGovUK&gt;
+    ///     &lt;Escc.EastSussexGovUK&gt;
     ///         &lt;BreadcrumbTrail&gt;
     ///             &lt;add key=&quot;Home&quot; value=&quot;https://www.eastsussex.gov.uk/&quot; /&gt;
     ///             &lt;add key=&quot;Top level section&quot; value=&quot;/toplevelsection/&quot; /&gt;
     ///             &lt;add key=&quot;Sub-section&quot; value=&quot;/toplevelsection/subsection/&quot; /&gt;
     ///         &lt;/BreadcrumbTrail&gt;
-    ///     &lt;/EsccWebTeam.EastSussexGovUK&gt;
+    ///     &lt;/Escc.EastSussexGovUK&gt;
     /// &lt;/configuration&gt;
     /// </code>
     /// </example>

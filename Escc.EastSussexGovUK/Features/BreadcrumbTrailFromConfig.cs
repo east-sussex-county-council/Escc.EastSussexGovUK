@@ -17,7 +17,8 @@ namespace Escc.EastSussexGovUK.Features
         /// <returns></returns>
         public IDictionary<string, string> BuildTrail()
         {
-            var breadcrumbTrail = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/BreadcrumbTrail") as NameValueCollection;
+            var breadcrumbTrail = ConfigurationManager.GetSection("Escc.EastSussexGovUK/BreadcrumbTrail") as NameValueCollection;
+            if (breadcrumbTrail == null) breadcrumbTrail = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/BreadcrumbTrail") as NameValueCollection;
             if (breadcrumbTrail == null) breadcrumbTrail = new NameValueCollection();
 
             // Try to remove the link to the current page

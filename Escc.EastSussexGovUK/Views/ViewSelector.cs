@@ -26,12 +26,12 @@ namespace Escc.EastSussexGovUK.Views
         ///   <code>
         /// &lt;configuration&gt;
         /// &lt;configSections&gt;
-        /// &lt;sectionGroup name="EsccWebTeam.EastSussexGovUK"&gt;
+        /// &lt;sectionGroup name="Escc.EastSussexGovUK"&gt;
         /// &lt;section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
         /// &lt;section name="DesktopMasterPages" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
         /// &lt;/sectionGroup&gt;
         /// &lt;/configSections&gt;
-        /// &lt;EsccWebTeam.EastSussexGovUK&gt;
+        /// &lt;Escc.EastSussexGovUK&gt;
         /// &lt;GeneralSettings&gt;
         /// &lt;add key="MasterPageParameterName" value="template" /&gt;
         /// &lt;/GeneralSettings&gt;
@@ -40,7 +40,7 @@ namespace Escc.EastSussexGovUK.Views
         /// &lt;add key="/somefolder" value="~/master/CustomFolder.master" /&gt;
         /// &lt;add key="/" value="~/master/Desktop.master" /&gt;
         /// &lt;/DesktopMasterPages&gt;
-        /// &lt;/EsccWebTeam.EastSussexGovUK&gt;
+        /// &lt;/Escc.EastSussexGovUK&gt;
         /// &lt;system.web&gt;
         /// &lt;httpModules&gt;
         /// &lt;add name="MasterPageModule" type="EsccWebTeam.EastSussexGovUK.MasterPageModule, EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f"/&gt;
@@ -55,11 +55,16 @@ namespace Escc.EastSussexGovUK.Views
         public static string SelectView(NameValueCollection queryString, string userAgent, ViewEngine viewEngine=ViewEngine.WebForms, HttpCookieCollection cookies=null)
         {
             // Grab settings from config and set up some defaults
-            var generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+            var generalSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+            if (generalSettings == null) generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
             var configSettings = new Dictionary<EsccWebsiteView, NameValueCollection>();
+
             var configSettingsGroup = viewEngine == ViewEngine.WebForms ? "MasterPage" : "MvcLayout";
-            configSettings[EsccWebsiteView.Desktop] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Desktop" + configSettingsGroup + "s") as NameValueCollection;
-            configSettings[EsccWebsiteView.Plain] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Plain" + configSettingsGroup + "s") as NameValueCollection;
+            configSettings[EsccWebsiteView.Desktop] = ConfigurationManager.GetSection("Escc.EastSussexGovUK/Desktop" + configSettingsGroup + "s") as NameValueCollection;
+            if (configSettings[EsccWebsiteView.Desktop] == null) configSettings[EsccWebsiteView.Desktop] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Desktop" + configSettingsGroup + "s") as NameValueCollection;
+
+            configSettings[EsccWebsiteView.Plain] = ConfigurationManager.GetSection("Escc.EastSussexGovUK/Plain" + configSettingsGroup + "s") as NameValueCollection;
+            if (configSettings[EsccWebsiteView.Plain] == null) configSettings[EsccWebsiteView.Plain] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Plain" + configSettingsGroup + "s") as NameValueCollection;
 
             string preferredMasterPage = String.Empty;
             var preferredView = EsccWebsiteView.Desktop;
@@ -92,7 +97,7 @@ namespace Escc.EastSussexGovUK.Views
 
             if (viewEngine == ViewEngine.Mvc && String.IsNullOrEmpty(preferredMasterPage))
             {
-                throw new ConfigurationErrorsException("The path to the selected MVC layout was not specified. Set the path in the EsccWebTeam.EastSussexGovUK/GeneralSettings/add[@key='" + preferredView + configSettingsGroup + "'] element in web.config.");
+                throw new ConfigurationErrorsException("The path to the selected MVC layout was not specified. Set the path in the Escc.EastSussexGovUK/GeneralSettings/add[@key='" + preferredView + configSettingsGroup + "'] element in web.config.");
             }
 
             // We used to use a cookie. Delete it if found. These cookies were set to last for 50 years!
@@ -244,7 +249,8 @@ namespace Escc.EastSussexGovUK.Views
         /// <returns></returns>
         public static bool CurrentViewIs(string currentView, EsccWebsiteView view)
         {
-            var generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+            var generalSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
+            if (generalSettings == null) generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
             return IsMasterPageInGroup(currentView, view.ToString(), generalSettings);
         }
 
@@ -275,7 +281,8 @@ namespace Escc.EastSussexGovUK.Views
             }
 
             // If not, check if there's a group of settings
-            var masterPageSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/" + groupName + "MasterPages") as NameValueCollection;
+            var masterPageSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/" + groupName + "MasterPages") as NameValueCollection;
+            if (masterPageSettings == null) masterPageSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/" + groupName + "MasterPages") as NameValueCollection;
             if (masterPageSettings != null)
             {
                 foreach (string key in masterPageSettings.Keys)

@@ -156,7 +156,7 @@ namespace EsccWebTeam.EastSussexGovUK
             }
 
             // Hide based on user
-            var libraryContext = new LibraryCatalogueContext();
+            var libraryContext = new LibraryCatalogueContext(HttpContext.Current.Request.UserAgent);
             if (LibraryCatalogue != null && LibraryCatalogue.Value != libraryContext.RequestIsFromLibraryCatalogueMachine())
             {
                 HideContents();

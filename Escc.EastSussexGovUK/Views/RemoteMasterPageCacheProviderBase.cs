@@ -51,10 +51,11 @@ namespace Escc.EastSussexGovUK.Views
         {
             if (ConfigurationSettings == null)
             {
-                ConfigurationSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
+                ConfigurationSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
+                if (ConfigurationSettings == null) ConfigurationSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
                 if (ConfigurationSettings == null)
                 {
-                    throw new ConfigurationErrorsException("web.config section not found: <EsccWebTeam.EastSussexGovUK><RemoteMasterPage /></EsccWebTeam.EastSussexGovUK>");
+                    throw new ConfigurationErrorsException("web.config section not found: <Escc.EastSussexGovUK><RemoteMasterPage /></Escc.EastSussexGovUK>");
                 }
             }
         }
@@ -88,14 +89,14 @@ namespace Escc.EastSussexGovUK.Views
         {
             EnsureConfigurationSettings();
 
-            if (String.IsNullOrEmpty(ConfigurationSettings["CacheMinutes"])) throw new ConfigurationErrorsException("web.config entry not found: <EsccWebTeam.EastSussexGovUK><RemoteMasterPage><add key=\"CacheMinutes\" value=\"integer\" /></RemoteMasterPage></EsccWebTeam.EastSussexGovUK>");
+            if (String.IsNullOrEmpty(ConfigurationSettings["CacheMinutes"])) throw new ConfigurationErrorsException("web.config entry not found: <Escc.EastSussexGovUK><RemoteMasterPage><add key=\"CacheMinutes\" value=\"integer\" /></RemoteMasterPage></Escc.EastSussexGovUK>");
             try
             {
                 return Int32.Parse(ConfigurationSettings["CacheMinutes"]);
             }
             catch (FormatException ex)
             {
-                throw new ConfigurationErrorsException("web.config entry is not an integer: <EsccWebTeam.EastSussexGovUK><RemoteMasterPage><add key=\"CacheMinutes\" value=\"integer\" /></RemoteMasterPage></EsccWebTeam.EastSussexGovUK>", ex);
+                throw new ConfigurationErrorsException("web.config entry is not an integer: <Escc.EastSussexGovUK><RemoteMasterPage><add key=\"CacheMinutes\" value=\"integer\" /></RemoteMasterPage></Escc.EastSussexGovUK>", ex);
             }
         }
 
