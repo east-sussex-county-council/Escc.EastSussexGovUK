@@ -100,7 +100,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Web.1.0.0\lib\Escc.Web.dll</HintPath>
+      <HintPath>..\packages\Escc.Web.1.0.1\lib\Escc.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
@@ -293,6 +293,7 @@
     <None Include="img\Web.example.config" />
     <None Include="js\404.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
+    <Content Include="js\libs\jquery-1.9.1.min.js" />
     <Content Include="js\min\404.js" />
     <Content Include="MasterPages\Controls\1Space.ascx" />
     <Content Include="MasterPages\Web.config" />
@@ -350,7 +351,6 @@
     <None Include="js\googleautosuggest.js" />
     <None Include="js\embed-googlemaps.js" />
     <None Include="js\jquery-load.js" />
-    <Content Include="js\libs\jquery-1.8.3.min.js" />
     <Content Include="js\libs\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="js\libs\jquery.ajax-retry.min.js" />
     <Content Include="js\libs\markerclusterer.min.js" />
@@ -717,9 +717,9 @@ if not "$(ESCC_MINIFY)"=="false" "$(MSBuildBinPath)\msbuild.exe" "$(ProjectDir)Y
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.5\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.5\build\Escc.DocumentsInNewWindow.js.targets'))" />
   </Target>
-  <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets')" />
+  <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.5\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.5\build\Escc.DocumentsInNewWindow.js.targets')" />
 </Project>

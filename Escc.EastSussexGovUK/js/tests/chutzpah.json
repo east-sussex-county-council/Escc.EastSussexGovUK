@@ -3,6 +3,6 @@
     "MochaInterface": "bdd",
     "References" : [
       { "Path": "../libs/chai.js" },
-      { "Path": "../libs/jquery-1.8.3.min.js" }
+      { "Path": "../libs/jquery-1.9.1.min.js" }
     ]
 }

@@ -82,17 +82,6 @@ if (typeof (jQuery) != 'undefined')
         new MediaQuery("mqLarge", 802, "mqIELarge").apply();
     }
 
-    // Polyfill max-width for IE6 with JavaScript enabled
-    if ($.browser.msie)
-    {
-        var version = parseInt($.browser.version, 10);
-        if (version == 6 && document.getElementById("container"))
-        {
-            function setMaxWidth() { document.getElementById("container").style.width = $(window).width() > 965 ? "966px" : "auto"; }
-            window.attachEvent('onresize', setMaxWidth);
-        }
-    }
-
     function onEsccBreakpointChange(onSmallActivated, onMediumActivated, onLargeActivated, smallMediumBreakpoint, mediumLargeBreakpoint) {
         /// <summary>Hook up functions to respond to responsive design breakpoints</summary>
         var widthBefore = $(window).width();
