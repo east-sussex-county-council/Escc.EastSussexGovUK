@@ -1,1 +1,1 @@
-﻿if (!window.jQuery) document.write('<script src="//www.eastsussex.gov.uk/js/libs/jquery-1.8.3.min.js">\x3C/script>');
+﻿if (!window.jQuery) document.write('<script src="//www.eastsussex.gov.uk/js/libs/jquery-1.9.1.min.js">\x3C/script>');

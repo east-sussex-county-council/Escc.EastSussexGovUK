@@ -297,6 +297,7 @@
     <None Include="img\Web.example.config" />
     <None Include="js\404.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
+    <Content Include="js\libs\jquery-1.9.1.min.js" />
     <Content Include="js\min\404.js" />
     <Content Include="MasterPages\Controls\1Space.ascx" />
     <Content Include="MasterPages\Status310.aspx">
@@ -355,7 +356,6 @@
     <None Include="js\googleautosuggest.js" />
     <None Include="js\embed-googlemaps.js" />
     <None Include="js\jquery-load.js" />
-    <Content Include="js\libs\jquery-1.8.3.min.js" />
     <Content Include="js\libs\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="js\libs\jquery.ajax-retry.min.js" />
     <Content Include="js\libs\markerclusterer.min.js" />
