@@ -51,9 +51,6 @@ _ga.trackFacebook = function ()
 */
 (function ()
 {
-    // Don't load in IE6 to avoid "facebook.com is opening trusted site eastsussex.gov.uk" on County Council PCs.
-    if (typeof (jQuery) != 'undefined' && $.browser.msie && parseInt($.browser.version, 10) == 6) return;
-
     var fb = document.getElementById('fb-root');
     if (!fb) return;
 
