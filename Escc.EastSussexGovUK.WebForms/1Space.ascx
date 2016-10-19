@@ -1,6 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="1Space.ascx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Controls.EastSussex1Space" %>
-<%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="1Space.ascx.cs" Inherits="Escc.EastSussexGovUK.WebForms.EastSussex1Space" %>
 <%@ Register TagPrefix="ClientDependency" Namespace="Escc.ClientDependencyFramework.WebForms" assembly="Escc.ClientDependencyFramework.WebForms" %>
+<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.WebForms" Assembly="Escc.EastSussexGovUK.WebForms" %>
 <EastSussexGovUK:ContextContainer runat="server" Plain="false">
 <ClientDependency:Css runat="server" Files="EastSussex1Space" />
 <ClientDependency:Script runat="server" Files="EastSussex1Space" />

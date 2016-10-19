@@ -4,11 +4,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Escc.ActiveDirectory;
-using Escc.EastSussexGovUK;
+using Escc.Dates;
 using Escc.EastSussexGovUK.Views;
 using Exceptionless.Extensions;
 
-namespace EsccWebTeam.EastSussexGovUK
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
     /// Container control which shows or hides its contents depending on the current request context
@@ -65,14 +65,7 @@ namespace EsccWebTeam.EastSussexGovUK
         /// <value>The groups.</value>
         public string Groups { get; set; }
 
-        /// <summary>
-        /// Gets or sets whether to show contents if "Do Not Track" is set to OPT-OUT
-        /// </summary>
-        /// <value><c>true</c> to show content only to users who have opted out of tracking; <c>false</c> to show content to users who have opted in or not expressed a preference</value>
-        [Obsolete("The Do Not Track standard is not recognised by the ad industry")]
-        public bool? DoNotTrack { get; set; }
-
-        private bool contentsHidden = false;
+        private bool _contentsHidden = false;
 
         #endregion // Show contents depending on current user
 
@@ -104,25 +97,6 @@ namespace EsccWebTeam.EastSussexGovUK
         /// </summary>
         /// <value>The start date.</value>
         public DateTime? After { get; set; }
-
-        #endregion
-
-        #region Show contents depending on CMS context
-
-        /// <summary>
-        /// Gets or sets whether to show content in CMS edit mode
-        /// </summary>
-        /// <value><c>true</c> to show content, <c>false</c> otherwise.</value>
-        /// <remarks>CMS has its own controls to enable this, but they can only be used in a context where CMS is definitely available, eg on a CMS template, not the site header or footer</remarks>
-        [Obsolete("Relates to Microsoft CMS 2002")]
-        public bool? CmsEdit { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether to show contents to people who can edit the site 
-        /// </summary>
-        /// <value><c>true</c> if user can edit site; otherwise <c>false</c></value>
-        [Obsolete("Relates to Microsoft CMS 2002")]
-        public bool? CmsPermission { get; set; }
 
         #endregion
 
@@ -189,13 +163,13 @@ namespace EsccWebTeam.EastSussexGovUK
             }
 
             // Hide based on date
-            if (this.After.HasValue && DateTime.Now <= this.After)
+            if (this.After.HasValue && DateTime.Now.ToUkDateTime() <= this.After)
             {
                 HideContents();
                 return;
             }
 
-            if (this.Before.HasValue && DateTime.Now >= this.Before)
+            if (this.Before.HasValue && DateTime.Now.ToUkDateTime() >= this.Before)
             {
                 HideContents();
                 return;
@@ -215,7 +189,7 @@ namespace EsccWebTeam.EastSussexGovUK
             {
                 control.Visible = false;
             }
-            this.contentsHidden = true;
+            this._contentsHidden = true;
         }
 
         /// <summary>
@@ -239,7 +213,7 @@ namespace EsccWebTeam.EastSussexGovUK
                 // really the same thing happening and we could just be using base.Visible all along. 
                 // Rick Mason, 24 May 2011
                 EnsureChildControls();
-                if (this.contentsHidden) return false;
+                if (this._contentsHidden) return false;
 
                 return base.Visible;
             }

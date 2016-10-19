@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
+namespace Escc.EastSussexGovUK.WebForms
 {
 
 

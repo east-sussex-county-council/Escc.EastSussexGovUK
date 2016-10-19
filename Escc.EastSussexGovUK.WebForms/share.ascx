@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="share.ascx.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Controls.share" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="share.ascx.cs" Inherits="Escc.EastSussexGovUK.WebForms.share" %>
+<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.WebForms" Assembly="Escc.EastSussexGovUK.WebForms" %>
 <EastSussexGovUK:ContextContainer runat="server" Plain="false">
 <div class="text" id="text" runat="server">
     <aside>

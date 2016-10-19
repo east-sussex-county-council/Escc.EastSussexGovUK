@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Globalization;
 using System.Web;
-using System.Web.UI;
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
     /// Links to share the current page on social media or by email

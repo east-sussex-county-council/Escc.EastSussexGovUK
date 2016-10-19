@@ -3,8 +3,7 @@ using System.Web;
 using System.Web.UI;
 using Escc.EastSussexGovUK.Views;
 
-
-namespace EsccWebTeam.EastSussexGovUK.MasterPages
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
     /// Allows master page to be switched based on querystring or URL path. See <see cref="ViewSelector"/>.

@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Web.UI;
+using Escc.EastSussexGovUK.Features;
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
-    /// Master page for content which needs the whole screen, such as maps
+    /// Master page for desktop browsers
     /// </summary>
-    public partial class FullScreen : BaseMasterPage
+    public partial class Desktop : BaseMasterPage
     {
         /// <summary>
         /// Handles the Load event of the Page control.
@@ -16,6 +19,16 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected new void Page_Load(object sender, EventArgs e)
         {
+            // Apply selected text size to page
+            var textSize = new TextSize(Request.Cookies, Request.QueryString);
+            int baseTextSize = textSize.CurrentTextSize();
+            if (baseTextSize > 1)
+            {
+                // Add a space if there are other classes, then add to body tag
+                this.bodyclass.Controls.Add(new LiteralControl(" size" + baseTextSize.ToString(CultureInfo.InvariantCulture)));
+
+            }
+
             // Support web fonts required by the current skin
             if (Skin != null)
             {
@@ -34,6 +47,18 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
                     this.Typekit.Visible = true;
                 }
                 this.fonts.Text = fontsHtml.ToString();
+
+                foreach (var cssFileDependency in Skin.RequiresCss())
+                {
+                    if (String.IsNullOrEmpty(cssFileDependency.MediaQueryAlias)) skinSmall.FileList.Add(cssFileDependency.CssFileAlias);
+                    if (cssFileDependency.MediaQueryAlias == skinMedium.MediaConfiguration) skinMedium.FileList.Add(cssFileDependency.CssFileAlias);
+                    if (cssFileDependency.MediaQueryAlias == skinLarge.MediaConfiguration) skinLarge.FileList.Add(cssFileDependency.CssFileAlias);
+                }
+
+                foreach (var scriptDependency in Skin.RequiresJavaScript())
+                {
+                    skinScript.FileList.Add(scriptDependency.JsFileAlias);
+                }
             }
 
             // Run the base method as well

@@ -262,14 +262,6 @@
     <Content Include="img\body\map-placemarker.png" />
     <Content Include="img\body\gradient.jpg" />
     <Content Include="img\body\navigation.png" />
-    <Content Include="img\body\pan-e.gif" />
-    <Content Include="img\body\pan-n.gif" />
-    <Content Include="img\body\pan-ne.gif" />
-    <Content Include="img\body\pan-nw.gif" />
-    <Content Include="img\body\pan-s.gif" />
-    <Content Include="img\body\pan-se.gif" />
-    <Content Include="img\body\pan-sw.gif" />
-    <Content Include="img\body\pan-w.gif" />
     <Content Include="img\body\quote-close.gif" />
     <Content Include="img\body\quote-open.gif" />
     <Content Include="img\body\royal-coat-of-arms.png" />
@@ -296,10 +288,10 @@
     <None Include="img\body\Quote-open.psd" />
     <None Include="img\Web.example.config" />
     <None Include="js\404.js" />
+    <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\libs\jquery-1.9.1.min.js" />
     <Content Include="js\min\404.js" />
-    <Content Include="MasterPages\Controls\1Space.ascx" />
     <Content Include="MasterPages\Status310.aspx">
       <SubType>Form</SubType>
     </Content>
@@ -322,7 +314,6 @@
     <None Include="js\cascading-content.js" />
     <Content Include="js\libs\chai.js" />
     <None Include="js\tests\cascading-content.tests.js" />
-    <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\modernizr.custom.15280.js" />
     <Content Include="js\min\1space.js" />
     <Content Include="js\min\alerts.js" />
@@ -390,7 +381,6 @@
     <Content Include="MasterPages\Controls\Languages.ascx" />
     <Content Include="MasterPages\Controls\MetadataDesktop.ascx" />
     <Content Include="MasterPages\Controls\ScriptsDesktop.ascx" />
-    <Content Include="MasterPages\Controls\share.ascx" />
     <Content Include="MasterPages\Remote\Control.aspx" />
     <Content Include="MasterPages\Controls\Web.config" />
     <None Include="MasterPages\Controls\Web.example.config" />
@@ -404,7 +394,6 @@
     <Content Include="MasterPages\RSS\escc-logo.gif" />
     <Content Include="MasterPages\RSS\rss-utilities.xslt" />
     <Content Include="MasterPages\Remote\Web.config" />
-    <Content Include="MasterPages\FullScreen.Master" />
     <None Include="js\config.js" />
     <None Include="js\config.example.js" />
     <None Include="css\Web.example.config" />
@@ -424,25 +413,14 @@
     <None Include="web.example.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web.MicrosoftCms.example.config">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="windows-tile.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContextContainer.cs" />
     <Compile Include="GoogleTagManagerContainerIdSelector.cs" />
     <Compile Include="GoogleTagManagerContext.cs" />
-    <Compile Include="MasterPages\Controls\1Space.ascx.cs">
-      <DependentUpon>1Space.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\1Space.ascx.designer.cs">
-      <DependentUpon>1Space.ascx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Controls\SelectedSectionMatcher.cs" />
     <Compile Include="MasterPages\Status310.aspx.cs">
       <DependentUpon>Status310.aspx</DependentUpon>
@@ -487,9 +465,6 @@
       <DependentUpon>textsize.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPages\Controls\CorsForStaticFilesHandler.cs" />
-    <Compile Include="MasterPages\BaseMasterPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="MasterPages\Controls\AboveHeaderDesktop.ascx.cs">
       <DependentUpon>AboveHeaderDesktop.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -560,35 +535,6 @@
     <Compile Include="MasterPages\Controls\ScriptsDesktop.ascx.designer.cs">
       <DependentUpon>ScriptsDesktop.ascx</DependentUpon>
     </Compile>
-    <Compile Include="MasterPages\Controls\share.ascx.cs">
-      <DependentUpon>share.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Controls\share.ascx.designer.cs">
-      <DependentUpon>share.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\FullScreen.Master.cs">
-      <DependentUpon>FullScreen.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\FullScreen.Master.designer.cs">
-      <DependentUpon>FullScreen.Master</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\MasterPageModule.cs" />
-    <Compile Include="MasterPages\Desktop.Master.cs">
-      <DependentUpon>Desktop.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Desktop.Master.designer.cs">
-      <DependentUpon>Desktop.Master</DependentUpon>
-    </Compile>
-    <Compile Include="MasterPages\Plain.Master.cs">
-      <DependentUpon>Plain.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\Plain.Master.designer.cs">
-      <DependentUpon>Plain.Master</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Remote\Control.aspx.cs">
       <DependentUpon>Control.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -611,7 +557,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\Web.config" />
-    <Content Include="MasterPages\Desktop.Master" />
     <None Include="img\body\navigation.psd" />
     <None Include="img\body\item-type.psd" />
     <None Include="img\header\header original.psd" />
@@ -621,10 +566,15 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="img\header\mobile.psd" />
-    <Content Include="MasterPages\Plain.Master" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Escc.EastSussexGovUK.WebForms\Escc.EastSussexGovUK.WebForms.csproj">
+      <Project>{a4f57253-64c9-4636-bc3c-e145eb06078e}</Project>
+      <Name>Escc.EastSussexGovUK.WebForms</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -656,13 +606,13 @@ if "$(ConfigurationName)" == "Release" (if not exist "$(ProjectDir)js\min" md "$
 if "$(ConfigurationName)" == "Release" del "$(ProjectDir)js\min\*.*" /Q 
 if not "$(ESCC_MINIFY)"=="false" "$(MSBuildBinPath)\msbuild.exe" "$(ProjectDir)YUICompressor.msbuild" /p:ConfigurationName=$(ConfigurationName)</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.5\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.5\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets'))" />
+    <Error Condition="!Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.5\build\Escc.DocumentsInNewWindow.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.DocumentsInNewWindow.js.1.0.5\build\Escc.DocumentsInNewWindow.js.targets'))" />
     <Error Condition="!Exists('..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets'))" />
   </Target>
-  <Import Project="..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets" Condition="Exists('..\packages\Escc.DocumentsInNewWindow.js.1.0.4\build\Escc.DocumentsInNewWindow.js.targets')" />
   <Import Project="..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets" Condition="Exists('..\packages\Escc.Statistics.js.2.0.1\build\Escc.Statistics.js.targets')" />
 </Project>

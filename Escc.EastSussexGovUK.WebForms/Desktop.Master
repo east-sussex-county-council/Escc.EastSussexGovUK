@@ -1,5 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Desktop.master.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.Desktop" %>
-<%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Desktop.master.cs" Inherits="Escc.EastSussexGovUK.WebForms.Desktop" %>
+<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.WebForms" Assembly="Escc.EastSussexGovUK.WebForms" %>
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.Views" Assembly="Escc.EastSussexGovUK" %>
 <%@ Register TagPrefix="ClientDependency" Namespace="Escc.ClientDependencyFramework.WebForms" assembly="Escc.ClientDependencyFramework.WebForms" %>
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.Features" Assembly="Escc.EastSussexGovUK" %>
@@ -8,6 +8,9 @@
     <EastSussexGovUK:ContextContainer runat="server" Public="true"><asp:ContentPlaceHolder id="contentExperiment" runat="server" /></EastSussexGovUK:ContextContainer>
     <%-- Standard metadata comes first so it's early in life-cycle, because it contains ClientDependency:Css control we want others to find and merge with --%>
     <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataDesktop" EnableViewState="false" />
+    <ClientDependency:Css runat="server" id="skinSmall" Moveable="False"/>
+    <ClientDependency:Css runat="server" id="skinMedium"  MediaConfiguration="Medium" Moveable="False"/>
+    <ClientDependency:Css runat="server" id="skinLarge" MediaConfiguration="Large" Moveable="False" />
     <asp:ContentPlaceHolder id="metadata" runat="server" />
     <asp:Literal runat="server" ID="fonts"/><ClientDependency:Script runat="server" Files="Typekit" ID="Typekit" Visible="False"/>
     <asp:ContentPlaceHolder runat="server" ID="css" enableviewstate="false" />
@@ -35,6 +38,7 @@
     </asp:ContentPlaceHolder>
 
      <EastSussexGovUK:MasterPageControl runat="server" Control="ScriptsDesktop" EnableViewState="false" />
+     <ClientDependency:Script runat="server" id="skinScript"/>
      <asp:ContentPlaceHolder ID="javascript" runat="server" />
   </body>
 </html>

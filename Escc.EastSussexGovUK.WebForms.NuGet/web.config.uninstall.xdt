@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+<Escc.EastSussexGovUK>
+    <GeneralSettings>
+      <add key="DesktopMasterPage" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="PlainMasterPage" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="FullScreenMasterPage" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MasterPageParameterName" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </GeneralSettings>
+    <RemoteMasterPage>
+      <add key="CacheMinutes" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MasterPageControlUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </RemoteMasterPage>
+  </Escc.EastSussexGovUK>
+ 
+  <Escc.EastSussexGovUK>
+    <GeneralSettings xdt:Transform="Remove" xdt:Locator="Condition(count(add) = 0)" />
+    <RemoteMasterPage xdt:Transform="Remove" xdt:Locator="Condition(count(add) = 0)" />
+  </Escc.EastSussexGovUK>
+  <Escc.EastSussexGovUK xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+
+  <configSections>
+    <sectionGroup name="Escc.EastSussexGovUK" xdt:Locator="Match(name)">
+      <section xdt:Transform="Remove" xdt:Locator="Condition(@name='GeneralSettings' and not(/configuration/Escc.EastSussexGovUK/GeneralSettings))" />
+      <section xdt:Transform="Remove" xdt:Locator="Condition(@name='RemoteMasterPage' and not(/configuration/Escc.EastSussexGovUK/RemoteMasterPage))" />
+    </sectionGroup>
+    <sectionGroup xdt:Transform="Remove" xdt:Locator="Condition(@name='Escc.EastSussexGovUK' and count(/configuration/Escc.EastSussexGovUK/*) = 0)" />
+  </configSections>
+  <configSections xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+
+  <system.web>
+    <pages xdt:Transform="RemoveAttributes(masterPageFile)" xdt:Locator="Condition(@masterPageFile='~/desktop.master')" />
+    <pages>
+      <controls>
+        <add namespace="Escc.EastSussexGovUK.WebForms" xdt:Transform="Remove" xdt:Locator="Match(namespace)" />
+      </controls>
+      <controls xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+    </pages>
+    <pages xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0 and count(@*) = 0)" />
+  </system.web>
+  <system.web xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+
+  <system.webServer>
+    <modules>
+      <add type="Escc.EastSussexGovUK.WebForms.MasterPageModule" xdt:Transform="Remove" xdt:Locator="Match(type)" />
+    </modules>
+    <modules xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+  </system.webServer>
+  <system.webServer xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+
+  <Escc.ClientDependencyFramework>
+    <CssFiles>
+      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </CssFiles>
+    <ScriptFiles>
+      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="HandlerPlaceholder" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </ScriptFiles>
+    <MediaQueries>
+      <add key="Medium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </MediaQueries>
+  </Escc.ClientDependencyFramework>
+</configuration>

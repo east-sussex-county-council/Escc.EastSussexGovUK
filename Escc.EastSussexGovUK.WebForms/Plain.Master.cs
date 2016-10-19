@@ -1,5 +1,5 @@
 ﻿
-namespace EsccWebTeam.EastSussexGovUK.MasterPages
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
     /// A master page which displays only the content with no template elements

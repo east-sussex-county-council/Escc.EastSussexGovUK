@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Escc.Web;
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages.Controls
+namespace Escc.EastSussexGovUK.WebForms
 {
     public partial class EastSussex1Space : System.Web.UI.UserControl
     {

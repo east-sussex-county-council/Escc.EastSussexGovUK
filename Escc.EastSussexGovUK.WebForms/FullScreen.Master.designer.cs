@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages {
+namespace Escc.EastSussexGovUK.WebForms {
     
     
-    public partial class Desktop {
+    public partial class FullScreen {
         
         /// <summary>
         /// contentExperiment control.
@@ -20,6 +20,33 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder contentExperiment;
+        
+        /// <summary>
+        /// skinSmall control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.ClientDependencyFramework.WebForms.Css skinSmall;
+        
+        /// <summary>
+        /// skinMedium control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.ClientDependencyFramework.WebForms.Css skinMedium;
+        
+        /// <summary>
+        /// skinLarge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.ClientDependencyFramework.WebForms.Css skinLarge;
         
         /// <summary>
         /// metadata control.
@@ -103,31 +130,22 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder header;
         
         /// <summary>
-        /// breadcrumb control.
+        /// fullScreenHeading control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder breadcrumb;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder fullScreenHeading;
         
         /// <summary>
-        /// breadcrumbTrail control.
+        /// fullScreenLinks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.EastSussexGovUK.Features.BreadcrumbTrail breadcrumbTrail;
-        
-        /// <summary>
-        /// breadcrumbTrailMobile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Escc.EastSussexGovUK.Features.BreadcrumbTrailMobile breadcrumbTrailMobile;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder fullScreenLinks;
         
         /// <summary>
         /// form1 control.
@@ -148,15 +166,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder content;
         
         /// <summary>
-        /// supporting control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder supporting;
-        
-        /// <summary>
         /// afterForm control.
         /// </summary>
         /// <remarks>
@@ -175,6 +184,15 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder footer;
         
         /// <summary>
+        /// skinScript control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.ClientDependencyFramework.WebForms.Script skinScript;
+        
+        /// <summary>
         /// javascript control.
         /// </summary>
         /// <remarks>
@@ -182,6 +200,15 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder javascript;
+        
+        /// <summary>
+        /// breadcrumb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder breadcrumb;
         
         /// <summary>
         /// promotionImages control.
@@ -220,21 +247,12 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder related;
         
         /// <summary>
-        /// fullScreenHeading control.
+        /// supporting control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder fullScreenHeading;
-        
-        /// <summary>
-        /// fullScreenLinks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder fullScreenLinks;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder supporting;
     }
 }

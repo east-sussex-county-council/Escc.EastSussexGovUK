@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages {
+namespace Escc.EastSussexGovUK.WebForms {
     
     
     public partial class Plain {

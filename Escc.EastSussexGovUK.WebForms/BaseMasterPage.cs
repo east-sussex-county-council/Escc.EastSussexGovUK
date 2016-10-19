@@ -3,13 +3,11 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Web.UI;
-using Escc.EastSussexGovUK;
 using Escc.EastSussexGovUK.Skins;
 using Escc.Web.Metadata;
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
     /// Base class for website master pages
@@ -40,8 +38,6 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
     /// </remarks>
     public class BaseMasterPage : System.Web.UI.MasterPage, IHasMetadata
     {
-        private HostingEnvironmentContext siteContext = new HostingEnvironmentContext();
-
         /// <summary>
         /// Gets or sets whether to override the default rendered HTML using settings in web.config and <see cref="RewriteRenderedHtml"/>
         /// </summary>

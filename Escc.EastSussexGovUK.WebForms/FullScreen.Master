@@ -1,11 +1,15 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FullScreen.Master.cs" Inherits="EsccWebTeam.EastSussexGovUK.MasterPages.FullScreen" %>
-<%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FullScreen.Master.cs" Inherits="Escc.EastSussexGovUK.WebForms.FullScreen" %>
+<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.WebForms" Assembly="Escc.EastSussexGovUK.WebForms" %>
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.Views" Assembly="Escc.EastSussexGovUK" %>
+<%@ Register TagPrefix="ClientDependency" Namespace="Escc.ClientDependencyFramework.WebForms" Assembly="Escc.ClientDependencyFramework.WebForms" %>
 <EastSussexGovUK:MasterPageControl runat="server" Control="HtmlTag" EnableViewState="false" />
 <head runat="server">
     <EastSussexGovUK:ContextContainer runat="server" Public="true"><asp:ContentPlaceHolder id="contentExperiment" runat="server" /></EastSussexGovUK:ContextContainer>
     <%-- Standard metadata comes first so it's early in life-cycle, because it contains ClientDependency:Css control we want others to find and merge with --%>
     <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataFullScreen" EnableViewState="false" />
+    <ClientDependency:Css runat="server" id="skinSmall" Moveable="False"/>
+    <ClientDependency:Css runat="server" id="skinMedium"  MediaConfiguration="Medium" Moveable="False"/>
+    <ClientDependency:Css runat="server" id="skinLarge" MediaConfiguration="Large" Moveable="False" />
     <asp:ContentPlaceHolder id="metadata" runat="server" />
     <asp:Literal runat="server" ID="fonts"/><ClientDependency:Script runat="server" Files="Typekit" ID="Typekit" Visible="False"/>
     <asp:ContentPlaceHolder runat="server" ID="css" enableviewstate="false" />
@@ -37,6 +41,7 @@
     <asp:ContentPlaceHolder id="footer" runat="server" />
 
      <EastSussexGovUK:MasterPageControl runat="server" Control="ScriptsFullScreen" EnableViewState="false" />
+     <ClientDependency:Script runat="server" id="skinScript"/>
     <asp:ContentPlaceHolder ID="javascript" runat="server" enableviewstate="false" />
 </div>
 </body></html>
