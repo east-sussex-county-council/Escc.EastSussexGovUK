@@ -1,19 +1,19 @@
-using System.Security.Cryptography;
-using System.Threading;
 using System.Web.UI;
-using Escc.EastSussexGovUK;
 using Escc.EastSussexGovUK.Skins;
 using Escc.EastSussexGovUK.Views;
-using Escc.EastSussexGovUK.WebForms;
-using Escc.Web;
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
     /// Error page for an unhandled exception
     /// </summary>
-    public partial class Status400 : Page
+    public partial class HttpStatus400 : Page
     {
+        /// <summary>
+        /// Handles the Load event of the Page control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void Page_Load(object sender, System.EventArgs e)
         {
             var skinnable = Master as BaseMasterPage;
@@ -24,7 +24,7 @@ namespace EsccWebTeam.EastSussexGovUK.MasterPages
             }
 
             // Return the correct HTTP status code
-            new HttpStatus().BadRequest();
+            new Web.HttpStatus().BadRequest();
 
             // Set the page title
             Page.Title = "Bad request";

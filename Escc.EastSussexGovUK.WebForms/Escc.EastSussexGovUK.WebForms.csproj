@@ -47,6 +47,10 @@
     <DocumentationFile>bin\Escc.EastSussexGovUK.WebForms.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.ActiveDirectory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ActiveDirectory.1.0.0\lib\Escc.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
@@ -55,12 +59,32 @@
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.2.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.AddressAndPersonalDetails.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.Controls.2.0.1\lib\Escc.AddressAndPersonalDetails.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.ClientDependencyFramework.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.1.0.1\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Dates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Dates.2.0.1\lib\Escc.Dates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.1.0.0\lib\Escc.EastSussexGovUK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.Html, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Html.2.0.0\lib\Escc.Html.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.Redirects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Redirects.1.1.0\lib\Escc.Redirects.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
@@ -84,8 +108,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http" />
@@ -123,6 +147,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="HttpStatus310.aspx">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HttpStatus400.aspx">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HttpStatus403.aspx">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HttpStatus404.aspx" />
+    <EmbeddedResource Include="HttpStatus500.aspx">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
     <Content Include="packages.config" />
     <EmbeddedResource Include="Desktop.Master" />
     <EmbeddedResource Include="FullScreen.Master" />
@@ -136,14 +173,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="1Space.ascx" />
-    <EmbeddedResource Include="pan-e.gif" />
-    <EmbeddedResource Include="pan-n.gif" />
-    <EmbeddedResource Include="pan-ne.gif" />
-    <EmbeddedResource Include="pan-nw.gif" />
-    <EmbeddedResource Include="pan-s.gif" />
-    <EmbeddedResource Include="pan-se.gif" />
-    <EmbeddedResource Include="pan-sw.gif" />
-    <EmbeddedResource Include="pan-w.gif" />
     <EmbeddedResource Include="share.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -173,6 +202,41 @@
     <Compile Include="FullScreen.Master.designer.cs">
       <DependentUpon>FullScreen.Master</DependentUpon>
     </Compile>
+    <Compile Include="HttpStatus310.aspx.cs">
+      <DependentUpon>HttpStatus310.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HttpStatus310.aspx.designer.cs">
+      <DependentUpon>HttpStatus310.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HttpStatus400.aspx.cs">
+      <DependentUpon>HttpStatus400.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HttpStatus400.aspx.designer.cs">
+      <DependentUpon>HttpStatus400.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HttpStatus403.aspx.cs">
+      <DependentUpon>HttpStatus403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HttpStatus403.aspx.designer.cs">
+      <DependentUpon>HttpStatus403.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HttpStatus404.aspx.cs">
+      <DependentUpon>HttpStatus404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HttpStatus404.aspx.designer.cs">
+      <DependentUpon>HttpStatus404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HttpStatus500.aspx.cs">
+      <DependentUpon>HttpStatus500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HttpStatus500.aspx.designer.cs">
+      <DependentUpon>HttpStatus500.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPageModule.cs" />
     <Compile Include="Plain.Master.cs">
       <DependentUpon>Plain.Master</DependentUpon>
@@ -189,12 +253,6 @@
     <Compile Include="share.ascx.designer.cs">
       <DependentUpon>share.ascx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Escc.EastSussexGovUK\Escc.EastSussexGovUK.csproj">
-      <Project>{0d24d550-1007-4627-8dad-c86b07165ef7}</Project>
-      <Name>Escc.EastSussexGovUK</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -48,158 +48,156 @@
     </MediaQueries>
 
     <CssFiles>
-      <add key="HandlerPath" value="/css/{0}.cssx" xdt:Transform="Insert" />
+      <add key="HandlerPath" value="https://www.eastsussex.gov.uk/css/{0}.cssx" xdt:Transform="Insert" />
       <add xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework/CssFiles/add[@key='HandlerPath'][2])" />
 
       <add key="1_Template1Small" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="1_Template1Small" value="/escc.eastsussexgovuk/css/min/small.css" xdt:Transform="Insert" />
+      <add key="1_Template1Small" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/small.css" xdt:Transform="Insert" />
       <add key="1_Template2Medium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="1_Template2Medium" value="/escc.eastsussexgovuk/css/min/medium.css" xdt:Transform="Insert" />
+      <add key="1_Template2Medium" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/medium.css" xdt:Transform="Insert" />
       <add key="1_Template3Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="1_Template3Large" value="/escc.eastsussexgovuk/css/min/large.css" xdt:Transform="Insert" />
+      <add key="1_Template3Large" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/large.css" xdt:Transform="Insert" />
       <add key="1_TemplatePrint" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="1_TemplatePrint" value="/escc.eastsussexgovuk/css/min/print.css" xdt:Transform="Insert" />
+      <add key="1_TemplatePrint" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/print.css" xdt:Transform="Insert" />
       <add key="1_TemplateFullScreen" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="1_TemplateFullScreen" value="/escc.eastsussexgovuk/css/min/full-screen.css" xdt:Transform="Insert" />
+      <add key="1_TemplateFullScreen" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/full-screen.css" xdt:Transform="Insert" />
       <add key="2_JQueryUI" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_JQueryUI" value="/escc.eastsussexgovuk/css/libs/jquery-ui-1.10.4.custom.min.css" xdt:Transform="Insert" />
+      <add key="2_JQueryUI" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/libs/jquery-ui-1.10.4.custom.min.css" xdt:Transform="Insert" />
       <add key="2_ContentSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_ContentSmall" value="/escc.eastsussexgovuk/css/content-small.css" xdt:Transform="Insert" />
+      <add key="2_ContentSmall" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/content-small.css" xdt:Transform="Insert" />
       <add key="2_ContentMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_ContentMedium" value="/escc.eastsussexgovuk/css/content-medium.css" xdt:Transform="Insert" />
+      <add key="2_ContentMedium" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/content-medium.css" xdt:Transform="Insert" />
       <add key="2_ContentLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_ContentLarge" value="/escc.eastsussexgovuk/css/content-large.css" xdt:Transform="Insert" />
+      <add key="2_ContentLarge" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/content-large.css" xdt:Transform="Insert" />
       <!-- Do NOT minify the IE6 stylesheet, each style MUST be on a single line -->
       <add key="9_TemplateIE6Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="9_TemplateIE6Large" value="/escc.eastsussexgovuk/css/large-ie6.css" xdt:Transform="Insert" />
+      <add key="9_TemplateIE6Large" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/large-ie6.css" xdt:Transform="Insert" />
 
       <add key="Alert" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Alert" value="/escc.eastsussexgovuk/css/min/alert.css" xdt:Transform="Insert" />
+      <add key="Alert" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/alert.css" xdt:Transform="Insert" />
       <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="CmsPreview" value="/escc.eastsussexgovuk/css/min/umbraco-preview.css" xdt:Transform="Insert" />
+      <add key="CmsPreview" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/umbraco-preview.css" xdt:Transform="Insert" />
       <add key="CoronerSkinSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="CoronerSkinSmall" value="/escc.eastsussexgovuk/css/coroner-skin-small.css" xdt:Transform="Insert" />
+      <add key="CoronerSkinSmall" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/coroner-skin-small.css" xdt:Transform="Insert" />
       <add key="CoronerSkinMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="CoronerSkinMedium" value="/escc.eastsussexgovuk/css/coroner-skin-medium.css" xdt:Transform="Insert" />
+      <add key="CoronerSkinMedium" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/coroner-skin-medium.css" xdt:Transform="Insert" />
       <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="EastSussex1Space" value="/escc.eastsussexgovuk/css/min/1space.css" xdt:Transform="Insert" />
+      <add key="EastSussex1Space" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/1space.css" xdt:Transform="Insert" />
       <add key="EmailSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="EmailSmall" value="/escc.eastsussexgovuk/css/min/govdelivery-button-small.css" xdt:Transform="Insert" />
+      <add key="EmailSmall" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/govdelivery-button-small.css" xdt:Transform="Insert" />
       <add key="EmailLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="EmailLarge" value="/escc.eastsussexgovuk/css/min/govdelivery-button-large.css" xdt:Transform="Insert" />
+      <add key="EmailLarge" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/govdelivery-button-large.css" xdt:Transform="Insert" />
       <add key="EmailPanel" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="EmailPanel" value="/escc.eastsussexgovuk/css/min/govdelivery.css" xdt:Transform="Insert" />
+      <add key="EmailPanel" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/govdelivery.css" xdt:Transform="Insert" />
       <add key="FormsSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="FormsSmall" value="/escc.eastsussexgovuk/css/min/forms-small.css" xdt:Transform="Insert" />
+      <add key="FormsSmall" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/forms-small.css" xdt:Transform="Insert" />
       <add key="FormsMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="FormsMedium" value="/escc.eastsussexgovuk/css/min/forms-medium.css" xdt:Transform="Insert" />
+      <add key="FormsMedium" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/forms-medium.css" xdt:Transform="Insert" />
       <add key="FormsLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="FormsLarge" value="/escc.eastsussexgovuk/css/min/forms-large.css" xdt:Transform="Insert" />
+      <add key="FormsLarge" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/forms-large.css" xdt:Transform="Insert" />
       <add key="GisMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="GisMaps" value="/escc.eastsussexgovuk/css/min/maps.css" xdt:Transform="Insert" />
+      <add key="GisMaps" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/maps.css" xdt:Transform="Insert" />
       <add key="MobileControls" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="MobileControls" value="/escc.eastsussexgovuk/css/min/mobile-controls.css" xdt:Transform="Insert" />
+      <add key="MobileControls" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/mobile-controls.css" xdt:Transform="Insert" />
       <add key="NavigationSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="NavigationSmall" value="/escc.eastsussexgovuk/css/min/nav-small.css" xdt:Transform="Insert" />
+      <add key="NavigationSmall" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/nav-small.css" xdt:Transform="Insert" />
       <add key="NavigationMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="NavigationMedium" value="/escc.eastsussexgovuk/css/min/nav-medium.css" xdt:Transform="Insert" />
+      <add key="NavigationMedium" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/nav-medium.css" xdt:Transform="Insert" />
       <add key="NavigationLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="NavigationLarge" value="/escc.eastsussexgovuk/css/min/nav-large.css" xdt:Transform="Insert" />
+      <add key="NavigationLarge" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/nav-large.css" xdt:Transform="Insert" />
       <add key="RssFeed" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="RssFeed" value="/escc.eastsussexgovuk/css/min/rss.css" xdt:Transform="Insert" />
+      <add key="RssFeed" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/rss.css" xdt:Transform="Insert" />
       <add key="RssFeedXslt" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="RssFeedXslt" value="/escc.eastsussexgovuk/css/min/rss-xslt.css" xdt:Transform="Insert" />
+      <add key="RssFeedXslt" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/rss-xslt.css" xdt:Transform="Insert" />
       <add key="ServiceClosures" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="ServiceClosures" value="/escc.eastsussexgovuk/css/min/service-closures.css" xdt:Transform="Insert" />
+      <add key="ServiceClosures" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/service-closures.css" xdt:Transform="Insert" />
       <add key="SocialMediaLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="SocialMediaLarge" value="/escc.eastsussexgovuk/css/min/social-media-large.css" xdt:Transform="Insert" />
+      <add key="SocialMediaLarge" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/social-media-large.css" xdt:Transform="Insert" />
     </CssFiles>
 
     <ScriptFiles>
-      <add key="HandlerPath" value="/js/{0}.jsx" xdt:Transform="Insert" />
+      <add key="HandlerPath" value="https://www.eastsussex.gov.uk/js/{0}.jsx" xdt:Transform="Insert" />
       <add xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework/CssFiles/add[@key='HandlerPath'][2])" />
 
       <add key="HandlerPlaceholder" value="javascript" xdt:Transform="Insert" />
       <add xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework/ScriptFiles/add[@key='HandlerPlaceholder'][2])" />
 
       <add key="1_Config" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="1_Config" value="/escc.eastsussexgovuk/js/min/config.js" xdt:Transform="Insert" />
+      <add key="1_Config" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/config.js" xdt:Transform="Insert" />
       <add key="1_JQueryLoad" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="1_JQueryLoad" value="/escc.eastsussexgovuk/js/min/jquery-load.js" xdt:Transform="Insert" />
+      <add key="1_JQueryLoad" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/jquery-load.js" xdt:Transform="Insert" />
       <add key="2_jQueryUI" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_jQueryUI" value="/escc.eastsussexgovuk/js/libs/jquery-ui-1.10.4.custom.min.js" xdt:Transform="Insert" />
+      <add key="2_jQueryUI" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/jquery-ui-1.10.4.custom.min.js" xdt:Transform="Insert" />
       <add key="2_JQueryRetry" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_JQueryRetry" value="/escc.eastsussexgovuk/js/libs/jquery.ajax-retry.min.js" xdt:Transform="Insert" />
+      <add key="2_JQueryRetry" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/jquery.ajax-retry.min.js" xdt:Transform="Insert" />
       <add key="2_CrossOriginIE" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_CrossOriginIE" value="/escc.eastsussexgovuk/js/min/cross-origin-ie.js" xdt:Transform="Insert" />
+      <add key="2_CrossOriginIE" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/cross-origin-ie.js" xdt:Transform="Insert" />
       <add key="Modernizr" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Modernizr" value="/escc.eastsussexgovuk/js/libs/modernizr.custom.15280.js" xdt:Transform="Insert" />
+      <add key="Modernizr" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/modernizr.custom.15280.js" xdt:Transform="Insert" />
 
       <add key="2_Statistics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_Statistics" value="/escc.eastsussexgovuk/js/libs/escc.statistics.min.js" xdt:Transform="Insert" />
+      <add key="2_Statistics" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/escc.statistics.min.js" xdt:Transform="Insert" />
       <add key="Analytics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Analytics" value="/escc.eastsussexgovuk/js/min/analytics.js" xdt:Transform="Insert" />
+      <add key="Analytics" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/analytics.js" xdt:Transform="Insert" />
       <add key="Heatmap" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Heatmap" value="/escc.eastsussexgovuk/js/min/heatmap-analytics.js" xdt:Transform="Insert" />
+      <add key="Heatmap" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/heatmap-analytics.js" xdt:Transform="Insert" />
       <add key="TagManager" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="TagManager" value="/escc.eastsussexgovuk/js/google-tag-manager.js" xdt:Transform="Insert" />
+      <add key="TagManager" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/google-tag-manager.js" xdt:Transform="Insert" />
       <add key="ThanksForAnalytics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="ThanksForAnalytics" value="/escc.eastsussexgovuk/js/min/thanks-for-analytics.js" xdt:Transform="Insert" />
+      <add key="ThanksForAnalytics" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/thanks-for-analytics.js" xdt:Transform="Insert" />
 
       <add key="2_GoogleMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_GoogleMaps" value="/escc.eastsussexgovuk/js/min/google-maps.js" xdt:Transform="Insert" />
+      <add key="2_GoogleMaps" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/google-maps.js" xdt:Transform="Insert" />
       <add key="GoogleMapsMarkerWithLabel" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="GoogleMapsMarkerWithLabel" value="/escc.eastsussexgovuk/js/libs/markerwithlabel_packed.js" xdt:Transform="Insert" />
+      <add key="GoogleMapsMarkerWithLabel" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/markerwithlabel_packed.js" xdt:Transform="Insert" />
       <add key="GoogleMapsMarkerClusterer" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="GoogleMapsMarkerClusterer" value="/escc.eastsussexgovuk/js/libs/markerclusterer.min.js" xdt:Transform="Insert" />
+      <add key="GoogleMapsMarkerClusterer" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/markerclusterer.min.js" xdt:Transform="Insert" />
       <add key="EmbedGoogleMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="EmbedGoogleMaps" value="/escc.eastsussexgovuk/js/min/embed-googlemaps.js" xdt:Transform="Insert" />
+      <add key="EmbedGoogleMaps" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/embed-googlemaps.js" xdt:Transform="Insert" />
 
       <add key="3_CascadingContent" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="3_CascadingContent" value="/escc.eastsussexgovuk/js/min/cascading-content.js" xdt:Transform="Insert" />
+      <add key="3_CascadingContent" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/cascading-content.js" xdt:Transform="Insert" />
       <add key="Alert" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Alert" value="/escc.eastsussexgovuk/js/min/alerts.js" xdt:Transform="Insert" />
+      <add key="Alert" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/alerts.js" xdt:Transform="Insert" />
       <add key="Banners" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Banners" value="/escc.eastsussexgovuk/js/min/banners.js" xdt:Transform="Insert" />
+      <add key="Banners" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/banners.js" xdt:Transform="Insert" />
 
-      <add key="404" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="404" value="/escc.eastsussexgovuk/js/min/404.js" xdt:Transform="Insert" />
       <add key="AutoSuggest" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="AutoSuggest" value="/escc.eastsussexgovuk/js/min/googleautosuggest.js" xdt:Transform="Insert" />
+      <add key="AutoSuggest" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/googleautosuggest.js" xdt:Transform="Insert" />
       <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="CmsPreview" value="/escc.eastsussexgovuk/js/min/umbraco-preview.js" xdt:Transform="Insert" />
+      <add key="CmsPreview" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/umbraco-preview.js" xdt:Transform="Insert" />
       <add key="CoronerSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="CoronerSkin" value="/escc.eastsussexgovuk/js/coroner-skin.js" xdt:Transform="Insert" />
+      <add key="CoronerSkin" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/coroner-skin.js" xdt:Transform="Insert" />
       <add key="Documents" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Documents" value="/escc.eastsussexgovuk/js/libs/escc.documentsinnewwindow.min.js" xdt:Transform="Insert" />
+      <add key="Documents" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/escc.documentsinnewwindow.min.js" xdt:Transform="Insert" />
       <add key="DocumentMetadata" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="DocumentMetadata" value="/escc.eastsussexgovuk/js/min/document-metadata.js" xdt:Transform="Insert" />
+      <add key="DocumentMetadata" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/document-metadata.js" xdt:Transform="Insert" />
       <add key="Email" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Email" value="/escc.eastsussexgovuk/js/min/govdelivery.js" xdt:Transform="Insert" />
+      <add key="Email" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/govdelivery.js" xdt:Transform="Insert" />
       <add key="EmbedYouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="EmbedYouTube" value="/escc.eastsussexgovuk/js/min/embed-youtube.js" xdt:Transform="Insert" />
+      <add key="EmbedYouTube" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/embed-youtube.js" xdt:Transform="Insert" />
       <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="EastSussex1Space" value="/escc.eastsussexgovuk/js/min/1space.js" xdt:Transform="Insert" />
+      <add key="EastSussex1Space" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/1space.js" xdt:Transform="Insert" />
       <add key="ESCIS" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="ESCIS" value="/escc.eastsussexgovuk/js/min/escis.js" xdt:Transform="Insert" />
+      <add key="ESCIS" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/escis.js" xdt:Transform="Insert" />
       <add key="Forms" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Forms" value="/escc.eastsussexgovuk/js/min/forms.js" xdt:Transform="Insert" />
+      <add key="Forms" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/forms.js" xdt:Transform="Insert" />
       <add key="Languages" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Languages" value="/escc.eastsussexgovuk/js/min/languages.js" xdt:Transform="Insert" />
+      <add key="Languages" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/languages.js" xdt:Transform="Insert" />
       <add key="Media" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Media" value="/escc.eastsussexgovuk/js/min/media-queries.js" xdt:Transform="Insert" />
+      <add key="Media" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/media-queries.js" xdt:Transform="Insert" />
       <add key="Navigation" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Navigation" value="/escc.eastsussexgovuk/js/nav.js" xdt:Transform="Insert" />
+      <add key="Navigation" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/nav.js" xdt:Transform="Insert" />
       <add key="PublicLibraries" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="PublicLibraries" value="/escc.eastsussexgovuk/js/min/public-libraries.js" xdt:Transform="Insert" />
+      <add key="PublicLibraries" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/public-libraries.js" xdt:Transform="Insert" />
       <add key="SocialMedia" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="SocialMedia" value="/escc.eastsussexgovuk/js/min/social-media.js" xdt:Transform="Insert" />
+      <add key="SocialMedia" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/social-media.js" xdt:Transform="Insert" />
       <add key="SwitchView" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="SwitchView" value="/escc.eastsussexgovuk/js/min/switch-view.js" xdt:Transform="Insert" />
+      <add key="SwitchView" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/switch-view.js" xdt:Transform="Insert" />
       <add key="Typekit" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Typekit" value="/escc.eastsussexgovuk/js/min/typekit.js" xdt:Transform="Insert" />
+      <add key="Typekit" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/typekit.js" xdt:Transform="Insert" />
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="WebChat" value="/escc.eastsussexgovuk/js/min/webchat.js" xdt:Transform="Insert" />
+      <add key="WebChat" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/webchat.js" xdt:Transform="Insert" />
     </ScriptFiles>
   </Escc.ClientDependencyFramework>
 </configuration>

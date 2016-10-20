@@ -26,6 +26,8 @@
 
   <system.web xdt:Transform="InsertIfMissing" />
   <system.web>
+    <customErrors xdt:Transform="InsertIfMissing" />
+    <customErrors mode="On" xdt:Transform="SetAttributes(mode)" xdt:Locator="Condition(count(@mode) = 0)" />
     <pages xdt:Transform="InsertIfMissing" />
     <pages masterPageFile="~/desktop.master" xdt:Transform="SetAttributes(masterPageFile)" />
     <pages>
@@ -38,28 +40,30 @@
 
   <system.webServer xdt:Transform="InsertIfMissing" />
   <system.webServer>
+    <httpErrors xdt:Transform="Insert" />
+    <httpErrors xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/httpErrors[2])" />
+    <httpErrors errorMode="Custom" xdt:Transform="SetAttributes(errorMode)" xdt:Locator="Condition(count(@errorMode) = 0)" />
+    <httpErrors existingResponse="Replace" xdt:Transform="SetAttributes(existingResponse)">
+      <remove statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="400" subStatusCode="-1" xdt:Transform="Insert" />
+      <remove statusCode="403" subStatusCode="-1" xdt:Transform="Insert" />
+      <remove statusCode="404" subStatusCode="-1" xdt:Transform="Insert" />
+      <remove statusCode="500" subStatusCode="-1" xdt:Transform="Insert" />
+      <error statusCode="400" subStatusCode="-1" path="/HttpStatus400.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
+      <error statusCode="403" subStatusCode="-1" path="/HttpStatus403.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
+      <error statusCode="404" subStatusCode="-1" path="/HttpStatus404.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
+      <error statusCode="500" subStatusCode="-1" path="/HttpStatus500.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
+    </httpErrors>
     <modules xdt:Transform="InsertIfMissing" />
     <modules>
       <add name="MasterPageModule" type="Escc.EastSussexGovUK.WebForms.MasterPageModule" xdt:Transform="InsertIfMissing" xdt:Locator="Match(type)" />
     </modules>
   </system.webServer>
-
-  <Escc.ClientDependencyFramework>
-    <CssFiles>
-      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="HandlerPath" value="https://www.eastsussex.gov.uk/css/{0}.cssx" xdt:Transform="Insert" />
-    </CssFiles>
-    <ScriptFiles>
-      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="HandlerPath" value="https://www.eastsussex.gov.uk/js/{0}.jsx" xdt:Transform="Insert" />
-      <add key="HandlerPlaceholder" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="HandlerPlaceholder" value="JavaScript" xdt:Transform="Insert" />
-    </ScriptFiles>
-    <MediaQueries>
-      <add key="Medium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Medium" value="only screen and (min-width: 474px)" xdt:Transform="Insert" />
-      <add key="Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Large" value="only screen and (min-width: 802px)" xdt:Transform="Insert" />
-    </MediaQueries>
-  </Escc.ClientDependencyFramework>
 </configuration>

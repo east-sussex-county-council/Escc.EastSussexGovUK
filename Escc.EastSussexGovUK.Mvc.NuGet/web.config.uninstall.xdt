@@ -39,5 +39,26 @@
     </MediaQueries>
   </Escc.ClientDependencyFramework>
 
+  <system.web>
+    <customErrors xdt:Transform="Remove" xdt:Locator="Condition(@mode='On' and count(@*) = 1)" />
+  </system.web>
+  <system.web xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+
   <!-- Don't remove change to compilation/assemblies element because it's a common ASP.NET MVC requirement and removing it would be likely to break other packages that also inserted it -->
+
+  <system.webServer>
+    <httpErrors>
+      <remove statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="400" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='400' and @subStatusCode='-1' and @path='/HttpStatus/BadRequest' and @responseMode='ExecuteURL')" />
+      <error statusCode="403" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='403' and @subStatusCode='-1' and @path='/HttpStatus/Forbidden' and @responseMode='ExecuteURL')" />
+      <error statusCode="404" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='404' and @subStatusCode='-1' and @path='/HttpStatus/NotFound' and @responseMode='ExecuteURL')" />
+      <error statusCode="500" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='500' and @subStatusCode='-1' and @path='/HttpStatus/InternalServerError' and @responseMode='ExecuteURL')" />
+    </httpErrors>
+    <httpErrors xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0 and @errorMode='Custom' and @existingResponse='Replace')" />
+  </system.webServer>
+  <system.webServer xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+
 </configuration>

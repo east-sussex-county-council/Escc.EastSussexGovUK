@@ -1,12 +1,11 @@
-﻿[assembly: WebActivatorEx.PreApplicationStartMethod(typeof($rootnamespace$.EastSussexGovUK_WebForms), "PostStart")]
+﻿[assembly: WebActivatorEx.PreApplicationStartMethod(typeof($rootnamespace$.EastSussexGovUkWebForms), "PostStart")]
 
 namespace $rootnamespace$ {
 
     /// <summary>
     /// Register the virtual path provider which makes available the embedded views from Escc.EastSussexGovUK.Mvc
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
-    public static class EastSussexGovUK_WebForms
+    public static class EastSussexGovUkWebForms
 	{
   		/// <summary>
 		/// Wire up the provider at the end of the application startup process 

@@ -35,6 +35,32 @@
         <add assembly="System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xdt:Transform="InsertIfMissing" xdt:Locator="Match(assembly)"/>
       </assemblies>
     </compilation>
+    <customErrors xdt:Transform="InsertIfMissing" />
+    <customErrors mode="On" xdt:Transform="SetAttributes(mode)" xdt:Locator="Condition(count(@mode) = 0)" />
   </system.web>
 
+  <system.webServer xdt:Transform="InsertIfMissing" />
+  <system.webServer>
+    <httpErrors xdt:Transform="Insert" />
+    <httpErrors xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/httpErrors[2])" />
+    <httpErrors errorMode="Custom" xdt:Transform="SetAttributes(errorMode)" xdt:Locator="Condition(count(@errorMode) = 0)" />
+    <httpErrors existingResponse="Replace" xdt:Transform="SetAttributes(existingResponse)">
+      <remove statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="400" subStatusCode="-1" xdt:Transform="Insert" />
+      <remove statusCode="403" subStatusCode="-1" xdt:Transform="Insert" />
+      <remove statusCode="404" subStatusCode="-1" xdt:Transform="Insert" />
+      <remove statusCode="500" subStatusCode="-1" xdt:Transform="Insert" />
+      <error statusCode="400" subStatusCode="-1" path="/HttpStatus/BadRequest" responseMode="ExecuteURL" xdt:Transform="Insert" />
+      <error statusCode="403" subStatusCode="-1" path="/HttpStatus/Forbidden" responseMode="ExecuteURL" xdt:Transform="Insert" />
+      <error statusCode="404" subStatusCode="-1" path="/HttpStatus/NotFound" responseMode="ExecuteURL" xdt:Transform="Insert" />
+      <error statusCode="500" subStatusCode="-1" path="/HttpStatus/InternalServerError" responseMode="ExecuteURL" xdt:Transform="Insert" />
+    </httpErrors>
+  </system.webServer>
 </configuration>

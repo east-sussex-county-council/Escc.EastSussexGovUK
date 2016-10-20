@@ -1,0 +1,18 @@
+﻿@inherits System.Web.Mvc.WebViewPage<Escc.EastSussexGovUK.Mvc.HttpStatusViewModel>
+@{
+    Model.Metadata.Title = "Page unavailable";
+    Model.Metadata.IpsvPreferredTerms = "Internet";
+    Model.Metadata.LgtlType = "Website facilities";
+    Model.Metadata.DateModified = "2015-05-11";
+    Model.Metadata.IsInSearch = false;
+
+    Response.StatusCode = 500;
+}
+<div class="full-page">
+    <div class="content text-content">
+        <h1>Page unavailable</h1>
+        <p>Sorry this page is temporarily unavailable.</p>
+        <p>Please try again later.</p>
+    </div>
+</div>
+

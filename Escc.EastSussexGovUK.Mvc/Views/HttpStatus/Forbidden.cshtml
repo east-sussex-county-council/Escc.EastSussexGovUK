@@ -1,0 +1,16 @@
+﻿@inherits System.Web.Mvc.WebViewPage<Escc.EastSussexGovUK.Mvc.HttpStatusViewModel>
+@{
+    Model.Metadata.Title = "Forbidden";
+    Model.Metadata.IpsvPreferredTerms = "Internet";
+    Model.Metadata.LgtlType = "Website facilities";
+    Model.Metadata.DateModified = "2016-05-02";
+    Model.Metadata.IsInSearch = false;
+
+    Response.StatusCode = 403;
+}
+<div class="full-page">
+    <div class="content text-content">
+        <h1>Forbidden</h1>
+        <p>Sorry, you're not allowed to view that page.</p>
+    </div>
+</div>

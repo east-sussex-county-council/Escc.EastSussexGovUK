@@ -29,6 +29,7 @@
   <configSections xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
 
   <system.web>
+    <customErrors xdt:Transform="Remove" xdt:Locator="Condition(@mode='On' and count(@*) = 1)" />
     <pages xdt:Transform="RemoveAttributes(masterPageFile)" xdt:Locator="Condition(@masterPageFile='~/desktop.master')" />
     <pages>
       <controls>
@@ -41,24 +42,21 @@
   <system.web xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
 
   <system.webServer>
+    <httpErrors>
+      <remove statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="400" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='400' and @subStatusCode='-1' and @path='/HttpStatus400.aspx' and @responseMode='ExecuteURL')" />
+      <error statusCode="403" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='403' and @subStatusCode='-1' and @path='/HttpStatus403.aspx' and @responseMode='ExecuteURL')" />
+      <error statusCode="404" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='404' and @subStatusCode='-1' and @path='/HttpStatus404.aspx' and @responseMode='ExecuteURL')" />
+      <error statusCode="500" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='500' and @subStatusCode='-1' and @path='/HttpStatus500.aspx' and @responseMode='ExecuteURL')" />
+    </httpErrors>
+    <httpErrors xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0 and @errorMode='Custom' and @existingResponse='Replace')" />
     <modules>
       <add type="Escc.EastSussexGovUK.WebForms.MasterPageModule" xdt:Transform="Remove" xdt:Locator="Match(type)" />
     </modules>
     <modules xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
   </system.webServer>
   <system.webServer xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
-
-  <Escc.ClientDependencyFramework>
-    <CssFiles>
-      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    </CssFiles>
-    <ScriptFiles>
-      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="HandlerPlaceholder" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    </ScriptFiles>
-    <MediaQueries>
-      <add key="Medium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    </MediaQueries>
-  </Escc.ClientDependencyFramework>
 </configuration>

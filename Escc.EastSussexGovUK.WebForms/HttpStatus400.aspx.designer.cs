@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EsccWebTeam.EastSussexGovUK.MasterPages {
+namespace Escc.EastSussexGovUK.WebForms {
     
     
-    public partial class Status400 {
+    public partial class HttpStatus400 {
         
         /// <summary>
         /// headContent control.

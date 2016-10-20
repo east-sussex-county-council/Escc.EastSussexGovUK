@@ -25,7 +25,7 @@ We track the following custom events:
 - clicks in the header and footer (in `analytics.js`)
 - clicks on external and mailto links (in `Escc.Statistics.js`, via NuGet)
 - usage of the EastSussex1Space widget (in `1space.js`) 
-- loading the 404 page (in `Error404.ascx.cs`)
+- loading the 404 page (in `HttpStatus404.aspx`)
 - clicks on the news items on the home page (in `homepage.js`, via NuGet)
 - clicks on search results (in `search.js` in `Escc.Search.Website`)
 

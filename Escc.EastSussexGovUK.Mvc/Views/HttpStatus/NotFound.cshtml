@@ -1,0 +1,68 @@
+﻿@using Escc.Web
+@inherits System.Web.Mvc.WebViewPage<Escc.EastSussexGovUK.Mvc.HttpStatusViewModel>
+@{
+    Model.Metadata.Title = "Page not found";
+    Model.Metadata.IpsvPreferredTerms = "Internet";
+    Model.Metadata.LgtlType = "Website facilities";
+    Model.Metadata.DateIssued = "2005-01-27";
+    Model.Metadata.DateModified = "2010-09-13";
+    Model.Metadata.IsInSearch = false;
+
+    Response.StatusCode = 404;
+
+    var nonce = Guid.NewGuid().ToString().Replace("-", String.Empty);
+    new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy($"script-src 'nonce-{nonce}'").UpdateHeaders();
+
+    var normalisedReferrer = String.Empty;
+    try
+    {
+        if (Request.UrlReferrer != null)
+        {
+            normalisedReferrer = Request.UrlReferrer.ToString().Replace("'", "\'");
+        }
+    }
+    catch (UriFormatException)
+    {
+        // Catch this error and simply ignore the referrer if it is an invalid URI, which can happen in a hacking scenario.
+        // For example, if the request contains an invalid referring URL such as http://google.com', when you access the 
+        // Request.UrlReferrer property .NET creates a Uri instance which throws this exception.
+    }
+}
+<div class="full-page">
+    <div class="content text-content">
+        <h1>Page not found</h1>
+
+        <p>
+            Sorry &#8211; the page you asked for could not be found. It may have been moved or
+            deleted.
+        </p>
+        <p>To find what you're looking for:</p>
+        <ul>
+            <li>
+                start with the menu at the top of any page, and try to find the information you
+                want
+            </li>
+            <li>search for what you want using the search box at the top of any page</li>
+            <li>
+                use our <a href="https://apps.eastsussex.gov.uk/contactus/emailus/feedback.aspx">comments form</a> to contact
+                us &#8211; we may be able to help.
+            </li>
+        </ul>
+    </div>
+</div>
+@section JavaScript {
+    <script data-request="@Request.Url" data-referrer="@normalisedReferrer" nonce="@nonce">
+        if (typeof (jQuery) !== "undefined") {
+            $(function () {
+                // Track in Google Analytics which pages returned a 404
+                var requestUrl = $("script[data-request]").data("request");
+                var referrerUrl = $("script[data-referrer]").data("referrer");
+            
+                if (typeof (ga) !== "undefined") {
+                    ga('send', 'event', '404', requestUrl, referrerUrl);
+                }
+            });
+        }
+    </script>
+}
+

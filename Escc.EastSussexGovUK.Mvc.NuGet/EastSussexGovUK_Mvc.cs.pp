@@ -1,19 +1,23 @@
-﻿[assembly: WebActivatorEx.PreApplicationStartMethod(typeof($rootnamespace$.EastSussexGovUK_Mvc), "PostStart")]
+﻿using System.Web.Mvc;
+using System.Web.Routing;
+
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof($rootnamespace$.EastSussexGovUkMvc), "PostStart")]
 
 namespace $rootnamespace$ {
 
     /// <summary>
     /// Register the virtual path provider which makes available the embedded views from Escc.EastSussexGovUK.Mvc
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
-    public static class EastSussexGovUK_Mvc 
+    public static class EastSussexGovUkMvc 
 	{
   		/// <summary>
-		/// Wire up the provider at the end of the application startup process 
+		/// Wire up the provider at the end of the application startup process, and the route to HTTP status pages
 		/// </summary>
 	    public static void PostStart() 
 		{
             System.Web.Hosting.HostingEnvironment.RegisterVirtualPathProvider(new EmbeddedResourceVirtualPathProvider.Vpp(typeof(Escc.EastSussexGovUK.Mvc.BaseViewModel).Assembly));
+
+            RouteTable.Routes.MapRoute("HttpStatus", "{controller}/{action}", null, new { controller = "HttpStatus" });
         }
     }
 }
