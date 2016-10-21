@@ -10,16 +10,16 @@ By default the link in the header goes to `/masterpages/textsize.aspx` but this 
 
 	<configuration>
 	  <configSections>
-	    <sectionGroup name="EsccWebTeam.EastSussexGovUK">
+	    <sectionGroup name="Escc.EastSussexGovUK">
 	      <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
         </sectionGroup>
 	  </configSections>
 
-      <EsccWebTeam.EastSussexGovUK>
+      <Escc.EastSussexGovUK>
         <GeneralSettings>
           <add key="TextSizeUrl" value="~/masterpages/textsize.aspx" />
         </GeneralSettings>
-      <EsccWebTeam.EastSussexGovUK>
+      <Escc.EastSussexGovUK>
 	</configuration>
 
 When using the remote master page this is prefixed by the `BaseUrl` setting configured on the site serving the remote template, creating an absolute link back to main site. This means that consumers of the remote template don't need to do anything to support the text size feature. 

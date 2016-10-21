@@ -43,7 +43,7 @@ namespace Escc.EastSussexGovUK.Views
         /// &lt;/Escc.EastSussexGovUK&gt;
         /// &lt;system.web&gt;
         /// &lt;httpModules&gt;
-        /// &lt;add name="MasterPageModule" type="EsccWebTeam.EastSussexGovUK.MasterPageModule, EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f"/&gt;
+        /// &lt;add name="MasterPageModule" type="Escc.EastSussexGovUK.WebForms.MasterPageModule"/&gt;
         /// &lt;/httpModules&gt;
         /// &lt;/system.web&gt;
         /// &lt;/configuration&gt;

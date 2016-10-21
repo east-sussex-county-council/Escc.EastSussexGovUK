@@ -122,14 +122,14 @@ It is possible to mix WebForms using master pages and MVC pages using layouts in
       <Escc.EastSussexGovUK>
 	    <GeneralSettings>
 	      <add key="MasterPageParameterName" value="template" />
-	      <add key="FullScreenMasterPage" value="~/masterpages/FullScreen.master" />
-	      <add key="PlainMasterPage" value="~/masterpages/Plain.master" />
+	      <add key="FullScreenMasterPage" value="~/FullScreen.master" />
+	      <add key="PlainMasterPage" value="~/Plain.master" />
 	      <add key="FullScreenMvcLayout" value="~/views/eastsussexgovuk/fullscreen.cshtml" />
 	      <add key="PlainMvcLayout" value="~/views/eastsussexgovuk/plain.cshtml" />
 	    </GeneralSettings>
 	    <DesktopMasterPages>
 	      <add key="/example-application/map.aspx" value="~/masterpages/fullscreen.master" />
-		  <add key="/" value="~/masterpages/desktop.master" />
+		  <add key="/" value="~/desktop.master" />
 	    </DesktopMasterPages>
 	    <DesktopMvcLayouts>
 	      <add key="/example-application/map/" value="~/views/eastsussexgovuk/fullscreen.cshtml" />
@@ -139,7 +139,7 @@ It is possible to mix WebForms using master pages and MVC pages using layouts in
 
 	  <system.webServer>
 	    <modules>
-	      <add name="MasterPageModule" type="EsccWebTeam.EastSussexGovUK.MasterPages.MasterPageModule, EsccWebTeam.EastSussexGovUK" />
+	      <add name="MasterPageModule" type="Escc.EastSussexGovUK.WebForms.MasterPageModule" />
 		</modules>
 	  </system.webServer>
 	</configuration>

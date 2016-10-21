@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.EastSussexGovUK", "EsccWebTeam.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj", "{1426FEF0-23DC-4C23-AE15-67F2527BD741}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E92E60AC-202D-4BB5-B736-F6EAF6B9F558}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -32,8 +30,6 @@ Project("{E09DD79A-4488-4AB9-8D3F-A7EEE78BF432}") = "Escc.EastSussexGovUK.Mvc.Nu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK", "Escc.EastSussexGovUK\Escc.EastSussexGovUK.csproj", "{0D24D550-1007-4627-8DAD-C86B07165EF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsccWebTeam.EastSussexGovUK.Tests", "EsccWebTeam.EastSussexGovUK.Tests\EsccWebTeam.EastSussexGovUK.Tests.csproj", "{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}"
-EndProject
 Project("{E09DD79A-4488-4AB9-8D3F-A7EEE78BF432}") = "Escc.EastSussexGovUK.NuGet", "Escc.EastSussexGovUK.NuGet\Escc.EastSussexGovUK.NuGet.nuproj", "{8B25E114-AC38-469C-8E40-6DF9D41102FC}"
 EndProject
 Project("{E09DD79A-4488-4AB9-8D3F-A7EEE78BF432}") = "Escc.EastSussexGovUK.Metadata.NuGet", "Escc.EastSussexGovUK.Metadata.NuGet\Escc.EastSussexGovUK.Metadata.NuGet.nuproj", "{7DC14B0D-2291-4DC6-AD47-81CC57B8FABC}"
@@ -50,6 +46,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Rss", 
 EndProject
 Project("{E09DD79A-4488-4AB9-8D3F-A7EEE78BF432}") = "Escc.EastSussexGovUK.Rss.NuGet", "Escc.EastSussexGovUK.Rss.NuGet\Escc.EastSussexGovUK.Rss.NuGet.nuproj", "{14AA7054-8FB8-41ED-BE3D-64D302E13CFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.TemplateSource", "Escc.EastSussexGovUK.TemplateSource\Escc.EastSussexGovUK.TemplateSource.csproj", "{1426FEF0-23DC-4C23-AE15-67F2527BD741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.TemplateSource.Tests", "Escc.EastSussexGovUK.TemplateSource.Tests\Escc.EastSussexGovUK.TemplateSource.Tests.csproj", "{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,12 +57,6 @@ Global
 		UAT|Any CPU = UAT|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.UAT|Any CPU.ActiveCfg = Release|Any CPU
-		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.UAT|Any CPU.Build.0 = Release|Any CPU
 		{C7C8165C-927A-4448-B84A-6D91FA17C74C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C7C8165C-927A-4448-B84A-6D91FA17C74C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7C8165C-927A-4448-B84A-6D91FA17C74C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -87,12 +81,6 @@ Global
 		{0D24D550-1007-4627-8DAD-C86B07165EF7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0D24D550-1007-4627-8DAD-C86B07165EF7}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{0D24D550-1007-4627-8DAD-C86B07165EF7}.UAT|Any CPU.Build.0 = Release|Any CPU
-		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.UAT|Any CPU.ActiveCfg = Release|Any CPU
-		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.UAT|Any CPU.Build.0 = Release|Any CPU
 		{8B25E114-AC38-469C-8E40-6DF9D41102FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B25E114-AC38-469C-8E40-6DF9D41102FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B25E114-AC38-469C-8E40-6DF9D41102FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -141,6 +129,18 @@ Global
 		{14AA7054-8FB8-41ED-BE3D-64D302E13CFD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14AA7054-8FB8-41ED-BE3D-64D302E13CFD}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{14AA7054-8FB8-41ED-BE3D-64D302E13CFD}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{1426FEF0-23DC-4C23-AE15-67F2527BD741}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}.UAT|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

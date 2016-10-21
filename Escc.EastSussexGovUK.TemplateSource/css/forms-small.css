@@ -1,0 +1,802 @@
+﻿/********************************************
+ ********************************************
+                 PLEASE
+             D O C U M E N T
+           E V E R Y T H I N G !
+
+ All comments are stripped from this file  
+ for the live site, so don't be shy:
+
+ - say what app it's for
+ - say what you were trying to achieve
+ - give an example of the HTML
+ - note any browser differences/bugs
+ - add your name and the date
+
+*********************************************
+*********************************************
+
+--------------------------------------------
+ QUICK REFERENCE - Handy generic styles
+--------------------------------------------
+ .ie6, .ie7, 
+ .ie67, .ie8        target IE versions
+ .js, .no-js        JavaScript on or off
+ .aural             screenreaders only
+ .print             print only
+ .screen            don't print it
+ a.screenUrl        don't print href of this link
+---------------------------------------------
+
+--------------------------------------------
+ QUICK REFERENCE - Colours
+--------------------------------------------
+
+Input border (Grey)                  #9C9C9C
+Error notifications (Red)            #B21313
+Error Summary Background (Pink)      #FBE2E2
+Form Background (Grey Creamish)      #F6F4E8
+
+
+
+
+Text (Off Black)                     #131313
+Initial Text (Within input Grey)     #909090
+Input border (Light Grey)            #9C9C9C
+Sub heading (Blue)                   #00A1DE
+
+------- LINKS ------------
+
+Active (Dark Navy)      #003C69
+Hover (Light Blue)      #00A1DE
+Visited (Orange)        #FF5800
+
+------- Buttons ----------
+
+Primary Button (Two colour gradient)
+Active      Top             #1E5b83
+            Bottom          #0B4164
+Hover       Top             #0C3356
+            Bottom          #092947
+Inactive    Top             #8EADC1
+            Bottom          #85A0B1
+
+Secondary button to be link to right of Primary button
+using normal link styles
+
+
+
+*/
+
+/*----------------------------- Form --------------------------------------------------------------------------------------------------------------------------------------
+
+The forms are created using one of two approaches. The first is using the eForms system. This allows forms to be created in a very controlled environment where the
+structure and choice of controls follows strict rules. The second approach is bespoke form development; examples are certificates, events, consultations and any 
+form that needs complicated validation or dependency management (eg q2 relies on yes to q1)
+
+Form Structure (all combinations currently in use):
+
+h1
+p (mandatory field messaage)
+	span.requiredField
+
+h2
+	(CONTAINER FOR FORM SECTION)
+	div.formBox
+		
+		(TEXTBOX, TEXTAREA, DROP DOWN LIST)
+		div.formPart
+			label | label.formLabel
+				span | span.requiredField 
+			input | input.formControl | textarea | textarea.formControl | textarea.WideText | textarea.ExtraWideText | select.nameTitle | select.formControl
+		
+		(CHECKBOX)
+		div.formPart
+			span
+				input
+				label
+				
+		(ADDRESS CONTROL)
+		div.formPart | fieldset.formPart.addressControl
+			span.formLabel | legend
+			div
+				p.pcDesc
+				div.formPart
+					label.formLabel
+					input
+				input.ieBugFix (Hidden)
+				div.formPartAddress
+					input.button
+					span
+				input.button .buttonBigger
+				input (Hidden)
+				span.validationSummary
+				
+		(DATE RANGE DAY, MONTH, YEAR)
+        fieldset.formPart
+            legend.formLabel		
+            div.formControl .dateControl
+			    label
+				    select
+			    label
+				    select
+			    label
+				    select
+					
+		
+		(RADIO BUTTON LIST)
+		fieldset.radioButtonList
+			legend
+				span | span.requiredField
+			span | span.radioButtonlist
+				input
+				label
+				
+		(RADIO BUTTON LIST ONLY CONTROL ON PAGE)		
+		span.radioButtonList
+			input
+			label
+				
+	(SUBMIT BUTTON)		
+	.formButtons
+		.button
+
+
+*/
+/* 	--------- Example HTML -------------------------------------------------------------------------	
+
+	<div class="form">
+		<div class="errorSummary"></div>
+		<h2></h2>
+		<div class="formBox">
+			<div class="formPart">
+				<label></label>
+				<input />
+			</div>
+		</div>
+		<div class="formButtons">
+			<input />
+		</div>
+	</div>
+	
+	--------- Example HTML ------------------------------------------------------------------------- 
+*/
+
+
+
+/* Progress bar */
+.progressBar, .progressBar li { list-style: none; margin: 0; padding: 0; }
+.progressBar li { font-size: 0.9em; float: left; background: url(../img/body/navigation.png) no-repeat -200px -200px; padding: 3px 7px 0 0; width: 85px; height: 22px; color: #fff; font-weight: bold; border-width: 1px; text-align: center; }
+.progressBar li.current { background: url(../img/body/navigation.png) no-repeat -100px -200px; color: #fff;}
+body .text ol.progressBar { padding-left: 2px; margin: 1em 0; max-width:none; overflow: auto; width: 99%; }
+.progressBar em { font-style: normal; }
+.progressBar a:link, .progressBar a:visited { color: #fff;text-decoration: none; }
+
+
+/**************** ERROR REPORTING - VALIDATION SUMMARY CONTROL *********************************************************************************************************************
+
+The error notification area (validation summary) will always be displayed at the top of the form and will highlight to the user fields that require action.
+Until the error is corrected the user will not be permitted to submit the form to the server. The nofication area consists of a div that contains an unordered list of errors message.
+Each item listed will link to the corresponding inline error message above the control which requires user input. In addition if the browser supports it the fields in error will also
+have a red border applied via javascript to make them visual standout. For the benefit of people using screen-readers we will also prefix the title of the page on reload with the word
+'Errors' so they can listen out for this new information about the form.
+
+Use Escc.FormControls.WebForms.Validators.EsccValidationSummary to produce the error notifications.
+
+***************************************************************************************************************************************************************************************/
+/* 	--------- Example HTML -------------------------------------------------------------------------	
+
+	<div class="errorSummary">
+		<p>Please complete the following before continuing:</p>
+		<ul>
+			<li>Required:<span class="errorItem"><a href="#error1">Missing name</a></span></li>
+		</ul>
+	</div>
+
+    or
+
+    <div class="errorSummary">
+        <p>Error message here</p>
+    </div>
+	
+	--------- Example HTML ------------------------------------------------------------------------- 
+*/
+
+/* .errorSummary is the container for all error message prompts on the form. The container has a red cornered border and wanring icon. 
+    All content within the box by default is bolded and red. Margin + border is one line space, and top+bottom padding is another. */
+.errorSummary { clear: both; margin: 1.230769em 0; border: solid .153846em #B21313; border-radius: 5px; padding: .692308em; background: #FBE2E2 url(../img/body/item-type.png?v=2) no-repeat 14px -1640px; color: #b21313; font-weight: bold; }
+/* Error summary introduction text is changed back to black from red. */
+.errorSummary p { position:relative; padding-left: 3.3em; color: #131313; margin: .692308em 0 0; }
+/* Removed the bullet points to the left of each error message */
+/* Increased padding on the list item error messages to line up the text */
+.errorSummary ul { margin: .692308em 0 0; }
+.errorSummary li { list-style: none; padding-left: 3.3em; }
+.errorSummary .errorItem {padding-left:.5em;}
+
+.text-content .errorSummary { margin: 1em 0;border-width: .125em;padding: .5625em;background-position: 20px -1632px; }
+.text-content .errorSummary p, .text-content .errorSummary ul { margin: .5625em 0 0; }
+
+/* Legacy support. Where proper validation controls have not been used .warning or .validationSummary was used instead.
+   Aim should be to search for and convert instances of this to validation controls or, at the very least, the new HTML.
+   Can't do any further styling because the span is often present even when there is no error. 
+*/
+.validationSummary { color: #b21313; }
+
+
+/* Used on required fields to highlight a mandatory question. It turns the asterisk or message red. 
+   Not within .form because it may also be used outside to form to explain that the asterisk means required. */
+.requiredField { font-family: Verdana, Arial, "Helvetica Neue", Helvetica, sans-serif; color: #B21313; font-weight: bold; padding-left: .2em; }
+
+/* When a .NET WebForm contains only a single text input, the Click event doesn't fire in IE. 
+   Adding an extra textbox works around that, and giving the extra field this class hides it from the user. */
+.ieBugFix { display: none; }
+
+
+/*:: ALL FORMS - QUESTION TYPES :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+/* If there are several choices where one or more has a set of dependent fields, present each choice as a radio button, 
+   with each option presenting its own .dependentFields block if required. Use the data-enables attribute to link the 
+   option with its dependent fields, using the standard forms script.
+
+   fieldset wraps and legend introduces the set of radio buttons, because legend is recognised by assistive 
+   technology running in forms mode.
+
+   HACK: A hard-coded link at the bottom is used by adopted roads and planning register. NEED TO DECIDE BETWEEN THIS AND THE ABOVE APPROACH.
+
+       <fieldset>
+          <legend class="or">or search for [whatever]:</legend>
+      
+          <span class="depends" data-enables="first"><input type="radio" /><label /></span>
+          <div class="dependentFields" id="first">
+              ...
+          </div>
+
+          <p><span class="or">or</span> show a <a href="map.aspx">map of [whatever]</a></p>
+       </fieldset>
+
+*/
+.form .depends { display: block; position: relative; padding-left: 20px; margin: .692308em 0; }
+.form .depends label { padding: 0; }
+.form .depends input { position: absolute; top: 0; left: 0; margin: 2px 0 0 0; } 
+
+.text-content .form .depends input { margin-top: 7px; }
+
+/* Slightly adjust position of radio buttons for IE */
+.ie8 .form .depends input { margin: 0; }
+.ie7 .form .depends input { top: -4px; }
+.ie6 .form .depends { padding-bottom: .692308em; }
+.ie6 .form .depends input { top: -4px; left: -23px; }
+
+/* Swop layout from left to right for right-to-left scripts */
+.rtl .form .depends { padding-left: 0; padding-right: 20px; }
+.rtl .form .depends input { right: 0; }
+
+/* Add space around the .dependentFields below .depends */
+.form .dependentFields { margin: .642857em 0 .642857em 20px; }
+.ie8 .form .dependentFields { margin: 0 0 0 20px; }
+
+/* Ensure fields are stacked within the .dependentFields section */
+.form .dependentFields label { display: block; margin: .428571em 0 2px; }
+
+/* Stop dependent .radioButtonList being misplaced in IE6 (example: find schools) */
+.ie67 .form .dependentFields fieldset { position: relative; }
+
+/* Consistent layout for fieldset legends */
+legend { display: table; white-space: normal; } /* Make them wrap in IE<=11 */
+.ie67 legend { margin-left: -7px; } 
+
+
+/* Restrict textbox width - helps indicate input length to user
+
+   Depending on the type of information we are trying to collect, we will apply a class to the textbox which influences its 
+   width. For example by applying .phone to a textbox it will limit the textbox entry to be the width more suitable for 
+   telphone numbers e.g.  +0441273481647
+
+   The body selector helps them override the default width in a .service-form
+
+	<label>Enter your email address</label>
+	<input class="email" type="text" />
+
+    For .email, need to reset the background as well as set width because .email normally applies an email icon.
+    Must reset using background, not background-image: none, because background-position on the base style causes 
+    inset borders to be re-applied in Chrome 13. A similar thing happens in IE6-8, fixed by explicity setting the 
+    border back to our default border. Have to do that using a class so that IE6 is fixed along with 7 and 8. 
+
+    IE6 won't apply a rule if *any* of the selectors are attribute selectors, so use a separate rule where either a 
+    class or an attribute selector will do.
+*/
+.form textarea { overflow: auto; height: 8em; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+body .form input.numeric { width: 2em; } 
+body .form input[type=number] { width: 2em; }
+body .form input.name-title { width: 5em; }
+body .form input.name { width: 18em; }
+body .form input.phone { width: 10em; }
+body .form input[type=tel] { width: 10em; }
+body .form input.email { width: 22em; background: #fff; padding-left: 0; border: 1px solid #9c9c9c; } 
+body .form input[type=email] { width: 22em; background: #fff; padding-left: 0; } 
+body .form input.url { width: 40em; max-width: 100%; } 
+body .form input[type=url] { width: 40em; max-width: 100%; } 
+body .form input.currency { width: 5em; }
+
+
+/*
+Define 7 field types to match the 7 fields in a BS7666 address 
+99% width allows for left and right borders 
+TODO .postcodeField is used by .addressControl. Need to update FormControls.
+*/
+body .form input.saon, body .form input.paon, body .form input.street { width: 99%; }
+body .form input.locality, body .form input.town, body .form input.administrative-area { width: 20em; }
+body .form input.postcode, body .form input.postcodeField { width: 5em; }
+
+/* If a dropdown has too much data, stop it extending beyond its containing box. max-width doesn't work (Firefox 3.6 and Chrome 13) */
+body .form select.too-wide { width: 100%; }
+
+/* If a text input is included within the flow of a sentence, align it with the text 
+   
+       <p><label>I would like to buy <input type="number" class="within-text" /> candles</label></p>
+*/
+body .form input.within-text { position: relative;top: -2px; vertical-align: top; }
+.text-content .form input.within-text { margin: 0 .3em; }
+
+/* Vertical radiobutton list or checkbox list. 
+   Options stack so it is unambiguous which label belongs to which input.
+
+   Note: in the old design .radioButtonList was applied to the fieldset as well, but that is no longer required. 
+
+        <fieldset>
+            <legend />
+            <span class="radioButtonList">
+                <input /><label />
+                <input /><label />
+           </span>
+        </fieldset>
+   
+
+   If it's the only control on the page, sometimes the fieldset is left out:
+
+       <span class="radioButtonList">
+          <input /><label />
+          <input /><label />
+       </span>
+
+
+   For a single checkbox you should also apply .checkbox, so that it can be treated differently:
+   
+       <span class="radioButtonList checkbox">
+          <input /><label />
+       </span>
+*/
+
+/* Make it a positioning context so the input can be positioned on the left. 
+   z-index on input is essential otherwise the control can't be selected on Mobile Safari 26/01/2012. */
+.form .radioButtonList { margin: .692308em 0; display: block; position: relative; }
+.form .radioButtonList input { left: 0; margin-top: 2px;  position: absolute; z-index: 1; }
+.ie67 .form .radioButtonList input, .ie8 .form .radioButtonList input { margin-top: 0; }
+
+.text-content .form .radioButtonList input[type=radio], .text-content .form .radioButtonList input[type=checkbox] { margin-top: 6px; }
+.text-content fieldset.checkboxes label { margin: 4px 0;}
+
+/* Make each option occupy an entire line so they stack vertically. 
+   Padding allows space for the absolutely-positioned input, and space between options to make them easier to select. */
+.form .radioButtonList label { display: block; padding: 0 0 4px 20px; margin: 0; }
+.text-content .form .radioButtonList label { margin: 0; }
+
+/* Swop layout for right-to-left scripts */
+.rtl .form .radioButtonList label { padding-left: 0; padding-right: 20px; }
+.rtl .form .radioButtonList input { right: 0; }
+
+/* Occasionally a .radioButtonList will have another form control inside it, and the input elements will be mistaken for more radio buttons. 
+   Provide overrides to stop that. Examples are events and school admission appeals: 
+
+        <div class="radioButtonList">
+            <input type="radio" /><label />
+            <input type="radio" /><label class="contains-field">Show me </label> <input type="number" class="within-text" /> <label>examples</label>
+            <input type="radio" /><label />
+            <input type="radio" /><label>Other</label>
+            
+            <div class="not-radio">
+                <label>If other, please state</label>
+                <input type="text" />
+            </div>
+        </div>
+*/
+.form .radioButtonList .contains-field { float: left; margin-right: .5em; }
+
+.form .radioButtonList label.not-radio, .form .radioButtonList .not-radio label { padding-left: 0; }
+.form .radioButtonList input.not-radio, .form .radioButtonList .not-radio input { position: static; }
+
+
+/* Date entered using three dropdown lists.
+   Adds whitespace between the label and the drop down lists */
+.form div.dateControl { margin-top:.3em; }
+/* Forces the three drop down lists which make up the day, month and year to sit next to each other on the same line */
+.form div.dateControl select { display: inline; }
+/* Legacy tweak as no aural class exists in the eforms system, this class is needed to move dob labels off the page */
+.form div.dateControl label { display: inline; position: absolute; right: 3000px; }
+
+
+/* Address control from the Escc.FormControls.WebForms library.
+   
+   May be contained within a fieldset. If it is, that fieldset has the .formPart and .addressControl classes.
+
+  <fieldset class="formPart addressControl">
+    <legend>Address</legend>
+
+        [address control here]
+
+  </fieldset>
+*/
+
+/* .formPartAddress contains the "Find address" and "type address" buttons. It needs a small bottom margin so that, 
+   when it's the last control inside a .formBox, it has some space between the buttons and the bottom border of .formBox.
+*/
+.form .formPartAddress { margin: 0 0 .692308em; }
+
+/* Add space between the bottom of the confirm address box and confirm button */
+.form .listbox {margin-bottom:1em; }
+
+
+/* Upload files using Escc.DatabaseFileControls classes */
+.attachedFile { margin: .692308em 0; } 
+.attachedFileButton { margin: 0 0 0 10px; }
+
+/* Reset font for customer focus skin, because these elements don't pick it up from the parent */
+.text-content select, .text-content input, .text-content textarea { font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif;font-size: 1em; }
+.text-content input[type=checkbox] { vertical-align: middle;margin-right: 5px; }
+
+/*:: SIMPLE FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+/* A one-line form typically used for navigation, such as a search box within content. Essentially it's a specialised type of .short-form.
+   Use chunky labels, text boxes and buttons for an easy-to-use look. Allow display: inline to arrange them on one line. If there are
+   multiple ways to search use separate .simple-forms, or switch to a .short-form using a .radioButtonList and .depends.
+   Examples: find a library by postcode, find news by month or postcode, find contracts
+   
+        <div class="form simple-form">
+            <label /><input type="text" /><input type="submit" />        
+        </div>
+
+        <div class="form simple-form">
+            <label /><select /><input type="submit" />        
+        </div>
+
+   For a form in the supporting content area, this can be combined with .supporting-text:
+
+        <div class="supporting-text form simple-form">
+            <h2>A simple form</h2>
+            <form />
+        </div>
+*/
+.simple-form { clear: both; margin: .642857em 0; background: #cceefa; padding: 1.285714em; overflow: hidden; font-size: 1.076923em; line-height: 1.285714em; } /* 14px/18px */
+.text-content .simple-form { margin: .5625em 0;padding: 1.125em;font-size: 1em;line-height: 1.125em; } /* 16px/18px, like surrounding text */
+
+/* On small screens the label should be above the fields, mainly to support field zoom, but also to ensure that it's consistent which elements
+   wrap even though labels will vary in length. line height + margin adds up to one line space. */
+.simple-form label { display: block; margin: .857143em 0 .428571em; }
+.text-content .simple-form label { margin: .5625em 5px .5625em 0; }
+.text-content .simple-form label:first-child { margin-top: 0; }
+
+/* Text search will be the most common option */
+.simple-form input[type=text], .simple-form input[type=search], .simple-form input[type=password], .simple-form input[type=email] { font-size: 1.076923em; line-height: 1em; padding: .428571em; margin: 0 .5em 0 0; border: 2px solid #9c9c9c; border-radius: 5px; } /* 14px font */
+.text-content .simple-form input[type=text], .text-content .simple-form input[type=search], 
+.text-content .simple-form input[type=password], .text-content .simple-form input[type=email] {font-size: 1em; line-height: 1.125em; padding: .4375em; }
+
+/* File upload. Don't add a border because Chrome 13 puts it in a really odd position. Used by Single Assessement Process form upload.*/
+.simple-form input[type=file] { line-height: 1em; padding: .428571em; margin: 0 .5em; } /* on 14px base font */
+.text-content .simple-form input[type=file] { padding: .4375em; } /* on 16px base font */
+
+/* Button has a top margin to separate it from the form control should it wrap below. Bottom margin is equal to top so that it's aligned if it doesn't wrap. */
+.simple-form input[type=submit], .simple-form input[type=button] { line-height: 1em; padding: 7px; margin: 4px 0 4px; font-weight: bold; color: #fff; border: 0; border-radius: 4px;  /* 14px font */
+                             background: #1e5b83; /* Old browsers */
+                             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE6-9 */
+                             background: linear-gradient(top, #1e5b83 0%,#0b4164 100%); /* W3C */
+                             }
+/* Reset font size in context of 16 px base font for .text-content */
+.text-content .simple-form input[type=submit], .text-content .simple-form input[type=button] { font-size: 1em; padding: .5625em; margin: .3125em 0 .25em 0; }
+                             
+/* IE6 doesn't apply the attribute selectors above, so style its controls separately */
+.ie6 .simple-form input { margin: 0 .5em 0 0; vertical-align: middle; }
+
+/* Can't do chunky dropdowns as styling is limited, but keep font at 14px and add a little padding to options. Not much padding, because it all goes 
+   below the text in Firefox 3.6, so looks odd with too much space below and none above. Still looks unbalanced next to a big chunky button. */
+.simple-form select { margin: 0 .5em 0 0; } 
+.simple-form option { padding: 1px; } 
+
+/* Dropdown styling has improved though still only Chrome does well. Vertical padding, border and margin add up to 18px.*/
+.text-content .simple-form select { padding: .3125em; border-radius: 5px;border: .125em solid #9c9c9c;margin: .125em;  }
+
+/* If there's a .radioButtonList it'll be the only field (otherwise this should be a .short-form), so safe to remove bottom margin. 
+   A .radioButtonList should also be the only reason for a fieldset. This is used by the "How much will I have to pay for social care?" questionnaire. */
+.simple-form .radioButtonList { margin: 0; }
+.simple-form legend { padding: 0 0 .642857em; }
+
+
+/* The simple form can be a textbox or dropdown list supported by a checkbox. Example is 'find a library' when on results screen.
+
+        <div class="form simple-form">
+            <div class="fields-with-checkbox">
+                <div class="fields">
+                    <label /><input type="text" />
+                    <span class="checkbox"><input type="checkbox" /><label /></span>
+                </div>
+                <input type="submit" />
+            </div>
+        </div>
+ */
+.simple-form .fields-with-checkbox { overflow: hidden; } /* to contain floats */
+.simple-form .fields-with-checkbox .checkbox { display: block; position: relative; margin: 9px 0; padding-left: 20px; }
+.simple-form .fields-with-checkbox .checkbox input { position: absolute; left: 0; top: 2px; }
+.simple-form .fields-with-checkbox input[type=submit] { margin: 0; }
+
+.ie6 .simple-form .fields-with-checkbox { display: inline-block;}
+.ie6 .simple-form .fields-with-checkbox .checkbox input { left: -22px; top: -2px; }
+.ie7 .simple-form .fields-with-checkbox .checkbox input { top: -2px; }
+.ie8 .simple-form .fields-with-checkbox .checkbox input { top: 0; }
+
+
+/* If the search has an ambiguous result, the user may have to choose from a list before moving on. Example is 'find a councillor' using postcode TN38 0TA.
+
+        <div class="form simple-form">
+            <label /><input type="text" />
+            <div class="clarify">            
+                <label /><select />
+            </div>
+            <input type="submit" />        
+        </div>
+
+ */
+.simple-form .clarify label { display: block; padding: 14px 0 4px; }
+.simple-form .clarify select { height: 12em; }
+
+/* A .simple-form may be introduced by a subheading or a paragraph */
+.simple-form h2 { margin: 0 0 .642857em; font-weight: bold; } 
+.text-content .simple-form h2 { margin: 0 0 .346154em; }
+
+/* Extra line of explanatory or alternative text for navigation options. 9px margins on 14px font. 
+   Ideally set .intro or .note to treat text differently when it appears above or below the controls. 
+
+        <div class="form simple-form">
+            <h2>Optional subheading</h2>
+            <p class="intro">Optional introduction *instead of* heading:</p>
+        
+            [... form controls here ...]
+    
+            <p class="note">Optional note after the form.</p>
+        </div>
+*/
+.simple-form p { margin: .642857em 0; } 
+.simple-form p.intro { margin: 0 0 .642857em; } 
+.simple-form p.note { clear: both; margin: .642857em 0 0; font-size: .928571em; line-height: 1.384615em; }  /* Back to standard 13px/18px for notes */
+
+/* Customer focus skin goes back to base font size but on tighter 18px leading */
+.text-content .simple-form p {font-size: 1em;line-height: 1.125em; }
+
+
+/* If the .note is to indicate that you can .useList of all results, add an arrow to highlight the list as a secondary action.
+   
+        <p class="note useList"><span class="or">or</span> <a href="list.aspx">view all [somethings]</a></p>
+*/
+.simple-form .useList .or { font-weight: bold; }
+.simple-form .useList a { padding: 0 30px 0 0; background: url(../img/body/item-type.png?v=2) no-repeat right -595px; }
+
+
+
+/*:: SHORT FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+  A .short-form is a form with only a few fields, typically the search screen for an application, where that form is still 
+  too big to fit on one line. It doesn't have separate sections; for that you need a .service-form.
+   
+  Text is 14px/18px for a big, friendly look. 1 line space of vertical padding, with just 1px of that at the top as it prevents 
+  margins collapsing. The allows top margins above form controls to provide padding at the top of the box. Another line space 
+  below .short-form separates it from following content.
+*/
+.short-form { padding: .071429em 18px 1.214286em; background: #cceefa; margin: 0 0 1.384615em; font-size: 1.076923em; line-height: 1.285714em; clear: both; }
+
+/* Reset font size for customer focus skin, because we just want to inherit it from .text-content */
+.text-content .short-form { font-size: 1em; }
+
+
+/* .short-form shouldn't be within .text, but it may end up there so cope with it */
+.text .short-form { margin-left: -3.8%; margin-right: -4%; }
+
+/* Optionally introduce the form with a heading.
+   
+   If some search option(s) can be simple links, present that first as *either* a paragraph or list:
+   
+       <h2>Find [whatever]</h2>
+       <p><a href="view-all.aspx">View all</a></p>
+       <ul>
+          <li><a href="view-all.aspx">View all</a></li>
+          <li><a href="map.aspx">Map of [whatever]</a></li>
+       </ul>
+*/   
+.short-form h2 { font-weight: bold; margin: .857143em 0 .428571em; }
+.short-form p { margin: 1em 0 .285714em; }
+
+
+/*
+   If it's a simple set of fields, they just stack vertically so that there's a clear path to completion, 
+   and also so labels are visible with field zoom on mobile.
+
+        <label />
+        <input type="text" />
+        <label />
+        <select />
+
+   But they can also be surrounded by a fieldset to introduce a legend, dividing the search from the link(s) above:
+
+        <fieldset>
+            <legend class="or" />
+            <label />
+            <input type="text" />
+            <label />
+            <select />
+        </fieldset>
+  
+   Labels and legends get half line each of vertical space. Tried using a full line, but there are significant differences between
+   Firefox 3.6 and Chrome rendering of legend. This style produces no spacing below legend in Chrome, but spacing in Firefox 3.6. 
+*/
+.short-form legend { font-weight: normal; padding: .642857em 0 0; } 
+.short-form label { font-weight: normal; display: block; margin: .428571em 0 .214286em; } 
+.text-content .short-form label { margin: 1.10526em 0 .315789em 0; }
+
+/* In the customer focus skin, add a border and padding more like the .simple-form style */
+.text-content .short-form input[type=text], .text-content .short-form input[type=search], 
+.text-content .short-form input[type=password], .text-content .short-form input[type=email] {font-size: 1em; line-height: 1.125em; padding: .4375em 2%;margin: 0; border: 2px solid #9c9c9c; border-radius: 5px;  }
+.text-content .short-form input[type="email"] { width: 96%; }
+
+.short-form textarea { width: 100%; }
+.text-content .short-form textarea { padding: .4375em 2%; border: 2px solid #9c9c9c; border-radius: 5px;width: 95%; }
+
+/* Dropdown styling has improved though still only Chrome does well. Vertical padding, border and margin add up to 18px.*/
+.text-content .short-form select { padding: .3125em; border-radius: 5px;border: .125em solid #9c9c9c;margin: .125em;  }
+
+.short-form .or { font-weight: bold; }
+
+/* Add extra horizontal space around buttons when text is bigger in customer focus skin */
+.text-content .short-form input[type=submit] { padding: 0.4375em 12px; }
+
+
+/* Narrow down the place name intended by a user. Used by:
+   - school search
+*/
+.short-form .clarifyPlace { font-weight: bold; }
+
+    
+/* Half line-space above final button. Full line-space is too much following .depends in Firefox 3.6. 
+   .button class allows IE6 to get a similar style.
+
+   <input type="submit" class="button" />
+*/
+.short-form input[type=submit], .ie6 .short-form .button { margin: .642857em 0 0; }
+
+
+
+/*:: SERVICE FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    A .service-form is one where the user submits information and expects the council to do something with it. These forms 
+    can get quite long, sometimes multiple pages, so there are classes to handle that. The eforms system generates .service-forms.
+
+    .service-form should be applied along with .form and .text-content, and generally on a .full-page because we don't want the user 
+     to be distracted from their task
+
+    <div class="full-page"> 
+        <div class="content text-content">
+            <h1>Page title</h1>
+            <div class="form service-form">
+                ...    
+            </div>
+        </div>
+    </div>
+
+    White background and line space above and below makes the form stand out. Line-space above is essential as sometimes the form
+    immediately follows h1 and, without space, clashes with it.
+
+    Overflow prevents the final margin from extending outside the box
+  */
+.service-form { background-color: #fff; overflow: hidden; margin: 1.384615em 0; }
+.text-content .service-form { margin: 1.125em 0;}
+
+/*:: SERVICE FORMS -- SECTIONS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+   
+     The h2 tag indicates the start of a new section of the form. Add whitespace between h2 and its preceding element to 
+     create a visual separation of these sections, unless it's the first one immediately inside the form. Allow the first
+     header to be identified using a class, as empty divs and spans for validation messages mean that the first child *visually* 
+     may not be the first child in the source.
+ */
+.service-form h2 { margin-top: 2em; }
+.service-form > h2:first-child, .service-form h2.first-child { margin-top: 0; }
+
+/* The .formBox is the container that wraps around a section of a form and encloses a collection of questions.
+It is purely a visual tool to allow better separation of the content of the form. It has a green border with a cream / grey 
+background. The border will also appear with curved corners if the browsers supports it.
+
+ 	--------- Example HTML -------------------------------------------------------------------------
+
+	<div class=".formBox">
+		<!-- formParts -->
+	</div>
+	
+	--------- Example HTML ------------------------------------------------------------------------- 
+*/
+.service-form .formBox { padding: 0 .8em; border: solid 4px #BED600; border-radius: 4px; background-color: #F6F4E8; }
+
+
+/*********************************************************************************************
+* FORM PARTS - REPRESENTS THE CONTAINER FOR THE QUESTION AND ANSWER e.g. Label / Input	 	 *
+**********************************************************************************************/ 
+/* --------- Example HTML --------------------------
+
+FormPart are the container for the question and answer controls
+<div class="formPart">
+	<label></label>
+	<input/>
+</div>
+
+--------- Example HTML -------------------------- */
+/* Whitespace is applied to the top and bottom of the formPart to help keep the them apart an make it more readable */
+.service-form .formPart { margin: 1em 0; }
+
+/* Default whitespace around a fieldset. 
+   Typical contents of a fieldset is a .radioButtonList though; remove its bottom margin otherwise you get the sum of both margins. */
+.service-form fieldset { margin: 9px 0; }
+.service-form fieldset .radioButtonList { margin-bottom: 0; }
+
+/* Apply .checkbox and .radioButtonList to a containing element surrounding a single checkbox. See documentation for .radioButtonList above. */
+.service-form .checkbox { font-weight: bold; }
+
+/* Align radio buttons with new text size */
+.service-form input[type="radio"] { vertical-align: baseline; }
+
+/* Labels are displayed as block to force the following control to wrap under the label and stack the controls. 
+   Set the font back to normal from bold for block elements within the label. 
+   Don't reset display property for legend as IE<=11 needs it to be display: table or the element doesn't wrap. '*/
+.service-form .formPart label { display: block; }
+.service-form .formPart label, .service-form legend { font-weight :bold; cursor: pointer; margin: 0 0 2px; }
+.ie67 .service-form legend { margin-left: -7px; }
+.service-form .formPart label ul li, .service-form .formPart label p { font-weight: normal; }
+
+/* Exeception for formLabel when used on address control NEED TO DISCUSS */
+.service-form .formPart span.formLabel{display: block; font-weight :bold; margin: 0 0 2px;}
+
+/* Use consistent borders for all field types */
+.text-content .service-form input[type=text], .text-content .service-form input[type=password], .text-content .service-form input[type=email], .text-content .service-form input[type=tel], 
+.text-content .service-form input[type=url], .text-content .service-form input[type=number], .text-content .service-form select, .text-content .service-form textarea { border: 1px solid #9c9c9c;border-radius: 4px; } 
+
+/* Multiple selects form one control for dates. Use rounded corners only at the start and end of the group. */
+.text-content .service-form .dateControl select:first-of-type { border-radius: 4px 0 0 4px; }
+.text-content .service-form .dateControl select { border-radius: 0;}
+.text-content .service-form .dateControl select:last-of-type { border-radius: 0 4px 4px 0; }
+
+/* Force select elements to stack vertically and remain fluid. 
+   Max-Width avoids the problem when resizing the width that the box pushes outside the its containing element.*/
+.service-form .formPart select { display: block; max-width:100%; }
+
+/* Make text fields fairly wide by default so that there's plenty of room to type. 99% rather than 100% to allow 
+   for left and right borders, particularly in Chrome. Can't use an absolute width in ems because, inside a fieldset, 
+   it beats the max-width and can overflow the containing box.
+   
+   Specific classes override this where a specific length suggests what should go into the field, eg .postcode
+   IE6 needs the same style in a separate rule, otherwise it's not applied due to the attribute selector. */
+.service-form textarea, .service-form input[type=text] { width: 99%; max-width: 100%; }
+.ie6 .service-form textarea { width: 99%; }
+
+/* Force the following control to wrap under the label and stack the controls*/
+.service-form .formPart span.formLabel, .service-form .formPart span.formControl {display:block; }
+
+/* Present read-only data as if it were just another field which is not editable
+   <p class="read-only"><span class="formLabel">Fixed:</span> You can't change this</p>
+ */
+.service-form .read-only .formLabel { display: block; font-weight: bold; }
+
+
+/* Horizontal Radio Button List (Do not apply .radioButtonList)
+Whitespace is applied to the right of the label to space out the radio buttons. This is only need for radio button lists when you want the layout to be horizontal
+ */
+.service-form fieldset span label{ position: relative; padding:0 20px 0 2px; }
+
+
+/* Add half line space between the bottom of the form the button which follows it, but for internal buttons within the form reverse that and put space below the button. 
+   This is particularly important when the button is the last element in a .formBox, as we want some white-space between the button and the box. */
+.service-form input[type=submit], .ie6 .service-form .button { margin: .692308em 0 0; }
+.service-form .formBox input[type=submit], .service-form .formBox .button { margin: 0 0 .692308em; }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-  <EsccWebTeam.EastSussexGovUK>
+  <Escc.EastSussexGovUK>
     <GeneralSettings>
       <add key="DesktopMvcLayout" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="PlainMvcLayout" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -11,19 +11,19 @@
       <add key="CacheMinutes" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="MasterPageControlUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     </RemoteMasterPage>
-  </EsccWebTeam.EastSussexGovUK>
-  <EsccWebTeam.EastSussexGovUK>
+  </Escc.EastSussexGovUK>
+  <Escc.EastSussexGovUK>
     <GeneralSettings xdt:Transform="Remove" xdt:Locator="Condition(count(add) = 0)" />
     <RemoteMasterPage xdt:Transform="Remove" xdt:Locator="Condition(count(add) = 0)" />
-  </EsccWebTeam.EastSussexGovUK>
-  <EsccWebTeam.EastSussexGovUK xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
+  </Escc.EastSussexGovUK>
+  <Escc.EastSussexGovUK xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
 
   <configSections>
-    <sectionGroup name="EsccWebTeam.EastSussexGovUK" xdt:Locator="Match(name)">
-      <section xdt:Transform="Remove" xdt:Locator="Condition(@name='GeneralSettings' and not(/configuration/EsccWebTeam.EastSussexGovUK/GeneralSettings))" />
-      <section xdt:Transform="Remove" xdt:Locator="Condition(@name='RemoteMasterPage' and not(/configuration/EsccWebTeam.EastSussexGovUK/RemoteMasterPage))" />
+    <sectionGroup name="Escc.EastSussexGovUK" xdt:Locator="Match(name)">
+      <section xdt:Transform="Remove" xdt:Locator="Condition(@name='GeneralSettings' and not(/configuration/Escc.EastSussexGovUK/GeneralSettings))" />
+      <section xdt:Transform="Remove" xdt:Locator="Condition(@name='RemoteMasterPage' and not(/configuration/Escc.EastSussexGovUK/RemoteMasterPage))" />
     </sectionGroup>
-    <sectionGroup xdt:Transform="Remove" xdt:Locator="Condition(@name='EsccWebTeam.EastSussexGovUK' and count(/configuration/EsccWebTeam.EastSussexGovUK/*) = 0)" />
+    <sectionGroup xdt:Transform="Remove" xdt:Locator="Condition(@name='Escc.EastSussexGovUK' and count(/configuration/Escc.EastSussexGovUK/*) = 0)" />
   </configSections>
   <configSections xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
 
