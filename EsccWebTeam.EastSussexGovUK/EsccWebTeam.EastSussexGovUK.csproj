@@ -233,8 +233,6 @@
     <Content Include="css\min\poll-large.css" />
     <Content Include="css\min\poll-small.css" />
     <Content Include="css\min\print.css" />
-    <Content Include="css\min\rss-xslt.css" />
-    <Content Include="css\min\rss.css" />
     <Content Include="css\min\service-closures.css" />
     <Content Include="css\min\small.css" />
     <Content Include="css\min\social-media-large.css" />
@@ -243,9 +241,6 @@
     <Content Include="css\mobile-controls.css" />
     <Content Include="css\poll-large.css" />
     <Content Include="css\poll-small.css" />
-    <Content Include="css\rss-xslt-v2.css" />
-    <Content Include="css\rss-xslt.css" />
-    <Content Include="css\rss.css" />
     <Content Include="css\service-closures.css" />
     <Content Include="css\small.css" />
     <Content Include="css\print.css" />
@@ -377,15 +372,9 @@
     <Content Include="MasterPages\Remote\Control.aspx" />
     <Content Include="MasterPages\Controls\Web.config" />
     <None Include="MasterPages\Controls\Web.example.config" />
-    <None Include="MasterPages\RSS\config.example.xslt" />
     <None Include="MasterPages\Remote\Web.example.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="MasterPages\RSS\config.xslt" />
-    <Content Include="MasterPages\RSS\display-as-html-v2.xslt" />
-    <Content Include="MasterPages\RSS\display-as-html.xslt" />
-    <Content Include="MasterPages\RSS\escc-logo.gif" />
-    <Content Include="MasterPages\RSS\rss-utilities.xslt" />
     <Content Include="MasterPages\Remote\Web.config" />
     <None Include="js\config.js" />
     <None Include="js\config.example.js" />

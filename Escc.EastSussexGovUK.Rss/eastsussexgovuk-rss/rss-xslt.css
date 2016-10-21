@@ -1,7 +1,5 @@
 /* This stylesheet is applied to an RSS feed when an XSLT processing instruction is included in the feed, the browser
    supports XSLT, and doesn't have its own rendering of RSS feeds (as Firefox 2+ and IE7+ do). 
-
-   This is for www.eastsussex.gov.uk, and is replaced by rss-xslt-v2.css on new.eastsussex.gov.uk
 */
 
 /****************************************************************** 
@@ -18,21 +16,20 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 
 /* Important for body to have a background colour, because otherwise it gets the operating system's default colour which may not be what we want. */
-/* Set default font to 13px on a baseline grid of 18px, but use small keyword to do it so that IE6 can resize text */
-body { margin: 0 auto; background: #fff; color: #131313; font: small/1.3846153846153846153846153846154em Arial, "Helvetica Neue", Helvetica, sans-serif; }
+/* Set default font to 19px on a baseline grid of 18px */
+body { margin: 0 auto; background: #fff; color: #131313; font: 19px/1.421052em 'Source Sans Pro', Arial, "Helvetica Neue", Helvetica, sans-serif; }
 
-.header { background: #01A1DF url(../img/header/desktop.png) repeat-x center top; overflow: hidden; }
+.header { background: #01A1DF url(header.png) repeat-x center top; overflow: hidden; }
 .header img { display: block; margin: 11px 18px 15px; }
 
-.body { padding: 7px 18px 14px; }
+.body { padding: 25px 18px 14px; }
 
-.rss-item { border-top: #dae1e5 solid 1px; padding: 1.384615em 0 0; margin: 1.384615em 0 0; }
+.rss-item { border-top: #dae1e5 solid 1px; padding: .947368em 0 0; margin: .947368em 0 0; }
 
-h1 { font-weight: bold; font-size: 1.846154em; line-height: 1.5em; border-bottom: 5px solid #bed600; padding: 5px 18px 4px; background: #fff; color: #272727; margin: 0 -18px; }
-h2, .rss-item { font-weight: bold; font-size: 1.230769em; line-height: 1.125em; margin: 14px 0 4px; color: #272727; }
-h3 { font-weight: bold; font-size: 1.153846em; line-height: 1.2em; margin: 14px 0 4px; color: #272727; }
-h4 { font-weight: bold; font-size: 1.076923em; line-height: 1.384615em; margin: 14px 0 4px; color: #272727; }
-h5 { font-weight: bold; font-size: 1em; line-height: 18px; margin: 14px 0 4px; color: #272727; }
+h1 { font-size: 2.526316em; line-height: 1.125em;margin:0 0 .375em; font-weight: bold; letter-spacing: -0.03em;}
+h2, .rss-item { font-size: 1.368421em; line-height: 1.038462em;margin: 1.038462em 0 .346154em;font-weight: bold; letter-spacing: -0.02em; }
+h3 { font-size: 1.210526em; line-height: 1.173913em;margin: 1.173913em 0 .391304em;font-weight: normal; }
+h4 { margin: 1.421053em 0 0; font-weight: bold;font-style: normal; }
 p { margin: 9px 0; }
 
 ul { margin: 9px 0 9px 1.153846em; }

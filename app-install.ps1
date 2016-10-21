@@ -66,7 +66,7 @@ $transformsFolder = NormaliseFolderPath $transformsFolder
 
 BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
     
-robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png desktop.png pan-*.gif item-type.png default.aspx status*.aspx escc-logo.gif logo-large.gif display-as-html.xslt config.xslt google*.html /XD aspnet_client obj Properties "Web References"
+robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png desktop.png pan-*.gif item-type.png default.aspx status*.aspx logo-large.gif google*.html /XD aspnet_client obj Properties "Web References"
 TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.temp1.config" "$sourceFolder\transforms\HttpStatus.transform.config"
 TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.config" "$PSScriptRoot\Escc.EastSussexGovUK.SecurityConfig.NuGet\web.config.install.xdt"
 del "$destinationFolder\$projectName\web.temp*.config"

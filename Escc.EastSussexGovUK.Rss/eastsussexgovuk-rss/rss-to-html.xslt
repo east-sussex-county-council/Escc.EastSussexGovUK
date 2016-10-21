@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This is for www.eastsussex.gov.uk, and is replaced by display-as-html-v2.xslt on new.eastsussex.gov.uk -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.0">
   <xsl:output method="xml" omit-xml-declaration="yes" />
-  <xsl:include href="config.xslt"/>
   <xsl:template match="/">
     <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
       <head>
@@ -10,7 +8,8 @@
         <title>
           <xsl:value-of select="rss/channel/title"/>
         </title>
-        <link rel="stylesheet" type="text/css" href="/css/rssfeedxslt.cssx" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="{rss-xslt.css}" />
       </head>
       <body xmlns="http://www.w3.org/1999/xhtml">
 
@@ -18,7 +17,7 @@
 
           <div class="header" role="banner">
             <a href="https://www.eastsussex.gov.uk">
-              <img alt="Go to the East Sussex County Council home page" src="/img/header/logo-large.gif" width="118" height="85" class="logo-large" />
+              <img alt="Go to the East Sussex County Council home page" src="{escc-logo}" width="118" height="85" class="logo-large" />
             </a>
           </div>
 
@@ -55,15 +54,7 @@
             </xsl:for-each>
           </dl>
 
-          <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', '<xsl:value-of select="$GoogleAnalyticsPublicWebsite" />', 'auto');
-            ga('send', 'pageview');
-          </script>
+          <script src="https://www.eastsussex.gov.uk/js/config-analytics.jsx"></script>
         </div>
       </body>
     </html>
