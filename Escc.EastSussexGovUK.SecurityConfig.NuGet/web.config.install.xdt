@@ -59,7 +59,7 @@
       <add key="GisMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GisMaps" value="img-src https://maps2.eastsussex.gov.uk" xdt:Transform="Insert" />
       <add key="Typekit" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Typekit" value="img-src https://p.typekit.net https://ping.typekit.net; script-src https://use.typekit.net; style-src https://use.typekit.net 'unsafe-inline'; font-src data: https://fonts.typekit.net" xdt:Transform="Insert" />
+      <add key="Typekit" value="img-src https://p.typekit.net https://ping.typekit.net; script-src https://use.typekit.net; style-src https://use.typekit.net 'unsafe-inline'; font-src data: https://use.typekit.net" xdt:Transform="Insert" />
       <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CmsPreview" value="style-src 'unsafe-inline'; script-src 'unsafe-inline';" xdt:Transform="Insert" />
       <add key="ESCIS" xdt:Transform="Remove" xdt:Locator="Match(key)" />
