@@ -282,9 +282,6 @@
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="googledb369ad0fa294f54.html" />
-    <Content Include="img\body\flood-alert.png" />
-    <Content Include="img\body\flood-severe.png" />
-    <Content Include="img\body\flood-warning.png" />
     <Content Include="img\body\item-type.png" />
     <Content Include="img\body\map-placemarker.png" />
     <Content Include="img\body\gradient.jpg" />
@@ -297,8 +294,6 @@
     <Content Include="img\body\pan-se.gif" />
     <Content Include="img\body\pan-sw.gif" />
     <Content Include="img\body\pan-w.gif" />
-    <Content Include="img\body\quote-close.gif" />
-    <Content Include="img\body\quote-open.gif" />
     <Content Include="img\body\royal-coat-of-arms.png" />
     <Content Include="img\body\rss-27px.gif" />
     <Content Include="img\body\worldpay.gif" />
@@ -319,8 +314,6 @@
     <None Include="favicon.psd" />
     <None Include="favicon16.psd" />
     <None Include="img\body\Page.psd" />
-    <None Include="img\body\Quote-close.psd" />
-    <None Include="img\body\Quote-open.psd" />
     <None Include="img\Web.example.config" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
