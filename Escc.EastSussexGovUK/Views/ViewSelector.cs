@@ -232,12 +232,13 @@ namespace Escc.EastSussexGovUK.Views
         /// Gets the current master page or MVC layout type based on its path
         /// </summary>
         /// <param name="currentView">Path of current master page or MVC layout.</param>
+        /// <param name="viewEngine">The view engine.</param>
         /// <returns></returns>
-        public static EsccWebsiteView CurrentViewIs(string currentView)
+        public static EsccWebsiteView CurrentViewIs(string currentView, ViewEngine viewEngine = ViewEngine.WebForms)
         {
-            if (CurrentViewIs(currentView, EsccWebsiteView.Desktop)) return EsccWebsiteView.Desktop;
-            if (CurrentViewIs(currentView, EsccWebsiteView.FullScreen)) return EsccWebsiteView.FullScreen;
-            if (CurrentViewIs(currentView, EsccWebsiteView.Plain)) return EsccWebsiteView.Plain;
+            if (CurrentViewIs(currentView, EsccWebsiteView.Desktop, viewEngine)) return EsccWebsiteView.Desktop;
+            if (CurrentViewIs(currentView, EsccWebsiteView.FullScreen, viewEngine)) return EsccWebsiteView.FullScreen;
+            if (CurrentViewIs(currentView, EsccWebsiteView.Plain, viewEngine)) return EsccWebsiteView.Plain;
             return EsccWebsiteView.Unknown;
         }
 
@@ -246,12 +247,13 @@ namespace Escc.EastSussexGovUK.Views
         /// </summary>
         /// <param name="currentView">Path of current master page or MVC layout.</param>
         /// <param name="view">Check whether this view is currently selected.</param>
+        /// <param name="viewEngine">The view engine.</param>
         /// <returns></returns>
-        public static bool CurrentViewIs(string currentView, EsccWebsiteView view)
+        public static bool CurrentViewIs(string currentView, EsccWebsiteView view, ViewEngine viewEngine = ViewEngine.WebForms)
         {
             var generalSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
             if (generalSettings == null) generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
-            return IsMasterPageInGroup(currentView, view.ToString(), generalSettings);
+            return IsMasterPageInGroup(currentView, view.ToString(), generalSettings, viewEngine);
         }
 
         /// <summary>
@@ -260,10 +262,11 @@ namespace Escc.EastSussexGovUK.Views
         /// <param name="currentMasterPage">The current master page.</param>
         /// <param name="groupName">The key part of a configuration section name or setting listing master pages.</param>
         /// <param name="generalSettings">The general settings section from web.config.</param>
+        /// <param name="viewEngine">The view engine.</param>
         /// <returns>
         ///   <c>true</c> if the master page is from the specified configuration group; otherwise, <c>false</c>.
         /// </returns>
-        private static bool IsMasterPageInGroup(string currentMasterPage, string groupName, NameValueCollection generalSettings)
+        private static bool IsMasterPageInGroup(string currentMasterPage, string groupName, NameValueCollection generalSettings, ViewEngine viewEngine)
         {
             if (String.IsNullOrEmpty(currentMasterPage)) return false;
 
@@ -272,17 +275,18 @@ namespace Escc.EastSussexGovUK.Views
             currentMasterPage = "~" + currentMasterPage.ToUpperInvariant();
 
             // Check if there's a single setting for the master page
-            if (generalSettings != null && !String.IsNullOrEmpty(generalSettings[groupName + "MasterPage"]))
+            var configSettingsGroup = viewEngine == ViewEngine.WebForms ? "MasterPage" : "MvcLayout";
+            if (generalSettings != null && !String.IsNullOrEmpty(generalSettings[groupName + configSettingsGroup]))
             {
-                if (generalSettings[groupName + "MasterPage"].ToUpperInvariant() == currentMasterPage)
+                if (generalSettings[groupName + configSettingsGroup].ToUpperInvariant() == currentMasterPage)
                 {
                     return true;
                 }
             }
 
             // If not, check if there's a group of settings
-            var masterPageSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/" + groupName + "MasterPages") as NameValueCollection;
-            if (masterPageSettings == null) masterPageSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/" + groupName + "MasterPages") as NameValueCollection;
+            var masterPageSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/" + groupName + configSettingsGroup + "s") as NameValueCollection;
+            if (masterPageSettings == null) masterPageSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/" + groupName + configSettingsGroup + "s") as NameValueCollection;
             if (masterPageSettings != null)
             {
                 foreach (string key in masterPageSettings.Keys)
