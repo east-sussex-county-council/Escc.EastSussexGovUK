@@ -41,7 +41,6 @@
     <JavaScriptCompressorTask SourceFiles="js/cascading-content.js" OutputFile="js/min/cascading-content.js" />
     <JavaScriptCompressorTask SourceFiles="js/config.js" OutputFile="js/min/config.js" />
     <JavaScriptCompressorTask SourceFiles="js/cross-origin-ie.js" OutputFile="js/min/cross-origin-ie.js" />
-    <JavaScriptCompressorTask SourceFiles="js/document-metadata.js" OutputFile="js/min/document-metadata.js" />
     <JavaScriptCompressorTask SourceFiles="js/embed-googlemaps.js" OutputFile="js/min/embed-googlemaps.js" />
     <JavaScriptCompressorTask SourceFiles="js/embed-youtube.js" OutputFile="js/min/embed-youtube.js" />
     <JavaScriptCompressorTask SourceFiles="js/forms.js" OutputFile="js/min/forms.js" />

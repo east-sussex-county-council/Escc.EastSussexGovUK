@@ -73,7 +73,6 @@
       <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CoronerSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Documents" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="DocumentMetadata" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Email" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="EmbedYouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />

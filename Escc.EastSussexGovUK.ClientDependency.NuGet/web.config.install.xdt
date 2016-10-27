@@ -170,8 +170,6 @@
       <add key="CoronerSkin" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/coroner-skin.js" xdt:Transform="Insert" />
       <add key="Documents" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Documents" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/escc.documentsinnewwindow.min.js" xdt:Transform="Insert" />
-      <add key="DocumentMetadata" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="DocumentMetadata" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/document-metadata.js" xdt:Transform="Insert" />
       <add key="Email" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Email" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/govdelivery.js" xdt:Transform="Insert" />
       <add key="EmbedYouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />

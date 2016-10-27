@@ -329,7 +329,6 @@
     <Content Include="js\min\banners.js" />
     <Content Include="js\min\cascading-content.js" />
     <None Include="js\tests\chutzpah.json" />
-    <None Include="js\document-metadata.js" />
     <None Include="js\govdelivery.js" />
     <None Include="js\heatmap-analytics.js" />
     <None Include="js\escis.js" />
@@ -343,7 +342,6 @@
     <Content Include="js\min\analytics.js" />
     <Content Include="js\min\config.js" />
     <Content Include="js\min\cross-origin-ie.js" />
-    <Content Include="js\min\document-metadata.js" />
     <Content Include="js\min\embed-googlemaps.js" />
     <Content Include="js\min\embed-youtube.js" />
     <Content Include="js\min\escis.js" />
