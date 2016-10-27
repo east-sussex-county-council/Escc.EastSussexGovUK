@@ -8,7 +8,9 @@ For an ASP.NET MVC5 project, you can install our design using the following step
 
 1. In Visual Studio create a new ASP.NET Web Application using the "Empty" project template. Tick the box to add folders and core references for MVC.
 2. Install `Escc.EastSussexGovUK.Mvc` from our private NuGet feed.
-3. Create a view model which inherits from `Escc.EastSussexGovUK.Mvc.BaseViewModel`, add a controller and a view and run the project.  
+3. Create a view model which inherits from `Escc.EastSussexGovUK.Mvc.BaseViewModel`, add a controller and a view and run the project.
+
+Note: When installing `Escc.EastSussexGovUK.Mvc` into a project that also uses Umbraco, you need to select 'No' when you are prompted to overwrite the `~\Views\web.config` file. You will also find that `Escc.ClientDependencyFramework` incorrectly modifies the `<clientDependency />` element in `web.config`, so you will need to reset this to `<clientDependency configSource="config\ClientDependency.config" />`. 
 
 For a WebForms project, you can install our design using the following steps:
 
