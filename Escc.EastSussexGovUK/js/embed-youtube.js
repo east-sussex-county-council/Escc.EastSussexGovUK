@@ -1,11 +1,18 @@
 ﻿if (typeof (jQuery) != 'undefined') {
-    $(function() {
-        
+    $(function () {
+        function youTubeDimension(attr, defaultSize) {
+            var customDimension = parseInt($("[data-" + attr + "]").data(attr));
+            if (customDimension) {
+                return customDimension;
+            }
+            return defaultSize;
+        }
+
         var youTube = new RegExp(/^https?:\/\/(youtu.be\/|www.youtube.com\/watch\?v=)([A-Za-z0-9_-]+)$/);
-        var youTubeWidth = 450, youTubeHeight = 318, youTubeResize = false;
+        var youTubeWidth = youTubeDimension("video-width", 450), youTubeHeight = youTubeDimension("video-height", 318), youTubeResize = false;
 
         function embedYouTube() {
-            $("a.embed").filter(function(index) {
+            $("a.embed").filter(function (index) {
                 return youTube.test(this.href);
             }).each(function () {
 
@@ -27,7 +34,7 @@
                         youTubeResize = true;
                     }
                 }
-            });            
+            });
         };
 
         embedYouTube();
