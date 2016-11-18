@@ -10,8 +10,8 @@
 
         if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
         {
-            // Should show at small and medium sizes, and at large if Do Not Track is set
-            var facebookClass = showWidget ? "text text-content content-small content-medium small medium" : "supporting " + Model.EsccWebsiteSkin.SupportingTextContentClass;
+            // Should show at small and medium sizes, and at large if there's no widget
+            var facebookClass = showWidget ? "text-content content-small content-medium small medium" : Model.EsccWebsiteSkin.SupportingTextContentClass;
 
             <div class="@facebookClass">
                 <p class="facebook">Find us on Facebook: <a href="@Model.SocialMedia.FacebookPageUrl">@displayUrl</a></p>
@@ -21,8 +21,8 @@
         if (showWidget)
         {
             @Html.Partial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", new FacebookLikeBox() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView })
-            <div class="supporting large">
-                <div class="fb-like-box" data-width="252" data-header="true" data-href="@Model.SocialMedia.FacebookPageUrl" data-show-faces="@(Model.SocialMedia.FacebookShowFaces ? true : false)" data-stream="@(Model.SocialMedia.FacebookShowFeed ? true : false)"></div>
+            <div class="large">
+                <div class="fb-page" data-href="@Model.SocialMedia.FacebookPageUrl" data-tabs="@(Model.SocialMedia.FacebookShowFeed ? "timeline" : String.Empty)" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="@(Model.SocialMedia.FacebookShowFaces ? true : false)"><blockquote cite="@Model.SocialMedia.FacebookPageUrl" class="fb-xfbml-parse-ignore"><a href="@Model.SocialMedia.FacebookPageUrl">Find us on Facebook</a></blockquote></div>
             </div>
         }
     }

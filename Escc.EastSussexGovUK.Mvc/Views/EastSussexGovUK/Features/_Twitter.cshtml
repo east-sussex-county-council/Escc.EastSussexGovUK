@@ -7,7 +7,7 @@
     if (!String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount) && Model.EsccWebsiteView == EsccWebsiteView.Desktop)
     {
         var twitterUrl = "https://twitter.com/" + Model.SocialMedia.TwitterAccount;
-        var twitterClass = showWidget ? "small medium text text-content content-small content-medium" : "supporting " + Model.EsccWebsiteSkin.SupportingTextContentClass;
+        var twitterClass = showWidget ? "small medium text-content content-small content-medium" : Model.EsccWebsiteSkin.SupportingTextContentClass;
         <div class="@twitterClass">
             <p class="twitter twitter-account">Read updates on Twitter: <a href="@twitterUrl">Tweets by &#64;@Model.SocialMedia.TwitterAccount</a></p>
         </div>
@@ -15,6 +15,6 @@
     if (showWidget)
     {
         @Html.Partial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView })
-        <div class="supporting large">@Model.SocialMedia.TwitterWidgetScript</div>
+        <div class="large">@Model.SocialMedia.TwitterWidgetScript</div>
     }
 }
