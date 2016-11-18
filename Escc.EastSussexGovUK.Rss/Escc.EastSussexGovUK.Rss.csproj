@@ -43,27 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="eastsussexgovuk-rss\rss-to-html.ashx.cs">
+    <Compile Include="rss-to-html.ashx.cs">
       <DependentUpon>rss-to-html.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="eastsussexgovuk-rss\rss-to-html.xslt" />
-    <EmbeddedResource Include="eastsussexgovuk-rss\escc-logo-for-feed.gif" />
+    <EmbeddedResource Include="rss-to-html.xslt" />
+    <Content Include="escc-logo-for-feed.gif" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="eastsussexgovuk-rss\rss.css" />
+    <Content Include="rss.css" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="eastsussexgovuk-rss\rss-to-html.ashx" />
+    <EmbeddedResource Include="rss-to-html.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="eastsussexgovuk-rss\escc-logo.gif" />
+    <Content Include="escc-logo.gif" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="eastsussexgovuk-rss\header.png" />
-    <EmbeddedResource Include="eastsussexgovuk-rss\rss-xslt.css" />
+    <Content Include="header.png" />
+    <Content Include="rss-xslt.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

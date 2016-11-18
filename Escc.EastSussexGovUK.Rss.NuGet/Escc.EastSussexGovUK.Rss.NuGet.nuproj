@@ -14,7 +14,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Escc.EastSussexGovUK.Rss.NuGet.nuspec" />
+    <Compile Include="Escc.EastSussexGovUK.Rss.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Escc.EastSussexGovUK.Rss\Escc.EastSussexGovUK.Rss.csproj">
@@ -24,13 +24,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EastSussexGovUK_Rss.cs.pp">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="web.config.install.xdt">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="web.config.uninstall.xdt">
+    <Content Include="Escc.EastSussexGovUK.Rss.targets">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

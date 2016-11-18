@@ -15,7 +15,7 @@ namespace Escc.EastSussexGovUK.Rss
         {
             // Return rss-to-html.xslt, but update the paths within to use assets embedded in this assembly
             context.Response.ContentType = "text/xsl";
-            using (var reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Escc.EastSussexGovUK.Rss.eastsussexgovuk_rss.rss-to-html.xslt")))
+            using (var reader = new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("Escc.EastSussexGovUK.Rss.rss-to-html.xslt")))
             {
                 var xslt = reader.ReadToEnd();
                 xslt = xslt.Replace("{escc-logo}", new Uri(context.Request.Url, "escc-logo.gif").ToString());
