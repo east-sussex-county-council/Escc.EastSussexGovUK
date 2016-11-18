@@ -27,18 +27,6 @@
   </configSections>
   <configSections xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
 
-  <Escc.ClientDependencyFramework>
-    <CssFiles>
-      <add key="ContentSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="ContentMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="ContentLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    </CssFiles>
-    <MediaQueries>
-      <add key="Medium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-    </MediaQueries>
-  </Escc.ClientDependencyFramework>
-
   <system.web>
     <customErrors xdt:Transform="Remove" xdt:Locator="Condition(@mode='On' and count(@*) = 1)" />
   </system.web>
