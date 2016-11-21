@@ -11,8 +11,8 @@ Different browsers display RSS feeds in different ways. Some (Internet Explorer 
 An RSS feed should include code similar to the following to support this styling:
 
 	<?xml version="1.0" encoding="utf-8"?>
-	<?xml-stylesheet type="text/xsl" href="https://hostname/path-to-application/eastsussexgovuk-rss/rss-to-html.ashx" ?>
-    <?xml-stylesheet type="text/css" href="https://hostname/path-to-application/eastsussexgovuk-rss/rss.css" ?>
+	<?xml-stylesheet type="text/xsl" href="https://hostname/path-to-application/eastsussexgovuk/rss/rss-to-html.ashx" ?>
+    <?xml-stylesheet type="text/css" href="https://hostname/path-to-application/eastsussexgovuk/rss/rss.css" ?>
 	<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 		<channel>
 			<title>
@@ -20,7 +20,7 @@ An RSS feed should include code similar to the following to support this styling
 		    </title>
 			<image>
 		      <title>East Sussex County Council logo</title>
-		      <url>https://hostname/path-to-application/eastsussexgovuk-rss/escc-logo-for-feed.gif</url>
+		      <url>https://hostname/path-to-application/eastsussexgovuk/rss/escc-logo-for-feed.gif</url>
 		      <width>90</width>
 		      <height>65</height>
 		      <link>https://www.eastsussex.gov.uk/</link>
@@ -30,3 +30,4 @@ An RSS feed should include code similar to the following to support this styling
 		...
 	</rss>
 
+Note that the `Escc.EastSussexGovUK.Rss` NuGet package doesn't embed the client-side files for RSS feeds, because doing that means they return `404 Not Found` when used in a project running Umbraco. 
