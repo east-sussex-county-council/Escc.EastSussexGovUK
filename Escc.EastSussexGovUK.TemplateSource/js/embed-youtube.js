@@ -20,7 +20,7 @@
 
                     // Swop YouTube link for embedded video
                     var match = youTube.exec(this.href);
-                    $(this).replaceWith('<iframe width="' + youTubeWidth + '" height="' + youTubeHeight + '" src="https://www.youtube-nocookie.com/embed/' + match[2] + '" frameborder="0" allowfullscreen="allowfullscreen" class="video"></iframe>');
+                    $(this).replaceWith('<iframe width="' + youTubeWidth + '" height="' + youTubeHeight + '" src="https://www.youtube-nocookie.com/embed/' + match[2] + '?rel=0" frameborder="0" allowfullscreen="allowfullscreen" class="video"></iframe>');
 
                     // Once the window's big enough, stop watching resize
                     if (youTubeResize) {
