@@ -6,7 +6,7 @@ Our site supports raising the base text size in two increments. This setting is 
 
 When you set the cookie to one of the larger text sizes, this is picked up by `desktop.master` for WebForms or `desktop.cshtml` for MVC, which inserts an extra CSS class into the page. `small.css` looks for that class and increases the base font size.
 
-By default the link in the header goes to `/masterpages/textsize.aspx` but this can be configured to any application-relative URL in `web.config`. 
+By default the link in the header goes to `/textsize/change` (implemented in [Escc.EastSussexGovUK.Umbraco](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK.Umbraco)) but this can be configured to any application-relative URL in `web.config`. 
 
 	<configuration>
 	  <configSections>
@@ -17,7 +17,7 @@ By default the link in the header goes to `/masterpages/textsize.aspx` but this 
 
       <Escc.EastSussexGovUK>
         <GeneralSettings>
-          <add key="TextSizeUrl" value="~/masterpages/textsize.aspx" />
+          <add key="TextSizeUrl" value="~/textsize/change" />
         </GeneralSettings>
       <Escc.EastSussexGovUK>
 	</configuration>

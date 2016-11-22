@@ -403,7 +403,6 @@
     <None Include="js\config.example.js" />
     <None Include="css\Web.example.config" />
     <None Include="js\Web.example.config" />
-    <Content Include="MasterPages\textsize.aspx" />
     <None Include="packages.config" />
     <None Include="web.example.config">
       <SubType>Designer</SubType>
@@ -418,13 +417,6 @@
     <Compile Include="GoogleTagManagerContainerIdSelector.cs" />
     <Compile Include="GoogleTagManagerContext.cs" />
     <Compile Include="MasterPages\Controls\SelectedSectionMatcher.cs" />
-    <Compile Include="MasterPages\textsize.aspx.cs">
-      <DependentUpon>textsize.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterPages\textsize.aspx.designer.cs">
-      <DependentUpon>textsize.aspx</DependentUpon>
-    </Compile>
     <Compile Include="MasterPages\Controls\CorsForStaticFilesHandler.cs" />
     <Compile Include="MasterPages\Controls\AboveHeaderDesktop.ascx.cs">
       <DependentUpon>AboveHeaderDesktop.ascx</DependentUpon>

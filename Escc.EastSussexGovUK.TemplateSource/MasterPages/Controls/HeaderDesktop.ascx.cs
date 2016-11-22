@@ -45,7 +45,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
         private void BaseUrl()
         {
             // Text size should have a default URL, but also support changing that URL in config
-            _textSizeUrl = "/masterpages/textsize.aspx";
+            _textSizeUrl = "/textsize/change";
             var generalSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
             if (generalSettings == null) generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
             if (generalSettings != null && !String.IsNullOrEmpty(generalSettings["TextSizeUrl"]))
