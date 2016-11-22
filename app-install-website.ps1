@@ -5,7 +5,7 @@ Param(
   [Parameter(Mandatory=$True,HelpMessage="Where is the folder where applications are installed to? (required)")]
   [string]$destinationFolder,
   
-  [Parameter(Mandatory=$True,HelpMessage="Where is the folder where applications are backed up before being updated? (required)")]
+  [Parameter(HelpMessage="Where is the folder where applications are backed up before being updated?")]
   [string]$backupFolder,
 	
   [Parameter(Mandatory=$True,HelpMessage="Where are the XDT transforms for the *.example.config files? (required)")]
@@ -59,22 +59,20 @@ Example: C:\>set GIT_ORIGIN_URL=https://example-git-server.com/{0}"
 $projectName = "Escc.EastSussexGovUK.TemplateSource" 
 $sourceFolder = NormaliseFolderPath $sourceFolder "$PSScriptRoot\$projectName"
 $destinationFolder = NormaliseFolderPath $destinationFolder
-$destinationFolder = "$destinationFolder\$websiteName"
 $backupFolder = NormaliseFolderPath $backupFolder
+if (!$backupFolder) { $backupFolder = "$destinationFolder\backups" }
 $backupFolder = "$backupFolder\$websiteName"
+$destinationFolder = "$destinationFolder\$websiteName"
 $transformsFolder = NormaliseFolderPath $transformsFolder
 
 BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
     
 robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png desktop.png pan-*.gif item-type.png default.aspx logo-large.gif google*.html /XD aspnet_client obj Properties "Web References"
 TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.temp1.config" "$PSScriptRoot\Escc.EastSussexGovUK.WebForms.NuGet\web.config.install.xdt"
-TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.config" "$PSScriptRoot\Escc.EastSussexGovUK.SecurityConfig.NuGet\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.temp2.config" "$PSScriptRoot\Escc.EastSussexGovUK.SecurityConfig.NuGet\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp2.config" "$destinationFolder\$projectName\web.temp3.config" "$PSScriptRoot\Escc.EastSussexGovUK.Metadata.NuGet\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp3.config" "$destinationFolder\$projectName\web.config" "$transformsFolder\$projectName\web.release.config"
 del "$destinationFolder\$projectName\web.temp*.config"
-
-TransformConfig "$sourceFolder\masterpages\web.example.config" "$destinationFolder\$projectName\masterpages\web.temp2.config" "$PSScriptRoot\Escc.EastSussexGovUK.Metadata.NuGet\web.config.install.xdt"
-TransformConfig "$destinationFolder\$projectName\masterpages\web.temp2.config" "$destinationFolder\$projectName\masterpages\web.temp3.config" "$PSScriptRoot\Escc.EastSussexGovUK.ClientDependency.NuGet\web.config.install.xdt"
-TransformConfig "$destinationFolder\$projectName\masterpages\web.temp3.config" "$destinationFolder\$projectName\masterpages\web.config" "$transformsFolder\$projectName\masterpages\web.release.config"
-del "$destinationFolder\$projectName\masterpages\web.temp*.config"
 
 TransformConfig "$sourceFolder\css\web.example.config" "$destinationFolder\$projectName\css\web.config" "$transformsFolder\$projectName\css\web.release.config"
 TransformConfig "$sourceFolder\js\web.example.config" "$destinationFolder\$projectName\js\web.config" "$transformsFolder\$projectName\js\web.release.config"
