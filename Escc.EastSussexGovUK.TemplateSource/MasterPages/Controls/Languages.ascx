@@ -1,9 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Languages.ascx.cs" Inherits="Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls.Languages" %>
-<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.WebForms" Assembly="Escc.EastSussexGovUK.WebForms" %>
 <%-- Regex explained at http://stackoverflow.com/questions/406230/regular-expression-to-match-string-not-containing-a-word --%>
-<EastSussexGovUK:ContextContainer runat="server" UrlMatch="^((?!\/contactus\/emailus\/[a-z]*translation\.aspx).)*$">
-<EastSussexGovUK:ContextContainer runat="server" UrlMatch="^((?!\/httpstatus).)*$">
-<div class="languages">
+<div class="languages" id="languages" runat="server">
     <div class="container">
         <ul>
             <li lang="zh-Hans" xml:lang="zh-Hans" class="nonLatin">
@@ -35,6 +32,4 @@
             </li>--%>
         </ul>
     </div>
-</div> 
-</EastSussexGovUK:ContextContainer>
-</EastSussexGovUK:ContextContainer>
+</div>

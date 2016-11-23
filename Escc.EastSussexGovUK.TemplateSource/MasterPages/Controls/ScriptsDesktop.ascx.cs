@@ -14,7 +14,8 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            var libraryContext = new LibraryCatalogueContext(Request.UserAgent);
+            this.publicLibraries.Visible = libraryContext.RequestIsFromLibraryCatalogueMachine();
         }
     }
 }

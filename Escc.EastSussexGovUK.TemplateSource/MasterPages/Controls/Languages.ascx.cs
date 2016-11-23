@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+using System.Web;
 
 namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
 {
@@ -26,6 +28,11 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
                 this.slovakian.HRef = urlPrefix + this.slovakian.HRef;
                 this.turkish.HRef = urlPrefix + this.turkish.HRef;*/
             }
+
+            // Don't show translation option for the translation page itself or for HTTP status pages
+            languages.Visible = (Regex.IsMatch(HttpContext.Current.Request.Url.ToString(), @"^((?!\/contactus\/emailus\/[a-z]*translation\.aspx).)*$", RegexOptions.IgnoreCase)) &&
+                                (Regex.IsMatch(HttpContext.Current.Request.Url.ToString(), @"^((?!\/httpstatus).)*$", RegexOptions.IgnoreCase));
+
         }
     }
 }

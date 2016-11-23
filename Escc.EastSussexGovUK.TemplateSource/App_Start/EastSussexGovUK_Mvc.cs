@@ -1,9 +1,9 @@
-﻿using System.Web.Mvc;
+using System.Web.Mvc;
 using System.Web.Routing;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof($rootnamespace$.EastSussexGovUkMvc), "PostStart")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Escc.EastSussexGovUK.TemplateSource.EastSussexGovUkMvc), "PostStart")]
 
-namespace $rootnamespace$ {
+namespace Escc.EastSussexGovUK.TemplateSource {
 
     /// <summary>
     /// Register the virtual path provider which makes available the embedded views from Escc.EastSussexGovUK.Mvc
