@@ -4,9 +4,9 @@ using System.Web.Mvc;
 namespace Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
 {
     /// <summary>
-    /// An MVC-compatible wrapper around the WebForms EsccWebTeam.EastSussexGovUK.MasterPages.Controls.MasterPageControl control
+    /// An MVC-compatible wrapper around the WebForms Escc.EastSussexGovUK.Views.MasterPageControl control
     /// </summary>
-    /// <seealso cref="System.Web.Mvc.ViewUserControl{Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK.MasterPageControlData}" />
+    /// <seealso cref="System.Web.Mvc.ViewUserControl{MasterPageControlData}" />
     public partial class MasterPageControl : ViewUserControl<MasterPageControlData>
     {
         /// <summary>

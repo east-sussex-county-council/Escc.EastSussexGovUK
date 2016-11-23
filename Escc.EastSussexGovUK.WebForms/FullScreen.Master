@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FullScreen.Master.cs" Inherits="Escc.EastSussexGovUK.WebForms.FullScreen" %>
+<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.WebForms" Assembly="Escc.EastSussexGovUK.WebForms" %>
+<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.Views" Assembly="Escc.EastSussexGovUK" %>
+<%@ Register TagPrefix="ClientDependency" Namespace="Escc.ClientDependencyFramework.WebForms" Assembly="Escc.ClientDependencyFramework.WebForms" %>
+<EastSussexGovUK:MasterPageControl runat="server" Control="HtmlTag" EnableViewState="false" />
+<head runat="server">
+    <EastSussexGovUK:ContextContainer runat="server" Public="true"><asp:ContentPlaceHolder id="contentExperiment" runat="server" /></EastSussexGovUK:ContextContainer>
+    <%-- Standard metadata comes first so it's early in life-cycle, because it contains ClientDependency:Css control we want others to find and merge with --%>
+    <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataFullScreen" EnableViewState="false" />
+    <ClientDependency:Css runat="server" id="skinSmall" Moveable="False"/>
+    <ClientDependency:Css runat="server" id="skinMedium"  MediaConfiguration="Medium" Moveable="False"/>
+    <ClientDependency:Css runat="server" id="skinLarge" MediaConfiguration="Large" Moveable="False" />
+    <asp:ContentPlaceHolder id="metadata" runat="server" />
+    <asp:Literal runat="server" ID="fonts"/><ClientDependency:Script runat="server" Files="Typekit" ID="Typekit" Visible="False"/>
+    <asp:ContentPlaceHolder runat="server" ID="css" enableviewstate="false" />
+    <title></title>
+</head>
+<asp:Placeholder id="body" runat="server"><body id="eastsussex-gov-uk"></asp:Placeholder>
+<asp:PlaceHolder id="classyBody" runat="server"><asp:Literal runat="server" id="openBody" text="&lt;body id=&quot;eastsussex-gov-uk&quot; class=&quot;" enableviewstate="false" /><asp:ContentPlaceHolder runat="server" id="bodyclass" /><asp:Literal runat="server" text="&quot;&gt;" enableviewstate="false" /></asp:PlaceHolder>
+<div class="full-screen">
+    <asp:contentplaceholder id="header" runat="server">
+        <header>
+            <div class="header context">
+                <EastSussexGovUK:MasterPageControl runat="server" Control="HeaderFullScreen" EnableViewState="false" />
+
+                <div class="full-screen-bar">
+                       <h1><asp:contentplaceholder runat="server" id="fullScreenHeading">Page heading</asp:contentplaceholder></h1>
+                       <asp:contentplaceholder runat="server" id="fullScreenLinks"><p><a href="/">Back to section</a></p>
+                       <p class="accessible"><a href="/accessible.htm">Accessible version</a></p></asp:contentplaceholder>
+                </div>
+            </div>
+        </header>
+    </asp:contentplaceholder>
+    <div id="main" role="main" class="body">
+        <form id="form1" runat="server">
+            <asp:contentplaceholder id="content" runat="server" />
+        </form>
+        <asp:contentplaceholder id="afterForm" runat="server" />
+    </div>
+
+    <asp:ContentPlaceHolder id="footer" runat="server" />
+
+     <EastSussexGovUK:MasterPageControl runat="server" Control="ScriptsFullScreen" EnableViewState="false" />
+     <ClientDependency:Script runat="server" id="skinScript"/>
+    <asp:ContentPlaceHolder ID="javascript" runat="server" enableviewstate="false" />
+</div>
+</body></html>
+
+<%-- Hide bits of the old/other templates which are not required --%>
+<asp:PlaceHolder runat="server" Visible="false" enableviewstate="false">
+    <asp:ContentPlaceholder id="breadcrumb" runat="server" />
+    <asp:ContentPlaceHolder ID="promotionImages" runat="server" />
+    <asp:ContentPlaceHolder ID="atoz" runat="server" />
+    <asp:ContentPlaceHolder ID="feedback" runat="server" />
+    <asp:ContentPlaceHolder ID="related" runat="server" />
+    <asp:ContentPlaceHolder ID="supporting" runat="server" />
+</asp:PlaceHolder>

@@ -1,3 +1,3 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BreadcrumbTrail.ascx.cs" Inherits="Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK.BreadcrumbTrail" %>
-<%@ Register TagPrefix="EastSussexGovUK" Namespace="EsccWebTeam.EastSussexGovUK.MasterPages.Controls" Assembly="EsccWebTeam.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" %>
-<EastSussexGovUK:BreadcrumbTrail runat="server" ID="breadcrumb"/>
+<%@ Register TagPrefix="EastSussexGovUKFeatures" Namespace="Escc.EastSussexGovUK.Features" Assembly="Escc.EastSussexGovUK" %>
+<EastSussexGovUKFeatures:BreadcrumbTrail runat="server" ID="breadcrumb"/>

@@ -8,56 +8,74 @@ For an ASP.NET MVC5 project, you can install our design using the following step
 
 1. In Visual Studio create a new ASP.NET Web Application using the "Empty" project template. Tick the box to add folders and core references for MVC.
 2. Install `Escc.EastSussexGovUK.Mvc` from our private NuGet feed.
-3. Add the `EsccWebTeam.EastSussexGovUK` project to your solution. Add a project reference from your MVC project. If this project doesn't build you may need to run `nuget restore` from the command line inside the `Escc.EastSussexGovUK` project folder to restore its dependencies. (This step won't be needed once this project has been converted to NuGet.)
-4. Create a view model which inherits from `Escc.EastSussexGovUK.Mvc.BaseViewModel`, add a controller and a view and run the project. 
+3. Create a view model which inherits from `Escc.EastSussexGovUK.Mvc.BaseViewModel`, add a controller and a view and run the project.
 
-For WebForms projects there is not yet a NuGet package, so you will need to read the documentation below to see how to configure your application. 
+Note: When installing `Escc.EastSussexGovUK.Mvc` into a project that also uses Umbraco, you need to select 'No' when you are prompted to overwrite the `~\Views\web.config` file. You will also find that `Escc.ClientDependencyFramework` incorrectly modifies the `<clientDependency />` element in `web.config`, so you will need to reset this to `<clientDependency configSource="config\ClientDependency.config" />`. 
 
-## Loading the master page from a URL
+For a WebForms project, you can install our design using the following steps:
 
-It is possible to load the main elements of the master page as local usercontrols. However, the recommended approach is to download them from a remote URL and cache them, which typically means loading them direct from `www.eastsussex.gov.uk`. This allows all parts of the website, including third-party services and other applications hosted separately from the main website, to use a consistent approach to loading the template. The template is kept up-to-date and in sync across all parts of the site without having to keep track of changes and manually update the files in each location.
+1. In Visual Studio create a new ASP.NET Web Application using the "Empty" project template. Tick the box to add folders and core references for WebForms.
+2. Install `Escc.EastSussexGovUK.WebForms` from our private NuGet feed.
+3. Create a WebForms page and use the `<asp:Content />` element with any of the following values for `ContentPlaceholderId`:  
+	* `contentExperiment`
+	* `metadata`
+	* `css`
+	* `header`
+	* `breadcrumb`
+	* `content`
+	* `supporting`
+	* `afterForm`
+	* `footer`
+	* `javascript`
 
-* If the consuming application can be adapted to use our WebForms master pages, then copies of `*.master` are hosted on the consuming site. 
-* If the consuming application uses MVC5 it can use our `Escc.EastSussexGovUK.Mvc` NuGet package to install and configure the MVC layouts.
-* Third-party applications can download and use a complete template as explained in the 'Alternative approach' section below
-* If you have an ASP.NET application but can't adapt it to our master pages, you can copy the instances of `MasterPageControl` from our `*.master` pages onto your own WebForms site template where they will still work. In an MVC application you can wrap `MasterPageControl` in a Razor-compatible ASCX partial view: see [MasterPageControl.ascx](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/Escc.EastSussexGovUK.Mvc/Views/EastSussexGovUK/MasterPageControl.ascx) for an example.
-* If you use a different server-side technology such as PHP you can still load our template this way, but you'll need to port `MasterPageControl` into your language.
+	In most cases you'll only need to use `metadata` and `content`.
+4. You'll usually want to apply the `CustomerFocusSkin` by adding the following lines to the code-behind of your page:
+	
+		var skinnable = Master as BaseMasterPage;
+        if (skinnable != null)
+        {
+            skinnable.Skin = new CustomerFocusSkin(ViewSelector.CurrentViewIs(MasterPageFile));
+        }
+ 
+All new applications should use MVC rather than WebForms. 
 
-### How it works
+## How it works
 
-The master pages and MVC layouts themselves are deliberately minimal, with most of the work done by instances of `MasterPageControl` on the page. This enables you to configure the source location for the controls. By default `MasterPageControl` loads usercontrols from a local directory. This is typically a `~/masterpages` virtual directory within your application which points at the `MasterPages` folder in this project so, for example, `ExampleControl` would be loaded from `~/masterpages/Controls/ExampleControl.ascx`. However you can configure this path in `web.config`.
+The master pages and MVC layouts themselves are deliberately minimal, with most of the work done by instances of `MasterPageControl` on the page. This enables you to configure the source location for the controls. By default `MasterPageControl` loads usercontrols from a local directory. This could be a `~/masterpages` virtual directory within your application which points at the `MasterPages` folder in this project so, for example, `ExampleControl` would be loaded from `~/masterpages/Controls/ExampleControl.ascx`. However you can configure this path in `web.config`.
 
 	<configuration>
 	  <configSections>
-	    <sectionGroup name="EsccWebTeam.EastSussexGovUK">
+	    <sectionGroup name="Escc.EastSussexGovUK">
 	      <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
         </sectionGroup>
 	  </configSections>
 	
-      <EsccWebTeam.EastSussexGovUK>
+      <Escc.EastSussexGovUK>
 	    <GeneralSettings>
 	      <add key="MasterPageControlUrl" value="~/example-folder/{0}.ascx" />
 	    </GeneralSettings>
-      </EsccWebTeam.EastSussexGovUK>
+      </Escc.EastSussexGovUK>
 	</configuration>
 
-Each instance of `MasterPageControl` has its `Control` property set to a string identifying the control to load. By default it will look for a local usercontrol as explained above but, if `MasterPageControlUrl` is set in the `EsccWebTeam.EastSussexGovUK/RemoteMasterPage` section of `web.config`, it will try to fetch HTML from that URL, passing the value of the `Control` property instead of `{0}`. 
+Each instance of `MasterPageControl` has its `Control` property set to a string identifying the control to load. By default it will look for a local usercontrol as explained above, but the recommended approach is to download them from a remote URL and cache them, which typically means loading them direct from `www.eastsussex.gov.uk`. This allows all parts of the website, including third-party services and other applications hosted separately from the main website, to use a consistent approach to loading the template. The template is kept up-to-date and in sync across all parts of the site without having to keep track of changes and manually update the files in each location.
+
+You can configure controls to load from a remote URL by setting the `MasterPageControlUrl` in the `Escc.EastSussexGovUK/RemoteMasterPage` section of `web.config`, it will try to fetch HTML from that URL, passing the value of the `Control` property instead of `{0}`. 
 
 In the following example, `ExampleControl` would be loaded from `https://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control=ExampleControl`. If your application runs behind a proxy server you can configure the proxy URL and authentication details in `web.config` using the format documented in the [Escc.Net](https://github.com/east-sussex-county-council/Escc.Net) project.
 
 	<configuration>
 	  <configSections>
-	    <sectionGroup name="EsccWebTeam.EastSussexGovUK">
+	    <sectionGroup name="Escc.EastSussexGovUK">
 	      <section name="RemoteMasterPage" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 	    </sectionGroup>
 	  </configSections>
 
-	  <EsccWebTeam.EastSussexGovUK>
+	  <Escc.EastSussexGovUK>
 	    <RemoteMasterPage>
 	      <add key="CacheMinutes" value="60" />
 	      <add key="MasterPageControlUrl" value="https://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control={0}" />
 	    </RemoteMasterPage>
-	  </EsccWebTeam.EastSussexGovUK>
+	  </Escc.EastSussexGovUK>
 	</configuration>
 
 The remote control is loaded from an ASPX page, which is just a host for the same usercontrol which would otherwise be loaded locally.
@@ -72,58 +90,58 @@ The site serving the remote master page should configure a `BaseUrl` in `web.con
 
 	<configuration>
 	  <configSections>
-	    <sectionGroup name="EsccWebTeam.EastSussexGovUK">
+	    <sectionGroup name="Escc.EastSussexGovUK">
 	      <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
         </sectionGroup>
 	  </configSections>
 
-      <EsccWebTeam.EastSussexGovUK>
+      <Escc.EastSussexGovUK>
         <GeneralSettings>
           <add key="BaseUrl" value="http://www.eastsussex.gov.uk" />
         </GeneralSettings>
-      <EsccWebTeam.EastSussexGovUK>
+      <Escc.EastSussexGovUK>
 	</configuration>
 
 ## Varying the design
 
 ###Swapping master pages and layouts
 
-Pages on our site can have different designs applied, and the default designs are implemented as both WebForms masterpages and MVC layouts. By default we use a responsive design ("desktop"), but there is also a full-width, minimal design ("fullscreen") which is suitable for applications like maps, and a "plain" design which can be used as an API to request just the content of a page. These are configured in the `EsccWebTeam.EastSussexGovUK\GeneralSettings` section of `web.config` as shown below.
+Pages on our site can have different designs applied, and the default designs are implemented as both WebForms masterpages and MVC layouts. By default we use a responsive design ("desktop"), but there is also a full-width, minimal design ("fullscreen") which is suitable for applications like maps, and a "plain" design which can be used as an API to request just the content of a page. These are configured in the `Escc.EastSussexGovUK\GeneralSettings` section of `web.config` as shown below.
 
-You can make dramatic changes to the layout of the site by applying a different master page or layout, and you can configure specific master pages or layouts to apply to specific URLs in the `EsccWebTeam.EastSussexGovUK\DesktopMasterPages` section of  `web.config`. For example, maps often use `FullScreen.master` which has a minimal header and no footer, allowing them to take up most of the screen. MVC applications can specify `.cshtml` layouts instead of master pages.
+You can make dramatic changes to the layout of the site by applying a different master page or layout, and you can configure specific master pages or layouts to apply to specific URLs in the `Escc.EastSussexGovUK\DesktopMasterPages` section of  `web.config`. For example, maps often use `FullScreen.master` which has a minimal header and no footer, allowing them to take up most of the screen. MVC applications can specify `.cshtml` layouts in `Escc.EastSussexGovUK\DesktopMvcLayouts` instead.
 
 It is possible to mix WebForms using master pages and MVC pages using layouts in the same project, implementing the same design so that the change is transparent for the user. This allows you to use MVC to add new functions to applications built using WebForms.
 
 	<configuration>
 	  <configSections>
-	    <sectionGroup name="EsccWebTeam.EastSussexGovUK">
+	    <sectionGroup name="Escc.EastSussexGovUK">
 	      <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 	      <section name="DesktopMasterPages" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 	      <section name="DesktopMvcLayouts" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
         </sectionGroup>
 	  </configSections>
 	
-      <EsccWebTeam.EastSussexGovUK>
+      <Escc.EastSussexGovUK>
 	    <GeneralSettings>
 	      <add key="MasterPageParameterName" value="template" />
-	      <add key="FullScreenMasterPage" value="~/masterpages/FullScreen.master" />
-	      <add key="PlainMasterPage" value="~/masterpages/Plain.master" />
+	      <add key="FullScreenMasterPage" value="~/FullScreen.master" />
+	      <add key="PlainMasterPage" value="~/Plain.master" />
 	      <add key="FullScreenMvcLayout" value="~/views/eastsussexgovuk/fullscreen.cshtml" />
 	      <add key="PlainMvcLayout" value="~/views/eastsussexgovuk/plain.cshtml" />
 	    </GeneralSettings>
 	    <DesktopMasterPages>
 	      <add key="/example-application/map.aspx" value="~/masterpages/fullscreen.master" />
-		  <add key="/" value="~/masterpages/desktop.master" />
+		  <add key="/" value="~/desktop.master" />
 	    </DesktopMasterPages>
 	    <DesktopMvcLayouts>
 	      <add key="/example-application/map/" value="~/views/eastsussexgovuk/fullscreen.cshtml" />
 		  <add key="/" value="~/views/eastsussexgovuk/desktop.cshtml" />
 	    </DesktopMvcLayouts>
-      </EsccWebTeam.EastSussexGovUK>
+      </Escc.EastSussexGovUK>
 
 	  <system.webServer>
 	    <modules>
-	      <add name="MasterPageModule" type="EsccWebTeam.EastSussexGovUK.MasterPages.MasterPageModule, EsccWebTeam.EastSussexGovUK" />
+	      <add name="MasterPageModule" type="Escc.EastSussexGovUK.WebForms.MasterPageModule" />
 		</modules>
 	  </system.webServer>
 	</configuration>
@@ -153,7 +171,7 @@ It is then up to individual templates and pages to name the skins that they supp
 
 The approach described above is designed primarily with ASP.NET in mind, and does involve installing minimal master pages or MVC layouts on the consuming site. 
 
-An alternative and often better approach for third-parties which need to use our design is for us to set up a page on our website using the remote master page, with tokens to indicate where the metadata, content and other elements should go, and then a third-party can download a copy of the page on a regular schedule (or on every request) and use it as a template in their application. The tokens, breadcrumb trail, CSS and other elements can be changed to suit the needs to the consuming application.
+An alternative and usually better approach for third-parties which need to use our design is for us to set up a page on our website using the remote master page, with tokens to indicate where the metadata, content and other elements should go, and then a third-party can download a copy of the page on a regular schedule (or on every request) and use it as a template in their application. The tokens, breadcrumb trail, CSS and other elements can be changed to suit the needs to the consuming application.
 
 This has two main advantages: 
 
@@ -161,6 +179,10 @@ This has two main advantages:
 * all of the template elements are controlled by us, which makes them easier (and cheaper) to keep up-to-date.
 
 An example of this approach in use is the [modern.gov template](https://new.eastsussex.gov.uk/moderngov/template.aspx) used by our [democracy pages](https://democracy.eastsussex.gov.uk/).
+
+### Download elements of the template rather than the whole thing
+If you would prefer to load our controls to your existing template system you also have the option of copying the instances of `MasterPageControl` from our `*.master` pages onto your own WebForms site template where they will still work. In an MVC application you can wrap `MasterPageControl` in a Razor-compatible ASCX partial view: see [MasterPageControl.ascx](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/Escc.EastSussexGovUK.Mvc/Views/EastSussexGovUK/MasterPageControl.ascx) for an example. If you use a different server-side technology such as PHP you can still load our template this way, but you'll need to port `MasterPageControl` into your language.
+
 
 
 ## CSS, JavaScript and images
@@ -178,26 +200,15 @@ A number of features used frequently throughout the site are installed with the 
 ### WebForms
 WebForms applications can use the following local usercontrols:
 
-* `~/masterpages/Controls/1Space.ascx`, for an EastSussex1Space search widget
-* `~/masterpages/controls/share.ascx` to present social media sharing links. 
-
-web.config:
-
-	<configuration>
-	 	<system.web>
-		    <pages>
-		      <controls>
-		        <add tagPrefix="EastSussexGovUK" tagName="EastSussex1Space" src="~/masterpages/controls/1Space.ascx" />
-		        <add tagPrefix="EastSussexGovUK" tagName="Share" src="~/masterpages/controls/share.ascx" />
-		      </controls>
-		    </pages>
-		</system.web>
-	</configuration>
+* `~/1Space.ascx`, for an EastSussex1Space search widget
+* `~/share.ascx` to present social media sharing links. 
 
 ASPX file:
 
-	<EastSussexGovUK:EastSussex1Space runat="server"/>
+	<%@ Register TagPrefix="EastSussexGovUK" tagName="Share" src="~/share.ascx" %>
+	<%@ Register TagPrefix="EastSussexGovUK" tagName="EastSussex1Space" src="~/1space.ascx" %>
 
+	<EastSussexGovUK:EastSussex1Space runat="server"/>
 	<EastSussexGovUK:Share runat="server" />
 
 ### MVC5

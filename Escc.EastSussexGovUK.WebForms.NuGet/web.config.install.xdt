@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <!-- There's no command for "insert if missing" whe used outside NuGet so this transform uses a workaround to ensure it'll work on any config file that has at least the root <configuration /> element.
+       The workaround is to insert the element you want regardless of whether it's already there, and if there are now two remove the second one. 
+       
+       The configSections element uses a similar but different workaround from http://stackoverflow.com/questions/18737022/xdt-transform-insertbefore-locator-condition-is-ignored
+       which ensures that it's the first child of <configuration />
+       -->
+  <configSections xdt:Transform="InsertBefore(/configuration/*[1])" />
+  <configSections xdt:Locator="XPath(/configuration/configSections[last()])">
+    <sectionGroup name="Escc.EastSussexGovUK" xdt:Transform="Insert" />
+    <sectionGroup name="Escc.EastSussexGovUK" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='Escc.EastSussexGovUK'][2])" />
+    <sectionGroup name="Escc.EastSussexGovUK" xdt:Locator="Match(name)">
+      <section name="GeneralSettings" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xdt:Transform="Insert" />
+      <section name="RemoteMasterPage" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <section name="RemoteMasterPage" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xdt:Transform="Insert" />
+    </sectionGroup>
+  </configSections>
+  <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
+
+  <Escc.EastSussexGovUK xdt:Transform="Insert" />
+  <Escc.EastSussexGovUK xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.EastSussexGovUK[2])" />
+
+  <Escc.EastSussexGovUK>
+    <GeneralSettings xdt:Transform="Insert" />
+    <GeneralSettings xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.EastSussexGovUK/GeneralSettings[2])" />
+    <GeneralSettings>
+      <add key="DesktopMasterPage" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="DesktopMasterPage" value="~/desktop.master" xdt:Transform="Insert" />
+      <add key="PlainMasterPage" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="PlainMasterPage" value="~/plain.master" xdt:Transform="Insert" />
+      <add key="FullScreenMasterPage" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="FullScreenMasterPage" value="~/fullscreen.master" xdt:Transform="Insert" />
+      <add key="MasterPageParameterName" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MasterPageParameterName" value="template" xdt:Transform="Insert" />
+    </GeneralSettings>
+    <RemoteMasterPage xdt:Transform="Insert" />
+    <RemoteMasterPage xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.EastSussexGovUK/RemoteMasterPage[2])" />
+    <RemoteMasterPage>
+      <add key="CacheMinutes" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CacheMinutes" value="60" xdt:Transform="Insert" />
+      <add key="MasterPageControlUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MasterPageControlUrl" value="https://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control={0}" xdt:Transform="Insert" />
+    </RemoteMasterPage>
+  </Escc.EastSussexGovUK>
+
+  <system.web xdt:Transform="Insert" />
+  <system.web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web[2])" />
+
+  <system.web>
+    <customErrors xdt:Transform="Insert" />
+    <customErrors xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/customErrors[2])" />
+    <customErrors mode="On" xdt:Transform="SetAttributes(mode)" xdt:Locator="Condition(count(@mode) = 0)" />
+    <pages xdt:Transform="Insert" />
+    <pages xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/pages[2])" />
+    <pages masterPageFile="~/desktop.master" xdt:Transform="SetAttributes(masterPageFile)" />
+    <pages>
+      <controls xdt:Transform="Insert" />
+      <controls xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/pages/controls[2])" />
+      <controls>
+        <add namespace="Escc.EastSussexGovUK.WebForms" xdt:Transform="Remove" xdt:Locator="Match(namespace)" />
+        <add tagPrefix="EastSussexGovUK" namespace="Escc.EastSussexGovUK.WebForms" assembly="Escc.EastSussexGovUK.WebForms" xdt:Transform="Insert" />
+      </controls>
+    </pages>
+  </system.web>
+
+  <system.webServer xdt:Transform="Insert" />
+  <system.webServer xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer[2])" />
+
+  <system.webServer>
+    <httpErrors xdt:Transform="Insert" />
+    <httpErrors xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/httpErrors[2])" />
+    <httpErrors errorMode="Custom" xdt:Transform="SetAttributes(errorMode)" xdt:Locator="Condition(count(@errorMode) = 0)" />
+    <httpErrors existingResponse="Replace" xdt:Transform="SetAttributes(existingResponse)">
+      <remove statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="400" subStatusCode="-1" xdt:Transform="Insert" />
+      <remove statusCode="403" subStatusCode="-1" xdt:Transform="Insert" />
+      <remove statusCode="404" subStatusCode="-1" xdt:Transform="Insert" />
+      <remove statusCode="500" subStatusCode="-1" xdt:Transform="Insert" />
+      <error statusCode="400" subStatusCode="-1" path="/HttpStatus400.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
+      <error statusCode="403" subStatusCode="-1" path="/HttpStatus403.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
+      <error statusCode="404" subStatusCode="-1" path="/HttpStatus404.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
+      <error statusCode="500" subStatusCode="-1" path="/HttpStatus500.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
+    </httpErrors>
+    <modules xdt:Transform="Insert" />
+    <modules xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/modules[2])" />
+    <modules>
+      <add type="Escc.EastSussexGovUK.WebForms.MasterPageModule" xdt:Transform="Remove" xdt:Locator="Match(type)" />
+      <add name="MasterPageModule" type="Escc.EastSussexGovUK.WebForms.MasterPageModule" xdt:Transform="Insert" />
+    </modules>
+  </system.webServer>
+</configuration>

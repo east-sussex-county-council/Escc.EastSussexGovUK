@@ -21,6 +21,6 @@ namespace Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::EsccWebTeam.EastSussexGovUK.MasterPages.Controls.MasterPageControl masterPageControl;
+        protected global::Escc.EastSussexGovUK.Views.MasterPageControl masterPageControl;
     }
 }

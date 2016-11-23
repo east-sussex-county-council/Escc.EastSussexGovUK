@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Control.aspx.cs" Inherits="Escc.EastSussexGovUK.TemplateSource.MasterPages.Remote.Control" %>
+<asp:placeholder runat="server" id="placeholder" />

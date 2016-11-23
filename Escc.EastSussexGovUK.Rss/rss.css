@@ -1,0 +1,12 @@
+/* This stylesheet is applied to an RSS feed when a browser does not support XSLT, or no XSLT processing instruction is included in the RSS feed,
+   and the browser does not have its own rendering of RSS feeds (as Firefox 2+ and IE7+ do). */
+channel link, channel language, channel copyright, channel managingEditor, channel webMaster, 
+channel lastBuildDate, channel rating, channel image, channel generator, 
+channel item guid, channel pubDate, channel description { display:none; }
+rss { padding: 126px 18px 14px; color: #131313; font: normal 16px/1.421052em Arial, "Helvetica Neue", Helvetica, sans-serif; color: #000; background: url(escc-logo.gif) no-repeat 14px 14px; background-color: #fff; background: url(escc-logo.gif) no-repeat 14px 14px, url(header.png) repeat-x center top; }
+channel title { display: block; font-size: 2.526316em; line-height: 1.125em;margin:0; font-weight: bold; letter-spacing: -0.03em; }
+channel docs { display: block; margin: 1em 0; max-width: 50em; }
+channel item { display: block; margin-top: 2em; max-width: 50em; }
+channel item title { display: block; font-weight: bold; font-size: 1.230769em; line-height: 1.125em; margin: 14px 0 4px; color: #272727; border: 0; padding: 0; }
+channel item description { display: block; }
+channel item link, channel item pubDate { color:#666; display:block; font-size:.85em; }

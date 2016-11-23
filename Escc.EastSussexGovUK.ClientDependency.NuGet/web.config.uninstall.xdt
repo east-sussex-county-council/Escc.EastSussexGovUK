@@ -1,0 +1,91 @@
+﻿<?xml version="1.0"?>
+
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <Escc.ClientDependencyFramework>
+    <MediaQueries>
+      <add key="Medium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </MediaQueries>
+
+    <CssFiles>
+      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Condition(@key = 'HandlerPath' and @value = '/css/{0}.cssx')" />
+
+      <add key="1_Template1Small" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="1_Template2Medium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="1_Template3Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="1_TemplatePrint" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="1_TemplateFullScreen" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="2_JQueryUI" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="2_ContentSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="2_ContentMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="2_ContentLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="9_TemplateIE6Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+
+      <add key="Alert" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CoronerSkinSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CoronerSkinMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="EmailSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="EmailLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="EmailPanel" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="FormsSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="FormsMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="FormsLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GisMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MobileControls" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="NavigationSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="NavigationMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="NavigationLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RssFeed" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="RssFeedXslt" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="ServiceClosures" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="SocialMediaLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </CssFiles>
+
+    <ScriptFiles>
+      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Condition(@key = 'HandlerPath' and @value = '/js/{0}.jsx')" />
+      <add key="HandlerPlaceholder" xdt:Transform="Remove" xdt:Locator="Condition(@key = 'HandlerPlaceholder' and @value = 'javascript')" />
+
+      <add key="1_Config" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="1_JQueryLoad" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="2_jQueryUI" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="2_JQueryRetry" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="2_CrossOriginIE" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Modernizr" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+
+      <add key="2_Statistics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Analytics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Heatmap" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="TagManager" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="ThanksForAnalytics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+
+      <add key="2_GoogleMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GoogleMapsMarkerWithLabel" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GoogleMapsMarkerClusterer" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="EmbedGoogleMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+
+      <add key="3_CascadingContent" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Alert" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Banners" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+
+      <add key="AutoSuggest" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CoronerSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Documents" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Email" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="EmbedYouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="ESCIS" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Forms" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Languages" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Media" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Navigation" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="PublicLibraries" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="SocialMedia" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="SwitchView" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Typekit" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    </ScriptFiles>
+  </Escc.ClientDependencyFramework>
+</configuration>

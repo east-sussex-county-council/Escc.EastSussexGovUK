@@ -8,18 +8,18 @@ In both cases the container id is published by controls which can be requested f
 
     <configuration>
 	  <configSections>
-	    <sectionGroup name="EsccWebTeam.EastSussexGovUK">
+	    <sectionGroup name="Escc.EastSussexGovUK">
 	      <section name="GoogleTagManagerIdRules" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 	    </sectionGroup>
       </configSections>
 
-      <EsccWebTeam.EastSussexGovUK>
+      <Escc.EastSussexGovUK>
 	    <GoogleTagManagerIdRules>
       	  <add key="\.eastsussex\.gov\.uk$" value="GTM-xxxxxx" />
           <add key="azurewebsitename[-a-z0-9]*\.azurewebsites.net" value="GTM-xxxxxx" />
           <add key=".*" value="GTM-xxxxxx" />
     	</GoogleTagManagerIdRules>
-      </EsccWebTeam.EastSussexGovUK>
+      </Escc.EastSussexGovUK>
  	</configuration>	   
 
 `google-tag-manager.js` is loaded by `Scripts*.ascx` for WebForms pages and any pages using the remote master page. Umbraco pages have their own equivalent `Scripts*.cshtml` files in [Escc.EastSussexGovUK.Umbraco](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK.Umbraco). (The `iframe` element for Google Tag Manager is published in `FooterDesktop.ascx` rather `Scripts*.acsx` to avoid duplicating it for Umbraco.)

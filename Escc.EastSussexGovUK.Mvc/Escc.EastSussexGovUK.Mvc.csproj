@@ -46,8 +46,8 @@
     <DocumentationFile>bin\Escc.EastSussexGovUK.Mvc.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClientDependency.Core, Version=1.9.9.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ClientDependency.1.9.9.1\lib\net45\ClientDependency.Core.dll</HintPath>
+    <Reference Include="ClientDependency.Core, Version=1.9.9.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClientDependency.1.9.9.2\lib\net45\ClientDependency.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ClientDependency.Core.Mvc, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -62,16 +62,32 @@
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.2.0.0\lib\Escc.AddressAndPersonalDetails.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.AddressAndPersonalDetails.Controls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.Controls.2.0.1\lib\Escc.AddressAndPersonalDetails.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ClientDependencyFramework.1.0.6\lib\Escc.ClientDependencyFramework.dll</HintPath>
+      <HintPath>..\packages\Escc.ClientDependencyFramework.1.0.8\lib\Escc.ClientDependencyFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.1.0.0\lib\Escc.EastSussexGovUK.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Html, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Html.2.0.0\lib\Escc.Html.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Escc.Redirects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Redirects.1.1.0\lib\Escc.Redirects.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Web.1.0.0\lib\Escc.Web.dll</HintPath>
+      <HintPath>..\packages\Escc.Web.1.0.1\lib\Escc.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
@@ -91,8 +107,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http" />
@@ -166,6 +182,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseViewModel.cs" />
+    <Compile Include="HttpStatusController.cs" />
+    <Compile Include="HttpStatusViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\EastSussexGovUK\BreadcrumbTrail.ascx.cs">
       <DependentUpon>BreadcrumbTrail.ascx</DependentUpon>
@@ -198,17 +216,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <None Include="Views\web.config" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\_ViewStart.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
-      <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
-      <Name>EsccWebTeam.EastSussexGovUK</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\EastSussexGovUK\Desktop.cshtml" />
@@ -225,6 +237,21 @@
     <EmbeddedResource Include="Views\EastSussexGovUK\Features\_Share.cshtml" />
     <EmbeddedResource Include="Views\EastSussexGovUK\Features\_SupportingContentDesktop.cshtml" />
     <EmbeddedResource Include="Views\EastSussexGovUK\Features\_Twitter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HttpStatus\BadRequest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HttpStatus\Gone.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HttpStatus\NotFound.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HttpStatus\Forbidden.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HttpStatus\InternalServerError.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

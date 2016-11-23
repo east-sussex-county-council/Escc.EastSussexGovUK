@@ -34,7 +34,7 @@ Example: C:\>set GIT_ORIGIN_URL=https://example-git-server.com/{0}"
 ### END BOOTSTRAP. #####################################################
 ########################################################################
 
-$projectName = "Escc.EastSussexGovUK"
+$projectName = "Escc.EastSussexGovUK.TemplateSource"
 
 EnableDotNet40InIIS
 CreateApplicationPool $projectName

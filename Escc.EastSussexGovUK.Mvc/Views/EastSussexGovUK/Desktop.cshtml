@@ -1,9 +1,11 @@
 ﻿@using System.Globalization
 @using System.Web.Mvc.Html
 @using ClientDependency.Core.Mvc
+@using Escc.EastSussexGovUK
+@using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
-@using EsccWebTeam.EastSussexGovUK
-@using EsccWebTeam.EastSussexGovUK.MasterPages
+@using Escc.EastSussexGovUK.Views
+@using Escc.EastSussexGovUK.Skins
 @model Escc.EastSussexGovUK.Mvc.BaseViewModel
 @{
     Layout = null;
@@ -37,10 +39,10 @@
         }
     }
     
-    var siteContext = new EastSussexGovUKContext();
-    if (siteContext.TextSize > 1)
+    var textSize = new TextSize(Request.Cookies, Request.QueryString);
+    if (textSize.CurrentTextSize() > 1)
     {
-        bodyClass += " size" + siteContext.TextSize.ToString(CultureInfo.InvariantCulture);
+        bodyClass += " size" + textSize.CurrentTextSize().ToString(CultureInfo.InvariantCulture);
     }
 
     if (!String.IsNullOrEmpty(bodyClass))

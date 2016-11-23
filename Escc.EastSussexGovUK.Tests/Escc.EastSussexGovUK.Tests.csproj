@@ -48,22 +48,15 @@
         <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-          <Private>False</Private>
-        </Reference>
-      </ItemGroup>
-    </Otherwise>
+    <Otherwise />
   </Choose>
   <ItemGroup>
     <Compile Include="EmbeddedGoogleMapsTests.cs" />
     <Compile Include="EmbeddedYouTubeVideosTests.cs" />
     <Compile Include="FacebookLikeBoxTests.cs" />
+    <Compile Include="LibraryCatalogueContextTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterWidgetTests.cs" />
-    <Compile Include="GoogleTagManagerIdTests.cs" />
-    <Compile Include="SelectedSectionMatcherTests.cs" />
     <Compile Include="WebChatTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,9 +64,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Escc.EastSussexGovUK\EsccWebTeam.EastSussexGovUK.csproj">
-      <Project>{1426fef0-23dc-4c23-ae15-67f2527bd741}</Project>
-      <Name>EsccWebTeam.EastSussexGovUK</Name>
+    <ProjectReference Include="..\Escc.EastSussexGovUK\Escc.EastSussexGovUK.csproj">
+      <Project>{0d24d550-1007-4627-8dad-c86b07165ef7}</Project>
+      <Name>Escc.EastSussexGovUK</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0"?>
+
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+  <!-- There's no command for "insert if missing" so this transform uses a workaround to ensure it'll work on any config file that has at least the root <configuration /> element.
+       The workaround is to insert the element you want regardless of whether it's already there, and if there are now two remove the second one. 
+       
+       The configSections element uses a similar but different workaround from http://stackoverflow.com/questions/18737022/xdt-transform-insertbefore-locator-condition-is-ignored
+       which ensures that it's the first child of <configuration />
+       
+       Some of this transform is repeating the work done by the Escc.Web.Metadata package itself, but it is useful to repeat it here for scripted deployments.
+       -->
+
+  <configSections xdt:Transform="InsertBefore(/configuration/*[1])" />
+  <configSections xdt:Locator="XPath(/configuration/configSections[last()])">
+    <sectionGroup name="Escc.Web.Metadata" xdt:Transform="Insert" />
+    <sectionGroup name="Escc.Web.Metadata" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='Escc.Web.Metadata'][2])" />
+  </configSections>
+  <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
+
+  <configSections>
+    <sectionGroup name="Escc.Web.Metadata" xdt:Locator="Match(name)">
+      <section name="EgmsWebMetadata" type="Escc.Web.Metadata.EgmsWebMetadataSectionHandler, Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f" xdt:Transform="Insert" />
+      <section name="EgmsWebMetadata" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='Escc.Web.Metadata']/section[@name='EgmsWebMetadata'][2])" />
+    </sectionGroup>
+  </configSections>
+
+  <Escc.Web.Metadata xdt:Transform="Insert" />
+  <Escc.Web.Metadata xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.Web.Metadata[2])" />
+
+  <Escc.Web.Metadata>
+    <EgmsWebMetadata xdt:Transform="Insert" />
+    <EgmsWebMetadata xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.Web.Metadata/EgmsWebMetadata[2])" />
+
+    <EgmsWebMetadata errorMode="Off" xdt:Transform="SetAttributes(errorMode)" xdt:Locator="Condition(count(@errorMode) = 0)" />
+    <EgmsWebMetadata creator="Web Team, East Sussex County Council, County Hall, Lewes, BN7 1UE. https://www.eastsussex.gov.uk/contact-us/" xdt:Transform="SetAttributes(creator)" xdt:Locator="Condition(count(@creator) = 0)" />
+    <EgmsWebMetadata lgilType="Providing information" xdt:Transform="SetAttributes(lgilType)" xdt:Locator="Condition(count(@lgilType) = 0)" />
+    <EgmsWebMetadata openGraphType="article" xdt:Transform="SetAttributes(openGraphType)" xdt:Locator="Condition(count(@openGraphType) = 0)" />
+    <EgmsWebMetadata copyrightUrl="https://www.eastsussex.gov.uk/about-this-site/copyright/" xdt:Transform="SetAttributes(copyrightUrl)" xdt:Locator="Condition(count(@copyrightUrl) = 0)" />
+    <EgmsWebMetadata facebookAppId="169406409819518" xdt:Transform="SetAttributes(facebookAppId)" xdt:Locator="Condition(count(@facebookAppId) = 0)" />
+    <EgmsWebMetadata hasTouchIcon="true" xdt:Transform="SetAttributes(hasTouchIcon)" xdt:Locator="Condition(count(@hasTouchIcon) = 0)" />
+    <EgmsWebMetadata openSearchUrl="https://www.eastsussex.gov.uk/search/opensearch.xml" xdt:Transform="SetAttributes(openSearchUrl)" xdt:Locator="Condition(count(@openSearchUrl) = 0)" />
+    <EgmsWebMetadata openSearchTitle="East Sussex County Council" xdt:Transform="SetAttributes(openSearchTitle)" xdt:Locator="Condition(count(@openSearchTitle) = 0)" />
+    <EgmsWebMetadata siteName="East Sussex County Council" xdt:Transform="SetAttributes(siteName)" xdt:Locator="Condition(count(@siteName) = 0)" />
+    <EgmsWebMetadata siteImageUrl="https://www.eastsussex.gov.uk/img/logo-for-facebook.png" xdt:Transform="SetAttributes(siteImageUrl)" xdt:Locator="Condition(count(@siteImageUrl) = 0)" />
+    <EgmsWebMetadata titlePattern="{0} &amp;#8211; East Sussex County Council" xdt:Transform="SetAttributes(titlePattern)" xdt:Locator="Condition(count(@titlePattern) = 0)" />
+    <EgmsWebMetadata twitterAccount="@eastsussexcc" xdt:Transform="SetAttributes(twitterAccount)" xdt:Locator="Condition(count(@twitterAccount) = 0)" />
+    <EgmsWebMetadata windowsTileIconUrl="https://www.eastsussex.gov.uk/windows-tile.png" xdt:Transform="SetAttributes(windowsTileIconUrl)" xdt:Locator="Condition(count(@windowsTileIconUrl) = 0)" />
+    <EgmsWebMetadata windowsTileColour="#ffffff" xdt:Transform="SetAttributes(windowsTileColour)" xdt:Locator="Condition(count(@windowsTileColour) = 0)" />
+  </Escc.Web.Metadata>
+
+  <system.web xdt:Transform="Insert" />
+  <system.web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web[2])" />
+  
+  <system.web>
+    <pages xdt:Transform="Insert" />
+    <pages xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/pages[2])" />
+  </system.web>
+
+  <system.web>
+    <pages>
+      <controls xdt:Transform="Insert" />
+      <controls xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/pages/controls[2])" />
+    </pages>
+  </system.web>
+  
+  <system.web>
+    <pages>
+      <controls>
+        <add namespace="Escc.Web.Metadata" xdt:Transform="Remove" xdt:Locator="Match(namespace)" />
+        <add tagPrefix="Metadata" namespace="Escc.Web.Metadata" assembly="Escc.Web.Metadata" xdt:Transform="Insert" />
+      </controls>
+    </pages>
+  </system.web>
+
+</configuration>

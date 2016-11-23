@@ -98,3 +98,29 @@ Any virtual directories in the requested path must have their feature permission
     <system.webServer>
         <handlers accessPolicy="Read, Script" />
     </system.webServer>
+
+## How to trigger a custom error from code
+
+Custom error pages are configured automatically for you when you install either the `Escc.EastSussexGovUK.WebForms` or `Escc.EastSussexGovUK.Mvc` NuGet package.
+
+In both MVC and WebForms you can trigger IIS to respond with a custom `4xx` or `5xx` error page by setting `Response.StatusCode` to the appropriate value. For example:
+
+	Response.StatusCode = 400; // Bad request
+
+or
+
+	Response.StatusCode = 403; // Forbidden
+
+or
+
+	Response.StatusCode = 404; // Not found
+
+In MVC you can also return a `new HttpStatusCodeResult(statusCode)` or a `new HttpNotFoundResult()`;
+
+This doesn't work for a `310 Gone` response because IIS doesn't let you set the URL for that in `web.config`. Instead you can use the following code in WebForms:
+
+	Server.Transfer("~/HttpStatus310.aspx");
+
+or return a `310 Gone` view in MVC:
+
+	return View("~/Views/HttpStatus/Gone.cshtml", new HttpStatusViewModel());
