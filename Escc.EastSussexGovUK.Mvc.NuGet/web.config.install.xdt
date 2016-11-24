@@ -1,45 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-  <configSections xdt:Transform="InsertIfMissing" />
-  <configSections>
-    <sectionGroup name="Escc.EastSussexGovUK" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" />
+  <!-- There's no command for "insert if missing" whe used outside NuGet so this transform uses a workaround to ensure it'll work on any config file that has at least the root <configuration /> element.
+       The workaround is to insert the element you want regardless of whether it's already there, and if there are now two remove the second one. 
+       
+       The configSections element uses a similar but different workaround from http://stackoverflow.com/questions/18737022/xdt-transform-insertbefore-locator-condition-is-ignored
+       which ensures that it's the first child of <configuration />
+       -->
+  <configSections xdt:Transform="InsertBefore(/configuration/*[1])" />
+  <configSections xdt:Locator="XPath(/configuration/configSections[last()])">
+    <sectionGroup name="Escc.EastSussexGovUK" xdt:Transform="Insert" />
+    <sectionGroup name="Escc.EastSussexGovUK" xdt:Transform="Remove" xdt:Locator="XPath(/configuration/configSections/sectionGroup[@name='Escc.EastSussexGovUK'][2])" />
     <sectionGroup name="Escc.EastSussexGovUK" xdt:Locator="Match(name)">
-      <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" />
-      <section name="RemoteMasterPage" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" />
+      <section name="GeneralSettings" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xdt:Transform="Insert" />
+      <section name="RemoteMasterPage" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+      <section name="RemoteMasterPage" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xdt:Transform="Insert" />
     </sectionGroup>
   </configSections>
-  <Escc.EastSussexGovUK xdt:Transform="InsertIfMissing" />
+  <configSections xdt:Transform="RemoveAll" xdt:Locator="Condition(count(*)=0)" />
+
+  <Escc.EastSussexGovUK xdt:Transform="Insert" />
+  <Escc.EastSussexGovUK xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.EastSussexGovUK[2])" />
+
   <Escc.EastSussexGovUK>
-    <GeneralSettings xdt:Transform="InsertIfMissing" />
+    <GeneralSettings xdt:Transform="Insert" />
+    <GeneralSettings xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.EastSussexGovUK/GeneralSettings[2])" />
     <GeneralSettings>
-      <add key="DesktopMvcLayout" value="~/views/eastsussexgovuk/desktop.cshtml" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
-      <add key="PlainMvcLayout" value="~/views/eastsussexgovuk/plain.cshtml" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
-      <add key="FullScreenMvcLayout" value="~/views/eastsussexgovuk/fullscreen.cshtml" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
-      <add key="MasterPageParameterName" value="template" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+      <add key="DesktopMvcLayout" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="DesktopMvcLayout" value="~/views/eastsussexgovuk/desktop.cshtml" xdt:Transform="Insert" />
+      <add key="PlainMvcLayout" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="PlainMvcLayout" value="~/views/eastsussexgovuk/plain.cshtml" xdt:Transform="Insert" />
+      <add key="FullScreenMvcLayout" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="FullScreenMvcLayout" value="~/views/eastsussexgovuk/fullscreen.cshtml" xdt:Transform="Insert" />
+      <add key="MasterPageParameterName" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MasterPageParameterName" value="template" xdt:Transform="Insert" />
     </GeneralSettings>
-    <RemoteMasterPage xdt:Transform="InsertIfMissing" />
+    <RemoteMasterPage xdt:Transform="Insert" />
+    <RemoteMasterPage xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.EastSussexGovUK/RemoteMasterPage[2])" />
     <RemoteMasterPage>
-      <add key="CacheMinutes" value="60" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
-      <add key="MasterPageControlUrl" value="https://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control={0}" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+      <add key="CacheMinutes" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="CacheMinutes" value="60" xdt:Transform="Insert" />
+      <add key="MasterPageControlUrl" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="MasterPageControlUrl" value="https://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control={0}" xdt:Transform="Insert" />
     </RemoteMasterPage>
   </Escc.EastSussexGovUK>
 
-  <system.web xdt:Transform="InsertIfMissing" />
+  <system.web xdt:Transform="Insert" />
+  <system.web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web[2])" />
+
   <system.web>
-    <compilation xdt:Transform="InsertIfMissing" />
+    <compilation xdt:Transform="Insert" />
+    <compilation xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/compilation[2])" />
     <compilation>
-      <assemblies xdt:Transform="InsertIfMissing" />
-    </compilation>
-    <compilation>
+      <assemblies xdt:Transform="Insert" />
+      <assemblies xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/compilation/assemblies[2])" />
       <assemblies>
-        <add assembly="System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xdt:Transform="InsertIfMissing" xdt:Locator="Match(assembly)"/>
+        <add assembly="System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xdt:Transform="Remove" xdt:Locator="Match(assembly)"/>
+        <add assembly="System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xdt:Transform="Insert" />
       </assemblies>
     </compilation>
-    <customErrors xdt:Transform="InsertIfMissing" />
+    <customErrors xdt:Transform="Insert" />
+    <customErrors xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web/customErrors[2])" />
     <customErrors mode="On" xdt:Transform="SetAttributes(mode)" xdt:Locator="Condition(count(@mode) = 0)" />
   </system.web>
 
-  <system.webServer xdt:Transform="InsertIfMissing" />
+  <system.webServer xdt:Transform="Insert" />
+  <system.webServer xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer[2])" />
   <system.webServer>
     <httpErrors xdt:Transform="Insert" />
     <httpErrors xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.webServer/httpErrors[2])" />

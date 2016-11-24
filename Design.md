@@ -36,6 +36,24 @@ For a WebForms project, you can install our design using the following steps:
         {
             skinnable.Skin = new CustomerFocusSkin(ViewSelector.CurrentViewIs(MasterPageFile));
         }
+5. Your WebForms project will usually be deployed under an IIS website root that uses `Escc.EastSussexGovUK.TemplateSource`. You will need to add the following configuration to avoid errors due to the presence of the `ClientDependency-Mvc5` package at the root:
+ 
+		<configuration>
+		  <system.web>
+		    <pages>
+		      <namespaces>
+		        <remove namespace="ClientDependency.Core.Mvc" />
+		      </namespaces>
+		    </pages>
+		  </system.web>
+		  <system.webServer>
+		    <modules>
+		      <remove name="ClientDependencyModule" />
+		    </modules>
+		  </system.webServer>
+		</configuration>
+
+	You will also need to ensure the entire `bin\roslyn` folder is copied to your deployed application, because `Escc.EastSussexGovUK.TemplateSource` uses the `Microsoft.CodeDom.Providers.DotNetCompilerPlatform` package which configures an additional Roslyn-based compiler to enable C#6 features.  
  
 All new applications should use MVC rather than WebForms. 
 
@@ -218,7 +236,7 @@ MVC pages can load partial views to add the following features:
 * `_Banners.cshtml`, to support sitewide banners [configured using Umbraco](https://github.com/east-sussex-county-council/Escc.Umbraco.Banners)
 * `_EastSussex1Space.cshtml`, for an EastSussex1Space search widget
 * `_Escis.cshtml`, for an ESCIS search widget
-* `_Facebook.cshtml`, for a Facebook feed known as a 'Like' box
+* `_Facebook.cshtml`, for a Facebook feed known as the 'Page Plugin'
 * `_Latest.cshtml`, to show a latest update on a page
 * `_Share.cshtml`, for social media sharing and comment on this page links
 * `_Twitter.cshtml`, for a Twitter feed

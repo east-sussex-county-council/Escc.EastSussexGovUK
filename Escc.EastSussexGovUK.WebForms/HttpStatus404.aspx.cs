@@ -31,17 +31,6 @@ namespace Escc.EastSussexGovUK.WebForms
 
             if (requestedUrl != null)
             {
-                // See if it's a short URL for activating a service
-                string guidPattern = "[A-Fa-f0-9]{8,8}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{12,12}";
-                if (TryUriPattern(requestedUrl, @"^schs\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/closurealerts/closurealertactivate.aspx?code=$1", 303))
-                {
-                    return;
-                }
-                if (TryUriPattern(requestedUrl, @"^schu\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/closurealerts/closurealertdeactivate.aspx?code=$1", 303))
-                {
-                    return;
-                }
-
                 // Try short URLs and moved pages in the database
                 if (TryShortOrMovedUrl(requestedUrl))
                 {
@@ -132,55 +121,6 @@ namespace Escc.EastSussexGovUK.WebForms
                 ex.ToExceptionless().Submit();
             }
             return false;
-        }
-
-        /// <summary>
-        /// Redirect if the requested URL matches a regular expression pattern.
-        /// </summary>
-        /// <param name="requestedUrl">The requested URL.</param>
-        /// <param name="requestedUriPattern">Regular expression pattern which should match the requested URI</param>
-        /// <param name="destinationPattern">Pattern which, when used as the replacement for the regular expression pattern, should point to the destination URL.</param>
-        /// <param name="httpStatus">The HTTP status.</param>
-        /// <returns></returns>
-        /// <exception cref="System.ArgumentException">For linked data use HTTP status code 303 as the URL isn't wrong, just different from what we want to show. " +
-        ///                     "For old, moved sections use 301 as we don't want the old URL used again. - httpStatus</exception>
-        private bool TryUriPattern(Uri requestedUrl, string requestedUriPattern, string destinationPattern, int httpStatus)
-        {
-            if (requestedUrl == null) return false;
-
-            if (httpStatus != 301 && httpStatus != 303)
-            {
-                throw new ArgumentException("For linked data use HTTP status code 303 as the URL isn't wrong, just different from what we want to show. " +
-                    "For old, moved sections use 301 as we don't want the old URL used again.", "httpStatus");
-            }
-
-            var requestedPath = requestedUrl.PathAndQuery.TrimStart('/');
-
-            // If current request matches the pattern, redirect. 
-            // Strictly speaking IgnoreCase should be false, but we shouldn't be creating 
-            // any URIs that differ only by case so let's be helpful
-
-            // Tried using regex within SQL from http://www.simple-talk.com/sql/t-sql-programming/tsql-regular-expression-workbench/
-            // but it takes 500ms even with just two records in the table, compared to less than 1ms for ordinary matches.
-            // Keep regex matches in code instead - editors aren't likely to be adding them anyway.
-            if (Regex.IsMatch(requestedPath, requestedUriPattern, RegexOptions.IgnoreCase))
-            {
-                // Generate redirect headers and end this response to ensure they're followed
-                var destinationUrl = new Uri(Regex.Replace(requestedPath, requestedUriPattern, destinationPattern), UriKind.RelativeOrAbsolute);
-                if (!destinationUrl.IsAbsoluteUri) destinationUrl = new Uri(Request.Url, destinationUrl);
-
-                switch (httpStatus)
-                {
-                    case 301:
-                        new Web.HttpStatus().MovedPermanently(destinationUrl);
-                        return true;
-                    case 303:
-                        new Web.HttpStatus().SeeOther(destinationUrl);
-                        return true;
-                }
-            }
-            return false;
-
         }
     }
 }

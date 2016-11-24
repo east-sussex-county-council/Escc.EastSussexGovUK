@@ -82,6 +82,17 @@ namespace Escc.EastSussexGovUK.Mvc
                 }
             }
 
+            // See if it's a short URL for activating a service
+            string guidPattern = "[A-Fa-f0-9]{8,8}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{12,12}";
+            if (TryUriPattern(requestedPath, @"^schs\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/closurealerts/closurealertactivate.aspx?code=$1", 303))
+            {
+                return null;
+            }
+            if (TryUriPattern(requestedPath, @"^schu\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/closurealerts/closurealertdeactivate.aspx?code=$1", 303))
+            {
+                return null;
+            }
+
             if (TryShortOrMovedUrl(requestedPath))
             {
                 // redirect matched and followed - stop processing
