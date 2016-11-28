@@ -137,6 +137,15 @@ namespace Escc.EastSussexGovUK.Views
                 webRequest.UseDefaultCredentials = true;
                 webRequest.UserAgent = Page.Request.UserAgent;
                 webRequest.Proxy = new ConfigurationProxyProvider().CreateProxy();
+                webRequest.Timeout = 4000;
+                if (!String.IsNullOrEmpty(this.config["Timeout"]))
+                {
+                    int timeout;
+                    if (Int32.TryParse(this.config["Timeout"], out timeout))
+                    {
+                        webRequest.Timeout = timeout;
+                    }
+                } 
 #if DEBUG
                 // Turn off SSL check in debug mode as it will always fail against a self-signed certificate used for development
                 webRequest.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
@@ -179,7 +188,7 @@ namespace Escc.EastSussexGovUK.Views
             catch (WebException ex)
             {
                 // Publish exception, otherwise it just disappears as async method has no calling code to throw to.
-                ex.Data.Add("URL which failed", ex.Response.ResponseUri);
+                ex.Data.Add("URL which failed", webRequest.RequestUri);
                 ex.ToExceptionless().Submit();
             }
         }
