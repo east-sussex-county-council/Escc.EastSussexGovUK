@@ -58,7 +58,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
             selectedSection = selectedSection.ToUpperInvariant();
             selectedSection = selectedSection.Replace("&", String.Empty);
             selectedSection = selectedSection.Replace(" AND ", " ");
-            selectedSection = selectedSection.Replace("<br />", " ");
+            selectedSection = selectedSection.Replace("<BR />", " ");
 
             var normalise = new Regex("[^A-Z ]");
             selectedSection = normalise.Replace(selectedSection, String.Empty);

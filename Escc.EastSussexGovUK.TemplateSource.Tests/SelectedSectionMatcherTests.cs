@@ -53,6 +53,21 @@ namespace Escc.EastSussexGovUK.TemplateSource.Tests
         }
 
         [Test]
+        public void LineBreakMatchesSpace()
+        {
+            var text = "Your Council";
+            var control = new HtmlGenericControl()
+            {
+                InnerText = "Your<br />Council"
+            };
+
+            var matcher = new SelectedSectionMatcher();
+            var matched = matcher.MatchSection(text, new[] { control });
+
+            Assert.IsNotNull(matched);
+        }
+
+        [Test]
         public void FirstWordMatchIsFound()
         {
             var text = "Business in East Sussex";
