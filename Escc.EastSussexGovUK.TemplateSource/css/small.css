@@ -301,7 +301,7 @@ a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip:
    Inside .logo-small "East Sussex County Council" is HTML text, so use 15px/18px font to display it. :link and :visited pseudo selectors are needed for IE6 to apply colour. 
    Background colour on .header shows up when text size increased and small screen size used. Background colour extends below menu so much match bottom of menu. 
 */
-.header { background: #004B7B url(../img/header/mobile.jpg) repeat-x; overflow: hidden; border-bottom: 3px solid #fff; }
+.header { background: #004B7B url(../img/header/mobile.jpg) repeat-x; overflow: hidden; }
 .header .logo-small, .header .logo-small:link, .header .logo-small:visited { font-size: 1.153846em; line-height: 1.2em; padding: 4px 0; text-decoration: none; font-weight: bold; color: #003c69; width: 180px; display: block; }
 .size2 .header .logo-small, .size2 .header .logo-small:link, .size2 .header .logo-small:visited { font-size: 1em; } /* keep at 15px */
 .size3 .header .logo-small, .size3 .header .logo-small:link, .size3 .header .logo-small:visited { font-size: .882353em; } /* keep at 15px */
@@ -419,10 +419,10 @@ body .footer .footer-content { padding-top: 1.153846em; }
  *********************/
 
 /* Breadcrumb link for mobile template. 
-   Negative top margin counterbalances border-bottom: 3px on .header and padding-top: 9px on .container when this control is visible.
+   Negative top margin counterbalances padding-top: 9px on .container when this control is visible.
    Colour is sampled from header image.
    */
-.breadcrumb-mobile { margin: -.923077em 0 .692308em; padding: .384615em .692308em 0;  background: #DBF3FF; box-shadow: 0 .384615em .384615em #DBF3FF; }
+.breadcrumb-mobile { margin: -.692308em 0 .692308em; padding: .384615em .692308em 0;  background: #DBF3FF; box-shadow: 0 .384615em .384615em #DBF3FF; }
 
 /* Section nav appears above latest items and page content. Padding around list is 14px on 13px text size, 7px between items.
    Can be one or two columns of links. A single column can optionally be accompanied by an image.

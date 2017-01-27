@@ -53,23 +53,20 @@ if (typeof (jQuery) != 'undefined' && typeof (esccConfig) != 'undefined' && type
         /// <summary>Display an alert on the page</summary>
         $("head").append('<link rel="stylesheet" href="' + esccConfig.CssHandlerPath.replace('{0}', 'alert') + '" />');
 
-        var container = $("#main > .container");
+        var container = $("#main");
         var fullScreenContainer = $(".topbar");
-        var breadcrumb = $(".breadcrumb, .breadcrumb-mobile", container);
 
         var alertHtml = '';
         $.each(alertData, function (key, val) {
             alertHtml += val.alert;
         });
 
-        var alertNode = $('<strong class="alert" role="alert"><span class="icon"></span><article>' + alertHtml + '</article></strong>');
+        var alertNode = $('<div class="alert" role="alert"><div class="container"><strong><span class="icon"></span><article>' + alertHtml + '</article></strong></div></div>');
 
-        if (breadcrumb.length) {
-            alertNode.insertAfter(breadcrumb[breadcrumb.length - 1]);
-        } else if (container.length) {
-            alertNode.prependTo(container);
-        } else if (fullScreenContainer.length) {
+        if (fullScreenContainer.length) {
             alertNode.insertAfter(fullScreenContainer);
+        } else if (container.length) {
+            alertNode.insertBefore(container);
         }
     }
 }

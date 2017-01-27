@@ -1,9 +1,10 @@
 ﻿/* Sitewide alert, eg about service closures
    Vertical margin+border+padding = 2 line spaces
-   <strong class="alert"><h2>Alert</h2><p>This is an alert</p></strong>
+   <div class="alert"><div class="container"><strong><h2>Alert</h2><p>This is an alert</p></strong></div></div>
    background image is applied to .icon rather than .alert to avoid revealing the next icon in the sprite when the alert is long.
  */
-.alert { clear: both; position: relative; display: block; margin: .230769em 0 1em; padding: 1.076923em 18px .153846em 50px; border: .153846em solid #dcde74; border-radius: 5px; background: #ffc; color: #000; font-weight: normal; }
+.alert { clear: both; border-top: .153846em solid #dcde74; border-bottom: .153846em solid #dcde74; background: #ffc; color: #000; }
+.alert > div > strong { position: relative;display: block; padding: 1.076923em 18px .153846em 50px; font-weight: normal;}
 .alert .icon { position: absolute; left: 0; top: 0; width: 40px; height: 40px; background: url(../img/body/item-type.png?v=2) no-repeat 14px -1640px; }
 .alert h2 { font-weight: bold; }
 .alert p { margin: 0 0 .692308em; }
@@ -13,6 +14,7 @@
 .full-screen .body { top: 8.769231em; }
 
 /* Also need to make sure the alert only takes up those two lines and never wraps */
-.full-screen .alert { margin: .153846em 0 0; border: none; border-radius: 0; padding: .615385em 18px .615385em 44px; white-space: nowrap; overflow: auto; font-weight: bold; }
+.full-screen .alert {margin-top: 4px; border: none; white-space: nowrap; overflow: auto; }
+.full-screen .alert > div > strong { margin: .153846em 0 0; padding: .615385em 18px .615385em 44px; font-weight: bold; }
 .full-screen .alert .icon { top: -6px; left: -6px; }
 .full-screen .alert p { margin: 0; }
