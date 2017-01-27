@@ -523,10 +523,36 @@ strong.quick-answer-datum { font-size: 1.33em; line-height: 1.5em; font-weight: 
 /* Warn the user of something. For error messages use .errorSummary defined in forms.css */
 .warning { color: #b21313; }
 
-/* Paging */
+/* Paging 
+
+    In WebForms the HTML is:
+    
+    <div class="infoBar">
+	    <div class="pagingResultsInContext"><span class="pagingCurrentResults">1–5</span> of 100 items</div>
+        <div class="pagingPages"><em>1</em> <a href="/example.aspx?page=2">2</a> <a href="/example.aspx?page=3">3</a> <a href="/example.aspx?page=4">4</a> <a href="/example.aspx?page=5">5</a> … <a href="/example.aspx?page=24">20</a> <a href="/example.aspx?page=2">Next &gt;</a></div>
+    </div>
+
+    In MVC using the PagedList NuGet package:
+
+    <div class="infoBar">
+        <div class="pagingResultsInContext">1–10 of 58 results</div>
+        <ul class="pagingPages">
+            <li class="active"><span>1</span></li>
+            <li><a href="/example?page=2">2</a></li>
+            <li><a href="/example?page=3">3</a></li>
+            <li><a href="/example?page=4">4</a></li>
+            <li><a href="/example?page=5">5</a></li>
+            <li class="PagedList-ellipses">…</li>
+            <li class="PagedList-skipToNext"><a href="/example?page=2" rel="next">Next &gt;</a></li>
+        </ul>
+    </div>
+*/
 .infoBar { clear: both; margin: .692308em 0; background: #cceefa; padding: .692308em 18px; overflow: hidden; }
 .infoBar .pagingResultsInContext { float: right; }
 .ie6 .infoBar { display: inline-block; }
+
+ul.pagingPages { margin: 0;}
+ul.pagingPages li { display: inline;list-style: none;margin-right:.2em;}
 
 /* Search results where each result is a definition list of fields and values. This is its own section, not within .text. 
    If there's just one result, can apply .onlyItem as well as .itemDetail to remove dividers. */
