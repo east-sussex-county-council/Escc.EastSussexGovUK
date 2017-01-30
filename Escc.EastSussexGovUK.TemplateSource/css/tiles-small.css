@@ -1,0 +1,26 @@
+﻿/* A .feature-tile is a linked image with an overlaid caption, which adapts to the width of its container. 
+   A single link surrounds the whole tile so that hovering over it highlights the link text. 
+
+    <div class="feature-tile">
+        <a href="#">
+            <img src="/example.jpg" alt="Example image" />
+            <div class="caption">
+                <p><span>This is a caption</span></p>
+            </div>
+        </a>
+    </div>
+*/
+.feature-tile, .feature-tile a:link, .feature-tile a:visited { text-decoration: none; color: #fff; }
+.feature-tile a:hover, .feature-tile a:focus, .feature-tile a:active { text-decoration: underline; }
+
+/* The image is display: block to remove a space after, and can't be wider than the screen.  
+   Caption is absolutely positioned within the feature tile, so it is the image height that must correspond to a vertical grid.
+*/
+.feature-tile { position: relative; list-style: none; margin: 0 0 .5625em;}
+.feature-tile img {width: 100%; max-width: 100%; display: block; }
+@media screen {
+    .feature-tile .caption { position: absolute; bottom: 0; width: 100%; background-color: #003c69; background-color: rgba(0, 78, 126, .8); font-size: 1em; line-height: 1.125em; font-weight: bold; }
+    .feature-tile .caption p { padding: 0 3%; }
+    .feature-tile .caption span { padding: 0 20px 0 0; background: url(https://www.eastsussex.gov.uk/img/body/item-type.png) no-repeat right -1091px; }
+}
+

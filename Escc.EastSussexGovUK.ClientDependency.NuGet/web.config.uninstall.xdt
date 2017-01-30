@@ -41,6 +41,8 @@
       <add key="RssFeedXslt" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="ServiceClosures" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="SocialMediaLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="TilesSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="TilesMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     </CssFiles>
 
     <ScriptFiles>

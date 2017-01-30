@@ -113,6 +113,10 @@
       <add key="ServiceClosures" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/service-closures.css" xdt:Transform="Insert" />
       <add key="SocialMediaLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="SocialMediaLarge" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/social-media-large.css" xdt:Transform="Insert" />
+      <add key="TilesSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="TilesSmall" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/tiles-small.css" xdt:Transform="Insert" />
+      <add key="TilesMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="TilesMedium" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/tiles-medium.css" xdt:Transform="Insert" />
     </CssFiles>
 
     <ScriptFiles>

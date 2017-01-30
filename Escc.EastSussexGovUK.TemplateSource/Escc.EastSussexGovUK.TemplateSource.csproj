@@ -301,6 +301,8 @@
     <Content Include="css\min\small.css" />
     <Content Include="css\min\social-media-large.css" />
     <Content Include="css\min\social-media-small.css" />
+    <Content Include="css\min\tiles-medium.css" />
+    <Content Include="css\min\tiles-small.css" />
     <Content Include="css\min\umbraco-preview.css" />
     <Content Include="css\mobile-controls.css" />
     <Content Include="css\service-closures.css" />
@@ -308,6 +310,8 @@
     <Content Include="css\print.css" />
     <Content Include="css\social-media-large.css" />
     <Content Include="css\social-media-small.css" />
+    <None Include="css\tiles-medium.css" />
+    <None Include="css\tiles-small.css" />
     <Content Include="css\umbraco-preview.css" />
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />

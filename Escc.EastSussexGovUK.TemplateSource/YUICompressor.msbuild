@@ -24,6 +24,8 @@
     <CssCompressorTask SourceFiles="css/service-closures.css" OutputFile="css/min/service-closures.css" />
     <CssCompressorTask SourceFiles="css/social-media-small.css" OutputFile="css/min/social-media-small.css" />
     <CssCompressorTask SourceFiles="css/social-media-large.css" OutputFile="css/min/social-media-large.css" />
+    <CssCompressorTask SourceFiles="css/tiles-small.css" OutputFile="css/min/tiles-small.css" />
+    <CssCompressorTask SourceFiles="css/tiles-medium.css" OutputFile="css/min/tiles-medium.css" />
     <CssCompressorTask SourceFiles="css/alert.css" OutputFile="css/min/alert.css" />
     <CssCompressorTask SourceFiles="css/mobile-controls.css" OutputFile="css/min/mobile-controls.css" />
     <CssCompressorTask SourceFiles="css/1space.css" OutputFile="css/min/1space.css" />
