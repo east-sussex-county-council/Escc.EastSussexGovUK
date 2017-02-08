@@ -123,7 +123,7 @@ namespace Escc.EastSussexGovUK.Views
                 // Get the URL to request the cached control from.
                 // Include text size so that header knows which links to apply
                 var textSize = new TextSize(HttpContext.Current.Request.Cookies, HttpContext.Current.Request.QueryString);
-                Uri urlToRequest = new Uri(String.Format(CultureInfo.CurrentCulture, config["MasterPageControlUrl"], this.Control));
+                Uri urlToRequest = new Uri(HttpContext.Current.Request.Url, String.Format(CultureInfo.CurrentCulture, config["MasterPageControlUrl"], this.Control));
                 var applicationPath = HttpUtility.UrlEncode(HttpRuntime.AppDomainAppVirtualPath.ToLower(CultureInfo.CurrentCulture).TrimEnd('/'));
                 var query = HttpUtility.ParseQueryString(urlToRequest.Query);
                 query.Add("section", selectedSection);
