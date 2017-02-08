@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -103,6 +104,39 @@ namespace Escc.EastSussexGovUK.Features
                 }
 
                 this.Controls.Add(list);
+
+                //==================================== Structured Breadcrumbs =====================================================\\
+                // Create structed breadcrumb markup for Google.
+                // https://developers.google.com/search/docs/data-types/breadcrumbs
+
+                // Json-LD script is built as a string.
+                StringBuilder breadcrumbScript = new StringBuilder();
+                breadcrumbScript.Append("{ \"@context\": \"http://schema.org\", \"@type\": \"BreadcrumbList\", \"itemListElement\": [");
+
+                var position = 1;
+                // The breadcrumbTrail collection contains all the data needed for position, id and name.
+                foreach (var item in breadcrumbTrail)
+                {
+                    breadcrumbScript.Append("{\"@type\" : \"ListItem\",\"position\": " + position + " ,\"item\": {\"@id\": " + "\"" + item.Value + "\",");
+                    // if the breadcrumb is not the last in the collection, keep script open.
+                    if (position != breadcrumbTrail.Count)
+                    {
+                        breadcrumbScript.Append("\"name\": " + "\"" + item.Key + "\"}},");
+                    }
+                    // if the breadcrumb is the last in the collection, close the script
+                    else
+                    {
+                        breadcrumbScript.Append("\"name\": " + "\"" + item.Key + "\"}}]}");
+                    }
+                    position++;
+                }
+
+                // Add the script string to the page within <script> tags of type 'application/ld+json'
+                HtmlGenericControl script = new HtmlGenericControl("script");
+                script.Attributes.Add("type", "application/ld+json");
+                script.InnerHtml = breadcrumbScript.ToString();
+                this.Controls.Add(script);
+                //===================================Structured Breadcrumbs======================================================\\
             }
 
             // If no breadcrumb found and we're running on an internal host name, show a message. 
