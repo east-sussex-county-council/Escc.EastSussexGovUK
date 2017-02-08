@@ -49,7 +49,7 @@
       <add key="Facebook" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Facebook" value="script-src https://connect.facebook.net 'unsafe-eval' 'unsafe-inline'; img-src https://www.facebook.com; style-src 'unsafe-inline'; frame-src https://*.facebook.com" xdt:Transform="Insert" />
       <add key="Twitter" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Twitter" value="script-src https://*.twitter.com https://*.twimg.com 'unsafe-inline'; frame-src https://*.twitter.com; style-src https://platform.twitter.com https://*.twimg.com 'unsafe-inline'; img-src https://*.twitter.com https://*.twimg.com data:" xdt:Transform="Insert" />
+      <add key="Twitter" value="script-src https://*.twitter.com https://*.twimg.com; frame-src https://*.twitter.com; style-src https://platform.twitter.com https://*.twimg.com; img-src https://*.twitter.com https://*.twimg.com data:" xdt:Transform="Insert" />
       <add key="YouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="YouTube" value="frame-src https://www.youtube-nocookie.com" xdt:Transform="Insert" />
       <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />

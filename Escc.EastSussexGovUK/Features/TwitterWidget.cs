@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Escc.EastSussexGovUK.Views;
 
 namespace Escc.EastSussexGovUK.Features
@@ -30,7 +31,7 @@ namespace Escc.EastSussexGovUK.Features
         public bool IsRequired()
         {
             if (SocialMedia == null) return false;
-            return SocialMedia.TwitterWidgetScript != null && EsccWebsiteView == EsccWebsiteView.Desktop;
+            return (!String.IsNullOrEmpty(SocialMedia.TwitterAccount) && EsccWebsiteView == EsccWebsiteView.Desktop);
         }
 
         /// <summary>
