@@ -39,9 +39,8 @@ namespace Escc.EastSussexGovUK.Features
         public string TwitterAccount { get; set; }
 
         /// <summary>
-        /// Gets or sets a Twitter widget script in a legacy format.
+        /// Gets or sets a Twitter widget script.
         /// </summary>
-        [Obsolete("Use the TwitterAccount property instead")]
         public IHtmlString TwitterWidgetScript { get; set; }
 
         /// <summary>

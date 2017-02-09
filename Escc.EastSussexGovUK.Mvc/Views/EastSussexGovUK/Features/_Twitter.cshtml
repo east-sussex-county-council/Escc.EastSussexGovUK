@@ -12,4 +12,9 @@
             <p class="twitter twitter-account">Read updates on Twitter: <a href="@twitterUrl">Tweets by &#64;@Model.SocialMedia.TwitterAccount</a></p>
         </div>
     }
+    else if (Model.SocialMedia.TwitterWidgetScript != null && Model.EsccWebsiteView == EsccWebsiteView.Desktop)
+    {
+        @Html.Partial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", new TwitterWidget(true) {SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView})
+        <div class="large">@Model.SocialMedia.TwitterWidgetScript</div>
+    }
 }

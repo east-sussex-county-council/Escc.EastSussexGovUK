@@ -9,6 +9,17 @@ namespace Escc.EastSussexGovUK.Features
     /// </summary>
     public class TwitterWidget : IClientDependencySet
     {
+        private readonly bool _requiresUnsafePermissions;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TwitterWidget" /> class.
+        /// </summary>
+        /// <param name="requiresUnsafePermissions">if set to <c>true</c> requires unsafe permissions in the content security policy.</param>
+        public TwitterWidget(bool requiresUnsafePermissions = false)
+        {
+            _requiresUnsafePermissions = requiresUnsafePermissions;
+        }
+
         /// <summary>
         /// Gets or sets the social media settings.
         /// </summary>
@@ -62,7 +73,14 @@ namespace Escc.EastSussexGovUK.Features
         /// <returns></returns>
         public IEnumerable<ContentSecurityPolicyDependency> RequiresContentSecurityPolicy()
         {
-            return new ContentSecurityPolicyDependency[1] { new ContentSecurityPolicyDependency() { Alias = "Twitter" } };
+            if (_requiresUnsafePermissions)
+            {
+                return new[] { new ContentSecurityPolicyDependency() { Alias = "Twitter" }, new ContentSecurityPolicyDependency() { Alias = "TwitterUnsafe" } };
+            }
+            else
+            {
+                return new[] { new ContentSecurityPolicyDependency() { Alias = "Twitter" } };
+            }
         }
     }
 }
