@@ -176,13 +176,11 @@ label, input[type="submit"], input[type="image"] { cursor: pointer; }
    .button can be applied to buttons used for navigation outside of a .form
    With CSS3 the buttons will take on curved corners */
 .button, .form input[type=submit] { font-size: 1.076923em; line-height: 1em; padding: 7px; font-weight: bold; color: #fff; border: 0; background: #1e5b83; cursor:pointer; border-radius: 4px;  background: -moz-linear-gradient(top, #1e5b83 0%, #0b4164 100%); /* FF3.6+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE<=9 */
   background: linear-gradient(top, #1e5b83 0%,#0b4164 100%); /* W3C */
                              }
 /* CSS3: The buttons will take on curved corners and apply a change of the background color to lighter blue on hover */                             
 .button:hover, .form input[type=submit]:hover { border-radius: 4px; border: none; /* 14px font */  
 background: #00a1de; /* Old browsers */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE<=9 */
 background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
 }
 
@@ -233,23 +231,11 @@ background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
 	box-shadow: 0 1px 2px rgba(0,0,0,.2);
 	color: #e8f0de;
     background: #1e5b83; /* Old browsers */
-    background: -moz-linear-gradient(top,  #1e5b83 0%, #0b4164 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5b83), color-stop(100%,#0b4164)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #1e5b83 0%,#0b4164 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #1e5b83 0%,#0b4164 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #1e5b83 0%,#0b4164 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #1e5b83 0%,#0b4164 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE<=9 */
 }
 .major-action:hover, .major-action:focus, .major-action:active {
     background: #00a1de; /* Old browsers */
-    background: -moz-linear-gradient(top,  #00a1de 0%, #47cbed 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00a1de), color-stop(100%,#47cbed)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #00a1de 0%,#47cbed 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #00a1de 0%,#47cbed 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #00a1de 0%,#47cbed 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #00a1de 0%,#47cbed 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE<=9 */
 }
 .major-action:active { position: relative; top: 1px; }
 

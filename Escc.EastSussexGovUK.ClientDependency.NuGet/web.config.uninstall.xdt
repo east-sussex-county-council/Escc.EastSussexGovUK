@@ -8,7 +8,7 @@
     </MediaQueries>
 
     <CssFiles>
-      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Condition(@key = 'HandlerPath' and @value = '/css/{0}.cssx')" />
+      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Condition(@key = 'HandlerPath' and @value = 'https://www.eastsussex.gov.uk/css/{0}.cssx')" />
 
       <add key="1_Template1Small" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="1_Template2Medium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -45,7 +45,7 @@
     </CssFiles>
 
     <ScriptFiles>
-      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Condition(@key = 'HandlerPath' and @value = '/js/{0}.jsx')" />
+      <add key="HandlerPath" xdt:Transform="Remove" xdt:Locator="Condition(@key = 'HandlerPath' and @value = 'https://www.eastsussex.gov.uk/js/{0}.jsx')" />
       <add key="HandlerPlaceholder" xdt:Transform="Remove" xdt:Locator="Condition(@key = 'HandlerPlaceholder' and @value = 'javascript')" />
 
       <add key="1_Config" xdt:Transform="Remove" xdt:Locator="Match(key)" />

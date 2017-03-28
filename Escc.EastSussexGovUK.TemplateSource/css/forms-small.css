@@ -473,7 +473,6 @@ body .form input.within-text { position: relative;top: -2px; vertical-align: top
 /* Button has a top margin to separate it from the form control should it wrap below. Bottom margin is equal to top so that it's aligned if it doesn't wrap. */
 .simple-form input[type=submit], .simple-form input[type=button] { line-height: 1em; padding: 7px; margin: 4px 0 4px; font-weight: bold; color: #fff; border: 0; border-radius: 4px;  /* 14px font */
                              background: #1e5b83; /* Old browsers */
-                             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE<=9 */
                              background: linear-gradient(top, #1e5b83 0%,#0b4164 100%); /* W3C */
                              }
 /* Reset font size in context of 16 px base font for .text-content */
