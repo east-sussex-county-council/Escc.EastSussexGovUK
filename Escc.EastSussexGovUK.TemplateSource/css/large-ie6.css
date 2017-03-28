@@ -1,3 +1,0 @@
-﻿/* Don't minify IE6 max-width styles, because subsequent styles on line aren't applied by IE6/7. */
-.ie6 .container { width: expression(document.body.clientWidth > 966? "966px": "auto" ); }
-.ie6 #search { float: right; clear: right; margin: 0; width: expression(document.body.clientWidth > 446? "446px": "auto" ); }

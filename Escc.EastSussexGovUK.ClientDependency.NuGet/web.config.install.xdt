@@ -69,9 +69,6 @@
       <add key="2_ContentMedium" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/content-medium.css" xdt:Transform="Insert" />
       <add key="2_ContentLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="2_ContentLarge" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/content-large.css" xdt:Transform="Insert" />
-      <!-- Do NOT minify the IE6 stylesheet, each style MUST be on a single line -->
-      <add key="9_TemplateIE6Large" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="9_TemplateIE6Large" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/large-ie6.css" xdt:Transform="Insert" />
 
       <add key="Alert" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Alert" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/alert.css" xdt:Transform="Insert" />

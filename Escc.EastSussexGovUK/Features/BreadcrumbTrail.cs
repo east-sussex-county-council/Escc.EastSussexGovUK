@@ -79,8 +79,7 @@ namespace Escc.EastSussexGovUK.Features
             {
                 HtmlGenericControl list = new HtmlGenericControl("ol");
 
-                // screen class prevents printing in IE6. Better browsers never load the "large" stylesheet for printing so the breadcrumb's never visible in the first place.
-                list.Attributes["class"] = "breadcrumb screen large";
+                list.Attributes["class"] = "breadcrumb large";
 
                 for (var i = 0; i < listItems.Count; i++)
                 {

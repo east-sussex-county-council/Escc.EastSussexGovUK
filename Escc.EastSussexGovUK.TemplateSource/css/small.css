@@ -19,8 +19,7 @@
  --------------------------------------------
  QUICK REFERENCE - Handy generic styles
  --------------------------------------------
- .ie6, .ie7, 
- .ie67, .ie8        target IE versions
+ .ie8               target IE versions
  .js, .no-js        JavaScript on or off
 
  .aural             screenreaders only
@@ -82,16 +81,11 @@ body { margin: 0 auto; background: #aee1f4; color: #131313; }
 
 /* Set default font to 13px on a baseline grid of 18px */
 body, select, input, textarea { font: 13px/1.384615em Arial, "Helvetica Neue", Helvetica, sans-serif; }
-.ie6 body, .ie6 select, .ie6 input, .ie6 textarea { font-size: small; } /* Allow IE6 to resize text */
-.ie67 kbd { font-family: Arial, sans-serif; }
 
 /* Support cookie to change text size. 2px increase each time because that's needed for a clear difference. 
-   All other text sizes and vertical spacing including the line-height should be based on ems relative to this measurement. 
-   Specified in pixels for consistency, IE6 gets an override to use a keyword so that its users can resize text. */
+   All other text sizes and vertical spacing including the line-height should be based on ems relative to this measurement. */
 body.size2, .size2 select, .size2 input, .size2 textarea { font-size: 15px; }
-.ie6 body.size2, .ie6 .size2 select, .ie6 .size2 input, .ie6 .size2 textarea { font-size: medium; }
 body.size3, .size3 select, .size3 input, .size3 textarea { font-size: 17px; }
-.ie6 body.size3, .ie6 .size3 select, .ie6 .size3 input, .ie6 .size3 textarea { font-size: large; }
 
 /* Align hr to baseline grid, 1px thick with 8px above and 9px below */
 hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: .615384em 0 .692308em; padding: 0; }
@@ -166,8 +160,6 @@ input[type="search"] { -webkit-appearance: textfield; }
 /* Align checkboxes, radios, text inputs with their label by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
 input[type="radio"] { vertical-align: text-bottom; }
 input[type="checkbox"] { vertical-align: text-bottom; }
-.ie7 input[type="checkbox"] { vertical-align: baseline; }
-.ie6 input { vertical-align: text-bottom; }
 
 /* This is more-or-less the default border applied by browsers, but need to specify it explicitly because when you 
    apply a background-image to an input, even if you subsequently remove it, IE8 will reset the border to the old 
@@ -181,18 +173,16 @@ input[type=text], input[type=password] { border: 1px solid #9c9c9c; }
 label, input[type="submit"], input[type="image"] { cursor: pointer; }
 
 /* The default behaviour for all buttons will be blue with white text and a pointer cursor on hover. 
-   .button needed by IE6 which doesn't support attribute selectors, but can also be applied to buttons used for navigation outside of a .form
+   .button can be applied to buttons used for navigation outside of a .form
    With CSS3 the buttons will take on curved corners */
-.ie6 .button { font-size: 1.076923em; line-height: 1em; padding: 7px; font-weight: bold; color: #fff; border: 0; background: #1e5b83; cursor:pointer; }
-
 .button, .form input[type=submit] { font-size: 1.076923em; line-height: 1em; padding: 7px; font-weight: bold; color: #fff; border: 0; background: #1e5b83; cursor:pointer; border-radius: 4px;  background: -moz-linear-gradient(top, #1e5b83 0%, #0b4164 100%); /* FF3.6+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE<=9 */
   background: linear-gradient(top, #1e5b83 0%,#0b4164 100%); /* W3C */
                              }
 /* CSS3: The buttons will take on curved corners and apply a change of the background color to lighter blue on hover */                             
 .button:hover, .form input[type=submit]:hover { border-radius: 4px; border: none; /* 14px font */  
 background: #00a1de; /* Old browsers */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE6-9 */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE<=9 */
 background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
 }
 
@@ -215,7 +205,6 @@ background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
 
  */
 .button-nav { overflow: hidden; }
-.ie67 .button-nav { display: inline-block; }
 .button-nav li { float: left; list-style: none; }
 .button-nav a:link, .button-nav a:visited, .button-nav em, .button-nav input { float: left; display: block; margin: 5px 2px 5px 0; padding: 4px 10px; background: #44697d; color: #fff; font-weight: bold; text-decoration: none; white-space: nowrap; border-radius: 3px; border: none; }
 .button-nav .selected a:link, .button-nav .selected a:visited, .button-nav a:hover, .button-nav a:visited:hover, .button-nav a:focus, .button-nav a:active, .button-nav em, .button-nav input:hover { background-color: #00a1de; color: #fff; font-style: normal; }
@@ -228,7 +217,6 @@ background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
 
 
 /* A huge unmissable button, for when we really want users to take a particular action on a page.
-   In IE6/7 this spans the width of the page, but in newer browsers it displays at the correct width.
    Font-size and padding together add up to three line spaces (54px).
 
    <p class="major-action"><a href="#">link</a></p>
@@ -251,7 +239,7 @@ background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
     background: -o-linear-gradient(top,  #1e5b83 0%,#0b4164 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #1e5b83 0%,#0b4164 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #1e5b83 0%,#0b4164 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE<=9 */
 }
 .major-action:hover, .major-action:focus, .major-action:active {
     background: #00a1de; /* Old browsers */
@@ -261,7 +249,7 @@ background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
     background: -o-linear-gradient(top,  #00a1de 0%,#47cbed 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #00a1de 0%,#47cbed 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #00a1de 0%,#47cbed 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a1de', endColorstr='#47cbed',GradientType=0 ); /* IE<=9 */
 }
 .major-action:active { position: relative; top: 1px; }
 
@@ -279,7 +267,6 @@ background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
 @media screen { .container { margin: 0 auto; } }
 .container:before, .container:after { content: "."; display: block; height: 0; overflow: hidden; }
 .container:after { clear: both; }
-.ie67 .container { display: inline-block; }
 
 /* A context establishes a CSS positioning context */
 .context { position: relative; }
@@ -298,13 +285,13 @@ a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip:
  
 /* Start with a container for the header, with the mobile site background. Show the mobile logo, and hide the big logo for use later. 
    In both cases the height of the header is controlled by the height and padding of the logo. 
-   Inside .logo-small "East Sussex County Council" is HTML text, so use 15px/18px font to display it. :link and :visited pseudo selectors are needed for IE6 to apply colour. 
+   Inside .logo-small "East Sussex County Council" is HTML text, so use 15px/18px font to display it. 
    Background colour on .header shows up when text size increased and small screen size used. Background colour extends below menu so much match bottom of menu. 
 */
 .header { background: #004B7B url(../img/header/mobile.jpg) repeat-x; overflow: hidden; }
 .header .logo-small, .header .logo-small:link, .header .logo-small:visited { font-size: 1.153846em; line-height: 1.2em; padding: 4px 0; text-decoration: none; font-weight: bold; color: #003c69; width: 180px; display: block; }
-.size2 .header .logo-small, .size2 .header .logo-small:link, .size2 .header .logo-small:visited { font-size: 1em; } /* keep at 15px */
-.size3 .header .logo-small, .size3 .header .logo-small:link, .size3 .header .logo-small:visited { font-size: .882353em; } /* keep at 15px */
+.size2 .header .logo-small { font-size: 1em; } /* keep at 15px */
+.size3 .header .logo-small { font-size: .882353em; } /* keep at 15px */
 .header .logo-small img { float: left; padding: 3px 8px 0; }
 @media print { .header .logo-small img { padding-left: 0; } }
 
@@ -344,9 +331,6 @@ a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip:
 #search .search { border: 0 solid #fff; border-radius: 3px; height: 19px; margin: 6px 0; width: 100%; min-width: 80px; }
 #search .submit input { border: 0 solid #00a1de; border-radius: 3px; margin: 4px 0 7px 8px; padding: 2px 8px; color: #fff; font-weight: bold; background: #00a1de; }
 
-.ie7 #search .search { margin: 4px 0 0; }
-.ie7 #search .submit input { margin-bottom: 0; }
-
 /* The breadcrumb trail overlaps the autocomplete suggestions for search, so bring them forward */
 .ui-autocomplete { z-index: 100!important; }
 
@@ -358,21 +342,6 @@ a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip:
 
 #menu a:link, #menu a:visited { display: block; padding: 8px 10px 6px; text-decoration: none; text-align: center; font-weight: bold; color: #fff; background: url(../img/header/menu-item.png) no-repeat right top; }
 #menu .socialcare, #menu .business, #menu .community, #menu .education, #menu .environment, #menu .families, #menu .jobs, #menu .leisure, #menu .libraries, #menu .transport, #menu .council { display: none; }
-
-/* Use a simpler layout for IE6. Search and menu on two separate lines. IE6 not used on mobile, so this is an unusual scenario anyway. 
-   Search bar does occasionally disappear when resizing, but it's unlikely to be an important issue in practice. */
-.ie6 .header { height: 120px; background-color: #165F92; }
-
-.ie6 #search { float: none; clear: both; margin: 0; }
-.ie6 #search .search-inner { padding-left: 0; }
-.ie6 #search .term-outer { float: none; margin-right: 0; width: auto; }
-.ie6 #search .term-inner { padding-right: 0; }
-.ie6 #search .search { float: left; width: auto; margin-left: 6px; }
-
-.ie6 #menu { background: #165F92; }
-
-/* hasLayout stops menu items disappearing just before mobile view switches to desktop view */
-.ie6 #menu li.mobile { display: inline-block; }
 
 /**********
  * FOOTER *
@@ -442,8 +411,6 @@ body .footer .footer-content { padding-top: 1.153846em; }
 .section-nav ul { margin: 0; }
 .section-nav li { list-style: none; background: url(../img/body/item-type.png?v=2) no-repeat left -596px; padding: 0 0 .692308em 1.076953em; }
 
-.ie6 .section-nav { display: inline-block; } /* hasLayout to contain floats */
-
 @media print { .section-nav { padding-left: 0; padding-right: 0; } }
 
 /* A quick answer emphasises the one thing most users want from the current page. Use strong tags to indicate importance.
@@ -458,15 +425,11 @@ strong.quick-answer-datum { font-size: 1.33em; line-height: 1.5em; font-weight: 
 
 /* Box to pull content away from the edges of its containing box. 
    In Firefox 3.6 there's a gap when .text follows some elements and padding-top is 0, but padding-top .1px rounds down to 0 and closes the gap. 
-   IE6/7 can't parse that though, so they get a reset to 0px. */
+   */
 @media screen 
 {
     .text { padding: .1px 3.797468% 0; background: #fff; } 
-    .ie67 .text { padding: 0 3.797468%; }
 }
-
-/* Fix disappearing text in IE6/7 */
-.ie67 .text p, .ie67 .text h2 { position: relative; }
 
 /* Standard elements within a .text area. 
    h1 margin matches padding of .text to make the line below span the box. 
@@ -491,12 +454,12 @@ strong.quick-answer-datum { font-size: 1.33em; line-height: 1.5em; font-weight: 
 .text table { margin: .692308em 0; width: 100%; } /* 1/2 line space above and below */
 .text caption { font-size: 1.076923em; line-height: 1.285714em; font-weight: bold; padding: 9px 0; } /* 14px/18px */
 .text tbody { border-top: 2px solid #ECECEC; } /* top border for table when there's no thead */
-.text tr, .ie67 .text td, .ie67 .text th { background: #ececec; border-bottom: 2px solid #fff; } /* standard grey background with white borders */
+.text tr { background: #ececec; border-bottom: 2px solid #fff; } /* standard grey background with white borders */
 .text tr:nth-child(odd), .text tr:nth-child(even) { border-bottom: none; border-left: 2px solid #ececec; border-right: 2px solid #ececec; } /* Change borders only when nth-child is supported */
 .text tr:nth-child(odd) { background: #fff; } /* Use alternate row colours instead when nth-child supported */
 .text table:nth-child(odd), .text table:nth-child(even) { border-bottom: 2px solid #ececec; } /* And ensure table has bottom border in that case. Have to apply to odd and even rather than last-child because, if rowspan is used, some cells at the bottom of the table may not actually be in the last-child row */
 .text thead tr:nth-child(odd), .text thead tr:nth-child(even) { border-left: 2px solid #c7dbe4; border-right: 2px solid #c7dbe4; border-bottom: 2px solid #fff; } /* Change borders only when nth-child is supported */
-.text thead th, .ie67 .text thead th { background-color: #c7dbe4; font-weight: bold; } /* Using background-colour rather than background to support old tables with .pdf applied to th */
+.text thead th { background-color: #c7dbe4; font-weight: bold; } /* Using background-colour rather than background to support old tables with .pdf applied to th */
 .text td, .text th { padding: .307692em; }
 
 @media print 
@@ -510,7 +473,6 @@ strong.quick-answer-datum { font-size: 1.33em; line-height: 1.5em; font-weight: 
 .text table .numeric { text-align: right; }
 .text .complexData th { border-right: 2px solid #fff; }
 .text table .totalsRow { font-weight: bold; background: #777; color: #fff; border-bottom: none; border-color: #bbb; }
-.ie67 .text .totalsRow td { background: #777; color: #fff; }
 .text table .subHeading { font-weight: bold; }
 
 /* Secondary actions inside a table row */
@@ -549,7 +511,6 @@ strong.quick-answer-datum { font-size: 1.33em; line-height: 1.5em; font-weight: 
 */
 .infoBar { clear: both; margin: .692308em 0; background: #cceefa; padding: .692308em 18px; overflow: hidden; }
 .infoBar .pagingResultsInContext { float: right; }
-.ie6 .infoBar { display: inline-block; }
 
 ul.pagingPages { margin: 0;}
 ul.pagingPages li { display: inline;list-style: none;margin-right:.2em;}
@@ -575,23 +536,6 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .vevent .uid { display: none; }
 .vcard .email { background: none; padding-left: 0; }
 
-/* Share box is on the baseline grid, 10px below .fb-like + 4px padding top and bottom of .comment = 18px 
-   .share needs to contain floats because, when there's no last modified date, all elements are floated. 
-   But it can't use overflow: hidden because that cuts off the pop-up Facebook dialog, so float it with 
-   100% width instead. But that means no padding, so apply left margins to the elements inside .share instead. */
-.share { clear: both; float: left; width: 100%; padding: .692308em 0; margin: 1.384615em 0 0; background: #dae1e5; }
-.share .aside { padding: 0 18px; }
-.share .fb-like { margin: .615385em 0; }
-.share .fb-dnt { float: left; font-size: .846154em; line-height: 1.272727em; margin: .461538em 1em .9090914em 0; padding: .454545em 5px .454545em 23px; border: 1px solid #CAD4E7; border-radius: 3px; color: #3B5998; background-color: #ECEEF5; background-position: 4px -1346px; }
-.share .twitter-share-button { float: left; margin: .615385em 0; width: 100px !important; }
-.share .button-nav a:link, .share .button-nav a:visited { padding: 4px 10px 4px 27px; background-image: url(../img/body/item-type.png?v=2); background-repeat: no-repeat; }
-.share .send a:link, .share .send a:visited { background-position: 8px -93px; }
-.share .comment a:link, .share .comment a:visited { background-position: 5px -546px; }
-.share .send { clear: left; }
-
-.ie7 .share .fb-like { margin-top: 1.384615em; } /* 18px margin to achieve 6px margin effect */
-.ie6 .share { display: inline-block; } /* hasLayout to contain floats */
-
 /* .share-page is a simpler replacement for .share */
 .share-page a { white-space: nowrap; }
 .text .share-page { margin: 1.384615em 0;clear: both; }
@@ -610,7 +554,6 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .supporting-text h2 a { font-weight: normal; padding-right: 32px; background: url(../img/body/item-type.png?v=2) no-repeat right -595px; }  
 .supporting-text ul { margin: 9px 0; }
 .supporting-text li { list-style: none; background: url(../img/body/item-type.png?v=2) no-repeat 0 -995px; padding-left: 16px; }
-.ie67 .supporting-text ul { margin-left: 9px; }
 
 @media print { .supporting-text { padding-left: 0; padding-right: 0; } }
 
@@ -671,7 +614,6 @@ li.download { list-style: none; margin: .692308em 0 .692308em -1.153846em; paddi
  * SCREENREADERS ONLY: j.mp/visuallyhidden *
  ***********************************************/
 .aural { position: absolute;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px); }
 
 /*********************************************** 

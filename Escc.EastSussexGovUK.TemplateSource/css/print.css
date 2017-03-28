@@ -8,7 +8,6 @@
 @media print {
 
 /* Show anything marked as print-only (overrides earlier style), and hide anything marked as screen only 
-   The !important is just to persuade IE6 to play along.
    #divC4AWButton is to hide web chat, which we can't add the .screen class to.
 */
 .print { display: block; }
@@ -52,8 +51,6 @@ h2, h3, dt { page-break-after: avoid; }
 .body ul { margin-left: 1.153846em; }
 .body ul li { padding-left: 0; background-image: none; list-style-image: none; list-style-type: disc; } 
   
-.ie6 .container { width: 17cm!important; }
-
 /* FORMS */
 input[type=submit] { border: 2px solid #9c9c9c!important; }
 

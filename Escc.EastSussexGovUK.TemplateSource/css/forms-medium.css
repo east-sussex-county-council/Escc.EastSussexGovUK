@@ -19,8 +19,7 @@
 --------------------------------------------
  QUICK REFERENCE - Handy generic styles
 --------------------------------------------
- .ie6, .ie7, 
- .ie67, .ie8        target IE versions
+ .ie8               target IE versions
  .js, .no-js        JavaScript on or off
  .aural             screenreaders only
  .print             print only

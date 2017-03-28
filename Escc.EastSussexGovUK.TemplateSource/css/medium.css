@@ -19,8 +19,7 @@
  --------------------------------------------
  QUICK REFERENCE - Handy generic styles
  --------------------------------------------
- .ie6, .ie7, 
- .ie67, .ie8        target IE versions
+ .ie8               target IE versions
  .js, .no-js        JavaScript on or off
 
  .aural             screenreaders only
@@ -69,7 +68,6 @@ The container is now 10 columns or 802px wide.
 @media screen 
 {
     .text { padding: .1px 2.244389% 0; } 
-    .ie67 .text { padding: 0 2.244389%; }
 }
 .text h1, h1.text { padding: .29166em 2.244389%; } 
 .text h1 { margin: 0 -2.244389%; }
@@ -90,9 +88,6 @@ The container is now 10 columns or 802px wide.
    Gutter either side is 18px in 10 cols. */
 dl.itemDetail dt { clear: left; float: left; width: 22%; margin: 0 0 0 2.244389%; }
 dl.itemDetail dd { margin: 0 2.244389% .538462em 25%;  } /* 7px/13px between items */
-
-/* If the dd contains a ul, IE6 will show the ul too far left and with a 3-pixel jog on the first item. This hack fixes it. */
-.ie6 dl.itemDetail dd { height: 1%; } 
 
 /* Share box now has room to put buttons side by side */
 .share .button-nav { float: left; margin: 0 .5em .692308em 0; }

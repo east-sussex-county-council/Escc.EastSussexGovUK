@@ -262,7 +262,6 @@
     <None Include="css\nav-large.css" />
     <None Include="css\nav-medium.css" />
     <None Include="css\nav-small.css" />
-    <Content Include="css\large-ie6.css" />
     <Content Include="css\images\ui-anim_basic_16x16.gif" />
     <Content Include="css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="css\images\ui-bg_flat_0_eeeeee_40x100.png" />

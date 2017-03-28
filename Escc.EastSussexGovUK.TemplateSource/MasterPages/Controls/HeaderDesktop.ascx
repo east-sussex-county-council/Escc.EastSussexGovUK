@@ -38,7 +38,7 @@
                     <li class="education"><a href="/educationandlearning/" id="education" runat="server" enableviewstate="false">Education</a></li>
                     <li class="transport long"><a href="/roadsandtransport/" id="transport" runat="server" enableviewstate="false">Roads &amp; transport</a></li>
                     <li class="environment long"><a href="/environment/" id="environment" runat="server" enableviewstate="false">Environment &amp;&nbsp;planning</a></li>
-                    <li class="council long"><a href="/yourcouncil/" id="council" runat="server" enableviewstate="false">Your<br />Council</a></li><%-- <br /> is only for IE6, ensures it always takes two lines --%>
+                    <li class="council long"><a href="/yourcouncil/" id="council" runat="server" enableviewstate="false">Your Council</a></li>
                     <li class="community"><a href="/community/" id="community" runat="server" enableviewstate="false">Community</a></li>
                     <li class="families long"><a href="/childrenandfamilies/" id="families" runat="server" enableviewstate="false">Children &amp;&nbsp;families</a></li>
                     <li class="socialcare long"><a href="/socialcare/" id="socialcare" runat="server" enableviewstate="false">Adult social care&nbsp;&amp;&nbsp;health</a></li>

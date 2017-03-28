@@ -1,14 +1,4 @@
-/* Full-screen layout with header based on CSS from http://stackoverflow.com/questions/1192783/css-how-to-set-div-height-100-minus-npx 
-   Works in IE8 and up, but some applications require help from JQuery in IE6 and IE7. Example code:
-
-   <!--[if (lte IE 7)]>
-    <script> 
-    function adjustMapIE() { $(".body #full-screen-div").height($(window).height() - $(".header").height()); }
-    $(window).resize(adjustMapIE);
-    adjustMapIE();
-    </script>
-    <![endif]-->
-*/ 
+/* Full-screen layout with header based on CSS from http://stackoverflow.com/questions/1192783/css-how-to-set-div-height-100-minus-npx */ 
 
 /* Remove the blue background which is not needed now that there's no footer */
 body { background: #fff; }

@@ -19,8 +19,7 @@
 --------------------------------------------
  QUICK REFERENCE - Handy generic styles
 --------------------------------------------
- .ie6, .ie7, 
- .ie67, .ie8        target IE versions
+ .ie8               target IE versions
  .js, .no-js        JavaScript on or off
  .aural             screenreaders only
  .print             print only
@@ -264,9 +263,6 @@ Use Escc.FormControls.WebForms.Validators.EsccValidationSummary to produce the e
 
 /* Slightly adjust position of radio buttons for IE */
 .ie8 .form .depends input { margin: 0; }
-.ie7 .form .depends input { top: -4px; }
-.ie6 .form .depends { padding-bottom: .692308em; }
-.ie6 .form .depends input { top: -4px; left: -23px; }
 
 /* Swop layout from left to right for right-to-left scripts */
 .rtl .form .depends { padding-left: 0; padding-right: 20px; }
@@ -279,12 +275,8 @@ Use Escc.FormControls.WebForms.Validators.EsccValidationSummary to produce the e
 /* Ensure fields are stacked within the .dependentFields section */
 .form .dependentFields label { display: block; margin: .428571em 0 2px; }
 
-/* Stop dependent .radioButtonList being misplaced in IE6 (example: find schools) */
-.ie67 .form .dependentFields fieldset { position: relative; }
-
 /* Consistent layout for fieldset legends */
 legend { display: table; white-space: normal; } /* Make them wrap in IE<=11 */
-.ie67 legend { margin-left: -7px; } 
 
 
 /* Restrict textbox width - helps indicate input length to user
@@ -301,22 +293,15 @@ legend { display: table; white-space: normal; } /* Make them wrap in IE<=11 */
     For .email, need to reset the background as well as set width because .email normally applies an email icon.
     Must reset using background, not background-image: none, because background-position on the base style causes 
     inset borders to be re-applied in Chrome 13. A similar thing happens in IE6-8, fixed by explicity setting the 
-    border back to our default border. Have to do that using a class so that IE6 is fixed along with 7 and 8. 
-
-    IE6 won't apply a rule if *any* of the selectors are attribute selectors, so use a separate rule where either a 
-    class or an attribute selector will do.
+    border back to our default border.
 */
 .form textarea { overflow: auto; height: 8em; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
-body .form input.numeric { width: 2em; } 
-body .form input[type=number] { width: 2em; }
+body .form input.numeric, body .form input[type=number] { width: 2em; } 
 body .form input.name-title { width: 5em; }
 body .form input.name { width: 18em; }
-body .form input.phone { width: 10em; }
-body .form input[type=tel] { width: 10em; }
-body .form input.email { width: 22em; background: #fff; padding-left: 0; border: 1px solid #9c9c9c; } 
-body .form input[type=email] { width: 22em; background: #fff; padding-left: 0; } 
-body .form input.url { width: 40em; max-width: 100%; } 
-body .form input[type=url] { width: 40em; max-width: 100%; } 
+body .form input.phone, body .form input[type=tel] { width: 10em; }
+body .form input.email, body .form input[type=email] { width: 22em; background: #fff; padding-left: 0; border: 1px solid #9c9c9c; } 
+body .form input.url, body .form input[type=url] { width: 40em; max-width: 100%; } 
 body .form input.currency { width: 5em; }
 
 
@@ -372,7 +357,7 @@ body .form input.within-text { position: relative;top: -2px; vertical-align: top
    z-index on input is essential otherwise the control can't be selected on Mobile Safari 26/01/2012. */
 .form .radioButtonList { margin: .692308em 0; display: block; position: relative; }
 .form .radioButtonList input { left: 0; margin-top: 2px;  position: absolute; z-index: 1; }
-.ie67 .form .radioButtonList input, .ie8 .form .radioButtonList input { margin-top: 0; }
+.ie8 .form .radioButtonList input { margin-top: 0; }
 
 .text-content .form .radioButtonList input[type=radio], .text-content .form .radioButtonList input[type=checkbox] { margin-top: 6px; }
 .text-content fieldset.checkboxes label { margin: 4px 0;}
@@ -488,15 +473,12 @@ body .form input.within-text { position: relative;top: -2px; vertical-align: top
 /* Button has a top margin to separate it from the form control should it wrap below. Bottom margin is equal to top so that it's aligned if it doesn't wrap. */
 .simple-form input[type=submit], .simple-form input[type=button] { line-height: 1em; padding: 7px; margin: 4px 0 4px; font-weight: bold; color: #fff; border: 0; border-radius: 4px;  /* 14px font */
                              background: #1e5b83; /* Old browsers */
-                             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE6-9 */
+                             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5b83', endColorstr='#0b4164',GradientType=0 ); /* IE<=9 */
                              background: linear-gradient(top, #1e5b83 0%,#0b4164 100%); /* W3C */
                              }
 /* Reset font size in context of 16 px base font for .text-content */
 .text-content .simple-form input[type=submit], .text-content .simple-form input[type=button] { font-size: 1em; padding: .5625em; margin: .3125em 0 .25em 0; }
                              
-/* IE6 doesn't apply the attribute selectors above, so style its controls separately */
-.ie6 .simple-form input { margin: 0 .5em 0 0; vertical-align: middle; }
-
 /* Can't do chunky dropdowns as styling is limited, but keep font at 14px and add a little padding to options. Not much padding, because it all goes 
    below the text in Firefox 3.6, so looks odd with too much space below and none above. Still looks unbalanced next to a big chunky button. */
 .simple-form select { margin: 0 .5em 0 0; } 
@@ -528,9 +510,6 @@ body .form input.within-text { position: relative;top: -2px; vertical-align: top
 .simple-form .fields-with-checkbox .checkbox input { position: absolute; left: 0; top: 2px; }
 .simple-form .fields-with-checkbox input[type=submit] { margin: 0; }
 
-.ie6 .simple-form .fields-with-checkbox { display: inline-block;}
-.ie6 .simple-form .fields-with-checkbox .checkbox input { left: -22px; top: -2px; }
-.ie7 .simple-form .fields-with-checkbox .checkbox input { top: -2px; }
 .ie8 .simple-form .fields-with-checkbox .checkbox input { top: 0; }
 
 
@@ -664,11 +643,8 @@ body .form input.within-text { position: relative;top: -2px; vertical-align: top
 
     
 /* Half line-space above final button. Full line-space is too much following .depends in Firefox 3.6. 
-   .button class allows IE6 to get a similar style.
-
-   <input type="submit" class="button" />
 */
-.short-form input[type=submit], .ie6 .short-form .button { margin: .642857em 0 0; }
+.short-form input[type=submit] { margin: .642857em 0 0; }
 
 
 
@@ -753,7 +729,6 @@ FormPart are the container for the question and answer controls
    Don't reset display property for legend as IE<=11 needs it to be display: table or the element doesn't wrap. '*/
 .service-form .formPart label { display: block; }
 .service-form .formPart label, .service-form legend { font-weight :bold; cursor: pointer; margin: 0 0 2px; }
-.ie67 .service-form legend { margin-left: -7px; }
 .service-form .formPart label ul li, .service-form .formPart label p { font-weight: normal; }
 
 /* Exeception for formLabel when used on address control NEED TO DISCUSS */
@@ -776,10 +751,9 @@ FormPart are the container for the question and answer controls
    for left and right borders, particularly in Chrome. Can't use an absolute width in ems because, inside a fieldset, 
    it beats the max-width and can overflow the containing box.
    
-   Specific classes override this where a specific length suggests what should go into the field, eg .postcode
-   IE6 needs the same style in a separate rule, otherwise it's not applied due to the attribute selector. */
+   Specific classes override this where a specific length suggests what should go into the field, eg .postcode 
+*/
 .service-form textarea, .service-form input[type=text] { width: 99%; max-width: 100%; }
-.ie6 .service-form textarea { width: 99%; }
 
 /* Force the following control to wrap under the label and stack the controls*/
 .service-form .formPart span.formLabel, .service-form .formPart span.formControl {display:block; }
@@ -798,5 +772,5 @@ Whitespace is applied to the right of the label to space out the radio buttons. 
 
 /* Add half line space between the bottom of the form the button which follows it, but for internal buttons within the form reverse that and put space below the button. 
    This is particularly important when the button is the last element in a .formBox, as we want some white-space between the button and the box. */
-.service-form input[type=submit], .ie6 .service-form .button { margin: .692308em 0 0; }
+.service-form input[type=submit] { margin: .692308em 0 0; }
 .service-form .formBox input[type=submit], .service-form .formBox .button { margin: 0 0 .692308em; }

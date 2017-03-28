@@ -43,6 +43,3 @@
 ul.key { margin: .692308em 0; }
 ul.key li { display: inline; margin-right: 2em; white-space: nowrap; }
 ul.key img { vertical-align: middle; }
-
-/* IE6/7 doesn't wrap key, so present list vertically to avoid problem */
-.ie67 ul.key li { display: list-item; list-style: none; }
