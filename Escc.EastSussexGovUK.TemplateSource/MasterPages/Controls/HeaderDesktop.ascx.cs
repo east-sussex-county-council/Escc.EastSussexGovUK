@@ -26,8 +26,6 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
         {
             BaseUrl();
 
-            AtoZ();
-
             Menu();
 
             TextSize();
@@ -60,7 +58,6 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
                 this.logoSmallLink.Text = urlPrefix + this.logoSmallLink.Text;
                 this.logoLargeLink.Text = urlPrefix + this.logoLargeLink.Text;
                 this.contact.HRef = urlPrefix + this.contact.HRef;
-                this.az.TargetFile = urlPrefix + this.az.TargetFile;
                 this.searchUrl.Text = urlPrefix + this.searchUrl.Text;
                 this.mobileHome.HRef = urlPrefix + this.mobileHome.HRef;
                 this.mobileMenu.HRef = urlPrefix + this.mobileMenu.HRef;
@@ -148,35 +145,6 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
             if (matchedSection != null)
             {
                 matchedSection.Attributes["class"] = "selected";
-            }
-        }
-
-        private void AtoZ()
-        {
-            // Support filters for the A-Z
-            if (Request.Url.AbsolutePath.StartsWith("/atoz/default"))
-            {
-                if (!String.IsNullOrEmpty(Request.QueryString["autoPostback"])) this.az.AddQueryStringParameter("autoPostback", Request.QueryString["autoPostback"]);
-                else if (String.IsNullOrEmpty(Request.QueryString["azq"])) this.az.AddQueryStringParameter("autoPostback", "on"); // default to on if form not submitted (ie: not a postback) 
-                if (!String.IsNullOrEmpty(Request.QueryString["acc"])) this.az.AddQueryStringParameter("acc", Request.QueryString["acc"]);
-                if (!String.IsNullOrEmpty(Request.QueryString["ae"])) this.az.AddQueryStringParameter("ae", Request.QueryString["ae"]);
-                if (!String.IsNullOrEmpty(Request.QueryString["ah"])) this.az.AddQueryStringParameter("ah", Request.QueryString["ah"]);
-                if (!String.IsNullOrEmpty(Request.QueryString["al"])) this.az.AddQueryStringParameter("al", Request.QueryString["al"]);
-                if (!String.IsNullOrEmpty(Request.QueryString["ar"])) this.az.AddQueryStringParameter("ar", Request.QueryString["ar"]);
-                if (!String.IsNullOrEmpty(Request.QueryString["aw"])) this.az.AddQueryStringParameter("aw", Request.QueryString["aw"]);
-
-                // If no search term specified we must be viewing headings by letter, so highlight the letter
-                if (String.IsNullOrEmpty(Request.QueryString["azq"]))
-                {
-                    if (!String.IsNullOrEmpty(Request.QueryString["index"]))
-                    {
-                        this.az.SelectedChar = Request.QueryString["index"];
-                    }
-                    else if (String.IsNullOrEmpty(Request.QueryString.ToString()))
-                    {
-                        this.az.SelectedChar = "a";
-                    }
-                }
             }
         }
 

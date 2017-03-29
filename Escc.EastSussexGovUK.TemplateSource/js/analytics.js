@@ -13,7 +13,7 @@ if (location.host.indexOf('.') > -1 && location.host.indexOf('escc.gov') == -1 &
         $(function () { if (typeof (Escc) != 'undefined' && typeof (Escc.Statistics) != 'undefined') Escc.Statistics.TrackWithGoogleAnalytics({ domains: ['eastsussex.gov.uk', 'eastsussexcc.gov.uk'] }); });
 
         // Track clicks in common areas of template so see how well they're used
-        $(".header a").click(function() { ga('send', 'event', 'header', document.URL, $(this).attr("href"), 0); });
+        $(".header a, .header-v2 a").click(function() { ga('send', 'event', 'header', document.URL, $(this).attr("href"), 0); });
         $(".footer a").click(function () { ga('send', 'event', 'footer', document.URL, $(this).attr("href"), 0); });
     }
 }

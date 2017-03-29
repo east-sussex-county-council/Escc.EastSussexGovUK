@@ -73,30 +73,39 @@ html { overflow-y: scroll; }
    such as /contactus/default.htm
 */
 .header { background: #01A1DF url(../img/header/desktop.png) repeat-x center top; padding: 0 6px; margin: 0 0 -4px; }
+.header-v2 { background: #01A1DF url(../img/header/header.png) repeat-x center top; padding: 0 6px; margin: 0 0 -4px; }
 
 .header .container { background: url(../img/header/buttercups.jpg) no-repeat center top; overflow: hidden; }
+.header-v2 .container { background: url(../img/header/buttercups-v2.jpg) no-repeat center top; overflow: hidden; }
 .header .jan { background-image: url(../img/header/sheep.jpg); }
+.header-v2 .jan { background-image: url(../img/header/sheep-v2.jpg); }
 .header .feb { background-image: url(../img/header/robin.jpg); }
+.header-v2 .feb { background-image: url(../img/header/robin-v2.jpg); }
 .header .sep, .header .oct { background-image: url(../img/header/squirrel.jpg); }
+.header-v2 .sep, .header-v2 .oct { background-image: url(../img/header/squirrel-v2.jpg); }
 .header .nov { background-image: url(../img/header/xmas-lights.jpg); }
+.header-v2 .nov { background-image: url(../img/header/xmas-lights-v2.jpg); }
 .header .dec { background-image: url(../img/header/winter-walk.jpg); }
-.header .mask { background: url(../img/header/desktop.png) no-repeat center -162px; overflow: hidden; }
+.header-v2 .dec { background-image: url(../img/header/winter-walk-v2.jpg); }
+.header .mask { background: url(../img/header/desktop.png) no-repeat center -161px; overflow: hidden; }
+.header-v2 .mask { background: url(../img/header/header.png) no-repeat center -144px; overflow: hidden; }
 
 
 /* This template has more room, so swop in the bigger logo. The logo and its margin still controls the height of the header. */
-.header .logo-small, .header .logo-small:link, .header .logo-small:visited { display: none; }
-.header .logo-large { float: left; margin: 11px 0; }
+.header .logo-small, .header .logo-small:link, .header .logo-small:visited,
+.header-v2 .logo-small, .header-v2 .logo-small:link, .header-v2 .logo-small:visited { display: none; }
+.header .logo-large, .header-v2 .logo-large { float: left; margin: 11px 0; }
 
 /* Enable text size control at this size. float the links so that vertical padding can be applied, enlarging the clickable area. 
    Colour dimmed so that they're not over-dominant in the design, but #777 grey is minimum to meet the WCAG contrast guideline
 */
-.header .size { display: block; position: absolute; right: 6em; }
-.header .size a { padding: 7px 10px 7px 20px; float: left; color: #777; }
-.header .size .zoom-in { background: url(../img/body/item-type.png?v=2) no-repeat 0 -1491px; }
-.header .size .zoom-out { background: url(../img/body/item-type.png?v=2) no-repeat 0 -1538px; }
+.header .size, .header-v2 .size { display: block; position: absolute; right: 6em; }
+.header .size a, .header-v2 .size a { padding: 7px 10px 7px 20px; float: left; color: #777; }
+.header .size .zoom-in, .header-v2 .size .zoom-in { background: url(../img/body/item-type.png?v=2) no-repeat 0 -1491px; }
+.header .size .zoom-out, .header-v2 .size .zoom-out { background: url(../img/body/item-type.png?v=2) no-repeat 0 -1538px; }
 
 /* Set the space above 'contact us' to align the ascender height with the top of the ESCC logo */
-.header .contact { padding: 7px 0; }
+.header .contact, .header-v2 .contact { padding: 7px 0; }
 
 /* This template has more room, so display an A-Z.
    margin-top on .alphabet controls how far down from the top of the page the A-Z and search appear.
@@ -118,7 +127,7 @@ html { overflow-y: scroll; }
 .size2 .header .alphabet h2, .size3 .header .alphabet h2  { display: none; }
 
 /* Move the search up from the menu bar into the header. 6 cols wide in 12, which aligns it to the width of the A-Z. */
-#search { clear: right; margin: 0; width: 49.0683%; }
+#search { clear: right; margin: 36px 0 0; width: 49.0683%; }
 #search .search-inner { padding: 0; }
 #search .search { height: 30px; border: 2px solid #00a1de; border-radius: 3px; }
 #search .submit { width: 48px; float: right; }
@@ -134,15 +143,21 @@ html { overflow-y: scroll; }
 @media only screen and (max-width: 900px) 
 {
     .header .container { background: none; } 
+    .header .alphabet { width: 83.02277%; }
+}
+
+@media only screen and (max-width: 960px) 
+{
+    .header-v2 .container { background: none; } 
     #menu { letter-spacing: -.05em; }
-    .header .alphabet, #search { width: 83.02277%; }
+    #search { width: 83.02277%; }
 }
 
 /* The menu spans 100% wide, and each option gets its own width to optimse space as the browser window size is reduced.
    Options which don't wrap are vertically centred by giving them a line-height equal to the menu height, less 4px for 
    the white bar indicating the selected item. Options which wrap have the default line-height and some padding to push them down.
  */
-.header #menu { width: 100%; max-width: none; clear: both; }
+.header #menu, .header-v2 #menu { width: 100%; max-width: none; clear: both; }
 #menu a:link, #menu a:visited { height: 59px; display: block; position: relative; line-height: 55px; padding: 0 6px 0 4px; }
 #menu a:hover, #menu a:focus, #menu a:active, #menu a.selected:link, #menu a.selected:visited { background-position: right -61px; }
 #menu .long a:link, #menu .long a:visited { line-height: 18px; padding-top: 10px; height: 49px; }

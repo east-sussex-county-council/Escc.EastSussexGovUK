@@ -121,10 +121,6 @@
       <HintPath>..\packages\Escc.Html.2.0.0\lib\Escc.Html.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.NavigationControls.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.NavigationControls.WebForms.1.0.0\lib\Escc.NavigationControls.WebForms.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Escc.Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.1.0.1\lib\Escc.Net.dll</HintPath>
       <Private>True</Private>
@@ -328,23 +324,32 @@
     <Content Include="img\body\royal-coat-of-arms.png" />
     <Content Include="img\body\rss-27px.gif" />
     <Content Include="img\body\worldpay.gif" />
+    <Content Include="img\header\buttercups-v2.jpg" />
     <Content Include="img\header\buttercups.jpg" />
     <Content Include="img\header\desktop.png" />
+    <Content Include="img\header\header.png" />
+    <Content Include="img\header\logo-large.png" />
     <Content Include="img\header\logo-small.gif" />
     <Content Include="img\header\mask.gif" />
     <Content Include="img\header\logo-large.gif" />
     <Content Include="img\header\menu-item.png" />
     <Content Include="img\header\mobile.jpg" />
+    <Content Include="img\header\robin-v2.jpg" />
     <Content Include="img\header\robin.jpg" />
+    <Content Include="img\header\sheep-v2.jpg" />
     <Content Include="img\header\sheep.jpg" />
+    <Content Include="img\header\squirrel-v2.jpg" />
     <Content Include="img\header\squirrel.jpg" />
+    <Content Include="img\header\winter-walk-v2.jpg" />
     <Content Include="img\header\winter-walk.jpg" />
+    <Content Include="img\header\xmas-lights-v2.jpg" />
     <Content Include="img\header\xmas-lights.jpg" />
     <Content Include="img\logo-for-facebook.png" />
     <Content Include="img\web.config" />
     <None Include="favicon.psd" />
     <None Include="favicon16.psd" />
     <None Include="img\body\Page.psd" />
+    <Content Include="img\header\header.psd" />
     <None Include="img\Web.example.config" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
@@ -542,7 +547,6 @@
     <None Include="img\body\navigation.psd" />
     <None Include="img\body\item-type.psd" />
     <None Include="img\header\header original.psd" />
-    <None Include="img\header\header resized, tiled, with channel for mask.psd" />
     <None Include="img\header\mask.psd" />
     <Content Include="js\Web.config">
       <SubType>Designer</SubType>

@@ -2,7 +2,8 @@
 body .body { background: #fff; }
 
 /* Default skin uses a partly-white image to highlight the current section, but it's now on a white background so move the sprite to a different location for this skin. */
-body .header #menu a:hover, body .header #menu a:focus, body .header #menu a:active, body .header #menu a.selected:link, body .header #menu a.selected:visited { background-position: right -124px; }
+body .header #menu a:hover, body .header #menu a:focus, body .header #menu a:active, body .header #menu a.selected:link, body .header #menu a.selected:visited,
+body .header-v2 #menu a:hover, body .header-v2 #menu a:focus, body .header-v2 #menu a:active, body .header-v2 #menu a.selected:link, body .header-v2 #menu a.selected:visited { background-position: right -124px; }
 
 /* Remove box-shadow from default skin. */
 body .full-page, body .article { box-shadow: none; }

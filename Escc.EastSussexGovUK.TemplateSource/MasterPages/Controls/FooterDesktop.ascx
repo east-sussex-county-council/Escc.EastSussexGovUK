@@ -18,3 +18,4 @@
 </div>
 </footer>
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=<%= GoogleTagManagerContainerId %>" height="0" width="0" class="hidden"></iframe></noscript>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"GovernmentOrganization","name":"East Sussex County Council","url":"https://www.eastsussex.gov.uk","logo":"https://www.eastsussex.gov.uk/img/header/logo-large.png"}</script>

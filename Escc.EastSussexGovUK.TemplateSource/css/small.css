@@ -74,7 +74,7 @@ of the page (between the header and footer) has to override this later.
 */
 body { margin: 0 auto; background: #aee1f4; color: #131313; }
 
-/* .body is the content area of the page; everything between .header and .footer. Use float and width: 100% to contain any floats rather than
+/* .body is the content area of the page; everything between .header-v2 and .footer. Use float and width: 100% to contain any floats rather than
    overflow: hidden, because overflow cuts off the absolutely positioned dialog from the Facebook Like button, which needs to overlap the footer. */
 .body { background: #fff; float: left; width: 100%; }
 .body .container { padding: .692308em 0; } /* 9px padding top and bottom, but on the container so it can be overriden when required */
@@ -266,27 +266,28 @@ background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
  **********/
  
 /* Accessibility links which only show up when they have keyboard focus.
-   These aren't scoped to .header because occasionally there are skip links outside the header (eg A-Z) */
+   These aren't scoped to .header-v2 because occasionally there are skip links outside the header (eg A-Z) */
 a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip: auto; padding: 4px; z-index: 999; background: #fff; opacity: .8; font-weight: bold; }
  
 /* Start with a container for the header, with the mobile site background. Show the mobile logo, and hide the big logo for use later. 
    In both cases the height of the header is controlled by the height and padding of the logo. 
    Inside .logo-small "East Sussex County Council" is HTML text, so use 15px/18px font to display it. 
-   Background colour on .header shows up when text size increased and small screen size used. Background colour extends below menu so much match bottom of menu. 
+   Background colour on .header-v2 shows up when text size increased and small screen size used. Background colour extends below menu so much match bottom of menu. 
 */
-.header { background: #004B7B url(../img/header/mobile.jpg) repeat-x; overflow: hidden; }
-.header .logo-small, .header .logo-small:link, .header .logo-small:visited { font-size: 1.153846em; line-height: 1.2em; padding: 4px 0; text-decoration: none; font-weight: bold; color: #003c69; width: 180px; display: block; }
-.size2 .header .logo-small { font-size: 1em; } /* keep at 15px */
-.size3 .header .logo-small { font-size: .882353em; } /* keep at 15px */
-.header .logo-small img { float: left; padding: 3px 8px 0; }
-@media print { .header .logo-small img { padding-left: 0; } }
+.header, .header-v2 { background: #004B7B url(../img/header/mobile.jpg) repeat-x; overflow: hidden; }
+.header .logo-small, .header .logo-small:link, .header .logo-small:visited,
+.header-v2 .logo-small, .header-v2 .logo-small:link, .header-v2 .logo-small:visited { font-size: 1.153846em; line-height: 1.2em; padding: 4px 0; text-decoration: none; font-weight: bold; color: #003c69; width: 180px; display: block; }
+.size2 .header .logo-small, .size2 .header-v2 .logo-small { font-size: 1em; } /* keep at 15px */
+.size3 .header .logo-small, .size3 .header-v2 .logo-small { font-size: .882353em; } /* keep at 15px */
+.header .logo-small img, .header-v2 .logo-small img { float: left; padding: 3px 8px 0; }
+@media print { .header .logo-small img, .header-v2 .logo-small img { padding-left: 0; } }
 
 /* Hide the text size control at this size - need to keep the interface simple. 
    The effect would be applied though, if the user has selected it using the larger template. */
-.header .size { display: none; }
+.header .size, .header-v2 .size { display: none; }
 
 /* Display 'contact us' at the top-right above the search. Users should be likely to notice it there. */
-.header .contact { position: absolute; right: 0; top: 0; padding: 4px; font-weight: bold; } 
+.header .contact, .header-v2 .contact { position: absolute; right: 0; top: 0; padding: 4px; font-weight: bold; } 
 
 /* Hide the A-Z on small screens */
 .header .alphabet { display: none; }
