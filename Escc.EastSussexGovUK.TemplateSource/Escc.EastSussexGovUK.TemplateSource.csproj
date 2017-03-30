@@ -330,7 +330,6 @@
     <Content Include="img\header\header.png" />
     <Content Include="img\header\logo-large.png" />
     <Content Include="img\header\logo-small.gif" />
-    <Content Include="img\header\mask.gif" />
     <Content Include="img\header\logo-large.gif" />
     <Content Include="img\header\menu-item.png" />
     <Content Include="img\header\mobile.jpg" />
