@@ -88,7 +88,7 @@ html { overflow-y: scroll; }
 .header .dec { background-image: url(../img/header/winter-walk.jpg); }
 .header-v2 .dec { background-image: url(../img/header/winter-walk-v2.jpg); }
 .header .mask { background: url(../img/header/desktop.png) no-repeat center -161px; overflow: hidden; }
-.header-v2 .mask { background: url(../img/header/header.png) no-repeat center -144px; overflow: hidden; }
+
 
 
 /* This template has more room, so swop in the bigger logo. The logo and its margin still controls the height of the header. */
