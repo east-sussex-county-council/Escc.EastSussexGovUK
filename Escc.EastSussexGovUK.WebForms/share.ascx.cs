@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using Escc.Web.Metadata;
 
 namespace Escc.EastSussexGovUK.WebForms
 {
@@ -10,6 +11,7 @@ namespace Escc.EastSussexGovUK.WebForms
     {
         public string EncodedPageUrl { get; private set; }
         public string EncodedTitle { get; private set; }
+        public string EncodedDescription { get; private set; }
         public string CssClass { get; set; }
 
         /// <summary>
@@ -26,9 +28,12 @@ namespace Escc.EastSussexGovUK.WebForms
             // strip double-quotes because when this link is picked up by a link checker and exported to CSV, the quotes are misinterpreted as a CSV delimiter
             EncodedTitle = Server.UrlEncode(Server.HtmlDecode(Page.Title.Replace("\"", String.Empty)));
 
+            var meta = Page.Master as IHasMetadata;
+            if (meta != null) EncodedDescription = Server.UrlEncode(Server.HtmlDecode(meta.Metadata.Description.Replace("\"", String.Empty)));
+
             if (!String.IsNullOrEmpty(CssClass))
             {
-                this.text.Attributes["class"] = CssClass;
+                this.text.Attributes["class"] += CssClass;
             }
         }
     }

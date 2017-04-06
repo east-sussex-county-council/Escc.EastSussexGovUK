@@ -133,8 +133,8 @@
       <add key="2_JQueryRetry" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/jquery.ajax-retry.min.js" xdt:Transform="Insert" />
       <add key="2_CrossOriginIE" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="2_CrossOriginIE" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/cross-origin-ie.js" xdt:Transform="Insert" />
-      <add key="Modernizr" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Modernizr" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/modernizr.custom.15280.js" xdt:Transform="Insert" />
+      <add key="2_Modernizr" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="2_Modernizr" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/modernizr-custom.js" xdt:Transform="Insert" />
 
       <add key="2_Statistics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="2_Statistics" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/escc.statistics.min.js" xdt:Transform="Insert" />

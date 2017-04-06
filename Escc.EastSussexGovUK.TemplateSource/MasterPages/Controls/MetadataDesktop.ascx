@@ -4,5 +4,3 @@
 <ClientDependency:Css runat="server" Files="Template1Small;TemplatePrint;JQueryUI;EmailSmall" Moveable="false" EnableViewState="false" />
 <ClientDependency:Css runat="server" Files="Template2Medium" MediaConfiguration="Medium" Moveable="false" EnableViewState="false" />
 <ClientDependency:Css runat="server" Files="Template3Large;EmailLarge" MediaConfiguration="Large" Moveable="false" EnableViewState="false" />
-<%-- All JavaScript at the bottom, except for Modernizr which enable HTML5/CSS3 and need to be early to avoid flash of unstyled content --%>
-<ClientDependency:Script runat="server" Files="Modernizr" MergeWithSimilar="false" Moveable="false" EnableViewState="false" />

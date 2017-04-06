@@ -289,9 +289,6 @@ a.keyboard:focus, a.keyboard:active { position: absolute; top: 0; left: 0; clip:
 /* Display 'contact us' at the top-right above the search. Users should be likely to notice it there. */
 .header .contact, .header-v2 .contact { position: absolute; right: 0; top: 0; padding: 4px; font-weight: bold; } 
 
-/* Hide the A-Z on small screens */
-.header .alphabet { display: none; }
-
 /* Use negative margin technique from http://www.alistapart.com/articles/negativemargins/ to lay out the menu bar. 
    The idea is to achieve a layout where the menu and "go" button are a fixed size, and the search box expands to
    fill the rest of the space. 
@@ -523,11 +520,6 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .vevent .uid { display: none; }
 .vcard .email { background: none; padding-left: 0; }
 
-/* .share-page is a simpler replacement for .share */
-.share-page a { white-space: nowrap; }
-.text .share-page { margin: 1.384615em 0;clear: both; }
-.text .share-page a { margin-right: 1em; }
-
 /* Supporting content sits under an .article.
    .supporting offers just the placement
    .supporting-text offers placement with some standard formatting. 
@@ -544,8 +536,9 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 
 @media print { .supporting-text { padding-left: 0; padding-right: 0; } }
 
-/* Don't show adverts in mobile view */
-.advert { display: none; }
+/* Don't show adverts in mobile view, and hide the old share control until all instances have been removed */
+.advert, .share-page { display: none; }
+
 
 /**********************
 * LINKS - SCREEN ONLY *

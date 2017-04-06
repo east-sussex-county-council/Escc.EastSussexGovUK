@@ -141,8 +141,18 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 
 /* Share links for the bottom of a page, defined in the _Share.cshtml partial view from Escc.EastSussexGovUK.Mvc. 
    9px margin above and below, and 16px text at all screen sizes. */
-.text-content .share-page { margin: .5625em 0; }
-.text-content .share-page a { margin-right: 1em; }
+.text-content .share { margin: .5625em 0; }
+
+/* .shareis for social media sharing icons at the end of a page. Uses image replacement from https://www.sitepoint.com/new-css-image-replacement-technique/
+    The email icon is Creative Commons by David Hopkins (semlabs.co.uk) from http://findicons.com/icon/180766/mail2, placed on a blue background from our brand palette.
+    https://creativecommons.org/licenses/by/3.0/
+*/
+.text-content.share a { text-indent: 100%; white-space: nowrap; overflow: hidden; background: url(../img/body/social.png) no-repeat left top; width: 50px; height: 50px; display: inline-block; padding: 0; }
+.text-content.share ul { display: block;padding: 0;margin: 0;}
+.text-content.share li { display: inline-block;padding: 0;margin: 0;}
+.text-content.share a[href*="twitter.com"] {background-position: left -50px; }
+.text-content.share a[href*="facebook.com"] {background-position: left -100px; }
+.text-content.share a[href*="linkedin.com"] {background-position: left -150px; }
 
 /* Non-JS alternative to Twitter widget has a link which is better wrapped onto a new line */
 .twitter-account > a { white-space: nowrap; }

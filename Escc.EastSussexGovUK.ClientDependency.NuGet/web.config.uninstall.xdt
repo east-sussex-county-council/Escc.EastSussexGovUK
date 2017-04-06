@@ -53,7 +53,7 @@
       <add key="2_jQueryUI" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="2_JQueryRetry" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="2_CrossOriginIE" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Modernizr" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="2_Modernizr" xdt:Transform="Remove" xdt:Locator="Match(key)" />
 
       <add key="2_Statistics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Analytics" xdt:Transform="Remove" xdt:Locator="Match(key)" />

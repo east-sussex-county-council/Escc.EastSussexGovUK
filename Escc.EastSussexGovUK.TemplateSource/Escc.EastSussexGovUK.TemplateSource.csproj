@@ -323,6 +323,7 @@
     <Content Include="img\body\pan-w.gif" />
     <Content Include="img\body\royal-coat-of-arms.png" />
     <Content Include="img\body\rss-27px.gif" />
+    <Content Include="img\body\social.png" />
     <Content Include="img\body\worldpay.gif" />
     <Content Include="img\header\buttercups-v2.jpg" />
     <Content Include="img\header\buttercups.jpg" />
@@ -349,10 +350,12 @@
     <None Include="favicon16.psd" />
     <None Include="img\body\Page.psd" />
     <Content Include="img\header\header.psd" />
+    <None Include="img\body\social.psd" />
     <None Include="img\Web.example.config" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\libs\jquery-1.9.1.min.js" />
+    <Content Include="js\libs\modernizr-custom.js" />
     <Content Include="MasterPages\Web.config" />
     <None Include="MasterPages\Web.example.config" />
     <None Include="js\1space.js" />
@@ -371,7 +374,6 @@
     <None Include="js\cascading-content.js" />
     <Content Include="js\libs\chai.js" />
     <None Include="js\tests\cascading-content.tests.js" />
-    <Content Include="js\libs\modernizr.custom.15280.js" />
     <Content Include="js\min\1space.js" />
     <Content Include="js\min\alerts.js" />
     <Content Include="js\min\analytics.js" />
