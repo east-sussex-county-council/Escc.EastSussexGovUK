@@ -104,7 +104,7 @@ The fetched HTML is saved in a local cache so that it is not requested remotely 
 Requesting any page with the querystring `?ForceCacheRefresh=1` will cause the cached template to be updated even if it has not expired.
 
 ### Serving the remote master page
-The site serving the remote master page should configure a `BaseUrl` in `web.config` inside the folder where `control.aspx` is hosted. The `BaseUrl` should be the domain where sitewide features like images and text size control are hosted (typically www.eastsussex.gov.uk). This `BaseUrl` is prepended to all relative links and resources in the template, to create absolute links back to the central site. This means that the consuming application doesn't need to host its own copy of these files. 
+The site serving the remote master page should configure a `BaseUrl` in `web.config` inside the folder where `control.aspx` is hosted. The `BaseUrl` should be the domain where sitewide features like images and text size control are hosted (typically www.eastsussex.gov.uk). This `BaseUrl` is prepended to all relative links and images in the template, to create absolute links back to the central site. This means that the consuming application doesn't need to host its own copy of these files. The `BaseUrl` can include a `{hostname}` token which is replaced with the value of `HttpContext.Current.Request.Url.Authority`.
 
 
 	<configuration>

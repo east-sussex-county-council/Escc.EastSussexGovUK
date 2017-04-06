@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Globalization;
 using System.Web;
 using System.Web.UI;
 
@@ -13,6 +14,23 @@ namespace Escc.EastSussexGovUK
     {
         #region Shortcuts to configuration settings
         private NameValueCollection _generalSettings;
+        private readonly Uri _currentUrl;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HostingEnvironmentContext"/> class.
+        /// </summary>
+        /// <param name="currentUrl">The current URL. If <c>null</c>, <c>HttpContext.Current.Request.Url</c> will be used if available.</param>
+        public HostingEnvironmentContext(Uri currentUrl = null)
+        {
+            if (currentUrl != null)
+            {
+                _currentUrl = currentUrl;
+            }
+            else
+            {
+                if (HttpContext.Current?.Request?.Url != null) _currentUrl = HttpContext.Current.Request.Url;
+            }
+        }
 
         /// <summary>
         /// Gets the settings for the site and its template.
@@ -53,7 +71,9 @@ namespace Escc.EastSussexGovUK
 
                 if (!String.IsNullOrEmpty(this.Settings["BaseUrl"]))
                 {
-                    this.baseUrl = new Uri(this.Settings["BaseUrl"]);
+                    var rawBaseUrl = this.Settings["BaseUrl"];
+                    if (_currentUrl != null) rawBaseUrl = rawBaseUrl.Replace("{hostname}", _currentUrl.Authority);
+                    this.baseUrl = new Uri(rawBaseUrl);
                     return this.baseUrl;
                 }
 
@@ -64,12 +84,12 @@ namespace Escc.EastSussexGovUK
         /// <summary>
         /// Gets whether the current request is for a publicly available URL.
         /// </summary>
-        /// <value><c>true</c> if URL is public; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if URL is public or unknown; otherwise, <c>false</c>.</value>
         public bool IsPublicUrl
         {
             get
             {
-                return (HttpContext.Current.Request.Url.Host.IndexOf('.') > -1 && HttpContext.Current.Request.Url.Host.IndexOf("escc.gov") == -1);
+                return (_currentUrl == null || _currentUrl.Host.IndexOf('.') > -1 && _currentUrl.Host.IndexOf("escc.gov", StringComparison.InvariantCulture) == -1);
             }
         }
 
