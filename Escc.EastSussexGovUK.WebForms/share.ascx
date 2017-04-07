@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="share.ascx.cs" Inherits="Escc.EastSussexGovUK.WebForms.share" %>
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.WebForms" Assembly="Escc.EastSussexGovUK.WebForms" %>
 <EastSussexGovUK:ContextContainer runat="server" Plain="false">
-<div class="share screen content text-content" id="text" runat="server">
+<div class="share screen " id="text" runat="server">
     <h2>Share this page</h2>
     <ul>
         <li><a href="https://apps.eastsussex.gov.uk/contactus/emailus/friend.aspx?url=<%= EncodedPageUrl %>" title="Share this page by email">Share this page by email</a></li>
