@@ -6,14 +6,7 @@
   </configSections>
 
   <clientDependency xdt:Transform="Remove" />
-  <clientDependency version="1" xdt:Transform="Insert">
-    <!-- Full config documentation is here: https://github.com/Shazwazza/ClientDependency/wiki/Configuration -->
-    <mvc defaultRenderer="PolyfillMediaQueryRenderer">
-      <renderers>
-        <add name="PolyfillMediaQueryRenderer" type="Escc.ClientDependencyFramework.PolyfillMediaQueryRenderer, Escc.ClientDependencyFramework" />
-      </renderers>
-    </mvc>
-  </clientDependency>
+  <clientDependency version="1" xdt:Transform="Insert" />
 
   <system.web xdt:Transform="Insert" />
   <system.web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/system.web[2])" />
