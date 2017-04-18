@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.SessionState;
 using Escc.EastSussexGovUK.Features;
+using Escc.Net;
 using NUnit.Framework;
 
 namespace Escc.EastSussexGovUK.Tests
@@ -98,6 +99,16 @@ namespace Escc.EastSussexGovUK.Tests
             var feature = new WebChat() { WebChatSettings = _model };
 
             Assert.IsFalse(feature.IsRequired());
+        }
+
+        //[Test]
+        // This is an integration test - use for testing changes, but it will not always pass because it relies on local changeable data 
+        public void WebChatApiRequest()
+        {
+            var source = new WebChatSettingsFromApi(new Uri("https://www.eastsussex.gov.uk/umbraco/api/webchat/getwebchaturls"), new ConfigurationProxyProvider());
+            var settings = source.ReadWebChatSettings();
+            settings.PageUrl = new Uri("/some-relative-url");
+            Assert.AreEqual("/yourcouncil/", settings.WebChatUrls[0].ToString());
         }
     }
 }

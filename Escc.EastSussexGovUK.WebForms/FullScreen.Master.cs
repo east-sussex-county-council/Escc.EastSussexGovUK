@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using Escc.EastSussexGovUK.Features;
+using Escc.Net;
+using Escc.Web;
 
 namespace Escc.EastSussexGovUK.WebForms
 {
@@ -35,21 +38,47 @@ namespace Escc.EastSussexGovUK.WebForms
                 }
                 this.fonts.Text = fontsHtml.ToString();
 
-                foreach (var cssFileDependency in Skin.RequiresCss())
-                {
-                    if (String.IsNullOrEmpty(cssFileDependency.MediaQueryAlias)) skinSmall.FileList.Add(cssFileDependency.CssFileAlias);
-                    if (cssFileDependency.MediaQueryAlias == skinMedium.MediaConfiguration) skinMedium.FileList.Add(cssFileDependency.CssFileAlias);
-                    if (cssFileDependency.MediaQueryAlias == skinLarge.MediaConfiguration) skinLarge.FileList.Add(cssFileDependency.CssFileAlias);
-                }
+                AddClientDependencies(Skin);
+            }
 
-                foreach (var scriptDependency in Skin.RequiresJavaScript())
+            // Support web chat
+            var context = new HostingEnvironmentContext();
+            if (context.WebChatSettingsUrl != null)
+            {
+                var webChat = new WebChat();
+                webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, new ConfigurationProxyProvider(), new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings();
+                webChat.WebChatSettings.PageUrl = new Uri(Request.Url.AbsolutePath, UriKind.Relative);
+                if (webChat.IsRequired())
                 {
-                    skinScript.FileList.Add(scriptDependency.JsFileAlias);
+                    AddClientDependencies(webChat);
                 }
             }
 
             // Run the base method as well
             base.Page_Load(sender, e);
+        }
+        
+        private void AddClientDependencies(IClientDependencySet dependencySet)
+        {
+            foreach (var cssFileDependency in dependencySet.RequiresCss())
+            {
+                if (String.IsNullOrEmpty(cssFileDependency.MediaQueryAlias)) skinSmall.FileList.Add(cssFileDependency.CssFileAlias);
+                if (cssFileDependency.MediaQueryAlias == skinMedium.MediaConfiguration) skinMedium.FileList.Add(cssFileDependency.CssFileAlias);
+                if (cssFileDependency.MediaQueryAlias == skinLarge.MediaConfiguration) skinLarge.FileList.Add(cssFileDependency.CssFileAlias);
+            }
+
+            foreach (var scriptDependency in dependencySet.RequiresJavaScript())
+            {
+                skinScript.FileList.Add(scriptDependency.JsFileAlias);
+            }
+
+            var csp = new ContentSecurityPolicyHeaders(Response.Headers);
+            var cspConfig = new ContentSecurityPolicyFromConfig();
+            foreach (var contentSecurityPolicy in dependencySet.RequiresContentSecurityPolicy())
+            {
+                csp.AppendPolicy(cspConfig.Policies[contentSecurityPolicy.Alias]);
+            }
+            csp.UpdateHeaders();
         }
 
         /// <summary>

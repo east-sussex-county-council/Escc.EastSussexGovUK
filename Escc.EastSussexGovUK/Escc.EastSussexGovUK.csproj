@@ -75,11 +75,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationCacheStrategy.cs" />
     <Compile Include="Features\BreadcrumbTrail.cs" />
     <Compile Include="Features\BreadcrumbTrailMobile.cs" />
     <Compile Include="Features\BreadcrumbTrailFromConfig.cs" />
     <Compile Include="ContentSecurityPolicyDependency.cs" />
     <Compile Include="CssFileDependency.cs" />
+    <Compile Include="ICacheStrategy.cs" />
+    <Compile Include="Features\WebChatSettingsFromApi.cs" />
     <Compile Include="HostingEnvironmentContext.cs" />
     <Compile Include="Features\EastSussex1SpaceSearch.cs" />
     <Compile Include="Features\EmbeddedGoogleMaps.cs" />

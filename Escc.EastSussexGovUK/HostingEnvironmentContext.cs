@@ -93,7 +93,43 @@ namespace Escc.EastSussexGovUK
             }
         }
 
+        /// <summary>
+        /// Gets the URL where web chat settings can be found as JSON data.
+        /// </summary>
+        /// <value>
+        /// The web chat settings URL.
+        /// </value>
+        public Uri WebChatSettingsUrl
+        {
+            get
+            {
+                if (!String.IsNullOrEmpty(this.Settings?["WebChatSettingsUrl"]))
+                {
+                    return new Uri(Settings["WebChatSettingsUrl"], UriKind.RelativeOrAbsolute);
+                }
+                return null;
+            }
+        }
 
+        /// <summary>
+        /// Gets the length of time, in minutes, to cache web chat settings JSON data for
+        /// </summary>
+        /// <value>
+        /// The length of time in minutes.
+        /// </value>
+        public int WebChatSettingsCacheDuration
+        {
+            get
+            {
+                if (!String.IsNullOrEmpty(this.Settings?["WebChatSettingsCacheMinutes"]))
+                {
+                    int minutes = 0;
+                    Int32.TryParse(Settings["WebChatSettingsCacheMinutes"], out minutes);
+                    return minutes;
+                }
+                return 0;
+            }
+        }
         #endregion // Shortcuts to information about the current request
     }
 }

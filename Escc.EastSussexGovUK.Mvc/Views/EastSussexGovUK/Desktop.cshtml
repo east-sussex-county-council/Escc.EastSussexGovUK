@@ -6,18 +6,38 @@
 @using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
 @using Escc.EastSussexGovUK.Views
 @using Escc.EastSussexGovUK.Skins
+@using Escc.Net
 @model Escc.EastSussexGovUK.Mvc.BaseViewModel
 @{
     Layout = null;
-    if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel"); }
+    if (Model == null)
+    {
+        throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel");
+    }
     Model.EsccWebsiteView = EsccWebsiteView.Desktop;
     if (Model.EsccWebsiteSkin is DefaultSkin)
     {
         Model.EsccWebsiteSkin = new CustomerFocusSkin(Model.EsccWebsiteView);
     }
     Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
-    Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider});
 }
+@if (IsSectionDefined("WebChat"))
+{
+    @RenderSection("WebChat")
+}
+else
+{
+    // Support web chat - not ideal to do this in the view but there's no common controller
+    var context = new HostingEnvironmentContext();
+    if (context.WebChatSettingsUrl != null)
+    {
+        var webChat = new WebChat();
+        webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, new ConfigurationProxyProvider(), new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings();
+        webChat.WebChatSettings.PageUrl = new Uri(Request.Url.AbsolutePath, UriKind.Relative);
+        Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new[] { webChat });
+    }
+}
+@{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider}); }
 <head>
     @RenderSection("ContentExperiment", required: false)
     @{
