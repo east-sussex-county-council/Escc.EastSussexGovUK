@@ -30,6 +30,9 @@
 .text-content h5 { margin: 1.421053em 0 0; font-weight: bold;font-style: normal; }
 .text-content h6 { margin: .947368em 0 0; font-weight: bold; }
 
+/* Without a breadcrumb trail the default spacing puts the heading 1 too close to the site header, so provide a way to move it down by 9px */
+.no-breadcrumb .text-content h1 { margin-top: .1875em; }
+
 /* 9px margins for standard text, 18px for definition title */
 .text-content p { margin: .473684em 0;}
 .text-content ul, .text-content ol { margin-top: .473684em; margin-bottom: .473684em;}

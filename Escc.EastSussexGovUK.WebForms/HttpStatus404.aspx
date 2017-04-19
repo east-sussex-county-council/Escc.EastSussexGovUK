@@ -12,6 +12,9 @@
 		/>
 </asp:Content>
 
+<asp:Content runat="server" ContentPlaceHolderID="bodyclass">no-breadcrumb</asp:Content>
+<asp:Content runat="server" ContentPlaceHolderID="breadcrumb" />
+
 <asp:Content runat="server" ContentPlaceHolderID="content">
     <div class="full-page">
         <div class="text" id="css" runat="server">
