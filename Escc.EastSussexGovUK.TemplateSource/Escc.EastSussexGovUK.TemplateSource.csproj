@@ -66,8 +66,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClientDependency.Core, Version=1.9.9.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ClientDependency.1.9.9.2\lib\net45\ClientDependency.Core.dll</HintPath>
+    <Reference Include="ClientDependency.Core, Version=1.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClientDependency.1.9.2\lib\net45\ClientDependency.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ClientDependency.Core.Mvc, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -102,7 +102,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework.WebForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.2.1.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
+      <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.2.1.1\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Escc.Dates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
