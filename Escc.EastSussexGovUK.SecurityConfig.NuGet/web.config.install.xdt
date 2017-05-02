@@ -36,12 +36,14 @@
       <add key="Default" value="default-src 'none'; script-src 'self' https://www.eastsussex.gov.uk https://new.eastsussex.gov.uk https://ajax.googleapis.com; style-src 'self' https://www.eastsussex.gov.uk https://new.eastsussex.gov.uk; img-src 'self' data: https://www.eastsussex.gov.uk https://new.eastsussex.gov.uk https://eastsussexgovuk.blob.core.windows.net https://eastsussexgovukstorage.blob.core.windows.net; connect-src 'self' https://www.eastsussex.gov.uk https://new.eastsussex.gov.uk; object-src 'self'; report-uri https://eastsussexgovuk.report-uri.io/r/default/csp/enforce" xdt:Transform="Insert" />
       <add key="GoogleAnalytics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleAnalytics" value="script-src https://www.google-analytics.com; img-src https://www.google-analytics.com" xdt:Transform="Insert" />
+      <add key="GovDeliveryOverlays" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GovDeliveryOverlays" value="script-src https://content.govdelivery.com; style-src https://content.govdelivery.com; img-src https://content.govdelivery.com"/>
       <add key="GoogleMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleMaps" value="script-src https://*.googleapis.com https://maps.gstatic.com 'unsafe-eval'; img-src https://*.gstatic.com https://*.googleapis.com; style-src 'unsafe-inline'; frame-src https://maps.google.co.uk https://www.google.com" xdt:Transform="Insert" />
       <add key="GoogleContentExperiments" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleContentExperiments" value="script-src 'unsafe-inline';" xdt:Transform="Insert" />
       <add key="GoogleTagManager" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="GoogleTagManager" value="script-src https://www.googletagmanager.com" xdt:Transform="Insert" />
+      <add key="GoogleTagManager" value="script-src https://tagmanager.google.com/ https://www.googletagmanager.com; style-src https://www.googletagmanager.com https://tagmanager.google.com"/>
       <add key="GoogleFonts" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleFonts" value="font-src https://fonts.gstatic.com; style-src https://fonts.googleapis.com" xdt:Transform="Insert" />
       <add key="CrazyEgg" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -75,7 +77,7 @@
     <ContentSecurityPolicySettings xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.Web/ContentSecurityPolicySettings[2])" />
     <ContentSecurityPolicySettings>
       <add key="PoliciesToApply" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="PoliciesToApply" value="Default;Local;GoogleAnalytics;GoogleTagManager;GoogleFonts;CrazyEgg" xdt:Transform="Insert" />
+      <add key="PoliciesToApply" value="Default;Local;GoogleAnalytics;GoogleTagManager;GoogleFonts;CrazyEgg;GovDeliveryOverlays" xdt:Transform="Insert" />
       <add key="UrlsToExclude" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="UrlsToExclude" value="/media;/umbraco;/install;/DependencyHandler.axd" xdt:Transform="Insert" />
     </ContentSecurityPolicySettings>
