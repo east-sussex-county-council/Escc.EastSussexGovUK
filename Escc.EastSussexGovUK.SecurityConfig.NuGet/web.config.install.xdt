@@ -25,7 +25,7 @@
     </sectionGroup>
   </configSections>
 
-  <Escc.Web xdt:Transform="Insert" />t
+  <Escc.Web xdt:Transform="Insert" />
   <Escc.Web xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.Web[2])" />
 
   <Escc.Web>
@@ -37,7 +37,7 @@
       <add key="GoogleAnalytics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleAnalytics" value="script-src https://www.google-analytics.com; img-src https://www.google-analytics.com" xdt:Transform="Insert" />
       <add key="GovDeliveryOverlays" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="GovDeliveryOverlays" value="script-src https://content.govdelivery.com; style-src https://content.govdelivery.com; img-src https://content.govdelivery.com"/>
+      <add key="GovDeliveryOverlays" value="script-src https://content.govdelivery.com; style-src https://content.govdelivery.com; img-src https://content.govdelivery.com" xdt:Transform="Insert"/>
       <add key="GoogleMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleMaps" value="script-src https://*.googleapis.com https://maps.gstatic.com 'unsafe-eval'; img-src https://*.gstatic.com https://*.googleapis.com; style-src 'unsafe-inline'; frame-src https://maps.google.co.uk https://www.google.com" xdt:Transform="Insert" />
       <add key="GoogleContentExperiments" xdt:Transform="Remove" xdt:Locator="Match(key)" />
