@@ -43,7 +43,7 @@
       <add key="GoogleContentExperiments" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleContentExperiments" value="script-src 'unsafe-inline';" xdt:Transform="Insert" />
       <add key="GoogleTagManager" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="GoogleTagManager" value="script-src https://tagmanager.google.com/ https://www.googletagmanager.com; style-src https://www.googletagmanager.com https://tagmanager.google.com"/>
+      <add key="GoogleTagManager" value="script-src https://tagmanager.google.com/ https://www.googletagmanager.com; style-src https://www.googletagmanager.com https://tagmanager.google.com" xdt:Transform="Insert"/>
       <add key="GoogleFonts" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleFonts" value="font-src https://fonts.gstatic.com; style-src https://fonts.googleapis.com" xdt:Transform="Insert" />
       <add key="CrazyEgg" xdt:Transform="Remove" xdt:Locator="Match(key)" />
