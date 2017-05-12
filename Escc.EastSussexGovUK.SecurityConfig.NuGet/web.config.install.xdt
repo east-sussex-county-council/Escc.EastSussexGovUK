@@ -39,7 +39,7 @@
       <add key="GovDeliveryOverlays" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GovDeliveryOverlays" value="script-src https://content.govdelivery.com; style-src https://content.govdelivery.com; img-src https://content.govdelivery.com" xdt:Transform="Insert"/>
       <add key="GoogleMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="GoogleMaps" value="script-src https://*.googleapis.com https://maps.gstatic.com 'unsafe-eval'; img-src https://*.gstatic.com https://*.googleapis.com; style-src 'unsafe-inline'; frame-src https://maps.google.co.uk https://www.google.com" xdt:Transform="Insert" />
+      <add key="GoogleMaps" value="script-src https://*.googleapis.com https://maps.gstatic.com 'unsafe-eval'; img-src https://*.gstatic.com https://*.googleapis.com https://*.ggpht.com; style-src 'unsafe-inline'; frame-src https://maps.google.co.uk https://www.google.com" xdt:Transform="Insert" />
       <add key="GoogleContentExperiments" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleContentExperiments" value="script-src 'unsafe-inline';" xdt:Transform="Insert" />
       <add key="GoogleTagManager" xdt:Transform="Remove" xdt:Locator="Match(key)" />
