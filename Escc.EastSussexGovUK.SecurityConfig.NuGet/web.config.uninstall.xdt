@@ -8,6 +8,7 @@
       <add key="GoogleContentExperiments" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleTagManager" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleFonts" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="GoogleRecaptcha" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GovDeliveryOverlays" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CrazyEgg" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Facebook" xdt:Transform="Remove" xdt:Locator="Match(key)" />
