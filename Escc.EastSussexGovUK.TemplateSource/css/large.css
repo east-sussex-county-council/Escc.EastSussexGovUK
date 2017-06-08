@@ -82,7 +82,8 @@ html { overflow-y: scroll; }
 .header .feb { background-image: url(../img/header/robin.jpg); }
 .header-v2 .feb { background-image: url(../img/header/robin-v2.jpg); }
 .header .sep, .header .oct { background-image: url(../img/header/squirrel.jpg); }
-.header-v2 .sep, .header-v2 .oct { background-image: url(../img/header/squirrel-v2.jpg); }
+.header-v2 .sep { background-image: url(../img/header/squirrel-v2.jpg); }
+.header-v2 .oct { background-image: url(../img/header/autumn-bird.jpg); }
 .header .nov { background-image: url(../img/header/xmas-lights.jpg); }
 .header-v2 .nov { background-image: url(../img/header/xmas-lights-v2.jpg); }
 .header .dec { background-image: url(../img/header/winter-walk.jpg); }

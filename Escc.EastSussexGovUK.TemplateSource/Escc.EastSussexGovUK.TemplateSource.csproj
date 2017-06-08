@@ -325,6 +325,7 @@
     <Content Include="img\body\rss-27px.gif" />
     <Content Include="img\body\social.png" />
     <Content Include="img\body\worldpay.gif" />
+    <Content Include="img\header\autumn-bird.jpg" />
     <Content Include="img\header\buttercups-v2.jpg" />
     <Content Include="img\header\buttercups.jpg" />
     <Content Include="img\header\desktop.png" />
