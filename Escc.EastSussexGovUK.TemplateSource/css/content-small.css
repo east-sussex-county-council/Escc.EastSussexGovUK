@@ -59,7 +59,7 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 .text-content .xml, .text-content a[href$=".xml"] { background-position: 0 -196px; }
 .text-content .pdf, .text-content a[href$=".pdf"] { background-position: 0 -246px; }
 .text-content .doc, .text-content .rtf, .text-content a[href$=".doc"], .text-content a[href$=".docx"], .text-content a[href$=".dot"], .text-content a[href$=".dotx"], .text-content a[href$=".rtf"] { background-position: 0 -296px; }
-.text-content .xls, .text-content a[href$=".xls"], .text-content a[href$=".xlsx"], .text-content a[href$=".xlt"], .text-content a[href$=".xltx"], .text-content a[href$=".csv"] { background-position: 0 -346px; }
+.text-content .xls, .text-content .csv, .text-content a[href$=".xls"], .text-content a[href$=".xlsx"], .text-content a[href$=".xlt"], .text-content a[href$=".xltx"], .text-content a[href$=".csv"] { background-position: 0 -346px; }
 .text-content .wma, .text-content a[href$=".wma"] { background-position: 0 -398px;  }
 .text-content .mp3, .text-content a[href$=".mp3"] { background-position: 0 -448px; }
 .text-content .ppt, .text-content a[href$=".ppt"], .text-content a[href$=".pptx"], .text-content a[href$=".pps"], .text-content a[href$=".ppsx"], .text-content a[href$=".pot"], .text-content a[href$=".potx"] { background-position: left -1746px; }
@@ -69,6 +69,7 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 .text-content .twitter, .text-content a[href*="twitter.com"] { background-position: 0 -1298px; }
 .text-content .facebook, .text-content a[href*="facebook.com"] { background-position: 0 -1348px; }
 .text-content .youtube, .text-content a[href*="youtube.com"] { background-position: 0 -1398px; }
+.text-content .instagram, .text-content a[href*="instagram.com"] { background-position: 0 -3147px; }
 .text-content .flickr, .text-content a[href*="flickr.com"] { background-position: 0 -1448px; }
 .text-content a[href$="/print"] { background-position: 0 -696px; }
 

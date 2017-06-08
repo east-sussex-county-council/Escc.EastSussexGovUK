@@ -102,8 +102,8 @@ html { overflow-y: scroll; }
 */
 .header .size, .header-v2 .size { display: block; position: absolute; right: 6em; }
 .header .size a, .header-v2 .size a { padding: 7px 10px 7px 20px; float: left; color: #777; }
-.header .size .zoom-in, .header-v2 .size .zoom-in { background: url(../img/body/item-type.png?v=2) no-repeat 0 -1491px; }
-.header .size .zoom-out, .header-v2 .size .zoom-out { background: url(../img/body/item-type.png?v=2) no-repeat 0 -1538px; }
+.header .size .zoom-in, .header-v2 .size .zoom-in { background: url(../img/body/item-type.png?v=3) no-repeat 0 -1491px; }
+.header .size .zoom-out, .header-v2 .size .zoom-out { background: url(../img/body/item-type.png?v=3) no-repeat 0 -1538px; }
 
 /* Set the space above 'contact us' to align the ascender height with the top of the ESCC logo */
 .header .contact, .header-v2 .contact { padding: 7px 0; }

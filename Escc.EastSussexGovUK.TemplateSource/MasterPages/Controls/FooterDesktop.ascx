@@ -7,7 +7,7 @@
         <div class="online">
             <nav>
             <h2>Find us online</h2>
-            <p class="social"><a href="/contact-us/socialmedia/our-social-media-sites/" id="social" runat="server" enableviewstate="false"><span class="twitter"><span class="facebook"><span class="youtube"><span class="flickr"><span class="find">Find us on social media</span></span></span></span></span></a></p>
+            <p class="social"><a href="/contact-us/socialmedia/our-social-media-sites/" id="social" runat="server" enableviewstate="false"><span class="twitter"><span class="facebook"><span class="instagram"><span class="youtube"><span class="find">Find us on social media</span></span></span></span></span></a></p>
             <ul>
             <li><a href="/about-this-site/" id="about" runat="server" accesskey="8" enableviewstate="false">About this site</a></li>
             <li><a href="/about-this-site/privacy-and-cookies-on-this-site/" id="privacy" runat="server" enableviewstate="false">Privacy and cookies</a></li>

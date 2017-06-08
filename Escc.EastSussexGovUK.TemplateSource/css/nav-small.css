@@ -10,7 +10,7 @@
    Extra weight from body selector ensures this beats standard h2 in IE8.
 */
 body .landing-section h2 {font-size: 1em;line-height: 1.5em; font-weight: bold;background: #aee1f4;padding: .5625em;}
-.landing-section h2 a:after {content: ''; padding: 0 30px 0 0;margin-right: -15px; background: url(/img/body/item-type.png?v=2) no-repeat right -592px;}
+.landing-section h2 a:after {content: ''; padding: 0 30px 0 0;margin-right: -15px; background: url(/img/body/item-type.png?v=3) no-repeat right -592px;}
 
 /* Previous and next navigation in a series of pages. Designed to work inside .text-content. 
    Layout is consistent at all sizes, with floated blocks and contained using overflow: hidden. 

@@ -393,7 +393,7 @@ body .footer .footer-content { padding-top: 1.153846em; }
 .section-nav { clear: both; background: #dae1e5; padding: 1.076953em; }
 .section-nav img { display: none; }
 .section-nav ul { margin: 0; }
-.section-nav li { list-style: none; background: url(../img/body/item-type.png?v=2) no-repeat left -596px; padding: 0 0 .692308em 1.076953em; }
+.section-nav li { list-style: none; background: url(../img/body/item-type.png?v=3) no-repeat left -596px; padding: 0 0 .692308em 1.076953em; }
 
 @media print { .section-nav { padding-left: 0; padding-right: 0; } }
 
@@ -530,9 +530,9 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
    Change list bullets to blue. */
 .supporting-text { clear: both; margin: 1.384615em 0; border-top: 1px solid #dae1e5; padding: 1.307692em 18px 0; }
 .supporting-text h2 { font-size: 1.230769em; line-height: 1.125em; font-weight: bold; }
-.supporting-text h2 a { font-weight: normal; padding-right: 32px; background: url(../img/body/item-type.png?v=2) no-repeat right -595px; }  
+.supporting-text h2 a { font-weight: normal; padding-right: 32px; background: url(../img/body/item-type.png?v=3) no-repeat right -595px; }  
 .supporting-text ul { margin: 9px 0; }
-.supporting-text li { list-style: none; background: url(../img/body/item-type.png?v=2) no-repeat 0 -995px; padding-left: 16px; }
+.supporting-text li { list-style: none; background: url(../img/body/item-type.png?v=3) no-repeat 0 -995px; padding-left: 16px; }
 
 @media print { .supporting-text { padding-left: 0; padding-right: 0; } }
 
@@ -552,10 +552,10 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 @media screen
 {
 .hcal, a[href$=".calendar"], .rss, .email, .rss-email, .xml, a[href$=".xml"], .pdf, a[href$=".pdf"], .wma, a[href$=".wma"], .mp3, a[href$=".mp3"],
-.doc, .docx, a[href$=".doc"], a[href$=".docx"], a[href$=".dot"], a[href$=".dotx"], .rtf, a[href$=".rtf"], .xls, a[href$=".xls"], a[href$=".xlsx"], a[href$=".xlt"], a[href$=".xltx"], a[href$=".csv"], 
+.doc, .docx, a[href$=".doc"], a[href$=".docx"], a[href$=".dot"], a[href$=".dotx"], .rtf, a[href$=".rtf"], .xls, a[href$=".xls"], a[href$=".xlsx"], a[href$=".xlt"], a[href$=".xltx"], .csv, a[href$=".csv"], 
 .ppt, a[href$=".ppt"], a[href$=".pptx"], a[href$=".pps"], a[href$=".ppsx"], a[href$=".pot"], a[href$=".potx"], .jpg, a[href$=".jpg"], a[href$=".jpeg"], .html, .file, 
-.new-window, .facebook, a[href*="facebook.com"], .twitter, a[href*="twitter.com"], .youtube, a[href*="youtube.com"], a[href*="youtu.be"], .flickr, a[href*="flickr.com"], a[href$="/print"]
-{ background-image: url(../img/body/item-type.png?v=2); background-repeat: no-repeat; padding-left: 23px; }
+.new-window, .facebook, a[href*="facebook.com"], .twitter, a[href*="twitter.com"], .youtube, a[href*="youtube.com"], a[href*="youtu.be"], .instagram, a[href*="instagram.com"], .flickr, a[href*="flickr.com"], a[href$="/print"]
+{ background-image: url(../img/body/item-type.png?v=3); background-repeat: no-repeat; padding-left: 23px; }
 
 .hcal, a[href$=".calendar"] { background-position: 0 0; }
 .rss { background-position: 0 -48px; }
@@ -575,6 +575,7 @@ a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space spli
 .facebook, a[href*="facebook.com"] { background-position: 0 -1350px; padding-left: 20px; }
 .youtube, a[href*="youtube.com"], a[href*="youtu.be"] { background-position: 0 -1400px; padding-left: 20px; }
 .flickr, a[href*="flickr.com"] { background-position: 0 -1450px; padding-left: 20px; }
+.instagram, a[href*="instagram.com"] { background-position: 0 -3150px; padding-left: 20px; }
 [href$="/print"] { background-position: 0 -700px; }
 
 /* Don't add nested icons for structure used by social media mobile control:

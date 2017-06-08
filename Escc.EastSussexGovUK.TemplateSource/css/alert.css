@@ -5,7 +5,7 @@
  */
 .alert { clear: both; border-top: .153846em solid #dcde74; border-bottom: .153846em solid #dcde74; background: #ffc; color: #000; }
 .alert > div > strong { position: relative;display: block; padding: 1.076923em 18px .153846em 50px; font-weight: normal;}
-.alert .icon { position: absolute; left: 0; top: 0; width: 40px; height: 40px; background: url(../img/body/item-type.png?v=2) no-repeat 14px -1640px; }
+.alert .icon { position: absolute; left: 0; top: 0; width: 40px; height: 40px; background: url(../img/body/item-type.png?v=3) no-repeat 14px -1640px; }
 .alert h2 { font-weight: bold; }
 .alert p { margin: 0 0 .692308em; }
 

@@ -27,6 +27,6 @@ body { background: #fff; }
    </div>
 */
 .full-screen-bar { margin-top: .153846em; height: 2.153846em; border-bottom: .307692em solid #BED600; background: #fff; }
-.full-screen-bar h1 { font-size: 1.076923em; float: left; line-height: 1.73em; padding: .153846em 32px 0 8px; color: #272727; font-weight: bold; background: url(../img/body/item-type.png?v=2) no-repeat right -589px; margin-right: -18px; }
+.full-screen-bar h1 { font-size: 1.076923em; float: left; line-height: 1.73em; padding: .153846em 32px 0 8px; color: #272727; font-weight: bold; background: url(../img/body/item-type.png?v=3) no-repeat right -589px; margin-right: -18px; }
 .full-screen-bar p { float: left; line-height: 2.153846em; padding: 0 8px; color: #272727; }
 .full-screen-bar .accessible { float: right; }

@@ -65,7 +65,7 @@
 .text-content .xml, .text-content a[href$=".xml"] { background-position: 0 -194px; }
 .text-content .pdf, .text-content a[href$=".pdf"] { background-position: 0 -244px; }
 .text-content .doc, .text-content .rtf, .text-content a[href$=".doc"], .text-content a[href$=".docx"], .text-content a[href$=".dot"], .text-content a[href$=".dotx"], .text-content a[href$=".rtf"] { background-position: 0 -294px; }
-.text-content .xls, .text-content a[href$=".xls"], .text-content a[href$=".xlsx"], .text-content a[href$=".xlt"], .text-content a[href$=".xltx"], .text-content a[href$=".csv"] { background-position: 0 -344px; }
+.text-content .xls, .text-content .csv, .text-content a[href$=".xls"], .text-content a[href$=".xlsx"], .text-content a[href$=".xlt"], .text-content a[href$=".xltx"], .text-content a[href$=".csv"] { background-position: 0 -344px; }
 .text-content .wma, .text-content a[href$=".wma"] { background-position: 0 -396px;  }
 .text-content .mp3, .text-content a[href$=".mp3"] { background-position: 0 -446px; }
 .text-content .ppt, .text-content a[href$=".ppt"], .text-content a[href$=".pptx"], .text-content a[href$=".pps"], .text-content a[href$=".ppsx"], .text-content a[href$=".pot"], .text-content a[href$=".potx"] { background-position: left -1744px; }
@@ -75,6 +75,7 @@
 .text-content .twitter, .text-content a[href*="twitter.com"] { background-position: 0 -1296px; }
 .text-content .facebook, .text-content a[href*="facebook.com"] { background-position: 0 -1346px; }
 .text-content .youtube, .text-content a[href*="youtube.com"] { background-position: 0 -1396px; }
+.text-content .instagram, .text-content a[href*="instagram.com"] { background-position: 0 -3145px; }
 .text-content .flickr, .text-content a[href*="flickr.com"] { background-position: 0 -1446px; }
 .text-content a[href$="/print"] { background-position: 0 -694px; }
 
