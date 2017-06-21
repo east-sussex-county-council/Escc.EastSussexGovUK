@@ -73,7 +73,7 @@
       <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CouncilPlan" value="object-src https://eastsussexgovuk.blob.core.windows.net; frame-src 'self' https://eastsussexgovuk.blob.core.windows.net https://new.eastsussex.gov.uk;" xdt:Transform="Insert"/>
       <add key="OrdnanceSurveyMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="OrdnanceSurveyMaps" value="script-src https://maps2.eastsussex.gov.uk https://cdnjs.cloudflare.com https://serverapi.arcgisonline.com 'unsafe-eval'; style-src https://serverapi.arcgisonline.com 'unsafe-inline'; img-src https://serverapi.arcgisonline.com https://maps2.eastsussex.gov.uk" xdt:Transform="Insert" />
+      <add key="OrdnanceSurveyMaps" value="script-src https://maps1.eastsussex.gov.uk https://maps2.eastsussex.gov.uk https://cdnjs.cloudflare.com https://serverapi.arcgisonline.com 'unsafe-eval'; style-src https://serverapi.arcgisonline.com 'unsafe-inline'; img-src https://maps1.eastsussex.gov.uk https://serverapi.arcgisonline.com https://maps2.eastsussex.gov.uk" xdt:Transform="Insert" />
     </ContentSecurityPolicies>
     <ContentSecurityPolicySettings xdt:Transform="Insert" />
     <ContentSecurityPolicySettings xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.Web/ContentSecurityPolicySettings[2])" />
