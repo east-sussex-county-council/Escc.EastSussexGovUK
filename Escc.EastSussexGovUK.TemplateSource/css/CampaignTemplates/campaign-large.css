@@ -1,0 +1,51 @@
+﻿/* Update gutter for large grid. */
+.campaign-landing .body .container {position: relative; padding-left: 1.863354%;padding-right: 1.863354%;}
+
+/* In this design the breadcrumb indent looks very odd, so remove it. */
+.campaign-landing .breadcrumb { padding-left: 0;}
+
+/* Make the container a positioning context so that we can place elements on the right. */
+.campaign-content .body .container {position: relative; }
+
+/* Upper and lower images should move into in the right column alongside .article. 
+   Max-width now equates to 4 columns within 12 col context of 966px.
+*/
+.campaign-image { position: absolute; right: 0;width: 32.0911%;text-align: center; }
+.campaign-image img { float: none;display: inline-block; margin: 0;max-width: 100%; }
+
+/* Pull quotes should move into in the right column alongside .article.
+  Quote now occupies 4 columns within 12 col context of 966px. Horizontal padding remains 36px and width is the remainder.
+*/
+blockquote.pull-quote {float: none; position: absolute; right: 0; width: 24.637681%; padding: 1em 3.726708%; margin: 0;}
+
+/* Central quote 
+
+   Remove existing padding from .pull-quote-with-image and move to div. Matching padding and negative margins on .pull-quote-with-image now serve to extend the 
+   background band out beyond the edge of the screen. Values simply represent "a lot", and the right padding was established through trial and error.
+
+   There is a div inside .pull-quote-with-image which restablishes a positioning context equal to the width of .container less the 18px left margin of .content.
+   This context is used to position the image, and to restrict its size to 4 columns (310px).
+   padding-right within the div restricts the quote text width so that it doesn't overlap the image.
+   
+   Font updates to 36px/45px on 19px base font. Quote marks are 85/27px.
+*/
+.pull-quote-with-image {padding: 0 144.8% 0 100%; margin-right: -200%; margin-left: -100%; overflow: visible; }
+.pull-quote-with-image div { position: relative;padding: 36px 55% 36px 0;}
+.pull-quote-with-image img { border: none; top: auto; bottom: 0; max-width: 32.700422%;}
+.pull-quote-with-image p {font-size: 1.894737em;line-height: 1.25em; }
+.pull-quote-with-image span {font-size: 2.361em;line-height: .317647em; }
+
+
+/* Final quote. Increase font to 35px/45px, and retain vertical margin at 27px.
+   Absolute positioning within .container now moves the image into the right column, so remove the right padding. max-width still there to contain image to right column. */
+.before-final-quote, .before-final-quote-medium { margin-right: 0; }
+.with-final-quote blockquote.final-quote {margin: .771429em 0; font-size: 1.842105em; line-height: 1.285714em;padding-right: 0; }
+.with-final-quote img.final-quote { max-width: 32.0911%; }
+.final-quote .attribution {font-size: .542857em; position: relative; top: -2px; }
+
+/* Tiles on the campaign tiles template - split into 3 columns - width is 4 cols in 12 col context */
+.campaign-tiles ul.tiles li {margin-left: 0;width: 32.0911%; }
+.campaign-tiles ul.tiles li.odd { clear: none;margin-right:0;}
+.campaign-tiles ul.tiles li.group1 { clear: left; }
+.campaign-tiles ul.tiles li.group1, .campaign-tiles ul.tiles li.group2 {  margin-right: 1.863354%; }
+.campaign-tiles ul.tiles li.group3 { margin-right: 0;}
