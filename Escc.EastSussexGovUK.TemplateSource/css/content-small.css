@@ -77,7 +77,7 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
 .text-content .quick-answer { font-size: 1.6875em; }
 
 /* Latest box to highlight new content. Just a coloured background with otherwise standard styles. */
-.text-content .latest { background: #ccc; padding: 1.125em 18px; margin: 1.125em 0; }
+.text-content .latest { background: #ddd; padding: 1.125em 18px; margin: 1.125em 0; }
 .text-content .latest h2 { margin: 0;}
 .text-content .latest p:last-child { margin-bottom: 0;}
 
