@@ -239,6 +239,23 @@
     <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="css\1space.css" />
     <Content Include="css\alert.css" />
+    <Content Include="css\CampaignTemplates\align-buttons-flex.css" />
+    <Content Include="css\CampaignTemplates\align-buttons-large.css" />
+    <Content Include="css\CampaignTemplates\align-buttons-medium.css" />
+    <Content Include="css\CampaignTemplates\align-buttons-reset-flex.css" />
+    <Content Include="css\CampaignTemplates\align-buttons-reset.css" />
+    <Content Include="css\CampaignTemplates\align-intro-large.css" />
+    <Content Include="css\CampaignTemplates\align-intro-medium.css" />
+    <Content Include="css\CampaignTemplates\align-intro-reset.css" />
+    <Content Include="css\CampaignTemplates\align-landing-nav-large.css" />
+    <Content Include="css\CampaignTemplates\align-landing-nav-medium.css" />
+    <Content Include="css\CampaignTemplates\align-landing-nav-reset.css" />
+    <Content Include="css\CampaignTemplates\campaign-large.css" />
+    <Content Include="css\CampaignTemplates\campaign-medium.css" />
+    <Content Include="css\CampaignTemplates\campaign-print.css" />
+    <Content Include="css\CampaignTemplates\campaign-small.css" />
+    <Content Include="css\CampaignTemplates\share-panel.css" />
+    <Content Include="css\CampaignTemplates\share-white.css" />
     <Content Include="css\content-large.css" />
     <Content Include="css\content-medium.css" />
     <Content Include="css\content-small.css" />
@@ -558,6 +575,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
