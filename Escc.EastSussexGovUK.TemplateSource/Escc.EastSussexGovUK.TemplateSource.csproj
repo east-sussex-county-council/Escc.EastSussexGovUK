@@ -229,14 +229,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="apple-touch-icon-114x114.png" />
-    <Content Include="apple-touch-icon-57x57.png" />
-    <Content Include="apple-touch-icon-72x72.png" />
-    <Content Include="apple-touch-icon.png" />
-    <Content Include="apple-touch-icon-precomposed-114x114.png" />
-    <Content Include="apple-touch-icon-precomposed-57x57.png" />
-    <Content Include="apple-touch-icon-precomposed-72x72.png" />
-    <Content Include="apple-touch-icon-precomposed.png" />
+    <EmbeddedResource Include="apple-touch-icon-114x114.png" />
+    <EmbeddedResource Include="apple-touch-icon-57x57.png" />
+    <EmbeddedResource Include="apple-touch-icon-72x72.png" />
+    <EmbeddedResource Include="apple-touch-icon.png" />
+    <EmbeddedResource Include="apple-touch-icon-precomposed-114x114.png" />
+    <EmbeddedResource Include="apple-touch-icon-precomposed-57x57.png" />
+    <EmbeddedResource Include="apple-touch-icon-precomposed-72x72.png" />
+    <EmbeddedResource Include="apple-touch-icon-precomposed.png" />
     <Content Include="css\1space.css" />
     <Content Include="css\alert.css" />
     <Content Include="css\CampaignTemplates\align-buttons-flex.css" />
@@ -324,8 +324,8 @@
     <None Include="css\tiles-small.css" />
     <Content Include="css\umbraco-preview.css" />
     <Content Include="default.aspx" />
-    <Content Include="favicon.ico" />
-    <Content Include="googledb369ad0fa294f54.html" />
+    <EmbeddedResource Include="favicon.ico" />
+    <EmbeddedResource Include="googledb369ad0fa294f54.html" />
     <Content Include="img\body\item-type.png" />
     <Content Include="img\body\map-placemarker.png" />
     <Content Include="img\body\gradient.jpg" />
@@ -468,7 +468,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="windows-tile.png" />
+    <EmbeddedResource Include="windows-tile.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EastSussexGovUK_Mvc.cs" />
@@ -559,7 +559,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="robots.txt" />
+    <EmbeddedResource Include="robots.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\Web.config" />
