@@ -157,7 +157,7 @@
       <add key="EmbedGoogleMaps" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/embed-googlemaps.js" xdt:Transform="Insert" />
 
       <add key="2_Tips" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_Tips" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/tips.js" xdt:Transform="Insert" />
+      <add key="2_Tips" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/beautytips.min.js" xdt:Transform="Insert" />
       <add key="DescribedByTips" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="DescribedByTips" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/describedby-tips.js" xdt:Transform="Insert" />
 
