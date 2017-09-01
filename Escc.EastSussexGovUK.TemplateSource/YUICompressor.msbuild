@@ -58,5 +58,6 @@
     <JavaScriptCompressorTask SourceFiles="js/webchat.js" OutputFile="js/min/webchat.js" />
     <JavaScriptCompressorTask SourceFiles="js/umbraco-preview.js" OutputFile="js/min/umbraco-preview.js" />
     <JavaScriptCompressorTask SourceFiles="js/escis.js" OutputFile="js/min/escis.js" />
+    <JavaScriptCompressorTask SourceFiles="js/tips.js" OutputFile="js/min/tips.js" />
   </Target>
 </Project>

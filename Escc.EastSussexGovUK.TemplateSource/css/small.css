@@ -241,6 +241,12 @@ background: linear-gradient(top, #00a1de 0%,#47cbed 99%); /* W3C */
 
 .major-action a:link, .major-action a:visited { text-decoration: none; font-weight: bold; color: #fff; } 
 
+/**
+ * Pop-up tip content using BeautyTips.js by Jeff Robbins https://github.com/east-sussex-county-council/BeautyTips
+ * This line height is not on the baseline grid but that's OK as the tips are superimposed over the main content, not flowing within it.
+ * The tip bubble itself needs styles set in JavaScript, not CSS, as it's drawn using canvas.
+ */
+.bt-content { font: 16px/24px 'Source Sans Pro', Arial, "Helvetica Neue", Helvetica, sans-serif; color: #131313; }
 
 /**********************
  * LIQUID COLUMN GRID *

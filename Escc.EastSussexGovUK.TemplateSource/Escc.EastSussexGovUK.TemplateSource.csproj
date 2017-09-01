@@ -370,10 +370,13 @@
     <Content Include="img\header\header.psd" />
     <None Include="img\body\social.psd" />
     <None Include="img\Web.example.config" />
+    <Content Include="js\libs\beautytips.min.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\libs\jquery-1.9.1.min.js" />
     <Content Include="js\libs\modernizr-custom.js" />
+    <Content Include="js\min\tips.js" />
+    <None Include="js\tips.js" />
     <Content Include="MasterPages\Web.config" />
     <None Include="MasterPages\Web.example.config" />
     <None Include="js\1space.js" />

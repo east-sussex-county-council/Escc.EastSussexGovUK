@@ -118,7 +118,7 @@
 
     <ScriptFiles>
       <add key="HandlerPath" value="https://www.eastsussex.gov.uk/js/{0}.jsx" xdt:Transform="Insert" />
-      <add xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework/CssFiles/add[@key='HandlerPath'][2])" />
+      <add xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework/ScriptFiles/add[@key='HandlerPath'][2])" />
 
       <add key="HandlerPlaceholder" value="javascript" xdt:Transform="Insert" />
       <add xdt:Transform="Remove" xdt:Locator="XPath(/configuration/Escc.ClientDependencyFramework/ScriptFiles/add[@key='HandlerPlaceholder'][2])" />
@@ -193,6 +193,8 @@
       <add key="SocialMedia" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/social-media.js" xdt:Transform="Insert" />
       <add key="SwitchView" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="SwitchView" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/switch-view.js" xdt:Transform="Insert" />
+      <add key="Tips" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Tips" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/tips.js" xdt:Transform="Insert" />
       <add key="Typekit" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Typekit" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/typekit.js" xdt:Transform="Insert" />
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />

@@ -86,6 +86,7 @@
       <add key="SocialMedia" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="SwitchView" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Typekit" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Tips" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     </ScriptFiles>
   </Escc.ClientDependencyFramework>
