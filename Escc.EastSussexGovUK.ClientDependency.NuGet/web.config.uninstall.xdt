@@ -66,6 +66,9 @@
       <add key="GoogleMapsMarkerClusterer" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="EmbedGoogleMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
 
+      <add key="2_Tips" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="DescribedByTips" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+
       <add key="3_CascadingContent" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Alert" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Banners" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -86,7 +89,6 @@
       <add key="SocialMedia" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="SwitchView" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Typekit" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Tips" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     </ScriptFiles>
   </Escc.ClientDependencyFramework>

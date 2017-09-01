@@ -375,8 +375,8 @@
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\libs\jquery-1.9.1.min.js" />
     <Content Include="js\libs\modernizr-custom.js" />
-    <Content Include="js\min\tips.js" />
-    <None Include="js\tips.js" />
+    <Content Include="js\min\describedby-tips.js" />
+    <None Include="js\describedby-tips.js" />
     <Content Include="MasterPages\Web.config" />
     <None Include="MasterPages\Web.example.config" />
     <None Include="js\1space.js" />

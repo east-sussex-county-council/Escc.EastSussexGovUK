@@ -35,7 +35,7 @@
             // WCAG 2.1: The pop-up tip may obscure other essential content, so provide a way to close it using a keyboard shortcut.
             .keyup(function (e) {
                 // Look for Ctrl+Alt+x pressed when the form element is focussed. This actually toggles the pop-up help rather than just closing it.
-                if (e.ctrlKey && e.altKey && e.keyCode ==88) {
+                if (e.ctrlKey && e.altKey && e.keyCode === 88) {
                     $(this).btOff().focus();
                 }
             });
