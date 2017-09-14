@@ -11,6 +11,7 @@ This project provides the template and some sitewide features for www.eastsussex
 * [Web chat](WebChat.md)
 * [Redirects and custom errors](RedirectsAndCustomErrors.md)
 * [RSS feed styles](RSS.md)
+* [Pop-up tips for form controls](Tips.md) (used for GDPR compliance)
 
 ## Development setup steps
 

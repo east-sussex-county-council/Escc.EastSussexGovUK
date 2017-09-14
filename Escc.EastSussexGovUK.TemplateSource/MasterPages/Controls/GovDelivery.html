@@ -2,10 +2,11 @@
     <form class="form simple-form" accept-charset="UTF-8" action="https://public.govdelivery.com/accounts/UKESCC/subscribers/qualify" method="post">
         <h2>Keep me posted</h2>
         <p>Our free email alerts will help keep you up to date with the things that matter to you.</p>
-        <p><label for="email">Enter your email address to get started or to edit your account:</label></p>
+        <p><label for="govdelivery-email">Enter your email address to get started or to edit your account:</label></p>
         <input name="utf8" type="hidden" value="✓" />
         <input name="authenticity_token" type="hidden" value="9mhPWnfSulH9jMcPB3xKjXtxuYo28AoqrrVJ1prvUyI=" />
-        <input type="email" id="email" name="email" class="email" />
+        <input type="email" id="govdelivery-email" name="email" class="email" aria-describedby="govdelivery-help" data-tip-positions="top bottom" />
+        <p id="govdelivery-help">Your email is shared with a third party, used only for the newsletters you select.</p>
         <input type="submit" value="Sign up" class="button" />
     </form>
 </div></div>
