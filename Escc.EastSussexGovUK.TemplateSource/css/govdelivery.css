@@ -1,5 +1,6 @@
 ﻿/* Set the background for the GovDelivery area which slides into view. */
 #govdelivery, #govdelivery .form { background: black; color: #fff;margin: 0;}
+#govdelivery a:link, #govdelivery a:visited { color: #fff; }
 
 /* Place icon before h2, taking up three grid lines of space (54px), which is smaller than the image as negative margins are used */
 #govdelivery h2:before { content: ' ';display: inline-block; width: 64px; height: 64px;border-radius: 32px; background: #B21313 url(../img/body/navigation.png) no-repeat -436px -406px; 

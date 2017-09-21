@@ -16,11 +16,6 @@
                 var formsCssLoaded = ($("link[rel=stylesheet]").filter(function() { return this.href.indexOf("formssmall") > -1 }).length > 0);
                 $('<link>').appendTo('head').attr({ type: 'text/css', rel: 'stylesheet', 'href': esccConfig.CssHandlerPath.replace('{0}', formsCssLoaded ? 'emailpanel' : 'emailpanel-formssmall') });
 
-                // Load extra JS for GDPR data protection message. Check first to see if it's already loaded.
-                if (typeof (jQuery.fn.bt) === 'undefined') {
-                    $('<script>').appendTo('body').attr({ async: true, 'src': esccConfig.JsHandlerPath.replace('{0}', 'describedbytips-tips') });
-                }
-
                 // Use code from https://github.com/johnkpaul/jquery-ajax-retry to mitigate against network errors, which are the main
                 // cause of no JavaScript according to gov.uk research https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/
                 //
@@ -31,9 +26,6 @@
                 // cached version and fails the CORS test.
                 $.ajax({ dataType: "html", url: esccConfig.MasterPagesBaseUrl + "/controls/govdelivery.html?vary=" + document.location.protocol + "//" + document.location.host }).retry({ times: 3 }).then(function (data) {
                     $(data).hide().insertBefore(".header, .header-v2").slideDown();
-                    if (typeof (jQuery.fn.describedByTip) !== 'undefined') {
-                        $("#govdelivery-email").describedByTip();
-                    }
                 });
 
             } else {
