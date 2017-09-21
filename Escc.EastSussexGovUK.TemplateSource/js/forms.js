@@ -42,11 +42,12 @@ if (typeof (jQuery) != 'undefined')
             {
                 var enables = "#" + this.getAttribute("data-enables");
                 $(dependentFields[groupName].join(",")).not(enables).slideUp();
-                $(enables).slideDown();
-
-                // Option chosen, so select the first field within that option
-                var fields = $("input,select,textarea", enables);
-                if (fields.length) fields[0].focus()
+                $(enables).slideDown({
+                    complete: function() {
+                        var fields = $("input,select,textarea", enables);
+                        if (fields.length) fields[0].focus();
+                    }
+                });
             }
         });
     });
