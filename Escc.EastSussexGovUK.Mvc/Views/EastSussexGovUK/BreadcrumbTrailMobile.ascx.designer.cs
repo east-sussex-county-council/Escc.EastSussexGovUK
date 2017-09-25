@@ -13,12 +13,12 @@ namespace Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK {
     public partial class BreadcrumbTrailMobile {
         
         /// <summary>
-        /// breadcrumb control.
+        /// smallCrumb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.EastSussexGovUK.Features.BreadcrumbTrailMobile breadcrumb;
+        protected global::Escc.EastSussexGovUK.Features.BreadcrumbTrailMobile smallCrumb;
     }
 }
