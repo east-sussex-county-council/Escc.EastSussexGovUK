@@ -20,11 +20,14 @@
         Html.RequiresJs(JsFileAlias.Resolve(requiredJs.JsFileAlias), requiredJs.Priority);
     }
 
-    var config = new ContentSecurityPolicyFromConfig();
-    foreach (var requiredPolicy in Model.RequiresContentSecurityPolicy())
+    if (!HttpContext.Current.Response.HeadersWritten)
     {
-        var policy = new ContentSecurityPolicyHeaders(HttpContext.Current.Response.Headers);
-        policy.AppendPolicy(config.Policies[requiredPolicy.Alias]);
-        policy.UpdateHeaders();
+        var config = new ContentSecurityPolicyFromConfig();
+        foreach (var requiredPolicy in Model.RequiresContentSecurityPolicy())
+        {
+            var policy = new ContentSecurityPolicyHeaders(HttpContext.Current.Response.Headers);
+            policy.AppendPolicy(config.Policies[requiredPolicy.Alias]);
+            policy.UpdateHeaders();
+        }
     }
 }
