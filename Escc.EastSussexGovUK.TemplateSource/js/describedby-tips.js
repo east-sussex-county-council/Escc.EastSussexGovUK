@@ -21,15 +21,15 @@
 
                 // Add user options to defaults for all matched elements.
                 // Do so inside .each so that we can go on to set options from data-* attributes within the scope of just this element.
+                //
+                // Don't use a closing animation because it created a bug where the tip would animate to transparent, then reappear, then disappear,
+                // and it would also block clicks to the element behind the tip, which might be a button or a link.
                 var optionsForThisElement = $.extend({
                     trigger: ['focus', 'blur'],
                     fill: '#ffc',
                     strokeStyle: '#c0c060',
                     showTip: function (box) {
                         $(box).fadeIn(500);
-                    },
-                    hideTip: function (box, callback) {
-                        $(box).animate({ opacity: 0 }, 500, callback);
                     },
                     shrinkToFit: true
                 }, options);
