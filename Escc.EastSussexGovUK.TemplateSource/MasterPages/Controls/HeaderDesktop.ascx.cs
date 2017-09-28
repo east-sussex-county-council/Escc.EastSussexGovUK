@@ -18,6 +18,14 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
         private string _textSizeUrl;
 
         /// <summary>
+        /// Gets or sets a value whether to show the text size control
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> to enable text size; otherwise, <c>false</c>.
+        /// </value>
+        public bool EnableTextSize { get; set; } = true;
+
+        /// <summary>
         /// Handles the Load event of the Page control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -155,7 +163,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
             // copies of the main site, so check for hostnames without a ., which must be internal servers.
             var host = Request.Url.Host;
             if (!String.IsNullOrEmpty(Request.QueryString["host"])) host = Request.QueryString["host"];
-            if (host.Contains(".") && !host.Contains(".eastsussex.gov.uk") && !host.Contains(".azurewebsites.net"))
+            if (!EnableTextSize || (host.Contains(".") && !host.Contains(".eastsussex.gov.uk") && !host.Contains(".azurewebsites.net")))
             {
                 this.textSize.Visible = false;
                 return;

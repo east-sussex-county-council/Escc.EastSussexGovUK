@@ -23,3 +23,19 @@ By default the link in the header goes to `/textsize/change` (implemented in [Es
 	</configuration>
 
 When using the remote master page this is prefixed by the `BaseUrl` setting configured on the site serving the remote template, creating an absolute link back to main site. This means that consumers of the remote template don't need to do anything to support the text size feature. 
+
+However, if a consuming application application needs to disable the text size feature because it's running on a top-level domain other than `*.eastsussex.gov.uk`, it can do so by adding `&enabletextsize=false` to the remote template URL.
+
+	<configuration>
+	  <configSections>
+	    <sectionGroup name="Escc.EastSussexGovUK">
+	      <section name="RemoteMasterPage" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+	    </sectionGroup>
+	  </configSections>
+	
+	  <Escc.EastSussexGovUK>
+	    <RemoteMasterPage>
+	      <add key="MasterPageControlUrl" value="/masterpages/remote/control.aspx?control={0}&amp;enabletextsize=false" />
+	    </RemoteMasterPage>
+	  <Escc.EastSussexGovUK>
+	</configuration>

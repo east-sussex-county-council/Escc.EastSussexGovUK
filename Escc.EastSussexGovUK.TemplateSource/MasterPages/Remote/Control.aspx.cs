@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Web;
+using Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls;
 using Escc.EastSussexGovUK.Views;
 using Escc.Web;
 
@@ -40,6 +41,18 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Remote
                     }
 
                     var usercontrol = LoadControl(String.Format(CultureInfo.InvariantCulture, localControlUrl, controlName));
+
+                    // Allow the text size control to be configured from the config of the calling application
+                    if (!String.IsNullOrEmpty(Request.QueryString["enabletextsize"]))
+                    {
+                        bool enableTextSize = true;
+                        if (Boolean.TryParse(Request.QueryString["enabletextsize"], out enableTextSize))
+                        {
+                            var header = usercontrol as HeaderDesktop;
+                            if (header != null) header.EnableTextSize = enableTextSize;
+                        }
+                    }
+
                     this.placeholder.Controls.Add(usercontrol);
                 }
                 catch (HttpException)
