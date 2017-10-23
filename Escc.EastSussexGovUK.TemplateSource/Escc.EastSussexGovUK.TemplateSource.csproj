@@ -413,7 +413,6 @@
     <Content Include="js\min\media-queries.js" />
     <Content Include="js\min\public-libraries.js" />
     <Content Include="js\min\social-media.js" />
-    <Content Include="js\min\switch-view.js" />
     <Content Include="js\min\thanks-for-analytics.js" />
     <None Include="js\social-media.js" />
     <None Include="js\thanks-for-analytics.js" />
@@ -433,7 +432,6 @@
     <None Include="js\media-queries.js" />
     <None Include="js\public-libraries.js" />
     <None Include="js\forms.js" />
-    <None Include="js\switch-view.js" />
     <None Include="js\embed-youtube.js" />
     <None Include="js\umbraco-preview.js" />
     <None Include="js\typekit.js" />

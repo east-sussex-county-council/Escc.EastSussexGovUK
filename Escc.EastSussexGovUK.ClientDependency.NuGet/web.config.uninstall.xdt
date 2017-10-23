@@ -87,7 +87,6 @@
       <add key="Navigation" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="PublicLibraries" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="SocialMedia" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="SwitchView" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Typekit" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     </ScriptFiles>

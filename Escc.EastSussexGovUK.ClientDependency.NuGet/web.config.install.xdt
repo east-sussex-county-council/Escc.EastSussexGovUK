@@ -196,8 +196,6 @@
       <add key="PublicLibraries" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/public-libraries.js" xdt:Transform="Insert" />
       <add key="SocialMedia" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="SocialMedia" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/social-media.js" xdt:Transform="Insert" />
-      <add key="SwitchView" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="SwitchView" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/switch-view.js" xdt:Transform="Insert" />
       <add key="Typekit" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Typekit" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/typekit.js" xdt:Transform="Insert" />
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />

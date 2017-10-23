@@ -52,7 +52,6 @@
     <JavaScriptCompressorTask SourceFiles="js/media-queries.js" OutputFile="js/min/media-queries.js" />
     <JavaScriptCompressorTask SourceFiles="js/public-libraries.js" OutputFile="js/min/public-libraries.js" />
     <JavaScriptCompressorTask SourceFiles="js/social-media.js" OutputFile="js/min/social-media.js" />
-    <JavaScriptCompressorTask SourceFiles="js/switch-view.js" OutputFile="js/min/switch-view.js" />
     <JavaScriptCompressorTask SourceFiles="js/thanks-for-analytics.js" OutputFile="js/min/thanks-for-analytics.js" />
     <JavaScriptCompressorTask SourceFiles="js/typekit.js" OutputFile="js/min/typekit.js" />
     <JavaScriptCompressorTask SourceFiles="js/webchat.js" OutputFile="js/min/webchat.js" />
