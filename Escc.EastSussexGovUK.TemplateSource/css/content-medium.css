@@ -10,6 +10,9 @@
     }
 }
 
+/* Align .breadcrumb-mobile with .content */
+body .breadcrumb-mobile { padding-left: 2.244389%;padding-right: 2.244389%; }
+
 /* Container for text content. Equivalent of .text in the default skin, but increasing the base font size to 19px/27px. */
 .text-content { font-size: 1.461538em; line-height: 1.421052em;}
 
