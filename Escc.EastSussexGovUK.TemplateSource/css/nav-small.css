@@ -31,3 +31,19 @@ body .landing-section h2 {font-size: 1em;line-height: 1.5em; font-weight: bold;b
 .prev-next a:after {font-size: 100px;line-height: 0;position: absolute;top: 10px;font-family: 'Open Sans', script;color: #aee1f4;}
 .prev-next [rel=prev]:after {content: '\2039';left: -4px;}
 .prev-next [rel=next]:after {content: '\203A';right: -3px;}
+
+/* Ensure all tab and accordion content is expanded for printing */
+@media print {
+    .tablist [role=tabpanel], .accordion [role=tabpanel] { display: block !important;}
+}
+
+@media screen {
+    /* Accordion headings are styled on-screen only; left as normal headings for print. 
+       Vertical padding and borders together add up to 18px; 
+       Use overflow to avoid margin collapsing as items expand/collapse.
+    */
+    .accordion { margin-top: 1.125em; }
+    .accordion h2[role=tab] { margin: 0;background: #ccc;padding: 0.4375em;border-bottom: .125em solid #fff;border-top: .125em solid #fff; cursor: pointer;}
+    .accordion h2:after { content: '\25bc';font-size: .5em;vertical-align: middle;padding-left: 1em; }
+    .accordion [role=tabpanel] { overflow: hidden; }
+}

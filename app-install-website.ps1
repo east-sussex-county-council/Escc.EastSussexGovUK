@@ -76,7 +76,7 @@ TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectN
 TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.temp2.config" "$PSScriptRoot\Escc.EastSussexGovUK.SecurityConfig.NuGet\web.config.install.xdt"
 TransformConfig "$destinationFolder\$projectName\web.temp2.config" "$destinationFolder\$projectName\web.temp3.config" "$PSScriptRoot\Escc.EastSussexGovUK.Metadata.NuGet\web.config.install.xdt"
 TransformConfig "$destinationFolder\$projectName\web.temp3.config" "$destinationFolder\$projectName\web.temp4.config" "$PSScriptRoot\Escc.EastSussexGovUK.TemplateSource\web.config.clientDependency.xdt"
-TransformConfig "$destinationFolder\$projectName\web.temp4.config" "$destinationFolder\$projectName\web.temp5.config" "$PSScriptRoot\Escc.EastSussexGovUK.ClientDependency.NuGet\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp4.config" "$destinationFolder\$projectName\web.temp5.config" "$PSScriptRoot\Escc.EastSussexGovUK.TemplateSource\NuGet\ClientDependency\web.config.install.xdt"
 TransformConfig "$destinationFolder\$projectName\web.temp5.config" "$destinationFolder\$projectName\web.config" "$transformsFolder\$projectName\web.release.config"
 del "$destinationFolder\$projectName\web.temp*.config"
 

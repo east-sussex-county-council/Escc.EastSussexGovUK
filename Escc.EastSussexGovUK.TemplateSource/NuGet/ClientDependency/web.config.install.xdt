@@ -168,6 +168,8 @@
       <add key="Banners" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Banners" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/banners.js" xdt:Transform="Insert" />
 
+      <add key="AccordionAndTabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="AccordionAndTabs" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/accordion-and-tabs.js" xdt:Transform="Insert" />
       <add key="AutoSuggest" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="AutoSuggest" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/googleautosuggest.js" xdt:Transform="Insert" />
       <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />

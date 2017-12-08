@@ -377,6 +377,7 @@
     <Content Include="js\libs\modernizr-custom.js" />
     <Content Include="js\min\describedby-tips.js" />
     <None Include="js\describedby-tips.js" />
+    <Content Include="js\accordion-and-tabs.js" />
     <Content Include="MasterPages\Web.config" />
     <None Include="MasterPages\Web.example.config" />
     <None Include="js\1space.js" />
@@ -459,6 +460,10 @@
     <None Include="js\config.example.js" />
     <None Include="css\Web.example.config" />
     <None Include="js\Web.example.config" />
+    <Content Include="NuGet\ClientDependency\Escc.EastSussexGovUK.ClientDependency.nuspec" />
+    <Content Include="NuGet\ClientDependency\web.config.install.xdt" />
+    <Content Include="NuGet\ClientDependency\web.config.uninstall.xdt" />
+    <Content Include="NuGet\ClientDependency\build-nuget.cmd" />
     <None Include="packages.config" />
     <Content Include="Views\web.config" />
     <None Include="Views\web.example.config" />
@@ -605,7 +610,9 @@
 if "$(ConfigurationName)" == "Release" del "$(ProjectDir)css\min\*.*" /Q 
 if "$(ConfigurationName)" == "Release" (if not exist "$(ProjectDir)js\min" md "$(ProjectDir)js\min")
 if "$(ConfigurationName)" == "Release" del "$(ProjectDir)js\min\*.*" /Q 
-if not "$(ESCC_MINIFY)"=="false" "$(MSBuildBinPath)\msbuild.exe" "$(ProjectDir)YUICompressor.msbuild" /p:ConfigurationName=$(ConfigurationName)</PostBuildEvent>
+if not "$(ESCC_MINIFY)"=="false" "$(MSBuildBinPath)\msbuild.exe" "$(ProjectDir)YUICompressor.msbuild" /p:ConfigurationName=$(ConfigurationName)
+
+if not "$(ESCC_MINIFY)"=="false" (if "$(ConfigurationName)"=="Release" "$(ProjectDir)NuGet\ClientDependency\build-nuget.cmd" $(ProjectDir)NuGet\ClientDependency\)</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -44,3 +44,5 @@ packages
 *.GhostDoc.xml
 web-chat-data.js
 Microsoft.CodeDom.*
+UpgradeLog*.htm
+.vs
