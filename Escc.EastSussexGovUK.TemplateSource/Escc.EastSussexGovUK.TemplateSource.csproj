@@ -460,14 +460,14 @@
     <None Include="js\config.example.js" />
     <None Include="css\Web.example.config" />
     <None Include="js\Web.example.config" />
-    <Content Include="NuGet\ClientDependency\Escc.EastSussexGovUK.ClientDependency.nuspec" />
-    <Content Include="NuGet\ClientDependency\web.config.install.xdt" />
-    <Content Include="NuGet\ClientDependency\web.config.uninstall.xdt" />
-    <Content Include="NuGet\ClientDependency\build-nuget.cmd" />
+    <None Include="NuGet\ClientDependency\Escc.EastSussexGovUK.ClientDependency.nuspec" />
+    <None Include="NuGet\ClientDependency\web.config.install.xdt" />
+    <None Include="NuGet\ClientDependency\web.config.uninstall.xdt" />
+    <None Include="NuGet\ClientDependency\build-nuget.cmd" />
     <None Include="packages.config" />
     <Content Include="Views\web.config" />
     <None Include="Views\web.example.config" />
-    <Content Include="web.config.clientDependency.xdt" />
+    <None Include="web.config.clientDependency.xdt" />
     <None Include="web.example.config">
       <SubType>Designer</SubType>
     </None>
