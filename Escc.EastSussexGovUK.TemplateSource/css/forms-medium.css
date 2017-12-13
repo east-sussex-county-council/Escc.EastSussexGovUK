@@ -77,3 +77,9 @@
 /*:: SERVICE FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 
 .text-content .service-form { margin: .947368em 0;}
+
+/*  This is the style from content-medium.css, but because client dependency loads 
+    content-small, content-medium, content-large, forms-small, forms-medium, forms-large, rather than
+    content-small, forms-small, content-medium, forms-medium, content-large, forms-large, the cascade is not as intended. */
+.text-content .service-form h2 { margin: .9em 0 .3em; }
+
