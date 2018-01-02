@@ -14,8 +14,8 @@ body .full-page, body .article { padding-bottom: 1.384615em; }
     .content .text { padding: 0; }
 }
 
-/* Align .breadcrumb-mobile with .content and change text size to 16px/18px */
-body .breadcrumb-mobile { padding-left: 3.797468%;padding-right: 3.797468%; font-size: 1.230769em; line-height: 1.125em; font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; }
+/* Align .breadcrumb-mobile with .content, remove the background panel and change text size to 16px/18px. Margin is 9px total (on 13px base font), but offset by .2em */
+body .breadcrumb-mobile { padding-left: 3.797468%;padding-right: 3.797468%; margin: -.2em 0 .892308em; font-size: 1.230769em; line-height: 1.125em; font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; background: none; box-shadow: none; }
 
 /* Container for text content. Equivalent of .text in the default skin, but increasing the base font size to 16px/24px.
 
