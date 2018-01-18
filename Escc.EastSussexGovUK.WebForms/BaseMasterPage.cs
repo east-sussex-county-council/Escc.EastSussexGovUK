@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web.UI;
 using Escc.EastSussexGovUK.Skins;
 using Escc.Web.Metadata;
+using Escc.Web;
 
 namespace Escc.EastSussexGovUK.WebForms
 {
@@ -71,6 +72,12 @@ namespace Escc.EastSussexGovUK.WebForms
             // ...but it doesn't work as ASP.NET ignores it. Also gzip uses Vary: Accept-encoding.
             // https://developers.google.com/webmasters/smartphone-sites/details
             // Response.AddHeader("Vary", "User-Agent");
+
+            // In rare circumstances Azure can return a value for Request.Url.Authority which is not correct. Since 
+            // Request.Url.Authority is used to load client-side assets, ensure it is always allowed by the content security policy.
+            new ContentSecurityPolicyHeaders(Response.Headers)
+                .AppendPolicy($"script-src {Request.Url.GetLeftPart(UriPartial.Authority)}; style-src {Request.Url.GetLeftPart(UriPartial.Authority)}; img-src {Request.Url.GetLeftPart(UriPartial.Authority)}")
+                .UpdateHeaders();
         }
 
         /// <summary>
