@@ -67,16 +67,21 @@ $transformsFolder = NormaliseFolderPath $transformsFolder
 
 BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
     
-robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png desktop.png pan-*.gif item-type.png social.png default.aspx logo-large.gif google*.html csc.* csi.* /XD aspnet_client obj Properties "Web References"
+robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png desktop.png pan-*.gif item-type.png social.png default.aspx control.aspx logo-large.gif google*.html GovDelivery.html *.ascx csc.* csi.* /XD aspnet_client obj Properties "Web References"
 if (!(Test-Path "$destinationFolder\$projectName\views")) {
 	md "$destinationFolder\$projectName\views"
 }
 copy "$sourceFolder\Views\web.example.config" "$destinationFolder\$projectName\views\web.config"
-TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.temp1.config" "$PSScriptRoot\Escc.EastSussexGovUK.Mvc.NuGet\web.config.install.xdt"
-TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.temp2.config" "$PSScriptRoot\Escc.EastSussexGovUK.SecurityConfig.NuGet\web.config.install.xdt"
+copy "$sourceFolder\MasterPages\Controls\web.example.config" "$destinationFolder\$projectName\MasterPages\Controls\web.config"
+
+TransformConfig "$sourceFolder\MasterPages\Remote\web.example.config" "$destinationFolder\$projectName\MasterPages\Remote\web.config" "$transformsFolder\$projectName\MasterPages\Remote\web.release.config"
+& "$transformsFolder\$projectName\MasterPages\Remote\UpdateClientDependencyVersion.ps1" -folder "$destinationFolder\$projectName\MasterPages\Remote"
+
+TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.temp1.config" "$PSScriptRoot\Escc.EastSussexGovUK.Mvc\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.temp2.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\SecurityConfig\web.config.install.xdt"
 TransformConfig "$destinationFolder\$projectName\web.temp2.config" "$destinationFolder\$projectName\web.temp3.config" "$PSScriptRoot\Escc.EastSussexGovUK.Metadata.NuGet\web.config.install.xdt"
 TransformConfig "$destinationFolder\$projectName\web.temp3.config" "$destinationFolder\$projectName\web.temp4.config" "$PSScriptRoot\Escc.EastSussexGovUK.TemplateSource\web.config.clientDependency.xdt"
-TransformConfig "$destinationFolder\$projectName\web.temp4.config" "$destinationFolder\$projectName\web.temp5.config" "$PSScriptRoot\Escc.EastSussexGovUK.TemplateSource\NuGet\ClientDependency\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp4.config" "$destinationFolder\$projectName\web.temp5.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\ClientDependency\web.config.install.xdt"
 TransformConfig "$destinationFolder\$projectName\web.temp5.config" "$destinationFolder\$projectName\web.config" "$transformsFolder\$projectName\web.release.config"
 del "$destinationFolder\$projectName\web.temp*.config"
 
