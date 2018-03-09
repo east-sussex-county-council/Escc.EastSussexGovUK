@@ -85,9 +85,13 @@ The container is now 10 columns or 802px wide.
 .text .tCol2 { width: 49%; float: right; }
 
 /* Search results where each result is a definition list of fields and values. This is its own section, not within .text. 
-   Gutter either side is 18px in 10 cols. */
-dl.itemDetail dt { clear: left; float: left; width: 22%; margin: 0 0 0 2.244389%; }
-dl.itemDetail dd { margin: 0 2.244389% .538462em 25%;  } /* 7px/13px between items */
+   Gutter either side is 18px in 10 cols. 
+
+   Update this layout only if flexbox is supported, as it's flexbox that lets us keep labels and values lined up when they wrap.
+*/
+.flexbox dl.itemDetail { display: flex; flex-wrap: wrap; }
+.flexbox dl.itemDetail dt { width: 20%; margin: 0 5% .538462em 2.244389%; }
+.flexbox dl.itemDetail dd { margin: 0 2.244389% .538462em 0; width: 70%; } /* 7px/13px between items */
 
 /* Share box now has room to put buttons side by side */
 .share .button-nav { float: left; margin: 0 .5em .692308em 0; }

@@ -283,8 +283,8 @@ html { overflow-y: scroll; }
 
 /* Search results where each result is a definition list of fields and values. This is its own section, not within .text.
    Change gutter at this size to 18px in 8 cols */
-dl.itemDetail dt { margin: 0 0 0 2.821317%; }
-dl.itemDetail dd { margin: 0 2.821317% .538462em 25%; } /* 7px/13px between items */
+.flexbox dl.itemDetail dt { width: 19.5%; margin: 0 5% .538462em 2.821317%; }
+.flexbox dl.itemDetail dd { margin: 0 2.821317% .538462em 0; width: 69.5%; } /* 7px/13px between items */
 
 /* Section nav appears above latest items and page content. Update two columns for 8 column grid.
    18px padding + 298px column + 18px gutter + 298px column + 18px padding = 638px/8 columns */
