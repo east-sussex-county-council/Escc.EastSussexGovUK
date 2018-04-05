@@ -39,11 +39,6 @@ namespace Escc.EastSussexGovUK.Features
         public string TwitterAccount { get; set; }
 
         /// <summary>
-        /// Gets or sets a Twitter widget script.
-        /// </summary>
-        public IHtmlString TwitterWidgetScript { get; set; }
-
-        /// <summary>
         /// Gets or sets the social media order, based on an ordered sequence of social media network names, eg "Facebook" and "Twitter".
         /// </summary>
         public IEnumerable<string> SocialMediaOrder { get; set; }

@@ -12,10 +12,7 @@ namespace Escc.EastSussexGovUK.Tests
         [Test]
         public void NotShownInPlainView()
         {
-              var model = new SocialMediaSettings()
-            {
-                TwitterWidgetScript = new HtmlString("script code here")
-            };
+            var model = new SocialMediaSettings();
 
             var feature = new FacebookLikeBox() {SocialMedia = model, EsccWebsiteView = EsccWebsiteView.Plain};
 

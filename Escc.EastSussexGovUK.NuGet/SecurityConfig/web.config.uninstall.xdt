@@ -13,7 +13,6 @@
       <add key="CrazyEgg" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Facebook" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Twitter" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="TwitterUnsafe" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="YouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />
