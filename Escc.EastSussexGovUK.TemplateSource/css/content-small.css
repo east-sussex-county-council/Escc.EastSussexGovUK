@@ -80,7 +80,9 @@ body .breadcrumb-mobile { padding-left: 3.797468%;padding-right: 3.797468%; marg
 .text-content .quick-answer { font-size: 1.6875em; }
 
 /* Latest box to highlight new content. Just a coloured background with otherwise standard styles. */
-.text-content .latest { background: #ddd; padding: 1.125em 18px; margin: 1.125em 0; }
+.text-content .latest { margin: 1.125em 0; }
+@media screen { .text-content .latest { background: #ddd; padding: 1.125em 18px; } }
+@media print { .text-content .latest { padding: 1.125em 0; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;}}
 .text-content .latest h2 { margin: 0;}
 .text-content .latest p:last-child { margin-bottom: 0;}
 
