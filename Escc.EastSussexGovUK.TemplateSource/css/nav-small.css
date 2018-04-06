@@ -1,9 +1,9 @@
 ﻿/* Hide the default numbering and position a number absolutely within the positioning context of the list item.
    Left padding allows numbers up to two digits to fit with consistent spacing.
 */
-.text-content .guide-nav { list-style: none;margin-left: 0;  }
-.text-content .guide-nav li { position: relative;padding-left: 6%;}
-.text-content .guide-nav .step-number {position: absolute;left: 0; top: 0 }
+.text-content ol.guide-nav { list-style: none;margin-left: 0;  }
+.text-content ol.guide-nav li { position: relative;padding-left: 6%;}
+.text-content ol.guide-nav .step-number {position: absolute;left: 0; top: 0 }
 
 /* Set headings to be full width with standard 16px/24px text, 9px padding. Add an arrow following the link, and padding to let it show.
    Use :after pseudo-element for the arrow so that Facebook, Twitter or document link icons don't overwrite it when they style the anchor element.

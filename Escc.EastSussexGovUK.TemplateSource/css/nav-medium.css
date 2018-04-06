@@ -1,11 +1,5 @@
 ﻿/*
-    .guide-nav is one list, split into two columns by floating the items in the first half.
-
-    1.122195% represents 9px within a 10 column context, and this is used at the right of column one and left of 
-    column two to create an 18px gutter on the grid. The .step-number has to have this specified separately because 
-    it's absolutely positioned and, because it's already within the context of half the space, its % movement is doubled.
-
-    .first-half width and padding adds up to 50% when you include the padding inherited from guide-step-small.css
+    .guide-nav is one list, split into two columns using CSS column-count.
 
     Below the list is padding, border and a margin adding up to 2 x 27px.
 
@@ -17,11 +11,11 @@
 .menu-toggle { display: none;}
 .menu-toggle-medium { display: block;}
 
-.text-content .guide-nav { overflow: hidden;padding-bottom: 1.368421em;border-bottom: 1px solid #ccc;margin: 1.421053em 0; display: block!important; }
+.text-content .guide-nav { column-count: 2; padding-bottom: 1.368421em;border-bottom: 1px solid #ccc;margin: 1.421053em 0; display: block!important; }
 .text-content .guide-nav li { font-size: .842105em;line-height: 1.125em;margin-bottom: .5625em; }
-.text-content .guide-nav .first-half { float: left;clear: left;padding-left: 4.5%; width: 44.377805%; padding-right: 1.122195%;}
-.text-content .guide-nav .second-half { margin-left: 50%;padding-left: 5.6%; }
-.text-content .guide-nav .second-half .step-number { left: 2.24439%; }
+
+.text-content ol.guide-nav li { padding-left: 8%; }
+.text-content ul.guide-nav li { margin-left: 1.153846em; }
 
 /* Font-size increases to 19px/27px, to keep in line with standard base font */
 .landing-section h2 { line-height: 1.421052em; border-radius: 5px;}
