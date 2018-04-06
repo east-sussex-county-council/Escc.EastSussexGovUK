@@ -5,6 +5,9 @@
 .text-content ol.guide-nav li { position: relative;padding-left: 6%;}
 .text-content ol.guide-nav .step-number {position: absolute;left: 0; top: 0 }
 
+.text-content ul.guide-nav { list-style: disc; margin-left: 0; }
+.text-content ul.guide-nav li { list-style: disc; margin-left: 1.153846em; }
+
 /* Set headings to be full width with standard 16px/24px text, 9px padding. Add an arrow following the link, and padding to let it show.
    Use :after pseudo-element for the arrow so that Facebook, Twitter or document link icons don't overwrite it when they style the anchor element.
    Extra weight from body selector ensures this beats standard h2 in IE8.

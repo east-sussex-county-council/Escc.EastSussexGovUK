@@ -15,7 +15,6 @@
 .text-content .guide-nav li { font-size: .842105em;line-height: 1.125em;margin-bottom: .5625em; }
 
 .text-content ol.guide-nav li { padding-left: 8%; }
-.text-content ul.guide-nav li { margin-left: 1.153846em; }
 
 /* Font-size increases to 19px/27px, to keep in line with standard base font */
 .landing-section h2 { line-height: 1.421052em; border-radius: 5px;}
