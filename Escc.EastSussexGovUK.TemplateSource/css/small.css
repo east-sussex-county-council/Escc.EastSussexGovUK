@@ -95,7 +95,7 @@ strong { font-weight: bold; }
 blockquote { quotes: none; }
 blockquote:before, blockquote:after { content: ''; content: none; }
 
-abbr[title] { border-bottom: 1px dotted; cursor: help; }
+abbr[title] { border-bottom: 1px dotted; cursor: help; text-decoration: none;}
 
 /* Align small print to baseline grid, 11px on 18px */
 small { font-size: .846154em; line-height: 1.636364em; }
