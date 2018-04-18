@@ -51,7 +51,7 @@
       <add key="CrazyEgg" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CrazyEgg" value="script-src https://script.crazyegg.com https://s3.amazonaws.com; img-src https://gtrk.s3.amazonaws.com https://s3.amazonaws.com" xdt:Transform="Insert" />
       <add key="Facebook" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Facebook" value="script-src https://connect.facebook.net 'unsafe-eval' 'unsafe-inline'; img-src https://www.facebook.com; style-src 'unsafe-inline'; frame-src https://*.facebook.com" xdt:Transform="Insert" />
+      <add key="Facebook" value="script-src https://connect.facebook.net; img-src https://www.facebook.com; frame-src https://*.facebook.com" xdt:Transform="Insert" />
       <add key="Twitter" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Twitter" value="script-src https://*.twitter.com https://*.twimg.com; frame-src https://*.twitter.com; style-src https://platform.twitter.com https://*.twimg.com 'unsafe-inline'; img-src https://*.twitter.com https://*.twimg.com data:; connect-src https://syndication.twitter.com" xdt:Transform="Insert" />
       <add key="YouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
