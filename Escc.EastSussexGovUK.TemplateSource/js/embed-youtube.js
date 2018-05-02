@@ -55,7 +55,7 @@ if (typeof (jQuery) !== 'undefined') {
         }
 
         // Embed YouTube videos
-        var youTube = new RegExp(/^https?:\/\/(youtu.be\/|www.youtube.com\/watch\?v=)([A-Za-z0-9_-]+)$/);
+        var youTube = new RegExp(/^https?:\/\/(youtu.be\/|www.youtube.com\/watch\?v=)([A-Za-z0-9_-]+)(&feature=youtu.be)?$/);
         var youTubeWidth = youTubeDimension("video-width", 450), 
             youTubeHeight = youTubeDimension("video-height", 253), 
             youTubeMaxWidth = youTubeDimension("video-max-width", 600),
