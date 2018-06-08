@@ -65,7 +65,17 @@
     <Content Include="header.png" />
     <Content Include="rss-xslt.css" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="build-nuget.cmd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Escc.EastSussexGovUK.Rss.nuspec" />
+    <None Include="Escc.EastSussexGovUK.Rss.targets" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Release" ("$(ProjectDir)build-nuget.cmd" $(ProjectDir))</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

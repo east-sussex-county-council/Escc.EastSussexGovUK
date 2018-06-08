@@ -270,6 +270,7 @@
     <Content Include="css\min\nav-large.css" />
     <Content Include="css\min\nav-medium.css" />
     <Content Include="css\min\nav-small.css" />
+    <Content Include="build-nuget.cmd" />
     <None Include="css\nav-large.css" />
     <None Include="css\nav-medium.css" />
     <None Include="css\nav-small.css" />
@@ -362,6 +363,8 @@
     <Content Include="img\header\xmas-lights.jpg" />
     <Content Include="img\logo-for-facebook.png" />
     <Content Include="img\web.config" />
+    <None Include="Escc.EastSussexGovUK.TemplateSource.nuspec" />
+    <None Include="Escc.EastSussexGovUK.TemplateSource.targets" />
     <None Include="favicon.psd" />
     <None Include="favicon16.psd" />
     <None Include="img\body\Page.psd" />
@@ -604,7 +607,8 @@
 if "$(ConfigurationName)" == "Release" del "$(ProjectDir)css\min\*.*" /Q 
 if "$(ConfigurationName)" == "Release" (if not exist "$(ProjectDir)js\min" md "$(ProjectDir)js\min")
 if "$(ConfigurationName)" == "Release" del "$(ProjectDir)js\min\*.*" /Q 
-if not "$(ESCC_MINIFY)"=="false" "$(MSBuildBinPath)\msbuild.exe" "$(ProjectDir)YUICompressor.msbuild" /p:ConfigurationName=$(ConfigurationName)</PostBuildEvent>
+if not "$(ESCC_MINIFY)"=="false" "$(MSBuildBinPath)\msbuild.exe" "$(ProjectDir)YUICompressor.msbuild" /p:ConfigurationName=$(ConfigurationName)
+if "$(ConfigurationName)" == "Release" ("$(ProjectDir)build-nuget.cmd" $(ProjectDir))</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
