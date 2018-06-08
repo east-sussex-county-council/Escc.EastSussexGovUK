@@ -52,6 +52,12 @@
     <None Include="SecurityConfig\web.config.install.xdt" />
     <None Include="SecurityConfig\web.config.uninstall.xdt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Escc.EastSussexGovUK\Escc.EastSussexGovUK.csproj">
+      <Project>{0d24d550-1007-4627-8dad-c86b07165ef7}</Project>
+      <Name>Escc.EastSussexGovUK</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if "$(ConfigurationName)" == "Release" ("$(ProjectDir)build-nuget.cmd" $(ProjectDir))</PostBuildEvent>

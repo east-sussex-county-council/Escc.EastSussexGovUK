@@ -162,3 +162,6 @@ body .breadcrumb-mobile { padding-left: 3.797468%;padding-right: 3.797468%; marg
 
 /* Non-JS alternative to Twitter widget has a link which is better wrapped onto a new line */
 .twitter-account > a { white-space: nowrap; }
+
+/* Embedded Google maps need a height to display */
+.text-content .google-map { height: 600px; margin: 1.125em 0; }

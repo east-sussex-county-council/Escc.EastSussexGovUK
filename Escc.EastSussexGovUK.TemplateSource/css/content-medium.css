@@ -111,3 +111,6 @@ body .breadcrumb-mobile { padding-left: 2.244389%;padding-right: 2.244389%; }
 
 /* Clear button for the main action on a page. Maintain font-size at 19px despite base font increase. */ 
 .main-action a { font-size: 1em; }
+
+/* Update spacing around embedded Google maps for new base font size */
+.text-content .google-map { margin: .947368em 0; }

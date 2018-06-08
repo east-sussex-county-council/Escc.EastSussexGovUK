@@ -23,7 +23,10 @@ namespace Escc.EastSussexGovUK.Features
         public bool IsRequired()
         {
             if (Html == null) return false;
-            return Html.Any(htmlString => Regex.IsMatch(htmlString, @"maps\.google\.co\.uk\/maps\/ms\?msid=[0-9a-f.]+&amp;msa=0", RegexOptions.IgnoreCase));
+            return Html.Any(htmlString => 
+                Regex.IsMatch(htmlString, @"maps\.google\.co\.uk\/maps\/ms\?msid=[0-9a-f.]+&amp;msa=0", RegexOptions.IgnoreCase) ||
+                htmlString.Contains(@"/umbraco/api/location/list")
+                );
         }
 
         /// <summary>
@@ -45,9 +48,10 @@ namespace Escc.EastSussexGovUK.Features
         /// </returns>
         public IEnumerable<JsFileDependency> RequiresJavaScript()
         {
-            return new JsFileDependency[2]
+            return new JsFileDependency[3]
             {
                 new JsFileDependency() { JsFileAlias = "GoogleMaps", Priority = 90 },
+                new JsFileDependency() { JsFileAlias = "JQueryRetry", Priority = 90 },
                 new JsFileDependency() { JsFileAlias = "EmbedGoogleMaps" }
             };
         }

@@ -13,14 +13,14 @@
             document.body.appendChild(script);
         };
 
-        this.createMap = function () {
+        this.createMap = function (element) {
             /// <summary>Create a Google map centred on East Sussex</summary>
             var mapOptions = {
                 center: eastSussexCentre(),
                 zoom: 10,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
-            return new google.maps.Map(document.getElementById("google-map"), mapOptions);
+            return new google.maps.Map(element || document.getElementById("google-map"), mapOptions);
         };
 
         this.eastSussexCentre = function () {
