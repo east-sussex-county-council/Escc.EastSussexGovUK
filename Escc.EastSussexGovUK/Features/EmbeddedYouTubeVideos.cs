@@ -23,7 +23,7 @@ namespace Escc.EastSussexGovUK.Features
         public bool IsRequired()
         {
             if (Html == null) return false;
-            return Html.Any(htmlString => Regex.IsMatch(htmlString, @"https?:\/\/(youtu.be\/|www.youtube.com\/watch\?v=)([A-Za-z0-9_-]+)", RegexOptions.IgnoreCase));
+            return Html.Any(htmlString => !string.IsNullOrEmpty(htmlString) && Regex.IsMatch(htmlString, @"https?:\/\/(youtu.be\/|www.youtube.com\/watch\?v=)([A-Za-z0-9_-]+)", RegexOptions.IgnoreCase));
         }
 
         /// <summary>

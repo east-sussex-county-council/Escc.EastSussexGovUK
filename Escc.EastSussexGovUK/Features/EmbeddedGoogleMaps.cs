@@ -23,7 +23,8 @@ namespace Escc.EastSussexGovUK.Features
         public bool IsRequired()
         {
             if (Html == null) return false;
-            return Html.Any(htmlString => 
+            return Html.Any(htmlString =>
+                !string.IsNullOrEmpty(htmlString) &&
                 Regex.IsMatch(htmlString, @"maps\.google\.co\.uk\/maps\/ms\?msid=[0-9a-f.]+&amp;msa=0", RegexOptions.IgnoreCase) ||
                 htmlString.Contains(@"/umbraco/api/location/list")
                 );
