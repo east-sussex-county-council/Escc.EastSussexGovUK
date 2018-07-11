@@ -375,6 +375,7 @@
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />
     <Content Include="js\libs\jquery-1.9.1.min.js" />
+    <Content Include="js\libs\lunametrics-youtube.gtm.js" />
     <Content Include="js\libs\modernizr-custom.js" />
     <Content Include="js\min\describedby-tips.js" />
     <None Include="js\describedby-tips.js" />

@@ -55,7 +55,7 @@
       <add key="Twitter" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Twitter" value="script-src https://*.twitter.com https://*.twimg.com; frame-src https://*.twitter.com; style-src https://platform.twitter.com https://*.twimg.com 'unsafe-inline'; img-src https://*.twitter.com https://*.twimg.com data:; connect-src https://syndication.twitter.com" xdt:Transform="Insert" />
       <add key="YouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="YouTube" value="frame-src https://www.youtube-nocookie.com" xdt:Transform="Insert" />
+      <add key="YouTube" value="frame-src https://www.youtube-nocookie.com; script-src https://www.youtube.com https://s.ytimg.com" xdt:Transform="Insert" />
       <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="EastSussex1Space" value="img-src https://www.eastsussex1space.co.uk" xdt:Transform="Insert" />
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />

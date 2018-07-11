@@ -73,13 +73,15 @@
       <add key="Alert" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Banners" xdt:Transform="Remove" xdt:Locator="Match(key)" />
 
+      <add key="EmbedYouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="YouTubeAnalytics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+
       <add key="AccordionAndTabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="AutoSuggest" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CoronerSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Documents" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Email" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="EmbedYouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="ESCIS" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Forms" xdt:Transform="Remove" xdt:Locator="Match(key)" />

@@ -45,9 +45,10 @@ namespace Escc.EastSussexGovUK.Features
         /// </returns>
         public IEnumerable<JsFileDependency> RequiresJavaScript()
         {
-            return new JsFileDependency[1]
+            return new JsFileDependency[2]
             {
-                new JsFileDependency() { JsFileAlias = "EmbedYouTube" }
+                new JsFileDependency() { JsFileAlias = "EmbedYouTube" },
+                new JsFileDependency() { JsFileAlias = "YouTubeAnalytics", Priority=110 }
             };
         }
 

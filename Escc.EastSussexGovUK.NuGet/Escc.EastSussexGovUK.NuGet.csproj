@@ -51,7 +51,9 @@
     <None Include="Metadata\Escc.EastSussexGovUK.Metadata.nuspec" />
     <None Include="Metadata\web.config.install.xdt" />
     <None Include="Metadata\web.config.uninstall.xdt" />
-    <None Include="SecurityConfig\Escc.EastSussexGovUK.SecurityConfig.nuspec" />
+    <None Include="SecurityConfig\Escc.EastSussexGovUK.SecurityConfig.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="SecurityConfig\web.config.install.xdt" />
     <None Include="SecurityConfig\web.config.uninstall.xdt" />
   </ItemGroup>

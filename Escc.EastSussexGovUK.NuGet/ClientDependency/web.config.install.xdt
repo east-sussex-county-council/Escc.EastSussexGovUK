@@ -168,6 +168,11 @@
       <add key="Banners" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Banners" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/banners.js" xdt:Transform="Insert" />
 
+      <add key="EmbedYouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="EmbedYouTube" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/embed-youtube.js" xdt:Transform="Insert" />
+      <add key="YouTubeAnalytics" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="YouTubeAnalytics" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/lunametrics-youtube.gtm.js" xdt:Transform="Insert" />
+
       <add key="AccordionAndTabs" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="AccordionAndTabs" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/accordion-and-tabs.js" xdt:Transform="Insert" />
       <add key="AutoSuggest" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -180,8 +185,6 @@
       <add key="Documents" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/libs/escc.documentsinnewwindow.min.js" xdt:Transform="Insert" />
       <add key="Email" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Email" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/govdelivery.js" xdt:Transform="Insert" />
-      <add key="EmbedYouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="EmbedYouTube" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/embed-youtube.js" xdt:Transform="Insert" />
       <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="EastSussex1Space" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/1space.js" xdt:Transform="Insert" />
       <add key="ESCIS" xdt:Transform="Remove" xdt:Locator="Match(key)" />

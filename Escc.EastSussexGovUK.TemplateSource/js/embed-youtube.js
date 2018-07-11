@@ -66,8 +66,8 @@ if (typeof (jQuery) !== 'undefined') {
         }).each(function () {
 
             // Swop YouTube link for embedded video
-            var match = youTube.exec(this.href);
-            $(this).replaceWith('<iframe width="' + youTubeWidth + '" height="' + youTubeHeight + '" src="https://www.youtube-nocookie.com/embed/' + match[2] + '" frameborder="0" allowfullscreen="allowfullscreen" class="video"></iframe>');
+                var match = youTube.exec(this.href);
+                $(this).replaceWith('<iframe width="' + youTubeWidth + '" height="' + youTubeHeight + '" src="https://www.youtube-nocookie.com/embed/' + match[2] + '?enablejsapi=1&origin=' + encodeURIComponent(document.location.origin) + '" frameborder="0" allowfullscreen="allowfullscreen" class="video"></iframe>');
         });
 
         if (!youTubeFixedSize) {
