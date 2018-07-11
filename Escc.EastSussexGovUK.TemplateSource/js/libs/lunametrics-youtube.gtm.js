@@ -1,7 +1,7 @@
 // Customised version of https://github.com/lunametrics/youtube-google-analytics/ with three changes:
 // 1. Set forceSyntax to 1 to use Universal Analytics events
 // 2. Added youtube-nocookie.com as a match for a YouTube URL
-// 3. Updated playerStatesIndex to reflect observed behaviour
+// 3. Updated playerStatesIndex to as -1 (Start of video) acts like 1 (Play) in testing
 
 (function (document, window, config) {
 
@@ -305,7 +305,7 @@
     var marks = getMarks(duration);
     var playerStatesIndex = {
       '-1': 'Play',
-      '1': 'Resume',
+      '1': 'Play',
       '2': 'Pause',
       '0': 'Watch to End'
     };
