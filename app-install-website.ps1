@@ -79,7 +79,7 @@ TransformConfig "$sourceFolder\MasterPages\Remote\web.example.config" "$destinat
 
 TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.temp1.config" "$PSScriptRoot\Escc.EastSussexGovUK.Mvc\web.config.install.xdt"
 TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.temp2.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\SecurityConfig\web.config.install.xdt"
-TransformConfig "$destinationFolder\$projectName\web.temp2.config" "$destinationFolder\$projectName\web.temp3.config" "$PSScriptRoot\Escc.EastSussexGovUK.Metadata.NuGet\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp2.config" "$destinationFolder\$projectName\web.temp3.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\Metadata\web.config.install.xdt"
 TransformConfig "$destinationFolder\$projectName\web.temp3.config" "$destinationFolder\$projectName\web.temp4.config" "$PSScriptRoot\Escc.EastSussexGovUK.TemplateSource\web.config.clientDependency.xdt"
 TransformConfig "$destinationFolder\$projectName\web.temp4.config" "$destinationFolder\$projectName\web.temp5.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\ClientDependency\web.config.install.xdt"
 TransformConfig "$destinationFolder\$projectName\web.temp5.config" "$destinationFolder\$projectName\web.config" "$transformsFolder\$projectName\web.release.config"
@@ -106,6 +106,9 @@ RemoveDomainPrefix "ScriptFiles" "/escc.eastsussexgovuk"
 
 TransformConfig "$sourceFolder\css\web.example.config" "$destinationFolder\$projectName\css\web.config" "$transformsFolder\$projectName\css\web.release.config"
 TransformConfig "$sourceFolder\js\web.example.config" "$destinationFolder\$projectName\js\web.config" "$transformsFolder\$projectName\js\web.release.config"
+if (Test-Path "$transformsFolder\$projectName\js\config.$websiteName.js") {
+	copy "$transformsFolder\$projectName\js\config.$websiteName.js" "$destinationFolder\$projectName\js\min\config.js"
+}
 
 CheckSiteExistsBeforeAddingApplication $websiteName
 Write-Host "Setting IIS site root folder to $destinationFolder\$projectName" 
