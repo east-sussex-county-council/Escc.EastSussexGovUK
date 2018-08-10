@@ -127,12 +127,14 @@ html { overflow-y: scroll; }
 .size2 .header .alphabet, .size3 .header .alphabet  { margin-top: 33px; }
 .size2 .header .alphabet h2, .size3 .header .alphabet h2  { display: none; }
 
-/* Move the search up from the menu bar into the header. 6 cols wide in 12, which aligns it to the width of the A-Z. */
+/* Move the search up from the menu bar into the header. 6 cols wide in 12, which aligns it to the width of the A-Z. 
+   Colour taken from the menu image and checked against WCAG contrast rules.
+*/
 #search { clear: right; margin: 36px 0 0; width: 49.0683%; }
 #search .search-inner { padding: 0; }
-#search .search { height: 30px; border: 2px solid #00a1de; border-radius: 3px; }
+#search .search { height: 30px; border: 2px solid #0C78AE; border-radius: 3px; }
 #search .submit { width: 48px; float: right; }
-#search .submit input { width: 100%; margin: 6px 0 0; padding: 8px 0 9px; }
+#search .submit input { width: 100%; margin: 6px 0 0; padding: 8px 0 9px; background: #0C78AE; color: #fff; }
 
 /* Chrome and IE displays the button differently to other browsers, so adjust padding to compensate */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
