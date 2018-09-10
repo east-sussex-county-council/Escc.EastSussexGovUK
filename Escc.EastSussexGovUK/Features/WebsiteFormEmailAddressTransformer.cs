@@ -32,7 +32,7 @@ namespace Escc.EastSussexGovUK.Features
         public string TransformEmailAddress(ContactEmail email)
         {
             if (email == null) throw new ArgumentNullException("email");
-            return GetWebsiteEmailFormUri(email.EmailAddress, email.DisplayName, _baseUrl).ToString();
+            return GetWebsiteEmailFormUri(email.EmailAddress, email.DisplayName, _baseUrl)?.ToString();
         }
 
         /// <summary>
