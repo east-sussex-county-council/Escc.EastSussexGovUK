@@ -217,17 +217,13 @@ The printer icon used in our CSS was made by [Yannick](http://yanlu.de). It's fr
 A number of features used frequently throughout the site are installed with the remote master pages and layouts.
 
 ### WebForms
-WebForms applications can use the following local usercontrols:
+WebForms applications can use the following local usercontrol:
 
-* `~/1Space.ascx`, for an EastSussex1Space search widget
 * `~/share.ascx` to present social media sharing links. 
 
 ASPX file:
 
 	<%@ Register TagPrefix="EastSussexGovUK" tagName="Share" src="~/share.ascx" %>
-	<%@ Register TagPrefix="EastSussexGovUK" tagName="EastSussex1Space" src="~/1space.ascx" %>
-
-	<EastSussexGovUK:EastSussex1Space runat="server"/>
 	<EastSussexGovUK:Share runat="server" />
 
 ### MVC5

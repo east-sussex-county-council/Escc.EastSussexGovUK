@@ -46,3 +46,4 @@ web-chat-data.js
 Microsoft.CodeDom.*
 UpgradeLog*.htm
 .vs
+App_Data

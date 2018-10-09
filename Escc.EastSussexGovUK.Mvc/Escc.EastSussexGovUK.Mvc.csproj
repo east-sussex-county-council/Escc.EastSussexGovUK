@@ -217,7 +217,9 @@
   <ItemGroup>
     <Content Include="build-nuget.cmd" />
     <Content Include="EastSussexGovUK_Mvc.cs.pp" />
-    <Content Include="Escc.EastSussexGovUK.Mvc.nuspec" />
+    <Content Include="Escc.EastSussexGovUK.Mvc.nuspec">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="web.config.install.xdt" />

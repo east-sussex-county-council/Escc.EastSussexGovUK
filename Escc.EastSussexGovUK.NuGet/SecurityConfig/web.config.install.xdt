@@ -51,13 +51,14 @@
       <add key="CrazyEgg" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CrazyEgg" value="script-src https://script.crazyegg.com https://s3.amazonaws.com; img-src https://gtrk.s3.amazonaws.com https://s3.amazonaws.com" xdt:Transform="Insert" />
       <add key="Facebook" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Facebook" value="script-src https://connect.facebook.net; img-src https://www.facebook.com; frame-src https://*.facebook.com; style-src 'sha256-W2kUcrmSyYrtLKKok5R0tuGKVjGmCtnA6wr7AIdSwgU='" xdt:Transform="Insert" />
+      <add key="Facebook" value="script-src https://connect.facebook.net; img-src https://www.facebook.com; frame-src https://*.facebook.com; style-src 'unsafe-inline'" xdt:Transform="Insert" />
+      <!-- Facebook only needs style-src 'sha256-W2kUcrmSyYrtLKKok5R0tuGKVjGmCtnA6wr7AIdSwgU=' rather than unsafe-inline, but if a hash or nonce is used then unsafe-inline is ignored for others that need it (ie Twitter) -->
       <add key="Twitter" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Twitter" value="script-src https://*.twitter.com https://*.twimg.com; frame-src https://*.twitter.com; style-src https://platform.twitter.com https://*.twimg.com 'unsafe-inline'; img-src https://*.twitter.com https://*.twimg.com data:; connect-src https://syndication.twitter.com" xdt:Transform="Insert" />
       <add key="YouTube" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="YouTube" value="frame-src https://www.youtube-nocookie.com; script-src https://www.youtube.com https://s.ytimg.com" xdt:Transform="Insert" />
       <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="EastSussex1Space" value="img-src https://www.eastsussex1space.co.uk" xdt:Transform="Insert" />
+      <add key="EastSussex1Space" value="img-src https://1space.eastsussex.gov.uk" xdt:Transform="Insert" />
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="WebChat" value="img-src https://prod3si.click4assistance.co.uk; script-src https://prod3si.click4assistance.co.uk 'unsafe-inline'; frame-src https://prod3si.click4assistance.co.uk https://prod3ci.click4assistance.co.uk; style-src 'unsafe-inline'" xdt:Transform="Insert" />
       <add key="GisMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
