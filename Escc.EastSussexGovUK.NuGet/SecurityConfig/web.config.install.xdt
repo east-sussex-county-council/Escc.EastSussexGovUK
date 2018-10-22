@@ -49,7 +49,7 @@
       <add key="GoogleRecaptcha" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleRecaptcha" value="script-src https://www.google.com https://www.gstatic.com; frame-src https://www.google.com; style-src 'unsafe-inline'" xdt:Transform="Insert" />
       <add key="CrazyEgg" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="CrazyEgg" value="script-src https://script.crazyegg.com https://s3.amazonaws.com; img-src https://gtrk.s3.amazonaws.com https://s3.amazonaws.com" xdt:Transform="Insert" />
+      <add key="CrazyEgg" value="script-src https://*.crazyegg.com https://s3.amazonaws.com; img-src https://*.crazyegg.com https://gtrk.s3.amazonaws.com https://s3.amazonaws.com" xdt:Transform="Insert" />
       <add key="Facebook" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Facebook" value="script-src https://connect.facebook.net; img-src https://www.facebook.com; frame-src https://*.facebook.com; style-src 'unsafe-inline'" xdt:Transform="Insert" />
       <!-- Facebook only needs style-src 'sha256-W2kUcrmSyYrtLKKok5R0tuGKVjGmCtnA6wr7AIdSwgU=' rather than unsafe-inline, but if a hash or nonce is used then unsafe-inline is ignored for others that need it (ie Twitter) -->
