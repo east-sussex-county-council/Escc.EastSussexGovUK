@@ -10,9 +10,6 @@
     <CssCompressorTask SourceFiles="css/large.css" OutputFile="css/min/large.css" />
     <CssCompressorTask SourceFiles="css/print.css" OutputFile="css/min/print.css" />
     <CssCompressorTask SourceFiles="css/full-screen.css" OutputFile="css/min/full-screen.css" />
-    <CssCompressorTask SourceFiles="css/content-small.css" OutputFile="css/min/content-small.css" />
-    <CssCompressorTask SourceFiles="css/content-medium.css" OutputFile="css/min/content-medium.css" />
-    <CssCompressorTask SourceFiles="css/content-large.css" OutputFile="css/min/content-large.css" />
     <CssCompressorTask SourceFiles="css/maps.css" OutputFile="css/min/maps.css" />
     <CssCompressorTask SourceFiles="css/maps.css" OutputFile="css/min/maps.css" />
     <CssCompressorTask SourceFiles="css/forms-small.css" OutputFile="css/min/forms-small.css" />

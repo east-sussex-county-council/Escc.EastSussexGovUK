@@ -66,66 +66,35 @@ html { overflow-y: scroll; }
    extra bytes saves cropping every decorative image to the shape of the wave. All three images have a centred horizontal
    alignment so that the waves stay lined up as the browser resizes. This means if you want to move the decorative image
    10px to the left, you have to add 20px of space to its right side, because the 20px is split either side of the centre line.
-   The mask was made 6px wider than the decorative image for IE7.
    
    Negative bottom-margin allows bar indicating selected menu item to hang in space below the menu. The background colour on 
    .header matches the top of the body gradient, and shows under the menu on a page where none of the main sections are current, 
    such as /contactus/default.htm
 */
-.header { background: #01A1DF url(../img/header/desktop.png) repeat-x center top; padding: 0 6px; margin: 0 0 -4px; }
 .header-v2 { background: #01A1DF url(../img/header/header.png) repeat-x center top; padding: 0 6px; margin: 0 0 -4px; }
 
-.header .container { background: url(../img/header/buttercups.jpg) no-repeat center top; overflow: hidden; }
 .header-v2 .container { background: url(../img/header/buttercups-v2.jpg) no-repeat center top; overflow: hidden; }
-.header .jan { background-image: url(../img/header/sheep.jpg); }
 .header-v2 .jan { background-image: url(../img/header/sheep-v2.jpg); }
-.header .feb { background-image: url(../img/header/robin.jpg); }
 .header-v2 .feb { background-image: url(../img/header/robin-v2.jpg); }
-.header .sep, .header .oct { background-image: url(../img/header/squirrel.jpg); }
 .header-v2 .sep { background-image: url(../img/header/squirrel-v2.jpg); }
 .header-v2 .oct { background-image: url(../img/header/autumn-bird.jpg); }
-.header .nov { background-image: url(../img/header/xmas-lights.jpg); }
 .header-v2 .nov { background-image: url(../img/header/xmas-lights-v2.jpg); }
-.header .dec { background-image: url(../img/header/winter-walk.jpg); }
 .header-v2 .dec { background-image: url(../img/header/winter-walk-v2.jpg); }
-.header .mask { background: url(../img/header/desktop.png) no-repeat center -161px; overflow: hidden; }
-
-
 
 /* This template has more room, so swop in the bigger logo. The logo and its margin still controls the height of the header. */
-.header .logo-small, .header .logo-small:link, .header .logo-small:visited,
 .header-v2 .logo-small, .header-v2 .logo-small:link, .header-v2 .logo-small:visited { display: none; }
-.header .logo-large, .header-v2 .logo-large { float: left; margin: 11px 0; }
+.header-v2 .logo-large { float: left; margin: 11px 0; }
 
 /* Enable text size control at this size. float the links so that vertical padding can be applied, enlarging the clickable area. 
    Colour dimmed so that they're not over-dominant in the design, but #777 grey is minimum to meet the WCAG contrast guideline
 */
-.header .size, .header-v2 .size { display: block; position: absolute; right: 6em; }
-.header .size a, .header-v2 .size a { padding: 7px 10px 7px 20px; float: left; color: #777; }
-.header .size .zoom-in, .header-v2 .size .zoom-in { background: url(../img/body/item-type.png?v=3) no-repeat 0 -1491px; }
-.header .size .zoom-out, .header-v2 .size .zoom-out { background: url(../img/body/item-type.png?v=3) no-repeat 0 -1538px; }
+.header-v2 .size { display: block; position: absolute; right: 6em; }
+.header-v2 .size a { padding: 7px 10px 7px 20px; float: left; color: #777; }
+.header-v2 .size .zoom-in { background: url(../img/body/item-type.png?v=3) no-repeat 0 -1491px; }
+.header-v2 .size .zoom-out { background: url(../img/body/item-type.png?v=3) no-repeat 0 -1538px; }
 
 /* Set the space above 'contact us' to align the ascender height with the top of the ESCC logo */
-.header .contact, .header-v2 .contact { padding: 7px 0; }
-
-/* This template has more room, so display an A-Z.
-   margin-top on .alphabet controls how far down from the top of the page the A-Z and search appear.
-   The letter i gets more room because it's so thin.
-   70% width is arbitrary but together with .32% between letters it spreads the A-Z across 6 columns at full size.
-   Using a value bigger than the actual width of 6 cols lets the A-Z move outside those columns as the window gets smaller.
-   #777 grey meets the WCAG contrast guideline
- */
-.header .alphabet { display: block; width: 70%; float: right; margin: 36px 0 0 0; white-space: nowrap; font-weight: bold; font-size: 1.230769em; line-height: 1.125em; text-align: right; } /* 16px/18px */
-.header .alphabet h2 { display: inline; color: #777; }
-.header .alphabet a:link, .header .alphabet a:visited, .header .alphabet em { padding: 0 .32%; text-decoration: none; }
-.header .alphabet a:hover, .header .alphabet a:focus, .header .alphabet a:active { text-decoration: underline; }
-.header div.alphabet .i { padding: 0 .7%; }
-.header div.alphabet .z { padding-right: 0; }
-.header .alphabet em { color: #fff; background: #003c69; font-style: normal; border-radius: 3px; }
-
-/* Adjust A-Z at larger text sizes to keep the header layout intact */
-.size2 .header .alphabet, .size3 .header .alphabet  { margin-top: 33px; }
-.size2 .header .alphabet h2, .size3 .header .alphabet h2  { display: none; }
+.header-v2 .contact { padding: 7px 0; }
 
 /* Move the search up from the menu bar into the header. 6 cols wide in 12, which aligns it to the width of the A-Z. 
    Colour taken from the menu image and checked against WCAG contrast rules.
@@ -142,13 +111,7 @@ html { overflow-y: scroll; }
 }
 
 /* As the window gets smaller, remove decorative image and squeeze menu before it starts overlapping.
-   Allow A-Z and search to grow to fill the new space. They're now 10 columns in 12. */
-@media only screen and (max-width: 900px) 
-{
-    .header .container { background: none; } 
-    .header .alphabet { width: 83.02277%; }
-}
-
+   Allow search to grow to fill the new space. They're now 10 columns in 12. */
 @media only screen and (max-width: 960px) 
 {
     .header-v2 .container { background: none; } 
@@ -160,9 +123,9 @@ html { overflow-y: scroll; }
    Options which don't wrap are vertically centred by giving them a line-height equal to the menu height, less 4px for 
    the white bar indicating the selected item. Options which wrap have the default line-height and some padding to push them down.
  */
-.header #menu, .header-v2 #menu { width: 100%; max-width: none; clear: both; }
+.header-v2 #menu { width: 100%; max-width: none; clear: both; }
 #menu a:link, #menu a:visited { height: 59px; display: block; position: relative; line-height: 55px; padding: 0 6px 0 4px; }
-#menu a:hover, #menu a:focus, #menu a:active, #menu a.selected:link, #menu a.selected:visited { background-position: right -61px; }
+#menu a:hover, #menu a:focus, #menu a:active, #menu a.selected:link, #menu a.selected:visited { background-position: right -124px; }
 #menu .long a:link, #menu .long a:visited { line-height: 18px; padding-top: 10px; height: 49px; }
 #menu .mobile { display: none; }
 #menu .socialcare { width: 13%; display: block; }
@@ -183,34 +146,38 @@ html { overflow-y: scroll; }
  * MAIN CONTENT AREA *
  *********************/
  
- /* .body is a container for everything between the header and the footer */
- .body { background: url(../img/body/gradient.jpg) repeat-x left top #fff; }
+ /* .body is a container for everything between the header and the footer.
+    White background stops the blue background on body showing through.
+ */
+ .body { background: #fff; }
  
  /* Breadcrumb trail is 36px on baseline grid when on one line. The <ol> contains its floated children. Each list item has 
     one text line 18px high, line-height adding 4px vertical padding, then 2px top and bottom margin for when it wraps. 
     The list has 6px border (partly made up by the 2px padding on li) and 8px margin. The padding is applied direct to the li for 
     unlinked items, or to the link where there is one. List items/links are floated rather than displayed inline so that they 
-    can have vertical padding applied.  
+    can have vertical padding applied.  Align .breadcrumb with .content and change text size to 16px/18px.
 
     List items are also position: relative so they can have z-index applied. Current settings support up to 9 levels of 
-    navigation. Together with negative margin this tucks all but the first item under the previous one, creating the arrow effect.
+    navigation. Generated content creates the arrow effect.
 */
- .breadcrumb { display: block; margin: 0 0 .615385em; overflow: hidden; background: #6BC8EC; border: 0 solid #6BC8EC; border-width: .076923em 3px; }
- .breadcrumb li { color: #fff; line-height: 1.692308em; float: left; margin: .153846em 0 .153846em -10px; position: relative; padding: 0 18px 0 16px; white-space: nowrap; }
- .breadcrumb a:link, .breadcrumb a:visited { color: #fff; text-decoration: none; float: left; }
- .breadcrumb a:hover, .breadcrumb a:focus, .breadcrumb a:active { text-decoration: underline; }
- .breadcrumb .current { background: url(../img/body/navigation.png) no-repeat right -150px; }
- .breadcrumb .up { background: url(../img/body/navigation.png) no-repeat right -100px; }
- .breadcrumb .level1 { background: url(../img/body/navigation.png) no-repeat right top; color: #194c7e; margin: .153846em 0; z-index: 9; padding: 0 18px 0 6px; }
- .breadcrumb .level1 a:link, .breadcrumb .level1 a:visited { color: #194c7e; }
- .breadcrumb .level2 { background: url(../img/body/navigation.png) no-repeat right -50px; z-index: 8; } /* overrides .up */
- .breadcrumb .level3 { z-index: 7; }
- .breadcrumb .level4 { z-index: 6; }
- .breadcrumb .level5 { z-index: 5; }
- .breadcrumb .level6 { z-index: 4; }
- .breadcrumb .level7 { z-index: 3; }
- .breadcrumb .level8 { z-index: 2; }
- .breadcrumb .level9 { z-index: 1; }
+
+.breadcrumb { display: block; margin: 0 0 .615385em; overflow: hidden; color: #000; padding: 0 1.863354%; font-size: 1.230769em; line-height: 1.125em; font-family: 'Source Sans Pro', Arial, 'Helvetica Neue', Helvetica, sans-serif; }
+.breadcrumb li { color: #000; line-height: 1.692308em; float: left; margin: .153846em 0 .153846em 0; position: relative; padding: 0 5px 0 0; white-space: nowrap; }
+.breadcrumb li:after { content: ' >'; }
+.breadcrumb li.current:after {content: ''; }
+.breadcrumb a:link, .breadcrumb a:visited { color: #003c69; text-decoration: none; float: left; margin-right: 5px;  }
+.breadcrumb a:visited { color: #609; }
+.breadcrumb a:hover, .breadcrumb a:focus, .breadcrumb a:active { color: #B80000; text-decoration: underline; }
+.breadcrumb .level1 { color: #000; margin: .153846em 0; z-index: 9; padding: 0 5px 0 0; }
+.breadcrumb .level1 a:link, .breadcrumb .level1 a:visited { color: #194c7e; }
+.breadcrumb .level2 { z-index: 8; } /* overrides .up */
+.breadcrumb .level3 { z-index: 7; }
+.breadcrumb .level4 { z-index: 6; }
+.breadcrumb .level5 { z-index: 5; }
+.breadcrumb .level6 { z-index: 4; }
+.breadcrumb .level7 { z-index: 3; }
+.breadcrumb .level8 { z-index: 2; }
+.breadcrumb .level9 { z-index: 1; }
 
 /* A container for a full page, without breaking into columns. 
    min-height is there only because really short pages (eg "thank you") look odd. 
@@ -222,28 +189,9 @@ html { overflow-y: scroll; }
    Do not apply overflow: hidden here, because it cuts off the dialog that pops up from the Facebook Like button.
    Contain floats and margins using the pseudo-class method instead.
 */
-.full-page { clear: both; background: #fff; min-height: 15em; box-shadow: 0 0 12px 0 #dae1e5; }
+.full-page { clear: both; background: #fff; min-height: 15em; }
 .full-page:before, .full-page:after { content: "."; display: block; height: 0; overflow: hidden; }
 .full-page:after { clear: both; }
-
-/* Adjust .text to the 12 column context */
-@media screen 
-{
-    .text { padding: .1px 1.863354% 0; } 
-}
-.text h1, h1.text { padding: .29166em 1.863354%; } 
-.text h1 { margin: 0 -1.863354%; }
-
-/* But a full page used for text makes the lines much too long, so limit the width of common elements to 8 cols in 12, the same as a .article
-   and remove the 100% width default for tables. */
-.full-page .text h2, .full-page .text h3, .full-page .text h4, .full-page .text h5, 
-.full-page .text p, .full-page .text ul, .full-page .text ol, .full-page .text dl { max-width: 66.04555%; }
-
-.full-page .text table { width: auto; }
-
-/* But then items inside those shouldn't be further limited */
-.full-page .text h2 *, .full-page .text h3 *, .full-page .text h4 *, .full-page .text h5 *, 
-.full-page .text p *, .full-page .text ul *, .full-page .text ol *, .full-page .text dl * { max-width: none; }
 
 /* An article which fills the page, while allowing room for a sidebar. For example, a page of CMS content.
    At this level it spans 8 columns of the 12 column grid. 
@@ -255,38 +203,32 @@ html { overflow-y: scroll; }
    Do not apply overflow: hidden here, because it cuts off the dialog that pops up from the Facebook Like button.
    Contain floats and margins using the pseudo-class method instead.
 */
-.article { float: left; width: 66.04555%; background: #fff; min-height: 15em; box-shadow: 0 0px 12px 0 #dae1e5; }
+.article { float: left; width: 66.04555%; background: #fff; min-height: 15em; }
 .article:before, .article:after { content: "."; display: block; height: 0; overflow: hidden; }
 .article:after { clear: both; }
-
-/* Adjust .text to the 8 column context of .article. But h1 spacing adjusted to 3% because the border wasn't quite reaching the edges of the box. */
-@media screen 
-{
-    .article .text { padding: .1px 2.821317% 0; } 
-}
-.article .text h1, .article h1.text { padding: .208333em 3% .166666em; } 
-.article .text h1 { margin: 0 -3%; }
 
 /* When translated into right-to-left script, swop sides */
 .rtl .article { float: right; }
 
 /* Supporting content sits in a sidebar on the right of an .article. Spans 4 cols of the 12 col grid.
    .supporting offers just the placement
-   .supporting-text offers placement with some standard formatting. 
+   Keep bottom margin of .supporting sections at 18px
 */
-.supporting { clear: right; float: right; width: 32.0911%; margin-bottom: 1.384615em; }
-
-/* Horizontal padding is 18px, to match that of .text. Vertical padding is one line space, split equally top and bottom. */
-.supporting-text { clear: right; float: right; width: 28.364389%; margin: 0 0 1.384615em; padding: .692308em 1.863354%; border-top: none; background: #fff; box-shadow: 0 0px 12px 0 #dae1e5; }
-.supporting-text h2 { border-bottom: 1px solid #dae1e5; padding: 0 6.7% 7px; margin: 0 -6.7% 10px; }
+.supporting { clear: right; float: right; width: 32.0911%; margin-bottom: .947368em; }
 
 /* When translated into right-to-left script, swop sides */
-.rtl .supporting, .rtl .supporting-text { clear: left; float: left; }
+.rtl .supporting { clear: left; float: left; }
 
-/* Search results where each result is a definition list of fields and values. This is its own section, not within .text.
-   Change gutter at this size to 18px in 8 cols */
-.flexbox dl.itemDetail dt { width: 19.5%; margin: 0 5% .538462em 2.821317%; }
-.flexbox dl.itemDetail dd { margin: 0 2.821317% .538462em 0; width: 69.5%; } /* 7px/13px between items */
+@media screen {
+    /* Adjust .content to the 12 column context, and limit the effect of .content-medium to the medium breakpoint */
+    .content-medium { padding: 0; }
+    .content {
+        padding: 0 1.863354%;
+    }
+
+    /* Adjust .content to the 8 column context created by .article, but no space required on the right because there's a gutter before the next 4 columns */
+    .article .content { padding: 0 0 0 2.821317%; }
+}
 
 /* Section nav appears above latest items and page content. Update two columns for 8 column grid.
    18px padding + 298px column + 18px gutter + 298px column + 18px padding = 638px/8 columns */
@@ -295,7 +237,7 @@ html { overflow-y: scroll; }
 /* Display ESCIS search widget at this level, but it has a transparent background which really needs to be white to add padding around the image header. */
 .escis { background: #fff; }
 
-/* Display adverts at this level. They should also have .supporting applied to place them in the right column. 
+/* Display adverts (aka banners) at this level. They should also have .supporting applied to place them in the right column. 
    Reset background image of .advert a to avoid logos for Facebook etc designed for inline links.
 
    <a href="http://www.example.com" class="supporting advert"><img /></a>
@@ -303,3 +245,25 @@ html { overflow-y: scroll; }
 .advert { display: block; background: #fff; padding: .692308em 0; }
 .advert a { background: none; padding: 0; }
 .advert img { display: block; margin: auto; }
+
+
+/* Related links box. 
+   
+   Update h2 to have 9px spacing below, none above
+   Adjust width: still 4 cols in 12, but now minus 2 x 18px gutters for padding
+
+   When combined with .supporting, .related-links normally appears at the top of the right column
+   */
+.related-links h2 { margin: 0; }
+.related-links ul + h2 { margin-top: .947368em;}
+.related-links { padding: 1.863354% .947368em; background: #CCEEFA; border-radius: 5px; }
+.related-links.supporting { width: 28.364389%; }
+
+/* Search results where each result is a definition list of fields and values. This is its own section, not within .text.
+   Change gutter at this size to 18px in 8 cols */
+.flexbox .text-content dl.itemDetail dt { width: 19.5%; margin: 0 5% .538462em 2.821317%; }
+.flexbox .text-content dl.itemDetail dd { margin: 0 2.821317% .538462em 0; width: 69.5%; } /* 7px/13px between items */
+
+/* _Share.cshtml should always be included at the end of the content. 
+    This ensures it appears under the main column rather than as part of the right column, regardless of which is longer. */
+.share { clear: left; } 

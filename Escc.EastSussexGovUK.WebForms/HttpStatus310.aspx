@@ -15,7 +15,7 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="content">
     <div class="full-page">
-        <div class="text" id="css" runat="server">
+        <div class="content text-content">
             <h1>Page gone</h1>
         
             <p>Sorry &#8211; the page you asked for has been removed.</p>

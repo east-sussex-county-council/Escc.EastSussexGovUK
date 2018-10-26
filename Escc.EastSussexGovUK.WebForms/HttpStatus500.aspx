@@ -15,7 +15,7 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="content">
     <div class="full-page">
-        <div class="text" id="css" runat="server">
+        <div class="content text-content">
             <h1>Page unavailable</h1>
             <p>Sorry this page is temporarily unavailable.</p>
             <p>Please try again later.</p>

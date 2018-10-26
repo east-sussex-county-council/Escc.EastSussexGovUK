@@ -9,30 +9,6 @@ namespace Escc.EastSussexGovUK.Skins
     /// </summary>
     public class CustomerFocusSkin : IEsccWebsiteSkin
     {
-        private readonly EsccWebsiteView _currentView;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CustomerFocusSkin"/> class.
-        /// </summary>
-        /// <param name="currentView">The current view.</param>
-        public CustomerFocusSkin(EsccWebsiteView currentView)
-        {
-            _currentView = currentView;
-        }
-
-        /// <summary>
-        /// Class or classes applied to main content with standard text formatting
-        /// </summary>
-        public virtual string TextContentClass { get { return "content text-content"; } }
-        
-        /// <summary>
-        /// Class or classes applied to supporting content with standard text formatting
-        /// </summary>
-        public virtual string SupportingTextContentClass
-        {
-            get { return "text-content content-small content-medium"; }
-        }
-
         /// <summary>
         /// Determines whether the skin should be applied
         /// </summary>
@@ -61,16 +37,7 @@ namespace Escc.EastSussexGovUK.Skins
         /// </returns>
         public virtual IEnumerable<CssFileDependency> RequiresCss()
         {
-            if (_currentView == EsccWebsiteView.Desktop)
-            {
-                return new CssFileDependency[]
-                {
-                    new CssFileDependency() {CssFileAlias = "ContentSmall", Priority = 10},
-                    new CssFileDependency() {CssFileAlias = "ContentMedium", MediaQueryAlias = "Medium", Priority = 10},
-                    new CssFileDependency() {CssFileAlias = "ContentLarge", MediaQueryAlias = "Large", Priority = 10}
-                };
-            }
-            else return new CssFileDependency[0];
+            return new CssFileDependency[0];
         }
 
         /// <summary>

@@ -16,9 +16,6 @@
       <add key="1_TemplatePrint" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="1_TemplateFullScreen" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="2_JQueryUI" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_ContentSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_ContentMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_ContentLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
 
       <add key="Alert" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />

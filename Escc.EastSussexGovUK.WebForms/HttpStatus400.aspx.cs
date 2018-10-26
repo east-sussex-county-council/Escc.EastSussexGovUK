@@ -19,8 +19,7 @@ namespace Escc.EastSussexGovUK.WebForms
             var skinnable = Master as BaseMasterPage;
             if (skinnable != null)
             {
-                skinnable.Skin = new CustomerFocusSkin(ViewSelector.CurrentViewIs(MasterPageFile));
-                css.Attributes["class"] = skinnable.Skin.TextContentClass;
+                skinnable.Skin = new CustomerFocusSkin();
             }
 
             // Return the correct HTTP status code

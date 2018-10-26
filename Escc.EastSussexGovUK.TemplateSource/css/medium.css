@@ -53,6 +53,21 @@ The container is now 10 columns or 802px wide.
  * MAIN CONTENT AREA *
  *********************/
 
+/* Adjust .content to the 10 column context 
+
+   Replace .content-small with .content-medium. Both exist as a way to apply .content at a single breakpoint without it having any effect at larger breakpoints.
+   This is useful when applying it to something that is full-width here, but in columns at larger sizes.
+*/
+@media screen {
+    .content-small { padding: 0; }
+    .content, .content-medium {
+        padding: 0 2.244389%;
+    }
+}
+
+/* Align .breadcrumb-mobile with .content */
+body .breadcrumb-mobile { padding-left: 2.244389%;padding-right: 2.244389%; }
+
 /* Section nav appears above latest items and page content. Once we reach this size we can split it into two columns and show an image.
    18px padding + 374px column + 18px gutter + 374px column + 18px padding = 802px/10 columns 
    
@@ -64,34 +79,110 @@ The container is now 10 columns or 802px wide.
 .section-nav ul { float: left; width: 46.633416%; margin: 0 2.244389% 0 0; }
 .rtl .section-nav ul { float: right; }
 
-/* Adjust .text to the 10 column context */
-@media screen 
-{
-    .text { padding: .1px 2.244389% 0; } 
-}
-.text h1, h1.text { padding: .29166em 2.244389%; } 
-.text h1 { margin: 0 -2.244389%; }
+/* Container for text content. Equivalent of .text in the default skin, but increasing the base font size to 19px/27px. */
+.text-content { font-size: 1.461538em; line-height: 1.421052em;}
+
+/***********************************************
+ NOTE: BASE FONT SIZE IN .text-content IS 19px *
+ ***********************************************/
+
+/* h1 = 48/54px, 0 & 18px margins
+   h2 = 30/36px, 27px & 9px margins 
+   h3 = 26/27px, 27px & 9px margins
+   h4 = 23/27px, 27px & 9px margins
+   h5 = 19/27px (unaltered), 27px & 9px margins
+   h6 = 19/27px (unaltered), 18px & 0 margins */
+.text-content h1 { font-size: 2.526316em; line-height: 1.125em;margin:0 0 .375em; }
+.text-content h2 { font-size: 1.578947em; line-height: 1.2em; margin: .9em 0 .3em;font-weight: bold; }
+.text-content h3 { font-size: 1.368421em; line-height: 1.038462em;margin: 1.038462em 0 .346154em; }
+.text-content h4 { font-size: 1.210526em; line-height: 1.173913em;margin: 1.173913em 0 .391304em;font-weight: normal; }
+.text-content h5 { margin: 1.421053em 0 0; font-weight: bold;font-style: normal; }
+.text-content h6 { margin: .947368em 0 0; font-weight: bold; }
+
+/* Without a breadcrumb trail the default spacing puts the heading 1 too close to the site header, so provide a way to move it down by 9px */
+.no-breadcrumb .text-content h1 { margin-top: .1875em; }
+
+/* 9px margins for standard text, 18px for definition title */
+.text-content p { margin: .473684em 0;}
+.text-content ul, .text-content ol { margin-top: .473684em; margin-bottom: .473684em;}
+.text-content dt {margin: .947368em 0 0; font-weight: bold;}
+
+/* Leading content is emphasised using larger text, 24/36px */
+.text-content .lead { font-size: 1.263158em;line-height: 1.5em; }
+
+/* Tables - 8px padding in cells, 1px border */
+.text-content table, .text-content caption { margin: .947368em 0;}
+.text-content th, .text-content td { border: .052631em solid #ccc;padding: .421053em;}
 
 /* Two column content using negative margin technique. Each column is 49% wide, 1% gutter between and after right allows for IE6/7 rounding errors.
-   Optional container element .tCols contains the floated columns allowing other content to appear after them. 
+   Container element .columns contains the floated columns allowing other content to appear after them. 
 
-  <div class="tCols">
-    <div class="tCol1" />
-    <div class="tCol2" />
+  <div class="columns">
+    <div class="columns" />
+    <div class="columns" />
   </div>
 */
-.text .tCols { overflow: hidden; width: 100%; }
-.text .tCol1 { width: 49%; float: left; margin-right: -50%; padding-right: 50%; }
-.text .tCol2 { width: 49%; float: right; }
+.text-content .columns { overflow: hidden; width: 100%; }
+.text-content .columns > .column1 { width: 49%; float: left; margin-right: -50%; padding-right: 50%; }
+.text-content .columns > .column2 { width: 49%; float: right; }
 
-/* Search results where each result is a definition list of fields and values. This is its own section, not within .text. 
+/* Link icons - larger text size means icons need to move slightly */
+.text-content .hcal, .text-content a[href$=".calendar"] { background-position: 0 6px; }
+.text-content .rss { background-position: 0 -42px; }
+.text-content .email { background-position: 0 -92px; }
+.text-content .rss-email  { background-position: 0 -144px; }
+.text-content .xml, .text-content a[href$=".xml"] { background-position: 0 -194px; }
+.text-content .pdf, .text-content a[href$=".pdf"] { background-position: 0 -244px; }
+.text-content .doc, .text-content .rtf, .text-content a[href$=".doc"], .text-content a[href$=".docx"], .text-content a[href$=".dot"], .text-content a[href$=".dotx"], .text-content a[href$=".rtf"] { background-position: 0 -294px; }
+.text-content .xls, .text-content .csv, .text-content a[href$=".xls"], .text-content a[href$=".xlsx"], .text-content a[href$=".xlt"], .text-content a[href$=".xltx"], .text-content a[href$=".csv"] { background-position: 0 -344px; }
+.text-content .wma, .text-content a[href$=".wma"] { background-position: 0 -396px;  }
+.text-content .mp3, .text-content a[href$=".mp3"] { background-position: 0 -446px; }
+.text-content .ppt, .text-content a[href$=".ppt"], .text-content a[href$=".pptx"], .text-content a[href$=".pps"], .text-content a[href$=".ppsx"], .text-content a[href$=".pot"], .text-content a[href$=".potx"] { background-position: left -1744px; }
+.text-content .jpg, .text-content a[href$=".jpg"], .text-content a[href$=".jpeg"] { background-position: left -2144px; }
+.text-content .html, .text-content .file { background-position: left -2446px; }
+.text-content .new-window { background-position: 100% -496px; }
+.text-content .twitter, .text-content a[href*="twitter.com"] { background-position: 0 -1296px; }
+.text-content .facebook, .text-content a[href*="facebook.com"] { background-position: 0 -1346px; }
+.text-content .youtube, .text-content a[href*="youtube.com"] { background-position: 0 -1396px; }
+.text-content .instagram, .text-content a[href*="instagram.com"] { background-position: 0 -3145px; }
+.text-content .flickr, .text-content a[href*="flickr.com"] { background-position: 0 -1446px; }
+.text-content a[href$="/print"] { background-position: 0 -694px; }
+
+/* Adjust .quick-answer to change in base font-size */
+.text-content .quick-answer { font-size: 1.421053em; }
+
+/* Latest box to highlight new content - adjust spacing for new base font. */
+.text-content .latest { padding: .947368em 18px; margin: .947368em 0; }
+
+/* Related links box - adjust for change in base font size */
+.related-links { margin-bottom: 0.947368em; }
+
+/* Progress bar from forms stylesheet - in context of 19px base font, adjust to 14px/18px using new font */
+.text-content .progressBar { margin: 0 0 .947369em;}
+.text-content .progressBar li { font-size: .736842em; }
+
+/* Paging - adjust to new font size */
+.text-content .infoBar { margin: .473684em 0; padding: .473684em 18px;border-radius: 5px; }
+
+/* Search results where each result is a definition list of fields and values. 
    Gutter either side is 18px in 10 cols. 
-
-   Update this layout only if flexbox is supported, as it's flexbox that lets us keep labels and values lined up when they wrap.
+   Use a float layout by default, but upgrade to flexbox when available as that allows content to remain aligned when it wraps
 */
-.flexbox dl.itemDetail { display: flex; flex-wrap: wrap; }
-.flexbox dl.itemDetail dt { width: 20%; margin: 0 5% .538462em 2.244389%; }
-.flexbox dl.itemDetail dd { margin: 0 2.244389% .538462em 0; width: 70%; } /* 7px/13px between items */
+.text-content dl.itemDetail { padding: .947368em 0 .578947em; }
+.text-content dl.itemDetail dt { width: 22%; float: left; clear: left; }
+.text-content dl.itemDetail dd { margin-left: 25%; padding: 0 0 .368421em; }
+.text-content dl.onlyItem {padding: 0; margin: .947368em 0; }
+
+/* Update this layout only if flexbox is supported, as it's flexbox that lets us keep labels and values lined up when they wrap. */
+.flexbox .text-content dl.itemDetail { display: flex; flex-wrap: wrap; }
+.flexbox .text-content dl.itemDetail dt { width: 20%; margin: 0 5% .538462em 0;}
+.flexbox .text-content dl.itemDetail dd { margin: 0 0 .538462em 0; width: 73%; } /* 7px/13px between items */
+
+/* Clear button for the main action on a page. Maintain font-size at 19px despite base font increase. */ 
+.main-action a { font-size: 1em; }
+
+/* Update spacing around embedded Google maps for new base font size */
+.text-content .google-map { margin: .947368em 0; }
 
 /* Share box now has room to put buttons side by side */
 .share .button-nav { float: left; margin: 0 .5em .692308em 0; }

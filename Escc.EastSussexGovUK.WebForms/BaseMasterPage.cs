@@ -55,7 +55,7 @@ namespace Escc.EastSussexGovUK.WebForms
 
             // Default behaviour
             this.OverrideRenderMethod = true;
-            if (Skin == null) Skin = new DefaultSkin();
+            if (Skin == null) Skin = new CustomerFocusSkin();
         }
 
         /// <summary>

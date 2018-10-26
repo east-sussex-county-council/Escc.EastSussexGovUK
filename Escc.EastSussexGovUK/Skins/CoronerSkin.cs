@@ -9,21 +9,18 @@ namespace Escc.EastSussexGovUK.Skins
     /// </summary>
     public class CoronerSkin : CustomerFocusSkin
     {
-        private readonly EsccWebsiteView _currentView;
         private Uri _requestUrl;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CoronerSkin" /> class.
         /// </summary>
-        /// <param name="currentView">The current view.</param>
         /// <param name="requestUrl">The request URL.</param>
         /// <exception cref="System.ArgumentNullException"></exception>
         /// <exception cref="System.ArgumentException">requestUrl must be an absolute URL</exception>
-        public CoronerSkin(EsccWebsiteView currentView, Uri requestUrl) : base(currentView)
+        public CoronerSkin(Uri requestUrl) : base()
         {
             if (requestUrl == null) throw new ArgumentNullException(nameof(requestUrl));
             if (!requestUrl.IsAbsoluteUri) throw new ArgumentException("requestUrl must be an absolute URL");
-            _currentView = currentView;
             _requestUrl = requestUrl;
         }
 

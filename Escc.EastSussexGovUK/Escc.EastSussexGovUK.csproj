@@ -114,7 +114,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skins\CoronerSkin.cs" />
     <Compile Include="Skins\CustomerFocusSkin.cs" />
-    <Compile Include="Skins\DefaultSkin.cs" />
     <Compile Include="Skins\IEsccWebsiteSkin.cs" />
     <Compile Include="Skins\SkinSelector.cs" />
     <Compile Include="TypekitFontDependency.cs" />

@@ -17,7 +17,7 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="content">
     <div class="full-page">
-        <div class="text" id="css" runat="server">
+        <div class="content text-content">
             <h1>Page not found</h1>
         
             <p>Sorry &#8211; the page you asked for could not be found. It may have been moved or

@@ -15,7 +15,7 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="content">
     <div class="full-page">
-        <div class="text" id="css" runat="server">
+        <div class="content text-content">
             <h1>Forbidden</h1>
             <p>Sorry, you're not allowed to view that page.</p>
         </div>

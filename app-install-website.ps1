@@ -67,7 +67,7 @@ $transformsFolder = NormaliseFolderPath $transformsFolder
 
 BackupApplication "$destinationFolder\$projectName" $backupFolder $comment
     
-robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png desktop.png pan-*.gif item-type.png social.png default.aspx control.aspx logo-large.gif google*.html GovDelivery.html *.ascx csc.* csi.* /XD aspnet_client obj Properties "Web References"
+robocopy $sourceFolder "$destinationFolder\$projectName" /S /PURGE /IF *.dll *.ico *.css *.js apple-*.png navigation.png pan-*.gif item-type.png social.png default.aspx control.aspx logo-large.gif google*.html GovDelivery.html *.ascx csc.* csi.* /XD aspnet_client obj Properties "Web References"
 if (!(Test-Path "$destinationFolder\$projectName\views")) {
 	md "$destinationFolder\$projectName\views"
 }

@@ -63,12 +63,6 @@
       <add key="1_TemplateFullScreen" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/full-screen.css" xdt:Transform="Insert" />
       <add key="2_JQueryUI" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="2_JQueryUI" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/libs/jquery-ui-1.10.4.custom.min.css" xdt:Transform="Insert" />
-      <add key="2_ContentSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_ContentSmall" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/content-small.css" xdt:Transform="Insert" />
-      <add key="2_ContentMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_ContentMedium" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/content-medium.css" xdt:Transform="Insert" />
-      <add key="2_ContentLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="2_ContentLarge" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/content-large.css" xdt:Transform="Insert" />
 
       <add key="Alert" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Alert" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/alert.css" xdt:Transform="Insert" />

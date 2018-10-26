@@ -123,7 +123,7 @@ The site serving the remote master page should configure a `BaseUrl` in `web.con
 
 ## Varying the design
 
-###Swapping master pages and layouts
+### Swapping master pages and layouts
 
 Pages on our site can have different designs applied, and the default designs are implemented as both WebForms masterpages and MVC layouts. By default we use a responsive design ("desktop"), but there is also a full-width, minimal design ("fullscreen") which is suitable for applications like maps, and a "plain" design which can be used as an API to request just the content of a page. These are configured in the `Escc.EastSussexGovUK\GeneralSettings` section of `web.config` as shown below.
 
@@ -180,10 +180,10 @@ It is then up to individual templates and pages to name the skins that they supp
 	Model.EsccWebsiteSkin = SkinSelector.SelectSkin(
 		new IEsccWebsiteSkin[] 
 		{ 
-			new MarriageSkin(Model.EsccWebsiteView, Request.Url), 
-			new CoronerSkin(Model.EsccWebsiteView, Request.Url) 
+			new MarriageSkin(Request.Url), 
+			new CoronerSkin(Request.Url) 
 		}, 
-		new CustomerFocusSkin(Model.EsccWebsiteView)
+		new CustomerFocusSkin()
 	);
 
 ## An alternative approach for third-party applications

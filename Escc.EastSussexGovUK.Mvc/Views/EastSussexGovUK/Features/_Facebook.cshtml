@@ -11,9 +11,9 @@
         if (Model.EsccWebsiteView == EsccWebsiteView.Desktop)
         {
             // Should show at small and medium sizes, and at large if there's no widget
-            var facebookClass = showWidget ? "text-content content-small content-medium small medium" : Model.EsccWebsiteSkin.SupportingTextContentClass;
+            var facebookClass = showWidget ? "small medium" : String.Empty;
 
-            <div class="@facebookClass">
+            <div class="text-content content-small content-medium @facebookClass">
                 <p class="facebook">Find us on Facebook: <a href="@Model.SocialMedia.FacebookPageUrl">@displayUrl</a></p>
             </div>
         }

@@ -29,7 +29,7 @@ namespace Escc.EastSussexGovUK.Mvc
             if (breadcrumbProvider == null) throw new ArgumentNullException(nameof(breadcrumbProvider));
 
             IsPublicView = true;
-            EsccWebsiteSkin = new DefaultSkin();
+            EsccWebsiteSkin = new CustomerFocusSkin();
             Metadata = new Metadata();
             BreadcrumbProvider = breadcrumbProvider;
         }

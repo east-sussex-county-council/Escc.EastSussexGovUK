@@ -253,9 +253,6 @@
     <Content Include="css\CampaignTemplates\campaign-small.css" />
     <Content Include="css\CampaignTemplates\share-panel.css" />
     <Content Include="css\CampaignTemplates\share-white.css" />
-    <Content Include="css\content-large.css" />
-    <Content Include="css\content-medium.css" />
-    <Content Include="css\content-small.css" />
     <Content Include="css\coroner-skin-medium.css" />
     <Content Include="css\coroner-skin-small.css" />
     <Content Include="css\forms-large.css" />
@@ -292,9 +289,6 @@
     <Content Include="css\medium.css" />
     <Content Include="css\min\1space.css" />
     <Content Include="css\min\alert.css" />
-    <Content Include="css\min\content-large.css" />
-    <Content Include="css\min\content-medium.css" />
-    <Content Include="css\min\content-small.css" />
     <Content Include="css\min\forms-large.css" />
     <Content Include="css\min\forms-medium.css" />
     <Content Include="css\min\forms-small.css" />
@@ -326,7 +320,6 @@
     <EmbeddedResource Include="googledb369ad0fa294f54.html" />
     <Content Include="img\body\item-type.png" />
     <Content Include="img\body\map-placemarker.png" />
-    <Content Include="img\body\gradient.jpg" />
     <Content Include="img\body\navigation.png" />
     <Content Include="img\body\pan-e.gif" />
     <Content Include="img\body\pan-n.gif" />
@@ -342,8 +335,6 @@
     <Content Include="img\body\worldpay.gif" />
     <Content Include="img\header\autumn-bird.jpg" />
     <Content Include="img\header\buttercups-v2.jpg" />
-    <Content Include="img\header\buttercups.jpg" />
-    <Content Include="img\header\desktop.png" />
     <Content Include="img\header\header.png" />
     <Content Include="img\header\logo-large.png" />
     <Content Include="img\header\logo-small.gif" />
@@ -351,15 +342,10 @@
     <Content Include="img\header\menu-item.png" />
     <Content Include="img\header\mobile.jpg" />
     <Content Include="img\header\robin-v2.jpg" />
-    <Content Include="img\header\robin.jpg" />
     <Content Include="img\header\sheep-v2.jpg" />
-    <Content Include="img\header\sheep.jpg" />
     <Content Include="img\header\squirrel-v2.jpg" />
-    <Content Include="img\header\squirrel.jpg" />
     <Content Include="img\header\winter-walk-v2.jpg" />
-    <Content Include="img\header\winter-walk.jpg" />
     <Content Include="img\header\xmas-lights-v2.jpg" />
-    <Content Include="img\header\xmas-lights.jpg" />
     <Content Include="img\logo-for-facebook.png" />
     <Content Include="img\web.config" />
     <None Include="Escc.EastSussexGovUK.TemplateSource.nuspec" />
