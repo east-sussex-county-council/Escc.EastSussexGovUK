@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.SessionState;
 using Escc.EastSussexGovUK.Features;
 using Escc.Net;
+using Escc.Net.Configuration;
 using NUnit.Framework;
 
 namespace Escc.EastSussexGovUK.Tests

@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Escc.EastSussexGovUK.Features;
 using Escc.Net;
+using Escc.Net.Configuration;
 using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Views
