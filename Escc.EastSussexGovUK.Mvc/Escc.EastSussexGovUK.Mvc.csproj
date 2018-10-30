@@ -58,8 +58,8 @@
       <HintPath>..\packages\Escc.EmbeddedResourceVirtualPathProvider.1.0.0\lib\EmbeddedResourceVirtualPathProvider.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.AddressAndPersonalDetails, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.AddressAndPersonalDetails.4.0.0\lib\netstandard2.0\Escc.AddressAndPersonalDetails.dll</HintPath>
+    <Reference Include="Escc.AddressAndPersonalDetails, Version=4.0.1.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.AddressAndPersonalDetails.4.0.1\lib\netstandard2.0\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ClientDependencyFramework.2.0.1\lib\Escc.ClientDependencyFramework.dll</HintPath>
