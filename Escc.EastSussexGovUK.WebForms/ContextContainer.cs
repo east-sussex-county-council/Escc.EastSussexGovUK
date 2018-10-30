@@ -140,7 +140,7 @@ namespace Escc.EastSussexGovUK.WebForms
             if (!String.IsNullOrEmpty(Groups))
             {
                 var settings = new ActiveDirectorySettingsFromConfiguration();
-                var permissions = new LogonIdentityGroupMembershipChecker(settings.DefaultDomain, new SessionPermissionsResultCache());
+                var permissions = new LogonIdentityGroupMembershipChecker(settings.DefaultDomain, new ActiveDirectoryMemoryCache());
                 if ( !permissions.UserIsInGroup(Groups.SplitAndTrim(';')))
                 {
                     HideContents();
