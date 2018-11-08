@@ -47,3 +47,4 @@ Microsoft.CodeDom.*
 UpgradeLog*.htm
 .vs
 App_Data
+*.orig

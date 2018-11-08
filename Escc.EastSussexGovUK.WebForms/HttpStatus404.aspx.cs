@@ -60,7 +60,12 @@ namespace Escc.EastSussexGovUK.WebForms
             }
 
             var nonce = Guid.NewGuid().ToString().Replace("-", String.Empty);
-            new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy($"script-src 'nonce-{nonce}'").UpdateHeaders();
+            var config = new ContentSecurityPolicyFromConfig();
+            var filter = new ContentSecurityPolicyUrlFilter(Request.Url, config.UrlsToExclude);
+            if (filter.ApplyPolicy())
+            {
+                new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy($"script-src 'nonce-{nonce}'").UpdateHeaders();
+            }
 
             // Configure the tracking script and track the 404 with Google Analytics
             script.TagName = "script";
