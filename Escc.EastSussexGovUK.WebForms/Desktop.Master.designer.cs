@@ -145,7 +145,7 @@ namespace Escc.EastSussexGovUK.WebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.EastSussexGovUK.Features.BreadcrumbTrail breadcrumbTrail;
+        protected global::Escc.EastSussexGovUK.WebForms.BreadcrumbTrail breadcrumbTrail;
         
         /// <summary>
         /// breadcrumbTrailMobile control.
@@ -154,7 +154,7 @@ namespace Escc.EastSussexGovUK.WebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Escc.EastSussexGovUK.Features.BreadcrumbTrailMobile breadcrumbTrailMobile;
+        protected global::Escc.EastSussexGovUK.WebForms.BreadcrumbTrailMobile breadcrumbTrailMobile;
         
         /// <summary>
         /// form1 control.

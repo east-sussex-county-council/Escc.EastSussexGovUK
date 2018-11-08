@@ -119,8 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationCacheStrategy.cs" />
-    <Compile Include="Features\BreadcrumbTrail.cs" />
-    <Compile Include="Features\BreadcrumbTrailMobile.cs" />
     <Compile Include="Features\BreadcrumbTrailFromConfig.cs" />
     <Compile Include="ContentSecurityPolicyDependency.cs" />
     <Compile Include="CssFileDependency.cs" />

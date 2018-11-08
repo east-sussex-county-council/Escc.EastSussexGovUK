@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Escc.EastSussexGovUK.Features;
 
-namespace Escc.EastSussexGovUK.Features
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
     /// Displays a link to the parent section, or the current section home page. See <see cref="BreadcrumbTrail"/> for details.

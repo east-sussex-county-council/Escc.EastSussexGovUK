@@ -93,8 +93,8 @@ else
         }
         else
         {
-            Html.RenderPartial("~/Views/EastSussexGovUK/BreadcrumbTrail.ascx", Model.BreadcrumbProvider);
-            Html.RenderPartial("~/Views/EastSussexGovUK/BreadcrumbTrailMobile.ascx", Model.BreadcrumbProvider);
+            Html.RenderPartial("~/Views/EastSussexGovUK/_BreadcrumbTrail.cshtml", Model.BreadcrumbProvider);
+            Html.RenderPartial("~/Views/EastSussexGovUK/_BreadcrumbTrailMobile.cshtml", Model.BreadcrumbProvider);
         }
         @RenderBody()
     </div>

@@ -5,8 +5,9 @@ using System.Text;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using Escc.EastSussexGovUK.Features;
 
-namespace Escc.EastSussexGovUK.Features
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
     /// Navigation indicating position within information architecture, which appears on every page on the East Sussex County Council website.
