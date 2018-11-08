@@ -23,11 +23,15 @@
     if (!HttpContext.Current.Response.HeadersWritten)
     {
         var config = new ContentSecurityPolicyFromConfig();
-        foreach (var requiredPolicy in Model.RequiresContentSecurityPolicy())
+        var filter = new ContentSecurityPolicyUrlFilter(Request.Url, config.UrlsToExclude);
+        if (filter.ApplyPolicy())
         {
-            var policy = new ContentSecurityPolicyHeaders(HttpContext.Current.Response.Headers);
-            policy.AppendPolicy(config.Policies[requiredPolicy.Alias]);
-            policy.UpdateHeaders();
+            foreach (var requiredPolicy in Model.RequiresContentSecurityPolicy())
+            {
+                var policy = new ContentSecurityPolicyHeaders(HttpContext.Current.Response.Headers);
+                policy.AppendPolicy(config.Policies[requiredPolicy.Alias]);
+                policy.UpdateHeaders();
+            }
         }
     }
 }

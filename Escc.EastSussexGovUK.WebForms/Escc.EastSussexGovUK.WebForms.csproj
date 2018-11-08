@@ -165,7 +165,9 @@
     <EmbeddedResource Include="Plain.Master" />
     <Content Include="build-nuget.cmd" />
     <Content Include="EastSussexGovUK_WebForms.cs.pp" />
-    <Content Include="Escc.EastSussexGovUK.WebForms.nuspec" />
+    <Content Include="Escc.EastSussexGovUK.WebForms.nuspec">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="web.config.install.xdt" />
     <Content Include="web.config.uninstall.xdt" />
     <None Include="Web.Debug.config">

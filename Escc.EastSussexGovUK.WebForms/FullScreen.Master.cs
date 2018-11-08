@@ -72,13 +72,17 @@ namespace Escc.EastSussexGovUK.WebForms
                 skinScript.FileList.Add(scriptDependency.JsFileAlias);
             }
 
-            var csp = new ContentSecurityPolicyHeaders(Response.Headers);
             var cspConfig = new ContentSecurityPolicyFromConfig();
-            foreach (var contentSecurityPolicy in dependencySet.RequiresContentSecurityPolicy())
+            var filter = new ContentSecurityPolicyUrlFilter(Request.Url, cspConfig.UrlsToExclude);
+            if (filter.ApplyPolicy())
             {
-                csp.AppendPolicy(cspConfig.Policies[contentSecurityPolicy.Alias]);
+                var csp = new ContentSecurityPolicyHeaders(Response.Headers);
+                foreach (var contentSecurityPolicy in dependencySet.RequiresContentSecurityPolicy())
+                {
+                    csp.AppendPolicy(cspConfig.Policies[contentSecurityPolicy.Alias]);
+                }
+                csp.UpdateHeaders();
             }
-            csp.UpdateHeaders();
         }
 
         /// <summary>
