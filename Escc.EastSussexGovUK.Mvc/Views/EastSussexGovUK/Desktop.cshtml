@@ -1,4 +1,6 @@
-﻿@using System.Globalization
+﻿@using System.Collections.Specialized
+@using System.Configuration
+@using System.Globalization
 @using System.Web.Mvc.Html
 @using ClientDependency.Core.Mvc
 @using Escc.EastSussexGovUK
@@ -27,6 +29,24 @@
             .AppendPolicy($"script-src {Request.Url.GetLeftPart(UriPartial.Authority)}; style-src {Request.Url.GetLeftPart(UriPartial.Authority)}; img-src {Request.Url.GetLeftPart(UriPartial.Authority)}")
             .UpdateHeaders();
     }
+
+    // Configure the client that loads elements of the remote master page
+    var textSize = new TextSize(Request.Cookies, Request.QueryString).CurrentTextSize();
+    var isLibraryCatalogueRequest = new LibraryCatalogueContext(Request.UserAgent).RequestIsFromLibraryCatalogueMachine();
+    var proxyProvider = new ConfigurationProxyProvider();
+    var remoteMasterPageConfig = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
+    if (remoteMasterPageConfig == null || String.IsNullOrEmpty(remoteMasterPageConfig["MasterPageControlUrl"]))
+    {
+        throw new ConfigurationErrorsException("<Escc.EastSussexGovUK><RemoteMasterPage><add key=\"MasterPageControlUrl\" /></RemoteMasterPage></Escc.EastSussexGovUK> is not defined in web.config");
+    }
+    var remoteMasterPageRequestTimeout = 4000;
+    if (!String.IsNullOrEmpty(remoteMasterPageConfig["Timeout"]))
+    {
+        Int32.TryParse(remoteMasterPageConfig["Timeout"], out remoteMasterPageRequestTimeout);
+    }
+
+    var forceCacheRefresh = (Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
+    var masterPageControlProvider = new RemoteMasterPageHtmlProvider(new Uri(remoteMasterPageConfig["MasterPageControlUrl"], UriKind.RelativeOrAbsolute), proxyProvider, Request.UserAgent, remoteMasterPageRequestTimeout, new RemoteMasterPageMemoryCacheProvider(HttpContext.Current.Cache), forceCacheRefresh);
 }
 @if (IsSectionDefined("WebChat"))
 {
@@ -39,16 +59,16 @@ else
     if (context.WebChatSettingsUrl != null)
     {
         var webChat = new WebChat();
-        webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, new ConfigurationProxyProvider(), new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings();
+        webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, proxyProvider, new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings();
         webChat.WebChatSettings.PageUrl = new Uri(Request.Url.AbsolutePath, UriKind.Relative);
         Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new[] { webChat });
     }
 }
-@{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider}); }
+@{ Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData {Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest }); }
 <head>
     @RenderSection("ContentExperiment", required: false)
     @{
-        Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "MetadataDesktop", BreadcrumbProvider = Model.BreadcrumbProvider});
+        Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData {Control = "MetadataDesktop", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest });
         Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata);
         Html.RenderPartial("~/Views/EastSussexGovUK/_Fonts.cshtml", Model.EsccWebsiteSkin);
     }
@@ -66,10 +86,9 @@ else
         }
     }
     
-    var textSize = new TextSize(Request.Cookies, Request.QueryString);
-    if (textSize.CurrentTextSize() > 1)
+    if (textSize > 1)
     {
-        bodyClass += " size" + textSize.CurrentTextSize().ToString(CultureInfo.InvariantCulture);
+        bodyClass += " size" + textSize.ToString(CultureInfo.InvariantCulture);
     }
 
     if (!String.IsNullOrEmpty(bodyClass))
@@ -80,7 +99,7 @@ else
     {
         @:<body>
     }
-    Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "AboveHeaderDesktop", BreadcrumbProvider = Model.BreadcrumbProvider});
+    Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData {Control = "AboveHeaderDesktop", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest });
 }
 @if (IsSectionDefined("Header"))
 {
@@ -88,7 +107,7 @@ else
 }
 else
 {
-    Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "HeaderDesktop", BreadcrumbProvider = Model.BreadcrumbProvider});
+    Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData {Control = "HeaderDesktop", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest });
 }
 <div id="main" role="main" class="body">
     <div class="container">
@@ -110,9 +129,9 @@ else
 }
 else
 {
-    Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "FooterDesktop", BreadcrumbProvider = Model.BreadcrumbProvider});
+    Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData {Control = "FooterDesktop", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest });
 }
-@{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "ScriptsDesktop", BreadcrumbProvider = Model.BreadcrumbProvider}); }
+@{ Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData {Control = "ScriptsDesktop", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest }); }
 @Html.RenderJsHere()
 @RenderSection("JavaScript", required: false)
 </body>

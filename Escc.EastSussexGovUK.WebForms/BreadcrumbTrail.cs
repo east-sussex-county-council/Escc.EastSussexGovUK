@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -45,7 +46,7 @@ namespace Escc.EastSussexGovUK.WebForms
         public BreadcrumbTrail()
             : base("nav")
         {
-            this.BreadcrumbProvider = new BreadcrumbTrailFromConfig();
+            this.BreadcrumbProvider = new BreadcrumbTrailFromConfig(HttpContext.Current.Request.Url);
         }
 
         /// <summary>

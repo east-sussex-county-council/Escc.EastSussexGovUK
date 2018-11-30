@@ -13,6 +13,15 @@ namespace Escc.EastSussexGovUK.WebForms {
     public partial class FullScreen {
         
         /// <summary>
+        /// htmlTag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.WebForms.MasterPageControl htmlTag;
+        
+        /// <summary>
         /// contentExperiment control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace Escc.EastSussexGovUK.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder contentExperiment;
+        
+        /// <summary>
+        /// metadataFullScreen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.WebForms.MasterPageControl metadataFullScreen;
         
         /// <summary>
         /// skinSmall control.
@@ -130,6 +148,15 @@ namespace Escc.EastSussexGovUK.WebForms {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder header;
         
         /// <summary>
+        /// headerFullScreen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.WebForms.MasterPageControl headerFullScreen;
+        
+        /// <summary>
         /// fullScreenHeading control.
         /// </summary>
         /// <remarks>
@@ -182,6 +209,15 @@ namespace Escc.EastSussexGovUK.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder footer;
+        
+        /// <summary>
+        /// scriptsFullScreen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.WebForms.MasterPageControl scriptsFullScreen;
         
         /// <summary>
         /// skinScript control.

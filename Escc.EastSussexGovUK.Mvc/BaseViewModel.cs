@@ -15,7 +15,7 @@ namespace Escc.EastSussexGovUK.Mvc
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
         /// </summary>
-        protected BaseViewModel() : this(new BreadcrumbTrailFromConfig())
+        protected BaseViewModel() : this(new BreadcrumbTrailFromConfig(HttpContext.Current.Request.Url))
         {
         }
 

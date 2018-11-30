@@ -1,10 +1,12 @@
-﻿@using System.Web.Mvc.Html
+﻿@using System.Collections.Specialized
+@using System.Configuration
+@using System.Web.Mvc.Html
 @using ClientDependency.Core.Mvc
 @using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
 @using Escc.EastSussexGovUK.Views
-@using Escc.Net
+@using Escc.Net.Configuration
 @using Escc.Web
 @model Escc.EastSussexGovUK.Mvc.BaseViewModel
 @{
@@ -12,7 +14,7 @@
     Model.EsccWebsiteView = EsccWebsiteView.FullScreen;
     Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
 
-    // In rare circumstances Azure can return a value for Request.Url.Authority which is not correct. Since 
+    // In rare circumstances Azure can return a value for Request.Url.Authority which is not correct. Since
     // Request.Url.Authority is used to load client-side assets, ensure it is always allowed by the content security policy.
     var config = new ContentSecurityPolicyFromConfig();
     var filter = new ContentSecurityPolicyUrlFilter(Request.Url, config.UrlsToExclude);
@@ -22,6 +24,24 @@
             .AppendPolicy($"script-src {Request.Url.GetLeftPart(UriPartial.Authority)}; style-src {Request.Url.GetLeftPart(UriPartial.Authority)}; img-src {Request.Url.GetLeftPart(UriPartial.Authority)}")
             .UpdateHeaders();
     }
+
+    // Configure the client that loads elements of the remote master page
+    var textSize = new TextSize(Request.Cookies, Request.QueryString).CurrentTextSize();
+    var isLibraryCatalogueRequest = new LibraryCatalogueContext(Request.UserAgent).RequestIsFromLibraryCatalogueMachine();
+    var proxyProvider = new ConfigurationProxyProvider();
+    var remoteMasterPageConfig = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
+    if (remoteMasterPageConfig == null || String.IsNullOrEmpty(remoteMasterPageConfig["MasterPageControlUrl"]))
+    {
+        throw new ConfigurationErrorsException("<Escc.EastSussexGovUK><RemoteMasterPage><add key=\"MasterPageControlUrl\" /></RemoteMasterPage></Escc.EastSussexGovUK> is not defined in web.config");
+    }
+    var remoteMasterPageRequestTimeout = 4000;
+    if (!String.IsNullOrEmpty(remoteMasterPageConfig["Timeout"]))
+    {
+        Int32.TryParse(remoteMasterPageConfig["Timeout"], out remoteMasterPageRequestTimeout);
+    }
+
+    var forceCacheRefresh = (Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
+    var masterPageControlProvider = new RemoteMasterPageHtmlProvider(new Uri(remoteMasterPageConfig["MasterPageControlUrl"], UriKind.RelativeOrAbsolute), proxyProvider, Request.UserAgent, remoteMasterPageRequestTimeout, new RemoteMasterPageMemoryCacheProvider(HttpContext.Current.Cache), forceCacheRefresh);
 }
 @if (IsSectionDefined("WebChat"))
 {
@@ -34,16 +54,16 @@ else
     if (context.WebChatSettingsUrl != null)
     {
         var webChat = new WebChat();
-        webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, new ConfigurationProxyProvider(), new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings();
+        webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, proxyProvider, new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings();
         webChat.WebChatSettings.PageUrl = new Uri(Request.Url.AbsolutePath, UriKind.Relative);
         Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new[] { webChat });
     }
 }
-@{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData { Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider }); }
+@{ Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest }); }
 <head>
     @RenderSection("ContentExperiment", required: false)
     @{
-        Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "MetadataFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider });
+        Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "MetadataFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest });
         Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata);
         Html.RenderPartial("~/Views/EastSussexGovUK/_Fonts.cshtml", Model.EsccWebsiteSkin);
     }
@@ -53,11 +73,11 @@ else
 @if (IsSectionDefined("BodyClass"))
 {
     @:<body class="@RenderSection("BodyClass")">
-}
-else
-{
-    @:<body>
-}
+    }
+    else
+    {
+        @:<body>
+        }
 <div class="full-screen">
     @if (IsSectionDefined("Header"))
     {
@@ -68,7 +88,7 @@ else
         @:
         <header>
             <div class="header context">
-                @{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "HeaderFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider}); }
+                @{ Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "HeaderFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest }); }
                 <div class="full-screen-bar">
                     <h1>@RenderSection("FullScreenHeading", required: false)</h1>
                     @RenderSection("FullScreenLinks", required: false)
@@ -83,13 +103,13 @@ else
     {
         @RenderSection("Footer");
     }
-    @{ Html.RenderPartial("~/Views/EastSussexGovUK/MasterPageControl.ascx", new MasterPageControlData {Control = "ScriptsFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider}); }
+    @{ Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "ScriptsFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest }); }
     @Html.RenderJsHere()
     @RenderSection("JavaScript", required: false)
 </div>
 </body>
 </html>
 
-@{  // Do not render these sections for this layout
+@{ // Do not render these sections for this layout
     if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb").WriteTo(TextWriter.Null); }
 }

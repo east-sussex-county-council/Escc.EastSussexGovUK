@@ -14,30 +14,6 @@ namespace Escc.EastSussexGovUK.Views
     /// </summary>
     public abstract class RemoteMasterPageCacheProviderBase
     {
-        private readonly string _control;
-        private readonly string _selectedSection;
-        private readonly ILibraryCatalogueContext _libraryCatalogueContext;
-        private readonly ITextSize _textSize;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RemoteMasterPageCacheProviderBase" /> class.
-        /// </summary>
-        /// <param name="control">A key identifying the control to cache.</param>
-        /// <param name="selectedSection">A key representing the selected section of the site.</param>
-        /// <param name="libraryCatalogueContext">The library catalogue context.</param>
-        /// <param name="textSize">The site's text size feature.</param>
-        /// <exception cref="System.ArgumentNullException"></exception>
-        protected RemoteMasterPageCacheProviderBase(string control, string selectedSection, ILibraryCatalogueContext libraryCatalogueContext, ITextSize textSize)
-        {
-            if (libraryCatalogueContext == null) throw new ArgumentNullException(nameof(libraryCatalogueContext));
-            if (textSize == null) throw new ArgumentNullException(nameof(textSize));
-            _control = control;
-            _selectedSection = selectedSection;
-            _libraryCatalogueContext = libraryCatalogueContext;
-            _textSize = textSize;
-            SupportsAsync = false;
-        }
-
         /// <summary>
         /// Gets or sets the remote master page configuration settings.
         /// </summary>
@@ -62,24 +38,26 @@ namespace Escc.EastSussexGovUK.Views
 
 
         /// <summary>
-        /// Gets or sets a value indicating whether a cached version exists.
+        /// Gets whether a cached version exists.
         /// </summary>
+        /// <param name="controlId">A key identifying the control to cache.</param>
+        /// <param name="selectedSection">A key representing the selected section of the site.</param>
+        /// <param name="textSize">The current setting for the site's text size feature.</param>
+        /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
         /// <value><c>true</c> if a cached version exists; otherwise, <c>false</c>.</value>
-        public bool CachedVersionExists { get; set; }
+        public abstract bool CachedVersionExists(string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest);
 
         /// <summary>
-        /// Gets or sets a value indicating whether cached version is newer than the cache threshold.
+        /// Gets a value indicating whether cached version is newer than the cache threshold.
         /// </summary>
+        /// <param name="controlId">A key identifying the control to cache.</param>
+        /// <param name="selectedSection">A key representing the selected section of the site.</param>
+        /// <param name="textSize">The current setting for the site's text size feature.</param>
+        /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
         /// <value>
         /// 	<c>true</c> if cached version is fresh; otherwise, <c>false</c>.
         /// </value>
-        public bool CachedVersionIsFresh { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this cache provider supports caching on an asynchronous thread.
-        /// </summary>
-        /// <value><c>true</c> if the provider supports async; otherwise, <c>false</c>.</value>
-        public bool SupportsAsync { get; set; }
+        public abstract bool CachedVersionIsFresh(string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest);
 
         /// <summary>
         /// Gets how many minutes the remote template elements should be cached for.
@@ -114,35 +92,46 @@ namespace Escc.EastSussexGovUK.Views
         /// <summary>
         /// Gets a token which identifies the unique fragment of HTML to be stored in the cache.
         /// </summary>
+        /// <param name="controlId">A key identifying the control to cache.</param>
+        /// <param name="selectedSection">A key representing the selected section of the site.</param>
+        /// <param name="textSize">The current setting for the site's text size feature.</param>
+        /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
         /// <returns></returns>
-        protected string GetCacheToken()
+        protected string GetCacheToken(string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest)
         {
             // Sanitise selected section and use as a token, so we get a different cached version for each section if appropriate
-            var sanitisedSection = String.IsNullOrEmpty(_selectedSection) ? String.Empty : "." + Regex.Replace(_selectedSection.ToLower(CultureInfo.CurrentCulture), "[^a-z]", String.Empty);
+            var sanitisedSection = String.IsNullOrEmpty(selectedSection) ? String.Empty : "." + Regex.Replace(selectedSection.ToLower(CultureInfo.CurrentCulture), "[^a-z]", String.Empty);
 
             // Add the user's text size to the token, because it affects the HTML of the header (bigger / smaller links are added / removed)
-            var textSizeSetting = _textSize.CurrentTextSize();
-            var textSize = (textSizeSetting > 1) ? ".textsize" + textSizeSetting : String.Empty;
+            var textSizeToken = (textSize > 1) ? ".textsize" + textSize : String.Empty;
 
             // If user is on library catalogue PC, add that to token so that they get a separate cache
-            var libraryUser = _libraryCatalogueContext.RequestIsFromLibraryCatalogueMachine() ? ".librarycatalogue" : String.Empty;
+            var libraryUser = isLibraryCatalogueRequest ? ".librarycatalogue" : String.Empty;
 
             // Add application path to the token, because it affects the path to /masterpages
             var sanitisedPath = "." + Regex.Replace(HttpRuntime.AppDomainAppVirtualPath.ToLower(CultureInfo.CurrentCulture), "[^a-z]", String.Empty);
 
-            return _control + sanitisedSection + textSize + libraryUser + sanitisedPath;
+            return controlId + sanitisedSection + textSizeToken + libraryUser + sanitisedPath;
         }
 
         /// <summary>
         /// Saves the remote HTML to the cache.
         /// </summary>
+        /// <param name="controlId">A key identifying the control to cache.</param>
+        /// <param name="selectedSection">A key representing the selected section of the site.</param>
+        /// <param name="textSize">The current setting for the site's text size feature.</param>
+        /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
         /// <param name="stream">The HTML stream.</param>
-        public abstract void SaveRemoteHtmlToCache(Stream stream);
+        public abstract void SaveRemoteHtmlToCache(string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest, Stream stream);
 
         /// <summary>
         /// Gets the best available cached response (up-to-date or not)
         /// </summary>
+        /// <param name="controlId">A key identifying the control to cache.</param>
+        /// <param name="selectedSection">A key representing the selected section of the site.</param>
+        /// <param name="textSize">The current setting for the site's text size feature.</param>
+        /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
         /// <returns></returns>
-        public abstract string ReadHtmlFromCache();
+        public abstract string ReadHtmlFromCache(string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest);
     }
 }

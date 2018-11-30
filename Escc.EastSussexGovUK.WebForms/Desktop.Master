@@ -1,13 +1,11 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Desktop.master.cs" Inherits="Escc.EastSussexGovUK.WebForms.Desktop" %>
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.WebForms" Assembly="Escc.EastSussexGovUK.WebForms" %>
-<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.Views" Assembly="Escc.EastSussexGovUK" %>
 <%@ Register TagPrefix="ClientDependency" Namespace="Escc.ClientDependencyFramework.WebForms" assembly="Escc.ClientDependencyFramework.WebForms" %>
-<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.Features" Assembly="Escc.EastSussexGovUK" %>
-<EastSussexGovUK:MasterPageControl runat="server" Control="HtmlTag" EnableViewState="false" />
+<EastSussexGovUK:MasterPageControl runat="server" Control="HtmlTag" EnableViewState="false" ID="htmlTag" />
 <head runat="server">
     <EastSussexGovUK:ContextContainer runat="server" Public="true"><asp:ContentPlaceHolder id="contentExperiment" runat="server" /></EastSussexGovUK:ContextContainer>
     <%-- Standard metadata comes first so it's early in life-cycle, because it contains ClientDependency:Css control we want others to find and merge with --%>
-    <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataDesktop" EnableViewState="false" />
+    <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataDesktop" EnableViewState="false" id="metadataDesktop" />
     <ClientDependency:Css runat="server" id="skinSmall" Moveable="False"/>
     <ClientDependency:Css runat="server" id="skinMedium"  MediaConfiguration="Medium" Moveable="False"/>
     <ClientDependency:Css runat="server" id="skinLarge" MediaConfiguration="Large" Moveable="False" />
@@ -18,9 +16,9 @@
 </head>
 <asp:Placeholder id="body" runat="server"><body id="eastsussex-gov-uk"></asp:Placeholder>
 <asp:PlaceHolder id="classyBody" runat="server"><asp:Literal runat="server" id="openBody" text="&lt;body id=&quot;eastsussex-gov-uk&quot; class=&quot;" enableviewstate="false" /><asp:ContentPlaceHolder runat="server" id="bodyclass" /><asp:Literal runat="server" text="&quot;&gt;" enableviewstate="false" /></asp:PlaceHolder>
-    <EastSussexGovUK:MasterPageControl runat="server" Control="AboveHeaderDesktop" EnableViewState="false" />
+    <EastSussexGovUK:MasterPageControl runat="server" Control="AboveHeaderDesktop" EnableViewState="false" id="aboveHeaderDesktop" />
     <asp:contentplaceholder id="header" runat="server">
-        <EastSussexGovUK:MasterPageControl Control="HeaderDesktop" runat="server" EnableViewState="false" />
+        <EastSussexGovUK:MasterPageControl Control="HeaderDesktop" runat="server" EnableViewState="false" id="headerDesktop" />
     </asp:contentplaceholder>
     <div id="main" role="main" class="body">
         <div class="container">
@@ -34,10 +32,10 @@
     </div>
 
     <asp:ContentPlaceHolder id="footer" runat="server">
-        <EastSussexGovUK:MasterPageControl Control="FooterDesktop" runat="server" EnableViewState="false" />
+        <EastSussexGovUK:MasterPageControl Control="FooterDesktop" runat="server" EnableViewState="false" id="footerDesktop" />
     </asp:ContentPlaceHolder>
 
-     <EastSussexGovUK:MasterPageControl runat="server" Control="ScriptsDesktop" EnableViewState="false" />
+     <EastSussexGovUK:MasterPageControl runat="server" Control="ScriptsDesktop" EnableViewState="false" id="scriptsDesktop" />
      <ClientDependency:Script runat="server" id="skinScript"/>
      <asp:ContentPlaceHolder ID="javascript" runat="server" />
   </body>

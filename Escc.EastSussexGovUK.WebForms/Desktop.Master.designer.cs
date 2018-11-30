@@ -13,6 +13,15 @@ namespace Escc.EastSussexGovUK.WebForms {
     public partial class Desktop {
         
         /// <summary>
+        /// htmlTag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.WebForms.MasterPageControl htmlTag;
+        
+        /// <summary>
         /// contentExperiment control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace Escc.EastSussexGovUK.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder contentExperiment;
+        
+        /// <summary>
+        /// metadataDesktop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.WebForms.MasterPageControl metadataDesktop;
         
         /// <summary>
         /// skinSmall control.
@@ -121,6 +139,15 @@ namespace Escc.EastSussexGovUK.WebForms {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder bodyclass;
         
         /// <summary>
+        /// aboveHeaderDesktop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.WebForms.MasterPageControl aboveHeaderDesktop;
+        
+        /// <summary>
         /// header control.
         /// </summary>
         /// <remarks>
@@ -128,6 +155,15 @@ namespace Escc.EastSussexGovUK.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder header;
+        
+        /// <summary>
+        /// headerDesktop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.WebForms.MasterPageControl headerDesktop;
         
         /// <summary>
         /// breadcrumb control.
@@ -200,6 +236,24 @@ namespace Escc.EastSussexGovUK.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder footer;
+        
+        /// <summary>
+        /// footerDesktop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.WebForms.MasterPageControl footerDesktop;
+        
+        /// <summary>
+        /// scriptsDesktop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Escc.EastSussexGovUK.WebForms.MasterPageControl scriptsDesktop;
         
         /// <summary>
         /// skinScript control.

@@ -1,12 +1,11 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="FullScreen.Master.cs" Inherits="Escc.EastSussexGovUK.WebForms.FullScreen" %>
 <%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.WebForms" Assembly="Escc.EastSussexGovUK.WebForms" %>
-<%@ Register TagPrefix="EastSussexGovUK" Namespace="Escc.EastSussexGovUK.Views" Assembly="Escc.EastSussexGovUK" %>
 <%@ Register TagPrefix="ClientDependency" Namespace="Escc.ClientDependencyFramework.WebForms" Assembly="Escc.ClientDependencyFramework.WebForms" %>
-<EastSussexGovUK:MasterPageControl runat="server" Control="HtmlTag" EnableViewState="false" />
+<EastSussexGovUK:MasterPageControl runat="server" Control="HtmlTag" EnableViewState="false" id="htmlTag" />
 <head runat="server">
     <EastSussexGovUK:ContextContainer runat="server" Public="true"><asp:ContentPlaceHolder id="contentExperiment" runat="server" /></EastSussexGovUK:ContextContainer>
     <%-- Standard metadata comes first so it's early in life-cycle, because it contains ClientDependency:Css control we want others to find and merge with --%>
-    <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataFullScreen" EnableViewState="false" />
+    <EastSussexGovUK:MasterPageControl runat="server" Control="MetadataFullScreen" EnableViewState="false" id="metadataFullScreen" />
     <ClientDependency:Css runat="server" id="skinSmall" Moveable="False"/>
     <ClientDependency:Css runat="server" id="skinMedium"  MediaConfiguration="Medium" Moveable="False"/>
     <ClientDependency:Css runat="server" id="skinLarge" MediaConfiguration="Large" Moveable="False" />
@@ -21,7 +20,7 @@
     <asp:contentplaceholder id="header" runat="server">
         <header>
             <div class="header context">
-                <EastSussexGovUK:MasterPageControl runat="server" Control="HeaderFullScreen" EnableViewState="false" />
+                <EastSussexGovUK:MasterPageControl runat="server" Control="HeaderFullScreen" EnableViewState="false" id="headerFullScreen" />
 
                 <div class="full-screen-bar">
                        <h1><asp:contentplaceholder runat="server" id="fullScreenHeading">Page heading</asp:contentplaceholder></h1>
@@ -40,7 +39,7 @@
 
     <asp:ContentPlaceHolder id="footer" runat="server" />
 
-     <EastSussexGovUK:MasterPageControl runat="server" Control="ScriptsFullScreen" EnableViewState="false" />
+     <EastSussexGovUK:MasterPageControl runat="server" Control="ScriptsFullScreen" EnableViewState="false" id="scriptsFullScreen" />
      <ClientDependency:Script runat="server" id="skinScript"/>
     <asp:ContentPlaceHolder ID="javascript" runat="server" enableviewstate="false" />
 </div>

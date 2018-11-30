@@ -43,9 +43,6 @@
       <HintPath>..\packages\Escc.Net.2.0.0\lib\netstandard2.0\Escc.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Escc.Net.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Net.Configuration.1.0.0\lib\net462\Escc.Net.Configuration.dll</HintPath>
-    </Reference>
     <Reference Include="Exceptionless, Version=1.5.2121.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.1.5.2121\lib\net45\Exceptionless.dll</HintPath>
       <Private>True</Private>
@@ -141,7 +138,7 @@
     <Compile Include="Features\IWebChatSettingsService.cs" />
     <Compile Include="Features\LatestSettings.cs" />
     <Compile Include="LibraryCatalogueContext.cs" />
-    <Compile Include="Views\MasterPageControl.cs" />
+    <Compile Include="Views\IHtmlControlProvider.cs" />
     <Compile Include="Views\RemoteMasterPageCacheProviderBase.cs" />
     <Compile Include="Views\RemoteMasterPageMemoryCacheProvider.cs" />
     <Compile Include="Features\SocialMediaSettings.cs" />
@@ -159,6 +156,7 @@
     <Compile Include="Skins\SkinSelector.cs" />
     <Compile Include="TypekitFontDependency.cs" />
     <Compile Include="Views\EsccWebsiteView.cs" />
+    <Compile Include="Views\RemoteMasterPageHtmlProvider.cs" />
     <Compile Include="Views\ViewEngine.cs" />
     <Compile Include="Views\ViewSelector.cs" />
     <Compile Include="Features\WebsiteFormEmailAddressTransformer.cs" />

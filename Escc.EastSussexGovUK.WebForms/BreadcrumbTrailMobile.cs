@@ -23,7 +23,7 @@ namespace Escc.EastSussexGovUK.WebForms
         public BreadcrumbTrailMobile()
             : base("nav")
         {
-            this.BreadcrumbProvider = new BreadcrumbTrailFromConfig();
+            this.BreadcrumbProvider = new BreadcrumbTrailFromConfig(HttpContext.Current.Request.Url);
         }
 
         /// <summary>

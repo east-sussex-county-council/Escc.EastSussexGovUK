@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Web;
 using Escc.EastSussexGovUK.Features;
+using Escc.EastSussexGovUK.Views;
 using Escc.Net;
 using Escc.Net.Configuration;
 using Escc.Web;
@@ -20,6 +24,21 @@ namespace Escc.EastSussexGovUK.WebForms
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected new void Page_Load(object sender, EventArgs e)
         {
+            // Configure remote master page
+            var config = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
+            if (config == null) config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
+            var remoteMasterPageRequestTimeout = 4000;
+            if (!String.IsNullOrEmpty(config["Timeout"]))
+            {
+                Int32.TryParse(config["Timeout"], out remoteMasterPageRequestTimeout);
+            }
+            var forceCacheRefresh = (Page.Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
+            var remoteMasterPageClient = new RemoteMasterPageHtmlProvider(new Uri(config["MasterPageControlUrl"], UriKind.RelativeOrAbsolute), new ConfigurationProxyProvider(), Request.UserAgent, remoteMasterPageRequestTimeout, new RemoteMasterPageMemoryCacheProvider(HttpContext.Current.Cache), forceCacheRefresh);
+            this.htmlTag.HtmlControlProvider = remoteMasterPageClient;
+            this.metadataFullScreen.HtmlControlProvider = remoteMasterPageClient;
+            if (this.headerFullScreen != null) this.headerFullScreen.HtmlControlProvider = remoteMasterPageClient;
+            this.scriptsFullScreen.HtmlControlProvider = remoteMasterPageClient;
+
             // Support web fonts required by the current skin
             if (Skin != null)
             {

@@ -65,7 +65,7 @@
       <HintPath>..\packages\Escc.ClientDependencyFramework.2.0.1\lib\Escc.ClientDependencyFramework.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.5.0.0\lib\net452\Escc.EastSussexGovUK.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.6.0.0\lib\net452\Escc.EastSussexGovUK.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Html, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Html.3.0.0\lib\netstandard2.0\Escc.Html.dll</HintPath>
@@ -217,7 +217,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\EastSussexGovUK\MasterPageControl.ascx" />
     <EmbeddedResource Include="Views\EastSussexGovUK\MetadataControl.ascx" />
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
     <Content Include="Web.config" />
@@ -227,13 +226,6 @@
     <Compile Include="HttpStatusController.cs" />
     <Compile Include="HttpStatusViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\EastSussexGovUK\MasterPageControl.ascx.cs">
-      <DependentUpon>MasterPageControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\EastSussexGovUK\MasterPageControl.ascx.designer.cs">
-      <DependentUpon>MasterPageControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Views\EastSussexGovUK\MasterPageControlData.cs" />
     <Compile Include="Views\EastSussexGovUK\MetadataControl.ascx.cs">
       <DependentUpon>MetadataControl.ascx</DependentUpon>
@@ -251,6 +243,7 @@
     </Content>
     <EmbeddedResource Include="Views\EastSussexGovUK\_BreadcrumbTrailMobile.cshtml" />
     <EmbeddedResource Include="Views\EastSussexGovUK\_BreadcrumbTrail.cshtml" />
+    <EmbeddedResource Include="Views\EastSussexGovUK\_MasterPageControl.cshtml" />
     <None Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="web.config.install.xdt" />

@@ -11,6 +11,17 @@ namespace Escc.EastSussexGovUK.Features
     /// </summary>
     public class BreadcrumbTrailFromConfig : IBreadcrumbProvider
     {
+        private readonly Uri _requestUrl;
+
+        /// <summary>
+        /// Creates a new instance of <see cref="BreadcrumbTrailFromConfig"/>
+        /// </summary>
+        /// <param name="requestUrl">The URL of the request the breadcrumb trail should be generated for</param>
+        public BreadcrumbTrailFromConfig(Uri requestUrl)
+        {
+            _requestUrl = requestUrl ?? throw new ArgumentNullException(nameof(requestUrl));
+        }
+
         /// <summary>
         /// Gets the data for a breadcrumb trail, indexed by the display text with the URL to link to as the value
         /// </summary>
@@ -25,8 +36,8 @@ namespace Escc.EastSussexGovUK.Features
             if (breadcrumbTrail.Count > 0)
             {
                 var lastKey = breadcrumbTrail.AllKeys[breadcrumbTrail.AllKeys.Length - 1];
-                if ((breadcrumbTrail[lastKey] == HttpContext.Current.Request.Url.AbsolutePath && String.IsNullOrEmpty(HttpContext.Current.Request.QueryString.ToString()))
-                    || HttpContext.Current.Request.Url.ToString().EndsWith("/", StringComparison.Ordinal))
+                if ((breadcrumbTrail[lastKey] == _requestUrl.AbsolutePath && String.IsNullOrEmpty(_requestUrl.Query))
+                    || _requestUrl.ToString().EndsWith("/", StringComparison.Ordinal))
                 {
                     // Start with a new copy of the NameValueCollection as the one from web.config is read only
                     breadcrumbTrail = new NameValueCollection(breadcrumbTrail);
