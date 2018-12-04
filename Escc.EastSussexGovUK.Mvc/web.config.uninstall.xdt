@@ -39,10 +39,12 @@
       <remove statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <remove statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <remove statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="410" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <remove statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <error statusCode="400" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='400' and @subStatusCode='-1' and @path='/HttpStatus/BadRequest' and @responseMode='ExecuteURL')" />
       <error statusCode="403" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='403' and @subStatusCode='-1' and @path='/HttpStatus/Forbidden' and @responseMode='ExecuteURL')" />
       <error statusCode="404" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='404' and @subStatusCode='-1' and @path='/HttpStatus/NotFound' and @responseMode='ExecuteURL')" />
+      <error statusCode="410" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='410' and @subStatusCode='-1' and @path='/HttpStatus/Gone' and @responseMode='ExecuteURL')" />
       <error statusCode="500" xdt:Transform="Remove" xdt:Locator="Condition(@statusCode='500' and @subStatusCode='-1' and @path='/HttpStatus/InternalServerError' and @responseMode='ExecuteURL')" />
     </httpErrors>
     <httpErrors xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0 and @errorMode='Custom' and @existingResponse='Replace')" />

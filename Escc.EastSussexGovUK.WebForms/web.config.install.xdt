@@ -76,18 +76,22 @@
       <remove statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <remove statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <remove statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <remove statusCode="410" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <remove statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <error statusCode="400" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <error statusCode="403" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <error statusCode="404" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
+      <error statusCode="410" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <error statusCode="500" xdt:Transform="Remove" xdt:Locator="Match(statusCode)" />
       <remove statusCode="400" subStatusCode="-1" xdt:Transform="Insert" />
       <remove statusCode="403" subStatusCode="-1" xdt:Transform="Insert" />
       <remove statusCode="404" subStatusCode="-1" xdt:Transform="Insert" />
+      <remove statusCode="410" subStatusCode="-1" xdt:Transform="Insert" />
       <remove statusCode="500" subStatusCode="-1" xdt:Transform="Insert" />
       <error statusCode="400" subStatusCode="-1" path="/HttpStatus400.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
       <error statusCode="403" subStatusCode="-1" path="/HttpStatus403.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
       <error statusCode="404" subStatusCode="-1" path="/HttpStatus404.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
+      <error statusCode="410" subStatusCode="-1" path="/HttpStatus410.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
       <error statusCode="500" subStatusCode="-1" path="/HttpStatus500.aspx" responseMode="ExecuteURL" xdt:Transform="Insert" />
     </httpErrors>
     <modules xdt:Transform="Insert" />

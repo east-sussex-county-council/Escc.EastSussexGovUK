@@ -7,7 +7,7 @@ namespace Escc.EastSussexGovUK.WebForms
     /// <summary>
     /// Error page for an unhandled exception
     /// </summary>
-    public partial class Status310 : Page
+    public partial class Status410 : Page
     {
         /// <summary>
         /// Handles the Load event of the Page control.

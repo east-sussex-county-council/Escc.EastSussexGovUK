@@ -1,4 +1,4 @@
-<%@ Page Language="c#" CodeBehind="HttpStatus310.aspx.cs" AutoEventWireup="true" Inherits="Escc.EastSussexGovUK.WebForms.Status310" EnableViewState="false" %>
+<%@ Page Language="c#" CodeBehind="HttpStatus410.aspx.cs" AutoEventWireup="true" Inherits="Escc.EastSussexGovUK.WebForms.Status410" EnableViewState="false" %>
 <%@ Register TagPrefix="Metadata" Namespace="Escc.Web.Metadata" Assembly="Escc.Web.Metadata" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="metadata">

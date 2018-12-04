@@ -77,7 +77,7 @@
       <HintPath>..\packages\Escc.Redirects.1.1.0\lib\Escc.Redirects.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Web.1.1.1\lib\Escc.Web.dll</HintPath>
+      <HintPath>..\packages\Escc.Web.1.1.2\lib\Escc.Web.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Web.Metadata.2.0.0\lib\Escc.Web.Metadata.dll</HintPath>
@@ -188,7 +188,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="HttpStatus310.aspx">
+    <EmbeddedResource Include="HttpStatus410.aspx">
       <SubType>Form</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="HttpStatus400.aspx">
@@ -244,12 +244,12 @@
     <Compile Include="FullScreen.Master.designer.cs">
       <DependentUpon>FullScreen.Master</DependentUpon>
     </Compile>
-    <Compile Include="HttpStatus310.aspx.cs">
-      <DependentUpon>HttpStatus310.aspx</DependentUpon>
+    <Compile Include="HttpStatus410.aspx.cs">
+      <DependentUpon>HttpStatus410.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HttpStatus310.aspx.designer.cs">
-      <DependentUpon>HttpStatus310.aspx</DependentUpon>
+    <Compile Include="HttpStatus410.aspx.designer.cs">
+      <DependentUpon>HttpStatus410.aspx</DependentUpon>
     </Compile>
     <Compile Include="HttpStatus400.aspx.cs">
       <DependentUpon>HttpStatus400.aspx</DependentUpon>
