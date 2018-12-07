@@ -62,7 +62,7 @@ namespace Escc.EastSussexGovUK.WebForms
             var nonce = Guid.NewGuid().ToString().Replace("-", String.Empty);
             var config = new ContentSecurityPolicyFromConfig();
             var filter = new ContentSecurityPolicyUrlFilter(Request.Url, config.UrlsToExclude);
-            if (filter.ApplyPolicy())
+            if (filter.ApplyPolicy() && !Response.HeadersWritten)
             {
                 new ContentSecurityPolicyHeaders(Response.Headers).AppendPolicy($"script-src 'nonce-{nonce}'").UpdateHeaders();
             }

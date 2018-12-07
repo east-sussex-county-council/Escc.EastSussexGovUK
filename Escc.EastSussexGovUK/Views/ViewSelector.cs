@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Web;
-using System.Web.SessionState;
 
 namespace Escc.EastSussexGovUK.Views
 {
@@ -15,10 +14,9 @@ namespace Escc.EastSussexGovUK.Views
         /// <summary>
         /// Selects most appropriate master page or MVC layout based on querystring or URL path
         /// </summary>
-        /// <param name="queryString">The query string.</param>
+        /// <param name="forUrl">The URL of the page to select a view for.</param>
         /// <param name="userAgent">The user agent.</param>
         /// <param name="viewEngine">The view engine to select the view for.</param>
-        /// <param name="cookies">Cookies for the current response. Optional as now used only to delete the old cookie.</param>
         /// <returns></returns>
         /// <remarks>
         /// <para>It requires master pages and/or MVC layouts to be set up in web.config similar to the following:</para>
@@ -52,8 +50,14 @@ namespace Escc.EastSussexGovUK.Views
         /// <para>For MVC sites using Razor views, specify *.cshtml files wherever *.master is used above. The HTTP module is not needed for MVC.
         /// Instead add similar code to _ViewStart.cshtml.</para>
         /// </remarks>
-        public static string SelectView(NameValueCollection queryString, string userAgent, ViewEngine viewEngine=ViewEngine.WebForms, HttpCookieCollection cookies=null)
+        public static string SelectView(Uri forUrl, string userAgent, ViewEngine viewEngine=ViewEngine.WebForms)
         {
+            if (forUrl == null)
+            {
+                throw new ArgumentNullException(nameof(forUrl));
+            }
+            var queryString = HttpUtility.ParseQueryString(forUrl.Query);
+
             // Grab settings from config and set up some defaults
             var generalSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
             if (generalSettings == null) generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
@@ -83,8 +87,8 @@ namespace Escc.EastSussexGovUK.Views
             if (configSettings.ContainsKey(preferredView) && configSettings[preferredView] != null)
             {
                 // A CMS may change the URL requested by the user to that of the template, so use the corrected URL provided by HostingEnvironmentContext 
-                var siteContext = new HostingEnvironmentContext();
-                preferredMasterPage = AssignMasterPageByFolder(HttpContext.Current.Request.Url, configSettings[preferredView], preferredMasterPage);
+                var siteContext = new HostingEnvironmentContext(forUrl);
+                preferredMasterPage = AssignMasterPageByFolder(forUrl, configSettings[preferredView], preferredMasterPage);
             }
             else if (generalSettings != null)
             {
@@ -100,30 +104,8 @@ namespace Escc.EastSussexGovUK.Views
                 throw new ConfigurationErrorsException("The path to the selected MVC layout was not specified. Set the path in the Escc.EastSussexGovUK/GeneralSettings/add[@key='" + preferredView + configSettingsGroup + "'] element in web.config.");
             }
 
-            // We used to use a cookie. Delete it if found. These cookies were set to last for 50 years!
-            DeleteCookie(cookies, "template1", ".eastsussex.gov.uk");
-
             return preferredMasterPage;
         }
-
-
-        /// <summary>
-        /// Causes a browser to delete a cookie by setting it to expire yesterday
-        /// </summary>
-        /// <param name="cookies">The cookies.</param>
-        /// <param name="name">The name.</param>
-        /// <param name="domain">The domain.</param>
-        private static void DeleteCookie(HttpCookieCollection cookies, string name, string domain)
-        {
-            if (cookies != null && cookies[name] != null)
-            {
-                HttpCookie cookie = new HttpCookie(name);
-                cookie.Expires = DateTime.Now.AddDays(-1d);
-                if (!String.IsNullOrEmpty(domain)) cookie.Domain = domain;
-                cookies.Add(cookie);
-            }
-        }
-
 
         /// <summary>
         /// Assigns the master page based on a user request

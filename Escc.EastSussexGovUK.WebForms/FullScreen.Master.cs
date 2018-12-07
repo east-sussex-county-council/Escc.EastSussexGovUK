@@ -33,7 +33,7 @@ namespace Escc.EastSussexGovUK.WebForms
                 Int32.TryParse(config["Timeout"], out remoteMasterPageRequestTimeout);
             }
             var forceCacheRefresh = (Page.Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
-            var remoteMasterPageClient = new RemoteMasterPageHtmlProvider(new Uri(config["MasterPageControlUrl"], UriKind.RelativeOrAbsolute), new ConfigurationProxyProvider(), Request.UserAgent, remoteMasterPageRequestTimeout, new RemoteMasterPageMemoryCacheProvider(HttpContext.Current.Cache), forceCacheRefresh);
+            var remoteMasterPageClient = new RemoteMasterPageHtmlProvider(new Uri(config["MasterPageControlUrl"], UriKind.RelativeOrAbsolute), new ConfigurationProxyProvider(), Request.UserAgent, remoteMasterPageRequestTimeout, new RemoteMasterPageMemoryCacheProvider(), forceCacheRefresh);
             this.htmlTag.HtmlControlProvider = remoteMasterPageClient;
             this.metadataFullScreen.HtmlControlProvider = remoteMasterPageClient;
             if (this.headerFullScreen != null) this.headerFullScreen.HtmlControlProvider = remoteMasterPageClient;
@@ -62,7 +62,7 @@ namespace Escc.EastSussexGovUK.WebForms
             }
 
             // Support web chat
-            var context = new HostingEnvironmentContext();
+            var context = new HostingEnvironmentContext(HttpContext.Current.Request.Url);
             if (context.WebChatSettingsUrl != null)
             {
                 var webChat = new WebChat();
@@ -94,7 +94,7 @@ namespace Escc.EastSussexGovUK.WebForms
 
             var cspConfig = new ContentSecurityPolicyFromConfig();
             var filter = new ContentSecurityPolicyUrlFilter(Request.Url, cspConfig.UrlsToExclude);
-            if (filter.ApplyPolicy())
+            if (filter.ApplyPolicy() && !Response.HeadersWritten)
             {
                 var csp = new ContentSecurityPolicyHeaders(Response.Headers);
                 foreach (var contentSecurityPolicy in dependencySet.RequiresContentSecurityPolicy())

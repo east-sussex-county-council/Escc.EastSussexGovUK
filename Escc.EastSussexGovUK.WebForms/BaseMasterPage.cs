@@ -77,7 +77,7 @@ namespace Escc.EastSussexGovUK.WebForms
             // Request.Url.Authority is used to load client-side assets, ensure it is always allowed by the content security policy.
             var config = new ContentSecurityPolicyFromConfig();
             var filter = new ContentSecurityPolicyUrlFilter(Request.Url, config.UrlsToExclude);
-            if (filter.ApplyPolicy())
+            if (filter.ApplyPolicy() && !Response.HeadersWritten)
             {
                 new ContentSecurityPolicyHeaders(Response.Headers)
                    .AppendPolicy($"script-src {Request.Url.GetLeftPart(UriPartial.Authority)}; style-src {Request.Url.GetLeftPart(UriPartial.Authority)}; img-src {Request.Url.GetLeftPart(UriPartial.Authority)}")

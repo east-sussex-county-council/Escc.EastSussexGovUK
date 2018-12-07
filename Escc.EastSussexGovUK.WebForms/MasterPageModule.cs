@@ -58,7 +58,7 @@ namespace Escc.EastSussexGovUK.WebForms
             // have controls other than <asp:Content /> on it. So just drop out here in that case.
             if (String.IsNullOrEmpty(page.MasterPageFile)) return;
 
-            var preferredMasterPage = ViewSelector.SelectView(page.Request.QueryString, page.Request.UserAgent, ViewEngine.WebForms, page.Request.Cookies);
+            var preferredMasterPage = ViewSelector.SelectView(page.Request.Url, page.Request.UserAgent, ViewEngine.WebForms);
 
             // If the master page has been set, change it. 
             // Otherwise if no default was in config, just leave it using the one it would've used anyway.

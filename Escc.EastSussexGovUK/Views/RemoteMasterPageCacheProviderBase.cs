@@ -5,7 +5,6 @@ using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Web;
-using Escc.EastSussexGovUK.Features;
 
 namespace Escc.EastSussexGovUK.Views
 {

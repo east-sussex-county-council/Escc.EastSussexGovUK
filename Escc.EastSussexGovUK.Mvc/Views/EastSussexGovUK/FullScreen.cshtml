@@ -41,7 +41,7 @@
     }
 
     var forceCacheRefresh = (Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
-    var masterPageControlProvider = new RemoteMasterPageHtmlProvider(new Uri(remoteMasterPageConfig["MasterPageControlUrl"], UriKind.RelativeOrAbsolute), proxyProvider, Request.UserAgent, remoteMasterPageRequestTimeout, new RemoteMasterPageMemoryCacheProvider(HttpContext.Current.Cache), forceCacheRefresh);
+    var masterPageControlProvider = new RemoteMasterPageHtmlProvider(new Uri(remoteMasterPageConfig["MasterPageControlUrl"], UriKind.RelativeOrAbsolute), proxyProvider, Request.UserAgent, remoteMasterPageRequestTimeout, new RemoteMasterPageMemoryCacheProvider(), forceCacheRefresh);
 }
 @if (IsSectionDefined("WebChat"))
 {
@@ -50,7 +50,7 @@
 else
 {
     // Support web chat - not ideal to do this in the view but there's no common controller
-    var context = new HostingEnvironmentContext();
+    var context = new HostingEnvironmentContext(Request.Url);
     if (context.WebChatSettingsUrl != null)
     {
         var webChat = new WebChat();

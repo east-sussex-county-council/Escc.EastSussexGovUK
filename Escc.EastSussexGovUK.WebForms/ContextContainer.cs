@@ -155,7 +155,7 @@ namespace Escc.EastSussexGovUK.WebForms
                 return;
             }
 
-            var context = new HostingEnvironmentContext();
+            var context = new HostingEnvironmentContext(HttpContext.Current.Request.Url);
             if (Public != null && Public.Value != context.IsPublicUrl)
             {
                 HideContents();

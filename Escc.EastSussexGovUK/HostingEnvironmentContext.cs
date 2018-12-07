@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Configuration;
-using System.Globalization;
-using System.Web;
-using System.Web.UI;
 
 namespace Escc.EastSussexGovUK
 {
@@ -19,17 +16,10 @@ namespace Escc.EastSussexGovUK
         /// <summary>
         /// Initializes a new instance of the <see cref="HostingEnvironmentContext"/> class.
         /// </summary>
-        /// <param name="currentUrl">The current URL. If <c>null</c>, <c>HttpContext.Current.Request.Url</c> will be used if available.</param>
-        public HostingEnvironmentContext(Uri currentUrl = null)
+        /// <param name="currentUrl">The current URL.</param>
+        public HostingEnvironmentContext(Uri currentUrl)
         {
-            if (currentUrl != null)
-            {
-                _currentUrl = currentUrl;
-            }
-            else
-            {
-                if (HttpContext.Current?.Request?.Url != null) _currentUrl = HttpContext.Current.Request.Url;
-            }
+            _currentUrl = currentUrl;
         }
 
         /// <summary>

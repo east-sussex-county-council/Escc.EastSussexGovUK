@@ -24,7 +24,7 @@
     {
         var config = new ContentSecurityPolicyFromConfig();
         var filter = new ContentSecurityPolicyUrlFilter(Request.Url, config.UrlsToExclude);
-        if (filter.ApplyPolicy())
+        if (filter.ApplyPolicy() && !Response.HeadersWritten)
         {
             foreach (var requiredPolicy in Model.RequiresContentSecurityPolicy())
             {

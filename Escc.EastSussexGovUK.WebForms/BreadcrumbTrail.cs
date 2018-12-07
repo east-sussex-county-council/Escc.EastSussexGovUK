@@ -57,7 +57,7 @@ namespace Escc.EastSussexGovUK.WebForms
             // Turn breadcrumb trail levels into list items
             var listItems = new List<HtmlGenericControl>();
             var breadcrumbTrail = this.BreadcrumbProvider.BuildTrail();
-            var siteContext = new HostingEnvironmentContext();
+            var siteContext = new HostingEnvironmentContext(HttpContext.Current.Request.Url);
 
             foreach (string key in breadcrumbTrail.Keys)
             {

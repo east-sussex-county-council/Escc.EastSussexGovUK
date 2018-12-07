@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Caching;
+using System.Runtime.Caching;
 
 namespace Escc.EastSussexGovUK
 {
     /// <summary>
-    /// Cache values using the ASP.NET application cache
+    /// Cache values using the default memory cache
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso cref="Escc.EastSussexGovUK.ICacheStrategy{T}" />
@@ -33,7 +28,10 @@ namespace Escc.EastSussexGovUK
         /// <param name="value">The value.</param>
         public void AddToCache(string key, T value)
         {
-            HttpContext.Current.Cache.Insert(key, value, null, (DateTime.Now + _cacheDuration), Cache.NoSlidingExpiration);
+            if (value != null)
+            {
+                MemoryCache.Default.Set(key, value, (DateTime.Now + _cacheDuration));
+            }
         }
 
         /// <summary>
@@ -43,9 +41,9 @@ namespace Escc.EastSussexGovUK
         /// <returns></returns>
         public T ReadFromCache(string key)
         {
-            if (HttpContext.Current.Cache[key] != null)
+            if (MemoryCache.Default.Contains(key))
             {
-                return (T)HttpContext.Current.Cache[key];
+                return (T)MemoryCache.Default[key];
             }
             return default(T);
         }
@@ -56,7 +54,10 @@ namespace Escc.EastSussexGovUK
         /// <param name="key">The key.</param>
         public void RemoveFromCache(string key)
         {
-            HttpContext.Current.Cache.Remove(key);
+            if (MemoryCache.Default.Contains(key))
+            {
+                MemoryCache.Default.Remove(key);
+            }
         }
     }
 }

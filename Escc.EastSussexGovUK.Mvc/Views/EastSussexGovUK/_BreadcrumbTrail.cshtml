@@ -6,7 +6,7 @@
 @{
     // Turn breadcrumb trail levels into list items
     var breadcrumbTrail = Model.BuildTrail();
-    var siteContext = new HostingEnvironmentContext();
+    var siteContext = new HostingEnvironmentContext(Request.Url);
 
     if (breadcrumbTrail.Keys.Count > 0)
     {

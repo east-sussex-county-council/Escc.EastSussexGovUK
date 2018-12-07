@@ -1,9 +1,10 @@
 using System;
-using System.Collections.Specialized;
-using System.Web.UI;
 
 namespace Escc.EastSussexGovUK
 {
+    /// <summary>
+    /// In development and production environments the site may span several domains. Get information about the current environment.
+    /// </summary>
     public interface IHostingEnvironmentContext
     {
         /// <summary>
