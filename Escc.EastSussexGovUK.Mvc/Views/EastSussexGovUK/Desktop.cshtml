@@ -31,7 +31,7 @@
     }
 
     // Configure the client that loads elements of the remote master page
-    var textSize = new TextSize(Request.Cookies, Request.QueryString).CurrentTextSize();
+    var textSize = new TextSize(Request.Cookies?["textsize"]?.Value, Request.QueryString).CurrentTextSize();
     var isLibraryCatalogueRequest = new LibraryCatalogueContext(Request.UserAgent).RequestIsFromLibraryCatalogueMachine();
     var proxyProvider = new ConfigurationProxyProvider();
     var remoteMasterPageConfig = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;

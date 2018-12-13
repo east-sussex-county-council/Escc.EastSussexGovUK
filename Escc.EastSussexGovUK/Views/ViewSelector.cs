@@ -18,38 +18,6 @@ namespace Escc.EastSussexGovUK.Views
         /// <param name="userAgent">The user agent.</param>
         /// <param name="viewEngine">The view engine to select the view for.</param>
         /// <returns></returns>
-        /// <remarks>
-        /// <para>It requires master pages and/or MVC layouts to be set up in web.config similar to the following:</para>
-        /// <example>
-        ///   <code>
-        /// &lt;configuration&gt;
-        /// &lt;configSections&gt;
-        /// &lt;sectionGroup name="Escc.EastSussexGovUK"&gt;
-        /// &lt;section name="GeneralSettings" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
-        /// &lt;section name="DesktopMasterPages" type="System.Configuration.NameValueSectionHandler, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
-        /// &lt;/sectionGroup&gt;
-        /// &lt;/configSections&gt;
-        /// &lt;Escc.EastSussexGovUK&gt;
-        /// &lt;GeneralSettings&gt;
-        /// &lt;add key="MasterPageParameterName" value="template" /&gt;
-        /// &lt;/GeneralSettings&gt;
-        /// &lt;DesktopMasterPages&gt;
-        /// &lt;add key="/somefolder/somefolder/somepage.htm" value="~/master/CustomPage.master" /&gt;
-        /// &lt;add key="/somefolder" value="~/master/CustomFolder.master" /&gt;
-        /// &lt;add key="/" value="~/master/Desktop.master" /&gt;
-        /// &lt;/DesktopMasterPages&gt;
-        /// &lt;/Escc.EastSussexGovUK&gt;
-        /// &lt;system.web&gt;
-        /// &lt;httpModules&gt;
-        /// &lt;add name="MasterPageModule" type="Escc.EastSussexGovUK.WebForms.MasterPageModule"/&gt;
-        /// &lt;/httpModules&gt;
-        /// &lt;/system.web&gt;
-        /// &lt;/configuration&gt;
-        /// </code>
-        /// </example>
-        /// <para>For MVC sites using Razor views, specify *.cshtml files wherever *.master is used above. The HTTP module is not needed for MVC.
-        /// Instead add similar code to _ViewStart.cshtml.</para>
-        /// </remarks>
         public static string SelectView(Uri forUrl, string userAgent, ViewEngine viewEngine=ViewEngine.WebForms)
         {
             if (forUrl == null)
@@ -213,34 +181,37 @@ namespace Escc.EastSussexGovUK.Views
         /// <summary>
         /// Gets the current master page or MVC layout type based on its path
         /// </summary>
+        /// <param name="applicationPath">The virtual path to the application, starting and ending with a /</param>
         /// <param name="currentView">Path of current master page or MVC layout.</param>
         /// <param name="viewEngine">The view engine.</param>
         /// <returns></returns>
-        public static EsccWebsiteView CurrentViewIs(string currentView, ViewEngine viewEngine = ViewEngine.WebForms)
+        public static EsccWebsiteView CurrentViewIs(string applicationPath, string currentView, ViewEngine viewEngine = ViewEngine.WebForms)
         {
-            if (CurrentViewIs(currentView, EsccWebsiteView.Desktop, viewEngine)) return EsccWebsiteView.Desktop;
-            if (CurrentViewIs(currentView, EsccWebsiteView.FullScreen, viewEngine)) return EsccWebsiteView.FullScreen;
-            if (CurrentViewIs(currentView, EsccWebsiteView.Plain, viewEngine)) return EsccWebsiteView.Plain;
+            if (CurrentViewIs(applicationPath, currentView, EsccWebsiteView.Desktop, viewEngine)) return EsccWebsiteView.Desktop;
+            if (CurrentViewIs(applicationPath, currentView, EsccWebsiteView.FullScreen, viewEngine)) return EsccWebsiteView.FullScreen;
+            if (CurrentViewIs(applicationPath, currentView, EsccWebsiteView.Plain, viewEngine)) return EsccWebsiteView.Plain;
             return EsccWebsiteView.Unknown;
         }
 
         /// <summary>
         /// Determines whether the currently selected master page or MVC layout is an instance of the given view.
         /// </summary>
+        /// <param name="applicationPath">The virtual path to the application, starting and ending with a /</param>
         /// <param name="currentView">Path of current master page or MVC layout.</param>
         /// <param name="view">Check whether this view is currently selected.</param>
         /// <param name="viewEngine">The view engine.</param>
         /// <returns></returns>
-        public static bool CurrentViewIs(string currentView, EsccWebsiteView view, ViewEngine viewEngine = ViewEngine.WebForms)
+        public static bool CurrentViewIs(string applicationPath, string currentView, EsccWebsiteView view, ViewEngine viewEngine = ViewEngine.WebForms)
         {
             var generalSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
             if (generalSettings == null) generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
-            return IsMasterPageInGroup(currentView, view.ToString(), generalSettings, viewEngine);
+            return IsMasterPageInGroup(applicationPath, currentView, view.ToString(), generalSettings, viewEngine);
         }
 
         /// <summary>
         /// Determines whether the current master page is in the group identified by the specified key.
         /// </summary>
+        /// <param name="applicationPath">The virtual path to the application, starting and ending with a /</param>
         /// <param name="currentMasterPage">The current master page.</param>
         /// <param name="groupName">The key part of a configuration section name or setting listing master pages.</param>
         /// <param name="generalSettings">The general settings section from web.config.</param>
@@ -248,11 +219,11 @@ namespace Escc.EastSussexGovUK.Views
         /// <returns>
         ///   <c>true</c> if the master page is from the specified configuration group; otherwise, <c>false</c>.
         /// </returns>
-        private static bool IsMasterPageInGroup(string currentMasterPage, string groupName, NameValueCollection generalSettings, ViewEngine viewEngine)
+        private static bool IsMasterPageInGroup(string applicationPath, string currentMasterPage, string groupName, NameValueCollection generalSettings, ViewEngine viewEngine)
         {
             if (String.IsNullOrEmpty(currentMasterPage)) return false;
 
-            currentMasterPage = currentMasterPage.Substring(HttpRuntime.AppDomainAppVirtualPath.Length);
+            currentMasterPage = currentMasterPage.Substring(applicationPath.Length);
             if (!currentMasterPage.StartsWith("/", StringComparison.Ordinal)) currentMasterPage = "/" + currentMasterPage;
             currentMasterPage = "~" + currentMasterPage.ToUpperInvariant();
 

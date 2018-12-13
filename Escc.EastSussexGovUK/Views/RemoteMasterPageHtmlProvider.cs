@@ -44,18 +44,18 @@ namespace Escc.EastSussexGovUK.Views
         /// <summary>
         /// Fetches the master page control from a remote URL.
         /// </summary>
-        /// <param name="applicationPath">The virtual URL to the web server application root, starting and ending with a /</param>
+        /// <param name="applicationId">A string which identifies the application making the request</param>
         /// <param name="forUrl">The page to request the control for (usually the current page)</param>
         /// <param name="controlId">A key identifying the control to cache.</param>
         /// <param name="breadcrumbProvider">The provider for working out the current context within the site's information architecture.</param>
         /// <param name="textSize">The current setting for the site's text size feature.</param>
         /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
-        public string FetchHtmlForControl(string applicationPath, Uri forUrl, string controlId, IBreadcrumbProvider breadcrumbProvider, int textSize, bool isLibraryCatalogueRequest)
+        public string FetchHtmlForControl(string applicationId, Uri forUrl, string controlId, IBreadcrumbProvider breadcrumbProvider, int textSize, bool isLibraryCatalogueRequest)
         {
             // Check parameters
-            if (string.IsNullOrEmpty(applicationPath))
+            if (string.IsNullOrEmpty(applicationId))
             {
-                throw new ArgumentException("applicationPath should be virtual URL to the web server application root, starting and ending with a /", nameof(applicationPath));
+                throw new ArgumentException("applicationId should be be a string uniquely identifying the application", nameof(applicationId));
             }
 
             if (forUrl == null)
@@ -82,25 +82,25 @@ namespace Escc.EastSussexGovUK.Views
             }
 
             // Update the cached control if it's missing or too old
-            if (_cacheProvider == null || !_cacheProvider.CachedVersionExists(controlId, selectedSection, textSize, isLibraryCatalogueRequest) || !_cacheProvider.CachedVersionIsFresh(controlId, selectedSection, textSize, isLibraryCatalogueRequest) || _forceCacheRefresh)
+            if (_cacheProvider == null || !_cacheProvider.CachedVersionExists(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest) || !_cacheProvider.CachedVersionIsFresh(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest) || _forceCacheRefresh)
             {
-                return RequestRemoteHtml(applicationPath, forUrl, controlId, selectedSection, textSize, isLibraryCatalogueRequest);
+                return RequestRemoteHtml(applicationId, forUrl, controlId, selectedSection, textSize, isLibraryCatalogueRequest);
             }
 
             // Return the HTML
-            return _cacheProvider.ReadHtmlFromCache(controlId, selectedSection, textSize, isLibraryCatalogueRequest);
+            return _cacheProvider.ReadHtmlFromCache(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest);
         }
 
         /// <summary>
         /// Requests the remote HTML.
         /// </summary>
-        /// <param name="applicationPath">The virtual URL to the web server application root, starting and ending with a /</param>
+        /// <param name="applicationId">A string which identifies the application making the request</param>
         /// <param name="forUrl">The page to request the control for (usually the current page)</param>
         /// <param name="controlId">A key identifying the control to cache.</param>
         /// <param name="selectedSection">The selected section.</param>
         /// <param name="textSize">The current setting for the site's text size feature.</param>
         /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
-        private string RequestRemoteHtml(string applicationPath, Uri forUrl, string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest)
+        private string RequestRemoteHtml(string applicationId, Uri forUrl, string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest)
         {
             string html = string.Empty;
             try
@@ -108,12 +108,12 @@ namespace Escc.EastSussexGovUK.Views
                 // Get the URL to request the cached control from.
                 // Include text size so that header knows which links to apply
                 Uri urlToRequest = new Uri(forUrl, String.Format(CultureInfo.CurrentCulture, _masterPageControlUrl.ToString(), controlId));
-                applicationPath = HttpUtility.UrlEncode(applicationPath.ToLower(CultureInfo.CurrentCulture).TrimEnd('/'));
+                applicationId = HttpUtility.UrlEncode(applicationId.ToLower(CultureInfo.CurrentCulture).TrimEnd('/'));
                 var query = HttpUtility.ParseQueryString(urlToRequest.Query);
                 query.Add("section", selectedSection);
                 query.Add("host", forUrl.Host);
                 query.Add("textsize", textSize.ToString(CultureInfo.InvariantCulture));
-                query.Add("path", applicationPath);
+                query.Add("path", applicationId);
                 urlToRequest = new Uri(urlToRequest.Scheme + "://" + urlToRequest.Authority + urlToRequest.AbsolutePath + "?" + query);
 
                 // Create the request. Pass current user-agent so that library catalogue PCs can be detected by the remote script.
@@ -139,7 +139,7 @@ namespace Escc.EastSussexGovUK.Views
                             }
                             if (_cacheProvider != null)
                             {
-                                _cacheProvider.SaveRemoteHtmlToCache(controlId, selectedSection, textSize, isLibraryCatalogueRequest, html);
+                                _cacheProvider.SaveRemoteHtmlToCache(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest, html);
                             }
                         }
                     }

@@ -65,7 +65,7 @@
       <HintPath>..\packages\Escc.Dates.3.0.0\lib\netstandard2.0\Escc.Dates.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.7.0.0\lib\net452\Escc.EastSussexGovUK.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.8.0.0\lib\net452\Escc.EastSussexGovUK.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Net, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.2.0.0\lib\netstandard2.0\Escc.Net.dll</HintPath>

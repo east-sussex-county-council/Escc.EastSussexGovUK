@@ -91,7 +91,7 @@ namespace Escc.EastSussexGovUK.WebForms
             {
                 BreadcrumbProvider = new BreadcrumbTrailFromConfig(HttpContext.Current.Request.Url);
             }
-            var textSize = new TextSize(Page.Request.Cookies, Page.Request.QueryString).CurrentTextSize();
+            var textSize = new TextSize(Page.Request.Cookies?["textsize"]?.Value, Page.Request.QueryString).CurrentTextSize();
             var isLibraryCatalogueRequest = new LibraryCatalogueContext(Page.Request.UserAgent).RequestIsFromLibraryCatalogueMachine();
 
             var html = HtmlControlProvider.FetchHtmlForControl(

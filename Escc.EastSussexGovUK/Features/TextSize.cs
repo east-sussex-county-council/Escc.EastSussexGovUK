@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Specialized;
-using System.Web;
 
 namespace Escc.EastSussexGovUK.Features
 {
@@ -9,17 +8,17 @@ namespace Escc.EastSussexGovUK.Features
     /// </summary>
     public class TextSize : ITextSize
     {
-        private readonly HttpCookieCollection _cookies;
+        private readonly string _cookieValue;
         private readonly NameValueCollection _queryString;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TextSize"/> class.
         /// </summary>
-        /// <param name="cookies">The cookies.</param>
+        /// <param name="cookieValue">The current value of the 'textsize' cookie.</param>
         /// <param name="queryString">The query string.</param>
-        public TextSize(HttpCookieCollection cookies, NameValueCollection queryString)
+        public TextSize(string cookieValue, NameValueCollection queryString)
         {
-            _cookies = cookies;
+            _cookieValue = cookieValue;
             _queryString = queryString;
         }
 
@@ -36,11 +35,11 @@ namespace Escc.EastSussexGovUK.Features
 
             // Look for text size value
             _textSize = 1;
-            if (_cookies?["textsize"] != null)
+            if (!String.IsNullOrWhiteSpace(_cookieValue))
             {
                 try
                 {
-                    _textSize = Convert.ToInt32(_cookies["textsize"].Value);
+                    _textSize = Convert.ToInt32(_cookieValue);
                 }
                 catch (FormatException)
                 {

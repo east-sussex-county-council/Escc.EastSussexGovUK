@@ -132,12 +132,10 @@
     <Compile Include="Features\IEastSussex1SpaceService.cs" />
     <Compile Include="IHostingEnvironmentContext.cs" />
     <Compile Include="Features\IEscisService.cs" />
-    <Compile Include="Features\ILatestService.cs" />
     <Compile Include="ILibraryCatalogueContext.cs" />
     <Compile Include="Features\ISocialMediaService.cs" />
     <Compile Include="Features\ITextSize.cs" />
     <Compile Include="Features\IWebChatSettingsService.cs" />
-    <Compile Include="Features\LatestSettings.cs" />
     <Compile Include="LibraryCatalogueContext.cs" />
     <Compile Include="Views\IHtmlControlProvider.cs" />
     <Compile Include="Views\RemoteMasterPageCacheProviderBase.cs" />

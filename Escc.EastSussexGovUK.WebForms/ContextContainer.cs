@@ -111,19 +111,19 @@ namespace Escc.EastSussexGovUK.WebForms
             // Look for various reasons why controls may need to be hidden
 
             // Hide based on master page
-            if (Desktop != null && Desktop.Value != ViewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.Desktop))
+            if (Desktop != null && Desktop.Value != ViewSelector.CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Page.MasterPageFile, EsccWebsiteView.Desktop))
             {
                 HideContents();
                 return;
             }
 
-            if (Plain != null && Plain.Value != ViewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.Plain))
+            if (Plain != null && Plain.Value != ViewSelector.CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Page.MasterPageFile, EsccWebsiteView.Plain))
             {
                 HideContents();
                 return;
             }
 
-            if (FullScreen != null && FullScreen.Value != ViewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.FullScreen))
+            if (FullScreen != null && FullScreen.Value != ViewSelector.CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Page.MasterPageFile, EsccWebsiteView.FullScreen))
             {
                 HideContents();
                 return;

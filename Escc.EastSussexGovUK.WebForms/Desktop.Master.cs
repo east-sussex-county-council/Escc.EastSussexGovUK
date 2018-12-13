@@ -44,7 +44,7 @@ namespace Escc.EastSussexGovUK.WebForms
             this.scriptsDesktop.HtmlControlProvider = remoteMasterPageClient;
 
             // Apply selected text size to page
-            var textSize = new TextSize(Request.Cookies, Request.QueryString);
+            var textSize = new TextSize(Request.Cookies?["textsize"]?.Value, Request.QueryString);
             int baseTextSize = textSize.CurrentTextSize();
             if (baseTextSize > 1)
             {
