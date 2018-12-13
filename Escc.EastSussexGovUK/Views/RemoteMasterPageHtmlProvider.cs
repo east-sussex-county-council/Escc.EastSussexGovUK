@@ -6,6 +6,7 @@ using Exceptionless;
 using System.Web;
 using Escc.EastSussexGovUK.Features;
 using Escc.Net;
+using System.IO;
 
 namespace Escc.EastSussexGovUK.Views
 {
@@ -132,7 +133,14 @@ namespace Escc.EastSussexGovUK.Views
                     {
                         using (var responseStream = response.GetResponseStream())
                         {
-                            _cacheProvider.SaveRemoteHtmlToCache(controlId, selectedSection, textSize, isLibraryCatalogueRequest, responseStream);
+                            using (var reader = new StreamReader(responseStream))
+                            {
+                                html = reader.ReadToEnd();
+                            }
+                            if (_cacheProvider != null)
+                            {
+                                _cacheProvider.SaveRemoteHtmlToCache(controlId, selectedSection, textSize, isLibraryCatalogueRequest, html);
+                            }
                         }
                     }
                 }

@@ -18,18 +18,15 @@ namespace Escc.EastSussexGovUK.Views
         /// <param name="selectedSection">A key representing the selected section of the site.</param>
         /// <param name="textSize">The current setting for the site's text size feature.</param>
         /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
-        /// <param name="stream">The HTML stream.</param>
-        public override void SaveRemoteHtmlToCache(string control, string selectedSection, int textSize, bool isLibraryCatalogueRequest, Stream stream)
+        /// <param name="html">The HTML.</param>
+        public override void SaveRemoteHtmlToCache(string control, string selectedSection, int textSize, bool isLibraryCatalogueRequest, string html)
         {
             var cacheToken = GetCacheToken(control, selectedSection, textSize, isLibraryCatalogueRequest);
             if (_cache.Contains(cacheToken))
             {
                 _cache.Remove(cacheToken);
             }
-            using (var reader = new StreamReader(stream))
-            {
-                _cache.Set(cacheToken, reader.ReadToEnd(), DateTime.Now.AddMinutes(GetCacheMinutes()));
-            }
+            _cache.Set(cacheToken, html, DateTime.Now.AddMinutes(GetCacheMinutes()));
         }
 
         /// <summary>

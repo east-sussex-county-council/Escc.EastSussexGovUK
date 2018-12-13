@@ -120,8 +120,8 @@ namespace Escc.EastSussexGovUK.Views
         /// <param name="selectedSection">A key representing the selected section of the site.</param>
         /// <param name="textSize">The current setting for the site's text size feature.</param>
         /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
-        /// <param name="stream">The HTML stream.</param>
-        public abstract void SaveRemoteHtmlToCache(string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest, Stream stream);
+        /// <param name="html">The HTML.</param>
+        public abstract void SaveRemoteHtmlToCache(string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest, string html);
 
         /// <summary>
         /// Gets the best available cached response (up-to-date or not)
