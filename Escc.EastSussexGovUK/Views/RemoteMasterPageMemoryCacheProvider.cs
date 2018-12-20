@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Runtime.Caching;
 
 namespace Escc.EastSussexGovUK.Views
@@ -10,6 +9,14 @@ namespace Escc.EastSussexGovUK.Views
     public class RemoteMasterPageMemoryCacheProvider : RemoteMasterPageCacheProviderBase
     {
         private ObjectCache _cache = MemoryCache.Default;
+
+        /// <summary>
+        /// Creates a new instance of a <see cref="RemoteMasterPageMemoryCacheProvider"/>
+        /// </summary>
+        /// <param name="cacheMinutes">The number of minutes to cache the master page elements for</param>
+        public RemoteMasterPageMemoryCacheProvider(int cacheMinutes) : base(cacheMinutes)
+        {
+        }
 
         /// <summary>
         /// Saves the remote HTML to the cache.

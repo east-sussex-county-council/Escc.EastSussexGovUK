@@ -1,4 +1,4 @@
-﻿@using Escc.EastSussexGovUK.Views
+﻿@using Escc.EastSussexGovUK.Mvc
 @{
-    Layout = ViewSelector.SelectView(Request.Url, Request.UserAgent, ViewEngine.Mvc);
+    Layout = new MvcViewSelector().SelectView(Request.Url, Request.UserAgent);
 }

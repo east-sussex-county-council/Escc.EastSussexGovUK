@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
+using Escc.EastSussexGovUK.Features;
 
-namespace Escc.EastSussexGovUK.Features
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
     /// Get breadcrumb trail data from the web.config file

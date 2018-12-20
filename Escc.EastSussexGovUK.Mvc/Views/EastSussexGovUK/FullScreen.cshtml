@@ -4,6 +4,7 @@
 @using ClientDependency.Core.Mvc
 @using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Mvc
 @using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
 @using Escc.EastSussexGovUK.Views
 @using Escc.Net.Configuration
@@ -29,19 +30,9 @@
     var textSize = new TextSize(Request.Cookies?["textsize"]?.Value, Request.QueryString).CurrentTextSize();
     var isLibraryCatalogueRequest = new LibraryCatalogueContext(Request.UserAgent).RequestIsFromLibraryCatalogueMachine();
     var proxyProvider = new ConfigurationProxyProvider();
-    var remoteMasterPageConfig = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
-    if (remoteMasterPageConfig == null || String.IsNullOrEmpty(remoteMasterPageConfig["MasterPageControlUrl"]))
-    {
-        throw new ConfigurationErrorsException("<Escc.EastSussexGovUK><RemoteMasterPage><add key=\"MasterPageControlUrl\" /></RemoteMasterPage></Escc.EastSussexGovUK> is not defined in web.config");
-    }
-    var remoteMasterPageRequestTimeout = 4000;
-    if (!String.IsNullOrEmpty(remoteMasterPageConfig["Timeout"]))
-    {
-        Int32.TryParse(remoteMasterPageConfig["Timeout"], out remoteMasterPageRequestTimeout);
-    }
-
+    var masterPageSettings = new RemoteMasterPageSettingsFromConfig();
     var forceCacheRefresh = (Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
-    var masterPageControlProvider = new RemoteMasterPageHtmlProvider(new Uri(remoteMasterPageConfig["MasterPageControlUrl"], UriKind.RelativeOrAbsolute), proxyProvider, Request.UserAgent, remoteMasterPageRequestTimeout, new RemoteMasterPageMemoryCacheProvider(), forceCacheRefresh);
+    var masterPageControlProvider = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), proxyProvider, Request.UserAgent, masterPageSettings.RequestTimeout(), new RemoteMasterPageMemoryCacheProvider(masterPageSettings.CacheTimeout()), forceCacheRefresh);
 }
 @if (IsSectionDefined("WebChat"))
 {

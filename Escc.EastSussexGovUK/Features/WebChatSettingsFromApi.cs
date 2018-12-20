@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration.Internal;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -62,8 +61,8 @@ namespace Escc.EastSussexGovUK.Features
             catch (Exception exception)
             {
                 // catch, report and suppress errors because we never want a check for web chat support to stop a page from loading
-                var data = new Dictionary<string, object> {{"URL", _apiUrl.ToString()}};
-                exception.ToExceptionless(true,data).Submit();
+                exception.Data.Add("URL", _apiUrl.ToString());
+                exception.ToExceptionless().Submit();
                 return new WebChatSettings();
             }
         }

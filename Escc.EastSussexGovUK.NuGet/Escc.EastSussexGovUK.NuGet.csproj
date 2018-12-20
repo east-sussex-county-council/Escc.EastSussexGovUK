@@ -47,7 +47,6 @@
     <None Include="ClientDependency\Escc.EastSussexGovUK.ClientDependency.nuspec" />
     <None Include="ClientDependency\web.config.install.xdt" />
     <None Include="ClientDependency\web.config.uninstall.xdt" />
-    <None Include="Escc.EastSussexGovUK.nuspec" />
     <None Include="Metadata\Escc.EastSussexGovUK.Metadata.nuspec" />
     <None Include="Metadata\web.config.install.xdt" />
     <None Include="Metadata\web.config.uninstall.xdt" />
@@ -56,12 +55,6 @@
     </None>
     <None Include="SecurityConfig\web.config.install.xdt" />
     <None Include="SecurityConfig\web.config.uninstall.xdt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Escc.EastSussexGovUK\Escc.EastSussexGovUK.csproj">
-      <Project>{0d24d550-1007-4627-8dad-c86b07165ef7}</Project>
-      <Name>Escc.EastSussexGovUK</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.Configuration;
 
-namespace Escc.EastSussexGovUK
+namespace Escc.EastSussexGovUK.WebForms
 {
     /// <summary>
     /// In development and production environments the site may span several domains. Get information about the current environment.

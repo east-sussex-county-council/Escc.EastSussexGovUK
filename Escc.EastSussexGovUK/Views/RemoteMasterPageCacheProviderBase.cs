@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Specialized;
-using System.Configuration;
 using System.Globalization;
-using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Escc.EastSussexGovUK.Views
@@ -12,28 +9,16 @@ namespace Escc.EastSussexGovUK.Views
     /// </summary>
     public abstract class RemoteMasterPageCacheProviderBase
     {
-        /// <summary>
-        /// Gets or sets the remote master page configuration settings.
-        /// </summary>
-        /// <value>The configuration settings.</value>
-        protected NameValueCollection ConfigurationSettings { get; private set; }
+        private int _cacheMinutes;
 
         /// <summary>
-        /// Loads the configuration settings from web.config
+        /// Creates a new instance of a <see cref="RemoteMasterPageCacheProviderBase"/> from a child class
         /// </summary>
-        protected void EnsureConfigurationSettings()
+        /// <param name="cacheMinutes">The number of minutes to cache the master page elements for</param>
+        protected RemoteMasterPageCacheProviderBase(int cacheMinutes)
         {
-            if (ConfigurationSettings == null)
-            {
-                ConfigurationSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
-                if (ConfigurationSettings == null) ConfigurationSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
-                if (ConfigurationSettings == null)
-                {
-                    throw new ConfigurationErrorsException("web.config section not found: <Escc.EastSussexGovUK><RemoteMasterPage /></Escc.EastSussexGovUK>");
-                }
-            }
+            _cacheMinutes = cacheMinutes;
         }
-
 
         /// <summary>
         /// Gets whether a cached version exists.
@@ -65,17 +50,7 @@ namespace Escc.EastSussexGovUK.Views
         /// <returns></returns>
         protected int GetCacheMinutes()
         {
-            EnsureConfigurationSettings();
-
-            if (String.IsNullOrEmpty(ConfigurationSettings["CacheMinutes"])) throw new ConfigurationErrorsException("web.config entry not found: <Escc.EastSussexGovUK><RemoteMasterPage><add key=\"CacheMinutes\" value=\"integer\" /></RemoteMasterPage></Escc.EastSussexGovUK>");
-            try
-            {
-                return Int32.Parse(ConfigurationSettings["CacheMinutes"]);
-            }
-            catch (FormatException ex)
-            {
-                throw new ConfigurationErrorsException("web.config entry is not an integer: <Escc.EastSussexGovUK><RemoteMasterPage><add key=\"CacheMinutes\" value=\"integer\" /></RemoteMasterPage></Escc.EastSussexGovUK>", ex);
-            }
+            return _cacheMinutes;
         }
 
         /// <summary>

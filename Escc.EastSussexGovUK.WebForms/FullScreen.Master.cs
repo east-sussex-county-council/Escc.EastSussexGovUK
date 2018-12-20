@@ -25,15 +25,9 @@ namespace Escc.EastSussexGovUK.WebForms
         protected new void Page_Load(object sender, EventArgs e)
         {
             // Configure remote master page
-            var config = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
-            if (config == null) config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
-            var remoteMasterPageRequestTimeout = 4000;
-            if (!String.IsNullOrEmpty(config["Timeout"]))
-            {
-                Int32.TryParse(config["Timeout"], out remoteMasterPageRequestTimeout);
-            }
+            var masterPageSettings = new RemoteMasterPageSettingsFromConfig();
             var forceCacheRefresh = (Page.Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
-            var remoteMasterPageClient = new RemoteMasterPageHtmlProvider(new Uri(config["MasterPageControlUrl"], UriKind.RelativeOrAbsolute), new ConfigurationProxyProvider(), Request.UserAgent, remoteMasterPageRequestTimeout, new RemoteMasterPageMemoryCacheProvider(), forceCacheRefresh);
+            var remoteMasterPageClient = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), new ConfigurationProxyProvider(), Request.UserAgent, masterPageSettings.RequestTimeout(), new RemoteMasterPageMemoryCacheProvider(masterPageSettings.CacheTimeout()), forceCacheRefresh);
             this.htmlTag.HtmlControlProvider = remoteMasterPageClient;
             this.metadataFullScreen.HtmlControlProvider = remoteMasterPageClient;
             if (this.headerFullScreen != null) this.headerFullScreen.HtmlControlProvider = remoteMasterPageClient;

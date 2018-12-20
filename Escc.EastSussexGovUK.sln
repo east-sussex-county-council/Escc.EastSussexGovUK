@@ -27,8 +27,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Mvc", "Escc.EastSussexGovUK.Mvc\Escc.EastSussexGovUK.Mvc.csproj", "{D5F8A611-62BA-42B7-A290-2520B505E022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK", "Escc.EastSussexGovUK\Escc.EastSussexGovUK.csproj", "{0D24D550-1007-4627-8DAD-C86B07165EF7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.WebForms", "Escc.EastSussexGovUK.WebForms\Escc.EastSussexGovUK.WebForms.csproj", "{A4F57253-64C9-4636-BC3C-E145EB06078E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Rss", "Escc.EastSussexGovUK.Rss\Escc.EastSussexGovUK.Rss.csproj", "{3365C8C7-EBA0-49FF-BC27-D79E5466D5A6}"
@@ -38,6 +36,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.TemplateSource.Tests", "Escc.EastSussexGovUK.TemplateSource.Tests\Escc.EastSussexGovUK.TemplateSource.Tests.csproj", "{E38D0104-D5B8-4A69-9238-C2A80E41BCA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.NuGet", "Escc.EastSussexGovUK.NuGet\Escc.EastSussexGovUK.NuGet.csproj", "{018F6F73-BEBA-4DB1-A3AB-F5BB0A47E077}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK", "Escc.EastSussexGovUK\Escc.EastSussexGovUK.csproj", "{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,12 +58,6 @@ Global
 		{D5F8A611-62BA-42B7-A290-2520B505E022}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D5F8A611-62BA-42B7-A290-2520B505E022}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{D5F8A611-62BA-42B7-A290-2520B505E022}.UAT|Any CPU.Build.0 = Release|Any CPU
-		{0D24D550-1007-4627-8DAD-C86B07165EF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D24D550-1007-4627-8DAD-C86B07165EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D24D550-1007-4627-8DAD-C86B07165EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D24D550-1007-4627-8DAD-C86B07165EF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D24D550-1007-4627-8DAD-C86B07165EF7}.UAT|Any CPU.ActiveCfg = Release|Any CPU
-		{0D24D550-1007-4627-8DAD-C86B07165EF7}.UAT|Any CPU.Build.0 = Release|Any CPU
 		{A4F57253-64C9-4636-BC3C-E145EB06078E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A4F57253-64C9-4636-BC3C-E145EB06078E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4F57253-64C9-4636-BC3C-E145EB06078E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -94,6 +88,12 @@ Global
 		{018F6F73-BEBA-4DB1-A3AB-F5BB0A47E077}.Release|Any CPU.Build.0 = Release|Any CPU
 		{018F6F73-BEBA-4DB1-A3AB-F5BB0A47E077}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{018F6F73-BEBA-4DB1-A3AB-F5BB0A47E077}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}.UAT|Any CPU.ActiveCfg = Debug|Any CPU
+		{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}.UAT|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

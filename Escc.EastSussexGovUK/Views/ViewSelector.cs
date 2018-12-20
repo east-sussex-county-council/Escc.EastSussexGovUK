@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Configuration;
 using System.Web;
 
 namespace Escc.EastSussexGovUK.Views
@@ -9,16 +7,18 @@ namespace Escc.EastSussexGovUK.Views
     /// <summary>
     /// Selects most appropriate master page or MVC layout based on querystring or URL path
     /// </summary>
-    public static class ViewSelector
+    public abstract class ViewSelector
     {
         /// <summary>
         /// Selects most appropriate master page or MVC layout based on querystring or URL path
         /// </summary>
         /// <param name="forUrl">The URL of the page to select a view for.</param>
         /// <param name="userAgent">The user agent.</param>
+        /// <param name="generalSettings">The general settings.</param>
+        /// <param name="groupedByViewSettings">The settings section for a specific <see cref="EsccWebsiteView"/>, which overrides <paramref name="generalSettings"/></param>
         /// <param name="viewEngine">The view engine to select the view for.</param>
         /// <returns></returns>
-        public static string SelectView(Uri forUrl, string userAgent, ViewEngine viewEngine=ViewEngine.WebForms)
+        protected string SelectView(Uri forUrl, string userAgent, Dictionary<string,string> generalSettings, Dictionary<EsccWebsiteView, Dictionary<string,string>> groupedByViewSettings, ViewEngine viewEngine)
         {
             if (forUrl == null)
             {
@@ -27,49 +27,32 @@ namespace Escc.EastSussexGovUK.Views
             var queryString = HttpUtility.ParseQueryString(forUrl.Query);
 
             // Grab settings from config and set up some defaults
-            var generalSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
-            if (generalSettings == null) generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
-            var configSettings = new Dictionary<EsccWebsiteView, NameValueCollection>();
-
             var configSettingsGroup = viewEngine == ViewEngine.WebForms ? "MasterPage" : "MvcLayout";
-            configSettings[EsccWebsiteView.Desktop] = ConfigurationManager.GetSection("Escc.EastSussexGovUK/Desktop" + configSettingsGroup + "s") as NameValueCollection;
-            if (configSettings[EsccWebsiteView.Desktop] == null) configSettings[EsccWebsiteView.Desktop] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Desktop" + configSettingsGroup + "s") as NameValueCollection;
-
-            configSettings[EsccWebsiteView.Plain] = ConfigurationManager.GetSection("Escc.EastSussexGovUK/Plain" + configSettingsGroup + "s") as NameValueCollection;
-            if (configSettings[EsccWebsiteView.Plain] == null) configSettings[EsccWebsiteView.Plain] = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/Plain" + configSettingsGroup + "s") as NameValueCollection;
-
             string preferredMasterPage = String.Empty;
             var preferredView = EsccWebsiteView.Desktop;
 
             // Are we set up to accept user requests for a master page?
-            var acceptUserRequest = (generalSettings != null && !String.IsNullOrEmpty(generalSettings["MasterPageParameterName"]));
+            var acceptUserRequest = (generalSettings != null && generalSettings.ContainsKey("MasterPageParameterName") && !String.IsNullOrEmpty(generalSettings["MasterPageParameterName"]));
 
             // If a master page is requested in the querystring that trumps everything *for this request only*
             if (acceptUserRequest && !String.IsNullOrEmpty(queryString[generalSettings["MasterPageParameterName"]]))
             {
-                preferredView = AssignMasterPageFromUserRequest(generalSettings, configSettings, configSettingsGroup, preferredView, queryString[generalSettings["MasterPageParameterName"]]);
+                preferredView = AssignMasterPageFromUserRequest(generalSettings, groupedByViewSettings, configSettingsGroup, preferredView, queryString[generalSettings["MasterPageParameterName"]]);
             }
 
             // We now know which type of master page we want to use, so now get the path to the master page file.
             // Get master page from config based on folder if available, otherwise based on a single setting.
-            if (configSettings.ContainsKey(preferredView) && configSettings[preferredView] != null)
+            if (groupedByViewSettings.ContainsKey(preferredView) && groupedByViewSettings[preferredView] != null)
             {
-                // A CMS may change the URL requested by the user to that of the template, so use the corrected URL provided by HostingEnvironmentContext 
-                var siteContext = new HostingEnvironmentContext(forUrl);
-                preferredMasterPage = AssignMasterPageByFolder(forUrl, configSettings[preferredView], preferredMasterPage);
+                preferredMasterPage = AssignMasterPageByFolder(forUrl, groupedByViewSettings[preferredView]);
             }
             else if (generalSettings != null)
             {
                 var configKey = preferredView + configSettingsGroup;
-                if (!String.IsNullOrEmpty(generalSettings[configKey]))
+                if (generalSettings.ContainsKey(configKey) && !String.IsNullOrEmpty(generalSettings[configKey]))
                 {
                     preferredMasterPage = generalSettings[configKey];
                 }
-            }
-
-            if (viewEngine == ViewEngine.Mvc && String.IsNullOrEmpty(preferredMasterPage))
-            {
-                throw new ConfigurationErrorsException("The path to the selected MVC layout was not specified. Set the path in the Escc.EastSussexGovUK/GeneralSettings/add[@key='" + preferredView + configSettingsGroup + "'] element in web.config.");
             }
 
             return preferredMasterPage;
@@ -84,15 +67,16 @@ namespace Escc.EastSussexGovUK.Views
         /// <param name="esccWebsiteView">The preferred view before this test.</param>
         /// <param name="requestedKey">The key supplied by the user to request the master page.</param>
         /// <returns></returns>
-        private static EsccWebsiteView AssignMasterPageFromUserRequest(NameValueCollection generalSettings, Dictionary<EsccWebsiteView, NameValueCollection> configSettings, string configSettingsGroup, EsccWebsiteView esccWebsiteView, string requestedKey)
+        private static EsccWebsiteView AssignMasterPageFromUserRequest(Dictionary<string,string> generalSettings, Dictionary<EsccWebsiteView, Dictionary<string,string>> configSettings, string configSettingsGroup, EsccWebsiteView esccWebsiteView, string requestedKey)
         {
             try
             {
                 // Get the view requested by the user, and check that we have a master page registered to match it
                 var requestedView = (EsccWebsiteView)Enum.Parse(typeof(EsccWebsiteView), requestedKey, true);
+                var configKey = requestedView + configSettingsGroup;
 
                 if ((configSettings.ContainsKey(requestedView) && configSettings[requestedView] != null) ||
-                    !String.IsNullOrEmpty(generalSettings[requestedView + configSettingsGroup]))
+                    (generalSettings.ContainsKey(configKey) && !String.IsNullOrEmpty(generalSettings[configKey])))
                 {
                     esccWebsiteView = requestedView;
                 }
@@ -110,9 +94,8 @@ namespace Escc.EastSussexGovUK.Views
         /// </summary>
         /// <param name="requestUrl">The request URL.</param>
         /// <param name="masterPageSettings">The master page settings.</param>
-        /// <param name="preferredMasterPage">The preferred master page.</param>
         /// <returns></returns>
-        private static string AssignMasterPageByFolder(Uri requestUrl, NameValueCollection masterPageSettings, string preferredMasterPage)
+        private static string AssignMasterPageByFolder(Uri requestUrl, Dictionary<string,string> masterPageSettings)
         {
             // Break the URL into folders. Work backwards starting from the page, its folder, its subfolder 
             // and so on back to the root until we find a setting. If we don't find a setting, stick with the existing default.
@@ -120,11 +103,12 @@ namespace Escc.EastSussexGovUK.Views
 
             var i = 0;
             var folders = folderList.Count;
+            string preferredMasterPage = string.Empty;
 
             while (i < folders)
             {
                 string lowercaseUrl = folderList[i].ToLowerInvariant();
-                if (!String.IsNullOrEmpty(masterPageSettings[lowercaseUrl]))
+                if (masterPageSettings.ContainsKey(lowercaseUrl) && !String.IsNullOrEmpty(masterPageSettings[lowercaseUrl]))
                 {
                     // found a setting for this file/folder
                     preferredMasterPage = masterPageSettings[lowercaseUrl];
@@ -179,47 +163,18 @@ namespace Escc.EastSussexGovUK.Views
         }
 
         /// <summary>
-        /// Gets the current master page or MVC layout type based on its path
-        /// </summary>
-        /// <param name="applicationPath">The virtual path to the application, starting and ending with a /</param>
-        /// <param name="currentView">Path of current master page or MVC layout.</param>
-        /// <param name="viewEngine">The view engine.</param>
-        /// <returns></returns>
-        public static EsccWebsiteView CurrentViewIs(string applicationPath, string currentView, ViewEngine viewEngine = ViewEngine.WebForms)
-        {
-            if (CurrentViewIs(applicationPath, currentView, EsccWebsiteView.Desktop, viewEngine)) return EsccWebsiteView.Desktop;
-            if (CurrentViewIs(applicationPath, currentView, EsccWebsiteView.FullScreen, viewEngine)) return EsccWebsiteView.FullScreen;
-            if (CurrentViewIs(applicationPath, currentView, EsccWebsiteView.Plain, viewEngine)) return EsccWebsiteView.Plain;
-            return EsccWebsiteView.Unknown;
-        }
-
-        /// <summary>
-        /// Determines whether the currently selected master page or MVC layout is an instance of the given view.
-        /// </summary>
-        /// <param name="applicationPath">The virtual path to the application, starting and ending with a /</param>
-        /// <param name="currentView">Path of current master page or MVC layout.</param>
-        /// <param name="view">Check whether this view is currently selected.</param>
-        /// <param name="viewEngine">The view engine.</param>
-        /// <returns></returns>
-        public static bool CurrentViewIs(string applicationPath, string currentView, EsccWebsiteView view, ViewEngine viewEngine = ViewEngine.WebForms)
-        {
-            var generalSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/GeneralSettings") as NameValueCollection;
-            if (generalSettings == null) generalSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/GeneralSettings") as NameValueCollection;
-            return IsMasterPageInGroup(applicationPath, currentView, view.ToString(), generalSettings, viewEngine);
-        }
-
-        /// <summary>
         /// Determines whether the current master page is in the group identified by the specified key.
         /// </summary>
         /// <param name="applicationPath">The virtual path to the application, starting and ending with a /</param>
         /// <param name="currentMasterPage">The current master page.</param>
         /// <param name="groupName">The key part of a configuration section name or setting listing master pages.</param>
         /// <param name="generalSettings">The general settings section from web.config.</param>
+        /// <param name="groupedByViewSettings">The settings section for a specific <see cref="EsccWebsiteView"/>, which overrides <paramref name="generalSettings"/></param>
         /// <param name="viewEngine">The view engine.</param>
         /// <returns>
         ///   <c>true</c> if the master page is from the specified configuration group; otherwise, <c>false</c>.
         /// </returns>
-        private static bool IsMasterPageInGroup(string applicationPath, string currentMasterPage, string groupName, NameValueCollection generalSettings, ViewEngine viewEngine)
+        protected static bool IsMasterPageInGroup(string applicationPath, string currentMasterPage, string groupName, Dictionary<string,string> generalSettings, Dictionary<string, string> groupedByViewSettings, ViewEngine viewEngine)
         {
             if (String.IsNullOrEmpty(currentMasterPage)) return false;
 
@@ -229,22 +184,21 @@ namespace Escc.EastSussexGovUK.Views
 
             // Check if there's a single setting for the master page
             var configSettingsGroup = viewEngine == ViewEngine.WebForms ? "MasterPage" : "MvcLayout";
-            if (generalSettings != null && !String.IsNullOrEmpty(generalSettings[groupName + configSettingsGroup]))
+            var configKey = groupName + configSettingsGroup;
+            if (generalSettings != null && generalSettings.ContainsKey(configKey) && !String.IsNullOrEmpty(generalSettings[configKey]))
             {
-                if (generalSettings[groupName + configSettingsGroup].ToUpperInvariant() == currentMasterPage)
+                if (generalSettings[configKey].ToUpperInvariant() == currentMasterPage)
                 {
                     return true;
                 }
             }
 
             // If not, check if there's a group of settings
-            var masterPageSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/" + groupName + configSettingsGroup + "s") as NameValueCollection;
-            if (masterPageSettings == null) masterPageSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/" + groupName + configSettingsGroup + "s") as NameValueCollection;
-            if (masterPageSettings != null)
+            if (groupedByViewSettings != null)
             {
-                foreach (string key in masterPageSettings.Keys)
+                foreach (string key in groupedByViewSettings.Keys)
                 {
-                    if (masterPageSettings[key].ToUpperInvariant() == currentMasterPage)
+                    if (groupedByViewSettings[key].ToUpperInvariant() == currentMasterPage)
                     {
                         return true;
                     }
