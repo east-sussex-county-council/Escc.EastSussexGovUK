@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/MsBuild/2003">
 
-  <UsingTask TaskName="CssCompressorTask" AssemblyFile="$(MSBuildProjectDirectory)\bin\Yahoo.Yui.Compressor.Build.MsBuild.dll" />
-  <UsingTask TaskName="JavaScriptCompressorTask" AssemblyFile="$(MSBuildProjectDirectory)\bin\Yahoo.Yui.Compressor.Build.MsBuild.dll" />
+  <UsingTask TaskName="CssCompressorTask" AssemblyFile="$(MSBuildProjectDirectory)\bin\Yahoo.Yui.Compressor.MsBuild.dll" />
+  <UsingTask TaskName="JavaScriptCompressorTask" AssemblyFile="$(MSBuildProjectDirectory)\bin\Yahoo.Yui.Compressor.MsBuild.dll" />
 
   <Target Name="Minimize" Condition="'$(ConfigurationName)' == 'Release'">
     <CssCompressorTask SourceFiles="css/small.css" OutputFile="css/min/small.css" />
@@ -29,6 +29,7 @@
     <CssCompressorTask SourceFiles="css/govdelivery.css" OutputFile="css/min/govdelivery.css" />
     <CssCompressorTask SourceFiles="css/govdelivery-button-large.css" OutputFile="css/min/govdelivery-button-large.css" />
     <CssCompressorTask SourceFiles="css/govdelivery-button-small.css" OutputFile="css/min/govdelivery-button-small.css" />
+    <CssCompressorTask SourceFiles="css/privacy.css" OutputFile="css/min/privacy.css" />
 
     <JavaScriptCompressorTask SourceFiles="js/1space.js" OutputFile="js/min/1space.js" />
     <JavaScriptCompressorTask SourceFiles="js/alerts.js" OutputFile="js/min/alerts.js" />
@@ -55,5 +56,6 @@
     <JavaScriptCompressorTask SourceFiles="js/umbraco-preview.js" OutputFile="js/min/umbraco-preview.js" />
     <JavaScriptCompressorTask SourceFiles="js/escis.js" OutputFile="js/min/escis.js" />
     <JavaScriptCompressorTask SourceFiles="js/describedby-tips.js" OutputFile="js/min/describedby-tips.js" />
+    <JavaScriptCompressorTask SourceFiles="js/privacy.js" OutputFile="js/min/privacy.js" />
   </Target>
 </Project>

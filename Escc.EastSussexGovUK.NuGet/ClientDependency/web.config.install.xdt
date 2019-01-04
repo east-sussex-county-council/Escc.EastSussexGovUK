@@ -96,6 +96,8 @@
       <add key="NavigationMedium" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/nav-medium.css" xdt:Transform="Insert" />
       <add key="NavigationLarge" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="NavigationLarge" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/nav-large.css" xdt:Transform="Insert" />
+      <add key="Privacy" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Privacy" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/privacy.css" xdt:Transform="Insert" />
       <add key="RssFeed" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="RssFeed" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/rss.css" xdt:Transform="Insert" />
       <add key="RssFeedXslt" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -191,6 +193,8 @@
       <add key="Media" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/media-queries.js" xdt:Transform="Insert" />
       <add key="Navigation" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Navigation" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/nav.js" xdt:Transform="Insert" />
+      <add key="Privacy" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+      <add key="Privacy" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/privacy.js" xdt:Transform="Insert" />
       <add key="PublicLibraries" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="PublicLibraries" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/public-libraries.js" xdt:Transform="Insert" />
       <add key="SocialMedia" xdt:Transform="Remove" xdt:Locator="Match(key)" />
