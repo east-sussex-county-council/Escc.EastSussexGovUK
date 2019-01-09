@@ -224,7 +224,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Views\EastSussexGovUK\MetadataControl.ascx" />
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
-    <Content Include="SqlServer.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

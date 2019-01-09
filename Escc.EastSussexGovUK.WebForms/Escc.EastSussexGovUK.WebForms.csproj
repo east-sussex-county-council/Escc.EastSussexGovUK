@@ -220,7 +220,6 @@
     <Content Include="Escc.EastSussexGovUK.WebForms.nuspec">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="SqlServer.sql" />
     <Content Include="web.config.install.xdt" />
     <Content Include="web.config.uninstall.xdt" />
     <None Include="Web.Debug.config">

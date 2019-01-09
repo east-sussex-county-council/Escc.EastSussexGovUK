@@ -471,7 +471,6 @@
     <None Include="css\Web.example.config" />
     <None Include="js\Web.example.config" />
     <None Include="packages.config" />
-    <Content Include="SqlServer.sql" />
     <Content Include="Views\web.config" />
     <None Include="Views\web.example.config" />
     <None Include="web.config.clientDependency.xdt" />
