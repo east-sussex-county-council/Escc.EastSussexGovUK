@@ -243,6 +243,7 @@
     <Reference Include="Yahoo.Yui.Compressor.Build.MsBuild">
       <HintPath>..\packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
     </Reference>
+    <Reference Include="netstandard" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="apple-touch-icon-114x114.png" />
