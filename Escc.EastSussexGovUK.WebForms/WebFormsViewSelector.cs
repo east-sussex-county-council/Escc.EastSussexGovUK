@@ -66,7 +66,7 @@ namespace Escc.EastSussexGovUK.WebForms
             var masterPageSettings = ConfigurationManager.GetSection("Escc.EastSussexGovUK/" + view + "MasterPages") as NameValueCollection;
             if (masterPageSettings == null) masterPageSettings = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/" + view + "MasterPages") as NameValueCollection;
 
-            return IsMasterPageInGroup(applicationPath, currentView, view + "MasterPage", generalSettings?.AllKeys.ToDictionary(k => k, k => generalSettings[k]), masterPageSettings?.AllKeys.ToDictionary(k => k, k => masterPageSettings[k]), ViewEngine.WebForms);
+            return IsMasterPageInGroup(applicationPath, currentView, view + "MasterPage", generalSettings?.AllKeys.ToDictionary(k => k, k => generalSettings[k]), masterPageSettings?.AllKeys.ToDictionary(k => k, k => masterPageSettings[k]));
         }
     }
 }
