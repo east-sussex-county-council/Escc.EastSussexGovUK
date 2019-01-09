@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Web;
+using Escc.EastSussexGovUK.Mvc;
 
 namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
 {
@@ -13,7 +14,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            var siteContext = new HostingEnvironmentContext();
+            var siteContext = new HostingEnvironmentContext(Request.Url);
 
             // Preprend the base URL if specified (which it should be if this is a subdomain of eastsussex.gov.uk)
             if (siteContext.BaseUrl != null)
