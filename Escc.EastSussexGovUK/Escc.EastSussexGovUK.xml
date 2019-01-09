@@ -1127,16 +1127,15 @@
             <returns>List of paths, starting with the most specific and ending with only the root folder or filename</returns>
             <exception cref="T:System.ArgumentException"></exception>
         </member>
-        <member name="M:Escc.EastSussexGovUK.Views.ViewSelector.IsMasterPageInGroup(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},Escc.EastSussexGovUK.Views.ViewEngine)">
+        <member name="M:Escc.EastSussexGovUK.Views.ViewSelector.IsMasterPageInGroup(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})">
             <summary>
             Determines whether the current master page is in the group identified by the specified key.
             </summary>
             <param name="applicationPath">The virtual path to the application, starting and ending with a /</param>
             <param name="currentMasterPage">The current master page.</param>
-            <param name="groupName">The key part of a configuration section name or setting listing master pages.</param>
+            <param name="generalSettingsKey">The key for the relevant setting in the 'generalSettings' dictionary.</param>
             <param name="generalSettings">The general settings section from web.config.</param>
             <param name="groupedByViewSettings">The settings section for a specific <see cref="T:Escc.EastSussexGovUK.Views.EsccWebsiteView"/>, which overrides <paramref name="generalSettings"/></param>
-            <param name="viewEngine">The view engine.</param>
             <returns>
               <c>true</c> if the master page is from the specified configuration group; otherwise, <c>false</c>.
             </returns>

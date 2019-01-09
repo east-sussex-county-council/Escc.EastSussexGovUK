@@ -167,14 +167,13 @@ namespace Escc.EastSussexGovUK.Views
         /// </summary>
         /// <param name="applicationPath">The virtual path to the application, starting and ending with a /</param>
         /// <param name="currentMasterPage">The current master page.</param>
-        /// <param name="groupName">The key part of a configuration section name or setting listing master pages.</param>
+        /// <param name="generalSettingsKey">The key for the relevant setting in the 'generalSettings' dictionary.</param>
         /// <param name="generalSettings">The general settings section from web.config.</param>
         /// <param name="groupedByViewSettings">The settings section for a specific <see cref="EsccWebsiteView"/>, which overrides <paramref name="generalSettings"/></param>
-        /// <param name="viewEngine">The view engine.</param>
         /// <returns>
         ///   <c>true</c> if the master page is from the specified configuration group; otherwise, <c>false</c>.
         /// </returns>
-        protected static bool IsMasterPageInGroup(string applicationPath, string currentMasterPage, string groupName, Dictionary<string,string> generalSettings, Dictionary<string, string> groupedByViewSettings, ViewEngine viewEngine)
+        protected static bool IsMasterPageInGroup(string applicationPath, string currentMasterPage, string generalSettingsKey, Dictionary<string,string> generalSettings, Dictionary<string, string> groupedByViewSettings)
         {
             if (String.IsNullOrEmpty(currentMasterPage)) return false;
 
@@ -183,11 +182,9 @@ namespace Escc.EastSussexGovUK.Views
             currentMasterPage = "~" + currentMasterPage.ToUpperInvariant();
 
             // Check if there's a single setting for the master page
-            var configSettingsGroup = viewEngine == ViewEngine.WebForms ? "MasterPage" : "MvcLayout";
-            var configKey = groupName + configSettingsGroup;
-            if (generalSettings != null && generalSettings.ContainsKey(configKey) && !String.IsNullOrEmpty(generalSettings[configKey]))
+            if (generalSettings != null && generalSettings.ContainsKey(generalSettingsKey) && !String.IsNullOrEmpty(generalSettings[generalSettingsKey]))
             {
-                if (generalSettings[configKey].ToUpperInvariant() == currentMasterPage)
+                if (generalSettings[generalSettingsKey].ToUpperInvariant() == currentMasterPage)
                 {
                     return true;
                 }
