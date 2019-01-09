@@ -286,7 +286,7 @@
     <Content Include="css\min\nav-large.css" />
     <Content Include="css\min\nav-medium.css" />
     <Content Include="css\min\nav-small.css" />
-    <Content Include="build-nuget.cmd" />
+    <None Include="build-nuget.cmd" />
     <None Include="css\nav-large.css" />
     <None Include="css\nav-medium.css" />
     <None Include="css\nav-small.css" />
