@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Web;
+using Escc.EastSussexGovUK.Mvc;
 
 namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
 {
@@ -15,7 +17,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
         protected void Page_Load(object sender, EventArgs e)
         {
             // Preprend the base URL if specified (which it should be if this is a subdomain of eastsussex.gov.uk)
-            var context = new HostingEnvironmentContext();
+            var context = new HostingEnvironmentContext(HttpContext.Current.Request.Url);
             if (context.BaseUrl != null)
             {
                 var urlPrefix = context.BaseUrl.ToString().TrimEnd('/');

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Globalization;
+using System.Web;
 using System.Web.UI.HtmlControls;
 using Escc.EastSussexGovUK.Features;
+using Escc.EastSussexGovUK.Mvc;
 
 namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
 {
@@ -14,7 +16,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
     /// <seealso cref="System.Web.UI.UserControl" />
     public partial class HeaderDesktop : System.Web.UI.UserControl
     {
-        readonly HostingEnvironmentContext _siteContext = new HostingEnvironmentContext();
+        readonly HostingEnvironmentContext _siteContext = new HostingEnvironmentContext(HttpContext.Current.Request.Url);
         private string _textSizeUrl;
 
         /// <summary>
@@ -139,7 +141,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
             else
             {
                 selectedSection = String.Empty;
-                var provider = new BreadcrumbTrailFromConfig();
+                var provider = new BreadcrumbTrailFromConfig(HttpContext.Current.Request.Url);
                 var trail = provider.BuildTrail();
                 if (trail != null && trail.Count > 1)
                 {
@@ -169,7 +171,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.MasterPages.Controls
                 return;
             }
 
-            int baseTextSize = new TextSize(Request.Cookies, Request.QueryString).CurrentTextSize();
+            int baseTextSize = new TextSize(Request.Cookies?["textsize"]?.Value, Request.QueryString).CurrentTextSize();
 
             if (baseTextSize > 1)
             {
