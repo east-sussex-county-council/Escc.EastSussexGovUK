@@ -8,6 +8,7 @@ using System.Threading;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 using Escc.Redirects;
+using Escc.Redirects.Handlers;
 using Exceptionless;
 
 namespace Escc.EastSussexGovUK.Mvc
@@ -169,7 +170,7 @@ namespace Escc.EastSussexGovUK.Mvc
             try
             {
                 // Try to match the requested URL to a redirect and, if successful, run handlers for the redirect
-                var matchers = new IRedirectMatcher[] { new SqlServerRedirectMatcher() { ThrowErrorOnMissingConfiguration = false } };
+                var matchers = new IRedirectMatcher[] { new SqlServerRedirectMatcher(ConfigurationManager.ConnectionStrings["RedirectsReader"].ConnectionString) };
                 var handlers = new IRedirectHandler[] { new ConvertToAbsoluteUrlHandler(), new PreserveQueryStringHandler(), new DebugInfoHandler(), new GoToUrlHandler() };
 
                 foreach (var matcher in matchers)

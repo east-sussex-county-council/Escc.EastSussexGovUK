@@ -9,6 +9,7 @@ using System.Web.UI;
 using Escc.EastSussexGovUK.Skins;
 using Escc.EastSussexGovUK.Views;
 using Escc.Redirects;
+using Escc.Redirects.Handlers;
 using Escc.Web;
 using Exceptionless;
 
@@ -103,7 +104,7 @@ namespace Escc.EastSussexGovUK.WebForms
             try
             {
                 // Try to match the requested URL to a redirect and, if successful, run handlers for the redirect
-                var matchers = new IRedirectMatcher[] {new SqlServerRedirectMatcher() { ThrowErrorOnMissingConfiguration = false } };
+                var matchers = new IRedirectMatcher[] {new SqlServerRedirectMatcher(ConfigurationManager.ConnectionStrings["RedirectsReader"].ConnectionString) };
                 var handlers = new IRedirectHandler[] {new ConvertToAbsoluteUrlHandler(), new PreserveQueryStringHandler(), new DebugInfoHandler(), new GoToUrlHandler()};
 
                 foreach (var matcher in matchers)
