@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Views;
+using Exceptionless;
 
 namespace Escc.EastSussexGovUK.WebForms
 {
@@ -42,23 +43,30 @@ namespace Escc.EastSussexGovUK.WebForms
         /// <summary>
         /// Called by the ASP.NET page framework to notify server controls that use composition-based implementation to create any child controls they contain in preparation for posting back or rendering.
         /// </summary>
-        /// <exception cref="System.IO.FileNotFoundException">Thrown if cached file was not written</exception>
         protected override void CreateChildControls()
         {
-            // Check that the Control property is set
-            if (HtmlControlProvider == null) throw new ArgumentNullException("HtmlControlProvider", "Property 'HtmlControlProvider' must be set for class MasterPageControl");
-            if (String.IsNullOrEmpty(this.Control)) throw new ArgumentNullException("Control", "Property 'Control' must be set for class MasterPageControl");
+            try
+            {
+                // Check that the Control property is set
+                if (HtmlControlProvider == null) throw new ArgumentNullException("HtmlControlProvider", "Property 'HtmlControlProvider' must be set for class MasterPageControl");
+                if (String.IsNullOrEmpty(this.Control)) throw new ArgumentNullException("Control", "Property 'Control' must be set for class MasterPageControl");
 
-            // Get the configuration settings for remote master pages. Is this control in there?
-            this.config = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
-            if (this.config == null) this.config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
-            if (this.config != null && !String.IsNullOrEmpty(this.config["MasterPageControlUrl"]))
-            {
-                LoadRemoteControl();
+                // Get the configuration settings for remote master pages. Is this control in there?
+                this.config = ConfigurationManager.GetSection("Escc.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
+                if (this.config == null) this.config = ConfigurationManager.GetSection("EsccWebTeam.EastSussexGovUK/RemoteMasterPage") as NameValueCollection;
+                if (this.config != null && !String.IsNullOrEmpty(this.config["MasterPageControlUrl"]))
+                {
+                    LoadRemoteControl();
+                }
+                else
+                {
+                    LoadLocalControl();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                LoadLocalControl();
+                // Report the error and continue. Better to return no HTML than to throw an error that causes the page to
+                ex.ToExceptionless().Submit();
             }
         }
 
@@ -101,7 +109,7 @@ namespace Escc.EastSussexGovUK.WebForms
                 BreadcrumbProvider,
                 textSize,
                 isLibraryCatalogueRequest
-                );
+                ).Result;
 
             // Output the HTML
             this.Controls.Add(new LiteralControl(html));

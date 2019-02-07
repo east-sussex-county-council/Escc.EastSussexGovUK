@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace Escc.EastSussexGovUK.Features
 {
     /// <summary>
@@ -9,6 +11,6 @@ namespace Escc.EastSussexGovUK.Features
         /// Gets the settings for where to display the web chat feature
         /// </summary>
         /// <returns></returns>
-        WebChatSettings ReadWebChatSettings();
+        Task<WebChatSettings> ReadWebChatSettings();
     }
 }

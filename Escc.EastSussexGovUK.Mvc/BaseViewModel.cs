@@ -35,6 +35,11 @@ namespace Escc.EastSussexGovUK.Mvc
         }
 
         /// <summary>
+        /// Gets or sets the HTML strings that make up the site template
+        /// </summary>
+        public TemplateHtml TemplateHtml { get; set; } = new TemplateHtml();
+
+        /// <summary>
         /// Gets or sets the metadata.
         /// </summary>
         /// <value>

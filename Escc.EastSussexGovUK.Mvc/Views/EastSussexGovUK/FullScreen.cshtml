@@ -1,13 +1,7 @@
-﻿@using System.Collections.Specialized
-@using System.Configuration
-@using System.Web.Mvc.Html
+﻿@using System.Web.Mvc.Html
 @using ClientDependency.Core.Mvc
-@using Escc.EastSussexGovUK
 @using Escc.EastSussexGovUK.Features
-@using Escc.EastSussexGovUK.Mvc
-@using Escc.EastSussexGovUK.Mvc.Views.EastSussexGovUK
 @using Escc.EastSussexGovUK.Views
-@using Escc.Net.Configuration
 @using Escc.Web
 @model Escc.EastSussexGovUK.Mvc.BaseViewModel
 @{
@@ -25,14 +19,6 @@
             .AppendPolicy($"script-src {Request.Url.GetLeftPart(UriPartial.Authority)}; style-src {Request.Url.GetLeftPart(UriPartial.Authority)}; img-src {Request.Url.GetLeftPart(UriPartial.Authority)}")
             .UpdateHeaders();
     }
-
-    // Configure the client that loads elements of the remote master page
-    var textSize = new TextSize(Request.Cookies?["textsize"]?.Value, Request.QueryString).CurrentTextSize();
-    var isLibraryCatalogueRequest = new LibraryCatalogueContext(Request.UserAgent).RequestIsFromLibraryCatalogueMachine();
-    var proxyProvider = new ConfigurationProxyProvider();
-    var masterPageSettings = new RemoteMasterPageSettingsFromConfig();
-    var forceCacheRefresh = (Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
-    var masterPageControlProvider = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), proxyProvider, Request.UserAgent, masterPageSettings.RequestTimeout(), new RemoteMasterPageMemoryCacheProvider(masterPageSettings.CacheTimeout()), forceCacheRefresh);
 }
 @if (IsSectionDefined("WebChat"))
 {
@@ -40,21 +26,16 @@
 }
 else
 {
-    // Support web chat - not ideal to do this in the view but there's no common controller
-    var context = new HostingEnvironmentContext(Request.Url);
-    if (context.WebChatSettingsUrl != null)
+    if (Model.WebChat != null)
     {
-        var webChat = new WebChat();
-        webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, proxyProvider, new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings();
-        webChat.WebChatSettings.PageUrl = new Uri(Request.Url.AbsolutePath, UriKind.Relative);
-        Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new[] { webChat });
+        Html.RenderPartial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new[] { new WebChat() { WebChatSettings = Model.WebChat } });
     }
 }
-@{ Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "HtmlTag", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest }); }
+@Html.Raw(Model.TemplateHtml?.HtmlTag)
 <head>
     @RenderSection("ContentExperiment", required: false)
+    @Html.Raw(Model.TemplateHtml?.Metadata)
     @{
-        Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "MetadataFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest });
         Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata);
         Html.RenderPartial("~/Views/EastSussexGovUK/_Fonts.cshtml", Model.EsccWebsiteSkin);
     }
@@ -79,7 +60,7 @@ else
         @:
         <header>
             <div class="header context">
-                @{ Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "HeaderFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest }); }
+                @Html.Raw(Model.TemplateHtml?.Header)
                 <div class="full-screen-bar">
                     <h1>@RenderSection("FullScreenHeading", required: false)</h1>
                     @RenderSection("FullScreenLinks", required: false)
@@ -94,7 +75,7 @@ else
     {
         @RenderSection("Footer");
     }
-    @{ Html.RenderPartial("~/Views/EastSussexGovUK/_MasterPageControl.cshtml", new MasterPageControlData { Control = "ScriptsFullScreen", BreadcrumbProvider = Model.BreadcrumbProvider, HtmlControlProvider = masterPageControlProvider, TextSize = textSize, IsLibraryCatalogueRequest = isLibraryCatalogueRequest }); }
+    @Html.Raw(Model.TemplateHtml?.Scripts)
     @Html.RenderJsHere()
     @RenderSection("JavaScript", required: false)
 </div>

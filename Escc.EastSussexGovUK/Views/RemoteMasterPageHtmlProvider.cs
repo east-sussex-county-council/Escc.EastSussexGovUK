@@ -7,6 +7,8 @@ using System.Web;
 using Escc.EastSussexGovUK.Features;
 using Escc.Net;
 using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Escc.EastSussexGovUK.Views
 {
@@ -21,6 +23,7 @@ namespace Escc.EastSussexGovUK.Views
         private readonly string _userAgent;
         private readonly int _requestTimeout;
         private readonly bool _forceCacheRefresh;
+        private static HttpClient _httpClient;
 
         /// <summary>
         /// Creates anew instance of <see cref="RemoteMasterPageHtmlProvider"/>
@@ -50,7 +53,7 @@ namespace Escc.EastSussexGovUK.Views
         /// <param name="breadcrumbProvider">The provider for working out the current context within the site's information architecture.</param>
         /// <param name="textSize">The current setting for the site's text size feature.</param>
         /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
-        public string FetchHtmlForControl(string applicationId, Uri forUrl, string controlId, IBreadcrumbProvider breadcrumbProvider, int textSize, bool isLibraryCatalogueRequest)
+        public async Task<string> FetchHtmlForControl(string applicationId, Uri forUrl, string controlId, IBreadcrumbProvider breadcrumbProvider, int textSize, bool isLibraryCatalogueRequest)
         {
             // Check parameters
             if (string.IsNullOrEmpty(applicationId))
@@ -84,7 +87,7 @@ namespace Escc.EastSussexGovUK.Views
             // Update the cached control if it's missing or too old
             if (_cacheProvider == null || !_cacheProvider.CachedVersionExists(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest) || !_cacheProvider.CachedVersionIsFresh(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest) || _forceCacheRefresh)
             {
-                return RequestRemoteHtml(applicationId, forUrl, controlId, selectedSection, textSize, isLibraryCatalogueRequest);
+                return await RequestRemoteHtml(applicationId, forUrl, controlId, selectedSection, textSize, isLibraryCatalogueRequest).ConfigureAwait(false);
             }
 
             // Return the HTML
@@ -100,7 +103,7 @@ namespace Escc.EastSussexGovUK.Views
         /// <param name="selectedSection">The selected section.</param>
         /// <param name="textSize">The current setting for the site's text size feature.</param>
         /// <param name="isLibraryCatalogueRequest"><c>true</c> if the request is from a public catalogue machine in a library</param>
-        private string RequestRemoteHtml(string applicationId, Uri forUrl, string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest)
+        private async Task<string> RequestRemoteHtml(string applicationId, Uri forUrl, string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest)
         {
             string html = string.Empty;
             try
@@ -117,37 +120,28 @@ namespace Escc.EastSussexGovUK.Views
                 urlToRequest = new Uri(urlToRequest.Scheme + "://" + urlToRequest.Authority + urlToRequest.AbsolutePath + "?" + query);
 
                 // Create the request. Pass current user-agent so that library catalogue PCs can be detected by the remote script.
-                var webRequest = (HttpWebRequest)WebRequest.Create(urlToRequest);
-                webRequest.UseDefaultCredentials = true;
-                webRequest.UserAgent = _userAgent;
-                webRequest.Proxy = _proxyProvider?.CreateProxy();
-                webRequest.Timeout = _requestTimeout;
-#if DEBUG
-                // Turn off SSL check in debug mode as it will always fail against a self-signed certificate used for development
-                webRequest.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
-#endif
+                if (_httpClient == null)
+                {
+                    var handler = new HttpClientHandler();
+                    handler.UseDefaultCredentials = true;
+                    handler.Proxy = _proxyProvider?.CreateProxy();
+                    _httpClient = new HttpClient(handler);
+                    _httpClient.Timeout = TimeSpan.FromMilliseconds(_requestTimeout);
+                    _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(_userAgent);
+                }
 
                 try
                 {
-                    using (var response = webRequest.GetResponse())
+                    html = await _httpClient.GetStringAsync(urlToRequest.ToString()).ConfigureAwait(false);
+                    if (_cacheProvider != null)
                     {
-                        using (var responseStream = response.GetResponseStream())
-                        {
-                            using (var reader = new StreamReader(responseStream))
-                            {
-                                html = reader.ReadToEnd();
-                            }
-                            if (_cacheProvider != null)
-                            {
-                                _cacheProvider.SaveRemoteHtmlToCache(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest, html);
-                            }
-                        }
+                        _cacheProvider.SaveRemoteHtmlToCache(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest, html);
                     }
                 }
                 catch (WebException ex)
                 {
                     // Publish exception, otherwise it just disappears as async method has no calling code to throw to.
-                    ex.Data.Add("URL which failed", webRequest.RequestUri);
+                    ex.Data.Add("URL which failed", urlToRequest.ToString());
                     ex.ToExceptionless().Submit();
                 }
             }

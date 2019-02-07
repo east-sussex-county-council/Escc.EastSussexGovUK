@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Web.Http.Results;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Escc.Redirects;
 using Escc.Redirects.Handlers;
@@ -24,75 +26,88 @@ namespace Escc.EastSussexGovUK.Mvc
         /// Displays the 310 Gone HTTP status page
         /// </summary>
         /// <returns></returns>
-        public ActionResult Gone()
+        public async Task<ActionResult> Gone()
         {
-            return View(new HttpStatusViewModel());
+            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
+            var model = new HttpStatusViewModel()
+            {
+                TemplateHtml = await templateRequest.RequestTemplateHtmlAsync()
+            };
+            return View(model);
         }
 
         /// <summary>
         /// Displays the 400 Bad Request HTTP status page
         /// </summary>
         /// <returns></returns>
-        public ActionResult BadRequest()
+        public async Task<ActionResult> BadRequest()
         {
-            return View(new HttpStatusViewModel());
+            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
+            var model = new HttpStatusViewModel()
+            {
+                TemplateHtml = await templateRequest.RequestTemplateHtmlAsync()
+            };
+            return View(model);
         }
 
         /// <summary>
         /// Displays the 403 Forbidden HTTP status page
         /// </summary>
         /// <returns></returns>
-        public ActionResult Forbidden()
+        public async Task<ActionResult> Forbidden()
         {
             RandomDelay();
-            return View(new HttpStatusViewModel());
+            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
+            var model = new HttpStatusViewModel()
+            {
+                TemplateHtml = await templateRequest.RequestTemplateHtmlAsync()
+            };
+            return View(model);
         }
 
         /// <summary>
         /// Displays the 500 Internal Server Error HTTP status page
         /// </summary>
         /// <returns></returns>
-        public ActionResult InternalServerError()
+        public async Task<ActionResult> InternalServerError()
         {
             RandomDelay();
-            return View(new HttpStatusViewModel());
+            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
+            var model = new HttpStatusViewModel()
+            {
+                TemplateHtml = await templateRequest.RequestTemplateHtmlAsync()
+            };
+            return View(model);
         }
 
         /// <summary>
         /// Responds to a 404 Not Found status by checking for and executing redirects, and displaying the 404 HTTP status page otherwise
         /// </summary>
         /// <returns></returns>
-        public ActionResult NotFound()
+        public async Task<ActionResult> NotFound()
         {
             var requestedPath = new NotFoundRequestPathResolver().NormaliseRequestedPath(Request.Url);
 
             // Dereference linked data URIs
             // Linked data has separate URIs for things and documentation about those things. Try to match the URI for a thing and redirect to its documentation.
+            ActionResult redirectResult;
             if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["SchoolUrl"]))
             {
                 var schoolUrl = String.Format(CultureInfo.InvariantCulture, ConfigurationManager.AppSettings["SchoolUrl"], "$1");
-                if (TryUriPattern(requestedPath, "^id/school/([0-9]+)$", schoolUrl, 303))
-                {
-                    // school matched and client redirected - stop processing
-                    return null;
-                };
-                if (TryUriPattern(requestedPath, "^id/school/([0-9]+)/closure/[0-9]+$", schoolUrl, 303))
-                {
-                    // school closure matched and client redirected - stop processing
-                    return null;
-                }
+                redirectResult = TryUriPattern(requestedPath, "^id/school/([0-9]+)$", schoolUrl, 303, Response.Headers);
+                if (redirectResult != null) return redirectResult;
+
+                redirectResult = TryUriPattern(requestedPath, "^id/school/([0-9]+)/closure/[0-9]+$", schoolUrl, 303, Response.Headers);
+                if (redirectResult != null) return redirectResult;
             }
 
             // See if it's a short URL for activating a service
             string guidPattern = "[A-Fa-f0-9]{8,8}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{12,12}";
-            if (TryUriPattern(requestedPath, @"^schs\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/schoolclosures/closurealertactivate.aspx?code=$1", 303))
-            {
-                return null;
-            }
-            if (TryUriPattern(requestedPath, @"^schu\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/schoolclosures/closurealertdeactivate.aspx?code=$1", 303))
-            {
-                return null;
-            }
+            redirectResult = TryUriPattern(requestedPath, @"^schs\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/schoolclosures/closurealertactivate.aspx?code=$1", 303, Response.Headers);
+            if (redirectResult != null) return redirectResult;
+
+            redirectResult = TryUriPattern(requestedPath, @"^schu\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/schoolclosures/closurealertdeactivate.aspx?code=$1", 303, Response.Headers);
+            if (redirectResult != null) return redirectResult;
 
             if (TryShortOrMovedUrl(requestedPath))
             {
@@ -101,7 +116,13 @@ namespace Escc.EastSussexGovUK.Mvc
             }
 
             // If no redirects matched, show the 404 page
-            return View(new HttpStatusViewModel());
+            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
+            var model = new HttpStatusViewModel()
+            {
+                TemplateHtml = await templateRequest.RequestTemplateHtmlAsync()
+            };
+
+            return View(model);
         }
 
         private void RandomDelay()
@@ -124,9 +145,9 @@ namespace Escc.EastSussexGovUK.Mvc
         /// <param name="requestedUriPattern">Regular expression pattern which should match the requested URI</param>
         /// <param name="destinationPattern">Pattern which, when used as the replacement for the regular expression pattern, should point to the destination URL.</param>
         /// <param name="httpStatus">The HTTP status.</param>
-        private bool TryUriPattern(Uri requestedPath, string requestedUriPattern, string destinationPattern, int httpStatus)
+        private ActionResult TryUriPattern(Uri requestedPath, string requestedUriPattern, string destinationPattern, int httpStatus, NameValueCollection responseHeaders)
         {
-            if (requestedPath == null) return false;
+            if (requestedPath == null) return null;
 
             if (httpStatus != 301 && httpStatus != 303)
             {
@@ -151,14 +172,13 @@ namespace Escc.EastSussexGovUK.Mvc
                 switch (httpStatus)
                 {
                     case 301:
-                        new Web.HttpStatus().MovedPermanently(destinationUrl);
-                        return true;
+                        return new RedirectResult(destinationUrl.ToString(), true);
                     case 303:
-                        new Web.HttpStatus().SeeOther(destinationUrl);
-                        return true;
+                        responseHeaders.Add("Location", destinationUrl.ToString());
+                        return new HttpStatusCodeResult(303); 
                 }
             }
-            return false;
+            return null;
         }
 
         /// <summary>
@@ -167,29 +187,32 @@ namespace Escc.EastSussexGovUK.Mvc
         /// <param name="requestedUrl">The requested path.</param>
         private bool TryShortOrMovedUrl(Uri requestedUrl)
         {
-            try
+            if (!String.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["RedirectsReader"]?.ConnectionString))
             {
-                // Try to match the requested URL to a redirect and, if successful, run handlers for the redirect
-                var matchers = new IRedirectMatcher[] { new SqlServerRedirectMatcher(ConfigurationManager.ConnectionStrings["RedirectsReader"].ConnectionString) };
-                var handlers = new IRedirectHandler[] { new ConvertToAbsoluteUrlHandler(), new PreserveQueryStringHandler(), new DebugInfoHandler(), new GoToUrlHandler() };
-
-                foreach (var matcher in matchers)
+                try
                 {
-                    var redirect = matcher.MatchRedirect(requestedUrl);
-                    if (redirect != null)
+                    // Try to match the requested URL to a redirect and, if successful, run handlers for the redirect
+                    var matchers = new IRedirectMatcher[] { new SqlServerRedirectMatcher(ConfigurationManager.ConnectionStrings["RedirectsReader"].ConnectionString) };
+                    var handlers = new IRedirectHandler[] { new ConvertToAbsoluteUrlHandler(), new PreserveQueryStringHandler(), new DebugInfoHandler(), new GoToUrlHandler() };
+
+                    foreach (var matcher in matchers)
                     {
-                        foreach (var handler in handlers)
+                        var redirect = matcher.MatchRedirect(requestedUrl);
+                        if (redirect != null)
                         {
-                            redirect = handler.HandleRedirect(redirect);
+                            foreach (var handler in handlers)
+                            {
+                                redirect = handler.HandleRedirect(redirect);
+                            }
+                            return true;
                         }
-                        return true;
                     }
                 }
-            }
-            catch (SqlException ex)
-            {
-                // If there's a problem, publish the error and continue to show 404 page
-                ex.ToExceptionless().Submit();
+                catch (SqlException ex)
+                {
+                    // If there's a problem, publish the error and continue to show 404 page
+                    ex.ToExceptionless().Submit();
+                }
             }
             return false;
         }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Escc.Net;
 using Exceptionless;
@@ -19,6 +16,7 @@ namespace Escc.EastSussexGovUK.Features
         private readonly Uri _apiUrl;
         private readonly IProxyProvider _proxyProvider;
         private readonly ICacheStrategy<WebChatSettings> _cache;
+        private static HttpClient _httpClient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WebChatSettingsFromApi" /> class.
@@ -39,19 +37,20 @@ namespace Escc.EastSussexGovUK.Features
         /// Gets the settings for where to display the web chat feature
         /// </summary>
         /// <returns></returns>
-        public WebChatSettings ReadWebChatSettings()
+        public async Task<WebChatSettings> ReadWebChatSettings()
         {
             try
             {
                 var cachedSettings =_cache?.ReadFromCache("WebChatSettingsUrl");
                 if (cachedSettings != null) return cachedSettings;
 
-                var client = new WebClient();
-                if (_proxyProvider != null)
+                if (_httpClient == null)
                 {
-                    client.Proxy = _proxyProvider.CreateProxy();
+                    var handler = new HttpClientHandler();
+                    handler.Proxy = _proxyProvider?.CreateProxy();
+                    _httpClient = new HttpClient(handler);
                 }
-                var json = Task.Run(async () => await client.DownloadStringTaskAsync(_apiUrl)).Result;
+                var json = await _httpClient.GetStringAsync(_apiUrl).ConfigureAwait(false);
                 var settings = JsonConvert.DeserializeObject<WebChatSettings>(json);
 
                 _cache?.AddToCache("WebChatSettingsUrl", settings);    

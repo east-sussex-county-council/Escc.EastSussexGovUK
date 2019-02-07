@@ -60,7 +60,7 @@ namespace Escc.EastSussexGovUK.WebForms
             if (context.WebChatSettingsUrl != null)
             {
                 var webChat = new WebChat();
-                webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, new ConfigurationProxyProvider(), new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings();
+                webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, new ConfigurationProxyProvider(), new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings().Result;
                 webChat.WebChatSettings.PageUrl = new Uri(Request.Url.AbsolutePath, UriKind.Relative);
                 if (webChat.IsRequired())
                 {

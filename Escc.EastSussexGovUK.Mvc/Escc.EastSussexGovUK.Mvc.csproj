@@ -66,8 +66,8 @@
     <Reference Include="Escc.ClientDependencyFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ClientDependencyFramework.2.0.1\lib\Escc.ClientDependencyFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.EastSussexGovUK, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.10.0.0\lib\netstandard2.0\Escc.EastSussexGovUK.dll</HintPath>
+    <Reference Include="Escc.EastSussexGovUK, Version=11.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EastSussexGovUK.11.0.0\lib\netstandard2.0\Escc.EastSussexGovUK.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Html, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Html.3.0.0\lib\netstandard2.0\Escc.Html.dll</HintPath>
@@ -232,9 +232,12 @@
     <Compile Include="HostingEnvironmentContext.cs" />
     <Compile Include="HttpStatusController.cs" />
     <Compile Include="HttpStatusViewModel.cs" />
+    <Compile Include="IEastSussexGovUKTemplateRequest.cs" />
     <Compile Include="MvcViewSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteMasterPageSettingsFromConfig.cs" />
+    <Compile Include="EastSussexGovUKTemplateRequest.cs" />
+    <Compile Include="TemplateHtml.cs" />
     <Compile Include="Views\EastSussexGovUK\MasterPageControlData.cs" />
     <Compile Include="Views\EastSussexGovUK\MetadataControl.ascx.cs">
       <DependentUpon>MetadataControl.ascx</DependentUpon>
@@ -252,15 +255,12 @@
     </Content>
     <EmbeddedResource Include="Views\EastSussexGovUK\_BreadcrumbTrailMobile.cshtml" />
     <EmbeddedResource Include="Views\EastSussexGovUK\_BreadcrumbTrail.cshtml" />
-    <EmbeddedResource Include="Views\EastSussexGovUK\_MasterPageControl.cshtml" />
     <None Include="Views\web.config" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="web.config.install.xdt" />
     <Content Include="web.config.uninstall.xdt" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>

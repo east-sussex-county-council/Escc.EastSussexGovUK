@@ -101,29 +101,32 @@ namespace Escc.EastSussexGovUK.WebForms
         /// <param name="requestedUrl">The requested URL.</param>
         private bool TryShortOrMovedUrl(Uri requestedUrl)
         {
-            try
+            if (!String.IsNullOrEmpty(ConfigurationManager.ConnectionStrings["RedirectsReader"]?.ConnectionString))
             {
-                // Try to match the requested URL to a redirect and, if successful, run handlers for the redirect
-                var matchers = new IRedirectMatcher[] {new SqlServerRedirectMatcher(ConfigurationManager.ConnectionStrings["RedirectsReader"].ConnectionString) };
-                var handlers = new IRedirectHandler[] {new ConvertToAbsoluteUrlHandler(), new PreserveQueryStringHandler(), new DebugInfoHandler(), new GoToUrlHandler()};
-
-                foreach (var matcher in matchers)
+                try
                 {
-                    var redirect = matcher.MatchRedirect(requestedUrl);
-                    if (redirect != null)
+                    // Try to match the requested URL to a redirect and, if successful, run handlers for the redirect
+                    var matchers = new IRedirectMatcher[] { new SqlServerRedirectMatcher(ConfigurationManager.ConnectionStrings["RedirectsReader"].ConnectionString) };
+                    var handlers = new IRedirectHandler[] { new ConvertToAbsoluteUrlHandler(), new PreserveQueryStringHandler(), new DebugInfoHandler(), new GoToUrlHandler() };
+
+                    foreach (var matcher in matchers)
                     {
-                        foreach (var handler in handlers)
+                        var redirect = matcher.MatchRedirect(requestedUrl);
+                        if (redirect != null)
                         {
-                            redirect = handler.HandleRedirect(redirect);
+                            foreach (var handler in handlers)
+                            {
+                                redirect = handler.HandleRedirect(redirect);
+                            }
+                            return true;
                         }
-                        return true;
                     }
                 }
-            }
-            catch (SqlException ex)
-            {
-                // If there's a problem, publish the error and continue to show 404 page
-                ex.ToExceptionless().Submit();
+                catch (SqlException ex)
+                {
+                    // If there's a problem, publish the error and continue to show 404 page
+                    ex.ToExceptionless().Submit();
+                }
             }
             return false;
         }
