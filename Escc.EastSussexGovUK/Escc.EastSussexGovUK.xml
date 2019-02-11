@@ -1089,53 +1089,33 @@
             Selects most appropriate master page or MVC layout based on querystring or URL path
             </summary>
         </member>
-        <member name="M:Escc.EastSussexGovUK.Views.ViewSelector.SelectView(System.Uri,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{Escc.EastSussexGovUK.Views.EsccWebsiteView,System.Collections.Generic.Dictionary{System.String,System.String}},Escc.EastSussexGovUK.Views.ViewEngine)">
+        <member name="M:Escc.EastSussexGovUK.Views.ViewSelector.SelectView(System.Uri,System.String,System.Collections.Generic.Dictionary{System.String,System.String},Escc.EastSussexGovUK.Views.ViewEngine)">
             <summary>
             Selects most appropriate master page or MVC layout based on querystring or URL path
             </summary>
             <param name="forUrl">The URL of the page to select a view for.</param>
             <param name="userAgent">The user agent.</param>
             <param name="generalSettings">The general settings.</param>
-            <param name="groupedByViewSettings">The settings section for a specific <see cref="T:Escc.EastSussexGovUK.Views.EsccWebsiteView"/>, which overrides <paramref name="generalSettings"/></param>
             <param name="viewEngine">The view engine to select the view for.</param>
             <returns></returns>
         </member>
-        <member name="M:Escc.EastSussexGovUK.Views.ViewSelector.AssignMasterPageFromUserRequest(System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{Escc.EastSussexGovUK.Views.EsccWebsiteView,System.Collections.Generic.Dictionary{System.String,System.String}},System.String,Escc.EastSussexGovUK.Views.EsccWebsiteView,System.String)">
+        <member name="M:Escc.EastSussexGovUK.Views.ViewSelector.AssignMasterPageFromUserRequest(System.Collections.Generic.Dictionary{System.String,System.String},System.String,Escc.EastSussexGovUK.Views.EsccWebsiteView,System.String)">
             <summary>
             Assigns the master page based on a user request
             </summary>
             <param name="generalSettings">The general settings.</param>
-            <param name="configSettings">The config settings for specific master pages.</param>
             <param name="configSettingsGroup">The configuration settings group.</param>
             <param name="esccWebsiteView">The preferred view before this test.</param>
             <param name="requestedKey">The key supplied by the user to request the master page.</param>
             <returns></returns>
         </member>
-        <member name="M:Escc.EastSussexGovUK.Views.ViewSelector.AssignMasterPageByFolder(System.Uri,System.Collections.Generic.Dictionary{System.String,System.String})">
-            <summary>
-            Assigns the master page by folder.
-            </summary>
-            <param name="requestUrl">The request URL.</param>
-            <param name="masterPageSettings">The master page settings.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Escc.EastSussexGovUK.Views.ViewSelector.ListFilesAndFoldersInPath(System.Uri)">
-            <summary>
-            Lists files and folders in the path of an absolute URL or a URL relative to the site root. Trailing slashes are trimmed.
-            </summary>
-            <param name="urlToParse">The URL to parse.</param>
-            <returns>List of paths, starting with the most specific and ending with only the root folder or filename</returns>
-            <exception cref="T:System.ArgumentException"></exception>
-        </member>
-        <member name="M:Escc.EastSussexGovUK.Views.ViewSelector.IsMasterPageInGroup(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})">
+        <member name="M:Escc.EastSussexGovUK.Views.ViewSelector.IsMasterPageInGroup(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
             <summary>
             Determines whether the current master page is in the group identified by the specified key.
             </summary>
-            <param name="applicationPath">The virtual path to the application, starting and ending with a /</param>
             <param name="currentMasterPage">The current master page.</param>
             <param name="generalSettingsKey">The key for the relevant setting in the 'generalSettings' dictionary.</param>
             <param name="generalSettings">The general settings section from web.config.</param>
-            <param name="groupedByViewSettings">The settings section for a specific <see cref="T:Escc.EastSussexGovUK.Views.EsccWebsiteView"/>, which overrides <paramref name="generalSettings"/></param>
             <returns>
               <c>true</c> if the master page is from the specified configuration group; otherwise, <c>false</c>.
             </returns>

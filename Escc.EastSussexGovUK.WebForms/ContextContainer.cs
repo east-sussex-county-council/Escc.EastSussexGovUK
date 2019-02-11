@@ -112,19 +112,19 @@ namespace Escc.EastSussexGovUK.WebForms
 
             // Hide based on master page
             var viewSelector = new WebFormsViewSelector();
-            if (Desktop != null && Desktop.Value != viewSelector.CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Page.MasterPageFile, EsccWebsiteView.Desktop))
+            if (Desktop != null && Desktop.Value != viewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.Desktop))
             {
                 HideContents();
                 return;
             }
 
-            if (Plain != null && Plain.Value != viewSelector.CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Page.MasterPageFile, EsccWebsiteView.Plain))
+            if (Plain != null && Plain.Value != viewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.Plain))
             {
                 HideContents();
                 return;
             }
 
-            if (FullScreen != null && FullScreen.Value != viewSelector.CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, Page.MasterPageFile, EsccWebsiteView.FullScreen))
+            if (FullScreen != null && FullScreen.Value != viewSelector.CurrentViewIs(Page.MasterPageFile, EsccWebsiteView.FullScreen))
             {
                 HideContents();
                 return;

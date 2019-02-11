@@ -47,7 +47,13 @@ namespace Escc.EastSussexGovUK.Mvc
             IProxyProvider proxyProvider = null)
         {
             _request = request ?? throw new ArgumentNullException(nameof(request));
-            _esccWebsiteView = (esccWebsiteView != EsccWebsiteView.Unknown) ? esccWebsiteView : new MvcViewSelector().CurrentViewIs(HttpRuntime.AppDomainAppVirtualPath, new MvcViewSelector().SelectView(request.Url, request.UserAgent));
+
+            _esccWebsiteView = esccWebsiteView;
+            if (esccWebsiteView == EsccWebsiteView.Unknown) {
+                var viewSelector = new MvcViewSelector();
+                _esccWebsiteView = viewSelector.CurrentViewIs(viewSelector.SelectView(request.Url, request.UserAgent));
+            }
+
             _textSize = textSize ?? new TextSize(request.Cookies?["textsize"]?.Value, request.QueryString);
             _libraryContext = libraryContext ?? new LibraryCatalogueContext(request.UserAgent);
             _breadcrumbProvider = breadcrumbProvider ?? new BreadcrumbTrailFromConfig(request.Url);
