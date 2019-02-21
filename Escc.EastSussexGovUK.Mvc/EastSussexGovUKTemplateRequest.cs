@@ -91,7 +91,7 @@ namespace Escc.EastSussexGovUK.Mvc
 
             if (_webChatSettingsService != null)
             {
-                _webChatSettings = await _webChatSettingsService.ReadWebChatSettings();
+                _webChatSettings = await _webChatSettingsService.ReadWebChatSettings().ConfigureAwait(false);
                 _webChatSettings.PageUrl = new Uri(_request.Url.AbsolutePath, UriKind.Relative);
                 return _webChatSettings;
             }
@@ -119,7 +119,7 @@ namespace Escc.EastSussexGovUK.Mvc
                 var footerTask = _htmlProvider.FetchHtmlForControl(HttpRuntime.AppDomainAppVirtualPath, _request.Url, "FooterDesktop", _breadcrumbProvider, textSize, isLibraryCatalogueRequest);
                 var scriptsTask = _htmlProvider.FetchHtmlForControl(HttpRuntime.AppDomainAppVirtualPath, _request.Url, "ScriptsDesktop", _breadcrumbProvider, textSize, isLibraryCatalogueRequest);
 
-                var results = await Task.WhenAll(htmlTagTask, metadataTask, aboveHeaderTask, headerTask, footerTask, scriptsTask);
+                var results = await Task.WhenAll(htmlTagTask, metadataTask, aboveHeaderTask, headerTask, footerTask, scriptsTask).ConfigureAwait(false);
 
                 _templateHtml.HtmlTag = new HtmlString(results[0]);
                 _templateHtml.Metadata = new HtmlString(results[1]);
@@ -135,7 +135,7 @@ namespace Escc.EastSussexGovUK.Mvc
                 var headerTask = _htmlProvider.FetchHtmlForControl(HttpRuntime.AppDomainAppVirtualPath, _request.Url, "HeaderFullScreen", _breadcrumbProvider, textSize, isLibraryCatalogueRequest);
                 var scriptsTask = _htmlProvider.FetchHtmlForControl(HttpRuntime.AppDomainAppVirtualPath, _request.Url, "ScriptsFullScreen", _breadcrumbProvider, textSize, isLibraryCatalogueRequest);
 
-                var results = await Task.WhenAll(htmlTagTask, metadataTask, headerTask, scriptsTask);
+                var results = await Task.WhenAll(htmlTagTask, metadataTask, headerTask, scriptsTask).ConfigureAwait(false);
 
                 _templateHtml.HtmlTag = new HtmlString(results[0]);
                 _templateHtml.Metadata = new HtmlString(results[1]);
