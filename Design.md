@@ -119,14 +119,13 @@ In the following example, `ExampleControl` would be loaded from `https://www.eas
 	    <RemoteMasterPage>
 	      <add key="CacheMinutes" value="60" />
 	      <add key="MasterPageControlUrl" value="https://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control={0}" />
-	      <add key="Timeout" value="4000" />
 	    </RemoteMasterPage>
 	  </Escc.EastSussexGovUK>
 	</configuration>
 
 The remote control is loaded from an ASPX page, which is just a host for a usercontrol that is loaded locally.
     
-The fetched HTML is saved in a local cache so that it is not requested remotely every time. The cache expires using the `CacheMinutes` setting in `web.config`. By default requests time out after 4 seconds (4000 milliseconds), but this can be changed using the `Timeout` setting in `web.config`.
+The fetched HTML is saved in a local cache so that it is not requested remotely every time. The cache expires using the `CacheMinutes` setting in `web.config`.
 
 Requesting any page with the querystring `?ForceCacheRefresh=1` will cause the cached template to be updated even if the cache has not expired.
 

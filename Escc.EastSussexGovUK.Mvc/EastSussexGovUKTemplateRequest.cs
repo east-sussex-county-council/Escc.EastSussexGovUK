@@ -35,7 +35,7 @@ namespace Escc.EastSussexGovUK.Mvc
         /// <param name="breadcrumbProvider">A method of getting the breadcrumb trail, which provides the context of the page requested within the site. If not set, the breadcrumb trail will be read from <c>web.config</c></param>
         /// <param name="textSize">A method of getting the current text size. If not set, this will be read from a cookie.</param>
         /// <param name="libraryContext">A method of determining whether this request comes from a catalogue machine situated in a library. If not set, this will be based on the user agent.</param>
-        /// <param name="proxyProvider">A method of getting an optional proxy server that may be required to connect to remote resources. If not set, this will be read from <c>web.config</c> according to the rules documented for <c>Escc.Net.Configuration</c></param>
+        /// <param name="httpClientProvider">A method of getting an <c>HttpClient</c> to connect to remote resources. If not set, this will be an anonymous request using proxy connection information read from <c>web.config</c> according to the rules documented for <c>Escc.Net.Configuration</c></param>
         /// <exception cref="ArgumentNullException">request</exception>
         public EastSussexGovUKTemplateRequest(HttpRequestBase request,
             EsccWebsiteView esccWebsiteView = EsccWebsiteView.Unknown,
@@ -44,7 +44,7 @@ namespace Escc.EastSussexGovUK.Mvc
             IBreadcrumbProvider breadcrumbProvider = null,
             ITextSize textSize = null,
             ILibraryCatalogueContext libraryContext = null,
-            IProxyProvider proxyProvider = null)
+            IHttpClientProvider httpClientProvider = null)
         {
             _request = request ?? throw new ArgumentNullException(nameof(request));
 
@@ -58,12 +58,12 @@ namespace Escc.EastSussexGovUK.Mvc
             _libraryContext = libraryContext ?? new LibraryCatalogueContext(request.UserAgent);
             _breadcrumbProvider = breadcrumbProvider ?? new BreadcrumbTrailFromConfig(request.Url);
 
-            if (proxyProvider == null) proxyProvider = new ConfigurationProxyProvider();
+            if (httpClientProvider == null) httpClientProvider = new HttpClientProvider(new ConfigurationProxyProvider());
             if (htmlProvider == null)
             {
                 var masterPageSettings = new RemoteMasterPageSettingsFromConfig();
                 var forceCacheRefresh = (request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
-                _htmlProvider = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), proxyProvider, request.UserAgent, masterPageSettings.RequestTimeout(), new RemoteMasterPageMemoryCacheProvider(masterPageSettings.CacheTimeout()), forceCacheRefresh);
+                _htmlProvider = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), httpClientProvider, request.UserAgent, new RemoteMasterPageMemoryCacheProvider(masterPageSettings.CacheTimeout()), forceCacheRefresh);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace Escc.EastSussexGovUK.Mvc
                 var webChatRequestSettings = new HostingEnvironmentContext(request.Url);
                 if (webChatRequestSettings.WebChatSettingsUrl != null)
                 {
-                    _webChatSettingsService = new WebChatSettingsFromApi(webChatRequestSettings.WebChatSettingsUrl, proxyProvider, new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(webChatRequestSettings.WebChatSettingsCacheDuration)));
+                    _webChatSettingsService = new WebChatSettingsFromApi(webChatRequestSettings.WebChatSettingsUrl, httpClientProvider, new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(webChatRequestSettings.WebChatSettingsCacheDuration)));
                 }
             }
         }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Specialized;
-using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -27,9 +25,10 @@ namespace Escc.EastSussexGovUK.WebForms
         protected new void Page_Load(object sender, EventArgs e)
         {
             // Configure remote master page
+            var httpClientProvider = new HttpClientProvider(new ConfigurationProxyProvider());
             var masterPageSettings = new RemoteMasterPageSettingsFromConfig();
             var forceCacheRefresh = (Page.Request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
-            var remoteMasterPageClient = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), new ConfigurationProxyProvider(), Request.UserAgent, masterPageSettings.RequestTimeout(), new RemoteMasterPageMemoryCacheProvider(masterPageSettings.CacheTimeout()), forceCacheRefresh);
+            var remoteMasterPageClient = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), httpClientProvider, Request.UserAgent, new RemoteMasterPageMemoryCacheProvider(masterPageSettings.CacheTimeout()), forceCacheRefresh);
             this.htmlTag.HtmlControlProvider = remoteMasterPageClient;
             this.metadataDesktop.HtmlControlProvider = remoteMasterPageClient;
             this.aboveHeaderDesktop.HtmlControlProvider = remoteMasterPageClient;
@@ -74,7 +73,7 @@ namespace Escc.EastSussexGovUK.WebForms
             if (context.WebChatSettingsUrl != null)
             {
                 var webChat = new WebChat();
-                webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, new ConfigurationProxyProvider(), new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings().Result;
+                webChat.WebChatSettings = new WebChatSettingsFromApi(context.WebChatSettingsUrl, httpClientProvider, new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(context.WebChatSettingsCacheDuration))).ReadWebChatSettings().Result;
                 webChat.WebChatSettings.PageUrl = new Uri(Request.Url.AbsolutePath, UriKind.Relative);
                 if (webChat.IsRequired())
                 {

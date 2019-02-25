@@ -19,27 +19,24 @@ namespace Escc.EastSussexGovUK.Views
     {
         private readonly RemoteMasterPageCacheProviderBase _cacheProvider;
         private readonly Uri _masterPageControlUrl;
-        private readonly IProxyProvider _proxyProvider;
         private readonly string _userAgent;
-        private readonly int _requestTimeout;
         private readonly bool _forceCacheRefresh;
+        private static IHttpClientProvider _httpClientProvider;
         private static HttpClient _httpClient;
 
         /// <summary>
         /// Creates anew instance of <see cref="RemoteMasterPageHtmlProvider"/>
         /// </summary>
         /// <param name="masterPageControlUrl">The URL from which to download the remote HTML, with {0} where the <c>controlId</c> should be inserted</param>
-        /// <param name="proxyProvider">Strategy for loading proxy details for the remote request</param>
+        /// <param name="httpClientProvider">Strategy to get the HttpClient instance used for requests.</param>
         /// <param name="userAgent">The user agent to use when requesting the remote HTML (usually the user agent for the consuming request)</param>
-        /// <param name="requestTimeout">How many milliseconds to wait before timing out the remote web request</param>
         /// <param name="cacheProvider">Strategy for caching the remote HTML.</param>
         /// <param name="forceCacheRefresh"><c>true</c> to ensure the HTML is requested from the remote URL, not from a local cache</param>
-        public RemoteMasterPageHtmlProvider(Uri masterPageControlUrl, IProxyProvider proxyProvider, string userAgent, int requestTimeout, RemoteMasterPageCacheProviderBase cacheProvider, bool forceCacheRefresh = false)
+        public RemoteMasterPageHtmlProvider(Uri masterPageControlUrl, IHttpClientProvider httpClientProvider, string userAgent, RemoteMasterPageCacheProviderBase cacheProvider, bool forceCacheRefresh = false)
         {
             _masterPageControlUrl = masterPageControlUrl ?? throw new ArgumentNullException(nameof(masterPageControlUrl));
-            _proxyProvider = proxyProvider;
+            _httpClientProvider = httpClientProvider ?? throw new ArgumentNullException(nameof(httpClientProvider));
             _userAgent = userAgent;
-            _requestTimeout = requestTimeout;
             _cacheProvider = cacheProvider;
             _forceCacheRefresh = forceCacheRefresh;
         }
@@ -119,26 +116,35 @@ namespace Escc.EastSussexGovUK.Views
                 query.Add("path", applicationId);
                 urlToRequest = new Uri(urlToRequest.Scheme + "://" + urlToRequest.Authority + urlToRequest.AbsolutePath + "?" + query);
 
-                // Create the request. Pass current user-agent so that library catalogue PCs can be detected by the remote script.
-                if (_httpClient == null)
-                {
-                    var handler = new HttpClientHandler();
-                    handler.UseDefaultCredentials = true;
-                    handler.Proxy = _proxyProvider?.CreateProxy();
-                    _httpClient = new HttpClient(handler);
-                    _httpClient.Timeout = TimeSpan.FromMilliseconds(_requestTimeout);
-                    _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(_userAgent);
-                }
-
                 try
                 {
-                    html = await _httpClient.GetStringAsync(urlToRequest.ToString()).ConfigureAwait(false);
-                    if (_cacheProvider != null)
+                    // Create the request. Pass current user-agent so that library catalogue PCs can be detected by the remote script.
+                    if (_httpClient == null)
                     {
-                        _cacheProvider.SaveRemoteHtmlToCache(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest, html);
+                        _httpClient = _httpClientProvider.GetHttpClient();
+                    }
+                    using (var request = new HttpRequestMessage(HttpMethod.Get, urlToRequest))
+                    {
+                        request.Headers.UserAgent.ParseAdd(_userAgent);
+
+                        using (var response = await _httpClient.SendAsync(request).ConfigureAwait(false))
+                        {
+                            if (!response.IsSuccessStatusCode)
+                            {
+                                // Report failure code as if it was an exception
+                                new HttpRequestException($"Request to URL {urlToRequest} returned {response.StatusCode} {response.ReasonPhrase}")
+                                    .ToExceptionless().Submit();
+                            }
+
+                            html = await response.Content.ReadAsStringAsync();
+                            if (_cacheProvider != null)
+                            {
+                                _cacheProvider.SaveRemoteHtmlToCache(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest, html);
+                            }
+                        }
                     }
                 }
-                catch (WebException ex)
+                catch (HttpRequestException ex)
                 {
                     // Publish exception, otherwise it just disappears as async method has no calling code to throw to.
                     ex.Data.Add("URL which failed", urlToRequest.ToString());

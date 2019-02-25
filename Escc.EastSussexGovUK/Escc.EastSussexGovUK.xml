@@ -553,12 +553,12 @@
             </summary>
             <seealso cref="T:Escc.EastSussexGovUK.Features.IWebChatSettingsService" />
         </member>
-        <member name="M:Escc.EastSussexGovUK.Features.WebChatSettingsFromApi.#ctor(System.Uri,Escc.Net.IProxyProvider,Escc.EastSussexGovUK.ICacheStrategy{Escc.EastSussexGovUK.Features.WebChatSettings})">
+        <member name="M:Escc.EastSussexGovUK.Features.WebChatSettingsFromApi.#ctor(System.Uri,Escc.Net.IHttpClientProvider,Escc.EastSussexGovUK.ICacheStrategy{Escc.EastSussexGovUK.Features.WebChatSettings})">
             <summary>
             Initializes a new instance of the <see cref="T:Escc.EastSussexGovUK.Features.WebChatSettingsFromApi" /> class.
             </summary>
             <param name="apiUrl">The API URL.</param>
-            <param name="proxyProvider">The proxy provider.</param>
+            <param name="httpClientProvider">Strategy to get the HttpClient instance used for requests.</param>
             <param name="cache">The cache.</param>
             <exception cref="T:System.ArgumentNullException">apiUrl</exception>
         </member>
@@ -994,14 +994,13 @@
             Loads sections of the master page remotely from a URL.
             </summary>
         </member>
-        <member name="M:Escc.EastSussexGovUK.Views.RemoteMasterPageHtmlProvider.#ctor(System.Uri,Escc.Net.IProxyProvider,System.String,System.Int32,Escc.EastSussexGovUK.Views.RemoteMasterPageCacheProviderBase,System.Boolean)">
+        <member name="M:Escc.EastSussexGovUK.Views.RemoteMasterPageHtmlProvider.#ctor(System.Uri,Escc.Net.IHttpClientProvider,System.String,Escc.EastSussexGovUK.Views.RemoteMasterPageCacheProviderBase,System.Boolean)">
             <summary>
             Creates anew instance of <see cref="T:Escc.EastSussexGovUK.Views.RemoteMasterPageHtmlProvider"/>
             </summary>
             <param name="masterPageControlUrl">The URL from which to download the remote HTML, with {0} where the <c>controlId</c> should be inserted</param>
-            <param name="proxyProvider">Strategy for loading proxy details for the remote request</param>
+            <param name="httpClientProvider">Strategy to get the HttpClient instance used for requests.</param>
             <param name="userAgent">The user agent to use when requesting the remote HTML (usually the user agent for the consuming request)</param>
-            <param name="requestTimeout">How many milliseconds to wait before timing out the remote web request</param>
             <param name="cacheProvider">Strategy for caching the remote HTML.</param>
             <param name="forceCacheRefresh"><c>true</c> to ensure the HTML is requested from the remote URL, not from a local cache</param>
         </member>

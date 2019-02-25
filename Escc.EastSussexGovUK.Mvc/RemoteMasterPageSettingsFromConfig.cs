@@ -62,21 +62,5 @@ namespace Escc.EastSussexGovUK.Mvc
 
             return new Uri(_remoteMasterPageSettings["MasterPageControlUrl"], UriKind.RelativeOrAbsolute);
         }
-
-        /// <summary>
-        /// Gets the timeout for the web requests for remote master page controls. Defaults to 4 seconds.
-        /// </summary>
-        /// <returns></returns>
-        public int RequestTimeout()
-        {
-            EnsureRemoteMasterPageSettings(false);
-
-            var remoteMasterPageRequestTimeout = 4000;
-            if (!String.IsNullOrEmpty(_remoteMasterPageSettings["Timeout"]))
-            {
-                Int32.TryParse(_remoteMasterPageSettings["Timeout"], out remoteMasterPageRequestTimeout);
-            }
-            return remoteMasterPageRequestTimeout;
-        }
     }
 }
