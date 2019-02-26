@@ -125,7 +125,10 @@ namespace Escc.EastSussexGovUK.Views
                     }
                     using (var request = new HttpRequestMessage(HttpMethod.Get, urlToRequest))
                     {
-                        request.Headers.UserAgent.ParseAdd(_userAgent);
+                        if (!String.IsNullOrEmpty(_userAgent))
+                        {
+                            request.Headers.UserAgent.ParseAdd(_userAgent);
+                        }
 
                         using (var response = await _httpClient.SendAsync(request).ConfigureAwait(false))
                         {
