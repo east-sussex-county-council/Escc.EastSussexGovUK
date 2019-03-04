@@ -1,0 +1,15 @@
+﻿/* Place .privacy-alert at the bottom of the page and slide it down when closed. 
+// The initial max-height is just a value bigger than we'll ever need. */
+.privacy-alert { transition: all .5s cubic-bezier(0, 1, 0.5, 1); max-height: 999px; overflow-y: hidden; position: fixed; width: 100%; bottom: 0; z-index: 10000; }
+.privacy-alert.closed { max-height: 0; }
+
+/* Align the message and the button side-by-side and vertically centered, with a gap between */
+.privacy-alert .content { display: flex; align-items: center; }
+.privacy-alert form { margin-left: 18px; }
+
+/* Make it white on blue, from the style guide palette */
+.privacy-alert, .privacy-alert a:link, .privacy-alert a:visited { background: #003C69; color: #fff; }
+
+/* Style the button to contrast with the banner background, and use similar styling to the search 'Go' button in the header */
+.privacy-alert button { white-space:nowrap; background: #fff; border-radius: 3px; border: 0; font-weight: bold; padding: 6px; color: #0C78AE;cursor: pointer;}
+
