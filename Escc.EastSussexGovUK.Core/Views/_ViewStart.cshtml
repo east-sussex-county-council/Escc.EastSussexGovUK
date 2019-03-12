@@ -1,0 +1,6 @@
+﻿@using Escc.EastSussexGovUK.Core
+@using Microsoft.AspNetCore.Http.Extensions;
+@inject IViewSelector ViewSelector
+@{
+    Layout = ViewSelector.SelectView(new Uri(Context.Request.GetDisplayUrl()), Context.Request.Headers["User-Agent"].ToString());
+}

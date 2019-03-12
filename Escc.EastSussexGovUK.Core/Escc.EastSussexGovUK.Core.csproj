@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1.0-beta1</Version>
+    <Company>East Sussex County Council</Company>
+    <Authors>East Sussex County Council</Authors>
+    <Description>Common sitewide design elements for www.eastsussex.gov.uk, for ASP.NET Core projects.</Description>
+    <Copyright>East Sussex County Council</Copyright>
+    <PackageLicenseUrl>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</PackageProjectUrl>
+    <PackageIconUrl>https://www.eastsussex.gov.uk/apple-touch-icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>This is a pre-release version and the API is subject to change.</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Views\_ViewStart.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Desktop.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Banners.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_EastSussex1Space.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Escis.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Facebook.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Latest.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Share.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Twitter.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_FullScreen.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_BreadcrumbTrail.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_BreadcrumbTrailMobile.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_FeatureDependencies.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_FeatureDependency.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Fonts.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Plain.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Escc.EastSussexGovUK" Version="13.0.1" />
+    <PackageReference Include="Escc.Html" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="2.2.0" />
+  </ItemGroup>
+
+</Project>

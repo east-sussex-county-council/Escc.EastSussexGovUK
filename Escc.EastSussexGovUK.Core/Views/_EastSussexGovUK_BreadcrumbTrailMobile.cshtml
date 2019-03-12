@@ -1,0 +1,24 @@
+﻿@using Escc.EastSussexGovUK.Features;
+@model IBreadcrumbProvider
+@{
+    var breadcrumbTrail = Model.BuildTrail();
+    if (breadcrumbTrail.Count > 0)
+    {
+        var indexedKeys = new List<string>(breadcrumbTrail.Keys);
+        var lastKey = indexedKeys[indexedKeys.Count - 1];
+        if (String.IsNullOrEmpty(breadcrumbTrail[lastKey]))
+        {
+            // up one folder, but > 2 so that we don't show a link back to home when there's already one in the menu
+            if (breadcrumbTrail.Count > 2)
+            {
+                var penultimateKey = indexedKeys[indexedKeys.Count - 2];
+<nav><p class="screen small medium breadcrumb-mobile">You are in <a href="@breadcrumbTrail[penultimateKey]">@penultimateKey</a></p></nav>
+            }
+        }
+        else
+        {
+            // default page of current folder
+<nav><p class="screen small medium breadcrumb-mobile">You are in <a href="@breadcrumbTrail[lastKey]">@lastKey</a></p></nav>
+        }
+    }
+}

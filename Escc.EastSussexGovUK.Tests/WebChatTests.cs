@@ -106,7 +106,7 @@ namespace Escc.EastSussexGovUK.Tests
         // This is an integration test - use for testing changes, but it will not always pass because it relies on local changeable data 
         public async Task WebChatApiRequest()
         {
-            var source = new WebChatSettingsFromApi(new Uri("https://www.eastsussex.gov.uk/umbraco/api/webchat/getwebchaturls"), new ConfigurationProxyProvider(), null);
+            var source = new WebChatSettingsFromApi(new Uri("https://www.eastsussex.gov.uk/umbraco/api/webchat/getwebchaturls"),new HttpClientProvider(new ConfigurationProxyProvider()), null);
             var settings = await source.ReadWebChatSettings();
             settings.PageUrl = new Uri("/some-relative-url");
             Assert.AreEqual("/yourcouncil/", settings.WebChatUrls[0].ToString());

@@ -1,0 +1,22 @@
+﻿@model Escc.EastSussexGovUK.Core.BaseViewModel
+@using Escc.EastSussexGovUK.Views
+@using System.Web
+@using Microsoft.AspNetCore.Http.Extensions;
+@{
+    var encodedPageUrl = HttpUtility.UrlEncode(Context.Request.GetDisplayUrl());
+    // strip double-quotes because when this link is picked up by a link checker and exported to CSV, the quotes are misinterpreted as a CSV delimiter
+    var encodedTitle = "";// (Model?.Metadata?.Title != null) ? HttpUtility.UrlEncode(Model.Metadata.Title.Replace("\"", String.Empty)) : String.Empty;
+    var encodedDescription = "";// (Model?.Metadata?.Description != null) ? HttpUtility.UrlEncode(Model.Metadata.Description.Replace("\"", String.Empty)) : String.Empty;
+}
+@if (Model?.EsccWebsiteView != EsccWebsiteView.Plain)
+{
+    <div class="share screen" id="text" runat="server">
+        <h2>Share this page</h2>
+        <ul>
+            <li><a href="https://apps.eastsussex.gov.uk/contactus/emailus/friend.aspx?url=@encodedPageUrl" title="Share this page by email">Share this page by email</a></li>
+            <li><a href="https://www.facebook.com/sharer.php?u=@encodedPageUrl" target="_blank" title="Share this page on Facebook">Share this page on Facebook</a></li>
+            <li><a href="https://twitter.com/intent/tweet?text=@encodedTitle+@encodedPageUrl+via+&#64;eastsussexcc" target="_blank" title="Tweet about this page">Tweet about this page</a></li>
+            <li><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=@encodedPageUrl&amp;title=@encodedTitle&amp;summary=@encodedDescription&amp;source=East+Sussex+County+Council" target="_blank" title="Share this page on LinkedIn">Share this page on LinkedIn</a></li>
+        </ul>
+    </div>
+}

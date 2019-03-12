@@ -1,0 +1,78 @@
+﻿@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Views
+@using System.IO
+@model Escc.EastSussexGovUK.Core.BaseViewModel
+@{
+    if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel"); }
+    Model.EsccWebsiteView = EsccWebsiteView.FullScreen;
+    Html.RenderPartial("~/_EastSussexGovUK_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
+
+    // In rare circumstances Azure can return a value for Request.Url.Authority which is not correct. Since
+    // Request.Url.Authority is used to load client-side assets, ensure it is always allowed by the content security policy.
+    /* var config = new ContentSecurityPolicyFromConfig();
+    var filter = new ContentSecurityPolicyUrlFilter(Request.Url, config.UrlsToExclude);
+    if (filter.ApplyPolicy())
+    {
+        new ContentSecurityPolicyHeaders(Response.Headers)
+            .AppendPolicy($"script-src {Request.Url.GetLeftPart(UriPartial.Authority)}; style-src {Request.Url.GetLeftPart(UriPartial.Authority)}; img-src {Request.Url.GetLeftPart(UriPartial.Authority)}")
+            .UpdateHeaders();
+    }*/
+
+    if (Model.WebChat != null)
+    {
+        Html.RenderPartial("~/_EastSussexGovUK_FeatureDependencies.cshtml", new[] { new WebChat() { WebChatSettings = Model.WebChat } });
+    }
+}
+@Html.Raw(Model.TemplateHtml?.HtmlTag)
+<head>
+    @RenderSection("ContentExperiment", required: false)
+    @Html.Raw(Model.TemplateHtml?.Metadata)
+    @{
+        //Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata);
+        Html.RenderPartial("~/_EastSussexGovUK_Fonts.cshtml", Model.EsccWebsiteSkin);
+    }
+    @*Html.RenderCssHere()*@
+    @RenderSection("Metadata", required: false)
+</head>
+@if (IsSectionDefined("BodyClass"))
+{
+    @:<body class="@RenderSection("BodyClass")">
+    }
+    else
+    {
+        @:<body>
+        }
+<div class="full-screen">
+    @if (IsSectionDefined("Header"))
+    {
+        @RenderSection("Header")
+    }
+    else
+    {
+        @:
+        <header>
+            <div class="header context">
+                @Html.Raw(Model.TemplateHtml?.Header)
+                <div class="full-screen-bar">
+                    <h1>@RenderSection("FullScreenHeading", required: false)</h1>
+                    @RenderSection("FullScreenLinks", required: false)
+                </div>
+            </div>
+        </header>
+    }
+    <div id="main" role="main" class="body">
+        @RenderBody()
+    </div>
+    @if (IsSectionDefined("Footer"))
+    {
+        @RenderSection("Footer");
+    }
+    @Html.Raw(Model.TemplateHtml?.Scripts)
+    @*Html.RenderJsHere()*@
+    @RenderSection("JavaScript", required: false)
+</div>
+@Html.Raw("</body></html>")
+
+@{ // Do not render these sections for this layout
+    if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb").WriteTo(TextWriter.Null, null); }
+}

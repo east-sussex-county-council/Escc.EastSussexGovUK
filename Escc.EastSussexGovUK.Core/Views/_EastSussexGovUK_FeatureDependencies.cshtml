@@ -1,0 +1,10 @@
+﻿@model System.Collections.Generic.IEnumerable<Escc.EastSussexGovUK.IClientDependencySet>
+@{
+    foreach (var feature in Model)
+    {
+        if (feature.IsRequired())
+        {
+            Html.Partial("~/_EastSussexGovUK_FeatureDependency.cshtml", feature);
+        }
+    }
+}

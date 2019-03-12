@@ -1,0 +1,7 @@
+﻿@model Escc.EastSussexGovUK.Skins.IEsccWebsiteSkin
+@{
+    foreach (var font in Model.RequiresGoogleFonts())
+    {
+        <link href="@font.FontUrl" rel="stylesheet" type="text/css" />
+    }
+}

@@ -1,0 +1,103 @@
+﻿@using System.Globalization
+@using Escc.EastSussexGovUK.Features
+@using Escc.EastSussexGovUK.Views
+@using System.IO
+@using System.Web
+@model Escc.EastSussexGovUK.Core.BaseViewModel
+@{
+    Layout = null;
+    if (Model == null)
+    {
+        throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel");
+    }
+    Model.EsccWebsiteView = EsccWebsiteView.Desktop;
+    Html.RenderPartial("~/_EastSussexGovUK_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
+
+    // In rare circumstances Azure can return a value for Request.Url.Authority which is not correct. Since
+    // Request.Url.Authority is used to load client-side assets, ensure it is always allowed by the content security policy.
+    /* var config = new ContentSecurityPolicyFromConfig();
+    var filter = new ContentSecurityPolicyUrlFilter(Request.Url, config.UrlsToExclude);
+    if (filter.ApplyPolicy() && !Response.HeadersWritten)
+    {
+        new ContentSecurityPolicyHeaders(Response.Headers)
+            .AppendPolicy($"script-src {Request.Url.GetLeftPart(UriPartial.Authority)}; style-src {Request.Url.GetLeftPart(UriPartial.Authority)}; img-src {Request.Url.GetLeftPart(UriPartial.Authority)}")
+            .UpdateHeaders();
+    }*/
+
+    if (Model.WebChat != null)
+    {
+        Html.RenderPartial("~/_EastSussexGovUK_FeatureDependencies.cshtml", new[] { new WebChat() { WebChatSettings = Model.WebChat } });
+    }
+}
+@Html.Raw(Model.TemplateHtml?.HtmlTag)
+<head>
+    @RenderSection("ContentExperiment", required: false)
+    @Html.Raw(Model.TemplateHtml?.Metadata)
+    @{
+        //Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata);
+        Html.RenderPartial("~/_EastSussexGovUK_Fonts.cshtml", Model.EsccWebsiteSkin);
+    }
+    @*Html.RenderCssHere()*@
+    @RenderSection("Metadata", required: false)
+</head>
+@{
+    var bodyClass = String.Empty;
+    if (IsSectionDefined("BodyClass"))
+    {
+        using (var writer = new StringWriter())
+        {
+            RenderSection("BodyClass", required: false).WriteTo(writer, null);
+            bodyClass = writer.ToString();
+        }
+    }
+
+    var textSize = new TextSize(Context.Request.Cookies["textsize"], HttpUtility.ParseQueryString(Context.Request.QueryString.Value)).CurrentTextSize();
+    if (textSize > 1)
+    {
+        bodyClass += " size" + textSize.ToString(CultureInfo.InvariantCulture);
+    }
+
+    if (!String.IsNullOrEmpty(bodyClass))
+    {
+        @:<body class="@bodyClass.Trim()">
+        }
+        else
+        {
+            @:<body>
+            }
+            @Html.Raw(Model.TemplateHtml?.AboveHeader)
+}
+@if (IsSectionDefined("Header"))
+{
+    @RenderSection("Header")
+}
+else
+{
+    @Html.Raw(Model.TemplateHtml?.Header);
+}
+<div id="main" role="main" class="body">
+    <div class="container">
+        @if (IsSectionDefined("Breadcrumb"))
+        {
+            @RenderSection("Breadcrumb")
+        }
+        else
+        {
+            Html.RenderPartial("~/_EastSussexGovUK_BreadcrumbTrail.cshtml", Model.BreadcrumbProvider);
+            Html.RenderPartial("~/_EastSussexGovUK_BreadcrumbTrailMobile.cshtml", Model.BreadcrumbProvider);
+        }
+        @RenderBody()
+    </div>
+</div>
+@if (IsSectionDefined("Footer"))
+{
+    @RenderSection("Footer")
+}
+else
+{
+    @Html.Raw(Model.TemplateHtml?.Footer)
+}
+@Html.Raw(Model.TemplateHtml?.Scripts)
+@*Html.RenderJsHere()*@
+@RenderSection("JavaScript", required: false)
+@Html.Raw("</body></html>")

@@ -1,0 +1,73 @@
+﻿@using Escc.EastSussexGovUK.Features;
+@using System.Globalization;
+@using System.Text;
+@model IBreadcrumbProvider
+@{
+// Turn breadcrumb trail levels into list items
+var breadcrumbTrail = Model.BuildTrail();
+ if (breadcrumbTrail.Keys.Count > 0)
+ {
+    // add the finished list to the "home" list
+<nav>
+    <h2 class="aural">You are here</h2><ol class="breadcrumb large">
+        @{
+            var totalKeys = breadcrumbTrail.Keys.Count;
+            var currentKey = 0;
+            foreach (string key in breadcrumbTrail.Keys)
+            {
+                var listItemClass = (currentKey == (totalKeys - 1)) ? "current" : "up";
+                listItemClass += " level" + (currentKey + 1).ToString(CultureInfo.InvariantCulture);
+
+                if (String.IsNullOrEmpty(breadcrumbTrail[key]))
+                {
+                    <li class="@listItemClass"><span class="aural">Current level: </span>@key</li>}
+                else
+                {
+                    <li class="@listItemClass"><span class="aural">Level @((currentKey + 1).ToString(CultureInfo.CurrentCulture)): </span><a href="@breadcrumbTrail[key]">@key</a></li>}
+                currentKey++;
+            }
+        }
+    </ol>
+</nav>
+
+//==================================== Structured Breadcrumbs =====================================================\\
+// Create structed breadcrumb markup for Google.
+// https://developers.google.com/search/docs/data-types/breadcrumbs
+
+// Json-LD script is built as a string.
+StringBuilder breadcrumbScript = new StringBuilder();
+breadcrumbScript.Append("{ \"@context\": \"http://schema.org\", \"@type\": \"BreadcrumbList\", \"itemListElement\": [");
+
+var position = 1;
+// The breadcrumbTrail collection contains all the data needed for position, id and name.
+foreach (var item in breadcrumbTrail)
+{
+    breadcrumbScript.Append("{\"@type\" : \"ListItem\",\"position\": " + position + " ,\"item\": {\"@id\": " + "\"" + item.Value + "\",");
+    // if the breadcrumb is not the last in the collection, keep script open.
+    if (position != breadcrumbTrail.Count)
+    {
+        breadcrumbScript.Append("\"name\": " + "\"" + item.Key + "\"}},");
+    }
+    // if the breadcrumb is the last in the collection, close the script
+    else
+    {
+        breadcrumbScript.Append("\"name\": " + "\"" + item.Key + "\"}}]}");
+    }
+    position++;
+}
+
+// Add the script string to the page within <script> tags of type 'application/ld+json'
+<script type="application/ld+json">
+    @Html.Raw(breadcrumbScript.ToString())
+</script>
+//===================================Structured Breadcrumbs======================================================\\
+}
+
+// If no breadcrumb found and we're running in development, show a message.
+// Otherwise it's an easy thing for the developer to miss.
+else {
+   <environment names="Development">
+     <p class="warning"><strong>You need to add a breadcrumb trail. See the documentation for @Model.GetType().FullName.</strong></p>
+   </environment>
+}
+}
