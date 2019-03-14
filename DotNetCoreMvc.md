@@ -7,7 +7,7 @@ The ASP.NET Core version of the template is not yet feature-complete and is subj
 For an ASP.NET Core MVC project, you can install our design using the following steps:
 
 1. In Visual Studio create a new ASP.NET Core Web Application using the "Empty" project template. 
-2. Install `Microsoft.AspNetCore.Mvc` from `nuget.org` and `Escc.EastSussexGovUK.Core` from our private NuGet feed.
+2. Install `Escc.EastSussexGovUK.Core` from our private NuGet feed.
 3. Add the services required for the template to the `Startup` class:
 
 		using Escc.EastSussexGovUK.Core;
@@ -32,9 +32,11 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 3. Create a view model which inherits from `Escc.EastSussexGovUK.Core.BaseViewModel`. Its constructor must inject an instance of `IBreadcrumbProvider` since this is required to build the template.
 
+		using Escc.EastSussexGovUK.Core;
+
 	    public class MyCustomModel : BaseViewModel
 	    {
-	        public MyCustomModel(IBreadcrumbProvider breadcrumb): base(breadcrumb) { }
+	        public MyCustomModel(IViewModelDefaultValuesProvider defaultValuesProvider): base(defaultValuesProvider) { }
 	    }
 
 4. Add a controller. The constructor must inject the resources required for the website template. Any controller action which results in a view using the website template must be marked with the `async` keyword and return `Task<IActionResult>`. It must also load the template HTML, and usually web chat too, using the following code. You can put this in a base controller class if you have many controllers in your application.
@@ -49,17 +51,17 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 		public class ExampleController : Controller
 		{
 	        private readonly IEastSussexGovUKTemplateRequest _templateRequest;
-	        private readonly IBreadcrumbProvider _breadcrumb;
+     	   private readonly IViewModelDefaultValuesProvider _defaultModelValues;
 	
-	        public ExampleController(IEastSussexGovUKTemplateRequest templateRequest, IBreadcrumbProvider breadcrumb)
+	        public ExampleController(IEastSussexGovUKTemplateRequest templateRequest, IViewModelDefaultValuesProvider defaultModelValues)
 	        {
 	            _templateRequest = templateRequest;
-	            _breadcrumb = breadcrumb;
+	            _defaultModelValues = defaultModelValues;
 	        }
 
 			public async Task<IActionResult> Index()
 			{
-				var model = new MyCustomModel(_breadcrumb); // inheriting from BaseViewModel
+				var model = new MyCustomModel(_defaultModelValues); // inheriting from BaseViewModel
 
 				try
                 {
@@ -100,7 +102,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 	Add content in the `<head>` – useful for metadata and stylesheets:
 
 		@section Metadata {
-			<title>Example page</title>
+			<meta name="robots" content="noindex, nofollow" />
 			<link rel="stylesheet" href="my-styles.css" />
 		}
 
@@ -114,7 +116,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 			<header>My custom header</header>
 		}
 
-	Replace the breadcrumb trail (note that you will still need an `IBreadcrumbProvider` in your model):
+	Replace the breadcrumb trail:
 
 		@section Breadcrumb {
 			<p>My custom breadcrumb</p>

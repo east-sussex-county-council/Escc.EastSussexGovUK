@@ -2,6 +2,6 @@
 @{
     foreach (var font in Model.RequiresGoogleFonts())
     {
-        <link href="@font.FontUrl" rel="stylesheet" type="text/css" />
+<link href="@Html.Raw(font.FontUrl)" rel="stylesheet" type="text/css" />
     }
 }

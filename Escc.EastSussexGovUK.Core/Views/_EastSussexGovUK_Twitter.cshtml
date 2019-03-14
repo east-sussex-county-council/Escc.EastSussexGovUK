@@ -3,7 +3,7 @@
 @model Escc.EastSussexGovUK.Core.BaseViewModel
 @if (Model != null && !String.IsNullOrEmpty(Model.SocialMedia.TwitterAccount) && Model.EsccWebsiteView == EsccWebsiteView.Desktop)
 {
-    @Html.Partial("~/_EastSussexGovUK_FeatureDependency.cshtml", new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView })
+    @await Html.PartialAsync("~/_EastSussexGovUK_FeatureDependency.cshtml", new TwitterWidget() { SocialMedia = Model.SocialMedia, EsccWebsiteView = Model.EsccWebsiteView })
     var twitterUrl = "https://twitter.com/" + Model.SocialMedia.TwitterAccount;
     <div class="large"><a class="twitter-timeline" href="@twitterUrl">Tweets by &#64;@Model.SocialMedia.TwitterAccount</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
     <div class="small medium text-content content-small content-medium">

@@ -16,12 +16,15 @@ namespace Escc.EastSussexGovUK.Core
         /// </summary>
         /// <param name="breadcrumbProvider">The breadcrumb provider which provides essential context for the views.</param>
         /// <exception cref="System.ArgumentNullException"></exception>
-        protected BaseViewModel(IBreadcrumbProvider breadcrumbProvider)
+        protected BaseViewModel(IViewModelDefaultValuesProvider defaultValues)
         {
-            IsPublicView = true;
-            EsccWebsiteSkin = new CustomerFocusSkin();
-//            Metadata = new Metadata();
-            BreadcrumbProvider = breadcrumbProvider ?? throw new ArgumentNullException(nameof(breadcrumbProvider));
+            if (defaultValues == null)
+            {
+                throw new ArgumentNullException(nameof(defaultValues));
+            }
+
+            BreadcrumbProvider = defaultValues.Breadcrumb ?? throw new ArgumentException($"{nameof(defaultValues)}.Breadcrumb cannot be null", nameof(defaultValues));
+            Metadata = defaultValues.Metadata;
         }
 
         /// <summary>
@@ -35,12 +38,12 @@ namespace Escc.EastSussexGovUK.Core
         /// <value>
         /// The metadata.
         /// </value>
-        // public Metadata Metadata { get; set; }
+        public Metadata.Metadata Metadata { get; set; } = new Metadata.Metadata();
 
         /// <summary>
         /// Gets or sets whether the current view is a publicly-visible page
         /// </summary>
-        public bool IsPublicView { get; set; }
+        public bool IsPublicView { get; set; } = true;
 
         /// <summary>
         /// Gets or sets the current master page or layout
@@ -50,7 +53,7 @@ namespace Escc.EastSussexGovUK.Core
         /// <summary>
         /// Gets or sets the skin applied to content 
         /// </summary>
-        public IEsccWebsiteSkin EsccWebsiteSkin { get; set; }
+        public IEsccWebsiteSkin EsccWebsiteSkin { get; set; } = new CustomerFocusSkin();
 
         /// <summary>
         /// Gets or sets the provider for working out the current context within the site's information architecture.

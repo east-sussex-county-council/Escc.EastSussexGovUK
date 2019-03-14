@@ -12,11 +12,12 @@
     @if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Core.BaseViewModel"); }
     @RenderSection("ContentExperiment", required: false)
     <meta charset="UTF-8" />
-    @*{ Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata); }*@
+    @{ await Html.RenderPartialAsync("~/_Metadata_Head.cshtml", Model.Metadata); }
     @RenderSection("Metadata", required: false)
 </head>
 <body>
     @RenderBody()
+    @{ await Html.RenderPartialAsync("~/_Metadata_Body.cshtml", Model.Metadata); }
 </body>
 </html>
 

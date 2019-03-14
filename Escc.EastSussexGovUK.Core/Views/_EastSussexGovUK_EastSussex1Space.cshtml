@@ -2,7 +2,7 @@
 @model Escc.EastSussexGovUK.Core.BaseViewModel
 @if (Model != null && Model.ShowEastSussex1SpaceWidget)
 {
-    @Html.Partial("~/_EastSussexGovUK_FeatureDependency.cshtml", new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget })
+    @await Html.PartialAsync("~/_EastSussexGovUK_FeatureDependency.cshtml", new EastSussex1SpaceSearch() { ShowEastSussex1SpaceSearch = Model.ShowEastSussex1SpaceWidget })
     <div class="supporting large">
         <div id="marketplace-search-widget">
             <div id="logo">

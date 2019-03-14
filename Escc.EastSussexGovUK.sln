@@ -13,6 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		app-setup-dev.ps1 = app-setup-dev.ps1
 		Banners.md = Banners.md
 		Design.md = Design.md
+		DotNetCoreMvc.md = DotNetCoreMvc.md
+		DotNetFrameworkMvc.md = DotNetFrameworkMvc.md
+		DotNetFrameworkWebForms.md = DotNetFrameworkWebForms.md
 		GovDelivery.md = GovDelivery.md
 		LICENSE.md = LICENSE.md
 		README.md = README.md
@@ -37,7 +40,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Templa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.NuGet", "Escc.EastSussexGovUK.NuGet\Escc.EastSussexGovUK.NuGet.csproj", "{018F6F73-BEBA-4DB1-A3AB-F5BB0A47E077}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK", "Escc.EastSussexGovUK\Escc.EastSussexGovUK.csproj", "{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Escc.EastSussexGovUK", "Escc.EastSussexGovUK\Escc.EastSussexGovUK.csproj", "{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Escc.EastSussexGovUK.Core", "Escc.EastSussexGovUK.Core\Escc.EastSussexGovUK.Core.csproj", "{0221C29B-AEAD-4DD8-9179-C03B02DD30D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreTest", "NetCoreTest\NetCoreTest.csproj", "{CD92D789-90E3-468B-8E4C-5978E704D4AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,6 +101,18 @@ Global
 		{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}.UAT|Any CPU.ActiveCfg = Debug|Any CPU
 		{D127EE20-6FAF-4C0B-BFD7-1F96DFCE1C94}.UAT|Any CPU.Build.0 = Debug|Any CPU
+		{0221C29B-AEAD-4DD8-9179-C03B02DD30D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0221C29B-AEAD-4DD8-9179-C03B02DD30D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0221C29B-AEAD-4DD8-9179-C03B02DD30D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0221C29B-AEAD-4DD8-9179-C03B02DD30D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0221C29B-AEAD-4DD8-9179-C03B02DD30D4}.UAT|Any CPU.ActiveCfg = Debug|Any CPU
+		{0221C29B-AEAD-4DD8-9179-C03B02DD30D4}.UAT|Any CPU.Build.0 = Debug|Any CPU
+		{CD92D789-90E3-468B-8E4C-5978E704D4AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD92D789-90E3-468B-8E4C-5978E704D4AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD92D789-90E3-468B-8E4C-5978E704D4AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD92D789-90E3-468B-8E4C-5978E704D4AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD92D789-90E3-468B-8E4C-5978E704D4AC}.UAT|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD92D789-90E3-468B-8E4C-5978E704D4AC}.UAT|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

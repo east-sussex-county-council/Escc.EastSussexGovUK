@@ -5,7 +5,7 @@
 @{
     if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel"); }
     Model.EsccWebsiteView = EsccWebsiteView.FullScreen;
-    Html.RenderPartial("~/_EastSussexGovUK_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
+    await Html.RenderPartialAsync("~/_EastSussexGovUK_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
 
     // In rare circumstances Azure can return a value for Request.Url.Authority which is not correct. Since
     // Request.Url.Authority is used to load client-side assets, ensure it is always allowed by the content security policy.
@@ -20,16 +20,14 @@
 
     if (Model.WebChat != null)
     {
-        Html.RenderPartial("~/_EastSussexGovUK_FeatureDependencies.cshtml", new[] { new WebChat() { WebChatSettings = Model.WebChat } });
+        await Html.RenderPartialAsync("~/_EastSussexGovUK_FeatureDependencies.cshtml", new[] { new WebChat() { WebChatSettings = Model.WebChat } });
     }
 }
 @Html.Raw(Model.TemplateHtml?.HtmlTag)
-<head>
-    @RenderSection("ContentExperiment", required: false)
-    @Html.Raw(Model.TemplateHtml?.Metadata)
+<head>@RenderSection("ContentExperiment", required: false)@Html.Raw(Model.TemplateHtml?.Metadata)
     @{
-        //Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata);
-        Html.RenderPartial("~/_EastSussexGovUK_Fonts.cshtml", Model.EsccWebsiteSkin);
+        await Html.RenderPartialAsync("~/_Metadata_Head.cshtml", Model.Metadata);
+        await Html.RenderPartialAsync("~/_EastSussexGovUK_Fonts.cshtml", Model.EsccWebsiteSkin);
     }
     @*Html.RenderCssHere()*@
     @RenderSection("Metadata", required: false)
@@ -41,7 +39,7 @@
     else
     {
         @:<body>
-        }
+}
 <div class="full-screen">
     @if (IsSectionDefined("Header"))
     {
@@ -71,6 +69,7 @@
     @*Html.RenderJsHere()*@
     @RenderSection("JavaScript", required: false)
 </div>
+@{ await Html.RenderPartialAsync("~/_Metadata_Body.cshtml", Model.Metadata); }
 @Html.Raw("</body></html>")
 
 @{ // Do not render these sections for this layout

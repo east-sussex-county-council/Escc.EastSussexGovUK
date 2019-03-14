@@ -5,8 +5,8 @@
 @{
     var encodedPageUrl = HttpUtility.UrlEncode(Context.Request.GetDisplayUrl());
     // strip double-quotes because when this link is picked up by a link checker and exported to CSV, the quotes are misinterpreted as a CSV delimiter
-    var encodedTitle = "";// (Model?.Metadata?.Title != null) ? HttpUtility.UrlEncode(Model.Metadata.Title.Replace("\"", String.Empty)) : String.Empty;
-    var encodedDescription = "";// (Model?.Metadata?.Description != null) ? HttpUtility.UrlEncode(Model.Metadata.Description.Replace("\"", String.Empty)) : String.Empty;
+    var encodedTitle = (Model?.Metadata?.Title != null) ? HttpUtility.UrlEncode(Model.Metadata.Title.Replace("\"", String.Empty)) : String.Empty;
+    var encodedDescription = (Model?.Metadata?.Description != null) ? HttpUtility.UrlEncode(Model.Metadata.Description.Replace("\"", String.Empty)) : String.Empty;
 }
 @if (Model?.EsccWebsiteView != EsccWebsiteView.Plain)
 {

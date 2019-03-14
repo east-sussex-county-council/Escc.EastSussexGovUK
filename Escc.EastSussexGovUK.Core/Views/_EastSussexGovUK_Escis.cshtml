@@ -2,6 +2,6 @@
 @model Escc.EastSussexGovUK.Core.BaseViewModel
 @if (Model != null && Model.ShowEscisWidget)
 {
-    @Html.Partial("~/_EastSussexGovUK_FeatureDependency.cshtml", new EscisSearch() { ShowEscisSearch = Model.ShowEscisWidget})
+    @await Html.PartialAsync("~/_EastSussexGovUK_FeatureDependency.cshtml", new EscisSearch() { ShowEscisSearch = Model.ShowEscisWidget})
     <div class="supporting escis large"></div>
 }
