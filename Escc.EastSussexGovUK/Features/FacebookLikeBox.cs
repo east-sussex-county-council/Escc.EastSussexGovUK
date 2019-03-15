@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Escc.EastSussexGovUK.Views;
 
 namespace Escc.EastSussexGovUK.Features
@@ -41,7 +42,7 @@ namespace Escc.EastSussexGovUK.Features
         /// </returns>
         public IEnumerable<CssFileDependency> RequiresCss()
         {
-            return new CssFileDependency[1] {new CssFileDependency() {CssFileAlias = "SocialMediaLarge", MediaQueryAlias = "Large"}};
+            return new CssFileDependency[1] {new CssFileDependency() {CssFileAlias = "SocialMediaLarge", CssRelativeUrl = new Uri("/css/min/social-media-large.css", UriKind.Relative), MediaQueryAlias = "Large"}};
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace Escc.EastSussexGovUK.Features
         /// </returns>
         public IEnumerable<JsFileDependency> RequiresJavaScript()
         {
-            return new JsFileDependency[1] {new JsFileDependency() {JsFileAlias = "SocialMedia"}};
+            return new JsFileDependency[1] {new JsFileDependency() {JsFileAlias = "SocialMedia", JsRelativeUrl = new Uri("/js/min/social-media.js", UriKind.Relative) } };
         }
 
         /// <summary>

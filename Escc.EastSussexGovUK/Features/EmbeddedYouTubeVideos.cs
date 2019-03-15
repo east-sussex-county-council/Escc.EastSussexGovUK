@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -47,8 +48,8 @@ namespace Escc.EastSussexGovUK.Features
         {
             return new JsFileDependency[2]
             {
-                new JsFileDependency() { JsFileAlias = "EmbedYouTube" },
-                new JsFileDependency() { JsFileAlias = "YouTubeAnalytics", Priority=110 }
+                new JsFileDependency() { JsFileAlias = "EmbedYouTube", JsRelativeUrl = new Uri("/js/min/embed-youtube.js", UriKind.Relative) },
+                new JsFileDependency() { JsFileAlias = "YouTubeAnalytics", JsRelativeUrl = new Uri("/js/libs/lunametrics-youtube.gtm.js", UriKind.Relative), Priority=110 }
             };
         }
 

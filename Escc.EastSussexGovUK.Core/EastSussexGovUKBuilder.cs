@@ -61,6 +61,7 @@ namespace Escc.EastSussexGovUK.Core
             services.TryAddSingleton<IProxyProvider, ProxyFromConfiguration>();
             services.TryAddSingleton<IHttpClientProvider, HttpClientProvider>();
             services.TryAddScoped<IEastSussexGovUKTemplateRequest, EastSussexGovUKTemplateRequest>();
+            services.TryAddScoped<IClientDependencySetEvaluator, ClientDependencySetEvaluator>();
 
             return services;
         }

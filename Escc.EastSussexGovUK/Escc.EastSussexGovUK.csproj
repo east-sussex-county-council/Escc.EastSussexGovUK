@@ -6,7 +6,7 @@
     <Company>East Sussex County Council</Company>
     <Authors>East Sussex County Council</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
-    <Version>13.0.1</Version>
+    <Version>14.0.0-beta1</Version>
     <PackageIconUrl>https://www.eastsussex.gov.uk/apple-touch-icon.png</PackageIconUrl>
     <PackageLicenseUrl>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</PackageProjectUrl>
@@ -16,7 +16,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>D:\Git\Escc.EastSussexGovUK\Escc.EastSussexGovUK\Escc.EastSussexGovUK.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\Escc.EastSussexGovUK.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\Escc.EastSussexGovUK.Tests.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

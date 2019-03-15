@@ -67,7 +67,7 @@ namespace Escc.EastSussexGovUK.Features
         /// </returns>
         public IEnumerable<JsFileDependency> RequiresJavaScript()
         {
-            return new JsFileDependency[1] {new JsFileDependency() {JsFileAlias = "WebChat"}};
+            return new JsFileDependency[1] {new JsFileDependency() {JsFileAlias = "WebChat", JsRelativeUrl = new Uri("/js/min/webchat.js", UriKind.Relative) }};
         }
 
         /// <summary>

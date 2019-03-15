@@ -1,4 +1,6 @@
-﻿namespace Escc.EastSussexGovUK
+﻿using System;
+
+namespace Escc.EastSussexGovUK
 {
     /// <summary>
     /// A CSS file on which an <see cref="IClientDependencySet"/> depends
@@ -17,6 +19,11 @@
         /// The alias of the CSS file, used with <see cref="Escc.ClientDependencyFramework"/>
         /// </summary>
         public string CssFileAlias { get; set; }
+
+        /// <summary>
+        /// The URL of the CSS file, relative to the root of the Escc.EastSussexGovUK.Template source project
+        /// </summary>
+        public Uri CssRelativeUrl { get; set; }
 
         /// <summary>
         /// The alias of the media query, used with <see cref="Escc.ClientDependencyFramework"/>

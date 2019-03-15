@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Escc.EastSussexGovUK.Features
 {
@@ -34,7 +35,7 @@ namespace Escc.EastSussexGovUK.Features
         /// </returns>
         public IEnumerable<CssFileDependency> RequiresCss()
         {
-            return new CssFileDependency[1] {new CssFileDependency() {CssFileAlias = "EastSussex1Space"}};
+            return new CssFileDependency[1] {new CssFileDependency() {CssFileAlias = "EastSussex1Space", CssRelativeUrl = new Uri("/css/min/1space.css", UriKind.Relative) } };
         }
 
         /// <summary>
@@ -45,7 +46,7 @@ namespace Escc.EastSussexGovUK.Features
         /// </returns>
         public IEnumerable<JsFileDependency> RequiresJavaScript()
         {
-            return new JsFileDependency[1] { new JsFileDependency() { JsFileAlias = "EastSussex1Space" } };
+            return new JsFileDependency[1] { new JsFileDependency() { JsFileAlias = "EastSussex1Space", JsRelativeUrl = new Uri("/js/min/1space.js", UriKind.Relative) } };
 
         }
 

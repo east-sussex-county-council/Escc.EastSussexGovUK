@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -51,9 +52,9 @@ namespace Escc.EastSussexGovUK.Features
         {
             return new JsFileDependency[3]
             {
-                new JsFileDependency() { JsFileAlias = "GoogleMaps", Priority = 90 },
-                new JsFileDependency() { JsFileAlias = "JQueryRetry", Priority = 90 },
-                new JsFileDependency() { JsFileAlias = "EmbedGoogleMaps" }
+                new JsFileDependency() { JsFileAlias = "GoogleMaps", JsRelativeUrl = new Uri("/js/min/google-maps.js", UriKind.Relative), Priority = 90 },
+                new JsFileDependency() { JsFileAlias = "JQueryRetry", JsRelativeUrl = new Uri("/js/libs/jquery.ajax-retry.min.js", UriKind.Relative), Priority = 90 },
+                new JsFileDependency() { JsFileAlias = "EmbedGoogleMaps", JsRelativeUrl = new Uri("/js/min/embed-googlemaps.js", UriKind.Relative) }
             };
         }
 

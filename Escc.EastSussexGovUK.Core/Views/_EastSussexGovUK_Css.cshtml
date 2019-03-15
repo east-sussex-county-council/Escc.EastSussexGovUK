@@ -1,0 +1,27 @@
+﻿@model Escc.EastSussexGovUK.Core.BaseViewModel
+@inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
+@{
+    // Sort by priority to ensure load order
+    var required = dependencySetEvaluator.RequiredCss.OrderBy(css => css.Priority);
+    var loaded = new List<string>();
+    foreach (var css in required)
+    {
+        // Prevent duplicates
+        var key = css.CssRelativeUrl.ToString().ToUpperInvariant();
+        if (loaded.Contains(key)) { continue; }
+        else { loaded.Add(key); }
+
+        if (String.IsNullOrEmpty(css.MediaQueryAlias))
+        {
+<link rel="stylesheet" href="@Model.ClientFileBaseUrl@css.CssRelativeUrl?v=@Model.ClientFileVersion" />
+        }
+        else if (css.MediaQueryAlias.ToUpperInvariant() == "MEDIUM")
+        {
+<link rel="stylesheet" href="@Model.ClientFileBaseUrl@css.CssRelativeUrl?v=@Model.ClientFileVersion" media="@Model.MediaQueryMedium" />
+        }
+        else if (css.MediaQueryAlias.ToUpperInvariant() == "LARGE")
+        {
+<link rel="stylesheet" href="@Model.ClientFileBaseUrl@css.CssRelativeUrl?v=@Model.ClientFileVersion" media="@Model.MediaQueryLarge" />
+        }
+    }
+}

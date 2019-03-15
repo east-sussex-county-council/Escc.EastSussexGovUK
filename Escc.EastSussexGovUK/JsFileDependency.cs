@@ -1,4 +1,6 @@
-﻿namespace Escc.EastSussexGovUK
+﻿using System;
+
+namespace Escc.EastSussexGovUK
 { 
     /// <summary>
     /// A JavaScript file on which an <see cref="IClientDependencySet"/> depends
@@ -17,7 +19,12 @@
         /// The alias of the JavaScript file, used with <see cref="Escc.ClientDependencyFramework"/>
         /// </summary>
         public string JsFileAlias { get; set; }
-       
+
+        /// <summary>
+        /// The URL of the JavaScript file, relative to the root of the Escc.EastSussexGovUK.Template source project
+        /// </summary>
+        public Uri JsRelativeUrl { get; set; }
+
         /// <summary>
         /// The priority for loading the script, where 100 is normal.
         /// </summary>

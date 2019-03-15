@@ -1,0 +1,15 @@
+﻿@model Escc.EastSussexGovUK.Core.BaseViewModel
+@inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
+@{
+    // Sort by priority to ensure load order
+    var required = dependencySetEvaluator.RequiredJavaScript.OrderBy(js => js.Priority);
+    var loaded = new List<string>();
+    foreach (var js in required)
+    {
+        // Prevent duplicates
+        var key = js.JsRelativeUrl.ToString().ToUpperInvariant();
+        if (loaded.Contains(key)) { continue; }
+        else { loaded.Add(key); }
+<script src="@Model.ClientFileBaseUrl@js.JsRelativeUrl?v=@Model.ClientFileVersion"></script>
+    }
+}

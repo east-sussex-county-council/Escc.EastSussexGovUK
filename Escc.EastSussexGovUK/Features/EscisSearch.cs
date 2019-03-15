@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Escc.EastSussexGovUK.Features
 {
@@ -45,7 +46,7 @@ namespace Escc.EastSussexGovUK.Features
         /// </returns>
         public IEnumerable<JsFileDependency> RequiresJavaScript()
         {
-            return new JsFileDependency[1] { new JsFileDependency() { JsFileAlias = "Escis" } };
+            return new JsFileDependency[1] { new JsFileDependency() { JsFileAlias = "Escis", JsRelativeUrl = new Uri("/js/min/escis.js", UriKind.Relative) } };
 
         }
 

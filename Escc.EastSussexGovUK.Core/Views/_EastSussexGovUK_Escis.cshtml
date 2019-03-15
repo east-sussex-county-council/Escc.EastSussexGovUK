@@ -1,7 +1,8 @@
 ﻿@using Escc.EastSussexGovUK.Features
 @model Escc.EastSussexGovUK.Core.BaseViewModel
+@inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
 @if (Model != null && Model.ShowEscisWidget)
 {
-    @await Html.PartialAsync("~/_EastSussexGovUK_FeatureDependency.cshtml", new EscisSearch() { ShowEscisSearch = Model.ShowEscisWidget})
+    dependencySetEvaluator.EvaluateDependencySet(new EscisSearch() { ShowEscisSearch = Model.ShowEscisWidget });
     <div class="supporting escis large"></div>
 }

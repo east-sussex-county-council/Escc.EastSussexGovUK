@@ -49,8 +49,8 @@ namespace Escc.EastSussexGovUK.Skins
         {
             var css = new List<CssFileDependency>(base.RequiresCss())
             {
-                new CssFileDependency() {CssFileAlias = "CoronerSkinSmall"},
-                new CssFileDependency() {CssFileAlias = "CoronerSkinMedium", MediaQueryAlias = "Medium"}
+                new CssFileDependency() {CssFileAlias = "CoronerSkinSmall", CssRelativeUrl = new Uri("/css/coroner-skin-small.css", UriKind.Relative)},
+                new CssFileDependency() {CssFileAlias = "CoronerSkinMedium", CssRelativeUrl = new Uri("/css/coroner-skin-medium.css", UriKind.Relative), MediaQueryAlias = "Medium", Priority = 101 }
             };
             return css;
         }
@@ -65,7 +65,7 @@ namespace Escc.EastSussexGovUK.Skins
         {
             return new List<JsFileDependency>(base.RequiresJavaScript())
             {
-                new JsFileDependency() {JsFileAlias = "CoronerSkin"}
+                new JsFileDependency() {JsFileAlias = "CoronerSkin", JsRelativeUrl = new Uri("/js/coroner-skin.js", UriKind.Relative)}
             };
         }
     }

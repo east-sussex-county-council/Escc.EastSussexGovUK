@@ -4,6 +4,7 @@
 @using System.IO
 @using System.Web
 @model Escc.EastSussexGovUK.Core.BaseViewModel
+@inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
 @{
     Layout = null;
     if (Model == null)
@@ -11,7 +12,7 @@
         throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel");
     }
     Model.EsccWebsiteView = EsccWebsiteView.Desktop;
-    await Html.RenderPartialAsync("~/_EastSussexGovUK_FeatureDependency.cshtml", Model.EsccWebsiteSkin);
+    dependencySetEvaluator.EvaluateDependencySet(Model.EsccWebsiteSkin);
 
     // In rare circumstances Azure can return a value for Request.Url.Authority which is not correct. Since
     // Request.Url.Authority is used to load client-side assets, ensure it is always allowed by the content security policy.
@@ -26,14 +27,16 @@
 
     if (Model.WebChat != null)
     {
-        await Html.RenderPartialAsync("~/_EastSussexGovUK_FeatureDependencies.cshtml", new[] { new WebChat() { WebChatSettings = Model.WebChat } });
+        dependencySetEvaluator.EvaluateDependencySet(new WebChat() { WebChatSettings = Model.WebChat });
     }
 }
 @Html.Raw(Model.TemplateHtml?.HtmlTag)
-<head>@RenderSection("ContentExperiment", required: false)@Html.Raw(Model.TemplateHtml?.Metadata)
+<head>
+    @RenderSection("ContentExperiment", required: false)@Html.Raw(Model.TemplateHtml?.Metadata)
     @{
         await Html.RenderPartialAsync("~/_Metadata_Head.cshtml", Model.Metadata);
         await Html.RenderPartialAsync("~/_EastSussexGovUK_Fonts.cshtml", Model.EsccWebsiteSkin);
+        await Html.RenderPartialAsync("~/_EastSussexGovUK_Css.cshtml", Model);
     }
     @RenderSection("Metadata", required: false)
 </head>
@@ -95,6 +98,7 @@ else
     @Html.Raw(Model.TemplateHtml?.Footer)
 }
 @Html.Raw(Model.TemplateHtml?.Scripts)
+@{ await Html.RenderPartialAsync("~/_EastSussexGovUK_Js.cshtml", Model); }
 @RenderSection("JavaScript", required: false)
 @{ await Html.RenderPartialAsync("~/_Metadata_Body.cshtml", Model.Metadata); }
 @Html.Raw("</body></html>")

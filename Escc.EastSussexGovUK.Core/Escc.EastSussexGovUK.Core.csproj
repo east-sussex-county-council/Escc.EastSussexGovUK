@@ -17,10 +17,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\_EastSussexGovUK_Css.cshtml" />
+    <None Remove="Views\_EastSussexGovUK_Js.cshtml" />
     <None Remove="Views\_ViewStart.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Js.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_Css.cshtml" />
     <EmbeddedResource Include="Views\_ViewStart.cshtml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </EmbeddedResource>
@@ -38,8 +42,6 @@
     <EmbeddedResource Include="Views\_EastSussexGovUK_FullScreen.cshtml" />
     <EmbeddedResource Include="Views\_EastSussexGovUK_BreadcrumbTrail.cshtml" />
     <EmbeddedResource Include="Views\_EastSussexGovUK_BreadcrumbTrailMobile.cshtml" />
-    <EmbeddedResource Include="Views\_EastSussexGovUK_FeatureDependencies.cshtml" />
-    <EmbeddedResource Include="Views\_EastSussexGovUK_FeatureDependency.cshtml" />
     <EmbeddedResource Include="Views\_EastSussexGovUK_Fonts.cshtml" />
   </ItemGroup>
 
@@ -48,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Escc.EastSussexGovUK" Version="13.0.1" />
+    <PackageReference Include="Escc.EastSussexGovUK" Version="14.0.0-beta1" />
     <PackageReference Include="Escc.Html" Version="3.0.0" />
     <PackageReference Include="Escc.Metadata" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.2.0" />

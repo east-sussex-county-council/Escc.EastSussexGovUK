@@ -42,7 +42,7 @@ namespace Escc.EastSussexGovUK.Features
         /// </returns>
         public IEnumerable<CssFileDependency> RequiresCss()
         {
-            return new CssFileDependency[1] {new CssFileDependency() {CssFileAlias = "SocialMediaLarge", MediaQueryAlias = "Large"}};
+            return new CssFileDependency[1] {new CssFileDependency() {CssFileAlias = "SocialMediaLarge", CssRelativeUrl = new Uri("/css/min/social-media-large.css", UriKind.Relative), MediaQueryAlias = "Large"}};
         }
 
         /// <summary>
