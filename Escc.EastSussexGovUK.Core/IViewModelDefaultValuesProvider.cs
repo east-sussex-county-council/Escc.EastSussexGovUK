@@ -1,4 +1,5 @@
-﻿using Escc.EastSussexGovUK.Features;
+﻿using System;
+using Escc.EastSussexGovUK.Features;
 
 namespace Escc.EastSussexGovUK.Core
 {
@@ -16,5 +17,15 @@ namespace Escc.EastSussexGovUK.Core
         /// Gets the default sitewide metadata, usually loaded from configuration
         /// </summary>
         Metadata.Metadata Metadata { get; }
+
+        /// <summary>
+        /// Gets or sets the base URL to use for sitewide client-side files such as CSS and JavaScript that are not part of the current application
+        /// </summary>
+        Uri ClientFileBaseUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the version string to append to client-side files such as CSS and JavaScript to ensure that previously cached versions are not returned
+        /// </summary>
+        string ClientFileVersion { get; set; }
     }
 }

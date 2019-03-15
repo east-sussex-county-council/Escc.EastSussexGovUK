@@ -17,15 +17,19 @@ namespace Escc.EastSussexGovUK.Core
         /// Creates a new <see cref="ViewModelDefaultValuesProvider"/>
         /// </summary>
         /// <param name="metadata">The default sitewide metadata, usually loaded from configuration</param>
+        /// <param name="mvcSettings">Settings used to configure MVC views</param>
         /// <param name="breadcrumb">The breadcrumb provider which identifies the context within the site hierarchy</param>
         /// <param name="httpContextAccessor">Access to the current request URL</param>
-        public ViewModelDefaultValuesProvider(IOptions<Metadata.Metadata> metadata, IBreadcrumbProvider breadcrumb, IHttpContextAccessor httpContextAccessor)
+        public ViewModelDefaultValuesProvider(IOptions<Metadata.Metadata> metadata, IOptions<MvcSettings> mvcSettings, IBreadcrumbProvider breadcrumb, IHttpContextAccessor httpContextAccessor)
         {
             Metadata = metadata?.Value;
             Breadcrumb = breadcrumb;
 
             var request = httpContextAccessor?.HttpContext?.Request ?? throw new ArgumentNullException(nameof(httpContextAccessor));
             Metadata.CanonicalPageUrl = new Uri(request.GetDisplayUrl());
+
+            ClientFileBaseUrl = mvcSettings?.Value?.ClientFileBaseUrl;
+            ClientFileVersion = mvcSettings?.Value?.ClientFileVersion;
         }
 
         /// <summary>
@@ -37,5 +41,15 @@ namespace Escc.EastSussexGovUK.Core
         /// Gets the default breadcrumb provider which identifies the context within the site hierarchy
         /// </summary>
         public IBreadcrumbProvider Breadcrumb { get; }
+
+        /// <summary>
+        /// Gets or sets the base URL to use for sitewide client-side files such as CSS and JavaScript that are not part of the current application
+        /// </summary>
+        public Uri ClientFileBaseUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the version string to append to client-side files such as CSS and JavaScript to ensure that previously cached versions are not returned
+        /// </summary>
+        public string ClientFileVersion { get; set; }
     }
 }

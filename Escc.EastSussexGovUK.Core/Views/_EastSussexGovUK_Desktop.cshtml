@@ -35,7 +35,6 @@
         await Html.RenderPartialAsync("~/_Metadata_Head.cshtml", Model.Metadata);
         await Html.RenderPartialAsync("~/_EastSussexGovUK_Fonts.cshtml", Model.EsccWebsiteSkin);
     }
-    @*Html.RenderCssHere()*@
     @RenderSection("Metadata", required: false)
 </head>
 @{
@@ -96,7 +95,6 @@ else
     @Html.Raw(Model.TemplateHtml?.Footer)
 }
 @Html.Raw(Model.TemplateHtml?.Scripts)
-@*Html.RenderJsHere()*@
 @RenderSection("JavaScript", required: false)
 @{ await Html.RenderPartialAsync("~/_Metadata_Body.cshtml", Model.Metadata); }
 @Html.Raw("</body></html>")

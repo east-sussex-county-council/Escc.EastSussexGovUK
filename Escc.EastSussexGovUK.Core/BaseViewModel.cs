@@ -25,6 +25,8 @@ namespace Escc.EastSussexGovUK.Core
 
             BreadcrumbProvider = defaultValues.Breadcrumb ?? throw new ArgumentException($"{nameof(defaultValues)}.Breadcrumb cannot be null", nameof(defaultValues));
             Metadata = defaultValues.Metadata;
+            ClientFileBaseUrl = defaultValues.ClientFileBaseUrl?.ToString().TrimEnd('/');
+            ClientFileVersion = defaultValues.ClientFileVersion;
         }
 
         /// <summary>
@@ -35,15 +37,7 @@ namespace Escc.EastSussexGovUK.Core
         /// <summary>
         /// Gets or sets the metadata.
         /// </summary>
-        /// <value>
-        /// The metadata.
-        /// </value>
         public Metadata.Metadata Metadata { get; set; } = new Metadata.Metadata();
-
-        /// <summary>
-        /// Gets or sets whether the current view is a publicly-visible page
-        /// </summary>
-        public bool IsPublicView { get; set; } = true;
 
         /// <summary>
         /// Gets or sets the current master page or layout
@@ -56,19 +50,37 @@ namespace Escc.EastSussexGovUK.Core
         public IEsccWebsiteSkin EsccWebsiteSkin { get; set; } = new CustomerFocusSkin();
 
         /// <summary>
+        /// Gets or sets the base URL to use for sitewide client-side files such as CSS and JavaScript that are not part of the current application
+        /// </summary>
+        /// <remarks>This uses <see cref="string"> rather than <see cref="Uri"/> because Uri.ToString() appends a trailing / on  which in this case is never wanted</remarks>
+        public string ClientFileBaseUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the version string to append to client-side files such as CSS and JavaScript to ensure that previously cached versions are not returned
+        /// </summary>
+        public string ClientFileVersion { get; set; }
+
+        private const string MEDIA_QUERY_MEDIUM = "only screen and (min-width: 474px)";
+        private const string MEDIA_QUERY_LARGE = "only screen and (min-width: 802px)";
+
+        /// <summary>
+        /// This media query should be applied to all &lt;link /&gt; elements intended to load CSS for medium screens and above
+        /// </summary>
+        public string MediaQueryMedium { get { return MEDIA_QUERY_MEDIUM; } }
+
+        /// <summary>
+        /// This media query should be applied to all &lt;link /&gt; elements intended to load CSS for large screens and above
+        /// </summary>
+        public string MediaQueryLarge { get { return MEDIA_QUERY_LARGE; } }
+
+        /// <summary>
         /// Gets or sets the provider for working out the current context within the site's information architecture.
         /// </summary>
-        /// <value>
-        /// The breadcrumb provider.
-        /// </value>
         public IBreadcrumbProvider BreadcrumbProvider { get; set; }
 
         /// <summary>
         /// Gets or sets the HTML to display as a 'latest' update, where supported.
         /// </summary>
-        /// <value>
-        /// The latest.
-        /// </value>
         public IHtmlContent Latest { get; set; }
 
         /// <summary>

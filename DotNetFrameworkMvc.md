@@ -79,6 +79,10 @@ Requesting any page with the querystring `?ForceCacheRefresh=1` will cause the c
 
 ## Varying the design
 
+### Loading CSS and JavaScript
+
+MVC pages use [ClienDependency Framework](https://github.com/shazwazza/clientdependency) for their local CSS and JavaScript. The paths for sitewide CSS and JavaScripts should be loaded from configuration using [Escc.ClientDependencyFramework](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework).
+
 ### Swapping master pages and layouts
 
 Pages on our site can have different designs applied. By default we use a responsive design ("desktop"), but there is also a full-width, minimal design ("fullscreen") which is suitable for applications like maps, and a "plain" design which can be used as an API to request just the content of a page. These are configured in the `Escc.EastSussexGovUK\GeneralSettings` section of `web.config` as shown below. You can make dramatic changes to the layout of the site by applying a different master page or layout.

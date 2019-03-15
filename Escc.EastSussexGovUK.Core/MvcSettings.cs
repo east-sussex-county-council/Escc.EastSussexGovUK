@@ -33,5 +33,15 @@ namespace Escc.EastSussexGovUK.Core
         /// Gets or sets the number of minutes HTML requested from <c>PartialViewUrl</c> may be cached for. Defaults to 60 minutes.
         /// </summary>
         public int CacheMinutes { get; set; } = 60;
+
+        /// <summary>
+        /// Gets or sets the base URL to use for sitewide client-side files such as CSS and JavaScript that are not part of the current application
+        /// </summary>
+        public Uri ClientFileBaseUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets the version string to append to client-side files such as CSS and JavaScript to ensure that previously cached versions are not returned
+        /// </summary>
+        public string ClientFileVersion { get; set; }
     }
 }

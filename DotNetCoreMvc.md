@@ -103,7 +103,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 		@section Metadata {
 			<meta name="robots" content="noindex, nofollow" />
-			<link rel="stylesheet" href="my-styles.css" />
+			<link rel="stylesheet" href="~/css/my-styles.css?v=@Model.ClientFileVersion" />
 		}
 
 	Add a `class` to the opening `<body>` tag:
@@ -128,10 +128,10 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 			<header>My custom footer</header>
 		}
 
-	Include JavaScript at the end of the page:
+	Include JavaScript at the end of the page (or use the `async` or `defer` attributes when loading it earlier):
 
 		@section JavaScript {
-			<script src="my-script.js"></script>
+			<script src="~/js/my-script.js?v=@Model.ClientFileVersion"></script>
 		}
 
 6. Add configuration for the template elements. For example, if you are using `appsettings.json` for configuration:
@@ -184,6 +184,40 @@ There is a similar cache for the web chat settings, which also defaults to an ho
 Requesting any page with the querystring `?ForceCacheRefresh=1` will cause the cached template to be updated even if the cache has not expired.
 
 ## Varying the design
+
+### Loading CSS and JavaScript
+
+Using HTTP2 and gzip there is no longer a need to bundle and minify client-side files, so they should be included in the page individually. However it is still useful to include a version number so that the latest version is always loaded after each deployment.
+
+	@section Metadata {
+		<link rel="stylesheet" href="~/css/my-styles.css?v=@Model.ClientFileVersion" />
+		<script src="~/js/my-script.js?v=@Model.ClientFileVersion" async="async"></script>
+	}
+
+Some CSS and JavaScript is used sitewide, managed in the `Escc.EastSussexGovUK.TemplateSource` project. To use this you will usually want a different URL in development and production. While ASP.NET Core has tag helpers to do this, they still require the base URL to be in the view where it may be a problem if it's different for each developer. A better solution is to specify the base URL in configuration and use it as shown below.
+
+	@section Metadata {
+		<link rel="stylesheet" href="@Model.ClientFileBaseUrl/css/forms-small.css?v=@Model.ClientFileVersion" />
+	}
+
+If you are using `appsettings.json` for configuration:
+
+	{
+	  "Escc.EastSussexGovUK": {
+	    "Mvc": {
+	      "ClientFileBaseUrl": "https://www.eastsussex.gov.uk/escc.eastsussexgovuk",
+	      "ClientFileVersion": "1234"
+	    }
+	  }
+	}
+
+Often you will want to use the standard media queries for our site, and these can easily be accessed from the view model:
+
+	@section Metadata {
+		<link rel="stylesheet" href="~/css/my-styles-small.css?v=@Model.ClientFileVersion" />
+		<link rel="stylesheet" href="~/css/my-styles-medium.css?v=@Model.ClientFileVersion" media="@Model.MediaQueryMedium" />
+		<link rel="stylesheet" href="~/css/my-styles-large.css?v=@Model.ClientFileVersion" media="@Model.MediaQueryLarge" />
+	}
 
 ### Swapping master pages and layouts
 
