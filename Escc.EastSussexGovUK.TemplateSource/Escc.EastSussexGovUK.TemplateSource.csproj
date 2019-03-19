@@ -430,7 +430,6 @@
     <Content Include="js\min\thanks-for-analytics.js" />
     <None Include="js\social-media.js" />
     <None Include="js\thanks-for-analytics.js" />
-    <Content Include="js\min\typekit.js" />
     <Content Include="js\min\umbraco-preview.js" />
     <Content Include="js\min\webchat.js" />
     <None Include="js\webchat.js" />
@@ -448,7 +447,6 @@
     <None Include="js\forms.js" />
     <None Include="js\embed-youtube.js" />
     <None Include="js\umbraco-preview.js" />
-    <None Include="js\typekit.js" />
     <None Include="js\languages.js" />
     <Content Include="css\large.css" />
     <Content Include="MasterPages\Controls\GovDelivery.html" />

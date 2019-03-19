@@ -6,7 +6,7 @@
     <Company>East Sussex County Council</Company>
     <Authors>East Sussex County Council</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
-    <Version>14.0.0-beta1</Version>
+    <Version>14.0.0-beta2</Version>
     <PackageIconUrl>https://www.eastsussex.gov.uk/apple-touch-icon.png</PackageIconUrl>
     <PackageLicenseUrl>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</PackageProjectUrl>

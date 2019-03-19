@@ -55,17 +55,6 @@ namespace Escc.EastSussexGovUK.Skins
         }
 
         /// <summary>
-        /// The Typekit fonts which are required by the skin.
-        /// </summary>
-        /// <returns>
-        /// A set of Typekit font URLs
-        /// </returns>
-        public virtual IEnumerable<TypekitFontDependency> RequiresTypekitFonts()
-        {
-            return new TypekitFontDependency[0];
-        }
-
-        /// <summary>
         /// The JavaScript which is required for the skin. These are registered in web.config using <see cref="Escc.ClientDependencyFramework" />.
         /// </summary>
         /// <returns>

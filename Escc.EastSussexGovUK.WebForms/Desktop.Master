@@ -10,7 +10,7 @@
     <ClientDependency:Css runat="server" id="skinMedium"  MediaConfiguration="Medium" Moveable="False"/>
     <ClientDependency:Css runat="server" id="skinLarge" MediaConfiguration="Large" Moveable="False" />
     <asp:ContentPlaceHolder id="metadata" runat="server" />
-    <asp:Literal runat="server" ID="fonts"/><ClientDependency:Script runat="server" Files="Typekit" ID="Typekit" Visible="False"/>
+    <asp:Literal runat="server" ID="fonts"/>
     <asp:ContentPlaceHolder runat="server" ID="css" enableviewstate="false" />
     <title></title>
 </head>

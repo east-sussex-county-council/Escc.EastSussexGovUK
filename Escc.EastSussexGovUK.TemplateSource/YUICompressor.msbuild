@@ -51,7 +51,6 @@
     <JavaScriptCompressorTask SourceFiles="js/public-libraries.js" OutputFile="js/min/public-libraries.js" />
     <JavaScriptCompressorTask SourceFiles="js/social-media.js" OutputFile="js/min/social-media.js" />
     <JavaScriptCompressorTask SourceFiles="js/thanks-for-analytics.js" OutputFile="js/min/thanks-for-analytics.js" />
-    <JavaScriptCompressorTask SourceFiles="js/typekit.js" OutputFile="js/min/typekit.js" />
     <JavaScriptCompressorTask SourceFiles="js/webchat.js" OutputFile="js/min/webchat.js" />
     <JavaScriptCompressorTask SourceFiles="js/umbraco-preview.js" OutputFile="js/min/umbraco-preview.js" />
     <JavaScriptCompressorTask SourceFiles="js/escis.js" OutputFile="js/min/escis.js" />

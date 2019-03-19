@@ -243,9 +243,9 @@ If you want to override the master page or view for a specific page in an applic
 		Layout = "~/views/_eastsussexgovuk_fullscreen.cshtml";
 	} 
 
-### Skins - NOT WORKING YET
+### Skins
 
-These can be applied on top of MVC layouts for smaller changes. A skin class inherits `IEsccWebsiteSkin` and can specify JavaScript and CSS files to load, fonts from Typekit and Google and a custom Content Security Policy. Loading custom scripts gives you a lot of flexibility to alter the design and behaviour of the page. One skin can inherit from another by inheriting its class, allowing subtle variations to be created without repeating the settings.
+These can be applied on top of MVC layouts for smaller changes. A skin class inherits `IEsccWebsiteSkin` and can specify JavaScript and CSS files to load, fonts from Google and a custom Content Security Policy. Loading custom scripts gives you a lot of flexibility to alter the design and behaviour of the page. One skin can inherit from another by inheriting its class, allowing subtle variations to be created without repeating the settings.
 
 The skin also contains the rules for when to apply it which might, for example, be based on the URL. 
 

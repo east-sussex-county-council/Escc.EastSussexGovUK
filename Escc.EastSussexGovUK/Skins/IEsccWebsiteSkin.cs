@@ -12,11 +12,5 @@ namespace Escc.EastSussexGovUK.Skins
         /// </summary>
         /// <returns>A set of Google Font URLs</returns>
         IEnumerable<GoogleFontDependency> RequiresGoogleFonts();
-
-        /// <summary>
-        /// The Typekit fonts which are required by the skin.
-        /// </summary>
-        /// <returns>A set of Typekit font URLs</returns>
-        IEnumerable<TypekitFontDependency> RequiresTypekitFonts();
     }
 }

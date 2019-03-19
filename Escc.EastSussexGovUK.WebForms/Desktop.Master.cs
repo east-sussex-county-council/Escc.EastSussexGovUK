@@ -55,14 +55,6 @@ namespace Escc.EastSussexGovUK.WebForms
                     fontsHtml.Append("<link href=\"").Append(font.FontUrl).Append("\" rel=\"stylesheet\" type=\"text/css\" />");
                 }
 
-                if (Skin.RequiresTypekitFonts().Any())
-                {
-                    foreach (var font in Skin.RequiresTypekitFonts())
-                    {
-                        fontsHtml.Append("<script src=\"").Append(font.TypekitUrl).Append("\"></script>");
-                    }
-                    this.Typekit.Visible = true;
-                }
                 this.fonts.Text = fontsHtml.ToString();
 
                 AddClientDependencies(Skin);

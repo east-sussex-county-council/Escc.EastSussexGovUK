@@ -17,7 +17,6 @@
       <add key="EastSussex1Space" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GisMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="Typekit" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="ESCIS" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
