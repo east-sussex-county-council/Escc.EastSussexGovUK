@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Specialized;
+using System.Web;
+using Microsoft.AspNetCore.Http;
 
 namespace Escc.EastSussexGovUK.Features
 {
@@ -20,6 +22,17 @@ namespace Escc.EastSussexGovUK.Features
         {
             _cookieValue = cookieValue;
             _queryString = queryString;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="TextSize"/> which checks for a setting in a cookie or the querystring
+        /// </summary>
+        /// <param name="httpContextAccessor"></param>
+        public TextSize(IHttpContextAccessor httpContextAccessor)
+        {
+            var request = httpContextAccessor?.HttpContext?.Request ?? throw new ArgumentNullException(nameof(httpContextAccessor));
+            _queryString = HttpUtility.ParseQueryString(request.QueryString.Value);
+            _cookieValue =  request.Cookies["textsize"];
         }
 
         private int? _textSize;

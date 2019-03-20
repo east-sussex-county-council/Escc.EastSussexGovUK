@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Escc.EastSussexGovUK.Core
+namespace Escc.EastSussexGovUK.Features
 {
     /// <summary>
     /// Settings to configure a request to the web chat settings API

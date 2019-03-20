@@ -226,14 +226,14 @@ Pages on our site can have different designs applied. By default we use a respon
    		{
 	  	  "Escc.EastSussexGovUK": {
 		    "Mvc": {
-		      "DesktopMvcLayout": "~/Views/_My_Custom_Desktop.cshtml",
-		      "FullScreenMvcLayout": "~/_My_Custom_FullScreen.cshtml",
-		      "PlainMvcLayout": "~/_My_Custom_Plain.cshtml"
+		      "DesktopViewPath": "~/Views/_My_Custom_Desktop.cshtml",
+		      "FullScreenViewPath": "~/_My_Custom_FullScreen.cshtml",
+		      "PlainViewPath": "~/_My_Custom_Plain.cshtml"
 		    }
 		  }
 		}
 
-`MvcViewSelector` is called in the constructor of `EastSussexGovUKTemplateRequest` and in the `~\Views\_ViewStart.cshtml` file. It selects the layout based on a number of criteria, including the configuration settings mentioned above.
+`MvcViewSelector` is called (assuming it is injected as `IViewSelector`) in the constructor of `EastSussexGovUKTemplateRequest` and in the `~\Views\_ViewStart.cshtml` file. It selects the layout based on a number of criteria, including the configuration settings mentioned above.
 
 In an MVC application you can't see the `ViewStart.cshtml` file or any of the layouts because they're implemented as embedded resources.  You can create your own `ViewStart.cshtml` if you need to add additional code, but you'll need to copy [the call to MvcViewSelector](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/Escc.EastSussexGovUK.Core/Views/_ViewStart.cshtml) into your new file to continue to apply the correct layout.
 

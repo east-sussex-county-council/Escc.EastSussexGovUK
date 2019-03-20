@@ -9,6 +9,11 @@ namespace Escc.EastSussexGovUK
     public interface ICacheStrategy<T>
     {
         /// <summary>
+        /// Gets or sets the duration to cache data for
+        /// </summary>
+        TimeSpan CacheDuration { get; set; }
+
+        /// <summary>
         /// Adds a value to the cache with a fixed maximum expiration time.
         /// </summary>
         /// <param name="key">The key.</param>

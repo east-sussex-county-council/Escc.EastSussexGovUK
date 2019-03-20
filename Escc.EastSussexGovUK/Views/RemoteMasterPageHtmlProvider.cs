@@ -9,6 +9,8 @@ using Escc.Net;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 
 namespace Escc.EastSussexGovUK.Views
 {
@@ -17,7 +19,7 @@ namespace Escc.EastSussexGovUK.Views
     /// </summary>
     public class RemoteMasterPageHtmlProvider : IHtmlControlProvider
     {
-        private readonly RemoteMasterPageCacheProviderBase _cacheProvider;
+        private readonly IRemoteMasterPageCacheProvider _cacheProvider;
         private readonly Uri _masterPageControlUrl;
         private readonly string _userAgent;
         private readonly bool _forceCacheRefresh;
@@ -25,20 +27,43 @@ namespace Escc.EastSussexGovUK.Views
         private static HttpClient _httpClient;
 
         /// <summary>
-        /// Creates anew instance of <see cref="RemoteMasterPageHtmlProvider"/>
+        /// Creates a new instance of <see cref="RemoteMasterPageHtmlProvider"/>
         /// </summary>
         /// <param name="masterPageControlUrl">The URL from which to download the remote HTML, with {0} where the <c>controlId</c> should be inserted</param>
         /// <param name="httpClientProvider">Strategy to get the HttpClient instance used for requests.</param>
         /// <param name="userAgent">The user agent to use when requesting the remote HTML (usually the user agent for the consuming request)</param>
         /// <param name="cacheProvider">Strategy for caching the remote HTML.</param>
         /// <param name="forceCacheRefresh"><c>true</c> to ensure the HTML is requested from the remote URL, not from a local cache</param>
-        public RemoteMasterPageHtmlProvider(Uri masterPageControlUrl, IHttpClientProvider httpClientProvider, string userAgent, RemoteMasterPageCacheProviderBase cacheProvider, bool forceCacheRefresh = false)
+        public RemoteMasterPageHtmlProvider(Uri masterPageControlUrl, IHttpClientProvider httpClientProvider, string userAgent, IRemoteMasterPageCacheProvider cacheProvider, bool forceCacheRefresh = false)
         {
             _masterPageControlUrl = masterPageControlUrl ?? throw new ArgumentNullException(nameof(masterPageControlUrl));
             _httpClientProvider = httpClientProvider ?? throw new ArgumentNullException(nameof(httpClientProvider));
             _userAgent = userAgent;
             _cacheProvider = cacheProvider;
             _forceCacheRefresh = forceCacheRefresh;
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="RemoteMasterPageHtmlProvider"/>
+        /// </summary>
+        /// <param name="remoteMasterPageSettings">Settings for fetching and caching the remote master page controls</param>
+        /// <param name="httpContextAccessor">A method of getting the web request which requires a response with the template applied.</param>
+        /// <param name="httpClientProvider">A method of getting an <c>HttpClient</c> to connect to remote resources.</param>
+        /// <param name="cacheProvider">Strategy for caching the remote HTML.</param>
+        public RemoteMasterPageHtmlProvider(IOptions<RemoteMasterPageSettings> remoteMasterPageSettings, IHttpContextAccessor httpContextAccessor, IHttpClientProvider httpClientProvider, IRemoteMasterPageCacheProvider cacheProvider)
+        {
+            if (remoteMasterPageSettings == null || remoteMasterPageSettings.Value == null) { throw new ArgumentNullException(nameof(remoteMasterPageSettings)); }
+            var request = httpContextAccessor?.HttpContext?.Request ?? throw new ArgumentNullException(nameof(httpContextAccessor));
+            var queryString = HttpUtility.ParseQueryString(request.QueryString.Value);
+
+            _masterPageControlUrl = remoteMasterPageSettings.Value.PartialViewUrl;
+            _httpClientProvider = httpClientProvider;
+            _userAgent = request.Headers["User-Agent"].ToString();
+
+            _cacheProvider = cacheProvider;
+            _cacheProvider.CacheDuration = TimeSpan.FromMinutes(remoteMasterPageSettings.Value.CacheMinutes);
+
+            _forceCacheRefresh = (queryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache;
         }
 
         /// <summary>

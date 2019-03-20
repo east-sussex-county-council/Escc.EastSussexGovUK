@@ -10,16 +10,10 @@ namespace Escc.EastSussexGovUK
     /// <seealso cref="Escc.EastSussexGovUK.ICacheStrategy{T}" />
     public class ApplicationCacheStrategy<T> : ICacheStrategy<T>
     {
-        private readonly TimeSpan _cacheDuration;
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApplicationCacheStrategy{T}"/> class.
+        /// Gets or sets the duration to cache data for
         /// </summary>
-        /// <param name="cacheDuration">Duration of the cache.</param>
-        public ApplicationCacheStrategy(TimeSpan cacheDuration)
-        {
-            _cacheDuration = cacheDuration;
-        }
+        public TimeSpan CacheDuration { get; set; }
 
         /// <summary>
         /// Adds a value to the cache with a fixed maximum expiration time.
@@ -28,9 +22,9 @@ namespace Escc.EastSussexGovUK
         /// <param name="value">The value.</param>
         public void AddToCache(string key, T value)
         {
-            if (value != null)
+            if (value != null && CacheDuration != null)
             {
-                MemoryCache.Default.Set(key, value, (DateTime.Now + _cacheDuration));
+                MemoryCache.Default.Set(key, value, (DateTime.Now + CacheDuration));
             }
         }
 

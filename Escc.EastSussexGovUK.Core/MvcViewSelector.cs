@@ -18,9 +18,9 @@ namespace Escc.EastSussexGovUK.Core
         /// <param name="options">Paths to views read from the configuration system</param>
         public MvcViewSelector(IOptions<MvcSettings> options)
         {
-            _views.Add("DesktopMvcLayout", options.Value.DesktopMvcLayout);
-            _views.Add("FullScreenMvcLayout", options.Value.FullScreenMvcLayout);
-            _views.Add("PlainMvcLayout", options.Value.PlainMvcLayout);
+            _views.Add("DesktopMvcLayout", options.Value.DesktopViewPath);
+            _views.Add("FullScreenMvcLayout", options.Value.FullScreenViewPath);
+            _views.Add("PlainMvcLayout", options.Value.PlainViewPath);
         }
 
         /// <summary>

@@ -7,17 +7,18 @@ namespace Escc.EastSussexGovUK.Views
     /// <summary>
     /// A base class to define methods of caching remote template elements
     /// </summary>
-    public abstract class RemoteMasterPageCacheProviderBase
+    public abstract class RemoteMasterPageCacheProviderBase : IRemoteMasterPageCacheProvider
     {
-        private int _cacheMinutes;
+        /// <summary>
+        /// Gets or sets the duration to cache the master page elements for
+        /// </summary>
+        public TimeSpan CacheDuration { get; set; }
 
         /// <summary>
         /// Creates a new instance of a <see cref="RemoteMasterPageCacheProviderBase"/> from a child class
         /// </summary>
-        /// <param name="cacheMinutes">The number of minutes to cache the master page elements for</param>
-        protected RemoteMasterPageCacheProviderBase(int cacheMinutes)
+        protected RemoteMasterPageCacheProviderBase()
         {
-            _cacheMinutes = cacheMinutes;
         }
 
         /// <summary>
@@ -45,23 +46,12 @@ namespace Escc.EastSussexGovUK.Views
         public abstract bool CachedVersionIsFresh(string applicationId, string controlId, string selectedSection, int textSize, bool isLibraryCatalogueRequest);
 
         /// <summary>
-        /// Gets how many minutes the remote template elements should be cached for.
-        /// </summary>
-        /// <returns></returns>
-        protected int GetCacheMinutes()
-        {
-            return _cacheMinutes;
-        }
-
-        /// <summary>
         /// Gets the time before which cached responses are not fresh enough.
         /// </summary>
         /// <returns></returns>
         protected DateTime GetCacheThreshold()
         {
-            int cacheMinutes = GetCacheMinutes();
-            var cacheThreshold = DateTime.UtcNow.Subtract(new TimeSpan(0, cacheMinutes, 0));
-            return cacheThreshold;
+            return DateTime.UtcNow.Subtract(CacheDuration);
         }
 
         /// <summary>

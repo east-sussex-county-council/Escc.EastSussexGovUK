@@ -7,6 +7,7 @@ using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Views;
 using Escc.Net;
 using Escc.Net.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace Escc.EastSussexGovUK.Mvc
 {
@@ -63,7 +64,7 @@ namespace Escc.EastSussexGovUK.Mvc
             {
                 var masterPageSettings = new RemoteMasterPageSettingsFromConfig();
                 var forceCacheRefresh = (request.QueryString["ForceCacheRefresh"] == "1"); // Provide a way to force an immediate update of the cache
-                _htmlProvider = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), httpClientProvider, request.UserAgent, new RemoteMasterPageMemoryCacheProvider(masterPageSettings.CacheTimeout()), forceCacheRefresh);
+                _htmlProvider = new RemoteMasterPageHtmlProvider(masterPageSettings.MasterPageControlUrl(), httpClientProvider, request.UserAgent, new RemoteMasterPageMemoryCacheProvider() { CacheDuration = TimeSpan.FromMinutes(masterPageSettings.CacheTimeout()) }, forceCacheRefresh);
             }
             else
             {
@@ -76,7 +77,8 @@ namespace Escc.EastSussexGovUK.Mvc
                 var webChatRequestSettings = new HostingEnvironmentContext(request.Url);
                 if (webChatRequestSettings.WebChatSettingsUrl != null)
                 {
-                    _webChatSettingsService = new WebChatSettingsFromApi(webChatRequestSettings.WebChatSettingsUrl, httpClientProvider, new ApplicationCacheStrategy<WebChatSettings>(TimeSpan.FromMinutes(webChatRequestSettings.WebChatSettingsCacheDuration)));
+                    var webChatApiSettings= Options.Create(new WebChatApiSettings { WebChatSettingsUrl = webChatRequestSettings.WebChatSettingsUrl, CacheMinutes = webChatRequestSettings.WebChatSettingsCacheDuration });
+                    _webChatSettingsService = new WebChatSettingsFromApi(webChatApiSettings, httpClientProvider, new ApplicationCacheStrategy<WebChatSettings>());
                 }
             }
         }

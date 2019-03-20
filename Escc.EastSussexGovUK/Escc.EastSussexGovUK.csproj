@@ -6,7 +6,7 @@
     <Company>East Sussex County Council</Company>
     <Authors>East Sussex County Council</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
-    <Version>14.0.0-beta2</Version>
+    <Version>14.0.0-beta8</Version>
     <PackageIconUrl>https://www.eastsussex.gov.uk/apple-touch-icon.png</PackageIconUrl>
     <PackageLicenseUrl>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</PackageProjectUrl>
@@ -27,6 +27,7 @@
     <PackageReference Include="Escc.AddressAndPersonalDetails" Version="4.0.1" />
     <PackageReference Include="Escc.Net" Version="3.0.0" />
     <PackageReference Include="Exceptionless" Version="4.3.2012" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.Runtime.Caching" Version="4.5.0" />
   </ItemGroup>

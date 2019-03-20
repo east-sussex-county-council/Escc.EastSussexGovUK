@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Escc.EastSussexGovUK
 {
@@ -23,6 +24,16 @@ namespace Escc.EastSussexGovUK
         public LibraryCatalogueContext(string userAgent)
         {
             _userAgent = userAgent;
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="LibraryCatalogueContext"/> based on the user agent from the HTTP context
+        /// </summary>
+        /// <param name="httpContextAccessor"></param>
+        public LibraryCatalogueContext(IHttpContextAccessor httpContextAccessor)
+        {
+            var request = httpContextAccessor?.HttpContext?.Request ?? throw new ArgumentNullException(nameof(httpContextAccessor));
+            _userAgent = request.Headers["User-Agent"].ToString();
         }
 
         /// <summary>

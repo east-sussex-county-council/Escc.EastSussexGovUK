@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using Escc.EastSussexGovUK.Features;
+using Escc.EastSussexGovUK.Views;
 using Escc.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -48,6 +49,7 @@ namespace Escc.EastSussexGovUK.Core
             // Set up the global configuration service and add the configuration sections that are relevant to the template
             services.AddOptions();
             services.Configure<ConfigurationSettings>(options => configuration.GetSection("Escc.Net").Bind(options));
+            services.Configure<RemoteMasterPageSettings>(options => configuration.GetSection("Escc.EastSussexGovUK:Mvc").Bind(options));
             services.Configure<MvcSettings>(options => configuration.GetSection("Escc.EastSussexGovUK:Mvc").Bind(options));
             services.Configure<BreadcrumbSettings>(options => configuration.GetSection("Escc.EastSussexGovUK:BreadcrumbTrail").Bind(options));
             services.Configure<WebChatApiSettings>(options => configuration.GetSection("Escc.EastSussexGovUK:WebChat").Bind(options));
@@ -60,8 +62,14 @@ namespace Escc.EastSussexGovUK.Core
             services.TryAddSingleton<IViewModelDefaultValuesProvider, ViewModelDefaultValuesProvider>();
             services.TryAddSingleton<IProxyProvider, ProxyFromConfiguration>();
             services.TryAddSingleton<IHttpClientProvider, HttpClientProvider>();
+            services.TryAddSingleton<ICacheStrategy<WebChatSettings>, ApplicationCacheStrategy<WebChatSettings>>();
+            services.TryAddSingleton<IWebChatSettingsService, WebChatSettingsFromApi>();
+            services.TryAddSingleton<IRemoteMasterPageCacheProvider, RemoteMasterPageMemoryCacheProvider>();
             services.TryAddScoped<IEastSussexGovUKTemplateRequest, EastSussexGovUKTemplateRequest>();
             services.TryAddScoped<IClientDependencySetEvaluator, ClientDependencySetEvaluator>();
+            services.TryAddScoped<ILibraryCatalogueContext, LibraryCatalogueContext>();
+            services.TryAddScoped<ITextSize, TextSize>();
+            services.TryAddScoped<IHtmlControlProvider, RemoteMasterPageHtmlProvider>();
 
             return services;
         }

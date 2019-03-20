@@ -13,8 +13,7 @@ namespace Escc.EastSussexGovUK.Views
         /// <summary>
         /// Creates a new instance of a <see cref="RemoteMasterPageMemoryCacheProvider"/>
         /// </summary>
-        /// <param name="cacheMinutes">The number of minutes to cache the master page elements for</param>
-        public RemoteMasterPageMemoryCacheProvider(int cacheMinutes) : base(cacheMinutes)
+        public RemoteMasterPageMemoryCacheProvider() : base()
         {
         }
 
@@ -34,7 +33,7 @@ namespace Escc.EastSussexGovUK.Views
             {
                 _cache.Remove(cacheToken);
             }
-            _cache.Set(cacheToken, html, DateTime.Now.AddMinutes(GetCacheMinutes()));
+            _cache.Set(cacheToken, html, DateTime.Now.Add(CacheDuration));
         }
 
         /// <summary>

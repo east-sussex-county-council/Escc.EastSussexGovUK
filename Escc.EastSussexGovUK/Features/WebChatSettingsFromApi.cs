@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Escc.Net;
 using Exceptionless;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace Escc.EastSussexGovUK.Features
@@ -21,15 +22,21 @@ namespace Escc.EastSussexGovUK.Features
         /// <summary>
         /// Initializes a new instance of the <see cref="WebChatSettingsFromApi" /> class.
         /// </summary>
-        /// <param name="apiUrl">The API URL.</param>
+        /// <param name="apiSettings">Settings for the API.</param>
         /// <param name="httpClientProvider">Strategy to get the HttpClient instance used for requests.</param>
         /// <param name="cache">The cache.</param>
         /// <exception cref="System.ArgumentNullException">apiUrl</exception>
-        public WebChatSettingsFromApi(Uri apiUrl, IHttpClientProvider httpClientProvider, ICacheStrategy<WebChatSettings> cache)
+        public WebChatSettingsFromApi(IOptions<WebChatApiSettings> apiSettings, IHttpClientProvider httpClientProvider, ICacheStrategy<WebChatSettings> cache)
         {
-            _apiUrl = apiUrl ?? throw new ArgumentNullException(nameof(apiUrl));
+            if (apiSettings == null || apiSettings.Value == null)
+            {
+                throw new ArgumentNullException(nameof(apiSettings));
+            }
+
+            _apiUrl = apiSettings.Value.WebChatSettingsUrl ?? throw new ArgumentNullException(nameof(apiSettings), "WebChatSettingsUrl cannot be null");
             _httpClientProvider = httpClientProvider ?? throw new ArgumentNullException(nameof(httpClientProvider));
             _cache = cache;
+            _cache.CacheDuration = TimeSpan.FromDays(apiSettings.Value.CacheMinutes);
         }
 
         /// <summary>
