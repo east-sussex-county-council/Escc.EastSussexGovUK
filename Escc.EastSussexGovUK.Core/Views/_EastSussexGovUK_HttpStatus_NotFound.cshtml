@@ -1,0 +1,41 @@
+﻿@model Escc.EastSussexGovUK.Core.HttpStatusViewModel
+@using Microsoft.AspNetCore.Http.Extensions;
+@{
+    Model.Metadata.Title = "Page not found";
+    Model.Metadata.DateIssued = new DateTimeOffset(new DateTime(2005, 1, 27));
+    Model.Metadata.DateModified = new DateTimeOffset(new DateTime(2019, 3, 22));
+    Model.Metadata.IsInSearch = false;
+    Model.BodyCssClass = "no-breadcrumb";
+
+    Context.Response.StatusCode = 404;
+}
+@section Breadcrumb {}
+<div class="full-page" data-request="@Context.Request.GetDisplayUrl()" data-referrer="@Context.Request.Headers["Referer"].ToString()">
+    <div class="content text-content">
+        <h1>Page not found</h1>
+
+        <p>
+            Sorry &#8211; the page you asked for could not be found. It may have been moved or
+            deleted.
+        </p>
+        <p>To find what you're looking for:</p>
+        <ul>
+            <li>
+                start with the menu at the top of any page, and try to find the information you
+                want
+            </li>
+            <li>search for what you want using the search box at the top of any page</li>
+            <li>
+                <a href="https://www.eastsussex.gov.uk/contact-us/">contact us</a> &#8211; we may be able to help.
+            </li>
+        </ul>
+
+        @if (!string.IsNullOrEmpty(Model.RequestId))
+        {
+            <p class="request-id"><small>Request ID: <code>@Model.RequestId</code></small></p>
+        }
+    </div>
+</div>
+@section JavaScript {
+    <script src="@Model.ClientFileBaseUrl/js/404.js?v=@Model.ClientFileVersion"></script>
+}

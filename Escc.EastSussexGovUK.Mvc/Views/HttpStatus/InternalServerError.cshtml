@@ -1,9 +1,7 @@
 ﻿@inherits System.Web.Mvc.WebViewPage<Escc.EastSussexGovUK.Mvc.HttpStatusViewModel>
 @{
     Model.Metadata.Title = "Page unavailable";
-    Model.Metadata.IpsvPreferredTerms = "Internet";
-    Model.Metadata.LgtlType = "Website facilities";
-    Model.Metadata.DateModified = "2015-05-11";
+    Model.Metadata.DateModified = new DateTimeOffset(new DateTime(2015, 5, 11));
     Model.Metadata.IsInSearch = false;
 
     Response.StatusCode = 500;

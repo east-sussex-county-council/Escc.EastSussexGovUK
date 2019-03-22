@@ -101,6 +101,17 @@ namespace Escc.EastSussexGovUK.Core
             app.UseHttpsRedirection();
             app.UseHsts();
 
+            // Configure error pages
+            if (environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/HttpStatus/Status500");
+                app.UseStatusCodePagesWithReExecute("/HttpStatus/Status{0}");
+            }
+
             // Use security headers recommended by securityheaders.io
             app.UseEastSussexGovUKContentSecurityPolicy(environment, cspOptions);
             app.UseEastSussexGovUKSecurityHeaders();
@@ -137,7 +148,7 @@ namespace Escc.EastSussexGovUK.Core
                             // allow inline styles and scripts for developer exception page
                             if (context.Response.StatusCode == (int)HttpStatusCode.InternalServerError)
                             {
-                                var developerOptions = cspOptions.Clone();
+                                var developerOptions = cspToApply.Clone();
                                 developerOptions.StyleSrc = developerOptions.StyleSrc.AddUnsafeInline();
                                 developerOptions.ScriptSrc = developerOptions.ScriptSrc.AddUnsafeInline();
                                 cspToApply = developerOptions;
@@ -168,20 +179,35 @@ namespace Escc.EastSussexGovUK.Core
                 context.Response.OnStarting(() =>
                 {
                     // Use ExpectCT in report mode only to assess whether it is ready to be enabled
-                    context.Response.Headers.Add("Expect-CT", "max-age=0, report-uri=\"https://eastsussexgovuk.report-uri.com/r/d/ct/reportOnly\"");
+                    if (!context.Response.Headers.Keys.Contains("Expect-CT"))
+                    {
+                        context.Response.Headers.Add("Expect-CT", "max-age=0, report-uri=\"https://eastsussexgovuk.report-uri.com/r/d/ct/reportOnly\"");
+                    }
 
                     // Defend against clickjacking: Use SAMEORIGIN rather than DENY to allow the use of SVG images.
                     // When Umbraco is in use, it requires same origin framing for preview and template editing.
-                    context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+                    if (!context.Response.Headers.Keys.Contains("X-Frame-Options"))
+                    {
+                        context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+                    }
 
                     // Enable the cross-site scripting filter built into most browsers, blocking any requests detected as XSS.
-                    context.Response.Headers.Add("X-XSS-Protection", "1; mode=block");
+                    if (!context.Response.Headers.Keys.Contains("X-XSS-Protection"))
+                    {
+                        context.Response.Headers.Add("X-XSS-Protection", "1; mode=block");
+                    }
 
                     // Force browsers to stick with the declared MIME type rather than guessing it from the content.
-                    context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+                    if (!context.Response.Headers.Keys.Contains("X-Content-Type-Options"))
+                    {
+                        context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+                    }
 
                     // Allow referrer URL to be passed to sites on the same protocol, but not leaked from HTTPS to HTTP
-                    context.Response.Headers.Add("Referrer-Policy", "no-referrer-when-downgrade");
+                    if (!context.Response.Headers.Keys.Contains("Referrer-Policy"))
+                    {
+                        context.Response.Headers.Add("Referrer-Policy", "no-referrer-when-downgrade");
+                    }
 
                     return Task.CompletedTask;
                 });

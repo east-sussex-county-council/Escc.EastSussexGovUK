@@ -1,9 +1,7 @@
 ﻿@inherits System.Web.Mvc.WebViewPage<Escc.EastSussexGovUK.Mvc.HttpStatusViewModel>
 @{
     Model.Metadata.Title = "Bad request";
-    Model.Metadata.IpsvPreferredTerms = "Internet";
-    Model.Metadata.LgtlType = "Website facilities";
-    Model.Metadata.DateModified = "2015-11-05";
+    Model.Metadata.DateModified = new DateTimeOffset(new DateTime(2019, 3, 22));
     Model.Metadata.IsInSearch = false;
 
     Response.StatusCode = 400;
@@ -23,8 +21,7 @@
             </li>
             <li>search for what you want using the search box at the top of any page</li>
             <li>
-                use our <a href="https://apps.eastsussex.gov.uk/contactus/emailus/feedback.aspx">comments form</a> to contact
-                us &#8211; we may be able to help.
+                <a href="https://www.eastsussex.gov.uk/contact-us/">contact us</a> &#8211; we may be able to help.
             </li>
         </ul>
     </div>

@@ -4,7 +4,7 @@
 @model Escc.EastSussexGovUK.Core.BaseViewModel
 @inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
 @{
-    if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel"); }
+    if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Core.BaseViewModel"); }
     Model.EsccWebsiteView = EsccWebsiteView.FullScreen;
     dependencySetEvaluator.EvaluateDependencySet(Model.EsccWebsiteSkin);
 
@@ -33,13 +33,13 @@
     }
     @RenderSection("Metadata", required: false)
 </head>
-@if (IsSectionDefined("BodyClass"))
+@if (!string.IsNullOrEmpty(Model.BodyCssClass))
 {
-    @:<body class="@RenderSection("BodyClass")">
-    }
-    else
-    {
-        @:<body>
+@:<body class="@Model.BodyCssClass">
+}
+else
+{
+@:<body>
 }
 <div class="full-screen">
     @if (IsSectionDefined("Header"))

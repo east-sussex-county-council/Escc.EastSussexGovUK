@@ -18,11 +18,21 @@
 
   <ItemGroup>
     <None Remove="Views\_EastSussexGovUK_Css.cshtml" />
+    <None Remove="Views\_EastSussexGovUK_HttpStatus_BadRequest.cshtml" />
+    <None Remove="Views\_EastSussexGovUK_HttpStatus_Forbidden.cshtml" />
+    <None Remove="Views\_EastSussexGovUK_HttpStatus_Gone.cshtml" />
+    <None Remove="Views\_EastSussexGovUK_HttpStatus_InternalServerError.cshtml" />
+    <None Remove="Views\_EastSussexGovUK_HttpStatus_NotFound.cshtml" />
     <None Remove="Views\_EastSussexGovUK_Js.cshtml" />
     <None Remove="Views\_ViewStart.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Views\_EastSussexGovUK_HttpStatus_BadRequest.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_HttpStatus_Forbidden.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_HttpStatus_Gone.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_HttpStatus_InternalServerError.cshtml" />
+    <EmbeddedResource Include="Views\_EastSussexGovUK_HttpStatus_NotFound.cshtml" />
     <EmbeddedResource Include="Views\_EastSussexGovUK_Js.cshtml" />
     <EmbeddedResource Include="Views\_EastSussexGovUK_Css.cshtml" />
     <EmbeddedResource Include="Views\_ViewStart.cshtml">
@@ -54,6 +64,7 @@
     <PackageReference Include="Escc.EastSussexGovUK.ContentSecurityPolicy" Version="1.0.0" />
     <PackageReference Include="Escc.Html" Version="3.0.0" />
     <PackageReference Include="Escc.Metadata" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />

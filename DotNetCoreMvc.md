@@ -43,7 +43,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 	    public class MyCustomModel : BaseViewModel
 	    {
-	        public MyCustomModel(IViewModelDefaultValuesProvider defaultValuesProvider): base(defaultValuesProvider) { }
+	        public MyCustomModel(IViewModelDefaultValuesProvider defaultValues): base(defaultValues) { }
 	    }
 
 4. Add a controller. The constructor must inject the resources required for the website template. Any controller action which results in a view using the website template must be marked with the `async` keyword and return `Task<IActionResult>`. It must also load the template HTML, and usually web chat too, using the following code. You can put this in a base controller class if you have many controllers in your application.
@@ -113,10 +113,6 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 			<link rel="stylesheet" href="~/css/my-styles.css?v=@Model.ClientFileVersion" />
 		}
 
-	Add a `class` to the opening `<body>` tag:
-
-		@section BodyClass {my-class}
-
 	Replace the site header:
 
 		@section Header {
@@ -175,6 +171,7 @@ The call to `services.AddEastSussexGovUK(Configuration)` sets up:
 The call to `app.UseEastSussexGovUK(env)` sets up:
 
 *  Enables the TLS support configured earlier
+*  Configures error pages
 *  Sets up the Content Security Policy (which can be customised - see [Varying the Content Security Policy](#csp))
 *  Adds other headers which make the site more secure
 

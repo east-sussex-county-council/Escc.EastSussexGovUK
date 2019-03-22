@@ -1,0 +1,21 @@
+﻿@model Escc.EastSussexGovUK.Core.HttpStatusViewModel
+@{
+    Model.Metadata.Title = "Forbidden";
+    Model.Metadata.DateModified = new DateTimeOffset(new DateTime(2019, 3, 22));
+    Model.Metadata.IsInSearch = false;
+    Model.BodyCssClass = "no-breadcrumb";
+
+    Context.Response.StatusCode = 403;
+}
+@section Breadcrumb {}
+<div class="full-page">
+    <div class="content text-content">
+        <h1>Forbidden</h1>
+        <p>Sorry, you're not allowed to view that page.</p>
+
+        @if (!string.IsNullOrEmpty(Model.RequestId))
+        {
+            <p class="request-id"><small>Request ID: <code>@Model.RequestId</code></small></p>
+        }
+    </div>
+</div>

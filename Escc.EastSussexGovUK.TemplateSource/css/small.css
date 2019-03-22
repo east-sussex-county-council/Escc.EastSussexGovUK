@@ -580,6 +580,10 @@ strong.quick-answer-datum { font-size: 1.33em; line-height: 1.5em; font-weight: 
 /* Warn the user of something. For error messages use .errorSummary defined in forms.css */
 .warning { color: #b21313; }
 
+/* The request correlation id is shown on HTTP status pages in ASP.NET Core to tie up with records in logs. Deemphasise it and add two lines of space 
+   above to separate it from the user-friendly message. */
+.request-id { color: #777; margin-top: 2.25em; }
+
 /* Semantic web - display links to calendars, RSS feeds etc, optionally within a list
    Example: <a class="rss subscribe" href="/path/to/rssfeed.rss">RSS feed</a> */
 a.subscribe { display: block; margin: .692308em 0; } /* 9px/13px line-space split above and below */

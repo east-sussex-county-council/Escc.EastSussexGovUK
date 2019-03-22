@@ -5,7 +5,7 @@
 	<Metadata:MetadataControl id="headContent" runat="server"
 		Title="Page not found"
         DateIssued="2005-01-27"
-        DateModified="2010-09-13"
+        DateModified="2019-03-22"
         IpsvPreferredTerms="Internet"
 		LgtlType="Website facilities"
 		IsInSearch="False" 
@@ -27,8 +27,7 @@
                 <li>start with the menu at the top of any page, and try to find the information you
                     want</li>
                 <li>search for what you want using the search box at the top of any page</li>
-                <li>use our <a href="https://apps.eastsussex.gov.uk/contactus/emailus/feedback.aspx">comments form</a> to contact
-                    us &#8211; we may be able to help.</li>
+                <li><a href="https://www.eastsussex.gov.uk/contact-us/">contact us</a> &#8211; we may be able to help.</li>
             </ul>
         </div>
     </div>

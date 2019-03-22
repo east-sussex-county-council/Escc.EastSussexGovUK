@@ -22,7 +22,6 @@
 </html>
 
 @{  // Do not render these sections for this layout
-    if (IsSectionDefined("BodyClass")) { RenderSection("BodyClass", required: false).WriteTo(TextWriter.Null, null); }
     if (IsSectionDefined("Header")) { RenderSection("Header", required: false).WriteTo(TextWriter.Null, null); }
     if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb", required: false).WriteTo(TextWriter.Null, null); }
     if (IsSectionDefined("Footer")) { RenderSection("Footer", required: false).WriteTo(TextWriter.Null, null); }

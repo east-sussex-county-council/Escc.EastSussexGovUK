@@ -2,129 +2,144 @@
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Escc.Redirects;
-using Escc.Redirects.Handlers;
+//using Escc.Redirects;
+//using Escc.Redirects.Handlers;
 using Exceptionless;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Escc.EastSussexGovUK.Mvc
+namespace Escc.EastSussexGovUK.Core
 {
     /// <summary>
     /// Return standard pages to display for HTTP status codes
     /// </summary>
     /// <seealso cref="System.Web.Mvc.Controller" />
+    [AllowAnonymous]
     public class HttpStatusController : Controller
     {
-        // GET: HttpStatus
-        /// <summary>
-        /// Displays the 410 Gone HTTP status page
-        /// </summary>
-        /// <returns></returns>
-        public async Task<ActionResult> Gone()
+        private readonly IEastSussexGovUKTemplateRequest _templateRequest;
+        private readonly IViewModelDefaultValuesProvider _defaultModelValues;
+
+        public HttpStatusController(IEastSussexGovUKTemplateRequest templateRequest, IViewModelDefaultValuesProvider defaultModelValues)
         {
-            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
-            var model = new HttpStatusViewModel()
-            {
-                TemplateHtml = await templateRequest.RequestTemplateHtmlAsync()
-            };
-            return View(model);
+            _templateRequest = templateRequest;
+            _defaultModelValues = defaultModelValues;
         }
 
         /// <summary>
         /// Displays the 400 Bad Request HTTP status page
         /// </summary>
         /// <returns></returns>
-        public async Task<ActionResult> BadRequest()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public async Task<IActionResult> Status400()
         {
-            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
-            var model = new HttpStatusViewModel()
+            var model = new HttpStatusViewModel(_defaultModelValues)
             {
-                TemplateHtml = await templateRequest.RequestTemplateHtmlAsync()
+                TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
             };
-            return View(model);
+            return View("~/_EastSussexGovUK_HttpStatus_BadRequest.cshtml", model);
         }
-
+        
         /// <summary>
         /// Displays the 403 Forbidden HTTP status page
         /// </summary>
         /// <returns></returns>
-        public async Task<ActionResult> Forbidden()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public async Task<IActionResult> Status403()
         {
             RandomDelay();
-            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
-            var model = new HttpStatusViewModel()
+            var model = new HttpStatusViewModel(_defaultModelValues)
             {
-                TemplateHtml = await templateRequest.RequestTemplateHtmlAsync()
+                TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
             };
-            return View(model);
+            return View("~/_EastSussexGovUK_HttpStatus_Forbidden.cshtml", model);
+        }
+
+        /// <summary>
+        /// Displays the 410 Gone HTTP status page
+        /// </summary>
+        /// <returns></returns>
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public async Task<IActionResult> Status410()
+        {
+            var model = new HttpStatusViewModel(_defaultModelValues)
+            {
+                TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View("~/_EastSussexGovUK_HttpStatus_Gone.cshtml", model);
         }
 
         /// <summary>
         /// Displays the 500 Internal Server Error HTTP status page
         /// </summary>
         /// <returns></returns>
-        public async Task<ActionResult> InternalServerError()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public async Task<IActionResult> Status500()
         {
             RandomDelay();
-            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
-            var model = new HttpStatusViewModel()
+            var model = new HttpStatusViewModel(_defaultModelValues)
             {
-                TemplateHtml = await templateRequest.RequestTemplateHtmlAsync()
+                TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
             };
-            return View(model);
+            return View("~/_EastSussexGovUK_HttpStatus_InternalServerError.cshtml", model);
         }
-
+        
         /// <summary>
         /// Responds to a 404 Not Found status by checking for and executing redirects, and displaying the 404 HTTP status page otherwise
         /// </summary>
         /// <returns></returns>
-        public async Task<ActionResult> NotFound()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public async Task<IActionResult> Status404()
         {
-            var requestedPath = new NotFoundRequestPathResolver().NormaliseRequestedPath(Request.Url);
+            /* var requestedPath = new NotFoundRequestPathResolver().NormaliseRequestedPath(Request.Url);
 
-            // Dereference linked data URIs
-            // Linked data has separate URIs for things and documentation about those things. Try to match the URI for a thing and redirect to its documentation.
-            ActionResult redirectResult;
-            if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["SchoolUrl"]))
-            {
-                var schoolUrl = String.Format(CultureInfo.InvariantCulture, ConfigurationManager.AppSettings["SchoolUrl"], "$1");
-                redirectResult = TryUriPattern(requestedPath, "^id/school/([0-9]+)$", schoolUrl, 303, Response.Headers);
-                if (redirectResult != null) return redirectResult;
+             // Dereference linked data URIs
+             // Linked data has separate URIs for things and documentation about those things. Try to match the URI for a thing and redirect to its documentation.
+             ActionResult redirectResult;
+             if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["SchoolUrl"]))
+             {
+                 var schoolUrl = String.Format(CultureInfo.InvariantCulture, ConfigurationManager.AppSettings["SchoolUrl"], "$1");
+                 redirectResult = TryUriPattern(requestedPath, "^id/school/([0-9]+)$", schoolUrl, 303, Response.Headers);
+                 if (redirectResult != null) return redirectResult;
 
-                redirectResult = TryUriPattern(requestedPath, "^id/school/([0-9]+)/closure/[0-9]+$", schoolUrl, 303, Response.Headers);
-                if (redirectResult != null) return redirectResult;
-            }
+                 redirectResult = TryUriPattern(requestedPath, "^id/school/([0-9]+)/closure/[0-9]+$", schoolUrl, 303, Response.Headers);
+                 if (redirectResult != null) return redirectResult;
+             }
 
-            // See if it's a short URL for activating a service
-            string guidPattern = "[A-Fa-f0-9]{8,8}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{12,12}";
-            redirectResult = TryUriPattern(requestedPath, @"^schs\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/schoolclosures/closurealertactivate.aspx?code=$1", 303, Response.Headers);
-            if (redirectResult != null) return redirectResult;
+             // See if it's a short URL for activating a service
+             string guidPattern = "[A-Fa-f0-9]{8,8}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{4,4}-[A-Fa-f0-9]{12,12}";
+             redirectResult = TryUriPattern(requestedPath, @"^schs\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/schoolclosures/closurealertactivate.aspx?code=$1", 303, Response.Headers);
+             if (redirectResult != null) return redirectResult;
 
-            redirectResult = TryUriPattern(requestedPath, @"^schu\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/schoolclosures/closurealertdeactivate.aspx?code=$1", 303, Response.Headers);
-            if (redirectResult != null) return redirectResult;
+             redirectResult = TryUriPattern(requestedPath, @"^schu\?c=(" + guidPattern + ")$", "https://" + Request.Url.Authority + "/educationandlearning/schools/schoolclosures/closurealertdeactivate.aspx?code=$1", 303, Response.Headers);
+             if (redirectResult != null) return redirectResult;
 
-            if (TryShortOrMovedUrl(requestedPath))
-            {
-                // redirect matched and followed - stop processing
-                return null;
-            }
+             if (TryShortOrMovedUrl(requestedPath))
+             {
+                 // redirect matched and followed - stop processing
+                 return null;
+             }*/
 
-            // If no redirects matched, show the 404 page
-            var templateRequest = new EastSussexGovUKTemplateRequest(Request);
-            var model = new HttpStatusViewModel()
-            {
-                TemplateHtml = await templateRequest.RequestTemplateHtmlAsync()
-            };
+             // If no redirects matched, show the 404 page
+             var model = new HttpStatusViewModel(_defaultModelValues)
+             {
+                 TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
+                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+             };
 
-            return View(model);
-        }
-
+             return View("~/_EastSussexGovUK_HttpStatus_NotFound.cshtml", model);
+         }
+         
         private void RandomDelay()
         {
             // introduce random delay, so defend against anyone trying to detect errors based on the time taken
@@ -136,7 +151,7 @@ namespace Escc.EastSussexGovUK.Mvc
                 Thread.Sleep((int)delay[0]);
             }
         }
-
+        /*
 
         /// <summary>
         /// Redirect if the requested URL matches a regular expression pattern.
@@ -215,6 +230,6 @@ namespace Escc.EastSussexGovUK.Mvc
                 }
             }
             return false;
-        }
+        }*/
     }
 }

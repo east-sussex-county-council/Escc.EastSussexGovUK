@@ -1,7 +1,6 @@
 ﻿@using System.Globalization
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Views
-@using System.IO
 @using System.Web
 @model Escc.EastSussexGovUK.Core.BaseViewModel
 @inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
@@ -9,7 +8,7 @@
     Layout = null;
     if (Model == null)
     {
-        throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel");
+        throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Core.BaseViewModel");
     }
     Model.EsccWebsiteView = EsccWebsiteView.Desktop;
     dependencySetEvaluator.EvaluateDependencySet(Model.EsccWebsiteSkin);
@@ -41,16 +40,7 @@
     @RenderSection("Metadata", required: false)
 </head>
 @{
-    var bodyClass = String.Empty;
-    if (IsSectionDefined("BodyClass"))
-    {
-        using (var writer = new StringWriter())
-        {
-            RenderSection("BodyClass", required: false).WriteTo(writer, null);
-            bodyClass = writer.ToString();
-        }
-    }
-
+    var bodyClass = Model.BodyCssClass;
     var textSize = new TextSize(Context.Request.Cookies["textsize"], HttpUtility.ParseQueryString(Context.Request.QueryString.Value)).CurrentTextSize();
     if (textSize > 1)
     {
@@ -59,12 +49,12 @@
 
     if (!String.IsNullOrEmpty(bodyClass))
     {
-        @:<body class="@bodyClass.Trim()">
-        }
+@:<body class="@bodyClass.Trim()">
+    }
     else
     {
-            @:<body>
-}
+@:<body>
+    }
 @Html.Raw(Model.TemplateHtml?.AboveHeader)
 }
 @if (IsSectionDefined("Header"))

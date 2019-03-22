@@ -6,7 +6,7 @@
         Title="Page gone"
         IpsvPreferredTerms="Internet"
         LgtlType="Website facilities"
-        DateModified="2015-11-05"
+        DateModified="2019-03-22"
         IsInSearch="False" />
 </asp:Content>
 
@@ -24,8 +24,7 @@
                 <li>start with the menu at the top of any page, and try to find the information you
                     want</li>
                 <li>search for what you want using the search box at the top of any page</li>
-                <li>use our <a href="https://apps.eastsussex.gov.uk/contactus/emailus/feedback.aspx">comments form</a> to contact
-                    us &#8211; we may be able to help.</li>
+                <li><a href="https://www.eastsussex.gov.uk/contact-us/">contact us</a> &#8211; we may be able to help.</li>
             </ul>
         </div>
     </div>

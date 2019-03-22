@@ -380,6 +380,7 @@
     <Content Include="img\header\header.psd" />
     <None Include="img\body\social.psd" />
     <None Include="img\Web.example.config" />
+    <Content Include="js\404.js" />
     <Content Include="js\libs\beautytips.min.js" />
     <Content Include="js\libs\Escc.DocumentsInNewWindow.min.js" />
     <Content Include="js\libs\Escc.Statistics.min.js" />

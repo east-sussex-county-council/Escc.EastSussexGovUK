@@ -14,7 +14,7 @@ namespace Escc.EastSussexGovUK.Core
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseViewModel"/> class.
         /// </summary>
-        /// <param name="breadcrumbProvider">The breadcrumb provider which provides essential context for the views.</param>
+        /// <param name="defaultValues">Provides essential context for views using the EastSussexGovUK template.</param>
         /// <exception cref="System.ArgumentNullException"></exception>
         protected BaseViewModel(IViewModelDefaultValuesProvider defaultValues)
         {
@@ -72,6 +72,11 @@ namespace Escc.EastSussexGovUK.Core
         /// This media query should be applied to all &lt;link /&gt; elements intended to load CSS for large screens and above
         /// </summary>
         public string MediaQueryLarge { get { return MEDIA_QUERY_LARGE; } }
+
+        /// <summary>
+        /// Gets or sets a CSS class to apply to the opening &lt;body&gt; tag
+        /// </summary>
+        public string BodyCssClass { get; set; }
 
         /// <summary>
         /// Gets or sets the provider for working out the current context within the site's information architecture.
