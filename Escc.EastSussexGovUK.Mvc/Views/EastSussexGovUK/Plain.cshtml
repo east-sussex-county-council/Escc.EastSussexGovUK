@@ -11,11 +11,15 @@
     @if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Mvc.BaseViewModel"); }
     @RenderSection("ContentExperiment", required: false)
     <meta charset="UTF-8" />
-    @{ Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata); }
+    @{ 
+        if (Model.Metadata.CanonicalPageUrl == null) { Model.Metadata.CanonicalPageUrl = Request.Url }
+        Html.RenderPartial("~/Views/Shared/_Metadata_Head.cshtml", Model.Metadata); 
+    }
     @RenderSection("Metadata", required: false)
 </head>
 <body>
     @RenderBody()
+    @{ Html.RenderPartial("~/Views/Shared/_Metadata_Body.cshtml", Model.Metadata); }
 </body>
 </html>
 

@@ -36,7 +36,8 @@ else
     @RenderSection("ContentExperiment", required: false)
     @Html.Raw(Model.TemplateHtml?.Metadata)
     @{
-        Html.RenderPartial("~/Views/EastSussexGovUK/MetadataControl.ascx", Model.Metadata);
+        if (Model.Metadata.CanonicalPageUrl == null) { Model.Metadata.CanonicalPageUrl = Request.Url }
+        Html.RenderPartial("~/Views/Shared/_Metadata_Head.cshtml", Model.Metadata);
         Html.RenderPartial("~/Views/EastSussexGovUK/_Fonts.cshtml", Model.EsccWebsiteSkin);
     }
     @Html.RenderCssHere()
@@ -49,7 +50,7 @@ else
     else
     {
         @:<body>
-        }
+}
 <div class="full-screen">
     @if (IsSectionDefined("Header"))
     {
@@ -79,8 +80,8 @@ else
     @Html.RenderJsHere()
     @RenderSection("JavaScript", required: false)
 </div>
-</body>
-</html>
+@{ Html.RenderPartial("~/Views/Shared/_Metadata_Body.cshtml", Model.Metadata); }
+</body></html>
 
 @{ // Do not render these sections for this layout
     if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb").WriteTo(TextWriter.Null); }

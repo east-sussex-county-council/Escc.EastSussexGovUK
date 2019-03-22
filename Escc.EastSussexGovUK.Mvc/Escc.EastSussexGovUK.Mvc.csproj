@@ -72,6 +72,9 @@
     <Reference Include="Escc.Html, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Html.3.0.0\lib\netstandard2.0\Escc.Html.dll</HintPath>
     </Reference>
+    <Reference Include="Escc.Metadata, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.Metadata.1.0.0\lib\netstandard2.0\Escc.Metadata.dll</HintPath>
+    </Reference>
     <Reference Include="Escc.Net, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Net.3.0.0\lib\netstandard2.0\Escc.Net.dll</HintPath>
     </Reference>
@@ -86,9 +89,6 @@
     </Reference>
     <Reference Include="Escc.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Web.1.1.2\lib\Escc.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="Escc.Web.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Web.Metadata.2.0.1\lib\Escc.Web.Metadata.dll</HintPath>
     </Reference>
     <Reference Include="Exceptionless, Version=4.3.2012.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Exceptionless.4.3.2012\lib\net45\Exceptionless.dll</HintPath>
@@ -234,7 +234,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\EastSussexGovUK\MetadataControl.ascx" />
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -251,13 +250,6 @@
     <Compile Include="EastSussexGovUKTemplateRequest.cs" />
     <Compile Include="TemplateHtml.cs" />
     <Compile Include="Views\EastSussexGovUK\MasterPageControlData.cs" />
-    <Compile Include="Views\EastSussexGovUK\MetadataControl.ascx.cs">
-      <DependentUpon>MetadataControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\EastSussexGovUK\MetadataControl.ascx.designer.cs">
-      <DependentUpon>MetadataControl.ascx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="build-nuget.cmd" />

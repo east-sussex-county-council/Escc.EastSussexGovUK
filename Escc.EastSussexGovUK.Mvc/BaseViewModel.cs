@@ -3,7 +3,6 @@ using System.Web;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Skins;
 using Escc.EastSussexGovUK.Views;
-using Escc.Web.Metadata;
 
 namespace Escc.EastSussexGovUK.Mvc
 {
@@ -30,7 +29,16 @@ namespace Escc.EastSussexGovUK.Mvc
 
             IsPublicView = true;
             EsccWebsiteSkin = new CustomerFocusSkin();
-            Metadata = new Metadata();
+            Metadata = new Metadata.Metadata {
+                SiteName = "East Sussex County Council",
+                TitlePattern = "{0} – East Sussex County Council",
+                LicenceUri = new Uri("http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/")
+            };
+            Metadata.PageImage.ImageUrl = new Uri("https://www.eastsussex.gov.uk/img/logo-for-facebook.png");
+            Metadata.PageImage.AlternativeText = "East Sussex County Council";
+            Metadata.Facebook.OpenGraphType = "article";
+            Metadata.Facebook.FacebookAppId = "169406409819518";
+            Metadata.Twitter.TwitterAccount = "@eastsussexcc";
             BreadcrumbProvider = breadcrumbProvider;
         }
 
@@ -45,7 +53,7 @@ namespace Escc.EastSussexGovUK.Mvc
         /// <value>
         /// The metadata.
         /// </value>
-        public Metadata Metadata { get; set; }
+        public Metadata.Metadata Metadata { get; set; }
 
         /// <summary>
         /// Gets or sets whether the current view is a publicly-visible page
