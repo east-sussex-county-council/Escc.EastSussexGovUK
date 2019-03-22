@@ -1,9 +1,9 @@
 ﻿@using System.Globalization
 @using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Views
-@using System.Web
 @model Escc.EastSussexGovUK.Core.BaseViewModel
 @inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
+@inject ITextSize textSize;
 @{
     Layout = null;
     if (Model == null)
@@ -41,10 +41,10 @@
 </head>
 @{
     var bodyClass = Model.BodyCssClass;
-    var textSize = new TextSize(Context.Request.Cookies["textsize"], HttpUtility.ParseQueryString(Context.Request.QueryString.Value)).CurrentTextSize();
-    if (textSize > 1)
+    var textSizeValue = textSize?.CurrentTextSize();
+    if (textSizeValue.HasValue && textSizeValue > 1)
     {
-        bodyClass += " size" + textSize.ToString(CultureInfo.InvariantCulture);
+        bodyClass += " size" + textSizeValue.Value.ToString(CultureInfo.InvariantCulture);
     }
 
     if (!String.IsNullOrEmpty(bodyClass))
