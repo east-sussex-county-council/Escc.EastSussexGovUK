@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
+using Escc.EastSussexGovUK.ContentSecurityPolicy;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Views;
 using Escc.Net;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.FileProviders;
+using PeterJuhasz.AspNetCore.Extensions.Security;
 
 namespace Escc.EastSussexGovUK.Core
 {
@@ -43,7 +49,7 @@ namespace Escc.EastSussexGovUK.Core
             services.Configure<RazorViewEngineOptions>(options => 
             {
                 options.FileProviders.Add(new EmbeddedFileProvider(typeof(BaseViewModel).Assembly, "Escc.EastSussexGovUK.Core.Views"));
-                options.FileProviders.Add(new EmbeddedFileProvider(typeof(Metadata.Metadata).Assembly, "Escc.Metadata.Views"));
+                options.FileProviders.Add(new EmbeddedFileProvider(typeof(Metadata.Metadata).Assembly, "Escc.Metadata.Views.Shared"));
             });
 
             // Set up the global configuration service and add the configuration sections that are relevant to the template
@@ -71,7 +77,119 @@ namespace Escc.EastSussexGovUK.Core
             services.TryAddScoped<ITextSize, TextSize>();
             services.TryAddScoped<IHtmlControlProvider, RemoteMasterPageHtmlProvider>();
 
+            // Ensure TLS is used
+            services.AddHsts(options => {
+                options.MaxAge = TimeSpan.FromDays(365);
+                options.IncludeSubDomains = false;
+                options.Preload = false;
+                });
+            services.AddHttpsRedirection(options => options.RedirectStatusCode = 301);
+
             return services;
+        }
+
+        /// <summary>
+        /// Configures security settings for applications using the EastSussexGovUK template, including enforcing HTTPS/TLS connections.
+        /// </summary>
+        /// <param name="app">The <see cref="IApplicationBuilder"/> instance provided by ASP.NET Core to the Startup.Configure() method</param>
+        /// <param name="environment">The <see cref="IHostingEnvironment"/> instance provided by ASP.NET Core to the Startup.Configure() method</param>
+        /// <param name="cspOptions">An optional Content Security Policy for the application in addition to the default policy for the site</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseEastSussexGovUK(this IApplicationBuilder app, IHostingEnvironment environment, CspOptions cspOptions = null)
+        {
+            // Ensure TLS is used
+            app.UseHttpsRedirection();
+            app.UseHsts();
+
+            // Use security headers recommended by securityheaders.io
+            app.UseEastSussexGovUKContentSecurityPolicy(environment, cspOptions);
+            app.UseEastSussexGovUKSecurityHeaders();
+
+            return app;
+        }
+
+        /// <summary>
+        /// Configures the Content Security Policy for applications using the EastSussexGovUK template. Call <see cref="UseEastSussexGovUK"/> instead unless you are trying to override the default behaviour.
+        /// </summary>
+        /// <param name="app">The <see cref="IApplicationBuilder"/> instance provided by ASP.NET Core to the Startup.Configure() method</param>
+        /// <param name="environment">The <see cref="IHostingEnvironment"/> instance provided by ASP.NET Core to the Startup.Configure() method</param>
+        /// <param name="cspOptions">An optional Content Security Policy for the application in addition to the default policy for the site</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseEastSussexGovUKContentSecurityPolicy(this IApplicationBuilder app, IHostingEnvironment environment, CspOptions cspOptions = null)
+        {
+            app.Use((context, next) =>
+            {
+                context.Response.OnStarting(() =>
+                {
+                    // Apply a Content Security Policy for the site, but allow additional directives to be supplied as an argument.
+                    // The code to write the header is copied from https://github.com/Peter-Juhasz/aspnetcoresecurity/blob/master/src/ContentSecurityPolicy/ContentSecurityPolicyMiddleware.cs,
+                    // but does not set the obsolete X- versions to save bandwidth, as it's a big header.
+                    if (context.Response.GetTypedHeaders().ContentType?.MediaType.Equals("text/html", StringComparison.OrdinalIgnoreCase) ?? false)
+                    {
+                        var cspToApply = cspOptions ?? new CspOptions();
+                        cspToApply = cspToApply.AddEastSussexGovUKDefaultPolicy().AddGoogleFonts().AddGoogleAnalytics().AddCrazyEgg();
+
+                        if (environment.IsDevelopment())
+                        {
+                            // allow any resources from localhost in development
+                            cspToApply = cspToApply.AddLocalhost();
+
+                            // allow inline styles and scripts for developer exception page
+                            if (context.Response.StatusCode == (int)HttpStatusCode.InternalServerError)
+                            {
+                                var developerOptions = cspOptions.Clone();
+                                developerOptions.StyleSrc = developerOptions.StyleSrc.AddUnsafeInline();
+                                developerOptions.ScriptSrc = developerOptions.ScriptSrc.AddUnsafeInline();
+                                cspToApply = developerOptions;
+                            }
+                        }
+
+                        context.Response.Headers["Content-Security-Policy"] = cspToApply.ToString();
+                    }
+
+                    return Task.CompletedTask;
+                });
+
+                return next();
+            });
+
+            return app;
+        }
+
+        /// <summary>
+        /// Configures standard security headers for applications using the EastSussexGovUK template. Call <see cref="UseEastSussexGovUK"/> instead unless you are trying to override the default behaviour.
+        /// </summary>
+        /// <param name="app">The <see cref="IApplicationBuilder"/> instance provided by ASP.NET Core to the Startup.Configure() method</param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseEastSussexGovUKSecurityHeaders(this IApplicationBuilder app)
+        {
+            app.Use((context, next) =>
+            {
+                context.Response.OnStarting(() =>
+                {
+                    // Use ExpectCT in report mode only to assess whether it is ready to be enabled
+                    context.Response.Headers.Add("Expect-CT", "max-age=0, report-uri=\"https://eastsussexgovuk.report-uri.com/r/d/ct/reportOnly\"");
+
+                    // Defend against clickjacking: Use SAMEORIGIN rather than DENY to allow the use of SVG images.
+                    // When Umbraco is in use, it requires same origin framing for preview and template editing.
+                    context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+
+                    // Enable the cross-site scripting filter built into most browsers, blocking any requests detected as XSS.
+                    context.Response.Headers.Add("X-XSS-Protection", "1; mode=block");
+
+                    // Force browsers to stick with the declared MIME type rather than guessing it from the content.
+                    context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+
+                    // Allow referrer URL to be passed to sites on the same protocol, but not leaked from HTTPS to HTTP
+                    context.Response.Headers.Add("Referrer-Policy", "no-referrer-when-downgrade");
+
+                    return Task.CompletedTask;
+                });
+
+                return next();
+            });
+
+            return app;
         }
     }
 }

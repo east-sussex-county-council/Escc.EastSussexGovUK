@@ -8,7 +8,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 1. In Visual Studio create a new ASP.NET Core Web Application using the "Empty" project template. 
 2. Install `Escc.EastSussexGovUK.Core` from our private NuGet feed.
-3. Add the services required for the template to the `Startup` class:
+3. Add the services required for the template to the `Startup` class in the order shown below:
 
 		using Escc.EastSussexGovUK.Core;
 		using Microsoft.AspNetCore.Builder;
@@ -28,6 +28,13 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 	        }
 
 			...
+
+			public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+			{
+			 	app.UseEastSussexGovUK(env);
+			    app.UseStaticFiles();
+			    app.UseMvc();
+			}
 		}
 
 3. Create a view model which inherits from `Escc.EastSussexGovUK.Core.BaseViewModel`. Its constructor must inject an instance of `IBreadcrumbProvider` since this is required to build the template.
@@ -157,6 +164,22 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 ## How it works
 
+### Startup
+
+The call to `services.AddEastSussexGovUK(Configuration)` sets up:
+
+*  `EmbeddedFileProviders` so that views included in NuGet packages can be used
+*  Sets up dependency injection for the services used by the template, including calling `services.AddOptions()` to enable configuration
+*  Adds configuration for enforcing TLS using redirection to HTTPS and [HSTS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security). 
+
+The call to `app.UseEastSussexGovUK(env)` sets up:
+
+*  Enables the TLS support configured earlier
+*  Sets up the Content Security Policy (which can be customised - see [Varying the Content Security Policy](#csp))
+*  Adds other headers which make the site more secure
+
+### Loading the template HTML
+
 The call to `await templateRequest.RequestTemplateHtmlAsync()` attempts to download the template controls from the remote URL, and populates a `TemplateHtml` property on the model. The use of an asynchronous call is very important as it allows the site to scale successfully using this approach.
 
 The URL to download the controls from is set by the `Escc.EastSussexGovUK:Mvc:PartialViewUrl` configuration setting. The template code will try to fetch HTML from that URL, passing a token for the control it wants instead of `{0}`.
@@ -259,6 +282,50 @@ It is then up to individual templates and pages to name the skins that they supp
 		}, 
 		new CustomerFocusSkin()
 	);
+
+
+<a name="csp"></a>
+## Varying the Content Security Policy
+
+The [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) protects pages from attacks including [XSS](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)). 
+
+The default policy allows scripts, styles, images and objects from and connections to our own site, plus the use of  `https://ajax.googleapis.com` for script libraries (JQuery), [Google Fonts](https://fonts.google.com/), [Google Analytics](https://analytics.google.com/analytics/web/) and [Crazy Egg](https://www.crazyegg.com/). It also allows resources from any port on `localhost` when `ASPNETCORE_ENVIRONMENT` is set to `Development`.
+
+Often applications will need to add additional rules to the standard Content Security Policy, and they can do this by providing an instance of `CspOptions` during `Startup`:
+
+	using PeterJuhasz.AspNetCore.Extensions.Security;
+
+ 	public class Startup
+    {
+		...
+
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		{
+		 	app.UseEastSussexGovUK(env, new CspOptions { 
+				ImgSrc = CspDirective.Empty.AddSource("https://www.example.org") 
+			});
+		    app.UseStaticFiles();
+		    app.UseMvc();
+		}
+	}
+
+The most common cases are preconfigured. For example, to add support for displaying Google Maps and YouTube:
+
+	using PeterJuhasz.AspNetCore.Extensions.Security;
+
+ 	public class Startup
+    {
+		...
+
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		{
+		 	app.UseEastSussexGovUK(env, new CspOptions().AddGoogleMaps().AddYouTube());
+		    app.UseStaticFiles();
+		    app.UseMvc();
+		}
+	}
+
+The predefined policies including the default are maintained in a separate project, `Escc.EastSussexGovUK.ContentSecurityPolicy`, so that the package can be updated by consuming applications without needing to update the whole website template. 
 
 ## Common features which can be added to pages
 

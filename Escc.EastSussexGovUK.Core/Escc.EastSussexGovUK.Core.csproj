@@ -51,11 +51,13 @@
 
   <ItemGroup>
     <PackageReference Include="Escc.EastSussexGovUK" Version="14.0.0-beta8" />
+    <PackageReference Include="Escc.EastSussexGovUK.ContentSecurityPolicy" Version="1.0.0" />
     <PackageReference Include="Escc.Html" Version="3.0.0" />
     <PackageReference Include="Escc.Metadata" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
