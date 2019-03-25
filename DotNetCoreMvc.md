@@ -292,6 +292,10 @@ The [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/
 
 The default policy allows scripts, styles, images and objects from and connections to our own site, plus the use of  `https://ajax.googleapis.com` for script libraries (JQuery), [Google Fonts](https://fonts.google.com/), [Google Analytics](https://analytics.google.com/analytics/web/) and [Crazy Egg](https://www.crazyegg.com/). It also allows resources from any port on `localhost` when `ASPNETCORE_ENVIRONMENT` is set to `Development`.
 
+Predefined policies including the default are maintained in a separate project, `Escc.EastSussexGovUK.ContentSecurityPolicy`, so that the package can be updated by consuming applications without needing to update the whole website template. 
+
+### Varying the policy for the application
+
 Often applications will need to add additional rules to the standard Content Security Policy, and they can do this by providing an instance of `CspOptions` during `Startup`:
 
 	using PeterJuhasz.AspNetCore.Extensions.Security;
@@ -326,7 +330,31 @@ The most common cases are preconfigured. For example, to add support for display
 		}
 	}
 
-The predefined policies including the default are maintained in a separate project, `Escc.EastSussexGovUK.ContentSecurityPolicy`, so that the package can be updated by consuming applications without needing to update the whole website template. 
+### Varying the policy for a page
+
+You can also add additional Content Security Policies from controllers and views by registering a `ContentSecurityPolicyDependency` in an `IClientDependencySet`. The `.Alias` property should match the name of one of the preconfigured methods. For example, an alias of `YouTube` causes the `.AddYouTube()` method to be run.
+
+Dependency class:
+
+	using Escc.EastSussexGovUK;
+
+	public class MyCustomDependency : IClientDependencySet
+    {
+		public IEnumerable<ContentSecurityPolicyDependency> RequiresContentSecurityPolicy()
+        {
+            return new ContentSecurityPolicyDependency[1]
+            {
+                new ContentSecurityPolicyDependency(){ Alias = "YouTube" }
+            };
+        }
+
+		...
+	}
+
+View that registers the dependency:
+
+	@inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
+    dependencySetEvaluator.EvaluateDependencySet(new MyCustomDependency());
 
 ## Common features which can be added to pages
 

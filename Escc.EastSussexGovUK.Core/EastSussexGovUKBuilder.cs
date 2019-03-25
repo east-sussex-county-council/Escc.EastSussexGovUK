@@ -113,18 +113,18 @@ namespace Escc.EastSussexGovUK.Core
                 ExceptionlessClient.Default.Configuration.ServerUrl = exceptionlessSettings.Value.ServerUrl.ToString();
             }
 
-           // if (environment.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-           // {
+            if (environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
                 app.UseExceptionHandler("/HttpStatus/Status500");
                 app.UseStatusCodePagesWithReExecute("/HttpStatus/Status{0}");
-            //}
+            }
 
             // Use security headers recommended by securityheaders.io
-            app.UseEastSussexGovUKContentSecurityPolicy(environment, cspOptions);
+            app.UseEastSussexGovUKContentSecurityPolicy(cspOptions);
             app.UseEastSussexGovUKSecurityHeaders();
 
             return app;
@@ -134,47 +134,11 @@ namespace Escc.EastSussexGovUK.Core
         /// Configures the Content Security Policy for applications using the EastSussexGovUK template. Call <see cref="UseEastSussexGovUK"/> instead unless you are trying to override the default behaviour.
         /// </summary>
         /// <param name="app">The <see cref="IApplicationBuilder"/> instance provided by ASP.NET Core to the Startup.Configure() method</param>
-        /// <param name="environment">The <see cref="IHostingEnvironment"/> instance provided by ASP.NET Core to the Startup.Configure() method</param>
         /// <param name="cspOptions">An optional Content Security Policy for the application in addition to the default policy for the site</param>
         /// <returns></returns>
-        public static IApplicationBuilder UseEastSussexGovUKContentSecurityPolicy(this IApplicationBuilder app, IHostingEnvironment environment, CspOptions cspOptions = null)
+        public static IApplicationBuilder UseEastSussexGovUKContentSecurityPolicy(this IApplicationBuilder app, CspOptions cspOptions = null)
         {
-            app.Use((context, next) =>
-            {
-                context.Response.OnStarting(() =>
-                {
-                    // Apply a Content Security Policy for the site, but allow additional directives to be supplied as an argument.
-                    // The code to write the header is copied from https://github.com/Peter-Juhasz/aspnetcoresecurity/blob/master/src/ContentSecurityPolicy/ContentSecurityPolicyMiddleware.cs,
-                    // but does not set the obsolete X- versions to save bandwidth, as it's a big header.
-                    if (context.Response.GetTypedHeaders().ContentType?.MediaType.Equals("text/html", StringComparison.OrdinalIgnoreCase) ?? false)
-                    {
-                        var cspToApply = cspOptions ?? new CspOptions();
-                        cspToApply = cspToApply.AddEastSussexGovUKDefaultPolicy().AddGoogleFonts().AddGoogleAnalytics().AddCrazyEgg();
-
-                        if (environment.IsDevelopment())
-                        {
-                            // allow any resources from localhost in development
-                            cspToApply = cspToApply.AddLocalhost();
-
-                            // allow inline styles and scripts for developer exception page
-                            if (context.Response.StatusCode == (int)HttpStatusCode.InternalServerError)
-                            {
-                                var developerOptions = cspToApply.Clone();
-                                developerOptions.StyleSrc = developerOptions.StyleSrc.AddUnsafeInline();
-                                developerOptions.ScriptSrc = developerOptions.ScriptSrc.AddUnsafeInline();
-                                cspToApply = developerOptions;
-                            }
-                        }
-
-                        context.Response.Headers["Content-Security-Policy"] = cspToApply.ToString();
-                    }
-
-                    return Task.CompletedTask;
-                });
-
-                return next();
-            });
-
+            app.UseMiddleware<ContentSecurityPolicyMiddleware>(cspOptions);
             return app;
         }
 
