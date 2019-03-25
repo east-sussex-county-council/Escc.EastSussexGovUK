@@ -137,7 +137,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 			<script src="~/js/my-script.js?v=@Model.ClientFileVersion"></script>
 		}
 
-6. Add configuration for the template elements. For example, if you are using `appsettings.json` for configuration:
+6. Add configuration for the template elements and exception handling. For example, if you are using `appsettings.json` for configuration:
 
    		{
 	  	  "Escc.EastSussexGovUK": {
@@ -151,6 +151,10 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 		    "WebChat": {
 		      "WebChatSettingsUrl": "https://www.eastsussex.gov.uk/umbraco/api/WebChat/GetWebChatUrls"
 		    }
+		  },
+		  "Exceptionless": {
+		    "ApiKey": "API_KEY_HERE",
+		    "ServerUrl": "https://hostname/"
 		  }
 		}
 

@@ -8,6 +8,7 @@ using Escc.EastSussexGovUK.ContentSecurityPolicy;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Views;
 using Escc.Net;
+using Exceptionless;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Options;
 using PeterJuhasz.AspNetCore.Extensions.Security;
 
 namespace Escc.EastSussexGovUK.Core
@@ -60,6 +62,7 @@ namespace Escc.EastSussexGovUK.Core
             services.Configure<BreadcrumbSettings>(options => configuration.GetSection("Escc.EastSussexGovUK:BreadcrumbTrail").Bind(options));
             services.Configure<WebChatApiSettings>(options => configuration.GetSection("Escc.EastSussexGovUK:WebChat").Bind(options));
             services.Configure<Metadata.Metadata>(options => configuration.GetSection("Escc.Metadata").Bind(options));
+            services.Configure<ExceptionlessSettings>(options => configuration.GetSection("Exceptionless").Bind(options));
 
             // Register the classes that need to be injected to build up the template
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -101,16 +104,24 @@ namespace Escc.EastSussexGovUK.Core
             app.UseHttpsRedirection();
             app.UseHsts();
 
-            // Configure error pages
-            if (environment.IsDevelopment())
+            // Configure error handling
+            var exceptionlessSettings = app.ApplicationServices.GetRequiredService<IOptions<ExceptionlessSettings>>();
+            if (exceptionlessSettings != null && exceptionlessSettings.Value != null && 
+                !string.IsNullOrEmpty(exceptionlessSettings.Value.ApiKey) && exceptionlessSettings.Value.ServerUrl != null)
             {
-                app.UseDeveloperExceptionPage();
+                ExceptionlessClient.Default.Configuration.ApiKey = exceptionlessSettings.Value.ApiKey;
+                ExceptionlessClient.Default.Configuration.ServerUrl = exceptionlessSettings.Value.ServerUrl.ToString();
             }
-            else
-            {
+
+           // if (environment.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
+           // {
                 app.UseExceptionHandler("/HttpStatus/Status500");
                 app.UseStatusCodePagesWithReExecute("/HttpStatus/Status{0}");
-            }
+            //}
 
             // Use security headers recommended by securityheaders.io
             app.UseEastSussexGovUKContentSecurityPolicy(environment, cspOptions);

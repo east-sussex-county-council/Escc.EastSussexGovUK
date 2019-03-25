@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 //using Escc.Redirects.Handlers;
 using Exceptionless;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Escc.EastSussexGovUK.Core
@@ -86,6 +87,10 @@ namespace Escc.EastSussexGovUK.Core
         public async Task<IActionResult> Status500()
         {
             RandomDelay();
+
+            var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            exceptionHandlerPathFeature?.Error?.ToExceptionless().Submit();
+
             var model = new HttpStatusViewModel(_defaultModelValues)
             {
                 TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
