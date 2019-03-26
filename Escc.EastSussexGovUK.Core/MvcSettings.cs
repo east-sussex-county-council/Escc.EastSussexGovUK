@@ -11,6 +11,11 @@ namespace Escc.EastSussexGovUK.Core
     public class MvcSettings : RemoteMasterPageSettings
     {
         /// <summary>
+        /// The parameter used to specify or override the view to use
+        /// </summary>
+        public string ViewParameterName = "template";
+
+        /// <summary>
         /// Gets or sets the application-relative path to the standard view file
         /// </summary>
         public string DesktopViewPath { get; set; } = "~/_EastSussexGovUK_Desktop.cshtml";

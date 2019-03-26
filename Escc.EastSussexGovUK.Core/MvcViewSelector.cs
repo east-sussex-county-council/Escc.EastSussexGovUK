@@ -21,6 +21,7 @@ namespace Escc.EastSussexGovUK.Core
             _views.Add("DesktopMvcLayout", options.Value.DesktopViewPath);
             _views.Add("FullScreenMvcLayout", options.Value.FullScreenViewPath);
             _views.Add("PlainMvcLayout", options.Value.PlainViewPath);
+            _views.Add("MasterPageParameterName", options.Value.ViewParameterName);
         }
 
         /// <summary>

@@ -1,6 +1,5 @@
 ﻿@using Escc.EastSussexGovUK.Features
 @using Escc.EastSussexGovUK.Views
-@using System.IO
 @model Escc.EastSussexGovUK.Core.BaseViewModel
 @inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
 @{
@@ -10,7 +9,7 @@
 
     if (Model.WebChat != null)
     {
-        await Html.RenderPartialAsync("~/_EastSussexGovUK_FeatureDependencies.cshtml", new[] { new WebChat() { WebChatSettings = Model.WebChat } });
+        dependencySetEvaluator.EvaluateDependencySet(new WebChat() { WebChatSettings = Model.WebChat });
     }
 }
 @Html.Raw(Model.TemplateHtml?.HtmlTag)
@@ -63,5 +62,5 @@ else
 @Html.Raw("</body></html>")
 
 @{ // Do not render these sections for this layout
-    if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb").WriteTo(TextWriter.Null, null); }
+    if (IsSectionDefined("Breadcrumb")) { IgnoreSection("Breadcrumb"); }
 }

@@ -1,6 +1,5 @@
 ﻿@model Escc.EastSussexGovUK.Core.BaseViewModel
 @using Escc.EastSussexGovUK.Views
-@using System.IO
 @{
     if (Model == null) { throw new NotSupportedException("This view requires a model based on Escc.EastSussexGovUK.Core.BaseViewModel"); }
     Model.EsccWebsiteView = EsccWebsiteView.Plain;
@@ -22,8 +21,8 @@
 </html>
 
 @{  // Do not render these sections for this layout
-    if (IsSectionDefined("Header")) { RenderSection("Header", required: false).WriteTo(TextWriter.Null, null); }
-    if (IsSectionDefined("Breadcrumb")) { RenderSection("Breadcrumb", required: false).WriteTo(TextWriter.Null, null); }
-    if (IsSectionDefined("Footer")) { RenderSection("Footer", required: false).WriteTo(TextWriter.Null, null); }
-    if (IsSectionDefined("JavaScript")) { RenderSection("JavaScript", required: false).WriteTo(TextWriter.Null, null); }
+    if (IsSectionDefined("Header")) { IgnoreSection("Header"); }
+    if (IsSectionDefined("Breadcrumb")) { IgnoreSection("Breadcrumb"); }
+    if (IsSectionDefined("Footer")) { IgnoreSection("Footer"); }
+    if (IsSectionDefined("JavaScript")) { IgnoreSection("JavaScript"); }
 }
