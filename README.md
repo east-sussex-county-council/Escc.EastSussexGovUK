@@ -3,6 +3,9 @@
 This project provides the template and some sitewide features for www.eastsussex.gov.uk. It includes the following features:
 
 * [Sitewide design](Design.md)
+	- Applying the sitewide design with [ASP.NET Core MVC](DotNetCoreMvc.md)
+	- Applying the sitewide design with [ASP.NET MVC5](DotNetFrameworkMvc.md)
+	- Applying the sitewide design with [ASP.NET WebForms](DotNetFrameworkWebForms.md)
 * [Newsletter signup in the sitewide header](GovDelivery.md)
 * [Text size control in the sitewide header](TextSize.md)
 * [Google Analytics support](Analytics.md)

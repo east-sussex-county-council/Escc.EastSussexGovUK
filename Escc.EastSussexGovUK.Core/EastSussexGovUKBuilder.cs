@@ -4,10 +4,10 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Escc.EastSussexGovUK.ContentSecurityPolicy;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Views;
 using Escc.Net;
+using Escc.Redirects;
 using Exceptionless;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -63,6 +63,7 @@ namespace Escc.EastSussexGovUK.Core
             services.Configure<WebChatApiSettings>(options => configuration.GetSection("Escc.EastSussexGovUK:WebChat").Bind(options));
             services.Configure<Metadata.Metadata>(options => configuration.GetSection("Escc.Metadata").Bind(options));
             services.Configure<ExceptionlessSettings>(options => configuration.GetSection("Exceptionless").Bind(options));
+            services.Configure<RedirectSettings>(options => configuration.GetSection("Escc.Redirects").Bind(options));
 
             // Register the classes that need to be injected to build up the template
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -74,6 +75,10 @@ namespace Escc.EastSussexGovUK.Core
             services.TryAddSingleton<ICacheStrategy<WebChatSettings>, ApplicationCacheStrategy<WebChatSettings>>();
             services.TryAddSingleton<IWebChatSettingsService, WebChatSettingsFromApi>();
             services.TryAddSingleton<IRemoteMasterPageCacheProvider, RemoteMasterPageMemoryCacheProvider>();
+            services.TryAddSingleton<INotFoundRequestPathResolver, NotFoundRequestPathResolver>();
+            services.TryAddSingleton<IRedirectMatcher, SqlServerRedirectMatcher>();
+            services.TryAddSingleton<IConvertToAbsoluteUrlHandler, ConvertToAbsoluteUrlHandler>();
+            services.TryAddSingleton<IPreserveQueryStringHandler, PreserveQueryStringHandler>();
             services.TryAddScoped<IEastSussexGovUKTemplateRequest, EastSussexGovUKTemplateRequest>();
             services.TryAddScoped<IClientDependencySetEvaluator, ClientDependencySetEvaluator>();
             services.TryAddScoped<ILibraryCatalogueContext, LibraryCatalogueContext>();
