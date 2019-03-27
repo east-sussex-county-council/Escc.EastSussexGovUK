@@ -24,7 +24,7 @@ namespace Escc.EastSussexGovUK.Core
             }
 
             BreadcrumbProvider = defaultValues.Breadcrumb ?? throw new ArgumentException($"{nameof(defaultValues)}.Breadcrumb cannot be null", nameof(defaultValues));
-            Metadata = defaultValues.Metadata;
+            Metadata = defaultValues.Metadata ?? new Metadata.Metadata();
             ClientFileBaseUrl = defaultValues.ClientFileBaseUrl?.ToString().TrimEnd('/');
             ClientFileVersion = defaultValues.ClientFileVersion;
         }
@@ -37,7 +37,7 @@ namespace Escc.EastSussexGovUK.Core
         /// <summary>
         /// Gets or sets the metadata.
         /// </summary>
-        public Metadata.Metadata Metadata { get; set; } = new Metadata.Metadata();
+        public Metadata.Metadata Metadata { get; set; }
 
         /// <summary>
         /// Gets or sets the current master page or layout

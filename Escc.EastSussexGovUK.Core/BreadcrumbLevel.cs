@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Escc.EastSussexGovUK.Core
 {
     /// <summary>
     /// A level within the the hierarchy of the site
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class BreadcrumbLevel
     {
         /// <summary>

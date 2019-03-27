@@ -1,4 +1,5 @@
 ﻿
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Html;
 
 namespace Escc.EastSussexGovUK.Core
@@ -6,6 +7,7 @@ namespace Escc.EastSussexGovUK.Core
     /// <summary>
     /// The HTML controls that are required to display a page using the EastSussexGovUK template
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class TemplateHtml
     {
         /// <summary>

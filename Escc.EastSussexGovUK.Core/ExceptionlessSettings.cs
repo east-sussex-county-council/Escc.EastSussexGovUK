@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Escc.EastSussexGovUK.Core
@@ -7,6 +8,7 @@ namespace Escc.EastSussexGovUK.Core
     /// <summary>
     /// Configuration settings for using Exceptionless to track errors
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class ExceptionlessSettings
     {
         /// <summary>

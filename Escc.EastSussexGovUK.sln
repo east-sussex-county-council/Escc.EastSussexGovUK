@@ -46,7 +46,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Escc.EastSussexGovUK.Core",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreTest", "NetCoreTest\NetCoreTest.csproj", "{CD92D789-90E3-468B-8E4C-5978E704D4AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.ContentSecurityPolicy", "Escc.EastSussexGovUK.ContentSecurityPolicy\Escc.EastSussexGovUK.ContentSecurityPolicy.csproj", "{D8EA8BFF-7B95-4A68-B6B2-D4ED9869A771}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Escc.EastSussexGovUK.ContentSecurityPolicy", "Escc.EastSussexGovUK.ContentSecurityPolicy\Escc.EastSussexGovUK.ContentSecurityPolicy.csproj", "{D8EA8BFF-7B95-4A68-B6B2-D4ED9869A771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Core.Tests", "Escc.EastSussexGovUK.Core.Tests\Escc.EastSussexGovUK.Core.Tests.csproj", "{AD2983A5-8FA6-4041-8EBE-D17D5D72B372}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +123,12 @@ Global
 		{D8EA8BFF-7B95-4A68-B6B2-D4ED9869A771}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D8EA8BFF-7B95-4A68-B6B2-D4ED9869A771}.UAT|Any CPU.ActiveCfg = Debug|Any CPU
 		{D8EA8BFF-7B95-4A68-B6B2-D4ED9869A771}.UAT|Any CPU.Build.0 = Debug|Any CPU
+		{AD2983A5-8FA6-4041-8EBE-D17D5D72B372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2983A5-8FA6-4041-8EBE-D17D5D72B372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2983A5-8FA6-4041-8EBE-D17D5D72B372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2983A5-8FA6-4041-8EBE-D17D5D72B372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2983A5-8FA6-4041-8EBE-D17D5D72B372}.UAT|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2983A5-8FA6-4041-8EBE-D17D5D72B372}.UAT|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

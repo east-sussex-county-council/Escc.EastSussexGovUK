@@ -22,7 +22,7 @@ namespace Escc.EastSussexGovUK.Core
         /// <param name="httpContextAccessor">A way to get the HttpContext, used to access the URL of the request the breadcrumb trail should be generated for</param>
         public BreadcrumbTrailFromConfig(IOptions<BreadcrumbSettings> breadcrumbSettings, IHttpContextAccessor httpContextAccessor)
         {
-            if (httpContextAccessor == null || httpContextAccessor.HttpContext == null || httpContextAccessor.HttpContext.Request == null)
+            if (httpContextAccessor?.HttpContext?.Request == null)
             {
                 throw new ArgumentNullException(nameof(httpContextAccessor));
             }

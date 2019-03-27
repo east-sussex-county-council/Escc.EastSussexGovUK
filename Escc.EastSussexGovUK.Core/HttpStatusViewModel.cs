@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Escc.EastSussexGovUK.Core
 {
@@ -6,6 +7,7 @@ namespace Escc.EastSussexGovUK.Core
     /// A simple view model to enable the HTTP status pages to be displayed
     /// </summary>
     /// <seealso cref="Escc.EastSussexGovUK.Core.BaseViewModel" />
+    [ExcludeFromCodeCoverage]
     public class HttpStatusViewModel : BaseViewModel
     {
         /// <summary>

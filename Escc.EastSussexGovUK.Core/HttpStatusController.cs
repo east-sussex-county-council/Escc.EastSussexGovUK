@@ -47,7 +47,7 @@ namespace Escc.EastSussexGovUK.Core
             var model = new HttpStatusViewModel(_defaultModelValues)
             {
                 TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier
             };
             return View("~/_EastSussexGovUK_HttpStatus_BadRequest.cshtml", model);
         }
@@ -63,7 +63,7 @@ namespace Escc.EastSussexGovUK.Core
             var model = new HttpStatusViewModel(_defaultModelValues)
             {
                 TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier
             };
             return View("~/_EastSussexGovUK_HttpStatus_Forbidden.cshtml", model);
         }
@@ -78,7 +78,7 @@ namespace Escc.EastSussexGovUK.Core
             var model = new HttpStatusViewModel(_defaultModelValues)
             {
                 TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier
             };
             return View("~/_EastSussexGovUK_HttpStatus_Gone.cshtml", model);
         }
@@ -92,13 +92,13 @@ namespace Escc.EastSussexGovUK.Core
         {
             RandomDelay();
 
-            var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            var exceptionHandlerPathFeature = HttpContext?.Features.Get<IExceptionHandlerPathFeature>();
             exceptionHandlerPathFeature?.Error?.ToExceptionless().Submit();
 
             var model = new HttpStatusViewModel(_defaultModelValues)
             {
                 TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier
             };
             return View("~/_EastSussexGovUK_HttpStatus_InternalServerError.cshtml", model);
         }
@@ -120,8 +120,8 @@ namespace Escc.EastSussexGovUK.Core
                 var redirect = _redirectMatcher?.MatchRedirect(absoluteRequestedUrl);
                 if (redirect != null)
                 {
-                    redirect = _convertToAbsoluteUrlHandler?.HandleRedirect(redirect);
-                    redirect = _preserveQueryStringHandler?.HandleRedirect(redirect);
+                    redirect = _convertToAbsoluteUrlHandler?.HandleRedirect(redirect) ?? redirect;
+                    redirect = _preserveQueryStringHandler?.HandleRedirect(redirect) ?? redirect;
                     Response.Headers.Add("X-ESCC-Redirect", redirect.RedirectId.ToString());
                     Response.Headers.Add("Location", redirect.DestinationUrl.ToString());
                     return new StatusCodeResult(redirect.StatusCode);
@@ -137,7 +137,7 @@ namespace Escc.EastSussexGovUK.Core
             var model = new HttpStatusViewModel(_defaultModelValues)
             {
                 TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync(),
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier
             };
 
             return View("~/_EastSussexGovUK_HttpStatus_NotFound.cshtml", model);
