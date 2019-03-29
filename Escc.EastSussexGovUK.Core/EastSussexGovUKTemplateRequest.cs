@@ -51,7 +51,7 @@ namespace Escc.EastSussexGovUK.Core
             if (viewSelector == null) { throw new ArgumentNullException(nameof(viewSelector)); }
             _esccWebsiteView = viewSelector.CurrentViewIs(viewSelector.SelectView(_requestUrl, _request.Headers["User-Agent"].ToString()));
 
-            _htmlProvider = htmlProvider ?? throw new ArgumentNullException(nameof(htmlProvider));;
+            _htmlProvider = htmlProvider ?? throw new ArgumentNullException(nameof(htmlProvider));
             _breadcrumbProvider = breadcrumbProvider ?? throw new ArgumentNullException(nameof(breadcrumbProvider));
 
             _libraryContext = libraryContext;
@@ -70,7 +70,10 @@ namespace Escc.EastSussexGovUK.Core
             if (_webChatSettingsService != null)
             {
                 _webChatSettings = await _webChatSettingsService.ReadWebChatSettings().ConfigureAwait(false);
-                _webChatSettings.PageUrl = new Uri(_requestUrl.AbsolutePath, UriKind.Relative);
+                if (_webChatSettings != null)
+                {
+                    _webChatSettings.PageUrl = new Uri(_requestUrl.AbsolutePath, UriKind.Relative);
+                }
                 return _webChatSettings;
             }
             return null;

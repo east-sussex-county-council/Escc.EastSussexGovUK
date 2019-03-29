@@ -45,6 +45,9 @@ namespace Escc.EastSussexGovUK.Core
                 throw new ArgumentNullException(nameof(configuration));
             }
 
+            // Set up the global configuration service 
+            services.AddOptions();
+
             // The views, including _ViewStart.cshtml, are included as embedded resources as that is the only way to distribute content in a NuGet package.
             // Register a provider that allows these to be used just like ordinary files. Note that it must reference a specific namespace, so it only works 
             // for files in the Views folder. Another instance would be required to include files in a different folder.
@@ -54,8 +57,7 @@ namespace Escc.EastSussexGovUK.Core
                 options.FileProviders.Add(new EmbeddedFileProvider(typeof(Metadata.Metadata).Assembly, "Escc.Metadata.Views.Shared"));
             });
 
-            // Set up the global configuration service and add the configuration sections that are relevant to the template
-            services.AddOptions();
+            // Add the configuration sections that are relevant to the template
             services.Configure<ConfigurationSettings>(options => configuration.GetSection("Escc.Net").Bind(options));
             services.Configure<RemoteMasterPageSettings>(options => configuration.GetSection("Escc.EastSussexGovUK:Mvc").Bind(options));
             services.Configure<MvcSettings>(options => configuration.GetSection("Escc.EastSussexGovUK:Mvc").Bind(options));
@@ -129,71 +131,8 @@ namespace Escc.EastSussexGovUK.Core
             }
 
             // Use security headers recommended by securityheaders.io
-            app.UseEastSussexGovUKContentSecurityPolicy(cspOptions);
-            app.UseEastSussexGovUKSecurityHeaders();
-
-            return app;
-        }
-
-        /// <summary>
-        /// Configures the Content Security Policy for applications using the EastSussexGovUK template. Call <see cref="UseEastSussexGovUK"/> instead unless you are trying to override the default behaviour.
-        /// </summary>
-        /// <param name="app">The <see cref="IApplicationBuilder"/> instance provided by ASP.NET Core to the Startup.Configure() method</param>
-        /// <param name="cspOptions">An optional Content Security Policy for the application in addition to the default policy for the site</param>
-        /// <returns></returns>
-        public static IApplicationBuilder UseEastSussexGovUKContentSecurityPolicy(this IApplicationBuilder app, CspOptions cspOptions = null)
-        {
             app.UseMiddleware<ContentSecurityPolicyMiddleware>(cspOptions);
-            return app;
-        }
-
-        /// <summary>
-        /// Configures standard security headers for applications using the EastSussexGovUK template. Call <see cref="UseEastSussexGovUK"/> instead unless you are trying to override the default behaviour.
-        /// </summary>
-        /// <param name="app">The <see cref="IApplicationBuilder"/> instance provided by ASP.NET Core to the Startup.Configure() method</param>
-        /// <returns></returns>
-        public static IApplicationBuilder UseEastSussexGovUKSecurityHeaders(this IApplicationBuilder app)
-        {
-            app.Use((context, next) =>
-            {
-                context.Response.OnStarting(() =>
-                {
-                    // Use ExpectCT in report mode only to assess whether it is ready to be enabled
-                    if (!context.Response.Headers.Keys.Contains("Expect-CT"))
-                    {
-                        context.Response.Headers.Add("Expect-CT", "max-age=0, report-uri=\"https://eastsussexgovuk.report-uri.com/r/d/ct/reportOnly\"");
-                    }
-
-                    // Defend against clickjacking: Use SAMEORIGIN rather than DENY to allow the use of SVG images.
-                    // When Umbraco is in use, it requires same origin framing for preview and template editing.
-                    if (!context.Response.Headers.Keys.Contains("X-Frame-Options"))
-                    {
-                        context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
-                    }
-
-                    // Enable the cross-site scripting filter built into most browsers, blocking any requests detected as XSS.
-                    if (!context.Response.Headers.Keys.Contains("X-XSS-Protection"))
-                    {
-                        context.Response.Headers.Add("X-XSS-Protection", "1; mode=block");
-                    }
-
-                    // Force browsers to stick with the declared MIME type rather than guessing it from the content.
-                    if (!context.Response.Headers.Keys.Contains("X-Content-Type-Options"))
-                    {
-                        context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
-                    }
-
-                    // Allow referrer URL to be passed to sites on the same protocol, but not leaked from HTTPS to HTTP
-                    if (!context.Response.Headers.Keys.Contains("Referrer-Policy"))
-                    {
-                        context.Response.Headers.Add("Referrer-Policy", "no-referrer-when-downgrade");
-                    }
-
-                    return Task.CompletedTask;
-                });
-
-                return next();
-            });
+            app.UseMiddleware<SecurityHeadersMiddleware>();
 
             return app;
         }

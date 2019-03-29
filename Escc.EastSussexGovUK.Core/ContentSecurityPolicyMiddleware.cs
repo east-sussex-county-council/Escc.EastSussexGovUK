@@ -39,50 +39,7 @@ namespace Escc.EastSussexGovUK.Core
         {
             context.Response.OnStarting((contentSecurityPoliciesFromPage) =>
             {
-                // Apply a Content Security Policy for the site, but allow additional directives to be supplied as an argument.
-                // The code is based on https://github.com/Peter-Juhasz/aspnetcoresecurity/blob/master/src/ContentSecurityPolicy/ContentSecurityPolicyMiddleware.cs,
-                // but does not set the obsolete X- versions to save bandwidth, as it's a big header, and adds the IClientDependencySet support.
-                if (context.Response.GetTypedHeaders().ContentType?.MediaType.Equals("text/html", StringComparison.OrdinalIgnoreCase) ?? false)
-                {
-                    // Start by combining the sitewide Content Security Policy with the Content Security Policy defined at application startup
-                    var cspToApply = _cspOptionsFromStartup ?? new CspOptions();
-                    cspToApply = cspToApply.AddEastSussexGovUKDefaultPolicy().AddGoogleFonts().AddGoogleAnalytics().AddCrazyEgg();
-
-                    // If additional Content Security Policies are registered on the page, it will be in the form of aliases represented by a 
-                    // ContentSecurityPolicyDependency. This representation is inherited from the .NET Framework implementation where standard 
-                    // Content Security Policies were defined in config. In .NET Core they are defined as extension methods, so use reflection
-                    // to turn the alias into a method we can run to update the policy.
-                    var policiesFromPage = contentSecurityPoliciesFromPage as IList<ContentSecurityPolicyDependency>;
-                    if (policiesFromPage != null)
-                    {
-                        var cspExtensionMethods = typeof(ContentSecurityPolicyExtensions);
-                        foreach (var policy in policiesFromPage)
-                        {
-                            var updatePolicyMethod = cspExtensionMethods.GetMethod($"Add{policy.Alias}", (BindingFlags.Static | BindingFlags.Public | BindingFlags.IgnoreCase));
-                            if (updatePolicyMethod != null)
-                            { 
-                                cspToApply = (CspOptions)updatePolicyMethod.Invoke(null, new [] { cspToApply });
-                            }
-                        }
-                    }
-
-                    if (_environment.IsDevelopment())
-                    {
-                        // allow any resources from localhost in development
-                        cspToApply = cspToApply.AddLocalhost();
-
-                        // allow inline styles and scripts for developer exception page
-                        if (context.Response.StatusCode == (int)HttpStatusCode.InternalServerError)
-                        {
-                            var developerOptions = cspToApply.Clone();
-                            developerOptions.StyleSrc = developerOptions.StyleSrc.AddUnsafeInline();
-                            developerOptions.ScriptSrc = developerOptions.ScriptSrc.AddUnsafeInline();
-                            cspToApply = developerOptions;
-                        }
-                    }
-
-                    context.Response.Headers["Content-Security-Policy"] = cspToApply.ToString();
-                }
+                AddHeader(context, _environment, _cspOptionsFromStartup, contentSecurityPoliciesFromPage as IList<ContentSecurityPolicyDependency>);
 
                 return Task.CompletedTask;
             },
@@ -91,6 +48,57 @@ namespace Escc.EastSussexGovUK.Core
             clientDependencySet?.RequiredContentSecurityPolicy);
 
             await _next.Invoke(context);
+        }
+
+        /// <remarks>
+        /// Extracted to a separate method for unit testing
+        /// </remarks>
+        internal static void AddHeader(HttpContext context, IHostingEnvironment environment, CspOptions cspOptionsFromStartup, IList<ContentSecurityPolicyDependency> contentSecurityPoliciesFromPage)
+        {
+            // Apply a Content Security Policy for the site, but allow additional directives to be supplied as an argument.
+            // The code is based on https://github.com/Peter-Juhasz/aspnetcoresecurity/blob/master/src/ContentSecurityPolicy/ContentSecurityPolicyMiddleware.cs,
+            // but does not set the obsolete X- versions to save bandwidth, as it's a big header, and adds the IClientDependencySet support.
+            if (context.Response.GetTypedHeaders().ContentType?.MediaType.Equals("text/html", StringComparison.OrdinalIgnoreCase) ?? false)
+            {
+                // Start by combining the sitewide Content Security Policy with the Content Security Policy defined at application startup
+                var cspToApply = cspOptionsFromStartup ?? new CspOptions();
+                cspToApply = cspToApply.AddEastSussexGovUKDefaultPolicy().AddGoogleFonts().AddGoogleAnalytics().AddCrazyEgg();
+
+                // If additional Content Security Policies are registered on the page, it will be in the form of aliases represented by a 
+                // ContentSecurityPolicyDependency. This representation is inherited from the .NET Framework implementation where standard 
+                // Content Security Policies were defined in config. In .NET Core they are defined as extension methods, so use reflection
+                // to turn the alias into a method we can run to update the policy.
+                var policiesFromPage = contentSecurityPoliciesFromPage as IList<ContentSecurityPolicyDependency>;
+                if (policiesFromPage != null)
+                {
+                    var cspExtensionMethods = typeof(ContentSecurityPolicyExtensions);
+                    foreach (var policy in policiesFromPage)
+                    {
+                        var updatePolicyMethod = cspExtensionMethods.GetMethod($"Add{policy.Alias}", (BindingFlags.Static | BindingFlags.Public | BindingFlags.IgnoreCase));
+                        if (updatePolicyMethod != null)
+                        {
+                            cspToApply = (CspOptions)updatePolicyMethod.Invoke(null, new[] { cspToApply });
+                        }
+                    }
+                }
+
+                if (environment.IsDevelopment())
+                {
+                    // allow any resources from localhost in development
+                    cspToApply = cspToApply.AddLocalhost();
+
+                    // allow inline styles and scripts for developer exception page
+                    if (context.Response.StatusCode == (int)HttpStatusCode.InternalServerError)
+                    {
+                        var developerOptions = cspToApply.Clone();
+                        developerOptions.StyleSrc = developerOptions.StyleSrc.AddUnsafeInline();
+                        developerOptions.ScriptSrc = developerOptions.ScriptSrc.AddUnsafeInline();
+                        cspToApply = developerOptions;
+                    }
+                }
+
+                context.Response.Headers["Content-Security-Policy"] = cspToApply.ToString();
+            }
         }
     }
 }
