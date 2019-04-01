@@ -8,17 +8,15 @@ using Escc.EastSussexGovUK.Features;
 using Escc.Net;
 using Escc.Net.Configuration;
 using Microsoft.Extensions.Options;
-using NUnit.Framework;
+using Xunit;
 
 namespace Escc.EastSussexGovUK.Tests
 {
-    [TestFixture]
     public class WebChatTests
     {
         private WebChatSettings _model;
 
-        [SetUp]
-        public void Setup()
+        public WebChatTests()
         {
             // These were the actual URLs specified in the initial implemenatation of web chat
             var chatInclude = new [] {
@@ -63,47 +61,47 @@ namespace Escc.EastSussexGovUK.Tests
             foreach (var url in chatExclude) _model.ExcludedUrls.Add(new Uri(url, UriKind.Relative));
         }
 
-        [Test]
-        public void ExactUrlIsMatched()
+        [Fact]
+        public void WebChat_matches_exact_URL()
         {
             _model.PageUrl = new Uri("/roadsandtransport/roads/default.htm", UriKind.Relative);
             
             var feature = new WebChat() {WebChatSettings = _model};
 
-            Assert.IsTrue(feature.IsRequired());
+            Assert.True(feature.IsRequired());
         }
 
-        [Test]
-        public void FolderUrlIsMatched()
+        [Fact]
+        public void WebChat_matches_folder_URL()
         {
              _model.PageUrl = new Uri("/contactus/some-section/default.htm", UriKind.Relative);
             
             var feature = new WebChat() {WebChatSettings = _model};
 
-            Assert.IsTrue(feature.IsRequired());
+            Assert.True(feature.IsRequired());
         }
 
-        [Test]
-        public void ExcludedExactUrlIsNotMatched()
+        [Fact]
+        public void WebChat_does_not_match_excluded_exact_URL()
         {
             _model.PageUrl = new Uri("/contactus/apply/default.htm", UriKind.Relative);
 
             var feature = new WebChat() { WebChatSettings = _model };
 
-            Assert.IsFalse(feature.IsRequired());
+            Assert.False(feature.IsRequired());
         }
 
-        [Test]
-        public void ExcludedFolderUrlIsNotMatched()
+        [Fact]
+        public void WebChat_does_not_match_excluded_folder_URL()
         {
             _model.PageUrl = new Uri("/contactus/pay/default.htm", UriKind.Relative);
 
             var feature = new WebChat() { WebChatSettings = _model };
 
-            Assert.IsFalse(feature.IsRequired());
+            Assert.False(feature.IsRequired());
         }
 
-        //[Test]
+        //[Fact]
         // This is an integration test - use for testing changes, but it will not always pass because it relies on local changeable data 
         public async Task WebChatApiRequest()
         {
@@ -111,7 +109,7 @@ namespace Escc.EastSussexGovUK.Tests
             var source = new WebChatSettingsFromApi(apiSettings,new HttpClientProvider(new ConfigurationProxyProvider()), null);
             var settings = await source.ReadWebChatSettings();
             settings.PageUrl = new Uri("/some-relative-url");
-            Assert.AreEqual("/yourcouncil/", settings.WebChatUrls[0].ToString());
+            Assert.Equal("/yourcouncil/", settings.WebChatUrls[0].ToString());
         }
     }
 }

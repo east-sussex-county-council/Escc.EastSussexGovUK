@@ -6,16 +6,11 @@
     <EgmsWebMetadata xdt:Transform="RemoveAttributes(creator)" xdt:Locator="Condition(starts-with(@creator, 'Web Team'))" />
     <EgmsWebMetadata xdt:Transform="RemoveAttributes(lgilType)" xdt:Locator="Condition(@lgilType = 'Providing information')" />
     <EgmsWebMetadata xdt:Transform="RemoveAttributes(copyrightUrl)" xdt:Locator="Condition(@copyrightUrl = 'https://www.eastsussex.gov.uk/about-this-site/copyright/')" />
-    <EgmsWebMetadata xdt:Transform="RemoveAttributes(openSearchUrl)" xdt:Locator="Condition(@openSearchUrl = 'https://www.eastsussex.gov.uk/search/opensearch.xml')" />
-    <EgmsWebMetadata xdt:Transform="RemoveAttributes(openSearchTitle)" xdt:Locator="Condition(@openSearchTitle = 'East Sussex County Council')" />
     <EgmsWebMetadata xdt:Transform="RemoveAttributes(titlePattern)" xdt:Locator="Condition(@titlePattern = '{0} &amp;#8211; East Sussex County Council')" />
-    <EgmsWebMetadata xdt:Transform="RemoveAttributes(hasTouchIcon)" xdt:Locator="Condition(@hasTouchIcon = 'true')" />
     <EgmsWebMetadata xdt:Transform="RemoveAttributes(facebookAppId)" xdt:Locator="Condition(@facebookAppId = '169406409819518')" />
     <EgmsWebMetadata xdt:Transform="RemoveAttributes(siteName)" xdt:Locator="Condition(@siteName = 'East Sussex County Council')" />
     <EgmsWebMetadata xdt:Transform="RemoveAttributes(siteImageUrl)" xdt:Locator="Condition(@siteImageUrl = 'https://www.eastsussex.gov.uk/img/logo-for-facebook.png')" />
     <EgmsWebMetadata xdt:Transform="RemoveAttributes(openGraphType)" xdt:Locator="Condition(@openGraphType = 'article')" />
-    <EgmsWebMetadata xdt:Transform="RemoveAttributes(windowsTileIconUrl)" xdt:Locator="Condition(@windowsTileIconUrl = 'https://www.eastsussex.gov.uk/windows-tile.png')" />
-    <EgmsWebMetadata xdt:Transform="RemoveAttributes(windowsTileColour)" xdt:Locator="Condition(@windowsTileColour = '#ffffff')" />
     <EgmsWebMetadata xdt:Transform="RemoveAttributes(twitterAccount)" xdt:Locator="Condition(@twitterAccount = '@eastsussexcc')" />
     <EgmsWebMetadata xdt:Transform="Remove" xdt:Locator="Condition(count(@*) = 0)" />
     <EgmsWebMetadata errorMode="Off" xdt:Transform="SetAttributes(errorMode)" />

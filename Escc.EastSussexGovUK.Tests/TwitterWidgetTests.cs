@@ -2,21 +2,20 @@
 using System.Web;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Views;
-using NUnit.Framework;
+using Xunit;
 
 namespace Escc.EastSussexGovUK.Tests
-{
-    [TestFixture]
+{ 
     public class TwitterWidgetTests
     {
-        [Test]
-        public void NotShownInPlainView()
+        [Fact]
+        public void Twitter_not_shown_in_Plain_view()
         {
             var model = new SocialMediaSettings();
 
             var feature = new FacebookLikeBox() {SocialMedia = model, EsccWebsiteView = EsccWebsiteView.Plain};
 
-            Assert.IsFalse(feature.IsRequired());
+            Assert.False(feature.IsRequired());
         }
     }
 }

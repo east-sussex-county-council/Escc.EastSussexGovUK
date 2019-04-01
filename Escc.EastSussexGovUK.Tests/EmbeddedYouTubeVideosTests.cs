@@ -4,31 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Escc.EastSussexGovUK.Features;
-using NUnit.Framework;
+using Xunit;
 
 namespace Escc.EastSussexGovUK.Tests
 {
-    [TestFixture]
     public class EmbeddedYouTubeVideosTests
     {
-        [Test]
-        public void YouTubeVideoUrlIsRecognised()
+        [Fact]
+        public void YouTube_video_URL_is_recognised()
         {
             const string html = "<a href=\"https://www.youtube.com/watch?v=N_dUmDBfp6k\">YouTube video</a>";
 
             var feature = new EmbeddedYouTubeVideos() {Html = new[] {html}};
 
-            Assert.IsTrue(feature.IsRequired());
+            Assert.True(feature.IsRequired());
         }
 
-        [Test]
-        public void YouTubeShareUrlIsRecognised()
+        [Fact]
+        public void YouTube_share_URL_is_recognised()
         {
             const string html = "<a href=\"http://youtu.be/N_dUmDBfp6k\">YouTube video</a>";
 
             var feature = new EmbeddedYouTubeVideos() { Html = new[] { html } };
 
-            Assert.IsTrue(feature.IsRequired());
+            Assert.True(feature.IsRequired());
         }
     }
 }

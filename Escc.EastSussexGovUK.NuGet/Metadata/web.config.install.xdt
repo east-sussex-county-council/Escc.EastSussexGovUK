@@ -38,15 +38,10 @@
     <EgmsWebMetadata openGraphType="article" xdt:Transform="SetAttributes(openGraphType)" xdt:Locator="Condition(count(@openGraphType) = 0)" />
     <EgmsWebMetadata copyrightUrl="https://www.eastsussex.gov.uk/about-this-site/copyright/" xdt:Transform="SetAttributes(copyrightUrl)" xdt:Locator="Condition(count(@copyrightUrl) = 0)" />
     <EgmsWebMetadata facebookAppId="169406409819518" xdt:Transform="SetAttributes(facebookAppId)" xdt:Locator="Condition(count(@facebookAppId) = 0)" />
-    <EgmsWebMetadata hasTouchIcon="true" xdt:Transform="SetAttributes(hasTouchIcon)" xdt:Locator="Condition(count(@hasTouchIcon) = 0)" />
-    <EgmsWebMetadata openSearchUrl="https://www.eastsussex.gov.uk/search/opensearch.xml" xdt:Transform="SetAttributes(openSearchUrl)" xdt:Locator="Condition(count(@openSearchUrl) = 0)" />
-    <EgmsWebMetadata openSearchTitle="East Sussex County Council" xdt:Transform="SetAttributes(openSearchTitle)" xdt:Locator="Condition(count(@openSearchTitle) = 0)" />
     <EgmsWebMetadata siteName="East Sussex County Council" xdt:Transform="SetAttributes(siteName)" xdt:Locator="Condition(count(@siteName) = 0)" />
     <EgmsWebMetadata siteImageUrl="https://www.eastsussex.gov.uk/img/logo-for-facebook.png" xdt:Transform="SetAttributes(siteImageUrl)" xdt:Locator="Condition(count(@siteImageUrl) = 0)" />
     <EgmsWebMetadata titlePattern="{0} &amp;#8211; East Sussex County Council" xdt:Transform="SetAttributes(titlePattern)" xdt:Locator="Condition(count(@titlePattern) = 0)" />
     <EgmsWebMetadata twitterAccount="@eastsussexcc" xdt:Transform="SetAttributes(twitterAccount)" xdt:Locator="Condition(count(@twitterAccount) = 0)" />
-    <EgmsWebMetadata windowsTileIconUrl="https://www.eastsussex.gov.uk/windows-tile.png" xdt:Transform="SetAttributes(windowsTileIconUrl)" xdt:Locator="Condition(count(@windowsTileIconUrl) = 0)" />
-    <EgmsWebMetadata windowsTileColour="#ffffff" xdt:Transform="SetAttributes(windowsTileColour)" xdt:Locator="Condition(count(@windowsTileColour) = 0)" />
   </Escc.Web.Metadata>
 
   <system.web xdt:Transform="Insert" />

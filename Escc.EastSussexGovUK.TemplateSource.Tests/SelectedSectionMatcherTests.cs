@@ -8,7 +8,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.Tests
     public class SelectedSectionMatcherTests
     {
         [Test]
-        public void NoMatchReturnsNull()
+        public void SelectedSection_no_match_returns_null()
         {
             var text = "Test";
             var control = new HtmlGenericControl()
@@ -23,7 +23,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.Tests
         }
 
         [Test]
-        public void ExactMatchIsFound()
+        public void SelectedSection_exact_match_is_found()
         {
             var text = "Libraries";
             var control = new HtmlGenericControl()
@@ -38,7 +38,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.Tests
         }
 
         [Test]
-        public void AmpersandMatchesAnd()
+        public void SelectedSection_ampersand_matches_and()
         {
             var text = "Environment and planning";
             var control = new HtmlGenericControl()
@@ -53,7 +53,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.Tests
         }
 
         [Test]
-        public void LineBreakMatchesSpace()
+        public void SelectedSection_line_break_matches_space()
         {
             var text = "Your Council";
             var control = new HtmlGenericControl()
@@ -68,7 +68,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.Tests
         }
 
         [Test]
-        public void FirstWordMatchIsFound()
+        public void SelectedSection_first_word_match_is_found()
         {
             var text = "Business in East Sussex";
             var control = new HtmlGenericControl()
@@ -83,7 +83,7 @@ namespace Escc.EastSussexGovUK.TemplateSource.Tests
         }
 
         [Test]
-        public void ExactMatchBeatsFirstWord()
+        public void SelectedSection_exact_match_beats_first_word()
         {
             var text = "Business";
             var exact = new HtmlGenericControl()

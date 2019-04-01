@@ -152,7 +152,14 @@ namespace Escc.EastSussexGovUK.Views
                     {
                         if (!String.IsNullOrEmpty(_userAgent))
                         {
-                            request.Headers.UserAgent.ParseAdd(_userAgent);
+                            try
+                            {
+                                request.Headers.UserAgent.ParseAdd(_userAgent);
+                            }
+                            catch (FormatException)
+                            {
+                                // some real-world User-Agent values fail .NET parsing. No workaround available to just treat as if there was no User-Agent.
+                            }
                         }
 
                         using (var response = await _httpClient.SendAsync(request).ConfigureAwait(false))

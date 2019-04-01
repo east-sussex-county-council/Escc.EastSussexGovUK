@@ -4,33 +4,32 @@ using System.Linq;
 using System.Text;
 using Escc.AddressAndPersonalDetails;
 using Escc.EastSussexGovUK.Features;
-using NUnit.Framework;
+using Xunit;
 
 namespace Escc.EastSussexGovUK.Tests
 {
-    [TestFixture]
     public class WebsiteFormEmailAddressTransformerTests
     {
-        [Test]
-        public void TransformBadAddressReturnsNull()
+        [Fact]
+        public void Transform_bad_address_returns_null()
         {
             var email = new ContactEmail("Health%20and%20Safety%20");
             var transformer = new WebsiteFormEmailAddressTransformer(new Uri("https://example.org"));
 
             var result = transformer.TransformEmailAddress(email);
 
-            Assert.IsNull(result);
+            Assert.Null(result);
         }
 
-        [Test]
-        public void TransformAddressReturnsFormUrlWithEmailAsDisplayName()
+        [Fact]
+        public void Transform_address_returns_form_URL_with_email_as_display_name()
         {
             var email = new ContactEmail("first.last@example.org");
             var transformer = new WebsiteFormEmailAddressTransformer(new Uri("https://example.org"));
 
             var result = transformer.TransformEmailAddress(email);
 
-            Assert.AreEqual("https://example.org/contactus/emailus/email.aspx?n=first.last%40example.org&e=first.last&d=example.org", result);
+            Assert.Equal("https://example.org/contactus/emailus/email.aspx?n=first.last%40example.org&e=first.last&d=example.org", result);
         }
     }
 }

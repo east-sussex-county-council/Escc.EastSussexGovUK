@@ -1,15 +1,14 @@
 ﻿using System;
 using Escc.EastSussexGovUK.Features;
 using Escc.EastSussexGovUK.Views;
-using NUnit.Framework;
+using Xunit;
 
 namespace Escc.EastSussexGovUK.Tests
 {
-    [TestFixture]
     public class FacebookLikeBoxTests
     {
-        [Test]
-        public void NotShownInPlainView()
+        [Fact]
+        public void Facebook_Page_Plugin_not_showin_in_Plain_view()
         {
               var model = new SocialMediaSettings()
             {
@@ -18,7 +17,7 @@ namespace Escc.EastSussexGovUK.Tests
 
             var feature = new FacebookLikeBox() {SocialMedia = model, EsccWebsiteView = EsccWebsiteView.Plain};
 
-            Assert.IsFalse(feature.IsRequired());
+            Assert.False(feature.IsRequired());
         }
     }
 }
