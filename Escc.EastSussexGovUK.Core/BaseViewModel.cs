@@ -26,7 +26,7 @@ namespace Escc.EastSussexGovUK.Core
             BreadcrumbProvider = defaultValues.Breadcrumb ?? throw new ArgumentException($"{nameof(defaultValues)}.Breadcrumb cannot be null", nameof(defaultValues));
             Metadata = defaultValues.Metadata ?? new Metadata.Metadata();
             ClientFileBaseUrl = defaultValues.ClientFileBaseUrl?.ToString().TrimEnd('/');
-            ClientFileVersion = defaultValues.ClientFileVersion;
+            ClientFileVersion = string.IsNullOrEmpty(defaultValues.ClientFileVersion) ? "1" : defaultValues.ClientFileVersion;
         }
 
         /// <summary>
