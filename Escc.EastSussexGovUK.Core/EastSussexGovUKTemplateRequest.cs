@@ -92,14 +92,15 @@ namespace Escc.EastSussexGovUK.Core
             var isLibraryCatalogueRequest = _libraryContext?.RequestIsFromLibraryCatalogueMachine() ?? false;
 
             _templateHtml = new TemplateHtml();
+            var applicationId = String.IsNullOrEmpty(_request.PathBase.ToString()) ? "/" : _request.PathBase.ToString();
             if (_esccWebsiteView == EsccWebsiteView.Desktop)
             {
-                var htmlTagTask = _htmlProvider.FetchHtmlForControl(_request.PathBase, _requestUrl, "HtmlTag", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
-                var metadataTask = _htmlProvider.FetchHtmlForControl(_request.PathBase, _requestUrl, "MetadataDesktop", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
-                var aboveHeaderTask = _htmlProvider.FetchHtmlForControl(_request.PathBase, _requestUrl, "AboveHeaderDesktop", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
-                var headerTask = _htmlProvider.FetchHtmlForControl(_request.PathBase, _requestUrl, "HeaderDesktop", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
-                var footerTask = _htmlProvider.FetchHtmlForControl(_request.PathBase, _requestUrl, "FooterDesktop", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
-                var scriptsTask = _htmlProvider.FetchHtmlForControl(_request.PathBase, _requestUrl, "ScriptsDesktop", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
+                var htmlTagTask = _htmlProvider.FetchHtmlForControl(applicationId, _requestUrl, "HtmlTag", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
+                var metadataTask = _htmlProvider.FetchHtmlForControl(applicationId, _requestUrl, "MetadataDesktop", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
+                var aboveHeaderTask = _htmlProvider.FetchHtmlForControl(applicationId, _requestUrl, "AboveHeaderDesktop", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
+                var headerTask = _htmlProvider.FetchHtmlForControl(applicationId, _requestUrl, "HeaderDesktop", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
+                var footerTask = _htmlProvider.FetchHtmlForControl(applicationId, _requestUrl, "FooterDesktop", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
+                var scriptsTask = _htmlProvider.FetchHtmlForControl(applicationId, _requestUrl, "ScriptsDesktop", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
 
                 var results = await Task.WhenAll(htmlTagTask, metadataTask, aboveHeaderTask, headerTask, footerTask, scriptsTask).ConfigureAwait(false);
 
@@ -112,10 +113,10 @@ namespace Escc.EastSussexGovUK.Core
             }
             else if (_esccWebsiteView == EsccWebsiteView.FullScreen)
             {
-                var htmlTagTask = _htmlProvider.FetchHtmlForControl(_request.PathBase, _requestUrl, "HtmlTag", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
-                var metadataTask = _htmlProvider.FetchHtmlForControl(_request.PathBase, _requestUrl, "MetadataFullScreen", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
-                var headerTask = _htmlProvider.FetchHtmlForControl(_request.PathBase, _requestUrl, "HeaderFullScreen", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
-                var scriptsTask = _htmlProvider.FetchHtmlForControl(_request.PathBase, _requestUrl, "ScriptsFullScreen", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
+                var htmlTagTask = _htmlProvider.FetchHtmlForControl(applicationId, _requestUrl, "HtmlTag", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
+                var metadataTask = _htmlProvider.FetchHtmlForControl(applicationId, _requestUrl, "MetadataFullScreen", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
+                var headerTask = _htmlProvider.FetchHtmlForControl(applicationId, _requestUrl, "HeaderFullScreen", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
+                var scriptsTask = _htmlProvider.FetchHtmlForControl(applicationId, _requestUrl, "ScriptsFullScreen", _breadcrumbProvider, textSize.Value, isLibraryCatalogueRequest);
 
                 var results = await Task.WhenAll(htmlTagTask, metadataTask, headerTask, scriptsTask).ConfigureAwait(false);
 
