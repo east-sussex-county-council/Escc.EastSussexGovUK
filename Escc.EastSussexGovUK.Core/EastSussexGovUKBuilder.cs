@@ -131,7 +131,7 @@ namespace Escc.EastSussexGovUK.Core
             }
 
             // Use security headers recommended by securityheaders.io
-            app.UseMiddleware<ContentSecurityPolicyMiddleware>(cspOptions);
+            app.UseMiddleware<ContentSecurityPolicyMiddleware>(cspOptions ?? new CspOptions());
             app.UseMiddleware<SecurityHeadersMiddleware>();
 
             return app;
