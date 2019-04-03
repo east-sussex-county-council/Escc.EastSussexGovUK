@@ -1,6 +1,6 @@
 # Applying the sitewide design with ASP.NET Core MVC
 
-The ASP.NET Core version of the template is not yet feature-complete and is subject to significant changes before it is ready for use on public-facing services.
+The ASP.NET Core version of the template is the current recommended version for new applications on the website.
 
 ## Getting started
 
@@ -19,7 +19,12 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 	    public class Startup
 	    {
-			...
+			public Startup(IConfiguration configuration)
+        	{
+            	Configuration = configuration;
+        	}
+
+        	public IConfiguration Configuration { get; }
 	
 	        public void ConfigureServices(IServiceCollection services)
 	        {
@@ -37,7 +42,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 			}
 		}
 
-3. Create a view model which inherits from `Escc.EastSussexGovUK.Core.BaseViewModel`. Its constructor must inject an instance of `IBreadcrumbProvider` since this is required to build the template.
+4. Create a view model which inherits from `Escc.EastSussexGovUK.Core.BaseViewModel`. Its constructor must inject an instance of `IBreadcrumbProvider` since this is required to build the template.
 
 		using Escc.EastSussexGovUK.Core;
 
@@ -46,7 +51,9 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 	        public MyCustomModel(IViewModelDefaultValuesProvider defaultValues): base(defaultValues) { }
 	    }
 
-4. Add a controller. The constructor must inject the resources required for the website template. Any controller action which results in a view using the website template must be marked with the `async` keyword and return `Task<IActionResult>`. It must also load the template HTML, and usually web chat too, using the following code. You can put this in a base controller class if you have many controllers in your application.
+5. Add a controller. The constructor must inject the resources required for the website template. Any controller action which results in a view using the website template must be marked with the `async` keyword and return `Task<IActionResult>`. It must also load the template HTML, and usually web chat too, using the following code. You can put this in a base controller class if you have many controllers in your application.
+
+	Add one or more routes, either using attribute routing as shown here or as part of the call to `app.UseMvc();` in the `Startup` class. 
 		
 		using System;
 		using System.Threading.Tasks;
@@ -58,7 +65,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 		public class ExampleController : Controller
 		{
 	        private readonly IEastSussexGovUKTemplateRequest _templateRequest;
-     	   private readonly IViewModelDefaultValuesProvider _defaultModelValues;
+     	    private readonly IViewModelDefaultValuesProvider _defaultModelValues;
 	
 	        public ExampleController(IEastSussexGovUKTemplateRequest templateRequest, IViewModelDefaultValuesProvider defaultModelValues)
 	        {
@@ -66,6 +73,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 	            _defaultModelValues = defaultModelValues;
 	        }
 
+			[Route("")]
 			public async Task<IActionResult> Index()
 			{
 				var model = new MyCustomModel(_defaultModelValues); // inheriting from BaseViewModel
@@ -95,7 +103,13 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 			}
 		}
 
-5. Add a view. The main content of your page should usually use the standard text styles. See the [website style guide](https://github.com/east-sussex-county-council/Escc.WebsiteStyleGuide) for a full guide.
+6. Add a `~/Views/_ViewImports.cshtml` file with the following contents. This makes tag helpers in your views work.
+
+		@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+	You may want to add `@using Escc.MyApplication` in here too, where `Escc.MyApplication` is the default namespace of your application.
+ 
+7. Add a view. The main content of your page should usually use the standard text styles. See the [website style guide](https://github.com/east-sussex-county-council/Escc.WebsiteStyleGuide) for a full guide.
 
 		<div class="full-page">
 			<div class="text-content content">
@@ -137,7 +151,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 			<script src="~/js/my-script.js?v=@Model.ClientFileVersion"></script>
 		}
 
-6. Add configuration for the template elements and exception handling. For example, if you are using `appsettings.json` for configuration:
+8. Add configuration for the template elements and exception handling. For example, if you are using `appsettings.json` for configuration:
 
    		{
 	  	  "Escc.EastSussexGovUK": {
@@ -160,7 +174,33 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 	If your application runs behind a proxy server you can configure the proxy URL and authentication details in using the settings documented in the [Escc.Net](https://github.com/east-sussex-county-council/Escc.Net) project.
 
-5. Run the project.
+9. Run the project.
+
+	If you are using Visual Studio and targeting IIS for development, you'll need to update `~/Properties/launchSettings.json` which is configured for IIS Express by default. A minimal `launchSettings.json` for IIS looks like this:
+
+		{
+		  "iisSettings": {
+		    "windowsAuthentication": false,
+		    "anonymousAuthentication": true,
+		    "iis": {
+		      "applicationUrl": "https://localhost"
+		    }
+		  },
+		  "profiles": {
+		    "IIS": {
+		      "commandName": "IIS",
+		      "launchBrowser": true,
+		      "environmentVariables": {
+		        "ASPNETCORE_ENVIRONMENT": "Development"
+		      },
+		      "ancmHostingModel": "OutOfProcess"
+		    }
+		  }
+		}
+
+	You can change `https://localhost` to any site or application URL in IIS. You can also change most of these settings in `Project Properties > Debug`.
+
+	IIS is set to run in `OutOfProcess` mode, meaning it acts as a reverse proxy to the built-in web server, Kestrel. Changing this to `InProcess` should be more efficient but, at the time of writing, in development the `ASPNETCORE_ENVIRONMENT` setting automatically has `Production;` prepended, which doesn’t pass the `IHostingEnvironment.IsDevelopment()` test. Use `InProcess` when deploying to production.
 
 ## How it works
 
@@ -251,13 +291,13 @@ Pages on our site can have different designs applied. By default we use a respon
   	  "Escc.EastSussexGovUK": {
 	    "Mvc": {
 	      "DesktopViewPath": "~/Views/_My_Custom_Desktop.cshtml",
-	      "FullScreenViewPath": "~/_My_Custom_FullScreen.cshtml",
-	      "PlainViewPath": "~/_My_Custom_Plain.cshtml"
+	      "FullScreenViewPath": "~/Views/_My_Custom_FullScreen.cshtml",
+	      "PlainViewPath": "~/Views/_My_Custom_Plain.cshtml"
 	    }
 	  }
 	}
 
-`MvcViewSelector` is called (assuming it is injected as `IViewSelector`) in the constructor of `EastSussexGovUKTemplateRequest` and in the `~\Views\_ViewStart.cshtml` file. It selects the layout based on a number of criteria, including the configuration settings mentioned above.
+`MvcViewSelector` is called (assuming it is injected as `IViewSelector`) in the constructor of `EastSussexGovUKTemplateRequest` and in the `~/Views/_ViewStart.cshtml` file. It selects the layout based on a number of criteria, including the configuration settings mentioned above.
 
 In an MVC application you can't see the `ViewStart.cshtml` file or any of the layouts because they're implemented as embedded resources.  You can create your own `ViewStart.cshtml` if you need to add additional code, but you'll need to copy [the call to MvcViewSelector](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK/blob/master/Escc.EastSussexGovUK.Core/Views/_ViewStart.cshtml) into your new file to continue to apply the correct layout.
 
@@ -385,7 +425,7 @@ MVC pages can load partial views to add the following features, which are used f
 For example, to add an ESCIS search widget to your page:
 
 	// Controller
-	Model.ShowEscisWidget  = true;
+	Model.ShowEscisWidget = true;
 	
 	// View
-	@{ await Html.RenderPartialAsync("~/_EastSussexGovUK_Escis.cshtml", Model); }
+	<partial name="~/_EastSussexGovUK_Escis.cshtml" />

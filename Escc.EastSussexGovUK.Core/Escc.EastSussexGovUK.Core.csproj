@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1.0-beta1</Version>
+    <Version>1.0.0</Version>
     <Company>East Sussex County Council</Company>
     <Authors>East Sussex County Council</Authors>
     <Description>Common sitewide design elements for www.eastsussex.gov.uk, for ASP.NET Core projects.</Description>
@@ -13,7 +13,7 @@
     <PackageIconUrl>https://www.eastsussex.gov.uk/apple-touch-icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>This is a pre-release version and the API is subject to change.</PackageReleaseNotes>
+    <PackageReleaseNotes>This is the first release for ASP.NET Core.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -60,7 +60,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Escc.EastSussexGovUK" Version="14.0.0-beta8" />
+    <PackageReference Include="Escc.EastSussexGovUK" Version="14.0.0" />
     <PackageReference Include="Escc.EastSussexGovUK.ContentSecurityPolicy" Version="1.0.0" />
     <PackageReference Include="Escc.Html" Version="3.0.0" />
     <PackageReference Include="Escc.Metadata" Version="1.0.0" />

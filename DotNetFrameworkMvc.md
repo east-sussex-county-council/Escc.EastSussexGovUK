@@ -1,6 +1,6 @@
 # Applying the sitewide design with ASP.NET MVC5
 
-MVC5 is current recommended technology for new applications on the website, but it will soon be replaced by ASP.NET Core once that version of the template has all the features of this one. You should consider using the ASP.NET Core version instead and keeping it up-to-date with template changes.
+New applications on the website should target .NET Core wherever possible using the [ASP.NET Core version of this template](DotNetCoreMvc.md). MVC5 remains the current recommended technology for applications which need to target the .NET Framework, including Umbraco.
 
 ## Getting started
 
