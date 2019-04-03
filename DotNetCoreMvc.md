@@ -202,6 +202,18 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 	IIS is set to run in `OutOfProcess` mode, meaning it acts as a reverse proxy to the built-in web server, Kestrel. Changing this to `InProcess` should be more efficient but, at the time of writing, in development the `ASPNETCORE_ENVIRONMENT` setting automatically has `Production;` prepended, which doesn’t pass the `IHostingEnvironment.IsDevelopment()` test. Use `InProcess` when deploying to production.
 
+10.  Publish the project. Before you publish you need to add a `<MvcRazorExcludeRefAssembliesFromPublish />` line to the `.csproj` file, which is required because the EastSussexGovUK template includes embedded views. This causes a `refs` folder to be included in the publish. Without this you will see the error "`Cannot find compilation library location for package [package name]`".
+
+		<Project Sdk="Microsoft.NET.Sdk.Web">
+		  <PropertyGroup>
+		    <TargetFramework>netcoreapp2.2</TargetFramework>
+		    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+		    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
+		  </PropertyGroup>
+ 		  ...
+	    </Project>
+
+
 ## How it works
 
 ### Startup
