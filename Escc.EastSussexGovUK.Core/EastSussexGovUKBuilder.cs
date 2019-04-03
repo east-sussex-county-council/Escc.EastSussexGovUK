@@ -71,7 +71,6 @@ namespace Escc.EastSussexGovUK.Core
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.TryAddSingleton<IViewSelector, MvcViewSelector>();
             services.TryAddSingleton<IBreadcrumbProvider, BreadcrumbTrailFromConfig>();
-            services.TryAddSingleton<IViewModelDefaultValuesProvider, ViewModelDefaultValuesProvider>();
             services.TryAddSingleton<IProxyProvider, ProxyFromConfiguration>();
             services.TryAddSingleton<IHttpClientProvider, HttpClientProvider>();
             services.TryAddSingleton<ICacheStrategy<WebChatSettings>, ApplicationCacheStrategy<WebChatSettings>>();
@@ -81,6 +80,7 @@ namespace Escc.EastSussexGovUK.Core
             services.TryAddSingleton<IRedirectMatcher, SqlServerRedirectMatcher>();
             services.TryAddSingleton<IConvertToAbsoluteUrlHandler, ConvertToAbsoluteUrlHandler>();
             services.TryAddSingleton<IPreserveQueryStringHandler, PreserveQueryStringHandler>();
+            services.TryAddScoped<IViewModelDefaultValuesProvider, ViewModelDefaultValuesProvider>();
             services.TryAddScoped<IEastSussexGovUKTemplateRequest, EastSussexGovUKTemplateRequest>();
             services.TryAddScoped<IClientDependencySetEvaluator, ClientDependencySetEvaluator>();
             services.TryAddScoped<ILibraryCatalogueContext, LibraryCatalogueContext>();
