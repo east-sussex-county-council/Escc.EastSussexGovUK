@@ -41,6 +41,7 @@ namespace Escc.EastSussexGovUK.Core
         /// Displays the 400 Bad Request HTTP status page
         /// </summary>
         /// <returns></returns>
+        [Route("httpstatus/400")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Status400()
         {
@@ -56,6 +57,7 @@ namespace Escc.EastSussexGovUK.Core
         /// Displays the 403 Forbidden HTTP status page
         /// </summary>
         /// <returns></returns>
+        [Route("httpstatus/403")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Status403()
         {
@@ -72,6 +74,7 @@ namespace Escc.EastSussexGovUK.Core
         /// Displays the 410 Gone HTTP status page
         /// </summary>
         /// <returns></returns>
+        [Route("httpstatus/410")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Status410()
         {
@@ -87,6 +90,7 @@ namespace Escc.EastSussexGovUK.Core
         /// Displays the 500 Internal Server Error HTTP status page
         /// </summary>
         /// <returns></returns>
+        [Route("httpstatus/500")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Status500()
         {
@@ -107,6 +111,7 @@ namespace Escc.EastSussexGovUK.Core
         /// Responds to a 404 Not Found status by checking for and executing redirects, and displaying the 404 HTTP status page otherwise
         /// </summary>
         /// <returns></returns>
+        [Route("httpstatus/404")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Status404()
         {

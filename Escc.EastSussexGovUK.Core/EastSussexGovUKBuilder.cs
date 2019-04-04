@@ -126,8 +126,8 @@ namespace Escc.EastSussexGovUK.Core
             }
             else
             {
-                app.UseExceptionHandler("/HttpStatus/Status500");
-                app.UseStatusCodePagesWithReExecute("/HttpStatus/Status{0}");
+                app.UseExceptionHandler("/httpstatus/500");
+                app.UseStatusCodePagesWithReExecute("/httpstatus/{0}");
             }
 
             // Use security headers recommended by securityheaders.io
