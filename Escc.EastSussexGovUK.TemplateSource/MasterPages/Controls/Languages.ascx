@@ -30,6 +30,9 @@
             <%-- <li lang="ps-AF" xml:lang="ps-AF" dir="rtl" class="nonLatin">
                 <a href="https://apps.eastsussex.gov.uk/contactus/emailus/translation.aspx?c=ps-AF" hreflang="ps-AF" rel="nofollow alternate">پښتو</a>
             </li>--%>
+            <li lang="bfi" xml:lang="bfi">
+                <a href="https://www.eastsussex.gov.uk/contact-us/bslintro/?" hreflang="bfi" rel="nofollow alternate" id="bsl" runat="server">British Sign Language (BSL)</a>
+            </li>
         </ul>
     </div>
 </div>
