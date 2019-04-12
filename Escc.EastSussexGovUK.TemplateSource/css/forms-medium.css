@@ -56,6 +56,7 @@
    At this level move the button up to the right of the fields. */
 .simple-form .fields-with-checkbox .fields { float: left; }
 .simple-form .fields-with-checkbox .checkbox { margin-bottom: 0; }
+.simple-form .fields-with-checkbox .checkbox input { top: 6px; }
 
 
 /*:: SHORT FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
