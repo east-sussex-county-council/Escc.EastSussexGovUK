@@ -78,11 +78,12 @@ TransformConfig "$sourceFolder\MasterPages\Remote\web.example.config" "$destinat
 & "$transformsFolder\$projectName\MasterPages\Remote\UpdateClientDependencyVersion.ps1" -folder "$destinationFolder\$projectName\MasterPages\Remote"
 
 TransformConfig "$sourceFolder\web.example.config" "$destinationFolder\$projectName\web.temp1.config" "$PSScriptRoot\Escc.EastSussexGovUK.Mvc\web.config.install.xdt"
-TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.temp2.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\SecurityConfig\web.config.install.xdt"
-TransformConfig "$destinationFolder\$projectName\web.temp2.config" "$destinationFolder\$projectName\web.temp3.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\Metadata\web.config.install.xdt"
-TransformConfig "$destinationFolder\$projectName\web.temp3.config" "$destinationFolder\$projectName\web.temp4.config" "$PSScriptRoot\Escc.EastSussexGovUK.TemplateSource\web.config.clientDependency.xdt"
-TransformConfig "$destinationFolder\$projectName\web.temp4.config" "$destinationFolder\$projectName\web.temp5.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\ClientDependency\web.config.install.xdt"
-TransformConfig "$destinationFolder\$projectName\web.temp5.config" "$destinationFolder\$projectName\web.config" "$transformsFolder\$projectName\web.release.config"
+TransformConfig "$destinationFolder\$projectName\web.temp1.config" "$destinationFolder\$projectName\web.temp2.config" "$PSScriptRoot\packages\Escc.Web.SecurityConfig.1.2.0\Content\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp2.config" "$destinationFolder\$projectName\web.temp3.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\SecurityConfig\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp3.config" "$destinationFolder\$projectName\web.temp4.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\Metadata\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp4.config" "$destinationFolder\$projectName\web.temp5.config" "$PSScriptRoot\Escc.EastSussexGovUK.TemplateSource\web.config.clientDependency.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp5.config" "$destinationFolder\$projectName\web.temp6.config" "$PSScriptRoot\Escc.EastSussexGovUK.NuGet\ClientDependency\web.config.install.xdt"
+TransformConfig "$destinationFolder\$projectName\web.temp6.config" "$destinationFolder\$projectName\web.config" "$transformsFolder\$projectName\web.release.config"
 del "$destinationFolder\$projectName\web.temp*.config"
 
 function RemoveDomainPrefix($targetElement, $prefix) {
