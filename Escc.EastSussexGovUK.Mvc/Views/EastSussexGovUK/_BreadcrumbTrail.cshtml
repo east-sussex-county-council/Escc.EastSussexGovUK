@@ -11,7 +11,7 @@
     if (breadcrumbTrail.Keys.Count > 0)
     {
         // add the finished list to the "home" list
-        <nav><h2 class="aural">You are here</h2><ol class="breadcrumb large">@{ 
+        <nav aria-label="You are here"><ol class="breadcrumb large">@{ 
             var totalKeys = breadcrumbTrail.Keys.Count;
             var currentKey = 0;
             foreach (string key in breadcrumbTrail.Keys)
@@ -19,7 +19,7 @@
                 var listItemClass = (currentKey == (totalKeys - 1)) ? "current" : "up";
                 listItemClass += " level" + (currentKey + 1).ToString(CultureInfo.InvariantCulture);
 
-                if (String.IsNullOrEmpty(breadcrumbTrail[key])){<li class="@listItemClass"><span class="aural">Current level: </span>@key</li>}
+                if (String.IsNullOrEmpty(breadcrumbTrail[key])){<li class="@listItemClass" aria-current="page"><span class="aural">Current level: </span>@key</li>}
                 else {<li class="@listItemClass"><span class="aural">Level @((currentKey + 1).ToString(CultureInfo.CurrentCulture)): </span><a href="@breadcrumbTrail[key]">@key</a></li>}
                 currentKey++;
             }

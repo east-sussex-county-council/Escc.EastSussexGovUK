@@ -89,7 +89,7 @@ namespace Escc.EastSussexGovUK.WebForms
                     list.Controls.Add(listItems[i]);
                 }
 
-                this.Controls.Add(new LiteralControl("<h2 class=\"aural\">You are here</h2>"));
+                this.Attributes["aria-label"] = "You are here";
                 for (var i = 0; i < list.Controls.Count; i++)
                 {
                     var item = (list.Controls[i] as HtmlGenericControl);
@@ -100,6 +100,7 @@ namespace Escc.EastSussexGovUK.WebForms
                     }
                     else
                     {
+                        item.Attributes["aria-current"] = "page";
                         item.Controls.AddAt(0, new LiteralControl("<span class=\"aural\">Current level: </span>"));
                     }
                 }
