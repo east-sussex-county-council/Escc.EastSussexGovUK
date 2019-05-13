@@ -13,14 +13,8 @@
         100% { transform: scale(1); }
     }
     .govdelivery:link, .govdelivery:visited {
-        left:42.443064%; top: 30px; padding: 0; width: 64px; height: 64px; border-radius: 32px; background: #B21313 url(../img/body/navigation.png) no-repeat -436px -406px; 
+        left:42.443064%; top: 30px; padding: 0; width: 64px; height: 64px; border-radius: 32px; background: #B21313 url(../img/body/navigation.png?v=2) no-repeat -436px -406px; 
         text-indent: 100%; white-space: nowrap; 
     }
     .header-v2 .govdelivery:link, .header-v2 .govdelivery:visited { top: 15px; }
 }
-
-/* Repeat styles for IE8 but with only the final variation. These only work in real IE8, not with F12 tools in IE10. */
-.ie8 .govdelivery:link, .ie8 .govdelivery:visited {
-        left:42.443064%; top: 30px; padding: 0; width: 64px; height: 64px; background: #B21313 url(../img/body/navigation.png) no-repeat -436px -406px; 
-        text-indent: 100%; white-space: nowrap;
-    }

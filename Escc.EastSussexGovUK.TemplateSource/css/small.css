@@ -478,19 +478,19 @@ body .breadcrumb-mobile { padding: .384615em 3.797468% 0; margin: -.2em 0 .89230
    Start in the context of a 16px base font, adjust to 14px/18px using new font, and base measurements in ems on 14px.
 */
 .text-content .progressBar { margin: 0 0 1.125em;}
-.text-content .progressBar li {float: none; display: inline-block; font-size: .875em; line-height: 1.285714em; margin: .357143em 5px .285714em 0; padding: .3125em 14px .285714em 9px; width: auto;height: auto; min-width: 4em; font-weight: normal; text-align: center; background: #003C69 url(../img/body/navigation.png) no-repeat center right; color: #fff;}
+.text-content .progressBar li {float: none; display: inline-block; font-size: .875em; line-height: 1.285714em; margin: .357143em 5px .285714em 0; padding: .3125em 14px .285714em 9px; width: auto;height: auto; min-width: 4em; font-weight: normal; text-align: center; background: #003C69 url(../img/body/navigation.png?v=2) no-repeat center right; color: #fff;}
 
 /* To support both plain <li /> elements or links inside <li />, duplicate the <li /> background on <a href="" /> and use negative margins to cancel out padding on <li /> and move it to <a href="" /> */
 .text-content .progressBar em, .text-content .progressBar a { margin: -.357143em -14px -.285714em -9px; padding: .357143em 14px .285714em 9px;}
-.text-content .progressBar a:link, .text-content .progressBar em { display: block; color: #fff; background: #003C69 url(../img/body/navigation.png) no-repeat center right; text-decoration: none; text-align: center; }
+.text-content .progressBar a:link, .text-content .progressBar em { display: block; color: #fff; background: #003C69 url(../img/body/navigation.png?v=2) no-repeat center right; text-decoration: none; text-align: center; }
 
 /* Even though :visited styles are the same as :link, specify them separately otherwise IE11 refuses to apply them citing 
    "SEC7115 :visited and :link styles can only differ by color. Some styles were not applied to :visited."
  */
-.text-content .progressBar a:visited { color: #fff; background: #003C69 url(../img/body/navigation.png) no-repeat center right; }
+.text-content .progressBar a:visited { color: #fff; background: #003C69 url(../img/body/navigation.png?v=2) no-repeat center right; }
 
 /* Current or active stage is a different colour */
-.text-content .progressBar .current { background: #00A1DE url(../img/body/navigation.png) no-repeat center right; }
+.text-content .progressBar .current { background: #00A1DE url(../img/body/navigation.png?v=2) no-repeat center right; }
 .text-content .progressBar em, .text-content .progressBar a:hover, .text-content .progressBar a:focus, .text-content .progressBar a:active { background-color: #00A1DE;outline: none; }
 
 

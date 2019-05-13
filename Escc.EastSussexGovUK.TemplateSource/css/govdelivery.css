@@ -3,7 +3,7 @@
 #govdelivery a:link, #govdelivery a:visited { color: #fff; }
 
 /* Place icon before h2, taking up three grid lines of space (54px), which is smaller than the image as negative margins are used */
-#govdelivery h2:before { content: ' ';display: inline-block; width: 64px; height: 64px;border-radius: 32px; background: #B21313 url(../img/body/navigation.png) no-repeat -436px -406px; 
+#govdelivery h2:before { content: ' ';display: inline-block; width: 64px; height: 64px;border-radius: 32px; background: #B21313 url(../img/body/navigation.png?v=2) no-repeat -436px -406px; 
         text-indent: 100%; white-space: nowrap;overflow: hidden;
         vertical-align: middle;margin: -5px 18px -5px 0; }
 
