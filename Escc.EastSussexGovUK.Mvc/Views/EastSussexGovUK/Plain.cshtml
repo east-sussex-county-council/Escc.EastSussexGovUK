@@ -12,7 +12,7 @@
     @RenderSection("ContentExperiment", required: false)
     <meta charset="UTF-8" />
     @{ 
-        if (Model.Metadata.CanonicalPageUrl == null) { Model.Metadata.CanonicalPageUrl = Request.Url }
+        if (Model.Metadata.CanonicalPageUrl == null) { Model.Metadata.CanonicalPageUrl = Request.Url; }
         Html.RenderPartial("~/Views/Shared/_Metadata_Head.cshtml", Model.Metadata); 
     }
     @RenderSection("Metadata", required: false)
