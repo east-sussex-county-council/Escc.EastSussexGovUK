@@ -107,13 +107,13 @@ namespace Escc.EastSussexGovUK.Views
             }
 
             // Update the cached control if it's missing or too old
-            if (_cacheProvider == null || !_cacheProvider.CachedVersionExists(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest) || !_cacheProvider.CachedVersionIsFresh(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest) || _forceCacheRefresh)
+            if (_cacheProvider == null || !_cacheProvider.CachedVersionExists(applicationId, forUrl.Host, controlId, selectedSection, textSize, isLibraryCatalogueRequest) || !_cacheProvider.CachedVersionIsFresh(applicationId, forUrl.Host, controlId, selectedSection, textSize, isLibraryCatalogueRequest) || _forceCacheRefresh)
             {
                 return await RequestRemoteHtml(applicationId, forUrl, controlId, selectedSection, textSize, isLibraryCatalogueRequest).ConfigureAwait(false);
             }
 
             // Return the HTML
-            return _cacheProvider.ReadHtmlFromCache(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest);
+            return _cacheProvider.ReadHtmlFromCache(applicationId, forUrl.Host, controlId, selectedSection, textSize, isLibraryCatalogueRequest);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Escc.EastSussexGovUK.Views
                             html = await response.Content.ReadAsStringAsync();
                             if (_cacheProvider != null)
                             {
-                                _cacheProvider.SaveRemoteHtmlToCache(applicationId, controlId, selectedSection, textSize, isLibraryCatalogueRequest, html);
+                                _cacheProvider.SaveRemoteHtmlToCache(applicationId, forUrl.Host, controlId, selectedSection, textSize, isLibraryCatalogueRequest, html);
                             }
                         }
                     }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Company>East Sussex County Council</Company>
     <Authors>East Sussex County Council</Authors>
     <Description>Common sitewide design elements for www.eastsussex.gov.uk, for ASP.NET Core projects.</Description>
@@ -13,7 +13,7 @@
     <PackageIconUrl>https://www.eastsussex.gov.uk/apple-touch-icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>1.0.1 fixes the scoping of the DefaultValueProvider, and sets up routing for error pages that does not rely on setup in the consuming application.</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.2 fixes minor accessibility issues and updates Escc.EastSussexGovUK to fix template caching when the hostname changes.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -60,7 +60,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Escc.EastSussexGovUK" Version="14.0.0" />
+    <PackageReference Include="Escc.EastSussexGovUK" Version="15.0.0" />
     <PackageReference Include="Escc.EastSussexGovUK.ContentSecurityPolicy" Version="1.0.0" />
     <PackageReference Include="Escc.Html" Version="3.0.0" />
     <PackageReference Include="Escc.Metadata" Version="1.0.0" />
