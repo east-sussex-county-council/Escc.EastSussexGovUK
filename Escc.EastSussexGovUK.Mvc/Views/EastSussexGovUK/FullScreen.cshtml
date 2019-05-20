@@ -36,7 +36,7 @@ else
     @RenderSection("ContentExperiment", required: false)
     @Html.Raw(Model.TemplateHtml?.Metadata)
     @{
-        if (Model.Metadata.CanonicalPageUrl == null) { Model.Metadata.CanonicalPageUrl = Request.Url }
+        if (Model.Metadata.CanonicalPageUrl == null) { Model.Metadata.CanonicalPageUrl = Request.Url; }
         Html.RenderPartial("~/Views/Shared/_Metadata_Head.cshtml", Model.Metadata);
         Html.RenderPartial("~/Views/EastSussexGovUK/_Fonts.cshtml", Model.EsccWebsiteSkin);
     }
