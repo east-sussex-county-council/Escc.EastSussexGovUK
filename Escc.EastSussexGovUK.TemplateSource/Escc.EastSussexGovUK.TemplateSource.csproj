@@ -354,7 +354,6 @@
     <Content Include="css\social-media-large.css" />
     <None Include="css\tiles-medium.css" />
     <None Include="css\tiles-small.css" />
-    <Content Include="css\umbraco-preview.css" />
     <Content Include="default.aspx" />
     <EmbeddedResource Include="favicon.ico" />
     <EmbeddedResource Include="googledb369ad0fa294f54.html" />
@@ -463,7 +462,6 @@
     <None Include="js\public-libraries.js" />
     <None Include="js\forms.js" />
     <None Include="js\embed-youtube.js" />
-    <None Include="js\umbraco-preview.js" />
     <None Include="js\languages.js" />
     <Content Include="css\large.css" />
     <Content Include="MasterPages\Controls\GovDelivery.html" />
