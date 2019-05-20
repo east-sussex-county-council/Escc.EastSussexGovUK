@@ -25,7 +25,6 @@
     <CssCompressorTask SourceFiles="css/alert.css" OutputFile="css/min/alert.css" />
     <CssCompressorTask SourceFiles="css/mobile-controls.css" OutputFile="css/min/mobile-controls.css" />
     <CssCompressorTask SourceFiles="css/1space.css" OutputFile="css/min/1space.css" />
-    <CssCompressorTask SourceFiles="css/umbraco-preview.css" OutputFile="css/min/umbraco-preview.css" />
     <CssCompressorTask SourceFiles="css/govdelivery.css" OutputFile="css/min/govdelivery.css" />
     <CssCompressorTask SourceFiles="css/govdelivery-button-large.css" OutputFile="css/min/govdelivery-button-large.css" />
     <CssCompressorTask SourceFiles="css/govdelivery-button-small.css" OutputFile="css/min/govdelivery-button-small.css" />
@@ -52,7 +51,6 @@
     <JavaScriptCompressorTask SourceFiles="js/social-media.js" OutputFile="js/min/social-media.js" />
     <JavaScriptCompressorTask SourceFiles="js/thanks-for-analytics.js" OutputFile="js/min/thanks-for-analytics.js" />
     <JavaScriptCompressorTask SourceFiles="js/webchat.js" OutputFile="js/min/webchat.js" />
-    <JavaScriptCompressorTask SourceFiles="js/umbraco-preview.js" OutputFile="js/min/umbraco-preview.js" />
     <JavaScriptCompressorTask SourceFiles="js/escis.js" OutputFile="js/min/escis.js" />
     <JavaScriptCompressorTask SourceFiles="js/describedby-tips.js" OutputFile="js/min/describedby-tips.js" />
     <JavaScriptCompressorTask SourceFiles="js/privacy.js" OutputFile="js/min/privacy.js" />
