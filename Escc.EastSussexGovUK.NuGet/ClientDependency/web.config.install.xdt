@@ -66,8 +66,6 @@
 
       <add key="Alert" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Alert" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/alert.css" xdt:Transform="Insert" />
-      <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="CmsPreview" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/min/umbraco-preview.css" xdt:Transform="Insert" />
       <add key="CoronerSkinSmall" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CoronerSkinSmall" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/css/coroner-skin-small.css" xdt:Transform="Insert" />
       <add key="CoronerSkinMedium" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -173,8 +171,6 @@
       <add key="AccordionAndTabs" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/accordion-and-tabs.js" xdt:Transform="Insert" />
       <add key="AutoSuggest" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="AutoSuggest" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/googleautosuggest.js" xdt:Transform="Insert" />
-      <add key="CmsPreview" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="CmsPreview" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/min/umbraco-preview.js" xdt:Transform="Insert" />
       <add key="CoronerSkin" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CoronerSkin" value="https://www.eastsussex.gov.uk/escc.eastsussexgovuk/js/coroner-skin.js" xdt:Transform="Insert" />
       <add key="Documents" xdt:Transform="Remove" xdt:Locator="Match(key)" />
