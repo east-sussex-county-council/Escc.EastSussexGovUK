@@ -10,6 +10,7 @@ This project provides the template and some sitewide features for www.eastsussex
 * [Text size control in the sitewide header](TextSize.md)
 * [Google Analytics support](Analytics.md)
 * [Google Tag Manager support](TagManager.md)
+* [Google Maps support](GoogleMaps.md)
 * [Promotional banners](Banners.md)
 * [Web chat](WebChat.md)
 * [Redirects and custom errors](RedirectsAndCustomErrors.md)
