@@ -272,16 +272,13 @@ namespace Escc.EastSussexGovUK.ContentSecurityPolicy
             var updated = options.Clone();
 
             if (updated.ImgSrc == null) { updated.ImgSrc = CspDirective.Empty; }
-            updated.ImgSrc = updated.ImgSrc.AddSource("https://prod3si.click4assistance.co.uk");
+            updated.ImgSrc = updated.ImgSrc.AddSource("https://v4in1-si.click4assistance.co.uk");
 
             if (updated.ScriptSrc == null) { updated.ScriptSrc = ScriptCspDirective.Empty; }
-            updated.ScriptSrc = updated.ScriptSrc.AddSource("https://prod3si.click4assistance.co.uk").AddUnsafeInline();
+            updated.ScriptSrc = updated.ScriptSrc.AddSource("https://v4in1-si.click4assistance.co.uk").AddUnsafeInline().AddUnsafeEval();
 
             if (updated.FrameSrc == null) { updated.FrameSrc = CspDirective.Empty; }
-            updated.FrameSrc = updated.FrameSrc.AddSource("https://prod3si.click4assistance.co.uk").AddSource("https://prod3ci.click4assistance.co.uk");
-
-            if (updated.StyleSrc == null) { updated.StyleSrc = StyleCspDirective.Empty; }
-            updated.StyleSrc = updated.StyleSrc.AddUnsafeInline();
+            updated.FrameSrc = updated.FrameSrc.AddSource("https://v4in1-ti.click4assistance.co.uk");
 
             return updated;
         }

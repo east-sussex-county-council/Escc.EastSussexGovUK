@@ -9,7 +9,6 @@
       <add key="GoogleTagManager" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleFonts" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GoogleRecaptcha" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="GovDeliveryOverlays" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="CrazyEgg" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Facebook" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="Twitter" xdt:Transform="Remove" xdt:Locator="Match(key)" />
@@ -18,12 +17,11 @@
       <add key="WebChat" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="GisMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="ESCIS" xdt:Transform="Remove" xdt:Locator="Match(key)" />
-      <add key="CouncilPlan" xdt:Transform="Remove" xdt:Locator="Match(key)" />
       <add key="OrdnanceSurveyMaps" xdt:Transform="Remove" xdt:Locator="Match(key)" />
     </ContentSecurityPolicies>
     <ContentSecurityPolicies xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />
     <ContentSecurityPolicySettings>
-      <add xdt:Transform="Remove" xdt:Locator="Condition(@key = 'PoliciesToApply' and @value = 'Default;Local;GoogleAnalytics;GoogleTagManager;GoogleFonts;CrazyEgg;GovDeliveryOverlays')"/>
+      <add xdt:Transform="Remove" xdt:Locator="Condition(@key = 'PoliciesToApply' and @value = 'Default;Local;GoogleAnalytics;GoogleFonts;CrazyEgg')"/>
       <add xdt:Transform="Remove" xdt:Locator="Condition(@key = 'UrlsToExclude' and @value = '/umbraco;/install;/DependencyHandler.axd')"/>
     </ContentSecurityPolicySettings>
     <ContentSecurityPolicySettings xdt:Transform="Remove" xdt:Locator="Condition(count(*) = 0)" />

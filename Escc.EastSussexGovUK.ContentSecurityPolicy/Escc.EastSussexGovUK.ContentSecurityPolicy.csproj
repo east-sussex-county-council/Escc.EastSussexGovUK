@@ -1,23 +1,32 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.0</Version>
+    <Version>2.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>The default content security policy for www.eastsussex.gov.uk, and predefined policies for commonly-required third-party services.</Description>
     <Authors>East Sussex County Council</Authors>
     <Copyright>East Sussex County Council</Copyright>
-    <PackageLicenseUrl>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</PackageProjectUrl>
     <PackageIconUrl>https://www.eastsussex.gov.uk/apple-touch-icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>csp content-security-policy</PackageTags>
     <NeutralLanguage>en-GB</NeutralLanguage>
+    <PackageReleaseNotes>2.0.0 changes the web chat CSP to work with an upgraded version of Click4Assistance.</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="PeterJuhasz.AspNetCore.Security.Extensions.ContentSecurityPolicy" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
