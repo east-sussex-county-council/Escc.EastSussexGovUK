@@ -345,7 +345,6 @@
     <Content Include="css\min\social-media-large.css" />
     <Content Include="css\min\tiles-medium.css" />
     <Content Include="css\min\tiles-small.css" />
-    <Content Include="css\min\umbraco-preview.css" />
     <Content Include="css\mobile-controls.css" />
     <None Include="css\privacy.css" />
     <Content Include="css\service-closures.css" />
