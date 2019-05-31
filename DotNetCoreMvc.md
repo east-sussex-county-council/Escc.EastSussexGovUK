@@ -42,7 +42,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 			}
 		}
 
-4. Create a view model which inherits from `Escc.EastSussexGovUK.Core.BaseViewModel`. Its constructor must inject an instance of `IBreadcrumbProvider` since this is required to build the template.
+4. Create a view model which inherits from `Escc.EastSussexGovUK.Core.BaseViewModel`. Its constructor must inject an instance of `IViewModelDefaultValuesProvider` since this is required to build the template.
 
 		using Escc.EastSussexGovUK.Core;
 
@@ -80,8 +80,8 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 				try
                 {
-					// Do this if you want your page to support web chat. It should, unless you have a reason not to.
-                    model.WebChat = await templateRequest.RequestWebChatSettingsAsync();
+                    // Do this if you want your page to support web chat. It should, unless you have a reason not to.
+                    model.WebChat = await _templateRequest.RequestWebChatSettingsAsync();
                 }
                 catch (Exception ex)
                 {
@@ -90,8 +90,8 @@ For an ASP.NET Core MVC project, you can install our design using the following 
                 }
                 try
                 {
-					// Do this to load the template controls.
-                    model.TemplateHtml = await templateRequest.RequestTemplateHtmlAsync();
+                    // Do this to load the template controls.
+                    model.TemplateHtml = await _templateRequest.RequestTemplateHtmlAsync();
                 }
                 catch (Exception ex)
                 {
@@ -204,15 +204,14 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 10.  Publish the project. Before you publish you need to add a `<MvcRazorExcludeRefAssembliesFromPublish />` line to the `.csproj` file, which is required because the EastSussexGovUK template includes embedded views. This causes a `refs` folder to be included in the publish. Without this you will see the error "`Cannot find compilation library location for package [package name]`".
 
-		<Project Sdk="Microsoft.NET.Sdk.Web">
-		  <PropertyGroup>
-		    <TargetFramework>netcoreapp2.2</TargetFramework>
-		    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-		    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
-		  </PropertyGroup>
- 		  ...
-	    </Project>
-
+        <Project Sdk="Microsoft.NET.Sdk.Web">
+          <PropertyGroup>
+            <TargetFramework>netcoreapp2.2</TargetFramework>
+            <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+            <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
+          </PropertyGroup>
+          ...
+        </Project>
 
 ## How it works
 

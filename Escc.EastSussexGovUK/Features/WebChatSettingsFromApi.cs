@@ -33,7 +33,7 @@ namespace Escc.EastSussexGovUK.Features
                 throw new ArgumentNullException(nameof(apiSettings));
             }
 
-            _apiUrl = apiSettings.Value.WebChatSettingsUrl ?? throw new ArgumentNullException(nameof(apiSettings), "WebChatSettingsUrl cannot be null");
+            _apiUrl = apiSettings.Value.WebChatSettingsUrl;
             _httpClientProvider = httpClientProvider ?? throw new ArgumentNullException(nameof(httpClientProvider));
             _cache = cache;
             _cache.CacheDuration = TimeSpan.FromDays(apiSettings.Value.CacheMinutes);
@@ -45,6 +45,11 @@ namespace Escc.EastSussexGovUK.Features
         /// <returns></returns>
         public async Task<WebChatSettings> ReadWebChatSettings()
         {
+            if (_apiUrl == null)
+            {
+                return new WebChatSettings();
+            }
+
             try
             {
                 var cachedSettings =_cache?.ReadFromCache("WebChatSettingsUrl");

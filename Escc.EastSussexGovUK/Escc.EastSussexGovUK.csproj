@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,13 +6,14 @@
     <Company>East Sussex County Council</Company>
     <Authors>East Sussex County Council</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
-    <Version>15.0.0</Version>
+    <Version>15.0.1</Version>
     <PackageIconUrl>https://www.eastsussex.gov.uk/apple-touch-icon.png</PackageIconUrl>
-    <PackageLicenseUrl>http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>15.0.0 uses the hostname to vary the caching of template requests, which is essential when the hostname changes during a deployment slot swap on Azure.</PackageReleaseNotes>
+    <PackageReleaseNotes>15.0.1 allows WebChatSettingsFromApi to be instantiated without a URL for the API, which happens if web chat is not configured for a ASP.NET Core application.</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -30,6 +31,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.Runtime.Caching" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Escc.Umbraco.Permissions\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
