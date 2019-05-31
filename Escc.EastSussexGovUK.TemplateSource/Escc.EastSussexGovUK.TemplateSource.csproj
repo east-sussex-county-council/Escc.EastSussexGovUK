@@ -445,7 +445,6 @@
     <Content Include="js\min\thanks-for-analytics.js" />
     <None Include="js\social-media.js" />
     <None Include="js\thanks-for-analytics.js" />
-    <Content Include="js\min\umbraco-preview.js" />
     <Content Include="js\min\webchat.js" />
     <None Include="js\webchat.js" />
     <None Include="js\cross-origin-ie.js" />
