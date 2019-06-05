@@ -26,7 +26,7 @@
     <None Remove="Views\_EastSussexGovUK_HttpStatus_NotFound.cshtml" />
     <None Remove="Views\_EastSussexGovUK_Js.cshtml" />
     <None Remove="Views\_ViewStart.cshtml" />
-    <None Include="..\..\Escc.Libraries.BranchFinder\LICENSE.md">
+    <None Include="..\LICENSE.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
