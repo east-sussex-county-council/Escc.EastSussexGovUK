@@ -79,8 +79,8 @@
     <Reference Include="EcmaScript.NET, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EcmaScript.NET.2.0.0\lib\net45\EcmaScript.NET.dll</HintPath>
     </Reference>
-    <Reference Include="EmbeddedResourceVirtualPathProvider, Version=1.0.6928.23021, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EmbeddedResourceVirtualPathProvider.2.0.0\lib\net452\EmbeddedResourceVirtualPathProvider.dll</HintPath>
+    <Reference Include="EmbeddedResourceVirtualPathProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Escc.EmbeddedResourceVirtualPathProvider.2.0.1\lib\net452\EmbeddedResourceVirtualPathProvider.dll</HintPath>
     </Reference>
     <Reference Include="Escc.ActiveDirectory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ActiveDirectory.1.0.0\lib\Escc.ActiveDirectory.dll</HintPath>
@@ -103,7 +103,7 @@
       <HintPath>..\packages\Escc.EastSussexGovUK.16.0.0\lib\netstandard2.0\Escc.EastSussexGovUK.dll</HintPath>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.11.0.0\lib\net472\Escc.EastSussexGovUK.Mvc.dll</HintPath>
+      <HintPath>..\packages\Escc.EastSussexGovUK.Mvc.11.0.1\lib\net472\Escc.EastSussexGovUK.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Escc.Html, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.Html.3.0.0\lib\netstandard2.0\Escc.Html.dll</HintPath>
