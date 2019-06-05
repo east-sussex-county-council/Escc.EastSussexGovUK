@@ -145,6 +145,7 @@ namespace Escc.EastSussexGovUK.Mvc
         /// <param name="requestedUriPattern">Regular expression pattern which should match the requested URI</param>
         /// <param name="destinationPattern">Pattern which, when used as the replacement for the regular expression pattern, should point to the destination URL.</param>
         /// <param name="httpStatus">The HTTP status.</param>
+        /// <param name="responseHeaders">The HTTP response headers which can be updated to redirect the client if a pattern is matched</param>
         private ActionResult TryUriPattern(Uri requestedPath, string requestedUriPattern, string destinationPattern, int httpStatus, NameValueCollection responseHeaders)
         {
             if (requestedPath == null) return null;

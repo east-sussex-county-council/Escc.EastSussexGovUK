@@ -6,12 +6,12 @@
     <Company>East Sussex County Council</Company>
     <Authors>East Sussex County Council</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
-    <Version>15.0.1</Version>
+    <Version>16.0.0</Version>
     <PackageIconUrl>https://www.eastsussex.gov.uk/apple-touch-icon.png</PackageIconUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>15.0.1 allows WebChatSettingsFromApi to be instantiated without a URL for the API, which happens if web chat is not configured for a ASP.NET Core application.</PackageReleaseNotes>
+    <PackageReleaseNotes>16.0.0 updates the Escc.AddressAndPersonalDetails dependency to a version which is not strong-named</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Escc.AddressAndPersonalDetails" Version="4.0.1" />
+    <PackageReference Include="Escc.AddressAndPersonalDetails" Version="5.0.0" />
     <PackageReference Include="Escc.Net" Version="3.0.0" />
     <PackageReference Include="Exceptionless" Version="4.3.2012" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
