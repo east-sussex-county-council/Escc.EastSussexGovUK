@@ -24,7 +24,7 @@ if(navigator.userAgent.indexOf("ESCC Libraries") > -1)
 	        }	        
 	    }
 		
-		document.location.href = "https://www.eastsussex.gov.uk/libraries/elibrary/timeout.aspx";
+        document.location.href = "https://e-library.eastsussex.gov.uk/cgi-bin/spydus.exe/MSGTRN/OPAC/TIMEOUT";
 	}
 	
 	// Set up a 5-minute timeout for redirect, which resets when the mouse or keyboard is used
