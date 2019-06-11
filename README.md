@@ -13,6 +13,7 @@ This project provides the template and some sitewide features for www.eastsussex
 * [Google Maps support](GoogleMaps.md)
 * [Promotional banners](Banners.md)
 * [Web chat](WebChat.md)
+* [YouTube support](YouTube.md)
 * [Redirects and custom errors](RedirectsAndCustomErrors.md)
 * [RSS feed styles](RSS.md)
 * [Pop-up tips for form controls](Tips.md) (used for GDPR compliance)

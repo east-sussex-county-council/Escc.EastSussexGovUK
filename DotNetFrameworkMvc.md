@@ -81,7 +81,7 @@ Requesting any page with the querystring `?ForceCacheRefresh=1` will cause the c
 
 ### Loading CSS and JavaScript
 
-MVC pages use [ClienDependency Framework](https://github.com/shazwazza/clientdependency) for their local CSS and JavaScript. The paths for sitewide CSS and JavaScripts should be loaded from configuration using [Escc.ClientDependencyFramework](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework).
+MVC pages use [ClientDependency Framework](https://github.com/shazwazza/clientdependency) for their local CSS and JavaScript. The paths for sitewide CSS and JavaScripts should be loaded from configuration using [Escc.ClientDependencyFramework](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework).
 
 ### Swapping master pages and layouts
 
@@ -134,7 +134,34 @@ It is then up to individual templates and pages to name the skins that they supp
 		new CustomerFocusSkin()
 	);
 
-## Common features which can be added to pages
+## Add common features to pages using an `IClientDependencySet`
+
+An `IClientDependencySet` is a set of Content Security Policy changes, CSS and JavaScript files that together allow a feature to be added to a page. It also includes a method of deciding whether that feature is appropriate for a given page. A skin is an example of an `IClientDependencySet`.
+
+Some features included with `Escc.EastSussexGovUK` are examples of an `IClientDependencySet`:
+
+*  `EmbeddedGoogleMaps`
+*  `EmbeddedYouTubeVideos`
+*  `WebChat`
+
+Loading resources using an `IClientDependencySet` is supported by `_FeatureDependencies.cshtml`. For example, to embed YouTube videos in an MVC view:
+
+	@using Escc.EastSussexGovUK.Features
+
+    Html.Partial("~/Views/EastSussexGovUK/_FeatureDependencies.cshtml", new List<IClientDependencySet>()
+	{
+		new EmbeddedYouTubeVideos() { Html = new [] 
+		{ 
+			Model.MyRichTextField.ToString(), 
+			Model.MyOtherRichTextField.ToString() 
+		}}
+	});
+
+CSS and JavaScripts are loaded from configuration using [Escc.ClientDependencyFramework](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework). Content Security Policies are loaded from configuration using [Escc.Web](https://github.com/east-sussex-county-council/Escc.Web). For example, the code above loads JavaScript files registered in `web.config` by the `Escc.EastSussexGovUK.ClientDependency` package and a Content Security Policy registered by the `Escc.EastSussexGovUK.SecurityConfig` package.
+
+Other examples of `IClientDependencySet` are used internally by the partial views listed below, and you can create your own implementations of `IClientDependencySet` to conditionally load resources of your pages.
+
+## Add common features to pages using partial views
 
 MVC pages can load partial views to add the following features, which are used frequently throughout the site:
 

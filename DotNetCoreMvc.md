@@ -421,7 +421,31 @@ View that registers the dependency:
 	@inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
     dependencySetEvaluator.EvaluateDependencySet(new MyCustomDependency());
 
-## Common features which can be added to pages
+## Add common features to pages using an `IClientDependencySet`
+
+An `IClientDependencySet` is a set of Content Security Policy changes, CSS and JavaScript files that together allow a feature to be added to a page. It also includes a method of deciding whether that feature is appropriate for a given page. A skin is an example of an `IClientDependencySet`.
+
+Some features included with `Escc.EastSussexGovUK` are examples of an `IClientDependencySet`:
+
+*  `EmbeddedGoogleMaps`
+*  `EmbeddedYouTubeVideos`
+*  `WebChat`
+
+Loading resources using an `IClientDependencySet` is supported by `ClientDependencySetEvaluator`. For example, to embed YouTube videos in a view:
+
+
+	@inject Escc.EastSussexGovUK.Core.IClientDependencySetEvaluator dependencySetEvaluator;
+    dependencySetEvaluator.EvaluateDependencySet(new EmbeddedYouTubeVideos() { Html = new [] 
+	{ 
+		Model.MyRichTextField.ToString(), 
+		Model.MyOtherRichTextField.ToString() 
+	}});
+
+CSS and JavaScripts are loaded from the [Escc.EastSussexGovUK.TemplateSource](https://github.com/east-sussex-county-council/Escc.EastSussexGovUK) project using the `CssRelativeUrl` and `JsRelativeUrl` properties of the dependency. Content Security Policies are loaded by matching the name of a predefined method in `Escc.EastSussexGovUK.ContentSecurityPolicy.ContentSecurityPolicyExtensions` (see 'Varying the policy for a page' above).
+
+Other examples of `IClientDependencySet` are used internally by the partial views listed below.
+
+## Add common features to pages using partial views
 
 MVC pages can load partial views to add the following features, which are used frequently throughout the site:
 

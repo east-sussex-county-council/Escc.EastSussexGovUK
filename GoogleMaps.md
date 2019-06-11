@@ -29,9 +29,11 @@ The `Escc.EastSussexGovUK.ContentSecurityPolicy` NuGet package includes an updat
 
 		<a href="https://www.eastsussex.gov.uk/umbraco/api/location/list/?type=Library" class="embed">All libraries</a>
 
+### Loading the embed script only when required
+
 The `Escc.EastSussexGovUK` NuGet package contains `EmbeddedGoogleMaps`, which is an `IClientDependencySet` that controls the loading of these dependencies when one of the formats listed above is recognised. 
 
 Loading resources using an `IClientDependencySet` is supported by:
 
-*   `ClientDependencySetEvaluator` in `Escc.EastSussexGovUK.Core`
-*   `_FeatureDependencies.cshtml` in `Escc.EastSussexGovUK.Mvc` 
+*   `ClientDependencySetEvaluator` in `Escc.EastSussexGovUK.Core` (see [ASP.NET Core MVC](DotNetCoreMvc.md))
+*   `_FeatureDependencies.cshtml` in `Escc.EastSussexGovUK.Mvc` (see [ASP.NET MVC5](DotNetFrameworkMvc.md))
