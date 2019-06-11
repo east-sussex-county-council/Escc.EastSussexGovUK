@@ -17,6 +17,7 @@ This project provides the template and some sitewide features for www.eastsussex
 * [Redirects and custom errors](RedirectsAndCustomErrors.md)
 * [RSS feed styles](RSS.md)
 * [Pop-up tips for form controls](Tips.md) (used for GDPR compliance)
+* [Rewriting links to email addresses](Email.md)
 
 ## Development setup steps
 

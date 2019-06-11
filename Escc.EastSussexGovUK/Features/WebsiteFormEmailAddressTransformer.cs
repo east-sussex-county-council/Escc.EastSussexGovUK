@@ -8,7 +8,7 @@ namespace Escc.EastSussexGovUK.Features
     /// <summary>
     /// Transforms an email address into the URL of a sitewide form used to send an email.
     /// </summary>
-    /// <seealso cref="Escc.AddressAndPersonalDetails.Controls.IEmailAddressTransformer" />
+    /// <seealso cref="Escc.AddressAndPersonalDetails.IEmailAddressTransformer" />
     public class WebsiteFormEmailAddressTransformer : IEmailAddressTransformer
     {
         private readonly Uri _baseUrl;
