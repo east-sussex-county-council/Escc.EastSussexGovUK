@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		DotNetCoreMvc.md = DotNetCoreMvc.md
 		DotNetFrameworkMvc.md = DotNetFrameworkMvc.md
 		DotNetFrameworkWebForms.md = DotNetFrameworkWebForms.md
+		Email.md = Email.md
 		GoogleMaps.md = GoogleMaps.md
 		GovDelivery.md = GovDelivery.md
 		LICENSE.md = LICENSE.md
@@ -25,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TagManager.md = TagManager.md
 		TextSize.md = TextSize.md
 		Tips.md = Tips.md
+		WebChat.md = WebChat.md
+		YouTube.md = YouTube.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escc.EastSussexGovUK.Tests", "Escc.EastSussexGovUK.Tests\Escc.EastSussexGovUK.Tests.csproj", "{C7C8165C-927A-4448-B84A-6D91FA17C74C}"
