@@ -47,9 +47,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>S:\_Standards\VS.net Code Analysis\EsccWebTeam.CodeAnalysis.WebApp.Strict.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -82,10 +82,6 @@
     <Reference Include="EmbeddedResourceVirtualPathProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EmbeddedResourceVirtualPathProvider.2.0.1\lib\net452\EmbeddedResourceVirtualPathProvider.dll</HintPath>
     </Reference>
-    <Reference Include="Escc.ActiveDirectory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.ActiveDirectory.1.0.0\lib\Escc.ActiveDirectory.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Escc.AddressAndPersonalDetails, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.AddressAndPersonalDetails.5.0.0\lib\netstandard2.0\Escc.AddressAndPersonalDetails.dll</HintPath>
     </Reference>
@@ -94,10 +90,6 @@
     </Reference>
     <Reference Include="Escc.ClientDependencyFramework.WebForms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.ClientDependencyFramework.WebForms.3.0.0\lib\Escc.ClientDependencyFramework.WebForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Escc.Dates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=06fad7304560ae6f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Escc.Dates.2.0.1\lib\Escc.Dates.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Escc.EastSussexGovUK, Version=16.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Escc.EastSussexGovUK.16.0.0\lib\netstandard2.0\Escc.EastSussexGovUK.dll</HintPath>
