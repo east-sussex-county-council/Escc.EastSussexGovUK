@@ -6,12 +6,12 @@
     <Company>East Sussex County Council</Company>
     <Authors>East Sussex County Council</Authors>
     <NeutralLanguage>en-GB</NeutralLanguage>
-    <Version>16.0.0</Version>
+    <Version>16.0.1</Version>
     <PackageIconUrl>https://www.eastsussex.gov.uk/apple-touch-icon.png</PackageIconUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/east-sussex-county-council/Escc.EastSussexGovUK</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>16.0.0 updates the Escc.AddressAndPersonalDetails dependency to a version which is not strong-named</PackageReleaseNotes>
+    <PackageReleaseNotes>16.0.1 ensures the hostname is considered when deciding whether template elements are available in cache, so that a cache shared between multiple hostnames does not return the wrong result.</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>

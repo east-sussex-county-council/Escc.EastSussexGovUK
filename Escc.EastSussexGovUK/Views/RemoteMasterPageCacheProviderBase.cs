@@ -80,7 +80,7 @@ namespace Escc.EastSussexGovUK.Views
             // Add application path to the token, because it affects the path to /masterpages
             var sanitisedPath = "." + Regex.Replace(applicationId.ToLower(CultureInfo.CurrentCulture), "[^a-z]", String.Empty);
 
-            return controlId + sanitisedSection + textSizeToken + libraryUser + sanitisedPath;
+            return hostName + controlId + sanitisedSection + textSizeToken + libraryUser + sanitisedPath;
         }
 
         /// <summary>
