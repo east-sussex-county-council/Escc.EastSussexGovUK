@@ -142,7 +142,7 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 	Replace the site footer:
 
 		@section Footer {
-			<header>My custom footer</header>
+			<footer>My custom footer</footer>
 		}
 
 	Include JavaScript at the end of the page (or use the `async` or `defer` attributes when loading it earlier):
@@ -219,22 +219,20 @@ For an ASP.NET Core MVC project, you can install our design using the following 
 
 The call to `services.AddEastSussexGovUK(Configuration)` sets up:
 
-*  `EmbeddedFileProviders` so that views included in NuGet packages can be used
-*  Sets up dependency injection for the services used by the template, including calling `services.AddOptions()` to enable configuration
-*  Adds configuration for enforcing TLS using redirection to HTTPS and [HSTS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security). 
+*  [EmbeddedFileProvider](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.fileproviders.embeddedfileprovider?view=aspnetcore-2.2)s so that views included in NuGet packages can be used (it's the only was to include files in a NuGet package built using .NET Core)
+*  dependency injection for the services used by the template, including calling `services.AddOptions()` to enable configuration
+*  configuration for enforcing TLS using redirection to HTTPS and [HSTS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security). 
 
 The call to `app.UseEastSussexGovUK(env)` sets up:
 
-*  Enables the TLS support configured earlier
-*  Configures error pages
-*  Sets up the Content Security Policy (which can be customised - see [Varying the Content Security Policy](#csp))
-*  Adds other headers which make the site more secure
+*  enables the TLS support configured earlier
+*  branded error pages
+*  the Content Security Policy (which can be customised - see [Varying the Content Security Policy](#csp))
+*  other headers which make the site more secure
 
 ### Loading the template HTML
 
-The call to `await templateRequest.RequestTemplateHtmlAsync()` attempts to download the template controls from the remote URL, and populates a `TemplateHtml` property on the model. The use of an asynchronous call is very important as it allows the site to scale successfully using this approach.
-
-The URL to download the controls from is set by the `Escc.EastSussexGovUK:Mvc:PartialViewUrl` configuration setting. The template code will try to fetch HTML from that URL, passing a token for the control it wants instead of `{0}`.
+The call to `await templateRequest.RequestTemplateHtmlAsync()` attempts to download the template controls from a remote URL set by the `Escc.EastSussexGovUK:Mvc:PartialViewUrl` configuration setting. The template code will try to fetch HTML from that URL, passing a token for the control it wants instead of `{0}`. It then populates a `TemplateHtml` property on the model. The use of an asynchronous call is very important as it allows the site to scale successfully using this approach.
 
 The fetched HTML is saved in a local cache so that it is not requested remotely every time. The cache expires after an hour by default, but this can be changed using the optional `CacheMinutes` setting:
 
@@ -262,12 +260,14 @@ Requesting any page with the querystring `?ForceCacheRefresh=1` will cause the c
 
 ### Loading CSS and JavaScript
 
-Using HTTP2 and gzip there is no longer a need to bundle and minify client-side files, so they should be included in the page individually. However it is still useful to include a version number so that the latest version is always loaded after each deployment.
+Using HTTP2 there is no longer a need to bundle client-side files, so they should be included in the page individually. However it is still useful to include a version number so that the latest version is always loaded after each deployment.
 
 	@section Metadata {
 		<link rel="stylesheet" href="~/css/my-styles.css?v=@Model.ClientFileVersion" />
 		<script src="~/js/my-script.js?v=@Model.ClientFileVersion" async="async"></script>
 	}
+
+It is also still useful to minify files, and this can be done using [YUI Compressor](https://www.nuget.org/packages/YUICompressor.NET.MSBuild). See the `YUICompressor.msbuild` file in `Escc.EastSussexGovUK.TemplateSource` for an example of how to configure this. The process is triggered by a post-build action in the properties for that project.
 
 Some CSS and JavaScript is used sitewide, managed in the `Escc.EastSussexGovUK.TemplateSource` project. To use this you will usually want a different URL in development and production. While ASP.NET Core has tag helpers to do this, they still require the base URL to be in the view where it may be a problem if it's different for each developer. A better solution is to specify the base URL in configuration and use it as shown below.
 
@@ -322,7 +322,7 @@ If you want to override the layout view for a single request, you can specify a 
 
 	https://hostname/my-application/my-page?template=Plain
 
-The parameter name defaults to `template` but you can change it using the configuration below. The value replaces the `{0}` in `{0}ViewPath`, and the result is used to look up the layout view path using the configuration shown above. 
+The parameter name defaults to `template` but you can change it using the configuration below. 
 
 	{
   	  "Escc.EastSussexGovUK": {
@@ -332,18 +332,20 @@ The parameter name defaults to `template` but you can change it using the config
 	  }
 	}
 
+The value (for example `Plain` in `?template=Plain`) replaces the `{0}` in `{0}ViewPath`, and the result is used to look up the layout view path.
+
 ### Skins
 
 These can be applied on top of MVC layouts for smaller changes. A skin class inherits `IEsccWebsiteSkin` and can specify JavaScript and CSS files to load, fonts from Google and a custom Content Security Policy. Loading custom scripts gives you a lot of flexibility to alter the design and behaviour of the page. One skin can inherit from another by inheriting its class, allowing subtle variations to be created without repeating the settings.
 
 The skin also contains the rules for when to apply it which might, for example, be based on the URL. 
 
-It is then up to individual templates and pages to name the skins that they support using the `SkinSelector` class from this project. For example, to allow either the `MarriageSkin` or `CoronerSkin` when their conditions are met, but default to the `CustomerFocusSkin` when they are not, use the following command. The skins are tested in order and the first matching skin is applied.
+It is then up to individual templates and pages to name the skins that they support using the `SkinSelector` class from this project. For example, to allow either the `ExampleSkin` or `CoronerSkin` when their conditions are met, but default to the `CustomerFocusSkin` when they are not, use the following command. The skins are tested in order and the first matching skin is applied.
 
 	Model.EsccWebsiteSkin = SkinSelector.SelectSkin(
 		new IEsccWebsiteSkin[] 
 		{ 
-			new MarriageSkin(Request.Url), 
+			new ExampleSkin(Request.Url), 
 			new CoronerSkin(Request.Url) 
 		}, 
 		new CustomerFocusSkin()
@@ -449,7 +451,7 @@ Other examples of `IClientDependencySet` are used internally by the partial view
 
 MVC pages can load partial views to add the following features, which are used frequently throughout the site:
 
-* `~/_EastSussexGovUK_Banners.cshtml`, to support sitewide banners [configured using Umbraco](https://github.com/east-sussex-county-council/Escc.Umbraco.Banners)
+* `~/_EastSussexGovUK_Banners.cshtml`, to support sitewide banners (see [Promotional banners](Banners.md))
 * `~/_EastSussexGovUK_EastSussex1Space.cshtml`, for an EastSussex1Space search widget
 * `~/_EastSussexGovUK_Escis.cshtml`, for an ESCIS search widget
 * `~/_EastSussexGovUK_Facebook.cshtml`, for a Facebook feed known as the 'Page Plugin'

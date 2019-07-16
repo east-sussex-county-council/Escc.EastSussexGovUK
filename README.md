@@ -19,6 +19,15 @@ This project provides the template and some sitewide features for www.eastsussex
 * [Pop-up tips for form controls](Tips.md) (used for GDPR compliance)
 * [Rewriting links to email addresses](Email.md)
 
+## The role of Escc.EastSussexGovUK.TemplateSource
+
+Our website is made up of several subdomains. `Escc.EastSussexGovUK.TemplateSource` is the root application of our website on each subdomain, except where the subdomain is a run by a third-party application.
+
+However, the main part of our site runs Umbraco which also needs to be configured to be the root application. To resolve this conflict the Umbraco site integrates the `Escc.EastSussexGovUK.TemplateSource` application in two ways:
+
+*  `Escc.EastSussexGovUK.TemplateSource` publishes a NuGet package which is installed in the Umbraco application, containing the static files which must by convention appear at the root of the website, and containing `Escc.EastSussexGovUK.TemplateSource.dll` so that pages from `Escc.EastSussexGovUK.TemplateSource` can run within the context of the Umbraco application and find the code they expect.
+*  The Umbraco application has virtual directories set up which point to folders within `Escc.EastSussexGovUK.TemplateSource` (`masterpages`, `img` and `css\images`), so that those folders appear to be within the Umbraco application. This has the effect of preserving some of the URLs expected by the files in `Escc.EastSussexGovUK.TemplateSource` even though they are running from a different application. These URLs are also preserved from a previous implementation of the website, which aided migration.
+
 ## Development setup steps
 
 1. From an Administrator command prompt, run `app-setup-dev.cmd` to set up a site in IIS

@@ -52,9 +52,7 @@ Note: When installing `Escc.EastSussexGovUK.Mvc` into a project that also uses U
 
 ## How it works
 
-The call to `await templateRequest.RequestTemplateHtmlAsync()` attempts to download the template controls from the remote URL, and populates a `TemplateHtml` property on the model. The use of an asynchronous call is very important as it allows the site to scale successfully using this approach.
-
-The URL to download the controls from is set by the `MasterPageControlUrl` setting in the `Escc.EastSussexGovUK/RemoteMasterPage` section of `web.config`. The template code will try to fetch HTML from that URL, passing a token for the control it wants instead of `{0}`.
+The call to `await templateRequest.RequestTemplateHtmlAsync()` attempts to download the template controls from a remote URL set by the `MasterPageControlUrl` setting in the `Escc.EastSussexGovUK/RemoteMasterPage` section of `web.config`. The template code will try to fetch HTML from that URL, passing a token for the control it wants instead of `{0}`. It then populates a `TemplateHtml` property on the model. The use of an asynchronous call is very important as it allows the site to scale successfully using this approach.
 
 In the following example, `ExampleControl` would be loaded from `https://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control=ExampleControl`. If your application runs behind a proxy server you can configure the proxy URL and authentication details in `web.config` using the format documented in the [Escc.Net](https://github.com/east-sussex-county-council/Escc.Net) project.
 
@@ -73,7 +71,7 @@ In the following example, `ExampleControl` would be loaded from `https://www.eas
 	  </Escc.EastSussexGovUK>
 	</configuration>
 
-The fetched HTML is saved in a local cache so that it is not requested remotely every time. The cache expires using the `CacheMinutes` setting in `web.config`.
+The fetched HTML is saved in a local cache so that it is not requested remotely every time. The cache expires using the `CacheMinutes` setting in `web.config`, shown above.
 
 Requesting any page with the querystring `?ForceCacheRefresh=1` will cause the cached template to be updated even if the cache has not expired.
 
@@ -81,7 +79,7 @@ Requesting any page with the querystring `?ForceCacheRefresh=1` will cause the c
 
 ### Loading CSS and JavaScript
 
-MVC pages use [ClientDependency Framework](https://github.com/shazwazza/clientdependency) for their local CSS and JavaScript. The paths for sitewide CSS and JavaScripts should be loaded from configuration using [Escc.ClientDependencyFramework](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework).
+MVC pages use [ClientDependency Framework](https://github.com/shazwazza/clientdependency) for their local CSS and JavaScript. This automatically handles bundling and minification. The paths for sitewide CSS and JavaScripts should be loaded from configuration using [Escc.ClientDependencyFramework](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework).
 
 ### Swapping master pages and layouts
 
@@ -123,12 +121,12 @@ These can be applied on top of MVC layouts for smaller changes. A skin class inh
 
 The skin also contains the rules for when to apply it which might, for example, be based on the URL. 
 
-It is then up to individual templates and pages to name the skins that they support using the `SkinSelector` class from this project. For example, to allow either the `MarriageSkin` or `CoronerSkin` when their conditions are met, but default to the `CustomerFocusSkin` when they are not, use the following command. The skins are tested in order and the first matching skin is applied.
+It is then up to individual templates and pages to name the skins that they support using the `SkinSelector` class from this project. For example, to allow either the `ExampleSkin` or `CoronerSkin` when their conditions are met, but default to the `CustomerFocusSkin` when they are not, use the following command. The skins are tested in order and the first matching skin is applied.
 
 	Model.EsccWebsiteSkin = SkinSelector.SelectSkin(
 		new IEsccWebsiteSkin[] 
 		{ 
-			new MarriageSkin(Request.Url), 
+			new ExampleSkin(Request.Url), 
 			new CoronerSkin(Request.Url) 
 		}, 
 		new CustomerFocusSkin()
@@ -165,7 +163,7 @@ Other examples of `IClientDependencySet` are used internally by the partial view
 
 MVC pages can load partial views to add the following features, which are used frequently throughout the site:
 
-* `_Banners.cshtml`, to support sitewide banners [configured using Umbraco](https://github.com/east-sussex-county-council/Escc.Umbraco.Banners)
+* `_Banners.cshtml`, to support sitewide banners (see [Promotional banners](Banners.md))
 * `_EastSussex1Space.cshtml`, for an EastSussex1Space search widget
 * `_Escis.cshtml`, for an ESCIS search widget
 * `_Facebook.cshtml`, for a Facebook feed known as the 'Page Plugin'

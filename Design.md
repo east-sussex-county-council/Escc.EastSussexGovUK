@@ -25,14 +25,14 @@ The site serving the remote master page should configure a `BaseUrl` in `web.con
 
       <Escc.EastSussexGovUK>
         <GeneralSettings>
-          <add key="BaseUrl" value="http://www.eastsussex.gov.uk" />
+          <add key="BaseUrl" value="https://www.eastsussex.gov.uk" />
         </GeneralSettings>
       <Escc.EastSussexGovUK>
 	</configuration>
 
 ## An alternative approach for third-party applications
 
-The approach described above is designed primarily with ASP.NET in mind, and does involve installing minimal master pages or MVC layouts on the consuming site. 
+The approach described above is designed primarily with ASP.NET in mind, and does involve installing a NuGet package with minimal master pages or MVC layouts on the consuming site. 
 
 An alternative and usually better approach for third-parties which need to use our design is for us to set up a page on our website using the remote master page, with tokens to indicate where the metadata, content and other elements should go, and then a third-party can download a copy of the page on a regular schedule (or on every request) and use it as a template in their application. The tokens, breadcrumb trail, CSS and other elements can be changed to suit the needs to the consuming application.
 
@@ -41,12 +41,12 @@ This has two main advantages:
 * it can fit in more easily with other technologies
 * all of the template elements are controlled by us, which makes them easier (and cheaper) to keep up-to-date.
 
-An example of this approach in use is the [modern.gov template](https://new.eastsussex.gov.uk/moderngov/template.aspx) used by our [democracy pages](https://democracy.eastsussex.gov.uk/).
+An example of this approach in use is the [modern.gov template](https://www.eastsussex.gov.uk/moderngov/template.aspx) used by our [democracy pages](https://democracy.eastsussex.gov.uk/).
 
 ## CSS, JavaScript and images
 
 CSS, JavaScript and image files used by two or more applications belong in the `Escc.EastSussexGovUK.TemplateSource` project along with the remote master page. This includes the CSS for our responsive design. Documentation is included within the CSS files, and in our [website style guide](https://github.com/east-sussex-county-council/Escc.WebsiteStyleGuide). 
 
-Our sitewide CSS and JavaScript files as part of the remote master page are minified using [YUI Compressor](https://www.nuget.org/packages/YUICompressor.NET.MSBuild) and concatenated on-the-fly using our own [Escc.ClientDependencyFramework.WebForms](https://github.com/east-sussex-county-council/Escc.ClientDependencyFramework/tree/master/Escc.ClientDependencyFramework.WebForms) project. 
+Our sitewide CSS and JavaScript files as part of the remote master page are minified using [YUI Compressor](https://www.nuget.org/packages/YUICompressor.NET.MSBuild). 
 
 The printer icon used in our CSS was made by [Yannick](http://yanlu.de). It's from [flaticon.com](http://www.flaticon.com) and licensed under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).

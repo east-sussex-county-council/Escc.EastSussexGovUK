@@ -88,6 +88,12 @@ In the following example, `ExampleControl` would be loaded from `https://www.eas
 	      <add key="MasterPageControlUrl" value="https://www.eastsussex.gov.uk/masterpages/remote/control.aspx?control={0}" />
 	    </RemoteMasterPage>
 	  </Escc.EastSussexGovUK>
+
+	  <system.webServer>
+	    <modules>
+	      <add name="MasterPageModule" type="Escc.EastSussexGovUK.WebForms.MasterPageModule" />
+		</modules>
+	  </system.webServer>
 	</configuration>
 
 The remote control is loaded from an ASPX page, which is just a host for a usercontrol that is loaded locally.
