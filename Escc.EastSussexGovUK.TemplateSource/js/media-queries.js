@@ -1,5 +1,7 @@
 ﻿if (typeof (jQuery) != 'undefined')
 {
+    /* Allow consuming code to register a callback function which is executed when the browser is 
+     * resized past one of the standard breakpoints we use for www.eastsussex.gov.uk */
     function onEsccBreakpointChange(onSmallActivated, onMediumActivated, onLargeActivated, smallMediumBreakpoint, mediumLargeBreakpoint) {
         /// <summary>Hook up functions to respond to responsive design breakpoints</summary>
         var widthBefore = $(window).width();

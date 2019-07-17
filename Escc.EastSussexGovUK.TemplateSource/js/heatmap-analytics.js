@@ -1,4 +1,9 @@
 ﻿if (typeof (jQuery) != 'undefined' && typeof (esccConfig) != 'undefined') {
+    // Determine whether Crazy Egg heatmap analytics code should be loaded on the current page, based on a list of pages configured in Umbraco 
+    // using https://github.com/east-sussex-county-council/Escc.Umbraco.HeatmapAnalytics and returned as JSON by a web API. This would also require the consuming
+    // page to update the content security policy with the settings for Crazy Egg in the Escc.EastSussexGovUK.SecurityConfig NuGet package (for ASP.NET WebForms 
+    // and ASP.NET MVC5) or in the Escc.EastSussexGovUK.ContentSecurityPolicy NuGet package (for ASP.NET Core MVC).
+    //
     // Use code from https://github.com/johnkpaul/jquery-ajax-retry to mitigate against network errors, which are the main
     // cause of no JavaScript according to gov.uk research https://gds.blog.gov.uk/2013/10/21/how-many-people-are-missing-out-on-javascript-enhancement/
     //

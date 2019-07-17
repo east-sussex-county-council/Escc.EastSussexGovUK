@@ -1,4 +1,4 @@
-﻿// When asynchronous actions are taken after a form submission, we cannot use a server-side redirect from a POSTed WebForm to a separate thank you page. 
+﻿// When asynchronous actions are taken after a form submission in ASP.NET WebForms, we cannot use a server-side redirect from a POSTed WebForm to a separate thank you page. 
 // This ends the request and prevents the asynchronous method from executing. Instead the original web page hides its form controls and displays some 
 // 'thank you' text.
 //

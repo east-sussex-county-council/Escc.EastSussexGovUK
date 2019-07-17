@@ -47,6 +47,6 @@ An example of this approach in use is the [modern.gov template](https://www.east
 
 CSS, JavaScript and image files used by two or more applications belong in the `Escc.EastSussexGovUK.TemplateSource` project along with the remote master page. This includes the CSS for our responsive design. Documentation is included within the CSS files, and in our [website style guide](https://github.com/east-sussex-county-council/Escc.WebsiteStyleGuide). 
 
-Our sitewide CSS and JavaScript files as part of the remote master page are minified using [YUI Compressor](https://www.nuget.org/packages/YUICompressor.NET.MSBuild). 
+Our sitewide CSS and JavaScript files as part of the remote master page are minified using [YUI Compressor](https://www.nuget.org/packages/YUICompressor.NET.MSBuild).
 
 The printer icon used in our CSS was made by [Yannick](http://yanlu.de). It's from [flaticon.com](http://www.flaticon.com) and licensed under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/).

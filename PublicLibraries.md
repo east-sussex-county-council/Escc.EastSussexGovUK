@@ -1,0 +1,7 @@
+# Catalogue machines in public libraries
+
+There are computers in public libraries which are intended solely for browsing our [library catalogue](https://e-library.eastsussex.gov.uk). The help pages for our catalogue are on our main website, so that needs to be usable on these machines too. 
+
+A firewall prevents access to the rest of the Internet. If users were to click a link to another website, or try to download a document from our website onto one of these machines, by default they would see a page from our firewall informing them that the request is blocked. To improve the user experience of this process we load `~\Escc.EastSussexGovUK.TemplateSource\js\public-libraries.js`, which intercepts clicks on links that would trigger the firewall error and instead redirects them to a branded page on our website with an explanation of the limitations. It also implements a five-minute timeout so that, if someone walks away from the machine, it is reset to the library catalogue home page ready for the next user.
+
+Clearly we only want this script to load on the library catalogue machines, not for every visitor to our website. `~\Escc.EastSussexGovUK\LibraryCatalogueContext.cs` is designed to test whether it is appropriate to load the script or not, and it is integrated into the process of loading the sitewide design for every page. It identifies the library catalogue computers by looking at the user agent of the browser requesting the page for the string `ESCC Libraries`, which we have added to the user agents of the browsers running on those computers.
