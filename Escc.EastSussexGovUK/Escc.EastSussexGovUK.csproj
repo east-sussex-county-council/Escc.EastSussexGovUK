@@ -29,7 +29,7 @@
     <PackageReference Include="Escc.Net" Version="3.0.0" />
     <PackageReference Include="Exceptionless" Version="4.3.2012" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="System.Runtime.Caching" Version="4.5.0" />
   </ItemGroup>
 
